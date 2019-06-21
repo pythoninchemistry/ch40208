@@ -7,3 +7,4 @@
 ```
 spec -> algorithm -> code
 ```
+- Any changes should be through the usual fork, edit, pull request workflow.
