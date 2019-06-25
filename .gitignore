@@ -4,3 +4,4 @@
 **/*.blg
 **/*.out
 **/rsc-*.bib
+.snakemake
