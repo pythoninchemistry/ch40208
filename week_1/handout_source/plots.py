@@ -21,11 +21,13 @@ data = {'years':[2002, 2003, 2004, 2005, 2006, 2007,
 
 df = pd.DataFrame(data)
 
-fig, ax1 = plt.subplots()
-ax1.plot(df['years'], df['chem_python'] / df['chemistry'], 's')
-ax1.set_ylim([0, 0.1])
+fig, ax1 = plt.subplots(figsize=(5, 3))
+ax1.plot(df['years'], df['chem_python'] / df['chemistry'] * 100, 's')
+ax1.set_ylim([0, 8])
 ax1.set_xlabel('Year')
-ax1.set_ylabel('Chemistry publications')
+ax1.set_ylabel('Chemistry publications/%')
 ax1.set_xticks([2002, 2006, 2010, 2014, 2018])
-ax1.set_yticks([0, 0.05, .1])
+#ax1.set_yticks([0, 0.05, .1])
+plt.tight_layout()
 plt.savefig('chem_data_py.pdf')
+plt.close()
