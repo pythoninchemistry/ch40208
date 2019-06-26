@@ -6,6 +6,29 @@
 \usepackage{rsc}
 \usepackage{siunitx}
 \usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 
 
 \title{Lecture 1: Introduction to Python}
@@ -58,6 +81,50 @@ While this course is self-contained, the following books are particularly useful
 \end{itemize}
 
 \section{Variable types}
+
+It is the case in many programming languages that \emph{variables} can be assigned, a variable is a container used to store some data. 
+It is possible to assign a variable (also known as declaring a variable) as shown below,
+\begin{lstlisting}
+# Variable declaration
+
+banana = 1.
+\end{lstlisting}
+Not all variables are the same, and therefore variables may have different \emph{types}, where different operations are possible depending on the type.
+Some examples of variable types that are present in Python include: 
+\begin{itemize}
+	\item{\textbf{Integers} (\texttt{int}) -- these are whole numbers ($1$, $2$, $0$, $-3$, etc.), e.g. there is no decimal point, and they can be positive, negative, or zero.}
+	\item{\textbf{Floats} (\texttt{float}) -- these are all \emph{real} numbers ($1.0$, $3.14$, $0.0$, $6.28$, etc.), e.g any values that can be described using a decimal point.}
+	\item{\textbf{Complex} (\texttt{complex}) -- complex numbers should be familiar from mathematics, where they are typically written as $2+1i$, however in Python the $i$ is replaced with a \texttt{j}.}
+	\item{\textbf{String} (\texttt{str}) -- a string is a textual variable such as a word or a sentence. These are written between single or double inverted commas, \texttt{`like this'} or \texttt{"this"}.}
+	\item{\textbf{Boolean} (\text{bool}) -- named after George Boole, who first defined an algebraic logic system in the 19th century, a Boolean is a variable type that may hold one of two values, either \texttt{True} or \texttt{False}.} 
+\end{itemize}
+The type of a given variable can be determined with the command, 
+\begin{lstlisting}
+# Type determination
+
+type(banana)
+\end{lstlisting}
+This function will return the type of the variable given as an argument. 
+
+\vspace{\baselineskip}
+\centering{
+	\noindent\fbox{%
+	    \begin{minipage}{0.8\textwidth}%
+	        \textbf{Exercise}
+
+	        \begin{itemize}
+	        	\item{Experiment with the different variable types and see if you can define an example for each of the five outlined above.}
+	        	\item{Determine the type of each of the following:}
+	        	\begin{enumerate}
+	        		\item{\texttt{greeting = "Hello World!"}}
+	        		\item{\texttt{pi = 3.1415}}
+	        		\item{\texttt{life = 42}}
+	        	\end{enumerate}
+	        	\item{Consider the difference between \texttt{1}, \texttt{1.}, and \texttt{1.0} as interperated in Python.}
+	        \end{itemize}
+	    \end{minipage}
+	}
+}
 
 \bibliographystyle{rsc}
 \bibliography{handout_1}
