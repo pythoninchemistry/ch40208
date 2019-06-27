@@ -29,7 +29,7 @@
   breakatwhitespace=true,
   tabsize=3
 }
-
+\DeclareSIUnit\Fahrenheit{\degree F}
 
 \title{Lecture 1: Introduction to Python}
 \author[1]{Dr Benjamin J. Morgan}
@@ -180,6 +180,109 @@ Using these basic tools, it is possible to use a Jupyter Notebook as a rudimenta
 
 \subsection{Order of operations}
 
+A single line of code can include many of the arithmetic operations outlined above, therefore it is necessary to establish a hierarchy (known as the order of operations). 
+Python follows the order of operations that should be familiar from mathematics, you may know this as BODMAS: 
+\begin{enumerate}
+	\item{\textbf{B}rackets}
+	\item{\textbf{O}rder}
+	\item{\textbf{D}ivide}
+	\item{\textbf{M}ultiply}
+	\item{\textbf{A}ddition}
+	\item{\textbf{S}ubtraction}
+\end{enumerate}
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+		\begin{minipage}{0.9\textwidth}%
+			\vspace{0.15\baselineskip}
+			\subsubsection{Exercise}
+			\begin{itemize}
+				\item{Without using the computer and following the order of operations defined above calculate the following:}
+				\begin{enumerate}
+					\item{$24 \div (10 + 2)$}
+					\item{$5 + 16 \div 2 \times 3$}
+					\item{$(32 \div (6 + 2))^2$}
+				\end{enumerate}
+				\item{Now check your answers are correct using the computer.}
+			\end{itemize}
+		\end{minipage}
+	}
+\end{center}
+
+\subsection{Mixed mode operations}
+
+When the two operands are of the same type, the result of an arithmetic operation will also be of that type. 
+However, the operation is on two operands of different types it is necessary to modify one of them in order for the operation to be performed. 
+For example, in the code below, an \texttt{int} is divided by a \texttt{float} and the type of the result will be a \texttt{float}, 
+\begin{lstlisting}
+# Divide an int by a float 
+
+mixed_type = 2 / 4.0
+
+type(mixed_type)
+\end{lstlisting}
+In the above operation, the \texttt{2} is converted from being an \texttt{int} to a \texttt{float}, so the operation becomes effectively \texttt{2.0 / 4.0}. 
+
+As of Python 3, if one \texttt{int} is divided by another \texttt{int} then both are converted to a \texttt{float}, meaning that, in the code below, the variable \texttt{both\_int} will be a \texttt{float} with a value of \texttt{0.5}, 
+\begin{lstlisting}
+# Divide an int by a float 
+
+both_int = 2 / 4
+
+type(both_int)
+\end{lstlisting}
+In Python 2, this would have returned an \texttt{int} with a value of \texttt{0}, however, with Python 3 the ``floor division'' operator (\texttt{//}) must be used to achieve this result,
+\begin{lstlisting}
+# Divide an int by a float 
+
+floor_division = 2 // 4
+
+type(floor_division)
+\end{lstlisting}
+
+\section{Print and input (I/O) methods}
+
+Until now, you have been using the Jupyter Notebook to ``print'' the information. 
+You may have noticed that the result of the final line in a given cell will be printed below it. 
+However, if you would like to get information from a different part of a cell (or from within a larger program as we will see in later weeks), it is necessary to be able to print from the code. 
+This is where the \emph{print statement} comes in, in Python this looks like this, 
+\begin{lstlisting}
+# Print Hello World!
+
+print("Hello World!")
+\end{lstlisting}
+This should output the string \texttt{"Hello World!"} when the cell is run (some of you may be aware that printing Hello World! is considered by many as a right of passage in programming and is often the first thing someone will do when learning a new programming language). 
+
+Any of the types discussed above may be printed with the print statement, additionally it is also possible to using the print statement to insert numerical values into a string.
+We can even prescribe how the number is written, for example in the code below the information between the \texttt{\{\}} tells Python that the floating point number (\texttt{f}) should be written with two (\texttt{2}) numbers following the decimal point (\texttt{.}).  
+\begin{lstlisting}
+# More interesting printing
+
+pi = 3.1415
+
+print("pi to 4 decimal places is {} exactly!".format(pi))
+print("pi to 2 decimal places is {:.2f} exactly!".format(pi))
+\end{lstlisting}
+
+In addition to printing, it is also possible to read information from the user.
+This is achieved using the \texttt{input} function, which will read the information given by the user as a string and store is in the defined variable. 
+The code below will test out the \texttt{input} and \texttt{print} functions, 
+\begin{lstlisting}
+# Who am I?
+
+my_name = input("What is your name?")
+
+print(my_name)
+\end{lstlisting}
+
+\section{Problem}
+
+The final exercise of this week is to, within a clean Jupyter Notebook, write some code that would allow a user to input a temperature in Fahrenheit and convert this to Celsius. 
+You should consider how this may be broken down into \texttt{three} simple steps.
+For reference, 
+\begin{equation}
+	T (\si{\celsius}) = \frac{5 ( T(\si{\Fahrenheit}) - 32)}{9}.
+\end{equation}
 
 \bibliographystyle{rsc}
 \bibliography{handout_1}
