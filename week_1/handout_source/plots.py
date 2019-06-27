@@ -1,11 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
-import seaborn as sns
 import pandas as pd
-
-sns.set(palette="colorblind")
-sns.set_context("paper")
+import seaborn as sns
 
 data = {'years':[2002, 2003, 2004, 2005, 2006, 2007, 
                  2008, 2009, 2010, 2011, 2012, 2013, 
@@ -21,8 +18,8 @@ data = {'years':[2002, 2003, 2004, 2005, 2006, 2007,
 
 df = pd.DataFrame(data)
 
-fig, ax1 = plt.subplots(figsize=(5, 3))
-ax1.plot(df['years'], df['chem_python'] / df['chemistry'] * 100, 's')
+fig, ax1 = plt.subplots(figsize=(4, 2.5))
+ax1.plot(df['years'], df['chem_python'] / df['chemistry'] * 100, 's', color=sns.color_palette('colorblind')[0])
 ax1.set_ylim([0, 8])
 ax1.set_xlabel('Year')
 ax1.set_ylabel('Chemistry publications/%')
