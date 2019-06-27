@@ -107,24 +107,78 @@ type(banana)
 This function will return the type of the variable given as an argument. 
 
 \vspace{\baselineskip}
-\centering{
+\begin{center}
 	\noindent\fbox{%
-	    \begin{minipage}{0.8\textwidth}%
-	        \textbf{Exercise}
-
+	    \begin{minipage}{0.9\textwidth}%
+	        \vspace{0.15\baselineskip}
+			\subsubsection*{Exercise}
 	        \begin{itemize}
 	        	\item{Experiment with the different variable types and see if you can define an example for each of the five outlined above.}
-	        	\item{Determine the type of each of the following:}
+	        	\item{Determine the \emph{type} of each of the following:}
 	        	\begin{enumerate}
 	        		\item{\texttt{greeting = "Hello World!"}}
 	        		\item{\texttt{pi = 3.1415}}
 	        		\item{\texttt{life = 42}}
 	        	\end{enumerate}
-	        	\item{Consider the difference between \texttt{1}, \texttt{1.}, and \texttt{1.0} as interperated in Python.}
+	        	\item{Consider the difference between \texttt{1}, \texttt{1.}, and \texttt{1.0} as interperated by Python.}
 	        \end{itemize}
 	    \end{minipage}
 	}
-}
+\end{center}
+
+\section{Variable assignment}
+
+It was mentioned above that a variable may be assiged with the following syntax,
+\begin{lstlisting}
+# Variable declaration
+
+banana = 1.
+\end{lstlisting}
+This establishes a name (\texttt{banana}) for some location on the computer memory, and places a value (\texttt{1.}) into that location.
+Once a variable has been assigned, it can be used in other parts of the code.
+For example consider, 
+\begin{lstlisting}
+# Reuse banana
+
+apple = 5. + banana
+\end{lstlisting}
+Above, we have reused the banana variable assigned previously to create a new variable, \texttt{apple}. 
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+	    \begin{minipage}{0.9\textwidth}%
+	        \vspace{0.15\baselineskip}
+			\subsubsection*{Exercise}
+	        \begin{itemize}
+	        	\item{Investigate the effect of changing the value of \texttt{banana}, after the variable \texttt{apple} has been defined.}
+	        \end{itemize}
+	    \end{minipage}
+	}
+\end{center}
+
+\section{Computer arithmetic}
+
+Python is able to basic mathematical operations natively (without the need for additional libraries to be loaded). 
+\begin{table}[h]
+	\centering
+	\caption{The Python syntax for basic mathematical operations.}
+	\begin{tabular}{c c c}
+		\hline
+		Operation & Mathematical notation & Pythonic notation \\
+		\hline
+		Addition & $a + b$ & \texttt{a + b} \\
+		Subtraction & $a - b$ & \texttt{a - b} \\
+		Multiplication & $a \times b$ & \texttt{a * b} \\
+		Division & $a \div b$ & \texttt{a / b} \\
+		Exponent & $a^b$ & \texttt{a ** b} \\
+		\hline
+	\end{tabular}
+\end{table}
+
+Using these basic tools, it is possible to use a Jupyter Notebook as a rudimentary calculator. 
+
+\subsection{Order of operations}
+
 
 \bibliographystyle{rsc}
 \bibliography{handout_1}
