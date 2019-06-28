@@ -43,6 +43,7 @@
 \fancyhf{}
 \rhead{CH40208}
 \lhead{\thetitle}
+\rfoot{\thepage}
 
 \begin{document}
 \maketitle
@@ -52,17 +53,17 @@ In this lecture, you will be introduced to Pythonic variable types, basic arithm
 
 \section{Introduction}
 
-The aim of this course is to develop skills in the user of computer programming (particularly in the Python programming language), building on the skills learned in the first and second year Computational Chemistry laboratory. :w
-
+The aim of this course is to develop skills in the user of computer programming (particularly in the Python programming language), building on the skills learned in the first and second year Computational Chemistry laboratory. 
 You will then put these skills into practice, using Python to analyse chemical structures and perform quantum mechanical chemical calculations. 
 
-The Python programming language is one of the most popular programming languages in the world, ranking third on the TIOBE index (a measure of programming language popularity) in June 2019\cite{tiobe_index}, with the largest rate of change. 
+The Python programming language is one of the most popular programming languages in the world, ranking third on the TIOBE index (a measure of programming language popularity) in June 2019\cite{tiobe_index}, with the largest rate of change (it is becoming more popular over time). 
 Additionally, it is probably the most popular programming language used in the chemical sciences. 
 Recently, it was suggested that more than \SI{7}{\percent} of all academic papers published in 2018 made mention of the Python (Figure~\ref{fig:pic}) \cite{arm_pycon}. 
 %
-\begin{figure}[h]
+\begin{figure}[t]
 \centering
 \includegraphics{chem_data_py}
+\label{fig:pic}
 \caption{The percentage of ``chemistry'' publications that also mention ``python'', determined from the numbers of matching Google Scholar results.}
 \end{figure}
 %
@@ -71,7 +72,7 @@ Python was first released in 1991, with one of the main design philosophies of t
 This readability is one of the driving factors to its adoption, along with some of the concepts introduced in this course, such as dynamical typing and powerful libraries like NumPy and Matplotlib. 
 Since the early 1990s there have been three major versions of Python, with the most recent (and the focus of this course) being Python 3. 
 Python 2 is still commonly found online and in libraries, however it is due to ``retire'' at the end of this year (check out \url{https://pythonclock.org} for a live countdown). 
-Therefore, many packages are now dropping support for Python versions less than 3 and most practitioners would suggest new learners to start with Python 3. 
+Therefore, many packages are now dropping support for Python 2 and most practitioners would suggest new learners to start with Python 3. 
 
 \subsection{Books}
 
@@ -83,28 +84,28 @@ While this course is self-contained, the following books are particularly useful
 \section{Variable types}
 
 It is the case in many programming languages that \emph{variables} can be assigned, a variable is a container used to store some data. 
-It is possible to assign a variable (also known as declaring a variable) as shown below,
+It is possible to assign a variable as shown below,
 \begin{lstlisting}
-# Variable declaration
+# Variable assignment
 
 banana = 1.
 \end{lstlisting}
 Not all variables are the same, and therefore variables may have different \emph{types}, where different operations are possible depending on the type.
 Some examples of variable types that are present in Python include: 
 \begin{itemize}
-	\item{\textbf{Integers} (\texttt{int}) -- these are whole numbers ($1$, $2$, $0$, $-3$, etc.), e.g. there is no decimal point, and they can be positive, negative, or zero.}
-	\item{\textbf{Floats} (\texttt{float}) -- these are all \emph{real} numbers ($1.0$, $3.14$, $0.0$, $6.28$, etc.), e.g any values that can be described using a decimal point.}
-	\item{\textbf{Complex} (\texttt{complex}) -- complex numbers should be familiar from mathematics, where they are typically written as $2+1i$, however in Python the $i$ is replaced with a \texttt{j}.}
+	\item{\textbf{Integers} (\texttt{int}) -- these are whole numbers ($1$, $2$, $0$, $-3$, etc.); there is no decimal point, and they can be positive, negative, or zero.}
+	\item{\textbf{Floats} (\texttt{float}) -- these are all \emph{real} numbers ($1.0$, $3.14$, $0.0$, $6.28$, etc.); any values that can be described using a decimal point.}
+	\item{\textbf{Complex} (\texttt{complex}) -- complex numbers should be familiar from mathematics, where they are typically written as $2+1i$, however in Python the $i$ is replaced with a \texttt{j}, so $2+1i$ becomes \texttt{2+1j}.}
 	\item{\textbf{String} (\texttt{str}) -- a string is a textual variable such as a word or a sentence. These are written between single or double inverted commas, \texttt{`like this'} or \texttt{"this"}.}
-	\item{\textbf{Boolean} (\text{bool}) -- named after George Boole, who first defined an algebraic logic system in the 19th century, a Boolean is a variable type that may hold one of two values, either \texttt{True} or \texttt{False}.} 
+	\item{\textbf{Boolean} (\text{bool}) -- named for George Boole, who first defined an algebraic logic system in the 19th century, a Boolean is a \emph{logical} variable type that may hold one of two values, either \texttt{True} or \texttt{False}.} 
 \end{itemize}
-The type of a given variable can be determined with the command, 
+The type of a given variable can be determined with the following command, 
 \begin{lstlisting}
 # Type determination
 
 type(banana)
 \end{lstlisting}
-This function will return the type of the variable given as an argument. 
+This function will return the type of the variable given as an \emph{argument}. 
 
 \vspace{\baselineskip}
 \begin{center}
@@ -113,14 +114,14 @@ This function will return the type of the variable given as an argument.
 	        \vspace{0.15\baselineskip}
 			\subsubsection*{Exercise}
 	        \begin{itemize}
-	        	\item{Experiment with the different variable types and see if you can define an example for each of the five outlined above.}
-	        	\item{Determine the \emph{type} of each of the following:}
+	        	\item{Experiment with the different variable types and see if you can assign an example variable for each of the five outlined above.}
+	        	\item{Determine the type of each of the following:}
 	        	\begin{enumerate}
 	        		\item{\texttt{greeting = "Hello World!"}}
 	        		\item{\texttt{pi = 3.1415}}
 	        		\item{\texttt{life = 42}}
 	        	\end{enumerate}
-	        	\item{Consider the difference between \texttt{1}, \texttt{1.}, and \texttt{1.0} as interperated by Python.}
+	        	\item{Consider the type difference between \texttt{1}, \texttt{1.}, and \texttt{1.0} as interperated by Python.}
 	        \end{itemize}
 	    \end{minipage}
 	}
@@ -134,7 +135,7 @@ It was mentioned above that a variable may be assiged with the following syntax,
 
 banana = 1.
 \end{lstlisting}
-This establishes a name (\texttt{banana}) for some location on the computer memory, and places a value (\texttt{1.}) into that location.
+This establishes a name (\texttt{banana}) for some location in the computer memory, and places a value (\texttt{1.}) into that location.
 Once a variable has been assigned, it can be used in other parts of the code.
 For example consider, 
 \begin{lstlisting}
@@ -158,10 +159,10 @@ Above, we have reused the banana variable assigned previously to create a new va
 
 \section{Computer arithmetic}
 
-Python is able to basic mathematical operations natively (without the need for additional libraries to be loaded), these are shown in Table~\ref{tab:ops}.
+Python is able to basic mathematical operations natively (without the need for additional libraries to be loaded), some of these are shown in Table~\ref{tab:ops}.
 \begin{table}[h]
 	\centering
-	\caption{The Python syntax for basic mathematical operations.}
+	\caption{The Python syntax for some basic mathematical operations.}
 	\label{tab:ops}
 	\begin{tabular}{c c c}
 		\hline
@@ -171,16 +172,17 @@ Python is able to basic mathematical operations natively (without the need for a
 		Subtraction & $a - b$ & \texttt{a - b} \\
 		Multiplication & $a \times b$ & \texttt{a * b} \\
 		Division & $a \div b$ & \texttt{a / b} \\
+		Division & $a \div b$ & \texttt{a / b} \\
 		Exponent & $a^b$ & \texttt{a ** b} \\
 		\hline
 	\end{tabular}
 \end{table}
 
-Using these basic tools, it is possible to use a Jupyter Notebook as a rudimentary calculator. 
+Using these basic tools alone, it is possible to use a Jupyter Notebook as a rudimentary calculator. 
 
 \subsection{Order of operations}
 
-A single line of code can include many of the arithmetic operations outlined above, therefore it is necessary to establish a hierarchy (known as the order of operations). 
+A single line of code can include many of the arithmetic operations outlined above, therefore it is necessary to establish a hierarchy, also known as the \emph{order of operations}. 
 Python follows the order of operations that should be familiar from mathematics, you may know this as BODMAS: 
 \begin{enumerate}
 	\item{\textbf{B}rackets}
@@ -197,7 +199,7 @@ Python follows the order of operations that should be familiar from mathematics,
 			\vspace{0.15\baselineskip}
 			\subsubsection{Exercise}
 			\begin{itemize}
-				\item{Without using the computer and following the order of operations defined above calculate the following:}
+				\item{Without using the computer, and following the order of operations defined above, calculate the following:}
 				\begin{enumerate}
 					\item{$24 \div (10 + 2)$}
 					\item{$5 + 16 \div 2 \times 3$}
@@ -212,7 +214,7 @@ Python follows the order of operations that should be familiar from mathematics,
 \subsection{Mixed mode operations}
 
 When the two operands are of the same type, the result of an arithmetic operation will also be of that type. 
-However, the operation is on two operands of different types it is necessary to modify one of them in order for the operation to be performed. 
+However, the operation is on two operands of different types it is necessary to modify one of them before the operation is performed. 
 For example, in the code below, an \texttt{int} is divided by a \texttt{float} and the type of the result will be a \texttt{float}, 
 \begin{lstlisting}
 # Divide an int by a float 
@@ -221,7 +223,7 @@ mixed_type = 2 / 4.0
 
 type(mixed_type)
 \end{lstlisting}
-In the above operation, the \texttt{2} is converted from being an \texttt{int} to a \texttt{float}, so the operation becomes effectively \texttt{2.0 / 4.0}. 
+This is because the \texttt{2} is converted to a \texttt{float}, so the operation becomes effectively \texttt{2.0 / 4.0}. 
 
 As of Python 3, if one \texttt{int} is divided by another \texttt{int} then both are converted to a \texttt{float}, meaning that, in the code below, the variable \texttt{both\_int} will be a \texttt{float} with a value of \texttt{0.5}, 
 \begin{lstlisting}
@@ -251,10 +253,10 @@ This is where the \emph{print statement} comes in, in Python this looks like thi
 
 print("Hello World!")
 \end{lstlisting}
-This should output the string \texttt{"Hello World!"} when the cell is run (some of you may be aware that printing Hello World! is considered by many as a right of passage in programming and is often the first thing someone will do when learning a new programming language). 
+This should output the string \texttt{"Hello World!"} when the cell is run (some of you may be aware that printing Hello World! is considered a right of passage in programming and is often the first thing someone will do when learning a new programming language). 
 
-Any of the types discussed above may be printed with the print statement, additionally it is also possible to using the print statement to insert numerical values into a string.
-We can even prescribe how the number is written, for example in the code below the information between the \texttt{\{\}} tells Python that the floating point number (\texttt{f}) should be written with two (\texttt{2}) numbers following the decimal point (\texttt{.}).  
+Any of the types discussed above may be printed with the print statement, additionally it is also possible to use the print statement to insert numerical values into a string.
+We can even prescribe how the number is written, for example in the code below the information between the curly brackets tells the Python \emph{interpreter} that the floating point number (\texttt{f}) should be written with two (\texttt{2}) numbers following the decimal point (\texttt{.}).  
 \begin{lstlisting}
 # More interesting printing
 
@@ -277,12 +279,13 @@ print(my_name)
 
 \section{Problem}
 
-The final exercise of this week is to, within a clean Jupyter Notebook, write some code that would allow a user to input a temperature in Fahrenheit and convert this to Celsius. 
-You should consider how this may be broken down into \texttt{three} simple steps.
+The final exercise of this week is to, in a single Jupyter Notebook cell, write some code that would allow a user to input a temperature in Fahrenheit and convert this to Celsius. 
 For reference, 
 \begin{equation}
 	T (\si{\celsius}) = \frac{5 ( T(\si{\Fahrenheit}) - 32)}{9}.
 \end{equation}
+You should consider how this may be broken down into \emph{four} simple steps, write these steps out as an \emph{algorithm} and then write your code from this algorithm.
+If you manage to complete this write another cell to convert from Fahrenheit to Kelvin. 
 
 \bibliographystyle{rsc}
 \bibliography{handout_1}
