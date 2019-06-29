@@ -119,68 +119,60 @@ The above code asks the question, does the variable \texttt{prior\_meetings} has
 
 The \texttt{if} statement may be used in a more extended context, such as if the \emph{logical argument} in the if statement is not True, an \texttt{else} can be included (or even an \texttt{elif}), as shown below,
 \begin{lstlisting}
-# The if operator
+# Five greetings to an old friend
 
 if prior_meetings == 0:
     print("Hello World!")
 elif prior_meetings == 1:
     print("Oh! You again")
-elif prior_meetings == 3:
+elif prior_meetings == 2:
     print("Oh! You again")
 elif prior_meetings == 3:
     print("Oh! You again")
-elif prior_meetings > 3:
+elif prior_meetings == 4:
+    print("Oh! You again")
+elif prior_meetings == 5:
+    print("Oh! You again")
+elif prior_meetings > 5:
 	print("Hello old friend!")
+else:
+	print("Meetings should be a positive number or zero")
 \end{lstlisting}
 
 \section{AND and OR operators}
 
-
-
-
-In the above example, we used a logical operator with the \texttt{==} operator which translates to \emph{is equal to}. 
-Other operators exist, and are shown in Table~\ref{tab:ops}.
-\begin{table}[h]
-	\centering
-	\caption{Some logical operators available in Python.}
-	\label{tab:ops}
-	\begin{tabular}{c c c}
-		\hline
-		Name & Operator & Translation \\
-		\hline
-		Equals & \texttt{==} & \emph{is equal to} \\
-		Less than & \texttt{<} & \emph{is less than} \\
-		Less than or equal & \texttt{<=} & \emph{is less than or equal to} \\
-		Greater than & \texttt{>} & \emph{is greater than} \\
-		Greater than or equal to & \texttt{>=} & \emph{is greater than or equal to} \\
-		Not equal & \texttt{!=} & \emph{is not equal to} \\
-		\hline
-	    And & \texttt{and} & \emph{this AND that} \\
-	    Or & \texttt{or} & \emph{this OR that} \\
-		\hline
-	\end{tabular}
-\end{table}
-In Table~\ref{tab:ops}, the first set of operators function in the same way as the Equals operator, an example of an \emph{if statement} that improves on the code you should have written above is given below,
+In addition to the logical operators introduced above there are some others that it is important, and useful to be aware of. 
+These are the \texttt{and} and \texttt{or} operators, which have important \emph{but different} actions:
+\begin{itemize}
+	\item{The \texttt{and} operation returns \texttt{True} if both operations are true.}
+	\item{The \texttt{or} operation returns \texttt{True} if either operations are true.}
+\end{itemize}
+The code below gives and example of the syntax for these operations, 
 \begin{lstlisting}
-# Complex logical comparision
+# Using and and or
 
-if the_number == 7:
-    print("I knew you'd pick 7")
-elif the_number > 11:
-    print("Woah! That's against the rules")
-elif the_number == 10:
-    print("Woah! That's against the rules")
-elif the_number < 0:
-    print("Woah! That's against the rules")
+if 4 > 3 and 3 > 2:
+	print("This is true")
+elif 4 > 3 or 3 > 3:
+	print("This is also true")
 else:
-    print("I didn't see that coming.")
+	print("Nothing is true")
 \end{lstlisting}
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+		\begin{minipage}{0.9\textwidth}%
+			\vspace{0.15\baselineskip}
+			\subsubsection{Exercise}
+			\begin{itemize}
+				\item{Use the \texttt{or} operator to reduce the \texttt{prior\_meetings} code above to just 8 lines long. Hint: think about other operators from Table~\ref{tab:ops}.}
+			\end{itemize}
+		\end{minipage}
+	}
+\end{center}
 
-\subsection{And and or operators}
 
-
-
-\bibliographystyle{rsc}
-\bibliography{handout_1}
+%\bibliographystyle{rsc}
+%\bibliography{handout_2}
 
 \end{document}
