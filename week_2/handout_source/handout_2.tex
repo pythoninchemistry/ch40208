@@ -1,0 +1,120 @@
+\documentclass[a4paper]{article}
+\usepackage{titling}
+\usepackage{authblk}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{rsc}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\DeclareSIUnit\Fahrenheit{\degree F}
+
+\title{Lecture 2: Pythonic logic and loops}
+\author[1]{Dr Benjamin J. Morgan}
+\author[1,2]{Dr Andrew R. McCluskey}
+\affil[1]{Department of Chemistry, University of Bath, email: b.j.morgan@bath.ac.uk}
+\affil[2]{Diamond Light Source, email: andrew.mccluskey@diamond.ac.uk}
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CH40208}
+\lhead{\thetitle}
+\rfoot{\thepage}
+
+\begin{document}
+\maketitle
+
+\section*{Aim}
+In this lecture, you will learn about logical operations, conditional statements, and for and while loops.
+
+\section{Logical operations}
+
+Previously, we observed how to use Python or a Jupyter Notebook as a simple calculator. 
+However, programs become more useful when we are able to make the program more ``intelligent'' allowing it to perform different calculations under different circumstances. 
+The \texttt{if} statement is one of the simplest logical operation that Python can perform. 
+It allows the program to apply different operations \emph{if} certain criteria are \emph{true}. 
+An example of a Pythonic \emph{if statement} is shown below,
+\begin{lstlisting}
+# The if operator
+
+if met_before == False:
+    print("Hello World!")
+\end{lstlisting}
+Note that in Python the indentation is incredibly important (it is how the interpreter determines what is and is not part of the \emph{if statement}.
+The above code asks the question, does the Boolean variable \texttt{met\_before} have the value \texttt{False}, and if it does print the string \texttt{Hello World!}
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+		\begin{minipage}{0.9\textwidth}%
+			\vspace{0.15\baselineskip}
+			\subsubsection{Exercise}
+			\begin{itemize}
+				\item{Write some code that asks the user for a number and \emph{if} the number is 7 it prints the string \texttt{I knew you'd pick 7}.}
+			\end{itemize}
+		\end{minipage}
+	}
+\end{center}
+The \texttt{if} statement may be used in a more extended context, such as if the \emph{logical argument} in the if statement is not True, an \texttt{else} can be included, as shown below,
+\begin{lstlisting}
+# The if operator
+
+if met_before == False:
+    print("Hello World!")
+else:
+    print("Oh! You again")
+\end{lstlisting}
+In the above example, we used a logical operator with the \texttt{==} operator which translates to \emph{is equal to}. 
+Other operators exist, and are shown in Table~\ref{tab:ops}.
+\begin{table}[h]
+	\centering
+	\caption{Some logical operators available in Python.}
+	\label{tab:ops}
+	\begin{tabular}{c c c}
+		\hline
+		Name & Operator & Translation \\
+		\hline
+		Equals & \texttt{==} & \emph{is equal to} \\
+		Less than & \texttt{<} & \emph{is less than} \\
+		Less than or equal & \texttt{<=} & \emph{is less than or equal to} \\
+		Greater than & \texttt{>} & \emph{is greater than} \\
+		Greater than or equal to & \texttt{>=} & \emph{is greater than or equal to} \\
+		Not equal & \texttt{!=} & \emph{is not equal to} \\
+		\hline
+	    And & \texttt{and} & \emph{this AND that} \\
+	    Or & \texttt{or} & \emph{this OR that} \\
+		\hline
+	\end{tabular}
+\end{table}
+
+
+\subsection{And and or operators}
+
+
+\bibliographystyle{rsc}
+\bibliography{handout_1}
+
+\end{document}
