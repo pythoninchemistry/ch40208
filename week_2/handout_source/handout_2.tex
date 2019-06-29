@@ -51,21 +51,40 @@
 \section*{Aim}
 In this lecture, you will learn about logical operations, conditional statements, and for and while loops.
 
-\section{Logical operations}
+\section{Logical operators}
 
 Previously, we observed how to use Python or a Jupyter Notebook as a simple calculator. 
-However, programs become more useful when we are able to make the program more ``intelligent'' allowing it to perform different calculations under different circumstances. 
-The \texttt{if} statement is one of the simplest logical operation that Python can perform. 
-It allows the program to apply different operations \emph{if} certain criteria are \emph{true}. 
-An example of a Pythonic \emph{if statement} is shown below,
+However, programs become more useful when we are able to make the program more ``intelligent'' allowing it to perform different calculations under different circumstances.
+This ability relies heavily on the use of logical operators, as we shall see. 
+A logical operator is code that returns a Boolean, either \texttt{True} or \texttt{False}. 
+The logical operator \texttt{==} is one of the most common, and translates to \emph{is equal to}, this operator will return \texttt{True} if the values on either side are the same, for example,
 \begin{lstlisting}
-# The if operator
+# The truth
 
-if met_before == False:
-    print("Hello World!")
+print(14.0/2.0 == 7.0)
+print(13.0/2.0 == 7.0)
 \end{lstlisting}
-Note that in Python the indentation is incredibly important (it is how the interpreter determines what is and is not part of the \emph{if statement}.
-The above code asks the question, does the Boolean variable \texttt{met\_before} have the value \texttt{False}, and if it does print the string \texttt{Hello World!}
+This code will return \texttt{True} then \texttt{False}. 
+
+The equals operator is only one of many logical operators that is available in Python, some are given in Table~\ref{tab:ops}.
+Each of these may be used in the same syntax as the equals operator.
+\begin{table}[h]
+	\centering
+	\caption{Some logical operators available in Python.}
+	\label{tab:ops}
+	\begin{tabular}{c c c c}
+		\hline
+		Name & Mathematical Symbol & Operator & Translation \\
+		\hline
+		Equals & $=$ &\texttt{==} & \emph{is equal to} \\
+		Less than & $<$ & \texttt{<} & \emph{is less than} \\
+		Less than or equal & $\leq$ & \texttt{<=} & \emph{is less than or equal to} \\
+		Greater than & $>$ & \texttt{>} & \emph{is greater than} \\
+		Greater than or equal to & $\geq$ & \texttt{>=} & \emph{is greater than or equal to} \\
+		Not equal & $\neq$ & \texttt{!=} & \emph{is not equal to} \\
+		\hline
+	\end{tabular}
+\end{table}
 \vspace{\baselineskip}
 \begin{center}
 	\noindent\fbox{%
@@ -73,20 +92,52 @@ The above code asks the question, does the Boolean variable \texttt{met\_before}
 			\vspace{0.15\baselineskip}
 			\subsubsection{Exercise}
 			\begin{itemize}
-				\item{Write some code that asks the user for a number and \emph{if} the number is 7 it prints the string \texttt{I knew you'd pick 7}.}
+				\item{Write code that will return the result of the following logical operations:}
+				\begin{enumerate}
+					\item{$1 = 4$}
+					\item{$10 < 15$}
+					\item{$3.1415 \nq 3$}
+				\end{itemize}
 			\end{itemize}
 		\end{minipage}
 	}
 \end{center}
-The \texttt{if} statement may be used in a more extended context, such as if the \emph{logical argument} in the if statement is not True, an \texttt{else} can be included, as shown below,
+
+\section{if, elif, else flow control}
+
+The \texttt{if} statement is one of the simplest, and most powerful, opeartions that Python can perform. 
+This allows the code to apply different operations \emph{if} certain criteria are \texttt{True}.
+An example of a Pythonic \emph{if statement} is shown below, 
 \begin{lstlisting}
 # The if operator
 
-if met_before == False:
+if prior_meetings == 0:
     print("Hello World!")
-else:
-    print("Oh! You again")
 \end{lstlisting}
+Note that in Python the indentation is incredibly important (it is how the interpreter determines what is and is not part of the \emph{if statement}.
+The above code asks the question, does the variable \texttt{prior\_meetings} has the value \texttt{0}, and if it does print the string \texttt{Hello World!}
+
+The \texttt{if} statement may be used in a more extended context, such as if the \emph{logical argument} in the if statement is not True, an \texttt{else} can be included (or even an \texttt{elif}), as shown below,
+\begin{lstlisting}
+# The if operator
+
+if prior_meetings == 0:
+    print("Hello World!")
+elif prior_meetings == 1:
+    print("Oh! You again")
+elif prior_meetings == 3:
+    print("Oh! You again")
+elif prior_meetings == 3:
+    print("Oh! You again")
+elif prior_meetings > 3:
+	print("Hello old friend!")
+\end{lstlisting}
+
+\section{AND and OR operators}
+
+
+
+
 In the above example, we used a logical operator with the \texttt{==} operator which translates to \emph{is equal to}. 
 Other operators exist, and are shown in Table~\ref{tab:ops}.
 \begin{table}[h]
@@ -109,9 +160,24 @@ Other operators exist, and are shown in Table~\ref{tab:ops}.
 		\hline
 	\end{tabular}
 \end{table}
+In Table~\ref{tab:ops}, the first set of operators function in the same way as the Equals operator, an example of an \emph{if statement} that improves on the code you should have written above is given below,
+\begin{lstlisting}
+# Complex logical comparision
 
+if the_number == 7:
+    print("I knew you'd pick 7")
+elif the_number > 11:
+    print("Woah! That's against the rules")
+elif the_number == 10:
+    print("Woah! That's against the rules")
+elif the_number < 0:
+    print("Woah! That's against the rules")
+else:
+    print("I didn't see that coming.")
+\end{lstlisting}
 
 \subsection{And and or operators}
+
 
 
 \bibliographystyle{rsc}
