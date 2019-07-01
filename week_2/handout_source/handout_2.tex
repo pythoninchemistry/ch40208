@@ -72,16 +72,16 @@ Each of these may be used in the same syntax as the equals operator.
 	\centering
 	\caption{Some logical operators available in Python.}
 	\label{tab:ops}
-	\begin{tabular}{c c c c}
+	\begin{tabular}{c c c}
 		\hline
-		Name & Mathematical Symbol & Operator & Translation \\
+		Name & Mathematical Symbol & Operator \\
 		\hline
-		Equals & $=$ &\texttt{==} & \emph{is equal to} \\
-		Less than & $<$ & \texttt{<} & \emph{is less than} \\
-		Less than or equal & $\leq$ & \texttt{<=} & \emph{is less than or equal to} \\
-		Greater than & $>$ & \texttt{>} & \emph{is greater than} \\
-		Greater than or equal to & $\geq$ & \texttt{>=} & \emph{is greater than or equal to} \\
-		Not equal & $\neq$ & \texttt{!=} & \emph{is not equal to} \\
+		Equals & $=$ &\texttt{==} \\
+		Less than & $<$ & \texttt{<} \\
+		Less than or equal & $\leq$ & \texttt{<=} \\
+		Greater than & $>$ & \texttt{>} \\
+		Greater than or equal to & $\geq$ & \texttt{>=} \\
+		Not equal & $\neq$ & \texttt{!=}  \\
 		\hline
 	\end{tabular}
 \end{table}
@@ -96,14 +96,14 @@ Each of these may be used in the same syntax as the equals operator.
 				\begin{enumerate}
 					\item{$1 = 4$}
 					\item{$10 < 15$}
-					\item{$3.1415 \nq 3$}
-				\end{itemize}
+					\item{$3.1415 \neq 3$}
+				\end{enumerate}
 			\end{itemize}
 		\end{minipage}
 	}
 \end{center}
 
-\section{if, elif, else flow control}
+\section{if, elif, and else flow control}
 
 The \texttt{if} statement is one of the simplest, and most powerful, opeartions that Python can perform. 
 This allows the code to apply different operations \emph{if} certain criteria are \texttt{True}.
@@ -165,7 +165,7 @@ else:
 			\vspace{0.15\baselineskip}
 			\subsubsection{Exercise}
 			\begin{itemize}
-				\item{Use the \texttt{or} operator to reduce the \texttt{prior\_meetings} code above to just 8 lines long. Hint: think about other operators from Table~\ref{tab:ops} to reduce the length of the code.}
+				\item{Use the \texttt{or} operator to reduce the \texttt{prior\_meetings} code above to just 8 lines long. \textbf{Hint}: think about other operators from Table~\ref{tab:ops} to reduce the length of the code.}
 			\end{itemize}
 		\end{minipage}
 	}
