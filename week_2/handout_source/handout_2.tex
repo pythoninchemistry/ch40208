@@ -90,7 +90,7 @@ Each of these may be used in the same syntax as the equals operator.
 	\noindent\fbox{%
 		\begin{minipage}{0.9\textwidth}%
 			\vspace{0.15\baselineskip}
-			\subsubsection{Exercise}
+			\subsubsection*{Exercise}
 			\begin{itemize}
 				\item{Write code that will return the result of the following logical operations:}
 				\begin{enumerate}
@@ -103,7 +103,7 @@ Each of these may be used in the same syntax as the equals operator.
 	}
 \end{center}
 
-\section{if, elif, and else flow control}
+\section{Flow control}
 
 The \texttt{if} statement is one of the simplest, and most powerful, opeartions that Python can perform. 
 This allows the code to apply different operations \emph{if} certain criteria are \texttt{True}.
@@ -163,7 +163,7 @@ else:
 	\noindent\fbox{%
 		\begin{minipage}{0.9\textwidth}%
 			\vspace{0.15\baselineskip}
-			\subsubsection{Exercise}
+			\subsubsection*{Exercise}
 			\begin{itemize}
 				\item{Use the \texttt{or} operator to reduce the \texttt{prior\_meetings} code above to just 8 lines long. \textbf{Hint}: think about other operators from Table~\ref{tab:ops} to reduce the length of the code.}
 			\end{itemize}
@@ -171,7 +171,130 @@ else:
 	}
 \end{center}
 
-\section{for loops}
+\section{Loops}
+
+One of the best uses of programming (and computers) is to perform repetitive task over and over. 
+For this we use \emph{loops}, within Python there are two common types of loop:
+\begin{itemize}
+	\item{\texttt{for} loops iterate over a given sequence.}
+	\item{\texttt{while} loops repeat as long as a certain logical operation is \texttt{True}.}
+\end{itemize}
+An example of each of a \texttt{for} and \texttt{while} loop is shown below, both perform the same function, 
+\begin{lstlisting}
+# For loop
+
+for i in range(5):
+	print(i)
+
+i = 0
+while i < 5:
+	print(i)
+	i = i + 1
+\end{lstlisting}
+Both of these code blocks will print the numbers $0$ to $4$, however the \texttt{for} loop is clearly more concise. 
+Additionally, the \texttt{while} loop is more prone to accidently running an \emph{infinite}. 
+If you were to forget to manually iterate the variable \texttt{i} (this is the line \texttt{i = i + 1}), then the \texttt{while} condition would always be \texttt{True} and therefore the code would run forever within this loop. 
+For this reason it is suggested that, where possible, you use a \texttt{for} loop over a \texttt{while} loop.
+
+The \texttt{for} loop will iterate the variable (in the example above this variable is named \texttt{i}) through whatever sequence is given (this is \texttt{range(5)} above, which is equivalent to the \emph{list} \texttt{[0, 1, 2, 3, 4]}). 
+The sequence does not necessarily have to be a \texttt{range} command, it may be any \texttt{list} or \texttt{numpy.ndarray} (we will discuss these types later in the course). 
+For example, in the code below we iterate though the first ten chemical element symbols, 
+\begin{lstlisting}
+# Printing the periodic table
+
+elements = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne"]
+
+for symbol in elements:
+	print(symbol)
+
+for i, symbol in enumerate(elements):
+	print("The index of the list for {} is {}.".format(symbol, i)).
+\end{lstlisting}
+It is possible to use the \texttt{enumerate} command to count through the list during the loop, as shown in the second example above. 
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+		\begin{minipage}{0.9\textwidth}%
+			\vspace{0.15\baselineskip}
+			\subsubsection*{Exercise}
+			\begin{itemize}
+				\item{Recall from first and second year, that Python counts indices in a list from 0. How could the above code be adapted such that the correct atomic number will be printed?}
+			\end{itemize}
+		\end{minipage}
+	}
+\end{center}
+
+\subsection{Escaping loops}
+
+Sometimes it is computationally efficient to leave a \texttt{for} loop, to skip a particular value, under a certain condition. 
+For this, the commands \texttt{break} and \texttt{continue} are available. 
+The \texttt{break} command will exit the \emph{inner-most} loop that is being carried out, while the \texttt{continue} command will skip the current value and jump immediately to the next. 
+Examples of how these may be used are shown below, where the \texttt{len} function will return the \emph{length} of the list, 
+\begin{lstlisting}
+# Finding the zero in a list
+
+numbers = [1, 5, 7, 0, 2, 6, 2]
+for i in range(len(numbers)):
+	if numbers[i] == 0:
+		break
+
+print("The zero is at index {}.".format(i))
+
+# Making all the negative values positive
+
+numbers = [-2, 4, 1, -5, 2, 6, -3, -4]
+for i in range(len(numbers)):
+	if numbers[i] >= 0:
+		continue
+	else:
+		numbers[i] = numbers[i] * -1
+\end{lstlisting}
+Note that the above examples are toy problems and there are more efficient way to carry-out these specific operations in Python.
+
+\section{Problems}
+
+The week there are two exercises to be carried out.
+
+\subsection{Interatomic distances}
+
+Write code that will take the \emph{x}, \emph{y}, and \emph{z} coordinates of three atoms, and calculate the distances $r$ between each pair, then print the distances along with the atoms that the distances are between. 
+The equation for $r$ between two atoms is, 
+\begin{equation}
+	r = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2}. 
+\end{equation}
+This expression is widely used in atomistic simulations.
+\textbf{Remember}: Plan the procedure for your code before you start to write any Python. 
+Use your code to calculate the distances between the atoms in the following molecules:
+\begin{enumerate}
+	\item{Atom 1: ($0.1$, $0.5$, $3.2$); Atom 2: ($0.4$, $0.5$, $2.3$); Atom 3: ($-0.3$, $0.3$, $1.7$)}
+	\item{Atom 1: ($-0.1$, $0.5$, $1.5$); Atom 2: ($0.2$, $0.5$, $2.6$); Atom 3: ($0.5$, $0.5$, $3.7$)}
+\end{enumerate}
+Comment on the shape of each of the molecules. 
+
+\subsection{Equilibrium constants}
+
+Write code that will calculate values of the equilibrium constant, $K$, for a given free-energy change over a range of temperatures. 
+The program should ask the user for a free-energy value, $\Delta G$ or $\	Delta g$, and to specify the units for this (either \si{\kilo\joule\per\mol}, \si{\eV}, or \si{\joule}). 
+The initial temperature, $T_{\text{init}}$, final temperature, $T_{\text{final}}$, and temperature step size, $T_{\text{step}}$ should also be entered by the user (in \si{\kelvin}). 
+In order to learn more about how to do this with the \texttt{range} function, check the documentation online (\url{https://www.w3schools.com/python/ref_func_range.asp}).
+The equilibrium constant equation is, 
+\begin{equation} 
+	K = \exp{\bigg(\frac{-\Delta G}{RT}\bigg)} = \exp{\bigg(\frac{-\Delta g}{k_BT}\bigg)}
+\end{equation}
+where, $R = \SI{8.314}{\joule\per\kelvin\per\mol}$, $k_B = \SI{1.3806e-23}{\joule}$, and $\SI{1}{\eV} = \SI{96.485}{\kilo\joule\per\mol}$. 
+
+When you check for what is typed, don’t forget to check for upper-case as well as lower-case letters, as these characters have different ascii codes.
+You should also anticipate the possibility of the user entering a completely different letter (by mistake): what action would be appropriate in this event?
+Additionally, make sure that the user cannot make the temperature \emph{unphysical} (e.g. less than or equal to zero). 
+Again, remember to plan before you code. 
+
+Test the code using a temperature range from \SIrange{100}{2000}{\kelvin} with a step size of \SI{100}{\kelvin}, and with free energies of:
+\begin{enumerate}
+	\item{\SI{-12.177}{\kilo\joule\per\mol}}
+	\item{\SI{-0.1452}{\eV}}
+	\item{\SI{-2.6308e-20}{\joule}}
+\end{enumerate}
+Comment on the values at \SI{300}{\kelvin}. 
 
 %\bibliographystyle{rsc}
 %\bibliography{handout_2}
