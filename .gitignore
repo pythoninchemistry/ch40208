@@ -5,3 +5,4 @@
 **/*.out
 **/rsc-*.bib
 .snakemake
+**/.DS_Store
