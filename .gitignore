@@ -1,8 +1,0 @@
-**/*.log
-**/*.aux
-**/*.bbl
-**/*.blg
-**/*.out
-**/rsc-*.bib
-.snakemake
-**/.DS_Store
