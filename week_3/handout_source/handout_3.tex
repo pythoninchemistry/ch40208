@@ -54,6 +54,7 @@ This lecture will introduce lists, arrays, and show how the NumPy library can be
 \section{Lists}
 The Python programming language natively includes the ability to group together a series of objects.
 These are \texttt{lists} and are one of the most powerful Python objects.
+Lists are an ordered set of objects, from which it is possible to pick all, one, or many values.
 A list is defined as follows,
 \begin{lstlisting}
 # Making a list
@@ -84,10 +85,31 @@ Additionally, it is possible to select non-consecutive objects from a list by pl
 
 print(elements[0, 1, 6, 7])
 \end{lstlisting}
+The final point about \texttt{lists} is that the data that they hold does not all need to be the same time.
+For example, the list below contains a \texttt{float}, two \texttt{str}, a \texttt{complex} number and an \texttt{int},
+\begin{lstlisting}
+# List of many types
+
+a_new_list = ['hello', 12.41242, 5 + 8j, 'sadness', 2]
+print(a_new_list)
+\end{lstlisting}
+
+\section{NumPy Arrays}
+
+NumPy (or \texttt{numpy} or more commonly \texttt{np}) is a library that Python can use that is designed and optimised for doing numerical operations.\cite{numpy}
+Over this course you will be introduced to many other Python libraries, in order to use any of these you must \texttt{import} them,
+\begin{lstlisting}
+# Import NumPy
+
+import numpy as np
+\end{lstlisting}
+This asks the Python interperator to go and find the NumPy library, then in order to reduce the amount of typing (programmers are lazy), we give the library the alias \texttt{np}.
+
+One of the most powerful features of the NumPy library is the \texttt{array}, these are similar to lists but with some important differences.
 
 
 
-%\bibliographystyle{rsc}
-%\bibliography{handout_3}
+\bibliographystyle{rsc}
+\bibliography{handout_3}
 
 \end{document}
