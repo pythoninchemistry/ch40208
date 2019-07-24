@@ -106,7 +106,81 @@ import numpy as np
 This asks the Python interperator to go and find the NumPy library, then in order to reduce the amount of typing (programmers are lazy), we give the library the alias \texttt{np}.
 
 One of the most powerful features of the NumPy library is the \texttt{array}, these are similar to lists but with some important differences.
+Unlike a list, all of the items in a NumPy array must be of the same type; namely a NumPy data type (a list of these can be found online: \url{https://docs.scipy.org/doc/numpy/user/basics.types.html}) which are numerical data types such as \texttt{int}, \texttt{float}, and \texttt{complex}.
 
+The power of a NumPy array comes in the ability to perform mathematical operations incredibly efficiently.
+For example,\footnote{When running on a MacBook Air 2018 with a 1.6 GHz Intel Core i5.} the summation of zero to ten million is $\sim 25$ times faster when using the NumPy array operation shown below when compared with a simple implementation in pure Python,
+\begin{lstlisting}
+# The pure Python way
+
+numbers = range(10000000)
+total = 0
+for i in numbers:
+    total = total + i
+print(total)
+
+# The NumPy operation
+
+import numpy as np
+
+numbers = np.arange(10000000)
+total = np.sum(numbers)
+print(total)
+\end{lstlisting}
+Note that in the above example, the \texttt{range} function creates a list of numbers from $0$ to $10000000$, while the \texttt{np.arange} function creates a NumPy array containing the same values.
+
+NumPy arrays also have a \emph{huge} amount of additional functionality, such as the ability to easily access statistically relevant values, powerful sub-array definition (in particular for multi-dimensional arrays), data reorganisation.
+Some of these tools are shown below, and no doubt you will become familiar with many others throughout this course,
+\begin{lstlisting}
+# Determine the mean and standard deviation
+import numpy as np
+
+## First get an array of 6 random ints from 0 to 10
+x1 = np.random.randint(10, size=6)
+
+print(x1.mean(), x1.std())
+
+## Now get a two-dimensional array of random ints
+x2 = np.random.randint(10, size=(3, 2))
+
+print(x2.shape)
+print(x2)
+print(x2[0])
+print(x2[:, 1])
+print(x2[:, 0::-1])
+
+## Lets reshape a one-dimensional array
+x3 = np.arange(10)
+
+print(x3)
+print(x3.reshape((3, 3))
+\end{lstlisting}
+
+\section{Copying lists/arrays}
+
+An important fact to be aware of for both lists and NumPy arrays is that assigning a list to an new variable does \textbf{not} create a new list.
+Rather, this will create an alias to the same object in memory.
+In order to create a new list (or array), it is best to \texttt{copy} the original object to the new variable, as shown below,
+\begin{lstlisting}
+# Copying lists and arrays
+
+my_list = ['dog', 'cat', 'horse']
+
+new_list = my_list
+
+new_list[0] = 'giraffe'
+
+print(new_list)
+print(my_list)
+
+copied_list = my_list.copy()
+
+copied_list[1] = 'pig'
+
+print(copied_list)
+print(my_list)
+\end{lstlisting}
+Note that for a NumPy array, the function \texttt{np.copy(my\_array)} should be used.
 
 
 \bibliographystyle{rsc}
