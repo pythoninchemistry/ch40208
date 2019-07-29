@@ -63,6 +63,9 @@ The general syntax for \emph{defining} a function in Python is as follows,
 # Defining a function
 
 def my_function(argument_1, argument_2):
+    """
+    Adds together two arguements.
+    """
     result = argument_1 + argument_2
     return result
 \end{lstlisting}
@@ -77,6 +80,38 @@ c = my_function(a, b)
 
 print(c)
 \end{lstlisting}
+It can be seen when looking at the above example, that the object that is returned from the function is then assigned to the variable \texttt{c}.
+
+The above example of a function is relatively simple, just adding together two numbers.
+However, a function can contain a large amount of code abstracted to a single line.
+Furthermore, a well named function can increase the readibility of code significantly (consider the atomic distance code from previous weeks, the abstraction of the distance calculation to an appropriately named function would make this more understandable).
+
+The \texttt{my\_function} example above contained two \emph{required} arguments.
+These are the objects that are passed of the function when it is called (and typically these are operated on in some fashion) and are necessary for the function to run.
+In addition to these required arguments, other arugments may be included in a given function; such as \emph{default} arguments and \emph{variable-length} arguments.
+These are showing in the functions below,
+\begin{lstlisting}
+# A function with defaults
+
+def my_function(arg1, arg2, arg3=0):
+    result = arg1 + arg2 + arg3
+    return result
+
+print(my_function(1, 2))
+print(my_function(1, 2, arg3=3))
+
+# A variable length argument
+
+def my_function(arg1, arg2, *arg3):
+    result = arg1 + arg2
+    for i in arg3:
+        result += i
+    return result
+
+print(my_function(1, 2))
+print(my_function(1, 2, 3, 4, 5))
+\end{lstlisting}
+Note that in default argument example, if no value was given it would default to \texttt{0}.
 
 
 %\bibliographystyle{rsc}
