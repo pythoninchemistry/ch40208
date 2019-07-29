@@ -1,0 +1,85 @@
+\documentclass[a4paper]{article}
+\usepackage{titling}
+\usepackage{authblk}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{rsc}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\DeclareSIUnit\Fahrenheit{\degree F}
+
+\title{Lecture 4: Functions and modular code}
+\author[1]{Dr Benjamin J. Morgan}
+\author[1,2]{Dr Andrew R. McCluskey}
+\affil[1]{Department of Chemistry, University of Bath, email: b.j.morgan@bath.ac.uk}
+\affil[2]{Diamond Light Source, email: andrew.mccluskey@diamond.ac.uk}
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CH40208}
+\lhead{\thetitle}
+\rfoot{\thepage}
+
+\begin{document}
+\maketitle
+
+\section*{Aim}
+This lecture will introduce how to simplify your code by writing functions and how to reuse code easily in many different places.
+
+\section{Functions}
+
+Occasionally, there is a particular section of your code that you would like to reuse over-and-over, without having to write the code over and over (as previously mentioned, programmers are lazy).
+For this, we make use of \emph{functions}, the use of which will be familiar.
+For example, we have used the \texttt{print()} function already in previous weeks, and the NumPy library contains a wide variety of functions, some of which were introduced last week.
+However, this week we shall see how it is possible to write our own functions in Python.
+
+The general syntax for \emph{defining} a function in Python is as follows,
+\begin{lstlisting}
+# Defining a function
+
+def my_function(argument_1, argument_2):
+    result = argument_1 + argument_2
+    return result
+\end{lstlisting}
+Above, we defined a function named \texttt{my\_function} which took two \emph{arguments}, added them together to produce a result, which was \emph{returned}.
+Once defined it is possible to use this function in our code as follows,
+\begin{lstlisting}
+# Using our function
+
+a = 1
+b = 2
+c = my_function(a, b)
+
+print(c)
+\end{lstlisting}
+
+
+%\bibliographystyle{rsc}
+%\bibliography{handout_3}
+
+\end{document}
