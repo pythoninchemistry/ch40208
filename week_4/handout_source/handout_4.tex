@@ -64,7 +64,7 @@ The general syntax for \emph{defining} a function in Python is as follows,
 
 def my_function(argument_1, argument_2):
     """
-    Adds together two arguements.
+    Adds together two arguments.
     """
     result = argument_1 + argument_2
     return result
@@ -81,6 +81,7 @@ c = my_function(a, b)
 print(c)
 \end{lstlisting}
 It can be seen when looking at the above example, that the object that is returned from the function is then assigned to the variable \texttt{c}.
+The text immediately following the function definition line is the \emph{docstring}, this is important to help others understand the purpose of the function without having to read the code (basically it is a description of the function's action).
 
 The above example of a function is relatively simple, just adding together two numbers.
 However, a function can contain a large amount of code abstracted to a single line.
@@ -94,6 +95,10 @@ These are showing in the functions below,
 # A function with defaults
 
 def my_function(arg1, arg2, arg3=0):
+    """
+    Adds together two arguments,
+    and an optional third.
+    """
     result = arg1 + arg2 + arg3
     return result
 
@@ -103,6 +108,11 @@ print(my_function(1, 2, arg3=3))
 # A variable length argument
 
 def my_function(arg1, arg2, *arg3):
+    """
+    Definitely adds together two arguments,
+    but can optionally add together any
+    number!
+    """
     result = arg1 + arg2
     for i in arg3:
         result += i
@@ -113,6 +123,69 @@ print(my_function(1, 2, 3, 4, 5))
 \end{lstlisting}
 Note that in default argument example, if no value was given it would default to \texttt{0}.
 
+You should be aware that a Python function does not \textbf{need} to have any arguments.
+For example, you could write a function that returns the value of the Planck constant (ideally using the SciPy constants library),
+\begin{lstlisting}
+# A function with no arguments
+
+from scipy import constants
+
+def h():
+    """
+    Planck constant.
+    """
+    return constants.h
+
+print('Planck constant = {:.3e}'.format(h()))
+\end{lstlisting}
+
+\section{Modules}
+
+In addition to writing your own functions, it is possible to \emph{clean up} your code further by creating your own \emph{modules}.
+These modules are similar to the libraries (like NumPy and SciPy) that we discussed last week, however, they are created by you.
+This is achieved by creating a file in the folder where you would like to use the module, and then \emph{importing} the module in the code where your would like to use it.
+For example, say you have a file called \texttt{atom\_helper.py} in which you will put many functions related to atomistic calculations.
+Lets start it off with our distance calculation,
+\begin{lstlisting}
+# atom_helper.py
+
+import numpy as np
+
+def distance(a, b):
+    """
+    Determines the distance between two points
+    in any number of dimensions.
+    """
+    return np.sqrt(np.sum(np.square(a - b)))
+\end{lstlisting}
+Having created this module, we can then import it into a Jupyter Notebook that is in the same folder, and access the distances function as shown below,
+\begin{lstlisting}
+# Using the atom_helper module
+
+import numpy as np
+import atom_helper
+
+atom1 = np.array([1, 4, 2])
+atom2 = np.array([5, 2, 6])
+
+dist = atom_helper.distance(atom1, atom2)
+print(dist)
+\end{lstlisting}
+It is clear from the above example, that the \emph{user-defined} module can be imported in the same way as a library.
+Then any function defined in the module may be called from the Jupyter Notebook.
+This means that you can create modules containing a wide variety of functions and use them in many different Notebooks.
+
+\section{Problem}
+
+It is possible to estimate the interaction energy, $E_{LJ}$ between two atoms using the Lennard-Jones expression,
+\begin{equation}
+  E_{LJ} = \epsilon \bigg[\Big(\frac{r_m}{r}\Big)^{12} - 2\Big(\frac{r_m}{r}\Big)^6\bigg],
+\end{equation}
+where, $r$ is the distances between the two atoms, $\epsilon$ and $r_m$ are constants describing the shape of the interaction potential surface.
+Add a function that can calculate the interaction energy, using the above relationship with constants of $\epsilon = \SI{-2.2}{\kilo\joule\per\mol}$ and $r_m = \SI{3.7}{\angstrom}$, to the \texttt{atom\_helper.py} module.
+\emph{Remember to plan the algorithm first!}
+
+Use the new function to calculate the interactions energy for each of the pairs of atoms used in Week 2.
 
 %\bibliographystyle{rsc}
 %\bibliography{handout_3}
