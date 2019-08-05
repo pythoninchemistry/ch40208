@@ -6,6 +6,8 @@
 \usepackage{rsc}
 \usepackage{siunitx}
 \usepackage{graphicx}
+\usepackage{mhchem}
+\usepackage{amsmath}
 \usepackage{listings}
 \usepackage{color}
 
@@ -183,9 +185,55 @@ It is possible to estimate the interaction energy, $E_{LJ}$ between two atoms us
 \end{equation}
 where, $r$ is the distances between the two atoms, $\epsilon$ and $r_m$ are constants describing the shape of the interaction potential surface.
 Add a function that can calculate the interaction energy, using the above relationship with constants of $\epsilon = \SI{-2.2}{\kilo\joule\per\mol}$ and $r_m = \SI{3.7}{\angstrom}$, to the \texttt{atom\_helper.py} module.
-\emph{Remember to plan the algorithm first!}
 
 Use the new function to calculate the interactions energy for each of the pairs of atoms used in Week 2.
+
+\subsection{Energy minimisation}
+
+One of the most common operations in computational chemistry is energy minimisation, which is used to determine the most stable geometry for a given chemical molecule or structure.
+The energy minimum is where there are no net forces acting on any of the atoms; the structure is relaxed.
+This process will be covered in future lectures, however, in this exercise you will code the steps that can be found at the core of many energy-minimisation programs.
+
+If $r_0$ is the initial distance between two atoms, and $E'$ and $E'$, respectively, are the first and second derivatives of the interaction energy, $E$, then a step towards the energy minimum is given by the following,
+\begin{equation}
+  r_1 = r_0 - \frac{E'}{E''},
+\end{equation}
+where, $r_1$ is the new distance between the two atoms.
+We can then reevaluated $E'$ and $E''$ for the new $r$, and this process is repeated until $E$ reaches some minimum value.
+
+For the purpose of this exercise, the interatomic interaction energy, $E$, and its derivatives are given by the followign reformulation of the Lennard-Jones equation,
+\begin{equation}
+  \begin{aligned}
+    E & = \frac{A}{r^{12}} - \frac{B}{r^6} \\
+    E' & = -12\frac{A}{r^{13}} + 6\frac{B}{r^7} \\
+    E'' & = 156\frac{A}{r^{14}} - 42\frac{B}{r^8} \\
+  \end{aligned}
+\end{equation}
+
+Write a program that, from values of $A$, $B$ and an initial guess of $r$, uses a 10 iteration loop to move towards the distance at which the energy minimum is present.
+In each iteration: print a line containing the initial value of $r$ (i.e. $r_0$), $E$, $E'$, $E''$, and the final $r$ (i.e. $r_1$), and replace $r_0$ with $r_1$.
+You will need to have three functions (one for each of $E$, $E'$, and $E''$) which will take $A$, $B$, and $r$ as their arguments.
+\emph{Remember to plan the algorithm first!}
+
+Given the following values for $A$ and $B$, what is the energy-minimum distance $r$ (in \AA)?
+\begin{enumerate}
+  \item{$A = \SI{1e5}{\eV\angstrom^{12}}$ and $B = \SI{40}{\eV\angstrom^{6}}$}
+  \item{$A = \SI{4e5}{\eV\angstrom^{12}}$ and $B = \SI{1}{\eV\angstrom^{6}}$}
+\end{enumerate}
+Adjust the program so that it will do as many iterations as are necessary to achieve energy minimisation, rather than only a fixed number.
+Compare cases 1. and 2. to see how stable and/or quick the minimisation is and how the \emph{convergence} depends on the initial guess of $r$.
+
+Next, create a new function in your module to calculate the energy, and first and second derivatives of a harmonic oscillator (a common model for a covalent bond),
+\begin{equation}
+  \begin{aligned}
+    E & = \frac{1}{2}k(r-r_{\text{eq}})^2 \\
+    E' & = k(r-r_{\text{eq}}) \\
+    E'' & = k \\
+  \end{aligned}
+\end{equation}
+Verify that the method developed above (known as the Newton-Raphson method) converges to the energy minimum in a single step, regardless of the initial value of $r$, within this harmonic potential.
+For this test, use $k = \SI{32.2}{\eV\angstrom^{-2}}$, which is the force constant for a \ce{HCl} molecule, and $r_{\text{eq}}=\SI{1.27}{\angstrom}$, where $r_{\text{eq}}$ is the equilibrium bond distance.
+
 
 %\bibliographystyle{rsc}
 %\bibliography{handout_3}
