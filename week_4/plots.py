@@ -25,7 +25,7 @@ def plot(ed, rd, i):
         rd, ed * 1e3, "s", alpha=0.5, color=sns.color_palette("colorblind")[2]
     )
     ax1.set_ylabel("$E$/meV")
-    ax1.set_xlabel("$r$Å")
+    ax1.set_xlabel("$r$/Å")
     ax1.text(6, 6.8, 'Step {}'.format(i+1), horizontalalignment='right')
     plt.tight_layout()
     plt.savefig("week_4/mini/{}.png".format(i+1), dpi=300)
@@ -81,7 +81,7 @@ ax1.plot(
     color=sns.color_palette("colorblind")[3],
 )
 ax1.set_ylabel("$E$/meV")
-ax1.set_xlabel("$r$Å")
+ax1.set_xlabel("$r$/Å")
 ax1.text(6, 6.8, 'All', horizontalalignment='right')
 plt.tight_layout()
 for j in range(i+1, i+10):
