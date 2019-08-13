@@ -1,0 +1,91 @@
+\documentclass[a4paper]{article}
+\usepackage{titling}
+\usepackage{authblk}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{rsc}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{mhchem}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\DeclareSIUnit\Fahrenheit{\degree F}
+
+\title{Lecture 5: Debugging}
+\author[1]{Dr Benjamin J. Morgan}
+\author[1,2]{Dr Andrew R. McCluskey}
+\affil[1]{Department of Chemistry, University of Bath, email: b.j.morgan@bath.ac.uk}
+\affil[2]{Diamond Light Source, email: andrew.mccluskey@diamond.ac.uk}
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CH40208}
+\lhead{\thetitle}
+\rfoot{\thepage}
+
+\begin{document}
+\maketitle
+
+\section*{Aim}
+This lecture will introduce \emph{debugging} skills and suggest methods to improve your ability to overcome errors in your code.
+
+\section{Debugging}
+Human beings are fallible, therefore code will have bugs.
+However, there are some tips that we can use to deal with the bugs in our code and make them less of a nuesence.
+
+One of the most powerful tools that is available to us is the quality of the code and libraries that are written in Python.
+For example, if you \texttt{import} the square-root (\texttt{sqrt}) function from the basic Python library \texttt{math} and give it a list as an argument,
+\begin{lstlisting}
+from math import sqrt
+
+a = [0, 1, 2, 3]
+
+print(sqrt(a))
+\end{lstlisting}
+This will lead to an error.
+However, this error will come with a \emph{traceback} showing where the error came from and will give some information, at the bottom, about why the error occurred.
+You should get an error that looks like this,
+\begin{lstlisting}
+TypeError                                 Traceback (most recent call last)
+<ipython-input-14-29539b5bdc2d> in <module>
+----> 1 print(sqrt(a))
+
+TypeError: must be real number, not list
+\end{lstlisting}
+As we can see, the error that has been thrown is a \texttt{TypeError}, and we are given the additional information about the error that: \texttt{must be real number, not list}.
+We can use this to parse the root cause of the problem, a \texttt{TypeError} indicates that \emph{something} is of the wrong \emph{type}, and we are told that this \emph{something} should be a \texttt{real number} and not a \texttt{list}.
+It is clear that the arugment being passed to the \texttt{sqrt()} function is of \emph{type} \texttt{list}, and therefore this is the problem.\footnote{Note that the \texttt{sqrt} function from the \texttt{math} library can only take single values and return the square-root. This NumPy \texttt{np.sqrt()} function can however handle objects of type \texttt{list} and NumPy arrays.}
+
+The majority of Python libraries will have helpful error messages such as the one given above (especially commonly used packages such as NumPy, pandas and matplotlib).
+However, sometimes it is not immediately clear what the error message means, for this it is often necessary to leverage the most important tool in a programmers arsenal -- the internet. 
+
+
+
+%\bibliographystyle{rsc}
+%\bibliography{handout_3}
+
+\end{document}
