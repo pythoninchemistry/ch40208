@@ -99,7 +99,23 @@ It is clear that the arugment being passed to the \texttt{sqrt()} function is of
 		\hline
 	\end{tabular}
 \end{table}
+
 \vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+	    \begin{minipage}{0.9\textwidth}%
+	        \vspace{0.15\baselineskip}
+			\subsubsection*{Exercise}
+	        Try and determine the cause of the error messages thrown by the following commands (where a semi-colon indicated a new line):
+          \begin{itemize}
+            \item{\texttt{a = [0, 1, 2, 3]; np.square(a[-5])}}
+            \item{np.power(2)}
+            \item{mp.array([1, 1, 2, 3, 5, 8, 13])}
+          \end{itemize}
+          If you are not sure what a particular function does search for ``numpy'' and then the function name online, e.g. ``numpy power''. 
+	    \end{minipage}
+	}
+\end{center}
 
 The majority of Python libraries will have helpful error messages such as the one given above (especially commonly used packages such as NumPy, pandas and matplotlib).
 However, sometimes it is not immediately clear what the error message means, for this it is often necessary to leverage the most important tool in a programmers arsenal -- the internet.
