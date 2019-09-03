@@ -6,6 +6,8 @@
 \usepackage{rsc}
 \usepackage{siunitx}
 \usepackage{graphicx}
+\usepackage{mhchem}
+\usepackage{amsmath}
 \usepackage{listings}
 \usepackage{color}
 
@@ -31,7 +33,7 @@
 }
 \DeclareSIUnit\Fahrenheit{\degree F}
 
-\title{Lecture 3: Lists, arrays, and optimisation with NumPy}
+\title{Lecture 4: Functions and modular code}
 \author[1]{Dr Benjamin J. Morgan}
 \author[1,2]{Dr Andrew R. McCluskey}
 \affil[1]{Department of Chemistry, University of Bath, email: b.j.morgan@bath.ac.uk}
@@ -49,196 +51,201 @@
 \maketitle
 
 \section*{Aim}
-This lecture will introduce lists, arrays, and show how the NumPy library can be used to make your code faster.
+This lecture will introduce how to simplify your code by writing functions and how to reuse code easily in many different places.
 
-\section{Lists}
-The Python programming language natively includes the ability to group together a series of objects.
-These are \texttt{lists} and are one of the most powerful Python objects.
-Lists are an ordered set of objects, from which it is possible to pick all, one, or many values.
-A list is defined as follows,
+\section{Functions}
+
+Occasionally, there is a particular section of your code that you would like to reuse over-and-over, without having to write the code over and over (as previously mentioned, programmers are lazy).
+For this, we make use of \emph{functions}, the use of which will be familiar.
+For example, we have used the \texttt{print()} function already in previous weeks, and the NumPy library contains a wide variety of functions, some of which were introduced last week.
+However, this week we shall see how it is possible to write our own functions in Python.
+
+The general syntax for \emph{defining} a function in Python is as follows,
 \begin{lstlisting}
-# Making a list
+# Defining a function
 
-elements = ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen"]
+def my_function(argument_1, argument_2):
+    """
+    Adds together two arguments.
+    """
+    result = argument_1 + argument_2
+    return result
 \end{lstlisting}
-Having defined the list, it is then possible to select individual items of the list by using the following syntax,
+Above, we defined a function named \texttt{my\_function} which took two \emph{arguments}, added them together to produce a result, which was \emph{returned}.
+Once defined it is possible to use this function in our code as follows,
 \begin{lstlisting}
-# Printing some items
+# Using our function
 
-print(elements[0], elements[4], elements[-1])
+a = 1
+b = 2
+c = my_function(a, b)
+
+print(c)
 \end{lstlisting}
-Note, that Python starts counting from the number $0$, and using the minus sign we can ask Python to count from the end.
-This means that the above code should print, \texttt{"Hydrogen", "Boron", "Oxygen"}.
-This counting from $0$ means that in the above list, the string \texttt{"Hydrogen"} would be referred to as the zeroth object in the list, while \texttt{"Helium"} would be the first.
+It can be seen when looking at the above example, that the object that is returned from the function is then assigned to the variable \texttt{c}.
+The text immediately following the function definition line is the \emph{docstring}, this is important to help others understand the purpose of the function without having to read the code (basically it is a description of the function's action).
 
-In addition to making use of single objects from within a list, it is also possible to create sublists, for example,
+The above example of a function is relatively simple, just adding together two numbers.
+However, a function can contain a large amount of code abstracted to a single line.
+Furthermore, a well named function can increase the readibility of code significantly (consider the atomic distance code from previous weeks, the abstraction of the distance calculation to an appropriately named function would make this more understandable).
+
+The \texttt{my\_function} example above contained two \emph{required} arguments.
+These are the objects that are passed of the function when it is called (and typically these are operated on in some fashion) and are necessary for the function to run.
+In addition to these required arguments, other arugments may be included in a given function; such as \emph{default} arguments and \emph{variable-length} arguments.
+These are showing in the functions below,
 \begin{lstlisting}
-# Just the first 4 elements
+# A function with defaults
 
-print(elements[0:4])
+def my_function(arg1, arg2, arg3=0):
+    """
+    Adds together two arguments,
+    and an optional third.
+    """
+    result = arg1 + arg2 + arg3
+    return result
+
+print(my_function(1, 2))
+print(my_function(1, 2, arg3=3))
+
+# A variable length argument
+
+def my_function(arg1, arg2, *arg3):
+    """
+    Definitely adds together two arguments,
+    but can optionally add together any
+    number!
+    """
+    result = arg1 + arg2
+    for i in arg3:
+        result += i
+    return result
+
+print(my_function(1, 2))
+print(my_function(1, 2, 3, 4, 5))
 \end{lstlisting}
-Note that above, the numbers on either side of the colon the list indices.
-However, rather strangely, the sublist created is \textbf{inclusive} of the first number and \textbf{exclusive} of the second.
-Additionally, it is possible to select non-consecutive objects from a list by placing commas between the indices,
+Note that in default argument example, if no value was given it would default to \texttt{0}.
+
+You should be aware that a Python function does not \textbf{need} to have any arguments.
+For example, you could write a function that returns the value of the Planck constant (ideally using the SciPy constants library),
 \begin{lstlisting}
-# Just the gases
+# A function with no arguments
 
-print(elements[0, 1, 6, 7])
-\end{lstlisting}
-The final point about \texttt{lists} is that the data that they hold does not all need to be the same time.
-For example, the list below contains a \texttt{float}, two \texttt{str}, a \texttt{complex} number and an \texttt{int},
-\begin{lstlisting}
-# List of many types
+from scipy import constants
 
-a_new_list = ['hello', 12.41242, 5 + 8j, 'sadness', 2]
-print(a_new_list)
+def h():
+    """
+    Planck constant.
+    """
+    return constants.h
+
+print('Planck constant = {:.3e}'.format(h()))
 \end{lstlisting}
+
 \vspace{\baselineskip}
 \begin{center}
 	\noindent\fbox{%
-		\begin{minipage}{0.9\textwidth}%
-			\vspace{0.15\baselineskip}
+	    \begin{minipage}{0.9\textwidth}%
+	        \vspace{0.15\baselineskip}
 			\subsubsection*{Exercise}
-			\begin{itemize}
-				\item{Create two lists, one containing names the first 8 elements in the periodic table and another containing the massive numbers for those elements. Then, using a loop, print each element name and mass number, format each print statment with the \texttt{.format()} syntax.}
-			\end{itemize}
-		\end{minipage}
+        Investigate the effect of returning two values from a function, using the \texttt{return a, b} syntax.
+	    \end{minipage}
 	}
 \end{center}
+\section{Modules}
 
-
-\section{NumPy Arrays}
-
-NumPy (or \texttt{numpy} or more commonly \texttt{np}) is a library that Python can use that is designed and optimised for doing numerical operations.\cite{numpy}
-Over this course you will be introduced to many other Python libraries, in order to use any of these you must \texttt{import} them,
+In addition to writing your own functions, it is possible to \emph{clean up} your code further by creating your own \emph{modules}.
+These modules are similar to the libraries (like NumPy and SciPy) that we discussed last week, however, they are created by you.
+This is achieved by creating a file in the folder where you would like to use the module, and then \emph{importing} the module in the code where your would like to use it.
+For example, say you have a file called \texttt{atom\_helper.py} in which you will put many functions related to atomistic calculations.
+Lets start it off with our distance calculation,
 \begin{lstlisting}
-# Import NumPy
-
-import numpy as np
-\end{lstlisting}
-This asks the Python interperator to go and find the NumPy library, then in order to reduce the amount of typing (programmers are lazy), we give the library the alias \texttt{np}.
-
-One of the most powerful features of the NumPy library is the \texttt{array}, these are similar to lists but with some important differences.
-Unlike a list, all of the items in a NumPy array must be of the same type; namely a NumPy data type (a list of these can be found online: \url{https://docs.scipy.org/doc/numpy/user/basics.types.html}) which are numerical data types such as \texttt{int}, \texttt{float}, and \texttt{complex}.
-
-The power of a NumPy array comes in the ability to perform mathematical operations incredibly efficiently.
-For example,\footnote{When running on a MacBook Air 2018 with a 1.6 GHz Intel Core i5.} the summation of zero to ten million is $\sim 25$ times faster when using the NumPy array operation shown below when compared with a simple implementation in pure Python,
-\begin{lstlisting}
-# The pure Python way
-
-numbers = range(10000000)
-total = 0
-for i in numbers:
-    total = total + i
-print(total)
-
-# The NumPy operation
+# atom_helper.py
 
 import numpy as np
 
-numbers = np.arange(10000000)
-total = np.sum(numbers)
-print(total)
+def distance(a, b):
+    """
+    Determines the distance between two points
+    in any number of dimensions.
+    """
+    return np.sqrt(np.sum(np.square(a - b)))
 \end{lstlisting}
-Note that in the above example, the \texttt{range} function creates a list of numbers from $0$ to $10000000$, while the \texttt{np.arange} function creates a NumPy array containing the same values.
-
-NumPy arrays also have a \emph{huge} amount of additional functionality, such as the ability to easily access statistically relevant values, powerful sub-array definition (in particular for multi-dimensional arrays), data reorganisation.
-Some of these tools are shown below, and no doubt you will become familiar with many others throughout this course,
+Having created this module, we can then import it into a Jupyter Notebook that is in the same folder, and access the distances function as shown below,
 \begin{lstlisting}
-# Determine the mean and standard deviation
+# Using the atom_helper module
+
 import numpy as np
+import atom_helper
 
-## First get an array of 6 numbers
-x1 = np.array([2, 5, 3, 7, 2, 7])
+atom1 = np.array([1, 4, 2])
+atom2 = np.array([5, 2, 6])
 
-print(x1.mean(), x1.std())
-
-## Now get a two-dimensional array of random ints from 0 to 10
-x2 = np.random.randint(10, size=(3, 2))
-
-print(x2.shape)
-print(x2)
-print(x2[0])
-print(x2[:, 1])
-print(x2[:, 0::-1])
-
-## Lets reshape a one-dimensional array
-x3 = np.arange(10)
-
-print(x3)
-print(x3.reshape((3, 3))
+dist = atom_helper.distance(atom1, atom2)
+print(dist)
 \end{lstlisting}
-
-Like other numerical types in Python, it is possible to perform mathematical operations on them (\texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, etc.).
-Furthermore, additional operations are available from the NumPy library, such as the dot product of two arrays or the determinant of the result,
-\begin{lstlisting}
-# Dot product ot two-dimensional arrays
-
-a = np.array([[1, 0], [0, 1]])
-b = np.array([[4, 1], [2, 2]])
-c = np.dot(a, b)
-print(c, np.det(c))
-\end{lstlisting}
-
-\subsection{Optimisation with NumPy}
-
-It was shown above, that by replacing a Pythonic loop with a NumPy array operation it was possible to get a massive speed up in computational efficiency.
-This is a powerful tool of the NumPy library, that \textbf{must} be harnessed, where possible.
-The general advice is that when a loop is present in code, you should consider if it would be possible to replace this with an appropriate NumPy operation.
-Throughout the remainder of this module, we will make use of NumPy array operations over looping through lists whereever possible.
-\vspace{\baselineskip}
-\begin{center}
-	\noindent\fbox{%
-		\begin{minipage}{0.9\textwidth}%
-			\vspace{0.15\baselineskip}
-			\subsubsection*{Exercise}
-			\begin{itemize}
-				\item{Write some \emph{NumPy optimised} code that will calculate the average vibrational energy, $\bar{E_v}$, from the first N energy levels, $E_l$, of some diatomic molecule when,
-        \begin{equation}
-          \bar{E_v} = \frac{\sum_{i=0}^N{E_l p}}{\sum_{i=0}^N{p}}.
-        \end{equation}
-        Where, $N = 6$, the energy at each level is: 0, 1, 2, 3, 4, 5, 6 and the levels have populations, $p$: 4, 3, 2, 1, 0, 0 respectively.
-
-        Consider how the pure Python version of this code would work.}
-			\end{itemize}
-		\end{minipage}
-	}
-\end{center}
-
-\section{Copying lists/arrays}
-
-An important fact to be aware of for both lists and NumPy arrays is that assigning a list to an new variable does \textbf{not} create a new list.
-Rather, this will create an alias to the same object in memory.
-In order to create a new list (or array), it is best to \texttt{copy} the original object to the new variable, as shown below,
-\begin{lstlisting}
-# Copying lists and arrays
-
-my_list = ['dog', 'cat', 'horse']
-
-new_list = my_list
-
-new_list[0] = 'giraffe'
-
-print(new_list)
-print(my_list)
-
-copied_list = my_list.copy()
-
-copied_list[1] = 'pig'
-
-print(copied_list)
-print(my_list)
-\end{lstlisting}
-Note that for a NumPy array, the function \texttt{np.copy(my\_array)} should be used.
+It is clear from the above example, that the \emph{user-defined} module can be imported in the same way as a library.
+Then any function defined in the module may be called from the Jupyter Notebook.
+This means that you can create modules containing a wide variety of functions and use them in many different Notebooks.
 
 \section{Problem}
 
-For this week's problem we will optimise the code written last week to calculate interatomic distances.
-Look back at the code that wrote last week and consider how (by using the NumPy array) it might be possible to improve the efficiency.
-This should involve considering again your algorithm, as it might require modification to work in an optimised fashion.
-Compare the results of your new optimised code to that from last week (they should be the same).
+It is possible to estimate the interaction energy, $E_{LJ}$ between two atoms using the Lennard-Jones expression,
+\begin{equation}
+  E_{LJ} = \epsilon \bigg[\Big(\frac{r_m}{r}\Big)^{12} - 2\Big(\frac{r_m}{r}\Big)^6\bigg],
+\end{equation}
+where, $r$ is the distances between the two atoms, $\epsilon$ and $r_m$ are constants describing the shape of the interaction potential surface.
+Add a function that can calculate the interaction energy, using the above relationship with constants of $\epsilon = \SI{-2.2}{\kilo\joule\per\mol}$ and $r_m = \SI{3.7}{\angstrom}$, to the \texttt{atom\_helper.py} module.
 
-\bibliographystyle{rsc}
-\bibliography{handout_3}
+Use the new function to calculate the interactions energy for each of the pairs of atoms used in Week 2.
+
+\subsection{Energy minimisation}
+
+One of the most common operations in computational chemistry is energy minimisation, which is used to determine the most stable geometry for a given chemical molecule or structure.
+The energy minimum is where there are no net forces acting on any of the atoms; the structure is relaxed.
+This process will be covered in future lectures, however, in this exercise you will code the steps that can be found at the core of many energy-minimisation programs.
+
+If $r_0$ is the initial distance between two atoms, and $E'$ and $E''$, respectively, are the first and second derivatives of the interaction energy, $E$, then a step towards the energy minimum is given by the following,
+\begin{equation}
+  r_1 = r_0 - \frac{E'}{E''},
+\end{equation}
+where, $r_1$ is the new distance between the two atoms.
+We can then reevaluated $E'$ and $E''$ for the new $r$, and this process is repeated until $E$ reaches some minimum value.
+
+For the purpose of this exercise, the interatomic interaction energy, $E$, and its derivatives are given by the followign reformulation of the Lennard-Jones equation,
+\begin{equation}
+  \begin{aligned}
+    E & = \frac{A}{r^{12}} - \frac{B}{r^6} \\
+    E' & = -12\frac{A}{r^{13}} + 6\frac{B}{r^7} \\
+    E'' & = 156\frac{A}{r^{14}} - 42\frac{B}{r^8} \\
+  \end{aligned}
+\end{equation}
+
+Write a program that, from values of $A$, $B$ and an initial guess of $r$, uses a 10 iteration loop to move towards the distance at which the energy minimum is present.
+In each iteration: print a line containing the initial value of $r$ (i.e. $r_0$), $E$, $E'$, $E''$, and the final $r$ (i.e. $r_1$), and replace $r_0$ with $r_1$.
+You will need to have three functions (one for each of $E$, $E'$, and $E''$) which will take $A$, $B$, and $r$ as their arguments.
+\emph{Remember to plan the algorithm first!}
+
+Given the following values for $A$ and $B$, what is the energy-minimum distance $r$ (in \AA)?
+\begin{enumerate}
+  \item{$A = \SI{1e5}{\eV\angstrom^{12}}$ and $B = \SI{40}{\eV\angstrom^{6}}$}
+  \item{$A = \SI{4e5}{\eV\angstrom^{12}}$ and $B = \SI{1}{\eV\angstrom^{6}}$}
+\end{enumerate}
+Adjust the program so that it will do as many iterations as are necessary to achieve energy minimisation, rather than only a fixed number.
+Compare cases 1. and 2. to see how stable and/or quick the minimisation is and how the \emph{convergence} depends on the initial guess of $r$.
+
+Next, create a new function in your module to calculate the energy, and first and second derivatives of a harmonic oscillator (a common model for a covalent bond),
+\begin{equation}
+  \begin{aligned}
+    E & = \frac{1}{2}k(r-r_{\text{eq}})^2 \\
+    E' & = k(r-r_{\text{eq}}) \\
+    E'' & = k \\
+  \end{aligned}
+\end{equation}
+Verify that the method developed above (known as the Newton-Raphson method) converges to the energy minimum in a single step, regardless of the initial value of $r$, within this harmonic potential.
+For this test, use $k = \SI{32.2}{\eV\angstrom^{-2}}$, which is the force constant for a \ce{HCl} molecule, and $r_{\text{eq}}=\SI{1.27}{\angstrom}$, where $r_{\text{eq}}$ is the equilibrium bond distance.
+
+
+%\bibliographystyle{rsc}
+%\bibliography{handout_3}
 
 \end{document}
