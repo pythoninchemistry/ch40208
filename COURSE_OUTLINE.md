@@ -12,35 +12,22 @@ Material:
 - Pythonic base variable types
 - Basic arithmatic
 - Input (using `input()`) and output (using `print()`)
+- Logical operators (`==`, `<`, `<=`, `>`, `>=`, `!=`)
+- Flow control (`if`, `elif`, `else`)
+- And and or operators
 
 Problem:
 
-Create some code to convert from Fahrenheit to Celsius
+- Create some code to convert from Fahrenheit to Celsius
+- Code to calculate equilibrium constants for a variety of different units
 
-## Week 2: Pythonic logic and loops
+## Week 2: Lists, loops, arrays, optimisation, and plotting
 
 W/C: 2019-10-07
 
 Material:
 
-- Logical operators (`==`, `<`, `<=`, `>`, `>=`, `!=`)
-- Flow control (`if`, `elif`, `else`)
-- And and or operators
 - Loops (both `for` and `while`)
-
-Problem:
-
-This week there are two problems:
-
-- Code to calculate interatomic distances
-- Code to calculate equilibrium constants for a variety of different units
-
-## Week 3: Lists, arrays, and optimisation with NumPy
-
-W/C: 2019-10-14
-
-Material:
-
 - Lists as a data type
 - NumPy arrays
 - How NumPy arrays may be used to improve code efficiency
@@ -48,11 +35,14 @@ Material:
 
 Problem:
 
-Optimise the interatomic distance code from the week previous
+This week there are two problems:
 
-## Week 4: Functions and modular code
+- Code to calculate interatomic distances
+- Optimise the interatomic distance code from the week previous
 
-W/C: 2019-10-21
+## Week 3: Functions and modular code
+
+W/C: 2019-10-14
 
 Material:
 
@@ -63,9 +53,9 @@ Problem:
 
 Write a function to calculate the energy between a pair of atoms, then implement a simple Newton-Raphson minimisation algorithm.
 
-## Week 5: Debugging
+## Week 4: Debugging
 
-W/C: 2019-10-28
+W/C: 2019-10-21
 
 Material:
 
@@ -77,9 +67,9 @@ Problem:
 
 Code a rotation matrix from the work of Evans
 
-## Week 6: Good coding practice and testing
+## Week 5: Good coding practice and testing
 
-W/C: 2019-11-04
+W/C: 2019-10-28
 
 Material:
 
@@ -92,22 +82,26 @@ Problem:
 
 Given a complete set of tests, write code that will allow all the tests to pass
 
-## Week 7: Molecular vibrations/Huckel theory solver/Analysis of MD simulations
+## Week 6: Exercise week 1
+
+W/C: 2019-11-04
+
+## Week 7: Exercise week 2
 
 W/C: 2019-11-11
 
-## Week 8: Molecular vibrations/Huckel theory solver/Analysis of MD simulations
+## Week 8: Ben week 1
 
 W/C: 2019-11-18
 
-## Week 9: Time to finish exercise/Study
+## Week 9: Ben week 1
 
 W/C: 2019-11-25
 
-## Week 10: Debugging exercise
+## Week 10: Assessment 1
 
 W/C: 2019-12-02
 
-## Week 11: Exam
+## Week 11: Assessment 2
 
 W/C: 2019-12-09
