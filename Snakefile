@@ -11,5 +11,5 @@ rule handout_4:
 		'week_5/handout_5.pdf'
 	shell:
 		"""
-		cd week_5/handout_source && pdflatex handout_5.tex && bibtex handout_5.aux && pdflatex handout_5.tex pdflatex handout_5.tex && cp handout_5.pdf ../
+		cd week_5/handout_source && pdflatex handout_5.tex && pdflatex handout_5.tex && cp handout_5.pdf ../
 		"""
