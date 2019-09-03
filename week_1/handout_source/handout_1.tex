@@ -409,21 +409,30 @@ For reference,
 You should consider how this may be broken down into \emph{four} simple steps, write these steps out as an \emph{algorithm} and then write your code from this algorithm.
 If you manage to complete this write another cell to convert from Fahrenheit to Kelvin.
 
-\subsection{Interatomic distances}
+\subsection{Equilibrium constant}
 
-Write code that will take the \emph{x}, \emph{y}, and \emph{z} coordinates of three atoms, and calculate the distances $r$ between each pair, then print the distances along with the atoms that the distances are between.
-The equation for $r$ between two atoms is,
+Write code that will calculate values of the equilibrium constant, $K$, for a given free-energy change over a range of temperatures.
+The program should ask the user for a free-energy value, $\Delta G$ or $\Delta g$, and to specify the units for this (either \si{\kilo\joule\per\mol}, \si{\eV}, or \si{\joule}).
+The initial temperature, $T_{\text{init}}$, final temperature, $T_{\text{final}}$, and temperature step size, $T_{\text{step}}$ should also be entered by the user (in \si{\kelvin}).
+In order to learn more about how to do this with the \texttt{range} function, check the documentation online (\url{https://www.w3schools.com/python/ref_func_range.asp}).
+The equilibrium constant equation is,
 \begin{equation}
-	r = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2}.
+	K = \exp{\bigg(\frac{-\Delta G}{RT}\bigg)} = \exp{\bigg(\frac{-\Delta g}{k_BT}\bigg)}
 \end{equation}
-This expression is widely used in atomistic simulations.
-\textbf{Remember}: Plan the procedure for your code before you start to write any Python.
-Use a pair of \emph{nested} loops to calculate the distances between each pair of atoms in the following molecules:
+where, $R = \SI{8.314}{\joule\per\kelvin\per\mol}$, $k_B = \SI{1.3806e-23}{\joule}$, and $\SI{1}{\eV} = \SI{96.485}{\kilo\joule\per\mol}$.
+
+When you check for what is typed, don’t forget to check for upper-case as well as lower-case letters, as these characters have different ascii codes.
+You should also anticipate the possibility of the user entering a completely different letter (by mistake): what action would be appropriate in this event?
+Additionally, make sure that the user cannot make the temperature \emph{unphysical} (e.g. less than or equal to zero).
+Again, remember to plan before you code.
+
+Test the code using a temperature range from \SIrange{100}{2000}{\kelvin} with a step size of \SI{100}{\kelvin}, and with free energies of:
 \begin{enumerate}
-	\item{Atom 1: ($0.1$, $0.5$, $3.2$); Atom 2: ($0.4$, $0.5$, $2.3$); Atom 3: ($-0.3$, $0.3$, $1.7$)}
-	\item{Atom 1: ($-0.1$, $0.5$, $1.5$); Atom 2: ($0.2$, $0.5$, $2.6$); Atom 3: ($0.5$, $0.5$, $3.7$)}
+	\item{\SI{-12.177}{\kilo\joule\per\mol}}
+	\item{\SI{-0.1452}{\eV}}
+	\item{\SI{-2.6308e-20}{\joule}}
 \end{enumerate}
-Comment on the shape of each of the molecules.
+Comment on the values at \SI{300}{\kelvin}.
 
 \bibliographystyle{rsc}
 \bibliography{handout_1}
