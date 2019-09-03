@@ -131,9 +131,187 @@ for i in range(len(numbers)):
 \end{lstlisting}
 Note that the above examples are toy problems and there are more efficient way to carry-out these specific operations in Python.
 
-\section{Problem}
+\section{Lists}
+The Python programming language natively includes the ability to group together a series of objects.
+These are \texttt{lists} and are one of the most powerful Python objects.
+Lists are an ordered set of objects, from which it is possible to pick all, one, or many values.
+A list is defined as follows,
+\begin{lstlisting}
+# Making a list
 
-\subsection{Equilibrium constants}
+elements = ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen"]
+\end{lstlisting}
+Having defined the list, it is then possible to select individual items of the list by using the following syntax,
+\begin{lstlisting}
+# Printing some items
+
+print(elements[0], elements[4], elements[-1])
+\end{lstlisting}
+Note, that Python starts counting from the number $0$, and using the minus sign we can ask Python to count from the end.
+This means that the above code should print, \texttt{"Hydrogen", "Boron", "Oxygen"}.
+This counting from $0$ means that in the above list, the string \texttt{"Hydrogen"} would be referred to as the zeroth object in the list, while \texttt{"Helium"} would be the first.
+
+In addition to making use of single objects from within a list, it is also possible to create sublists, for example,
+\begin{lstlisting}
+# Just the first 4 elements
+
+print(elements[0:4])
+\end{lstlisting}
+Note that above, the numbers on either side of the colon the list indices.
+However, rather strangely, the sublist created is \textbf{inclusive} of the first number and \textbf{exclusive} of the second.
+Additionally, it is possible to select non-consecutive objects from a list by placing commas between the indices,
+\begin{lstlisting}
+# Just the gases
+
+print(elements[0, 1, 6, 7])
+\end{lstlisting}
+The final point about \texttt{lists} is that the data that they hold does not all need to be the same time.
+For example, the list below contains a \texttt{float}, two \texttt{str}, a \texttt{complex} number and an \texttt{int},
+\begin{lstlisting}
+# List of many types
+
+a_new_list = ['hello', 12.41242, 5 + 8j, 'sadness', 2]
+print(a_new_list)
+\end{lstlisting}
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+		\begin{minipage}{0.9\textwidth}%
+			\vspace{0.15\baselineskip}
+			\subsubsection*{Exercise}
+			\begin{itemize}
+				\item{Create two lists, one containing names the first 8 elements in the periodic table and another containing the massive numbers for those elements. Then, using a loop, print each element name and mass number, format each print statment with the \texttt{.format()} syntax.}
+			\end{itemize}
+		\end{minipage}
+	}
+\end{center}
+
+
+\section{NumPy Arrays}
+
+NumPy (or \texttt{numpy} or more commonly \texttt{np}) is a library that Python can use that is designed and optimised for doing numerical operations.\cite{numpy}
+Over this course you will be introduced to many other Python libraries, in order to use any of these you must \texttt{import} them,
+\begin{lstlisting}
+# Import NumPy
+
+import numpy as np
+\end{lstlisting}
+This asks the Python interperator to go and find the NumPy library, then in order to reduce the amount of typing (programmers are lazy), we give the library the alias \texttt{np}.
+
+One of the most powerful features of the NumPy library is the \texttt{array}, these are similar to lists but with some important differences.
+Unlike a list, all of the items in a NumPy array must be of the same type; namely a NumPy data type (a list of these can be found online: \url{https://docs.scipy.org/doc/numpy/user/basics.types.html}) which are numerical data types such as \texttt{int}, \texttt{float}, and \texttt{complex}.
+
+The power of a NumPy array comes in the ability to perform mathematical operations incredibly efficiently.
+For example,\footnote{When running on a MacBook Air 2018 with a 1.6 GHz Intel Core i5.} the summation of zero to ten million is $\sim 25$ times faster when using the NumPy array operation shown below when compared with a simple implementation in pure Python,
+\begin{lstlisting}
+# The pure Python way
+
+numbers = range(10000000)
+total = 0
+for i in numbers:
+    total = total + i
+print(total)
+
+# The NumPy operation
+
+import numpy as np
+
+numbers = np.arange(10000000)
+total = np.sum(numbers)
+print(total)
+\end{lstlisting}
+Note that in the above example, the \texttt{range} function creates a list of numbers from $0$ to $10000000$, while the \texttt{np.arange} function creates a NumPy array containing the same values.
+
+NumPy arrays also have a \emph{huge} amount of additional functionality, such as the ability to easily access statistically relevant values, powerful sub-array definition (in particular for multi-dimensional arrays), data reorganisation.
+Some of these tools are shown below, and no doubt you will become familiar with many others throughout this course,
+\begin{lstlisting}
+# Determine the mean and standard deviation
+import numpy as np
+
+## First get an array of 6 numbers
+x1 = np.array([2, 5, 3, 7, 2, 7])
+
+print(x1.mean(), x1.std())
+
+## Now get a two-dimensional array of random ints from 0 to 10
+x2 = np.random.randint(10, size=(3, 2))
+
+print(x2.shape)
+print(x2)
+print(x2[0])
+print(x2[:, 1])
+print(x2[:, 0::-1])
+
+## Lets reshape a one-dimensional array
+x3 = np.arange(10)
+
+print(x3)
+print(x3.reshape((3, 3))
+\end{lstlisting}
+
+Like other numerical types in Python, it is possible to perform mathematical operations on them (\texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, etc.).
+Furthermore, additional operations are available from the NumPy library, such as the dot product of two arrays or the determinant of the result,
+\begin{lstlisting}
+# Dot product ot two-dimensional arrays
+
+a = np.array([[1, 0], [0, 1]])
+b = np.array([[4, 1], [2, 2]])
+c = np.dot(a, b)
+print(c, np.det(c))
+\end{lstlisting}
+
+\subsection{Optimisation with NumPy}
+
+It was shown above, that by replacing a Pythonic loop with a NumPy array operation it was possible to get a massive speed up in computational efficiency.
+This is a powerful tool of the NumPy library, that \textbf{must} be harnessed, where possible.
+The general advice is that when a loop is present in code, you should consider if it would be possible to replace this with an appropriate NumPy operation.
+Throughout the remainder of this module, we will make use of NumPy array operations over looping through lists whereever possible.
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+		\begin{minipage}{0.9\textwidth}%
+			\vspace{0.15\baselineskip}
+			\subsubsection*{Exercise}
+			\begin{itemize}
+				\item{Write some \emph{NumPy optimised} code that will calculate the average vibrational energy, $\bar{E_v}$, from the first N energy levels, $E_l$, of some diatomic molecule when,
+        \begin{equation}
+          \bar{E_v} = \frac{\sum_{i=0}^N{E_l p}}{\sum_{i=0}^N{p}}.
+        \end{equation}
+        Where, $N = 6$, the energy at each level is: 0, 1, 2, 3, 4, 5, 6 and the levels have populations, $p$: 4, 3, 2, 1, 0, 0 respectively.
+
+        Consider how the pure Python version of this code would work.}
+			\end{itemize}
+		\end{minipage}
+	}
+\end{center}
+
+\section{Copying lists/arrays}
+
+An important fact to be aware of for both lists and NumPy arrays is that assigning a list to an new variable does \textbf{not} create a new list.
+Rather, this will create an alias to the same object in memory.
+In order to create a new list (or array), it is best to \texttt{copy} the original object to the new variable, as shown below,
+\begin{lstlisting}
+# Copying lists and arrays
+
+my_list = ['dog', 'cat', 'horse']
+
+new_list = my_list
+
+new_list[0] = 'giraffe'
+
+print(new_list)
+print(my_list)
+
+copied_list = my_list.copy()
+
+copied_list[1] = 'pig'
+
+print(copied_list)
+print(my_list)
+\end{lstlisting}
+Note that for a NumPy array, the function \texttt{np.copy(my\_array)} should be used.
+
+\section{Problems}
 
 Write code that will calculate values of the equilibrium constant, $K$, for a given free-energy change over a range of temperatures.
 The program should ask the user for a free-energy value, $\Delta G$ or $\Delta g$, and to specify the units for this (either \si{\kilo\joule\per\mol}, \si{\eV}, or \si{\joule}).
@@ -158,7 +336,12 @@ Test the code using a temperature range from \SIrange{100}{2000}{\kelvin} with a
 \end{enumerate}
 Comment on the values at \SI{300}{\kelvin}.
 
-%\bibliographystyle{rsc}
-%\bibliography{handout_2}
+Next, optimise the code written last week to calculate interatomic distances.
+Look back at the code that wrote last week and consider how (by using the NumPy array) it might be possible to improve the efficiency.
+This should involve considering again your algorithm, as it might require modification to work in an optimised fashion.
+Compare the results of your new optimised code to that from last week (they should be the same).
+
+\bibliographystyle{rsc}
+\bibliography{handout_2}
 
 \end{document}
