@@ -51,6 +51,61 @@
 \section*{Aim}
 In this lecture, you will learn about logical operations, conditional statements, and for and while loops.
 
+\section{Lists}
+The Python programming language natively includes the ability to group together a series of objects.
+These are \texttt{lists} and are one of the most powerful Python objects.
+Lists are an ordered set of objects, from which it is possible to pick all, one, or many values.
+A list is defined as follows,
+\begin{lstlisting}
+# Making a list
+
+elements = ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen"]
+\end{lstlisting}
+Having defined the list, it is then possible to select individual items of the list by using the following syntax,
+\begin{lstlisting}
+# Printing some items
+
+print(elements[0], elements[4], elements[-1])
+\end{lstlisting}
+Note, that Python starts counting from the number $0$, and using the minus sign we can ask Python to count from the end.
+This means that the above code should print, \texttt{"Hydrogen", "Boron", "Oxygen"}.
+This counting from $0$ means that in the above list, the string \texttt{"Hydrogen"} would be referred to as the zeroth object in the list, while \texttt{"Helium"} would be the first.
+
+In addition to making use of single objects from within a list, it is also possible to create sublists, for example,
+\begin{lstlisting}
+# Just the first 4 elements
+
+print(elements[0:4])
+\end{lstlisting}
+Note that above, the numbers on either side of the colon the list indices.
+However, rather strangely, the sublist created is \textbf{inclusive} of the first number and \textbf{exclusive} of the second.
+Additionally, it is possible to select non-consecutive objects from a list by placing commas between the indices,
+\begin{lstlisting}
+# Just the gases
+
+print(elements[0, 1, 6, 7])
+\end{lstlisting}
+The final point about \texttt{lists} is that the data that they hold does not all need to be the same time.
+For example, the list below contains a \texttt{float}, two \texttt{str}, a \texttt{complex} number and an \texttt{int},
+\begin{lstlisting}
+# List of many types
+
+a_new_list = ['hello', 12.41242, 5 + 8j, 'sadness', 2]
+print(a_new_list)
+\end{lstlisting}
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+		\begin{minipage}{0.9\textwidth}%
+			\vspace{0.15\baselineskip}
+			\subsubsection*{Exercise}
+			\begin{itemize}
+				\item{Create two lists, one containing names the first 8 elements in the periodic table and another containing the massive numbers for those elements. Then, using a loop, print each element name and mass number, format each print statment with the \texttt{.format()} syntax.}
+			\end{itemize}
+		\end{minipage}
+	}
+\end{center}
+
 \section{Loops}
 
 One of the best uses of programming (and computers) is to perform repetitive task over and over.
@@ -130,62 +185,6 @@ for i in range(len(numbers)):
 		numbers[i] = numbers[i] * -1
 \end{lstlisting}
 Note that the above examples are toy problems and there are more efficient way to carry-out these specific operations in Python.
-
-\section{Lists}
-The Python programming language natively includes the ability to group together a series of objects.
-These are \texttt{lists} and are one of the most powerful Python objects.
-Lists are an ordered set of objects, from which it is possible to pick all, one, or many values.
-A list is defined as follows,
-\begin{lstlisting}
-# Making a list
-
-elements = ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen"]
-\end{lstlisting}
-Having defined the list, it is then possible to select individual items of the list by using the following syntax,
-\begin{lstlisting}
-# Printing some items
-
-print(elements[0], elements[4], elements[-1])
-\end{lstlisting}
-Note, that Python starts counting from the number $0$, and using the minus sign we can ask Python to count from the end.
-This means that the above code should print, \texttt{"Hydrogen", "Boron", "Oxygen"}.
-This counting from $0$ means that in the above list, the string \texttt{"Hydrogen"} would be referred to as the zeroth object in the list, while \texttt{"Helium"} would be the first.
-
-In addition to making use of single objects from within a list, it is also possible to create sublists, for example,
-\begin{lstlisting}
-# Just the first 4 elements
-
-print(elements[0:4])
-\end{lstlisting}
-Note that above, the numbers on either side of the colon the list indices.
-However, rather strangely, the sublist created is \textbf{inclusive} of the first number and \textbf{exclusive} of the second.
-Additionally, it is possible to select non-consecutive objects from a list by placing commas between the indices,
-\begin{lstlisting}
-# Just the gases
-
-print(elements[0, 1, 6, 7])
-\end{lstlisting}
-The final point about \texttt{lists} is that the data that they hold does not all need to be the same time.
-For example, the list below contains a \texttt{float}, two \texttt{str}, a \texttt{complex} number and an \texttt{int},
-\begin{lstlisting}
-# List of many types
-
-a_new_list = ['hello', 12.41242, 5 + 8j, 'sadness', 2]
-print(a_new_list)
-\end{lstlisting}
-\vspace{\baselineskip}
-\begin{center}
-	\noindent\fbox{%
-		\begin{minipage}{0.9\textwidth}%
-			\vspace{0.15\baselineskip}
-			\subsubsection*{Exercise}
-			\begin{itemize}
-				\item{Create two lists, one containing names the first 8 elements in the periodic table and another containing the massive numbers for those elements. Then, using a loop, print each element name and mass number, format each print statment with the \texttt{.format()} syntax.}
-			\end{itemize}
-		\end{minipage}
-	}
-\end{center}
-
 
 \section{NumPy Arrays}
 
@@ -313,31 +312,25 @@ Note that for a NumPy array, the function \texttt{np.copy(my\_array)} should be 
 
 \section{Problems}
 
-Write code that will calculate values of the equilibrium constant, $K$, for a given free-energy change over a range of temperatures.
-The program should ask the user for a free-energy value, $\Delta G$ or $\Delta g$, and to specify the units for this (either \si{\kilo\joule\per\mol}, \si{\eV}, or \si{\joule}).
-The initial temperature, $T_{\text{init}}$, final temperature, $T_{\text{final}}$, and temperature step size, $T_{\text{step}}$ should also be entered by the user (in \si{\kelvin}).
-In order to learn more about how to do this with the \texttt{range} function, check the documentation online (\url{https://www.w3schools.com/python/ref_func_range.asp}).
-The equilibrium constant equation is,
+\subsection{Interatomic distances}
+
+Write code that will take the \emph{x}, \emph{y}, and \emph{z} coordinates of three atoms, and calculate the distances $r$ between each pair, then print the distances along with the atoms that the distances are between.
+The equation for $r$ between two atoms is,
 \begin{equation}
-	K = \exp{\bigg(\frac{-\Delta G}{RT}\bigg)} = \exp{\bigg(\frac{-\Delta g}{k_BT}\bigg)}
+	r = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2}.
 \end{equation}
-where, $R = \SI{8.314}{\joule\per\kelvin\per\mol}$, $k_B = \SI{1.3806e-23}{\joule}$, and $\SI{1}{\eV} = \SI{96.485}{\kilo\joule\per\mol}$.
-
-When you check for what is typed, don’t forget to check for upper-case as well as lower-case letters, as these characters have different ascii codes.
-You should also anticipate the possibility of the user entering a completely different letter (by mistake): what action would be appropriate in this event?
-Additionally, make sure that the user cannot make the temperature \emph{unphysical} (e.g. less than or equal to zero).
-Again, remember to plan before you code.
-
-Test the code using a temperature range from \SIrange{100}{2000}{\kelvin} with a step size of \SI{100}{\kelvin}, and with free energies of:
+This expression is widely used in atomistic simulations.
+\textbf{Remember}: Plan the procedure for your code before you start to write any Python.
+Use a pair of \emph{nested} loops to calculate the distances between each pair of atoms in the following molecules:
 \begin{enumerate}
-	\item{\SI{-12.177}{\kilo\joule\per\mol}}
-	\item{\SI{-0.1452}{\eV}}
-	\item{\SI{-2.6308e-20}{\joule}}
+	\item{Atom 1: ($0.1$, $0.5$, $3.2$); Atom 2: ($0.4$, $0.5$, $2.3$); Atom 3: ($-0.3$, $0.3$, $1.7$)}
+	\item{Atom 1: ($-0.1$, $0.5$, $1.5$); Atom 2: ($0.2$, $0.5$, $2.6$); Atom 3: ($0.5$, $0.5$, $3.7$)}
 \end{enumerate}
-Comment on the values at \SI{300}{\kelvin}.
+Comment on the shape of each of the molecules.
 
-Next, optimise the code written last week to calculate interatomic distances.
-Look back at the code that wrote last week and consider how (by using the NumPy array) it might be possible to improve the efficiency.
+\subsection{Optimisation}
+
+Next, optimise this code using NumPy arrays.
 This should involve considering again your algorithm, as it might require modification to work in an optimised fashion.
 Compare the results of your new optimised code to that from last week (they should be the same).
 
