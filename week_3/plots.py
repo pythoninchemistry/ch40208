@@ -28,7 +28,7 @@ def plot(ed, rd, i):
     ax1.set_xlabel("$r$/Å")
     ax1.text(6, 6.8, 'Step {}'.format(i+1), horizontalalignment='right')
     plt.tight_layout()
-    plt.savefig("week_4/mini/{}.png".format(i+1), dpi=300)
+    plt.savefig("week_3/mini/{}.png".format(i+1), dpi=300)
     plt.close()
 
 
