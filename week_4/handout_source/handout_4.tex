@@ -2,6 +2,7 @@
 \usepackage{titling}
 \usepackage{authblk}
 \usepackage{fancyhdr}
+\usepackage[hyphens]{url}
 \usepackage{hyperref}
 \usepackage{rsc}
 \usepackage{siunitx}
@@ -10,6 +11,7 @@
 \usepackage{amsmath}
 \usepackage{listings}
 \usepackage{color}
+\usepackage[htt]{hyphenat}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -29,11 +31,12 @@
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
+  tabsize=3,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
 }
 \DeclareSIUnit\Fahrenheit{\degree F}
 
-\title{Lecture 4: Functions and modular code}
+\title{Lecture 5: Debugging}
 \author[1]{Dr Benjamin J. Morgan}
 \author[1,2]{Dr Andrew R. McCluskey}
 \affil[1]{Department of Chemistry, University of Bath, email: b.j.morgan@bath.ac.uk}
@@ -51,95 +54,51 @@
 \maketitle
 
 \section*{Aim}
-This lecture will introduce how to simplify your code by writing functions and how to reuse code easily in many different places.
+This lecture will introduce \emph{debugging} skills and suggest methods to improve your ability to overcome errors in your code.
 
-\section{Functions}
+\section{Error messages}
+Human beings are fallible, therefore code will have bugs.
+However, there are some tips that we can use to deal with the bugs in our code and make them less of a nuesence.
 
-Occasionally, there is a particular section of your code that you would like to reuse over-and-over, without having to write the code over and over (as previously mentioned, programmers are lazy).
-For this, we make use of \emph{functions}, the use of which will be familiar.
-For example, we have used the \texttt{print()} function already in previous weeks, and the NumPy library contains a wide variety of functions, some of which were introduced last week.
-However, this week we shall see how it is possible to write our own functions in Python.
-
-The general syntax for \emph{defining} a function in Python is as follows,
+One of the most powerful tools that is available to us is the quality of the code and libraries that are written in Python.
+For example, if you \texttt{import} the square-root (\texttt{sqrt}) function from the basic Python library \texttt{math} and give it a list as an argument,
 \begin{lstlisting}
-# Defining a function
+from math import sqrt
 
-def my_function(argument_1, argument_2):
-    """
-    Adds together two arguments.
-    """
-    result = argument_1 + argument_2
-    return result
+a = [0, 1, 2, 3]
+
+print(sqrt(a))
 \end{lstlisting}
-Above, we defined a function named \texttt{my\_function} which took two \emph{arguments}, added them together to produce a result, which was \emph{returned}.
-Once defined it is possible to use this function in our code as follows,
+This will lead to an error.
+However, this error will come with a \emph{traceback} showing where the error came from and will give some information, at the bottom, about why the error occurred.
+You should get an error that looks like this,
 \begin{lstlisting}
-# Using our function
+TypeError                                 Traceback (most recent call last)
+<ipython-input-14-29539b5bdc2d> in <module>
+----> 1 print(sqrt(a))
 
-a = 1
-b = 2
-c = my_function(a, b)
-
-print(c)
+TypeError: must be real number, not list
 \end{lstlisting}
-It can be seen when looking at the above example, that the object that is returned from the function is then assigned to the variable \texttt{c}.
-The text immediately following the function definition line is the \emph{docstring}, this is important to help others understand the purpose of the function without having to read the code (basically it is a description of the function's action).
-
-The above example of a function is relatively simple, just adding together two numbers.
-However, a function can contain a large amount of code abstracted to a single line.
-Furthermore, a well named function can increase the readibility of code significantly (consider the atomic distance code from previous weeks, the abstraction of the distance calculation to an appropriately named function would make this more understandable).
-
-The \texttt{my\_function} example above contained two \emph{required} arguments.
-These are the objects that are passed of the function when it is called (and typically these are operated on in some fashion) and are necessary for the function to run.
-In addition to these required arguments, other arugments may be included in a given function; such as \emph{default} arguments and \emph{variable-length} arguments.
-These are showing in the functions below,
-\begin{lstlisting}
-# A function with defaults
-
-def my_function(arg1, arg2, arg3=0):
-    """
-    Adds together two arguments,
-    and an optional third.
-    """
-    result = arg1 + arg2 + arg3
-    return result
-
-print(my_function(1, 2))
-print(my_function(1, 2, arg3=3))
-
-# A variable length argument
-
-def my_function(arg1, arg2, *arg3):
-    """
-    Definitely adds together two arguments,
-    but can optionally add together any
-    number!
-    """
-    result = arg1 + arg2
-    for i in arg3:
-        result += i
-    return result
-
-print(my_function(1, 2))
-print(my_function(1, 2, 3, 4, 5))
-\end{lstlisting}
-Note that in default argument example, if no value was given it would default to \texttt{0}.
-
-You should be aware that a Python function does not \textbf{need} to have any arguments.
-For example, you could write a function that returns the value of the Planck constant (ideally using the SciPy constants library),
-\begin{lstlisting}
-# A function with no arguments
-
-from scipy import constants
-
-def h():
-    """
-    Planck constant.
-    """
-    return constants.h
-
-print('Planck constant = {:.3e}'.format(h()))
-\end{lstlisting}
+As we can see, the error that has been thrown is a \texttt{TypeError}, and we are given the additional information about the error that: \texttt{must be real number, not list}.
+We can use this to parse the root cause of the problem, a \texttt{TypeError} indicates that \emph{something} is of the wrong \emph{type}, and we are told that this \emph{something} should be a \texttt{real number} and not a \texttt{list}.
+It is clear that the arugment being passed to the \texttt{sqrt()} function is of \emph{type} \texttt{list}, and therefore this is the problem.\footnote{Note that the \texttt{sqrt} function from the \texttt{math} library can only take single values and return the square-root. This NumPy \texttt{np.sqrt()} function can however handle objects of type \texttt{list} and NumPy arrays.}
+\begin{table}[h]
+	\centering
+	\caption{Some error types that exist in Python.}
+	\label{tab:ops}
+	\begin{tabular}{c p{0.6\textwidth}}
+		\hline
+		Error & Context \\
+		\hline
+		\texttt{IndexError} & Trying to access an invalid index \\
+		\texttt{ModuleNotFoundError} & Trying to import an non-existent module \\
+		\texttt{TypeError} & Performing an action on an inappropriate type \\
+		\texttt{ValueError} & Function argument is an inappropriate type \\
+		\texttt{NameError} & Object with given variable name could not be found \\
+		\texttt{ZeroDivisionError} & Trying to divide something by zero \\
+		\hline
+	\end{tabular}
+\end{table}
 
 \vspace{\baselineskip}
 \begin{center}
@@ -147,105 +106,118 @@ print('Planck constant = {:.3e}'.format(h()))
 	    \begin{minipage}{0.9\textwidth}%
 	        \vspace{0.15\baselineskip}
 			\subsubsection*{Exercise}
-        Investigate the effect of returning two values from a function, using the \texttt{return a, b} syntax. 
+	        Try and determine the cause of the error messages thrown by the following commands (where a semi-colon indicated a new line):
+          \begin{itemize}
+            \item{\texttt{a = [0, 1, 2, 3]; np.square(a[-5])}}
+            \item{\texttt{np.power(2)}}
+            \item{\texttt{mp.array([1, 1, 2, 3, 5, 8, 13])}}
+          \end{itemize}
+          If you are not sure what a particular function does search for ``numpy'' and then the function name online, e.g. ``numpy power''.
 	    \end{minipage}
 	}
 \end{center}
-\section{Modules}
 
-In addition to writing your own functions, it is possible to \emph{clean up} your code further by creating your own \emph{modules}.
-These modules are similar to the libraries (like NumPy and SciPy) that we discussed last week, however, they are created by you.
-This is achieved by creating a file in the folder where you would like to use the module, and then \emph{importing} the module in the code where your would like to use it.
-For example, say you have a file called \texttt{atom\_helper.py} in which you will put many functions related to atomistic calculations.
-Lets start it off with our distance calculation,
+The majority of Python libraries will have helpful error messages such as the one given above (especially commonly used packages such as NumPy, pandas and matplotlib).
+However, sometimes it is not immediately clear what the error message means, for this it is often necessary to leverage the most important tool in a programmers arsenal -- the internet.
+Consider the following example, we have an array containing the numbers 1 to 9, which we reshape into a \texttt{(3, 3)} array and want to obtain the mean of each of the rows (where columns are the first axis and rows the second),
 \begin{lstlisting}
-# atom_helper.py
-
 import numpy as np
 
-def distance(a, b):
-    """
-    Determines the distance between two points
-    in any number of dimensions.
-    """
-    return np.sqrt(np.sum(np.square(a - b)))
+a = np.linspace(1, 9, 9)
+a = np.reshape(a, (3, 3))
+
+print(a)
+
+print(np.mean(a, axis=2))
 \end{lstlisting}
-Having created this module, we can then import it into a Jupyter Notebook that is in the same folder, and access the distances function as shown below,
+After running the above code, we will get the following error traceback,
 \begin{lstlisting}
-# Using the atom_helper module
+IndexError                                Traceback (most recent call last)
+<ipython-input-16-d032bc661941> in <module>
+----> 1 np.mean(a, axis=2)
 
-import numpy as np
-import atom_helper
+~/python3.6/site-packages/numpy/core/fromnumeric.py in mean(a, axis, dtype, out, keepdims)
+   3116
+   3117     return _methods._mean(a, axis=axis, dtype=dtype,
+-> 3118                           out=out, **kwargs)
+   3119
+   3120
 
-atom1 = np.array([1, 4, 2])
-atom2 = np.array([5, 2, 6])
+~/python3.6/site-packages/numpy/core/_methods.py in _mean(a, axis, dtype, out, keepdims)
+     60
+     61     is_float16_result = False
+---> 62     rcount = _count_reduce_items(arr, axis)
+     63     # Make this warning show up first
+     64     if rcount == 0:
 
-dist = atom_helper.distance(atom1, atom2)
-print(dist)
+~/python3.6/site-packages/numpy/core/_methods.py in _count_reduce_items(arr, axis)
+     53     items = 1
+     54     for ax in axis:
+---> 55         items *= arr.shape[ax]
+     56     return items
+     57
+
+IndexError: tuple index out of range
 \end{lstlisting}
-It is clear from the above example, that the \emph{user-defined} module can be imported in the same way as a library.
-Then any function defined in the module may be called from the Jupyter Notebook.
-This means that you can create modules containing a wide variety of functions and use them in many different Notebooks.
+There is a lot of information here, but we want to focus on just the last line, which reads \texttt{IndexError: tuple index out of range}, which is rather opaque.
+This is where the internet is our friend, if you \emph{copy and paste} this final line into Google\footnote{Or any decent search engine.}, you will likely find a lot of hits from a website called \textbf{Stack Overflow}.
+Stack Overflow is a messageboard style website where people can post programming (and mathematics and general computation) questions and others will answer.
+One of the great things about this website is that it is popular, so nearly all of the questions you could ask have already been answered.
+%
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{wisdom_of_the_ancients}
+\label{fig:wisdow}
+\caption{Of course not every question will have an answer. Taken from xkcd (\url{https://xkcd.com/979/}).}
+\end{figure}
+%
+
+If we put the error message from the above example into our search engine, we shoul be able to get some useful Stack Overflow answers.
+For example\footnote{https://stackoverflow.com/questions/20296188/indexerror-tuple-index-out-of-range-python}, one of the answers suggests \emph{``I suspect you mean to say [0] where you say [1] and [1] where you say [2]. Indexes are 0-based in Python.''}, which can immediately lead us to our bug.
+In the line \texttt{print(np.mean(a, axis=2))}, we assigned the row axis to the value $2$, however Python counts from $0$, to the column axis should be $0$, making the row axis $1$.
+If we run the above code again with \texttt{axis=1}, we should get the following returned,
+\begin{lstlisting}
+[2. 5. 8.]
+\end{lstlisting}
+It may sound like a rather simple approach to debugging, however, the popularity of Python and the clarity of the error messages mean that \emph{Googling} the problem is often on of the quickest ways to debug a complex issue.
+
+A final note on error messages is one of warning.
+The nature of Python error messages are as \emph{tracebacks}, this means that the error traces back through the different levels of the library/code and then prints the cause of the error.
+This means that Python error messages can be \textbf{very} long, take the code below (which makes use of the popular plotting library matplotlib) as an example,
+\begin{lstlisting}
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(1, 10, 10)
+y = np.linspace(1, 10, 9)
+
+plt.plot(x, y)
+plt.show()
+\end{lstlisting}
+Running this code will produce an error message that is more than 40 lines long and can be rather worrying the first time that you encounter it.
+However, it is important not to worry about the size of the error message, but simply to scroll to the bottom of the page and to find the real reason for the error being thrown.
+In the above example the error that is relevant is \texttt{ValueError: x and y must have same first dimension, but have shapes (10,) and (9,)}, which is relatively straight forward to parse.
+One of the things we are plotting is an array of 10 numbers, while the other is an array of 9 (and therefore it doesn't make sense to plot them together).
+
+\section{Overcoming problems}
+The final component of this lecture is a brief (\emph{pseudo}-philosophical) discussion into how best to solve problems in programming.
+It was mentioned above that one of the great things about using Python is the popularity of the language and the fact that this means that StackOverflow will very often have the answer to any problem you will encounter.
+That statement comes with a caviat; the \emph{general} problem will probably be answered by someone previously, but your \emph{specific} problem will not have.
+
+This is best represented with an example\footnote{This is a real example that I (Andrew) encountered while conducting research.}, where it is desired to rotate a chemical molecule in space by some given amount (the aim being to sample the system energy at a series of different rotations).
+The first instinct when approaching this problem is to search for something like ``rotate molecule in space'', however, this gives a lot of information about rotational spectroscopy.
+Adding ``stackoverflow'' at the end of that search starts to get us somewhere (\url{https://stackoverflow.com/questions/37942389/correctly-transforming-a-node-relative-to-a-specified-space}), however this is question is more advanced than what we are wanting to consider\footnote{This question is overly specific and the language used is not straight forward to understand.}.
+
+However, if we detach the problem for the obvious chemical nature, it can be more general as a linear algebra, and indeed a fundemental aspect of computer visualisation.
+For example, one of the top hits for the search of ``rotation 3d object'' is the wikipedia page for \emph{rotation matrices}, as usual the wikipedia page itself is too complex, but we may use this has a way to deepen our search.
+Indeed, searching for ``rotation matrix chemical'' returns a LibreText page that discusses the mathematics of rotation matrices (\url{https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Book%3A_Symmetry_(Vallance)/09._Transformation_matrices}), and with continued searching you might end up at one of my favourite (and most useful papers) \cite{Evans2001}.
 
 \section{Problem}
+Using the work of Evans\cite{Evans2001}, write a function (and add it to your collection of functions for manipulating and quantifying chemical structures) that will rotate a diatomic molecule by a given set of Eulerian angles ($\alpha$, $\beta$, $\gamma$; see section 5.2 of the paper).
+Calculate the distances between the two atoms of the molecule before and after the rotation to ensure that the this has not changed.
+Test your code for a series of different rotations and atomic distances, and consider how the code that you have written might be relevant to applications in computational drug design.
 
-It is possible to estimate the interaction energy, $E_{LJ}$ between two atoms using the Lennard-Jones expression,
-\begin{equation}
-  E_{LJ} = \epsilon \bigg[\Big(\frac{r_m}{r}\Big)^{12} - 2\Big(\frac{r_m}{r}\Big)^6\bigg],
-\end{equation}
-where, $r$ is the distances between the two atoms, $\epsilon$ and $r_m$ are constants describing the shape of the interaction potential surface.
-Add a function that can calculate the interaction energy, using the above relationship with constants of $\epsilon = \SI{-2.2}{\kilo\joule\per\mol}$ and $r_m = \SI{3.7}{\angstrom}$, to the \texttt{atom\_helper.py} module.
-
-Use the new function to calculate the interactions energy for each of the pairs of atoms used in Week 2.
-
-\subsection{Energy minimisation}
-
-One of the most common operations in computational chemistry is energy minimisation, which is used to determine the most stable geometry for a given chemical molecule or structure.
-The energy minimum is where there are no net forces acting on any of the atoms; the structure is relaxed.
-This process will be covered in future lectures, however, in this exercise you will code the steps that can be found at the core of many energy-minimisation programs.
-
-If $r_0$ is the initial distance between two atoms, and $E'$ and $E''$, respectively, are the first and second derivatives of the interaction energy, $E$, then a step towards the energy minimum is given by the following,
-\begin{equation}
-  r_1 = r_0 - \frac{E'}{E''},
-\end{equation}
-where, $r_1$ is the new distance between the two atoms.
-We can then reevaluated $E'$ and $E''$ for the new $r$, and this process is repeated until $E$ reaches some minimum value.
-
-For the purpose of this exercise, the interatomic interaction energy, $E$, and its derivatives are given by the followign reformulation of the Lennard-Jones equation,
-\begin{equation}
-  \begin{aligned}
-    E & = \frac{A}{r^{12}} - \frac{B}{r^6} \\
-    E' & = -12\frac{A}{r^{13}} + 6\frac{B}{r^7} \\
-    E'' & = 156\frac{A}{r^{14}} - 42\frac{B}{r^8} \\
-  \end{aligned}
-\end{equation}
-
-Write a program that, from values of $A$, $B$ and an initial guess of $r$, uses a 10 iteration loop to move towards the distance at which the energy minimum is present.
-In each iteration: print a line containing the initial value of $r$ (i.e. $r_0$), $E$, $E'$, $E''$, and the final $r$ (i.e. $r_1$), and replace $r_0$ with $r_1$.
-You will need to have three functions (one for each of $E$, $E'$, and $E''$) which will take $A$, $B$, and $r$ as their arguments.
-\emph{Remember to plan the algorithm first!}
-
-Given the following values for $A$ and $B$, what is the energy-minimum distance $r$ (in \AA)?
-\begin{enumerate}
-  \item{$A = \SI{1e5}{\eV\angstrom^{12}}$ and $B = \SI{40}{\eV\angstrom^{6}}$}
-  \item{$A = \SI{4e5}{\eV\angstrom^{12}}$ and $B = \SI{1}{\eV\angstrom^{6}}$}
-\end{enumerate}
-Adjust the program so that it will do as many iterations as are necessary to achieve energy minimisation, rather than only a fixed number.
-Compare cases 1. and 2. to see how stable and/or quick the minimisation is and how the \emph{convergence} depends on the initial guess of $r$.
-
-Next, create a new function in your module to calculate the energy, and first and second derivatives of a harmonic oscillator (a common model for a covalent bond),
-\begin{equation}
-  \begin{aligned}
-    E & = \frac{1}{2}k(r-r_{\text{eq}})^2 \\
-    E' & = k(r-r_{\text{eq}}) \\
-    E'' & = k \\
-  \end{aligned}
-\end{equation}
-Verify that the method developed above (known as the Newton-Raphson method) converges to the energy minimum in a single step, regardless of the initial value of $r$, within this harmonic potential.
-For this test, use $k = \SI{32.2}{\eV\angstrom^{-2}}$, which is the force constant for a \ce{HCl} molecule, and $r_{\text{eq}}=\SI{1.27}{\angstrom}$, where $r_{\text{eq}}$ is the equilibrium bond distance.
-
-
-%\bibliographystyle{rsc}
-%\bibliography{handout_3}
+\bibliographystyle{rsc}
+\bibliography{handout_5}
 
 \end{document}
