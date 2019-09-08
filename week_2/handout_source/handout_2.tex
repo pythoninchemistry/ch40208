@@ -310,6 +310,66 @@ print(my_list)
 \end{lstlisting}
 Note that for a NumPy array, the function \texttt{np.copy(my\_array)} should be used.
 
+\section{Plotting}
+
+Another extremely important library that is available to the Python language is \texttt{matplotlib}, which allows plotting of data.
+The \texttt{matplotlib} library was initially designed to help users of Matlab to convert there code to Python.
+The use of \texttt{matplotlib} is straightforward, first you build a figure, and then add data and other items to the axes of the figure.
+For example, consider the plotting of the NumPy array below,
+\begin{lstlisting}
+# Plotting some data
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10)
+y = x ** 2
+
+plt.plot(x, y)
+plt.show()
+\end{lstlisting}
+This should result in a plot like that shown in Figure~\ref{fig:x2}.
+%
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{x_squared}
+\label{fig:x2}
+\caption{The result of the simple plotting script of $y = x ^ 2$.}
+\end{figure}
+%
+
+The example above is rather simplistic, but the \texttt{matplotlib} library can be used to make very complex plots.
+Furthermore, the example below would not to well for experimental data, considering that the axes have no labels, the data is described with a line instead of points and there is no plot title.
+However, the code below shows some realistic experimental data plotted using matplotlib in a fashion that is more comprehensible.
+The plot produced can be found in Figure~\ref{fig:real},
+\begin{lstlisting}
+# Plotting some real data
+import numpy as np
+import matplotlib.pyplot as plt
+
+temperature = np.linspace(283, 363, 10)
+rate_constants = np.array([3.2e-19, 3.4e-18, 3.2e-17, 2.6e-16,
+                           1.8e-15, 1.2e-14, 7.3e-14, 3.9e-13,
+                           1.9e-12, 8.9e-12])
+rate_constants_uncertainity = np.array([1.6e-20, 1.7e-19, 1.6e-18, 1.3e-17,
+                           9.4e-17, 6.2e-16, 3.7e-15, 2.0e-14,
+                           1.0e-13, 4.4e-13])
+
+plt.errorbar(temperature, rate_constants*10**12, rate_constants_uncertainity*10**12, marker='o', linestyle='')
+plt.ylabel(r'Rate constant/$\times10^{-12}$ s$^{-1}$')
+plt.xlabel(r'Temperature/K')
+plt.title(r'Effect of temperature of rate constant of HI decomposition')
+plt.tight_layout()
+plt.show()
+\end{lstlisting}
+%
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{real}
+\label{fig:real}
+\caption{The result of the simple plotting script of $y = x ^ 2$.}
+\end{figure}
+%
+
 \section{Problems}
 
 \subsection{Interatomic distances}
@@ -332,7 +392,7 @@ Comment on the shape of each of the molecules.
 
 Next, optimise this code using NumPy arrays.
 This should involve considering again your algorithm, as it might require modification to work in an optimised fashion.
-Compare the results of your new optimised code to that from last week (they should be the same).
+Compare the results of your new optimised code to those detemined in the previous step (they should be the same).
 
 \bibliographystyle{rsc}
 \bibliography{handout_2}
