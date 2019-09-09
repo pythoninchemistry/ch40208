@@ -8,6 +8,7 @@ rule handout_2:
 	input:
 		'week_2/handout_source/handout_2.tex',
 		'week_2/handout_source/x_squared.pdf',
+		'week_2/handout_source/real.pdf',
 	output:
 		'week_2/handout_2.pdf'
 	shell:
@@ -19,7 +20,8 @@ rule plots:
 	input:
 		'week_2/handout_source/plots.py',
 	output:
-		'week_2/handout_source/x_squared.pdf'
+		'week_2/handout_source/x_squared.pdf',
+		'week_2/handout_source/real.pdf'
 	shell:
 		"""
 		cd week_2/handout_source && python plots.py && cd ../../
