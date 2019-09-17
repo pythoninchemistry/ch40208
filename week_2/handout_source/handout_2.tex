@@ -249,14 +249,15 @@ print(x3.reshape((3, 3))
 \end{lstlisting}
 
 Like other numerical types in Python, it is possible to perform mathematical operations on them (\texttt{+}, \texttt{-}, \texttt{*}, \texttt{/}, etc.).
-Furthermore, additional operations are available from the NumPy library, such as the dot product of two arrays or the determinant of the result,
+Furthermore, additional operations are available from the NumPy library, such as statistical methods like \texttt{np.mean()}, \texttt{np.std()} (standard deviation),
 \begin{lstlisting}
-# Dot product ot two-dimensional arrays
+# Some statistical stuff!
 
-a = np.array([[1, 0], [0, 1]])
-b = np.array([[4, 1], [2, 2]])
-c = np.dot(a, b)
-print(c, np.det(c))
+a = np.array([1, 4, 2, 5, 3, 14])
+b = np.mean(a)
+c = np.std(a)
+d = np.sqrt(np.sum(np.square(a-b))/a.size)
+print(a, b, c, d)
 \end{lstlisting}
 
 \subsection{Optimisation with NumPy}
