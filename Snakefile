@@ -3,7 +3,7 @@ HANDOUTS = ['week_1/handout_1.pdf', 'week_2/handout_2.pdf', 'week_3/handout_3.pd
 rule all:
 	input:
 		HANDOUTS,
-    'week_3/mini.mp4'
+    	'week_3/mini.mp4'
 
 rule handout_5:
 	input:
@@ -13,7 +13,7 @@ rule handout_5:
 	shell:
 		"""
 		cd week_5/handout_source && pdflatex handout_5.tex && pdflatex handout_5.tex && cp handout_5.pdf ../
-    """
+    	"""
 
 rule handout_4:
 	input:
@@ -23,8 +23,8 @@ rule handout_4:
 	shell:
 		"""
 		cd week_4/handout_source && pdflatex handout_4.tex && bibtex handout_4.aux && pdflatex handout_4.tex pdflatex handout_4.tex && cp handout_4.pdf ../
-    """
-    
+    	"""
+
 rule handout_3:
 	input:
 		'week_3/handout_source/handout_3.tex',
@@ -44,7 +44,7 @@ rule mini:
 		"""
 		python week_3/plots.py
 		ffmpeg -y -framerate 2 -i week_3/mini/%01d.png -pix_fmt yuv420p week_3/mini.mp4
-    """
+    	"""
 
 rule handout_2:
 	input:
