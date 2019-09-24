@@ -1,10 +1,20 @@
-HANDOUTS = ['week_1/handout_1.pdf', 'week_2/handout_2.pdf', 'week_3/handout_3.pdf']
+HANDOUTS = ['week_1/handout_1.pdf', 'week_2/handout_2.pdf', 'week_3/handout_3.pdf', 'week_4/handout_4.pdf']
 
 rule all:
 	input:
 		HANDOUTS,
     'week_3/mini.mp4'
 
+rule handout_4:
+	input:
+		'week_4/handout_source/handout_4.tex',
+	output:
+		'week_4/handout_4.pdf'
+	shell:
+		"""
+		cd week_4/handout_source && pdflatex handout_4.tex && bibtex handout_4.aux && pdflatex handout_4.tex pdflatex handout_4.tex && cp handout_4.pdf ../
+    """
+    
 rule handout_3:
 	input:
 		'week_3/handout_source/handout_3.tex',
