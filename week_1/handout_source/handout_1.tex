@@ -267,7 +267,7 @@ print("pi to 2 decimal places is {:.2f} exactly!".format(pi))
 More information about the Python \texttt{format} function can be found online (\url{https://www.programiz.com/python-programming/methods/string/format}).
 
 In addition to printing, it is also possible to read information from the user.
-This is achieved using the \texttt{input} function, which will read the information given by the user as a string and store is in the defined variable.
+This is achieved using the \texttt{input} function, which will read the information given by the user as a \emph{string} and is stored in the defined variable.
 The code below will test out the \texttt{input} and \texttt{print} functions,
 \begin{lstlisting}
 # Who am I?
@@ -276,6 +276,7 @@ my_name = input("What is your name?")
 
 print(my_name)
 \end{lstlisting}
+Since the information in \texttt{input()} is understood as a \emph{string}, we may need to convert it; using \texttt{int()}, \texttt{float()}, or \texttt{complex()}.
 
 \section{Logical operators}
 
