@@ -379,6 +379,30 @@ plt.show()
 	}
 \end{center}
 
+\section{Reading in data}
+
+Often in science, we have collected some data using an instrument (for example a spectroscopy measurement) and we would like to perform some analysis on the data.
+Python is great for this, however, we need to be able to read the data in.
+The NumPy library has a great function to read data from a file, into a NumPy array, called \texttt{nploadtxt()}.
+This function is very powerful and can take a variety of arguments (see the documentation at \url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html} for them all).
+If we have a file (called \texttt{myfile.txt}) that consists of two rows of number that are seperated by spaces, we can read it in as follows,
+\begin{lstlisting}
+# Reading in some text
+
+a = np.loadtxt('myfile.txt')
+\end{lstlisting}
+In the above example, the 0th item of \texttt{a} will be the first row of the file and the 1st item the second row.
+
+A common file type that is output by experimental instruments (and commonly read by Microsoft Excel) is the \texttt{.csv}, which stand for comma seperated values.
+This file usually contains columns of data where the values are seperated by commas (hence the name).
+To read in a file like this needs a few additional arguments,
+\begin{lstlisting}
+# Reading in a csv file
+
+a = np.loadtxt('myfile.csv', delimiter=',', unpack=True)
+\end{lstlisting}
+In the above example, there are two optional arguments passed to the function, \texttt{delimiter} defined the character that separates the values in the columns and \texttt{unpack} indicates that the data is stored as columns, rather than rows. 
+
 \section{Problems}
 
 \subsection{Interatomic distances}
