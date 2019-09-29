@@ -10,7 +10,7 @@ Material:
 
 - Basic introduction to the Python programming language
 - Pythonic base variable types
-- Basic arithmatic
+- Basic arithmetic
 - Input (using `input()`) and output (using `print()`)
 - Logical operators (`==`, `<`, `<=`, `>`, `>=`, `!=`)
 - Flow control (`if`, `elif`, `else`)
