@@ -32,6 +32,8 @@ Material:
 - NumPy arrays
 - How NumPy arrays may be used to improve code efficiency
 - Copying of lists and arrays
+- Plotting
+- Reading from a file
 
 Problem:
 
@@ -48,6 +50,7 @@ Material:
 
 - Functions
 - Modules; where functions are collected for reuse
+- Energy minimisation; local vs global minimisation
 
 Problem:
 
@@ -62,6 +65,7 @@ Material:
 - Efficiently understanding error messages
 - Explanation of StackOverflow
 - Introducing problem generalisation
+- Rotation matrices
 
 Problem:
 
@@ -80,15 +84,23 @@ Material:
 
 Problem:
 
-Given a complete set of tests, write code that will allow all the tests to pass
+Given a set of tests, write code that will pass
 
 ## Week 6: Exercise week 1
 
 W/C: 2019-11-04
 
+Material:
+
+- Exercise week: Data analysis using Python and Markov chain Monte Carlo
+
 ## Week 7: Exercise week 2
 
 W/C: 2019-11-11
+
+Material:
+
+- Exercise week: Statistical mechanics with Python
 
 ## Week 8: Ben week 1
 
@@ -102,6 +114,14 @@ W/C: 2019-11-25
 
 W/C: 2019-12-02
 
+Assessment:
+
+- Test driven development exercises
+
 ## Week 11: Assessment 2
 
 W/C: 2019-12-09
+
+Assessment:
+
+- Programming exercise
