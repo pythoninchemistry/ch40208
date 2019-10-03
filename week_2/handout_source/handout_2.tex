@@ -49,7 +49,7 @@
 \maketitle
 
 \section*{Aim}
-In this lecture, you will learn about logical operations, conditional statements, and for and while loops.
+In this lecture, you will learn about lists of objects, how to loop through them, working with arrays of numbers and how to present your findings.
 
 \section{Lists}
 The Python programming language natively includes the ability to group together a series of objects.
@@ -131,8 +131,8 @@ Additionally, the \texttt{while} loop is more prone to accidently running an \em
 If you were to forget to manually iterate the variable \texttt{i} (this is the line \texttt{i = i + 1}), then the \texttt{while} condition would always be \texttt{True} and therefore the code would run forever within this loop.
 For this reason it is suggested that, where possible, you use a \texttt{for} loop over a \texttt{while} loop.
 
-The \texttt{for} loop will iterate the variable (in the example above this variable is named \texttt{i}) through whatever sequence is given (this is \texttt{range(5)} above, which is equivalent to the \emph{list} \texttt{[0, 1, 2, 3, 4]}).
-The sequence does not necessarily have to be a \texttt{range} command, it may be any \texttt{list} or \texttt{numpy.ndarray} (we will discuss these types later in the course).
+The \texttt{for} loop will iterate the variable (in the example above, this variable is named \texttt{i}) through whatever sequence is given (this is \texttt{range(5)} above, which is equivalent to the \emph{list} \texttt{[0, 1, 2, 3, 4]}).
+The sequence does not necessarily have to be a \texttt{range} command, it may be any \texttt{list} or \texttt{numpy.ndarray} (we discuss this below).
 For example, in the code below we iterate though the first ten chemical element symbols,
 \begin{lstlisting}
 # Printing the periodic table
@@ -273,13 +273,13 @@ Throughout the remainder of this module, we will make use of NumPy array operati
 			\vspace{0.15\baselineskip}
 			\subsubsection*{Exercise}
 			\begin{itemize}
-				\item{Write some \emph{NumPy optimised} code that will calculate the average vibrational energy, $\bar{E_v}$, from the first N energy levels, $E_l$, of some diatomic molecule when,
+				\item{Write some pure Python code that will calculate the average vibrational energy, $\bar{E_v}$, from the first N energy levels, $E_l$, of some diatomic molecule when,
         \begin{equation}
-          \bar{E_v} = \frac{\sum_{i=0}^N{E_l p}}{\sum_{i=0}^N{p}}.
+          \bar{E_v} = \frac{\sum_{l=0}^N{E_l p_l}}{\sum_{l=0}^N{p_l}}.
         \end{equation}
         Where, $N = 6$, the energy at each level is: 0, 1, 2, 3, 4, 5, 6 and the levels have populations, $p$: 4, 3, 2, 1, 0, 0 respectively.
 
-        Consider how the pure Python version of this code would work.}
+        Then write a \emph{NumPy optimised} version of this code would work.}
 			\end{itemize}
 		\end{minipage}
 	}
@@ -333,8 +333,7 @@ This should result in a plot like that shown in Figure~\ref{fig:x2}.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.8\textwidth]{x_squared}
-\label{fig:x2}
-\caption{The result of the simple plotting script of $y = x ^ 2$.}
+\caption{\label{fig:x2} The result of the simple plotting script of $y = x ^ 2$.}
 \end{figure}
 %
 
@@ -349,9 +348,9 @@ import matplotlib.pyplot as plt
 
 temperature = np.linspace(283, 363, 10)
 rate_constants = np.array([3.2e-19, 3.4e-18, 3.2e-17, 2.6e-16, 1.8e-15, 1.2e-14, 7.3e-14, 3.9e-13, 1.9e-12, 8.9e-12])
-rate_constants_uncertainity = np.array([1.6e-20, 1.7e-19, 1.6e-18, 1.3e-17, 9.4e-17, 6.2e-16, 3.7e-15, 2.0e-14, 1.0e-13, 4.4e-13])
+rate_constants_uncertainty = np.array([1.6e-20, 1.7e-19, 1.6e-18, 1.3e-17, 9.4e-17, 6.2e-16, 3.7e-15, 2.0e-14, 1.0e-13, 4.4e-13])
 
-plt.errorbar(temperature, rate_constants*10**12, rate_constants_uncertainity*10**12, marker='o', linestyle='')
+plt.errorbar(temperature, rate_constants*10**12, rate_constants_uncertainty*10**12, marker='o', linestyle='')
 plt.ylabel(r'Rate constant/$\times10^{-12}$ s$^{-1}$')
 plt.xlabel(r'Temperature/K')
 plt.title(r'Effect of temperature of rate constant of HI decomposition')
@@ -362,8 +361,7 @@ plt.show()
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.8\textwidth]{real}
-\label{fig:real}
-\caption{The result of the simple plotting script of $y = x ^ 2$.}
+\caption{\label{fig:real} The result of the simple plotting script of $y = x ^ 2$.}
 \end{figure}
 %
 \vspace{\baselineskip}
@@ -401,7 +399,8 @@ To read in a file like this needs a few additional arguments,
 
 a = np.loadtxt('myfile.csv', delimiter=',', unpack=True)
 \end{lstlisting}
-In the above example, there are two optional arguments passed to the function, \texttt{delimiter} defined the character that separates the values in the columns and \texttt{unpack} indicates that the data is stored as columns, rather than rows. 
+In the above example, there are two optional arguments passed to the function, \texttt{delimiter} defined the character that separates the values in the columns, \texttt{unpack} indicates that the data is stored as columns, rather than rows.
+Often comments will be included in a data file for the user to look at to better understand the data, if these comments are preceded by a \texttt{\#} symbol the \texttt{np.loadtxt} function will ignore the entire line.
 
 \section{Problems}
 
@@ -414,12 +413,26 @@ The equation for $r$ between two atoms is,
 \end{equation}
 This expression is widely used in atomistic simulations.
 \textbf{Remember}: Plan the procedure for your code before you start to write any Python.
-Use a pair of \emph{nested} loops to calculate the distances between each pair of atoms in the following molecules:
-\begin{enumerate}
-	\item{Atom 1: ($0.1$, $0.5$, $3.2$); Atom 2: ($0.4$, $0.5$, $2.3$); Atom 3: ($-0.3$, $0.3$, $1.7$)}
-	\item{Atom 1: ($-0.1$, $0.5$, $1.5$); Atom 2: ($0.2$, $0.5$, $2.6$); Atom 3: ($0.5$, $0.5$, $3.7$)}
-\end{enumerate}
+Download the two \texttt{.txt} files from moodle (named \texttt{molecule1.txt} and \texttt{molecule2.txt}), read the coordinates in (which are sorted as three columns; $x$, $y$, and $z$) and using a pair of \emph{nested} loops to calculate the distances between each pair of atoms in the molecules.
+Using the Cosine rule,
+%
+\begin{equation}
+  a^2 = b^2 + c^2 -2bc\cos(A),
+\end{equation}
+%
+where the angles and distances are given in Figure~\ref{fig:cosine}, calculate the bonds angles and determine the molecular species.
+%\begin{enumerate}
+%	\item{Atom 1: ($0.1$, $0.5$, $3.2$); Atom 2: ($0.4$, $0.5$, $2.3$); Atom 3: ($-0.3$, $0.3$, $1.7$)}
+%	\item{Atom 1: ($-0.1$, $0.5$, $1.5$); Atom 2: ($0.2$, $0.5$, $2.6$); Atom 3: ($0.5$, $0.5$, $3.7$)}
+%\end{enumerate}
 Comment on the shape of each of the molecules.
+%
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.4\textwidth]{triangle}
+\caption{\label{fig:cosine} Guide for angles and distances when using the cosine rule.}
+\end{figure}
+%
 
 \subsection{Optimisation}
 
