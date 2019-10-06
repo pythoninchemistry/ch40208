@@ -6,3 +6,5 @@
 **/rsc-*.bib
 .snakemake
 **/.DS_Store
+**/*.swp
+**/~$*

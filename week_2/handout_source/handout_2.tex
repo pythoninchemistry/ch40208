@@ -379,53 +379,57 @@ plt.show()
 
 \section{Reading in data}
 
-Often in science, we have collected some data using an instrument (for example a spectroscopy measurement) and we would like to perform some analysis on the data.
-Python is great for this, however, we need to be able to read the data in.
-The NumPy library has a great function to read data from a file, into a NumPy array, called \texttt{nploadtxt()}.
-This function is very powerful and can take a variety of arguments (see the documentation at \url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html} for them all).
-If we have a file (called \texttt{myfile.txt}) that consists of two rows of number that are seperated by spaces, we can read it in as follows,
+A lot of computational work in science involves processing data that has already been generated, either from a previous calculation or from an experiment. Entering data by hand (e.g.\ using \texttt{input()} is tedious, time-consuming, and error-prone.) If the data is already stored in a file, we would like to read this file directly.
+
+The NumPy library includes the \texttt{loadtxt()} function, which will read a file containing columns of numbers and store the values as a NumPy array, making it easy to then do any subsequent analysis.
+The \texttt{loadtxt()} function can take a number of additional arguments to help with parsing files formatted in specific ways\footnote{The \texttt{loadtxt()} documentation can be found at \url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.loadtxt.html}.}.
+
+The simplest example is if we have a file (called \texttt{myfile.txt}) that contains two rows of numbers separated by spaces. This can be read in using
 \begin{lstlisting}
 # Reading in some text
 
 a = np.loadtxt('myfile.txt')
 \end{lstlisting}
-In the above example, the 0th item of \texttt{a} will be the first row of the file and the 1st item the second row.
+This creates a $(2\times N)$ two-dimensional NumPy array \texttt{a} (similar to a nested list). \texttt{a[0]} contains the first row of values from the file, and \texttt{a[1]} contains the second row of values.
 
-A common file type that is output by experimental instruments (and commonly read by Microsoft Excel) is the \texttt{.csv}, which stand for comma seperated values.
-This file usually contains columns of data where the values are seperated by commas (hence the name).
-To read in a file like this needs a few additional arguments,
+Experimental datasets are often stored as \emph{columns} of data, instead of rows. A common filetype that uses column-formatting is the \texttt{.csv} ``comma-separated values'' format\footnote{The \texttt{.csv} format is popular for storing experimental data because it can be read directly into Microsoft Excel.}. The ``standard`` format for a \texttt{.csv} file is for the columns of data to be separated by commas (hence the name), but any characters can be used to separate, or \emph{delimit}, the columns, including whitespace (tabs or spaces)..
+
+Reading a \text{.csv} using \texttt{loadtxt()} requires us to supply some additional arguments:
 \begin{lstlisting}
 # Reading in a csv file
 
 a = np.loadtxt('myfile.csv', delimiter=',', unpack=True)
 \end{lstlisting}
-In the above example, there are two optional arguments passed to the function, \texttt{delimiter} defined the character that separates the values in the columns, \texttt{unpack} indicates that the data is stored as columns, rather than rows.
-Often comments will be included in a data file for the user to look at to better understand the data, if these comments are preceded by a \texttt{\#} symbol the \texttt{np.loadtxt} function will ignore the entire line.
+In this example, we pass two extra optional arguments to the function, \texttt{delimiter} defines the character that separates the values in the columns, and \texttt{unpack} indicates that the data is stored in columns rather than rows.
+
+Data files often include comments, used to explain how and when the data were collected, and to explain what each column of numbers represents. Providing comment lines start with a \texttt{\#} symbol, then \texttt{loadtxt()} automatically will ignore the line.
 
 \section{Problems}
 
 \subsection{Interatomic distances}
 
-Write code that will take the \emph{x}, \emph{y}, and \emph{z} coordinates of three atoms, and calculate the distances $r$ between each pair, then print the distances along with the atoms that the distances are between.
-The equation for $r$ between two atoms is,
+Write code that can take the $x$, $y$, and $z$ coordinates of three atoms and calculate the distances $r_{ij}$ between each pair. For each pair of atoms, print the interatomic distance.
+
+The equation for the distance $r_{ij}$ between two atoms $i$ and $j$ is,
 \begin{equation}
-	r = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2 + (z_1 - z_2)^2}.
+	r_{ij} = \sqrt{(x_i - x_j)^2 + (y_i - y_j)^2 + (z_i - z_j)^2}.
 \end{equation}
-This expression is widely used in atomistic simulations.
-\textbf{Remember}: Plan the procedure for your code before you start to write any Python.
-Download the two \texttt{.txt} files from moodle (named \texttt{molecule1.txt} and \texttt{molecule2.txt}) \footnote{These can be found in the Molecules folder.}, read the coordinates in (which are sorted as three columns; $x$, $y$, and $z$) and using a pair of \emph{nested} loops to calculate the distances between each pair of atoms in the molecules.
-Using the Cosine rule,
+
+\textbf{Remember}: Plan the structure of your program  before you start to write any code.
+
+Download the \texttt{molecule1.txt} and \texttt{molecule2.txt} files from Moodle\footnote{Can be found in the Molecules folder.}, and copy these into your working directory (e.g.\ \texttt{H:/CH40208/week2}. Each file contains three columns, labelled $x$, $y$, and $z$, which you can read the atomic coordinates from. To calculate the distances between each pair of atoms you will need to use a pair of \emph{nested} loops. What do these distances tell you about the shapes of these molecules?
+
+\textbf{Extension}: Using the Cosine rule,
 %
 \begin{equation}
   a^2 = b^2 + c^2 -2bc\cos(A),
 \end{equation}
 %
-where the angles and distances are given in Figure~\ref{fig:cosine}, calculate the bonds angles and determine the molecular species.
+where the angles and distances are given in Figure~\ref{fig:cosine}, calculate the molecular angles $\theta_{ijk}$, and identify these molecular species.
 %\begin{enumerate}
 %	\item{Atom 1: ($0.1$, $0.5$, $3.2$); Atom 2: ($0.4$, $0.5$, $2.3$); Atom 3: ($-0.3$, $0.3$, $1.7$)}
 %	\item{Atom 1: ($-0.1$, $0.5$, $1.5$); Atom 2: ($0.2$, $0.5$, $2.6$); Atom 3: ($0.5$, $0.5$, $3.7$)}
 %\end{enumerate}
-Comment on the shape of each of the molecules.
 %
 \begin{figure}[t]
 \centering
@@ -435,10 +439,7 @@ Comment on the shape of each of the molecules.
 %
 
 \subsection{Optimisation}
-
-Next, optimise this code using NumPy arrays.
-This should involve considering again your algorithm, as it might require modification to work in an optimised fashion.
-Compare the results of your new optimised code to those detemined in the previous step (they should be the same).
+This problem can be solved using simpler (and faster) code using NumPy arrays. Rewrite your code from the problam to use arrays and compare your results to your original version (you should get the same results). You might need to reconsider your algorithm to decide how to best use arrays to solve this problem.
 
 \bibliographystyle{rsc}
 \bibliography{handout_2}
