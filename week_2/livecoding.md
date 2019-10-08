@@ -44,11 +44,43 @@ print(shopping[1:])
 ```
 
 ```
-details = ['Drew', 182.7, 75]
+me = ['Drew', 182.7, 72]
 ```
 
 ```
-print(details)
+print(me)
+```
+
+```
+me.append('Oxford')
+```
+
+```
+print(me)
+```
+
+```
+del me[2]
+```
+
+```
+print(me)
+```
+
+```
+ben1 = ['Ben', 'Bath']
+```
+
+```
+ben2 = [178.4, 75]
+```
+
+```
+ben = ben1 + ben2
+```
+
+```
+print(ben)
 ```
 
 ### Demo 2 - Loops
