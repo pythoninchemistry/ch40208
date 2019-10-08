@@ -161,7 +161,7 @@ print(a_new_list)
 
 \section{Loops}
 
-Often we want to perform the same computational operation multiple times. One way to do this is to use \textbf{loops}. Python provides two types of loop: 
+Often we want to perform the same computational operation multiple times. One way to do this is to use \textbf{loops}. Python provides two types of loop:
 \begin{itemize}
 	\item{\texttt{for} loops iterate through a given sequence.}
 	\item{\texttt{while} loops continue to repeat, as long as a specific condition is \texttt{True}.}
@@ -250,7 +250,7 @@ What is actually happening here? \texttt{enumerate(elements)} generates a sequen
 \subsection{Escaping loops}
 Sometimes it can be useful to jump to the next value in a loop, or to quit the loop completely, when some condition is met. Both cases can be programmed by combingin the \texttt{break} and \texttt{continue} commands with \texttt{if} statements (see week 1).
 
-The \texttt{break} command exits the current \emph{inner-most} loop, even if there are values left to iterate over specified in the \texttt{for} statement: 
+The \texttt{break} command exits the current \emph{inner-most} loop, even if there are values left to iterate over specified in the \texttt{for} statement:
 \begin{lstlisting}
 # Finding the zero in a list
 
@@ -273,6 +273,21 @@ for i in range(len(numbers)):
 	else:
 		numbers[i] = numbers[i] * -1
 \end{lstlisting}
+
+\section{Loops making lists}
+
+It is of course possible to use a loops to make a list, indeed there are two possible ways to do this,
+\begin{lstlisting}
+# Making lists each way
+
+squares = [a**2 for a in range(20)]
+print(squares)
+
+squares = []
+for n in range(20):
+    squares.append(n**2)
+\end{lstlisting}
+Both methods will produce, however, under certain circumstances it might be easier to use one or the other. 
 
 \section{NumPy Arrays}
 
