@@ -232,7 +232,7 @@ If we want to count the index of these elements as we loop over them, without do
 for i, symbol in enumerate(elements):
 	print("The index of the list for {} is {}.".format(symbol, i)).
 \end{lstlisting}
-What is actually happening here? \texttt{enumerate(elements)} generates a sequence of pairs of values: the first pair is \texttt{(0, "H")}, the second is \texttt{(1, "He")}, and so on, until we reach \texttt{(9, "Ne")}. And now the \texttt{for} statement has two variables that are assigned each loop: \texttt{i} and \texttt{symbol}
+What is actually happening here? \texttt{enumerate(elements)} generates a sequence of pairs of values: the first pair is \texttt{(0, "H")}, the second is \texttt{(1, "He")}, and so on, until we reach \texttt{(9, "Ne")}. And now the \texttt{for} statement has two variables that are assigned each loop: \texttt{i} and \texttt{symbol}.
 
 \vspace{\baselineskip}
 \begin{center}
@@ -274,20 +274,30 @@ for i in range(len(numbers)):
 		numbers[i] = numbers[i] * -1
 \end{lstlisting}
 
-\section{Loops making lists}
-
-It is of course possible to use a loops to make a list, indeed there are two possible ways to do this,
+\subsection{List comprehensions}
+A common programming pattern when working with lists is wanting to repeat the same operation on every element in a list, and then store the output in a second list; for example, we might want to calculate the squares of a series of numbers. Doing this with a \texttt{for} loop would require creating a new empty list to store the results, and then appending to this for each iteration of the loop:
 \begin{lstlisting}
-# Making lists each way
+# Calculate squares of a sequence of numbers
 
-squares = [a**2 for a in range(20)]
-print(squares)
-
+numbers = list(range(1, 20)) # Create a list of integers 1 to 20.
 squares = []
-for n in range(20):
+for n in numbers:
     squares.append(n**2)
+print(squares)
 \end{lstlisting}
-Both methods will produce, however, under certain circumstances it might be easier to use one or the other. 
+
+A \textbf{list comprehension} allows us to directly create a new list by iterating over every element in our original list, in a single line of code. Calculating a sequence of squares now looks like
+\begin{lstlisting}
+# Calculate squares of a sequence of numbers
+
+numbers = list(range(1, 20)) # Create a list of integers 1 to 20.
+squares = [n**2 for n in numbers]
+print(squares)
+\end{lstlisting}
+In the expression \texttt{[n**2 for n in numbers]} 
+the square brackets \texttt{[$\ldots$]} 
+indicate that the result is a \texttt{list}, 
+\texttt{n**2} is the expression evaluated for each element in the original list, and \texttt{for n in numbers} iterates over each element in \texttt{numbers}, in the same was as in a \texttt{for} loop.
 
 \section{NumPy Arrays}
 
