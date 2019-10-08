@@ -30,8 +30,10 @@
   tabsize=3
 }
 \DeclareSIUnit\Fahrenheit{\degree F}
+\setlength{\parindent}{0pt}
+\parskip 1.5ex
 
-\title{Lecture 2: Loops, lists, arrays, optimisation, and plotting}
+\title{Lecture 2: Lists, loops, arrays, and plotting}
 \author[1]{Dr Benjamin J. Morgan}
 \author[1,2]{Dr Andrew R. McCluskey}
 \affil[1]{Department of Chemistry, University of Bath, email: b.j.morgan@bath.ac.uk}
@@ -49,43 +51,69 @@
 \maketitle
 
 \section*{Aim}
-In this lecture, you will learn about lists of objects, how to loop through them, working with arrays of numbers and how to present your findings.
+This week introduces \textbf{lists}, which provide one way to store and manipulate collections of values or variables; \textbf{loops}, which allow you to perform repeated actions; \textbf{numpy arrays}, which provide a compact way to work efficiently with lists of numbers; and \textbf{matplotlib}, which can be used for plotting graphs.
 
 \section{Lists}
-The Python programming language natively includes the ability to group together a series of objects.
-These are \texttt{lists} and are one of the most powerful Python objects.
-Lists are an ordered set of objects, from which it is possible to pick all, one, or many values.
-A list is defined as follows,
+A \textbf{list} is an ordered collection of objects, and is created using square brackets \texttt{[ $\ldots$ ]}, with objects separated by commas \texttt{,}.
 \begin{lstlisting}
 # Making a list
 
 elements = ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron", "Carbon", "Nitrogen", "Oxygen"]
 \end{lstlisting}
-Having defined the list, it is then possible to select individual items of the list by using the following syntax,
+A list can contain just one, or even zero objects, with a length-zero list called an ``empty'' list.
+\begin{lstlisting}
+# A list containing only one element
+
+one_element = ["Hydrogen"]
+\end{lstlisting}
+\begin{lstlisting}
+# An empty list
+
+zero_elements = []
+\end{lstlisting}
+Individual elements of a list can be referenced using the list's variable name followed by square brackets containing the element's \textbf{index}, e.g.\ \texttt{elements[2]} to return \texttt{"Lithium"}:
 \begin{lstlisting}
 # Printing some items
 
-print(elements[0], elements[4], elements[-1])
+print(elements[0])
+print(elements[4])
+print(elements[-1])
 \end{lstlisting}
-Note, that Python starts counting from the number $0$, and using the minus sign we can ask Python to count from the end.
-This means that the above code should print, \texttt{"Hydrogen", "Boron", "Oxygen"}.
-This counting from $0$ means that in the above list, the string \texttt{"Hydrogen"} would be referred to as the zeroth object in the list, while \texttt{"Helium"} would be the first.
-
-In addition to making use of single objects from within a list, it is also possible to create sublists, for example,
+Python indexing starts from \texttt{0} for the first element of the list, and finishes at \texttt{n-1} for the final element in a list of length $n$. You can also use \textbf{negative indexing} to count backwards from the end, such as \texttt{elements[-1]} in the previous example.
+\begin{figure}[tb]
+  \centering
+  \resizebox{12cm}{!}{\includegraphics*{list_indexing.pdf}} %
+    \caption{\label{fig:list_indexing}Schematic of the \texttt{elements} list, showing normal and negative indexes for each element.}
+\end{figure}
+Elements in lists can be treated as normal variables, including assigning them new values using \texttt{=}
 \begin{lstlisting}
-# Just the first 4 elements
+# Assigning an element of a list to a new value
 
-print(elements[0:4])
+elements[3] = "Sausage"
+print(elements)
+elements[3] = "Beryllium"
+print(elements)
 \end{lstlisting}
-Note that above, the numbers on either side of the colon the list indices.
-However, rather strangely, the sublist created is \textbf{inclusive} of the first number and \textbf{exclusive} of the second.
-Additionally, it is possible to select non-consecutive objects from a list by placing commas between the indices,
+
+As well as referencing individual list elements, you can reference a subset of elements using \textbf{list slicing}. A slice is obtained by providing two index values in the form \texttt{start:end}, e.g.
+\begin{lstlisting}
+# Select three elements
+
+print(elements[1:4])
+\end{lstlisting}
+In this example we get a sublist containing three items. This behaviour might seem odd at first, because we asked for elements ``1 to 4'', but is clearer to see when thinking about how lists are normally indexed in Python (see Figure~\ref{fig:list_slicing}). Another way to think about this is that there are 3 elements between indices 1 and 4 ($4-1=3$).
+\begin{figure}[tb]
+  \centering
+  \resizebox{12cm}{!}{\includegraphics*{list_slicing.pdf}} %
+    \caption{\label{fig:list_slicing}List slicing.}
+\end{figure}
+You can select non-consecutive objects from a list by explicitly providing all indices, separated by commas,
 \begin{lstlisting}
 # Just the gases
 
 print(elements[0, 1, 6, 7])
 \end{lstlisting}
-It is possible add object to the end of a list using the \texttt{append} operation,
+Objects can be added to the end of a list using the \texttt{append} operation,
 \begin{lstlisting}
 # Add more to the list
 
@@ -93,7 +121,7 @@ elements.append("Fluorine")
 elements.append("Neon")
 print(elements)
 \end{lstlisting}
-Additionally, items from a list can be deleted,
+and can be deleted using \texttt{del},
 \begin{lstlisting}
 # Deleting from a list
 
@@ -108,8 +136,9 @@ list2 = [3, 5, 2]
 
 print(list1 + list2)
 \end{lstlisting}
-More operations that may be performed on operations can be found online \url{https://docs.python.org/3/tutorial/datastructures.html}.
-The final point about \texttt{lists} is that the data that they hold does not all need to be the same type.
+More operations that may be performed on lists can be found at \url{https://docs.python.org/3/tutorial/datastructures.html}.
+
+Data stored in lists do not all need to have the same type.
 For example, the list below contains a \texttt{float}, two \texttt{str}, a \texttt{complex} number and an \texttt{int},
 \begin{lstlisting}
 # List of many types
@@ -132,32 +161,62 @@ print(a_new_list)
 
 \section{Loops}
 
-One of the best uses of programming (and computers) is to perform repetitive task over and over.
-For this we use \emph{loops}, within Python there are two common types of loop:
+Often we want to perform the same computational operation multiple times. One way to do this is to use \textbf{loops}. Python provides two types of loop: 
 \begin{itemize}
-	\item{\texttt{for} loops iterate over a given sequence.}
-	\item{\texttt{while} loops repeat as long as a certain logical operation is \texttt{True}.}
+	\item{\texttt{for} loops iterate through a given sequence.}
+	\item{\texttt{while} loops continue to repeat, as long as a specific condition is \texttt{True}.}
 \end{itemize}
-An example of each of a \texttt{for} and \texttt{while} loop is shown below, both perform the same function,
+The following examples show a \texttt{for} loop and a \texttt{while} loop, both being used to sum the numbers 1 to 5:
 \begin{lstlisting}
-# For loop
+# using a "for" loop
 
-for i in range(5):
-	print(i)
-
-i = 0
-while i < 5:
-	print(i)
-	i = i + 1
+total = 0
+for n in [1, 2, 3, 4, 5]:
+    print(n)
+    total = total + n
+print('using a "for" loop: {}'.format(total))
 \end{lstlisting}
-Both of these code blocks will print the numbers $0$ to $4$, however the \texttt{for} loop is clearly more concise.
-Additionally, the \texttt{while} loop is more prone to accidently running an \emph{infinite}.
-If you were to forget to manually iterate the variable \texttt{i} (this is the line \texttt{i = i + 1}), then the \texttt{while} condition would always be \texttt{True} and therefore the code would run forever within this loop.
-For this reason it is suggested that, where possible, you use a \texttt{for} loop over a \texttt{while} loop.
+\begin{lstlisting}
+# using a "while" loop
 
-The \texttt{for} loop will iterate the variable (in the example above, this variable is named \texttt{i}) through whatever sequence is given (this is \texttt{range(5)} above, which is equivalent to the \emph{list} \texttt{[0, 1, 2, 3, 4]}).
-The sequence does not necessarily have to be a \texttt{range} command, it may be any \texttt{list} or \texttt{numpy.ndarray} (we discuss this below).
-For example, in the code below we iterate though the first ten chemical element symbols,
+total = 0
+n = 1
+while n <= 5:
+    print(n)
+    total = total + n
+    n = n + 1
+print('using a "while" loop: {}'.format(total))
+\end{lstlisting}
+In the first example, using \texttt{for}, we explicitly loop over every element in a list \texttt{[1, 2, 3, 4, 5]}. For each iteration the variable \texttt{n} is set to \texttt{0}, then \texttt{1}, then \texttt{2}, and so on, until we reach the end of the list. The code that we want to repeat is indented below the \texttt{for} statement. In this case we print the current value of \texttt{n} and add it to our total. After the final iteration of the loop, we continue to the next line \emph{outside} the loop, indicated by resetting the indentation at the start of the lines, and print our total.
+
+In the second example, we have used a \texttt{while} statement to specify the condition for continuing to repeat the loop. In this case, the condition is that \texttt{n} is less or equal to 5. Inside the loop (again indicated by the indented lines) we print the current value of \texttt{n}, and add it to our total, but also increment \texttt{n} by one. If this line was left out, \texttt{n} would never change from the initial value of 1, and the loop would continue an infinite number of times.
+
+In the first example, we can replace the list \texttt{[0, 1, 2, 3, 4, 5]} with a \texttt{range}
+\begin{lstlisting}
+# using a "for" loop and "range"
+
+total = 0
+for n in range(1,5):
+    print(n)
+    total = total + n
+print('using a "for" loop: {}'.format(total))
+\end{lstlisting}
+The \texttt{range} function generates a sequence of integers that we can iterate over, similar to iterating over elements of a list.
+
+In the second example, a more compact way to write \texttt{n = n + 1} (add one to the value stored in \texttt{n} and store the new value in \texttt{n}) is to instead write \texttt{n += 1} (increment the value stored in \texttt{n} by 1).
+\begin{lstlisting}
+# using a "while" loop and "+=" to increment a variable
+
+total = 0
+n = 1
+while n <= 5:
+    print(n)
+    total = total + n
+    n += 1
+print('using a "while" loop: {}'.format(total))
+\end{lstlisting}
+
+In the code below we iterate though the first ten chemical element symbols and print each one.
 \begin{lstlisting}
 # Printing the periodic table
 
@@ -165,11 +224,16 @@ elements = ["H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne"]
 
 for symbol in elements:
 	print(symbol)
+\end{lstlisting}
+If we want to count the index of these elements as we loop over them, without doing it manually (e.g.\ using \texttt{i += 1}) we can use the \texttt{enumerate} function:
+\begin{lstlisting}
+# Using enumerate in a for loop
 
 for i, symbol in enumerate(elements):
 	print("The index of the list for {} is {}.".format(symbol, i)).
 \end{lstlisting}
-It is possible to use the \texttt{enumerate} command to count through the list during the loop, as shown in the second example above.
+What is actually happening here? \texttt{enumerate(elements)} generates a sequence of pairs of values: the first pair is \texttt{(0, "H")}, the second is \texttt{(1, "He")}, and so on, until we reach \texttt{(9, "Ne")}. And now the \texttt{for} statement has two variables that are assigned each loop: \texttt{i} and \texttt{symbol}
+
 \vspace{\baselineskip}
 \begin{center}
 	\noindent\fbox{%
@@ -177,18 +241,16 @@ It is possible to use the \texttt{enumerate} command to count through the list d
 			\vspace{0.15\baselineskip}
 			\subsubsection*{Exercise}
 			\begin{itemize}
-				\item{Recall from first and second year, that Python counts indices in a list from 0. How could the above code be adapted such that the correct atomic number will be printed?}
+				\item{As you saw in list indexing, Python indices count from 0. How might you adapt the previous example so that the correct atomic number for each element is printed?}
 			\end{itemize}
 		\end{minipage}
 	}
 \end{center}
 
 \subsection{Escaping loops}
+Sometimes it can be useful to jump to the next value in a loop, or to quit the loop completely, when some condition is met. Both cases can be programmed by combingin the \texttt{break} and \texttt{continue} commands with \texttt{if} statements (see week 1).
 
-Sometimes it is computationally efficient to leave a \texttt{for} loop, to skip a particular value, under a certain condition.
-For this, the commands \texttt{break} and \texttt{continue} are available.
-The \texttt{break} command will exit the \emph{inner-most} loop that is being carried out, while the \texttt{continue} command will skip the current value and jump immediately to the next.
-Examples of how these may be used are shown below, where the \texttt{len} function will return the \emph{length} of the list,
+The \texttt{break} command exits the current \emph{inner-most} loop, even if there are values left to iterate over specified in the \texttt{for} statement: 
 \begin{lstlisting}
 # Finding the zero in a list
 
@@ -198,8 +260,11 @@ for i in range(len(numbers)):
 		break
 
 print("The zero is at index {}.".format(i))
+\end{lstlisting}
 
-# Making all the negative values positive
+The \texttt{continue} command skips any code remaining \emph{inside} the loop and jumps to the next iteration:
+\begin{lstlisting}
+# Making all the negative values in a list positive
 
 numbers = [-2, 4, 1, -5, 2, 6, -3, -4]
 for i in range(len(numbers)):
@@ -208,24 +273,28 @@ for i in range(len(numbers)):
 	else:
 		numbers[i] = numbers[i] * -1
 \end{lstlisting}
-Note that the above examples are toy problems and there are more efficient way to carry-out these specific operations in Python.
 
 \section{NumPy Arrays}
 
-NumPy (or \texttt{numpy} or more commonly \texttt{np}) is a library that Python can use that is designed and optimised for doing numerical operations.\cite{numpy}
-Over this course you will be introduced to many other Python libraries, in order to use any of these you must \texttt{import} them,
+The NumPy library is widely used in scientific Python programming becasue it allows efficient operations on lists of numerical values.\cite{numpy}
+To use a library such as \texttt{numpy} you need to first \texttt{import} it
+\begin{lstlisting}
+# Import NumPy
+
+import numpy
+\end{lstlisting}
+Because we are going to continually refer to the \texttt{numpy} library, we often import it as a shorter variable name to save on typing and make out code easier to read
 \begin{lstlisting}
 # Import NumPy
 
 import numpy as np
 \end{lstlisting}
-This asks the Python interperator to go and find the NumPy library, then in order to reduce the amount of typing (programmers are lazy), we give the library the alias \texttt{np}.
 
-One of the most powerful features of the NumPy library is the \texttt{array}, these are similar to lists but with some important differences.
-Unlike a list, all of the items in a NumPy array must be of the same type; namely a NumPy data type (a list of these can be found online: \url{https://docs.scipy.org/doc/numpy/user/basics.types.html}) which are numerical data types such as \texttt{int}, \texttt{float}, and \texttt{complex}.
+The core data type of the NumPy library is the \texttt{array}. A  one-dimensional array is similar to a list, and higher dimension arrays are similar to nested lists (lists inside lists) but there are important differences.
+While a list can contain elements of different types, the items in a NumPy array must all have the same type, for example \texttt{int} or \texttt{float}.
 
-The power of a NumPy array comes in the ability to perform mathematical operations incredibly efficiently.
-For example,\footnote{When running on a MacBook Air 2018 with a 1.6 GHz Intel Core i5.} the summation of zero to ten million is $\sim 25$ times faster when using the NumPy array operation shown below when compared with a simple implementation in pure Python,
+The power of a NumPy array comes in the ability to perform efficient \emph{vectorised} mathematical operations, where the entire array is operated on at once.
+For example,\footnote{When running on a MacBook Air 2018 with a 1.6 GHz Intel Core i5.} the summation of zero to ten million is $\sim 25$ times faster when using the NumPy array operation shown below when compared with a simple Python loop.
 \begin{lstlisting}
 # The pure Python way
 
@@ -234,7 +303,8 @@ total = 0
 for i in numbers:
     total = total + i
 print(total)
-
+\end{lstlisting}
+\begin{lstlisting}
 # The NumPy operation
 
 import numpy as np
@@ -243,7 +313,7 @@ numbers = np.arange(10000000)
 total = np.sum(numbers)
 print(total)
 \end{lstlisting}
-Note that in the above example, the \texttt{range} function creates a list of numbers from $0$ to $10000000$, while the \texttt{np.arange} function creates a NumPy array containing the same values.
+The \texttt{np.arange()} function creates a NumPy array containing the the values \texttt{0} to \texttt{10000000}
 
 NumPy arrays also have a \emph{huge} amount of additional functionality, such as the ability to easily access statistically relevant values, powerful sub-array definition (in particular for multi-dimensional arrays), data reorganisation.
 Some of these tools are shown below, and no doubt you will become familiar with many others throughout this course,
@@ -255,8 +325,10 @@ import numpy as np
 x1 = np.array([2, 5, 3, 7, 2, 7])
 
 print(x1.mean(), x1.std())
+\end{lstlisting}
 
-## Now get a two-dimensional array of random ints from 0 to 10
+\begin{lstlisting}
+## NGet a two-dimensional array of random ints from 0 to 10
 x2 = np.random.randint(10, size=(3, 2))
 
 print(x2.shape)
@@ -264,8 +336,10 @@ print(x2)
 print(x2[0])
 print(x2[:, 1])
 print(x2[:, 0::-1])
+\end{lstlisting}
 
-## Lets reshape a one-dimensional array
+\begin{lstlisting}
+## Reshape a one-dimensional array
 x3 = np.arange(10)
 
 print(x3)
@@ -289,7 +363,7 @@ print(a, b, c, d)
 It was shown above, that by replacing a Pythonic loop with a NumPy array operation it was possible to get a massive speed up in computational efficiency.
 This is a powerful tool of the NumPy library, that \textbf{must} be harnessed, where possible.
 The general advice is that when a loop is present in code, you should consider if it would be possible to replace this with an appropriate NumPy operation.
-Throughout the remainder of this module, we will make use of NumPy array operations over looping through lists whereever possible.
+Throughout the remainder of this module, we will make use of NumPy array operations over looping through lists when possible.
 \vspace{\baselineskip}
 \begin{center}
 	\noindent\fbox{%
