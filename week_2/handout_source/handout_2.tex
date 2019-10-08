@@ -85,7 +85,31 @@ Additionally, it is possible to select non-consecutive objects from a list by pl
 
 print(elements[0, 1, 6, 7])
 \end{lstlisting}
-The final point about \texttt{lists} is that the data that they hold does not all need to be the same time.
+It is possible add object to the end of a list using the \texttt{append} operation,
+\begin{lstlisting}
+# Add more to the list
+
+elements.append("Fluorine")
+elements.append("Neon")
+print(elements)
+\end{lstlisting}
+Additionally, items from a list can be deleted,
+\begin{lstlisting}
+# Deleting from a list
+
+del elements[9]
+print(elements)
+\end{lstlisting}
+If two lists need to be combined, this can be achieved by \emph{concatenation},
+\begin{lstlisting}
+# Concatenating lists
+list1 = [1, 4, 6, 2]
+list2 = [3, 5, 2]
+
+print(list1 + list2)
+\end{lstlisting}
+More operations that may be performed on operations can be found online \url{https://docs.python.org/3/tutorial/datastructures.html}.
+The final point about \texttt{lists} is that the data that they hold does not all need to be the same type.
 For example, the list below contains a \texttt{float}, two \texttt{str}, a \texttt{complex} number and an \texttt{int},
 \begin{lstlisting}
 # List of many types
