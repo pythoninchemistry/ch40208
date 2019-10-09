@@ -121,6 +121,27 @@ for i in range(0, 5):
 print(sum_not_four)
 ```
 
+List comprehensions
+
+If we want to perform the same operation on every element in a list and store the result in a new list
+
+Two ways
+
+```
+numbers = list(range(1, 20))
+squares = []
+for n in numbers:
+    squares.append(n ** 2)
+print(squares)
+```
+
+```
+numbers = list(range(1, 20))
+squares = [n ** 2 for n in numbers]
+print(squares)
+```
+
+
 ### Demo 3 - Importing libraries
 
 ```
