@@ -83,7 +83,7 @@ Python indexing starts from \texttt{0} for the first element of the list, and fi
 \begin{figure}[tb]
   \centering
   \resizebox{12cm}{!}{\includegraphics*{list_indexing.pdf}} %
-    \caption{\label{fig:list_indexing}Schematic of the \texttt{elements} list, showing normal and negative indexes for each element.}
+    \caption{\label{fig:list_indexing}Schematic of the \texttt{elements} list, showing normal and negative indices for each element.}
 \end{figure}
 Elements in lists can be treated as normal variables, including assigning them new values using \texttt{=}
 \begin{lstlisting}
@@ -174,7 +174,7 @@ total = 0
 for n in [1, 2, 3, 4, 5]:
     print(n)
     total = total + n
-print('using a "for" loop: {}'.format(total))
+print('using a for loop: {}'.format(total))
 \end{lstlisting}
 \begin{lstlisting}
 # using a "while" loop
@@ -185,7 +185,7 @@ while n <= 5:
     print(n)
     total = total + n
     n = n + 1
-print('using a "while" loop: {}'.format(total))
+print('using a while loop: {}'.format(total))
 \end{lstlisting}
 In the first example, using \texttt{for}, we explicitly loop over every element in a list \texttt{[1, 2, 3, 4, 5]}. For each iteration the variable \texttt{n} is set to \texttt{0}, then \texttt{1}, then \texttt{2}, and so on, until we reach the end of the list. The code that we want to repeat is indented below the \texttt{for} statement. In this case we print the current value of \texttt{n} and add it to our total. After the final iteration of the loop, we continue to the next line \emph{outside} the loop, indicated by resetting the indentation at the start of the lines, and print our total.
 
@@ -248,7 +248,7 @@ What is actually happening here? \texttt{enumerate(elements)} generates a sequen
 \end{center}
 
 \subsection{Escaping loops}
-Sometimes it can be useful to jump to the next value in a loop, or to quit the loop completely, when some condition is met. Both cases can be programmed by combingin the \texttt{break} and \texttt{continue} commands with \texttt{if} statements (see week 1).
+Sometimes it can be useful to jump to the next value in a loop, or to quit the loop completely, when some condition is met. Both cases can be programmed by combining the \texttt{break} or \texttt{continue} commands with \texttt{if} statements (see week 1).
 
 The \texttt{break} command exits the current \emph{inner-most} loop, even if there are values left to iterate over specified in the \texttt{for} statement:
 \begin{lstlisting}
@@ -287,7 +287,7 @@ squares = []
 for n in range(20):
     squares.append(n**2)
 \end{lstlisting}
-Both methods will produce, however, under certain circumstances it might be easier to use one or the other. 
+Both methods will produce, however, under certain circumstances it might be easier to use one or the other.
 
 \section{NumPy Arrays}
 
@@ -298,7 +298,7 @@ To use a library such as \texttt{numpy} you need to first \texttt{import} it
 
 import numpy
 \end{lstlisting}
-Because we are going to continually refer to the \texttt{numpy} library, we often import it as a shorter variable name to save on typing and make out code easier to read
+Because we are going to continually refer to the \texttt{numpy} library, we often import it as a shorter variable name to save on typing and make our code easier to read
 \begin{lstlisting}
 # Import NumPy
 
@@ -376,7 +376,7 @@ print(a, b, c, d)
 \subsection{Optimisation with NumPy}
 
 It was shown above, that by replacing a Pythonic loop with a NumPy array operation it was possible to get a massive speed up in computational efficiency.
-This is a powerful tool of the NumPy library, that \textbf{must} be harnessed, where possible.
+This is a powerful tool of the NumPy library that \textbf{must} be harnessed, where possible.
 The general advice is that when a loop is present in code, you should consider if it would be possible to replace this with an appropriate NumPy operation.
 Throughout the remainder of this module, we will make use of NumPy array operations over looping through lists when possible.
 \vspace{\baselineskip}
@@ -392,7 +392,7 @@ Throughout the remainder of this module, we will make use of NumPy array operati
         \end{equation}
         Where, $N = 6$, the energy at each level is: 0, 1, 2, 3, 4, 5, 6 and the levels have populations, $p$: 4, 3, 2, 1, 0, 0 respectively.
 
-        Then write a \emph{NumPy optimised} version of this code would work.}
+        Then write a \emph{NumPy optimised} version of this code produces the same values.}
 			\end{itemize}
 		\end{minipage}
 	}
@@ -400,7 +400,7 @@ Throughout the remainder of this module, we will make use of NumPy array operati
 
 \section{Copying lists/arrays}
 
-An important fact to be aware of for both lists and NumPy arrays is that assigning a list to an new variable does \textbf{not} create a new list.
+An important fact to be aware of for both lists and NumPy arrays is that assigning a list to a new variable does \textbf{not} create a new list.
 Rather, this will create an alias to the same object in memory.
 In order to create a new list (or array), it is best to \texttt{copy} the original object to the new variable, as shown below,
 \begin{lstlisting}
@@ -451,7 +451,7 @@ This should result in a plot like that shown in Figure~\ref{fig:x2}.
 %
 
 The example above is rather simplistic, but the \texttt{matplotlib} library can be used to make very complex plots.
-Furthermore, the example below would not to well for experimental data, considering that the axes have no labels, the data is described with a line instead of points and there is no plot title.
+Furthermore, the example above would not perform well for experimental data, considering that the axes have no labels, the data is described with a line instead of points and there is no plot title.
 However, the code below shows some realistic experimental data plotted using matplotlib in a fashion that is more comprehensible.
 The plot produced can be found in Figure~\ref{fig:real},
 \begin{lstlisting}
@@ -505,7 +505,7 @@ a = np.loadtxt('myfile.txt')
 \end{lstlisting}
 This creates a $(2\times N)$ two-dimensional NumPy array \texttt{a} (similar to a nested list). \texttt{a[0]} contains the first row of values from the file, and \texttt{a[1]} contains the second row of values.
 
-Experimental datasets are often stored as \emph{columns} of data, instead of rows. A common filetype that uses column-formatting is the \texttt{.csv} ``comma-separated values'' format\footnote{The \texttt{.csv} format is popular for storing experimental data because it can be read directly into Microsoft Excel.}. The ``standard`` format for a \texttt{.csv} file is for the columns of data to be separated by commas (hence the name), but any characters can be used to separate, or \emph{delimit}, the columns, including whitespace (tabs or spaces)..
+Experimental datasets are often stored as \emph{columns} of data, instead of rows. A common filetype that uses column-formatting is the \texttt{.csv} ``comma-separated values'' format\footnote{The \texttt{.csv} format is popular for storing experimental data because it can be read directly into Microsoft Excel.}. The ``standard`` format for a \texttt{.csv} file is for the columns of data to be separated by commas (hence the name), but any characters can be used to separate, or \emph{delimit}, the columns, including whitespace (tabs or spaces).
 
 Reading a \text{.csv} using \texttt{loadtxt()} requires us to supply some additional arguments:
 \begin{lstlisting}
@@ -552,7 +552,7 @@ where the angles and distances are given in Figure~\ref{fig:cosine}, calculate t
 %
 
 \subsection{Optimisation}
-This problem can be solved using simpler (and faster) code using NumPy arrays. Rewrite your code from the problam to use arrays and compare your results to your original version (you should get the same results). You might need to reconsider your algorithm to decide how to best use arrays to solve this problem.
+This problem can be solved using simpler (and faster) code using NumPy arrays. Rewrite your code from the problem to use arrays and compare your results to your original version (you should get the same results). You might need to reconsider your algorithm to decide how to best use arrays to solve this problem.
 
 \bibliographystyle{rsc}
 \bibliography{handout_2}
