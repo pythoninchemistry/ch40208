@@ -124,6 +124,8 @@ print(my_function(1, 2))
 print(my_function(1, 2, 3, 4, 5))
 \end{lstlisting}
 Note that in default argument example, if no value was given it would default to \texttt{0}.
+It is important to be aware that variables defined within a function cannot be accessed outside of it.
+In the examples above, outside of the function, the variable \texttt{result} cannot be actioned upon. 
 
 You should be aware that a Python function does not \textbf{need} to have any arguments.
 For example, you could write a function that returns the value of the Planck constant (ideally using the SciPy constants library),
@@ -304,7 +306,7 @@ If you were to attempt to minimise the energy of this function, the initila star
 This is because the \texttt{scipy.optimize.minimize} function performs a local optimisation which means that typically it is not possible to the energy to increase and therefore can get stuck in small energy wells instead of finding the global solution.
 
 Global minimisation is a large and active area of research in mathematics and computer science, as it is not easy to find a global solution for a function that may have many minima.
-However, it is important to be aware that it is very easy for a minimisation (which are very common in computational chemistry) to get stuck in a local minimum and therefore be unable to probe the global minimum. 
+However, it is important to be aware that it is very easy for a minimisation (which are very common in computational chemistry) to get stuck in a local minimum and therefore be unable to probe the global minimum.
 
 %\bibliographystyle{rsc}
 %\bibliography{handout_3}
