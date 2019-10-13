@@ -151,6 +151,7 @@ print('Planck constant = {:.3e}'.format(h()))
 	    \end{minipage}
 	}
 \end{center}
+
 \section{Modules}
 
 In addition to writing your own functions, it is possible to \emph{clean up} your code further by creating your own \emph{modules}.
@@ -187,18 +188,14 @@ It is clear from the above example, that the \emph{user-defined} module can be i
 Then any function defined in the module may be called from the Jupyter Notebook.
 This means that you can create modules containing a wide variety of functions and use them in many different Notebooks.
 
-\section{Problem}
+\section{Problem 1: Energy minimisation}
 
 It is possible to estimate the interaction energy, $E_{LJ}$ between two atoms using the Lennard-Jones expression,
 \begin{equation}
-  E_{LJ} = \epsilon \bigg[\Big(\frac{r_m}{r}\Big)^{12} - 2\Big(\frac{r_m}{r}\Big)^6\bigg],
+  E_{LJ} = \frac{A}{r^{12}} - \frac{B}{r^6}
 \end{equation}
-where, $r$ is the distances between the two atoms, $\epsilon$ and $r_m$ are constants describing the shape of the interaction potential surface.
-Add a function that can calculate the interaction energy, using the above relationship with constants of $\epsilon = \SI{-2.2}{\kilo\joule\per\mol}$ and $r_m = \SI{3.7}{\angstrom}$, to the \texttt{atom\_helper.py} module.
-
-Use the new function to calculate the interactions energy for each of the pairs of atoms used in Week 2.
-
-\subsection{Energy minimisation}
+where, $r$ is the distances between the two atoms, $A$ and $B$ are constants describing the shape of the interaction potential surface.
+Add a function that can calculate the interaction energy, using the above relationship to the \texttt{atom\_helper.py} module; where the arguments are \texttt{r}, \texttt{A}, and \texttt{B}.
 
 One of the most common operations in computational chemistry is energy minimisation, which is used to determine the most stable geometry for a given chemical molecule or structure.
 The energy minimum is where there are no net forces acting on any of the atoms; the structure is relaxed.
@@ -233,7 +230,7 @@ Given the following values for $A$ and $B$, what is the energy-minimum distance 
 Adjust the program so that it will do as many iterations as are necessary to achieve energy minimisation, rather than only a fixed number.
 Compare cases 1. and 2. to see how stable and/or quick the minimisation is and how the \emph{convergence} depends on the initial guess of $r$.
 
-Next, create a new function in your module to calculate the energy, and first and second derivatives of a harmonic oscillator (a common model for a covalent bond),
+\textbf{Extension}: Next, create a new function in your module to calculate the energy, and first and second derivatives of a harmonic oscillator (a common model for a covalent bond),
 \begin{equation}
   \begin{aligned}
     E & = \frac{1}{2}k(r-r_{\text{eq}})^2 \\
@@ -244,6 +241,70 @@ Next, create a new function in your module to calculate the energy, and first an
 Verify that the method developed above (known as the Newton-Raphson method) converges to the energy minimum in a single step, regardless of the initial value of $r$, within this harmonic potential.
 For this test, use $k = \SI{32.2}{\eV\angstrom^{-2}}$, which is the force constant for a \ce{HCl} molecule, and $r_{\text{eq}}=\SI{1.27}{\angstrom}$, where $r_{\text{eq}}$ is the equilibrium bond distance.
 
+\section{Minimisation}
+
+You might notice that if you start with a value for $r = 5$, then your energy minimisation will fail, going to larger and larger values of separation.
+This is a problem with the Newton-Raphson minimisation algorithm that you have used; which assumes that the function being minimised is locally harmonic, and therefore the curvature will be positive.
+
+One of the substantial benefits available from using the Python programming language is that for many problems there are already functions in publically available libraries that may be applied to our problems.
+So instead of writting a custom, often very complex, minimisation algorithm it is easier to take advantage of the \texttt{scipy.optimize.minimize} function.
+This can implement extremely powering local minimisation algorithms,
+\begin{lstlisting}
+# Easy optmisation
+
+import numpy as np
+
+def energy(r, A, B):
+    """
+    The Lennard-Jones potential
+    """
+    return A / np.power(r, 12) - B / np.power(r, 6)
+
+from scipy.optimize import minimize
+
+initial_guess = 4
+
+results = minimize(energy, initial_guess, args=(1e5, 40))
+
+print(results)
+\end{lstlisting}
+Note, that the first argument in the energy function is the value to be minimised, and the others have their values passed as default arguments to the \texttt{minimize} function using the \texttt{args} keyword.
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+	    \begin{minipage}{0.9\textwidth}%
+	        \vspace{0.15\baselineskip}
+			\subsubsection*{Exercise}
+        Check that the \texttt{scipy.optimize.minimize} function is more stable to values of $r$ greater than 5.
+        \textbf{Note}: That at values very far from the minimum, even the \texttt{scipy.optimize.minimize} function will struggle to reach a reasonable value.
+	    \end{minipage}
+	}
+\end{center}
+
+\section{Global optimisation}
+%
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.6\textwidth]{dihedral}
+\caption{\label{fig:dihed} The shape of the energy for a \ce{Cl-C-C-Cl} dihedral angle in 1,2-dichloroethane.}
+\end{figure}
+%
+
+The energy of a \ce{Cl-C-C-Cl} dihedral angle in 1,2-dichloroethane may be described with the following function,
+%
+\begin{equation}
+  E_{\text{dihedral}} = \frac{1}{2} \{A_1[1 + \cos(\phi)] + A_2[1 + \cos(2\phi)] + A_3[1 + \cos(3\phi)]\},
+  \label{equ:dihed}
+\end{equation}
+%
+where, $A_1 = \SI{55.229}{\kilo\joule\per\mole}$, $A_2 = \SI{3.3472}{\kilo\joule\per\mole}$, $A_3 = \SI{-58.576}{\kilo\joule\per\mole}$ and $\phi$ is the dihedral angle.
+
+This is plotted from $-\pi$ to $\pi$ in Figure~\ref{fig:dihed}.
+If you were to attempt to minimise the energy of this function, the initila starting position would be massively important on the resulting minimised value.
+This is because the \texttt{scipy.optimize.minimize} function performs a local optimisation which means that typically it is not possible to the energy to increase and therefore can get stuck in small energy wells instead of finding the global solution.
+
+Global minimisation is a large and active area of research in mathematics and computer science, as it is not easy to find a global solution for a function that may have many minima.
+However, it is important to be aware that it is very easy for a minimisation (which are very common in computational chemistry) to get stuck in a local minimum and therefore be unable to probe the global minimum. 
 
 %\bibliographystyle{rsc}
 %\bibliography{handout_3}
