@@ -87,10 +87,10 @@ The text immediately following the function definition line is the \emph{docstri
 
 The above example of a function is relatively simple, just adding together two numbers.
 However, a function can contain a large amount of code abstracted to a single line.
-Furthermore, a well named function can increase the readibility of code significantly (consider the atomic distance code from previous weeks, the abstraction of the distance calculation to an appropriately named function would make this more understandable).
+Furthermore, a well named function can increase the readability of code significantly (consider the atomic distance code from previous weeks, the abstraction of the distance calculation to an appropriately named function would make this more understandable).
 
 The \texttt{my\_function} example above contained two \emph{required} arguments.
-These are the objects that are passed of the function when it is called (and typically these are operated on in some fashion) and are necessary for the function to run.
+These are the objects that are passed to the function when it is called (and typically these are operated on in some fashion) and are necessary for the function to run.
 In addition to these required arguments, other arugments may be included in a given function; such as \emph{default} arguments and \emph{variable-length} arguments.
 These are showing in the functions below,
 \begin{lstlisting}
@@ -125,7 +125,7 @@ print(my_function(1, 2, 3, 4, 5))
 \end{lstlisting}
 Note that in default argument example, if no value was given it would default to \texttt{0}.
 It is important to be aware that variables defined within a function cannot be accessed outside of it.
-In the examples above, outside of the function, the variable \texttt{result} cannot be actioned upon. 
+In the examples above, outside of the function, the variable \texttt{result} cannot be actioned upon.
 
 You should be aware that a Python function does not \textbf{need} to have any arguments.
 For example, you could write a function that returns the value of the Planck constant (ideally using the SciPy constants library),
@@ -160,7 +160,7 @@ In addition to writing your own functions, it is possible to \emph{clean up} you
 These modules are similar to the libraries (like NumPy and SciPy) that we discussed last week, however, they are created by you.
 This is achieved by creating a file in the folder where you would like to use the module, and then \emph{importing} the module in the code where your would like to use it.
 For example, say you have a file called \texttt{atom\_helper.py} in which you will put many functions related to atomistic calculations.
-Lets start it off with our distance calculation,
+Let's start it off with our distance calculation,
 \begin{lstlisting}
 # atom_helper.py
 
@@ -192,7 +192,7 @@ This means that you can create modules containing a wide variety of functions an
 
 \section{Problem 1: Energy minimisation}
 
-It is possible to estimate the interaction energy, $E_{LJ}$ between two atoms using the Lennard-Jones expression,
+It is possible to estimate the interaction energy, $E_{LJ}$, between two atoms using the Lennard-Jones expression,
 \begin{equation}
   E_{LJ} = \frac{A}{r^{12}} - \frac{B}{r^6}
 \end{equation}
@@ -210,7 +210,7 @@ If $r_0$ is the initial distance between two atoms, and $E'$ and $E''$, respecti
 where, $r_1$ is the new distance between the two atoms.
 We can then reevaluated $E'$ and $E''$ for the new $r$, and this process is repeated until $E$ reaches some minimum value.
 
-For the purpose of this exercise, the interatomic interaction energy, $E$, and its derivatives are given by the followign reformulation of the Lennard-Jones equation,
+For the purpose of this exercise, the interatomic interaction energy, $E$, and its derivatives are given by the following reformulation of the Lennard-Jones equation,
 \begin{equation}
   \begin{aligned}
     E & = \frac{A}{r^{12}} - \frac{B}{r^6} \\
@@ -229,7 +229,7 @@ Given the following values for $A$ and $B$, what is the energy-minimum distance 
   \item{$A = \SI{1e5}{\eV\angstrom^{12}}$ and $B = \SI{40}{\eV\angstrom^{6}}$}
   \item{$A = \SI{4e5}{\eV\angstrom^{12}}$ and $B = \SI{1}{\eV\angstrom^{6}}$}
 \end{enumerate}
-Adjust the program so that it will do as many iterations as are necessary to achieve energy minimisation, rather than only a fixed number.
+Adjust the program so that it will do as many iterations as are necessary to achieve a change in energy between steps of less than \SI{0.1}{\eV}, rather than only a fixed number.
 Compare cases 1. and 2. to see how stable and/or quick the minimisation is and how the \emph{convergence} depends on the initial guess of $r$.
 
 \textbf{Extension}: Next, create a new function in your module to calculate the energy, and first and second derivatives of a harmonic oscillator (a common model for a covalent bond),
@@ -302,8 +302,8 @@ The energy of a \ce{Cl-C-C-Cl} dihedral angle in 1,2-dichloroethane may be descr
 where, $A_1 = \SI{55.229}{\kilo\joule\per\mole}$, $A_2 = \SI{3.3472}{\kilo\joule\per\mole}$, $A_3 = \SI{-58.576}{\kilo\joule\per\mole}$ and $\phi$ is the dihedral angle.
 
 This is plotted from $-\pi$ to $\pi$ in Figure~\ref{fig:dihed}.
-If you were to attempt to minimise the energy of this function, the initila starting position would be massively important on the resulting minimised value.
-This is because the \texttt{scipy.optimize.minimize} function performs a local optimisation which means that typically it is not possible to the energy to increase and therefore can get stuck in small energy wells instead of finding the global solution.
+If you were to attempt to minimise the energy of this function, the initial starting position would be massively important on the resulting minimised value.
+This is because the \texttt{scipy.optimize.minimize} function performs a local optimisation which means that typically it is not possible for the energy to increase and therefore can get stuck in small energy wells instead of finding the global solution.
 
 Global minimisation is a large and active area of research in mathematics and computer science, as it is not easy to find a global solution for a function that may have many minima.
 However, it is important to be aware that it is very easy for a minimisation (which are very common in computational chemistry) to get stuck in a local minimum and therefore be unable to probe the global minimum.
