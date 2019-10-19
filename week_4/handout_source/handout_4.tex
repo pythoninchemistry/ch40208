@@ -199,25 +199,86 @@ However, it is important not to worry about the size of the error message, but s
 In the above example the error that is relevant is \texttt{ValueError: x and y must have same first dimension, but have shapes (10,) and (9,)}, which is relatively straight forward to parse.
 One of the things we are plotting is an array of 10 numbers, while the other is an array of 9 (and therefore it doesn't make sense to plot them together).
 
-\section{Overcoming problems}
-The final component of this lecture is a brief (\emph{pseudo}-philosophical) discussion into how best to solve problems in programming.
-It was mentioned above that one of the great things about using Python is the popularity of the language and the fact that this means that StackOverflow will very often have the answer to any problem you will encounter.
-That statement comes with a caviat; the \emph{general} problem will probably be answered by someone previously, but your \emph{specific} problem will not have.
+\section{Raising your own Errors}
+In your own functions, it is possible \emph{raise} your own errors using the following syntax, 
+\begin{lstlisting}
+# Raising errors
 
-This is best represented with an example\footnote{This is a real example that I (Andrew) encountered while conducting research.}, where it is desired to rotate a chemical molecule in space by some given amount (the aim being to sample the system energy at a series of different rotations).
-The first instinct when approaching this problem is to search for something like ``rotate molecule in space'', however, this gives a lot of information about rotational spectroscopy.
-Adding ``stackoverflow'' at the end of that search starts to get us somewhere (\url{https://stackoverflow.com/questions/37942389/correctly-transforming-a-node-relative-to-a-specified-space}), however this is question is more advanced than what we are wanting to consider\footnote{This question is overly specific and the language used is not straight forward to understand.}.
-
-However, if we detach the problem for the obvious chemical nature, it can be more general as a linear algebra, and indeed a fundemental aspect of computer visualisation.
-For example, one of the top hits for the search of ``rotation 3d object'' is the wikipedia page for \emph{rotation matrices}, as usual the wikipedia page itself is too complex, but we may use this has a way to deepen our search.
-Indeed, searching for ``rotation matrix chemical'' returns a LibreText page that discusses the mathematics of rotation matrices (\url{https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Book%3A_Symmetry_(Vallance)/09._Transformation_matrices}), and with continued searching you might end up at one of my favourite (and most useful papers) \cite{Evans2001}.
+def celsius_to_kelvin(celsius):
+    """
+    convert from Celsius to Kelvin
+    """
+    if celsius < -273.15:
+        raise ValueError('The temperature was less than '
+                         '-273.15 and would produe an '
+                         'unphysical temperature of '
+                         'less than 0 K')
+    else:
+        return celsius + 273.15
+\end{lstlisting}
+Any of the error type that are outlined in Table~\ref{tab:ops} may be used in the same way as \texttt{ValueError()} is used in the example above.
+The string that is passed to the \texttt{ValueError()} function will be printed to the screen such that the user can better understand the cause of the error. 
 
 \section{Problem}
-Using the work of Evans\cite{Evans2001}, write a function (and add it to your collection of functions for manipulating and quantifying chemical structures) that will rotate a diatomic molecule by a given set of Eulerian angles ($\alpha$, $\beta$, $\gamma$; see section 5.2 of the paper).
-Calculate the distances between the two atoms of the molecule before and after the rotation to ensure that the this has not changed.
-Test your code for a series of different rotations and atomic distances, and consider how the code that you have written might be relevant to applications in computational drug design.
+This week we will look at the rotation of a molecule on a surface (such that the $z$ coordinate does not change), for example a water molecule on the surface of some crystal. 
+The ability to rotate a molecule in space is extremely important in computational chemistry, for example in drug discovery a ligand molecule may be rotated with a binding pocket of a protein molecule in order to evaulate the lowest energy interaction and offering insight into ligand design as a result. 
+To help with visualisation of the molecule on a surface, we have provided a \textbf{module} on Moodle (\texttt{visualisation.py}) that uses the \texttt{matplotlib} library to enable visual inspection of the molecule on a surface.
 
-\bibliographystyle{rsc}
-\bibliography{handout_4}
+First, you must read in the file given on moodle (\texttt{water.txt}) using \texttt{np.loadtxt}, then by passing the \texttt{x} and \texttt{y} arrays to the \texttt{visualisation.show(x, y)} function to produce the visualisation. 
+We now turn our focus to the rotation of a molecule (around the origin), Figure~\ref{fig:rotation} shows a graphical description of the transformation required to rotate a point from $(x, y)$ through $\beta$ around the origin to $(x', y')$.
+%
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.5\textwidth]{rotation}
+  \caption{\label{fig:rotation} A graphical description of the mathematics underlying the rotation transformation.}
+\end{figure}
+%
+
+It is shown in Figure~\ref{fig:rotation} that the position of $x$ and $y$ may be described by basic trigonometry as, 
+%
+\begin{equation}
+  \begin{aligned}
+    x & = r \cos{\alpha}, \\
+    y & = r \sin{\alpha}.
+  \end{aligned}
+\label{equ:xy}
+\end{equation}
+%
+While the position of $x'$ and $y'$ can be described as,
+%
+\begin{equation}
+  \begin{aligned}
+    x' & = r \cos{\alpha + \beta}, \\
+    y' & = r \sin{\alpha + \beta}.
+  \end{aligned}
+\end{equation}
+%
+Trigonometric identities (which can be found online \url{http://en.wikipedia.org/wiki/List_of_trigonometric_identities#Angle_sum_and_difference_identities}) may then be used to evaluate $x'$ and $y'$ as follows, 
+%
+\begin{equation}
+  \begin{aligned}
+    x' & = r \cos{\alpha}\cos{\beta} - r\sin{\alpha}\sin{\beta}, \\
+    y' & = r \sin{\alpha}\cos{\beta} - r\cos{\alpha}\sin{\beta}.
+  \end{aligned}
+\label{equ:trig}
+\end{equation}
+%
+Finally, by replacing elements of Equation~\ref{equ:trig} with those from Equation~\ref{equ:xy} we may obtain straight forward transformations to lead from $(x, y)$ to $(x', y')$, 
+%
+\begin{equation}
+  \begin{aligned}
+    x' & = x\cos{\beta} - y\sin{\beta}, \\
+    y' & = y\cos{\beta} - x\sin{\beta}.
+  \end{aligned}
+\label{equ:final}
+\end{equation}
+%
+
+Using the transformations outlined in Equation~\ref{equ:final}, you now must create module named \texttt{transform} that includes a function called \texttt{rotation} that will take three variables \texttt{x}, \texttt{y}, and \texttt{angle}.
+This function will perform a rotation of \texttt{angle} on \texttt{x} and \texttt{y} to produce \texttt{x\_new} and \texttt{y\_new}, which are returned from the function. 
+Use the \texttt{visualisation.show} function to observe the rotation of the water molecule. 
+
+%\bibliographystyle{rsc}
+%\bibliography{handout_4}
 
 \end{document}
