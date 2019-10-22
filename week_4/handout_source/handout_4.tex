@@ -91,7 +91,7 @@ It is clear that the arugment being passed to the \texttt{sqrt()} function is of
 		Error & Context \\
 		\hline
 		\texttt{IndexError} & Trying to access an invalid index \\
-		\texttt{ModuleNotFoundError} & Trying to import an non-existent module \\
+		\texttt{ModuleNotFoundError} & Trying to import a non-existent module \\
 		\texttt{TypeError} & Performing an action on an inappropriate type \\
 		\texttt{ValueError} & Function argument is an inappropriate type \\
 		\texttt{NameError} & Object with given variable name could not be found \\
@@ -161,7 +161,7 @@ IndexError: tuple index out of range
 \end{lstlisting}
 There is a lot of information here, but we want to focus on just the last line, which reads \texttt{IndexError: tuple index out of range}, which is rather opaque.
 This is where the internet is our friend, if you \emph{copy and paste} this final line into Google\footnote{Or any decent search engine.}, you will likely find a lot of hits from a website called \textbf{Stack Overflow}.
-Stack Overflow is a messageboard style website where people can post programming (and mathematics and general computation) questions and others will answer.
+Stack Overflow is a message board style website where people can post programming (and mathematics and general computation) questions and others will answer.
 One of the great things about this website is that it is popular, so nearly all of the questions you could ask have already been answered.
 %
 \begin{figure}[t]
@@ -172,7 +172,7 @@ One of the great things about this website is that it is popular, so nearly all 
 \end{figure}
 %
 
-If we put the error message from the above example into our search engine, we shoul be able to get some useful Stack Overflow answers.
+If we put the error message from the above example into our search engine, we should be able to get some useful Stack Overflow answers.
 For example\footnote{https://stackoverflow.com/questions/20296188/indexerror-tuple-index-out-of-range-python}, one of the answers suggests \emph{``I suspect you mean to say [0] where you say [1] and [1] where you say [2]. Indexes are 0-based in Python.''}, which can immediately lead us to our bug.
 In the line \texttt{print(np.mean(a, axis=2))}, we assigned the row axis to the value $2$, however Python counts from $0$, to the column axis should be $0$, making the row axis $1$.
 If we run the above code again with \texttt{axis=1}, we should get the following returned,
@@ -248,8 +248,8 @@ While the position of $x'$ and $y'$ can be described as,
 %
 \begin{equation}
   \begin{aligned}
-    x' & = r \cos{\alpha + \beta}, \\
-    y' & = r \sin{\alpha + \beta}.
+    x' & = r \cos{(\alpha + \beta)}, \\
+    y' & = r \sin{(\alpha + \beta)}.
   \end{aligned}
 \end{equation}
 %
@@ -263,7 +263,7 @@ Trigonometric identities (which can be found online \url{http://en.wikipedia.org
 \label{equ:trig}
 \end{equation}
 %
-Finally, by replacing elements of Equation~\ref{equ:trig} with those from Equation~\ref{equ:xy} we may obtain straight forward transformations to lead from $(x, y)$ to $(x', y')$, 
+Finally, by replacing elements of Equation~\ref{equ:trig} with those from Equation~\ref{equ:xy} we may obtain straight-forward transformations that lead from $(x, y)$ to $(x', y')$, 
 %
 \begin{equation}
   \begin{aligned}
@@ -274,7 +274,7 @@ Finally, by replacing elements of Equation~\ref{equ:trig} with those from Equati
 \end{equation}
 %
 
-Using the transformations outlined in Equation~\ref{equ:final}, you now must create module named \texttt{transform} that includes a function called \texttt{rotation} that will take three variables \texttt{x}, \texttt{y}, and \texttt{angle}.
+Using the transformations outlined in Equation~\ref{equ:final}, you now must create a module named \texttt{transform} that includes a function called \texttt{rotation} that will take three variables \texttt{x}, \texttt{y}, and \texttt{angle}.
 This function will perform a rotation of \texttt{angle} on \texttt{x} and \texttt{y} to produce \texttt{x\_new} and \texttt{y\_new}, which are returned from the function. 
 Use the \texttt{visualisation.show} function to observe the rotation of the water molecule. 
 
