@@ -192,17 +192,12 @@ Consider the function below, which will convert either degrees Fahrenheit or deg
 def temp_conv(value, unit='C'):
     """This can convert either Celsius or Fahrenheit to Kelvin
 
-    Parameters
-    ----------
-    value: float
-        Temperature to be converted
-    unit: str
-        Unit of original temperuture (either 'C' or 'F', defaults to 'C')
+    Args:
+        value (float): Temperature to be converted
+        unit (str): Unit of original temperuture (either 'C' or 'F', defaults to 'C')
 
-    Returns
-    -------
-    float
-        Converted temperature (in K)
+    Returns:
+        float: Converted temperature (in K)
     """
     if unit == 'C':
         return value + 273.15
