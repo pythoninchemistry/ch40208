@@ -95,7 +95,7 @@ def electron_accommodation(n):
         raise TypeError('The principal quantum number (n) must be an integer')
     if n <= 0:
         raise ValueError('The principal quantum number (n) must be greater than 0')
-    return 2 * n ** 2
+    return 4 * n - 2
 ```
 
 Then in notebook run
