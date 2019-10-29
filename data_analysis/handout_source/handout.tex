@@ -159,22 +159,61 @@ The closer the value of $\chi^2$ is to zero, the between the agreement between t
 \end{center}
 
 \section{Markov chain Monte Carlo}
-It is the case that all experimental measurements have some associated uncertainty, this has the effect that model parameters (the $c$ in our model above) have an \emph{inverse} uncertainty associated with this determination of them. 
-There are a number of way that we can probe the inverse uncertainty of a parameter, including the Markov chain Monte Carlo (MCMC) methods introduced herein.
+You should be aware that all experimental measurements have some associated uncertainty, hence why it is necessary to include error bars on the plot of the mixture data. 
+This uncertainty can lead to an \emph{inverse} uncertainty on the model parameters (the $c$ in our model above).
+There are a number of methods that we can use to quantify this inverse uncertainty, including the Markov chain Monte Carlo (MCMC) methods introduced here. 
 
-The aim of MCMC is to sample the probability distribution of a variable that is statistically relevant given the experiment uncertainties on the measurement.
-The algorithm for an MCMC sampling process is outlined below,
+A Markov chain is a \emph{random-walk} through a series of numbers while the Monte Carlo part implies that we will your probability to determine if a \emph{transition} is possible.
+In MCMC we start with an initial guess for a variable, which can be taken from a traditional minimisation such as that used in \texttt{scipy.optimize.minimize} and then perturb it by some random amount. 
+This random amount is typically obtained based on a step size change with respect to the value of the variable, 
+%
+\begin{lstlisting}
+  perturbation = step\_size * np.random.random() * c,
+\end{lstlisting}
+%
+where, \texttt{c} is the variable to be perturbed.
+We then we determine if this random perturbation has improved the agreement to the data (the $\chi^2$-value) or not. 
+If it has, we \textbf{accept} this new value for our variable and perform another perturbation. 
+If the perturbation does not improve agreement to the data, the new value is \textbf{not} immediately rejected, rather it is only rejected if the probability of this \emph{transition} ($p$) is less than some random number from 0 to 1. 
+The probability is found by, 
+%
+\begin{equation}
+  p = \exp{\bigg(\frac{-\chi^2_{\text{new}} + \chi^2}{2}\bigg)},
+  \label{equ:prob}
+\end{equation}
+%
+where, $\chi^2$ is the original goodness-of-fit value and $\chi^2_{\text{new}}$ is the goodness of fit after the perturbation. 
+This means that it is possible the agreement to get worse overtime, however, the amount by which it can get worse is affected by Equation~\ref{equ:prob}. 
+Due to the application of Equation~\ref{equ:prob}, the only values of $\chi^2$ that may be accessed by the Markov chain (these random perturbations on our value) are those that are statistically feasible given the uncertainty on the experimental measurements. 
+
+The algorithm for a typical MCMC sampling process is as follows, 
 \begin{enumerate}
   \item {Create an empty list called \texttt{accepted}}
-  \item {Calculate $\chi^2$ for the initial guess of $c$}
-  \item {Perturb $c$ by some random amount (modulate by a \texttt{step\_size} variable)}
-  \item {Calculate $\chi^2$ for the new value of $c$}
-  \item {Determine the probability of this ``transition''}
-  \item {Check it $p \ge n$ where $n$ is a random number from 0 to 1}
+  \item {Evaluate $\chi^2$ for the initial guess of $c$, typically this initial guess would be obtained from a standard optimisation}
+  \item {Perturb $c$}
+  \item {Calculate $\chi^2_{\text{new}}$ for the new value of $c$}
+  \item {Determine the probability of this \emph{transition}, from Equation~\ref{equ:prob}}
+  \item {Check if $p \ge n$ where $n$ is a random number from 0 to 1 (this can be obtained from \texttt{np.random.random()}, note that if the new $\chi^2$ is less than the old one then $p > 1$ and therefore this is always accepted}
   \item {If yes, update values of $c$ and $\chi^2$}
-  \item {If beyond burn-in period store $c$ in accepted list}
-  \item {Go to 3 and repeat until the length of the accepted list is equal to the number of iterations required}
+  \item {Go to 3 and repeat until the desired number of iterations has been achieved}
 \end{enumerate}
+
+
+\vspace{\baselineskip}
+\begin{center}
+	\noindent\fbox{%
+	    \begin{minipage}{0.9\textwidth}%
+	        \vspace{0.15\baselineskip}
+			\subsubsection*{Objective 5}
+          \begin{itemize}
+            \item {Write a function to perform the Markov chain Monte Carlo algorithm outlined above, this function should return the \texttt{accepted} list.}
+            \item {Plot a histrogram of the \texttt{accepted} list (using \texttt{plt.hist}), the available values of $c$ should be normally distributed (google a normal distribution and compare)}
+            \item {Using the statistical functions in \texttt{numpy}, calculate the \texttt{mean} and standard deviation (\texttt{std}) of this distribution.}
+          \end{itemize}
+          \textbf{Hint:} Be careful how many iterations you ask you algorithm to perform (you shouldn't ever need more than 1000). Try 100 first to see if it works!
+	    \end{minipage}
+	}
+\end{center}
 
 
 %\bibliographystyle{rsc}
