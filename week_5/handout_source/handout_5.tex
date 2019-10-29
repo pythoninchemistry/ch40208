@@ -54,11 +54,11 @@
 \maketitle
 
 \section*{Aim}
-This lecture will introduce several aspects of \emph{good coding practice} before going on to cover how to write tests to ensure your code it doing what you think it is.
+This lecture will introduce several aspects of \emph{good coding practice} before going on to cover how to write tests to ensure your code is doing what you think it is.
 
 \section{Writing readable code}
 One of the benefits of using Python over other programming languages is the clear syntax.
-However, we can improve the readablity and comprehensibility of our code further but \emph{writing readable code}.
+However, we can improve the readablity and comprehensibility of our code further by \emph{writing readable code}.
 Now, this isn't a comment on handwriting or grammar but rather a discussion into aspects such as:
 \begin{itemize}
   \item{Using sensible variable names}
@@ -83,7 +83,7 @@ for d in range(0, len(s)):
 It is not immediately clear what this code is aiming to achieve.
 For example, the three lists are simply given the names \texttt{s}, \texttt{m}, and \texttt{b}, which the author (currently) knows are short for chemical \texttt{s}ymbols, \texttt{m}elting point, and \texttt{b}oiling point.
 However, if someone else was to try and understand this it is not clear, or if the original author comes back to the code many months (or years) later.
-There is no comments or documentation to explain the purpose of this code, in particular the \texttt{if} statement would benefit from some rationalisation.
+There are no comments or documentation to explain the purpose of this code, in particular the \texttt{if} statement would benefit from some rationalisation.
 Finally, the final line is very long, running to over 100 characters (when is widely considered that the maximum readbility is found when there is less than 80 characters per line).
 
 \vspace{\baselineskip}
@@ -92,14 +92,14 @@ Finally, the final line is very long, running to over 100 characters (when is wi
 	    \begin{minipage}{0.9\textwidth}%
 	        \vspace{0.15\baselineskip}
 			\subsubsection*{Exercise}
-	        Rewrite the code to be more readable and clear, remembering to have descriptive variable names, to be concise and to consider iterations conventions.
+	        Rewrite the code to be more readable and clear, remembering to have descriptive variable names, to be concise and to consider iteration conventions.
 	    \end{minipage}
 	}
 \end{center}
 
 \section{Comments and docstrings}
 One of the easiest ways to make it more clear what your code is trying to do is to add comments.
-These are lines in the code that are ignored by the Python interperator.
+These are lines in the code that are ignored by the Python interpreter.
 You will have seen these in most of the code blocks in these handouts, where the line starts with a \texttt{\#} symbol.
 This means that the line will be ignored, and these can be a great way to give the reason for a particular decision in your code.
 For example, before the fifth line of the code block above the following comment could be included,
@@ -111,8 +111,8 @@ A comment like this makes the purpose of the \texttt{if} statement much clearer.
 
 A subset of the comments are \emph{docstrings}, these are comments that describe the purpose of a function, often including the expected parameters.
 There are a variety of styles that are used in docstrings; the most common are Sphinx, Google, and NumPy.
-However, we will focus on using the NumPy style as it is the most human readable, however you should be aware that these other styles exist.
-An example of a docstring is shown below the function definition below,
+However, we will focus on using the Google style as it is the most human readable, however you should be aware that these other styles exist.
+An example of a docstring is shown in the function definition below,
 \begin{lstlisting}
 # An example of a docstring
 import numpy as np
@@ -131,7 +131,7 @@ def pH(conc_h):
 As can be seen, the typical docstring consists of three parts, the function description, the input arguments, and the returned values.
 Note that the input arguments and returns statements include information about the variable types for each.
 
-The utility of the docstrings can be leveraged in the Jupyter notebook, as the docstrings for a given function are easily accessible.
+The utility of the docstrings can be leveraged in the Jupyter notebook, as the docstring for a given function is easily accessible.
 For example, if you defined the \texttt{pH} function above, it would be possible to investigate the docstring using the following command in a Jupyter Notebook cell,
 \begin{lstlisting}
 pH?
@@ -174,7 +174,7 @@ for molecule in homonuclear_diatomics:
     if (molecule != 'Nitrogen' 
         and molecule != 'Oxygen'):
         print('The {} molecule has a '
-              'single bond'.format(molecule)))
+              'single bond'.format(molecule))
 \end{lstlisting}
 If you continue to work on your Python skills you will see more examples of how line breaking can be achieved. 
 
@@ -221,7 +221,7 @@ print('Test 2 Passed!')
 np.testing.assert_raises(ValueError, temp_conv, 0, 'c')
 print('Test 3 Passed!')
 \end{lstlisting}
-This \texttt{assert\_almost\_equal} function is an element of the NumPy testing library which acts on floating point number (which may not be \textbf{exactly} equal doing to arithmetic precision).
+This \texttt{assert\_almost\_equal} function is an element of the NumPy testing library which acts on floating point number (which may not be \textbf{exactly} equal due to floating point precision).
 The first argument in this function is the result of the function we are testing, while the second argument is the expected result.
 While the \texttt{assert\_raises} function tests if the function \texttt{temp\_conv} raises a \texttt{ValueError} when called with arguments \texttt{0} and \texttt{'c'}.
 
@@ -238,7 +238,7 @@ While the \texttt{assert\_raises} function tests if the function \texttt{temp\_c
 
 \subsection{Test driven development}
 Test driven development (TDD) is a methodology for computer programming where the tests are written first for a particular use case, and then the operational code is written such that it will satisfy the tests.
-This methodology is different from that applied to this point in the course, however, it is very popular and powerful when used appriopriately.
+This methodology is different from that applied to this point in the course, however, it is very popular and powerful when used appropriately.
 In the problem below, you will be able to try your hand at some test driven development.
 
 \section{Problem}
