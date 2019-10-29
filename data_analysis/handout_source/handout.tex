@@ -167,9 +167,9 @@ A Markov chain is a \emph{random-walk} through a series of numbers while the Mon
 In MCMC we start with an initial guess for a variable, which can be taken from a traditional minimisation such as that used in \texttt{scipy.optimize.minimize} and then perturb it by some random amount. 
 This random amount is typically obtained based on a step size change with respect to the value of the variable, 
 %
-\begin{equation*}
-  \texttt{perturbation = step\_size * np.random.random() * c},
-\end{equation}
+\begin{lstlisting}
+  perturbation = step\_size * np.random.random() * c,
+\end{lstlisting}
 %
 where, \texttt{c} is the variable to be perturbed.
 We then we determine if this random perturbation has improved the agreement to the data (the $\chi^2$-value) or not. 
