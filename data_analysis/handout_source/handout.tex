@@ -193,7 +193,7 @@ The algorithm for a typical MCMC sampling process is as follows,
   \item {Perturb $c$}
   \item {Calculate $\chi^2_{\text{new}}$ for the new value of $c$}
   \item {Determine the probability of this \emph{transition}, from Equation~\ref{equ:prob}}
-  \item {Check if $p \ge n$ where $n$ is a random number from 0 to 1 (this can be obtained from \texttt{np.random.random()}}
+  \item {Check if $p \ge n$ where $n$ is a random number from 0 to 1 (this can be obtained from \texttt{np.random.random()}, note that if the new $\chi^2$ is less than the old one then $p > 1$ and therefore this is always accepted}
   \item {If yes, update values of $c$ and $\chi^2$}
   \item {Go to 3 and repeat until the desired number of iterations has been achieved}
 \end{enumerate}
