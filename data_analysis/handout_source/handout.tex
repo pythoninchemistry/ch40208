@@ -52,7 +52,7 @@
 \section*{Aim}
 Data analysis is an incredibly important skill in chemistry, however, it is often overlooked. 
 In this exercise, you will get an introduction to using Python to fit experimental data, see how model-dependent analysis works in a simple system, and write a Markov chain Monte Carlo algorithm to quantify the inverse uncertainty in your model.
-The particular application in this work is the analysis an IR spectra from a mixture of organic species, however, hopefully you will recognise that the methods used herein are generalisable.
+The particular application in this work is the analysis of an IR spectra from a mixture of organic species, however, hopefully you will recognise that the methods used herein are generalisable.
 
 \section{Reading in and plotting experimental data}
 You have been tasked with determining the relative composition of a mixture of two organic species; namely toluene and benzyl alcohol. 
@@ -98,8 +98,8 @@ This function will return a new set of $y$-axis values, which you should store i
 	        \vspace{0.15\baselineskip}
 			\subsubsection*{Objective 2}
           \begin{itemize}
-            \item {By evaluating the minimum and maximum of each dataset (using the \texttt{np.min} and \texttt{np.max} functions), prove to yourself that the experimental data lays between the model data on the $x$-axis} 
-            \item {Create a new variable called \texttt{optimisation\_x} that is the range of $x$-values to be interpolated over (make it equal to the wavenumebr values for the mixture data)}
+            \item {By evaluating the minimum and maximum of each dataset (using the \texttt{np.min} and \texttt{np.max} functions), prove to yourself that the experimental data lays within the model data on the $x$-axis} 
+            \item {Create a new variable called \texttt{optimisation\_x} which is the range of $x$-values to be interpolated over (make it equal to the wavenumebr values for the mixture data)}
             \item {Using \texttt{np.interp}, interpolate the toluene and benzyl alcohol data within the values of wavenumber for the mixture}
             \item {Plot the interpolated data to ensure that the interpolation looks similar to the original data}
           \end{itemize}
@@ -151,7 +151,7 @@ The closer the value of $\chi^2$ is to zero, the between the agreement between t
 			\subsubsection*{Objective 4}
           \begin{itemize}
             \item {Write another function that will evaluate the value of $\chi^2$ for a givene $c$, remember to include a docstring}
-            \item {Recalling the using of \texttt{scipy.optimize.minimize} from week 3, try and determine the optimum value to minimise the difference between the experiment and the model}
+            \item {Recalling the use of \texttt{scipy.optimize.minimize} from week 3, try and determine the optimum value to minimise the difference between the experiment and the model}
             \item {Store the result of the optimisation and plot the model with the optimised value of $c$ on top of the experimental data to allow you to visually observe the similarity}
           \end{itemize}
 	    \end{minipage}
@@ -163,7 +163,7 @@ You should be aware that all experimental measurements have some associated unce
 This uncertainty can lead to an \emph{inverse} uncertainty on the model parameters (the $c$ in our model above).
 There are a number of methods that we can use to quantify this inverse uncertainty, including the Markov chain Monte Carlo (MCMC) methods introduced here. 
 
-A Markov chain is a \emph{random-walk} through a series of numbers while the Monte Carlo part implies that we will your probability to determine if a \emph{transition} is possible.
+A Markov chain is a \emph{random-walk} through a series of numbers while the Monte Carlo part implies that we use your probability to determine if a \emph{transition} is possible.
 In MCMC we start with an initial guess for a variable, which can be taken from a traditional minimisation such as that used in \texttt{scipy.optimize.minimize} and then perturb it by some random amount. 
 This random amount is typically obtained based on a step size change with respect to the value of the variable, 
 %
@@ -183,7 +183,7 @@ The probability is found by,
 \end{equation}
 %
 where, $\chi^2$ is the original goodness-of-fit value and $\chi^2_{\text{new}}$ is the goodness of fit after the perturbation. 
-This means that it is possible the agreement to get worse overtime, however, the amount by which it can get worse is affected by Equation~\ref{equ:prob}. 
+This means that it is possible for the agreement to get worse overtime, however, the amount by which it can get worse is affected by Equation~\ref{equ:prob}. 
 Due to the application of Equation~\ref{equ:prob}, the only values of $\chi^2$ that may be accessed by the Markov chain (these random perturbations on our value) are those that are statistically feasible given the uncertainty on the experimental measurements. 
 
 The algorithm for a typical MCMC sampling process is as follows, 
