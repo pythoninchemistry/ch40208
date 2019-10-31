@@ -55,11 +55,18 @@ In this exercise, you will get an introduction to using Python to fit experiment
 The particular application in this work is the analysis an IR spectra from a mixture of organic species, however, hopefully you will recognise that the methods used herein are generalisable.
 
 \section{Reading in and plotting experimental data}
-You have been tasked with determining the relative composition of a mixture of two organic species; namely toluene and benzyl alcohol. 
+You have been tasked with determining the relative composition of a mixture of two organic species; namely toluene and benzyl alcohol (Figure~\ref{fig:mole}). 
 To do this, you have measured the infrared spectra of the mixture and obtained (from the NIST Chemistry WebBook) the model spectra of the two species in isolation, these can be found in the `IR spectra' folder on Moodle. 
 If you download and open the files in the Jupyter Notebook file viewer, you can see the structure of the files. 
 You should note that the model datasets (\texttt{benzyl\_alcohol.csv} and \texttt{toluene.csv}) consist of two columns; namely wavenumber ($\bar{\nu}$) and transmittance ($T$), while the measured experimental data (\texttt{mixture.csv}) has a third column that describes the uncertainty in the transmittance. 
-
+%
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.5\textwidth]{drawing}
+  \label{fig:mole}
+  \caption{The organic species in the mixture.}
+  \end{figure}
+%
 \vspace{\baselineskip}
 \begin{center}
 	\noindent\fbox{%
@@ -112,7 +119,7 @@ Now that all three models have the same $x$-axis, it is possible to begin the pr
 The function that we will be fitting is the following, 
 %
 \begin{equation}
-  \bar{\nu}_{\text{mixture}} = c \bar{\nu}_{1} + (1 - c)\bar{\nu}_{2},
+  T_{\text{mixture}} = c T_{1} + (1 - c)T_{2},
   \label{equ:model}
 \end{equation}
 %
