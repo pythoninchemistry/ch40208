@@ -61,7 +61,7 @@ The particular application in this work is the analysis of an IR spectra from a 
 You have been tasked with determining the relative composition of a mixture of two organic species; namely toluene and benzyl alcohol (Figure~\ref{fig:mole}). 
 To do this, you have measured the infrared spectra of the mixture and obtained (from the NIST Chemistry WebBook) the model spectra of the two species in isolation, these can be found in the `IR spectra' folder on Moodle. 
 If you download and open the files in the Jupyter Notebook file viewer, you can see the structure of the files. 
-You should note that the model datasets (\texttt{benzyl\_alcohol.csv} and \texttt{toluene.csv}) consist of two columns; namely wavenumber ($\bar{\nu}$) and transmittance ($T$), while the measured experimental data (\texttt{mixture.csv}) has a third column that describes the uncertainty in the transmittance. 
+You should note that the model datasets (\texttt{benzyl\_alcohol.csv} and \texttt{toluene.csv}) consist of two columns; wavenumber ($\bar{\nu}$) and transmittance ($T$), while the measured experimental data (\texttt{mixture.csv}) has a third column that describes the uncertainty in the transmittance. 
 %
 \begin{figure}[t]
   \centering
@@ -93,9 +93,9 @@ You will have hopefully encoutered fitting to data before, for example fitting a
 This is shown in Figure~\ref{fig:plot}, where the blue dots are some discrete datapoints and the orange line is the line of best fit. 
 In order to determine this line of best fit, we have a metric that we want to minimise that represents the difference between the data and the model (the line).
 This metric is shown in the lower plot, which is the square residual, calculated as the difference between the data point and the position on the $y$-axis of the line at the same $x$-axis position as the data point, squared.
-The purpose for the squaring is put a heavier emphasis on the outlining datapoints, where the difference is large. 
-We can collapse these values for the individual datapoints down into a single value by taking the sum of this square residuals.
-This goodness-of-fit metric is referred to as th $\chi^2$-value for the fit, the closer the $\chi^2$ is to zero, the better the agreement between our model and data. 
+The purpose for the squaring is to put a heavier emphasis on the outlining datapoints, where the difference is large. 
+We can collapse these values for the individual datapoints down into a single value by taking the sum of these square residuals.
+This goodness-of-fit metric is referred to as the $\chi^2$-value for the fit, the closer the $\chi^2$ is to zero, the better the agreement between our model and data. 
 %
 \begin{figure}[t]
   \centering
@@ -106,7 +106,7 @@ This goodness-of-fit metric is referred to as th $\chi^2$-value for the fit, the
 %
 
 \section{Interpolation}
-From your earlier plots, you may not that the values of wavenumber that the spectra have been measured over is not the same between the three datasets, this can be clearly seen by printing the wavenumber for each of the three datasets. 
+From your earlier plots, you may note that the values of wavenumber that the spectra have been measured over is not the same between the three datasets, this can be clearly seen by printing the wavenumber range for each of the three datasets. 
 In order to determine the $\chi^2$-value between our model (outlined later) and the data (the mixture), it is necessary that the positions on the $x$-axis for the two are the same, and since our model will be created from mixing the toluene and benzyl alcohol spectra we will need to normalise these $x$-axes. 
 This means that interpolation is necessary. 
 
@@ -136,8 +136,8 @@ This function will return a new set of $y$-axis values, which you should store i
 \end{center}
 
 \section{Fitting real data}
-In the straight line example above, we were not working with ``real'' data as there was no uncertainty on the value of the data points. 
-However, if we compare the slope of the straight line in Figure~\ref{fig:plot} with that in Figure~\ref{fig:plot_err} (once we consider uncertainty), there is a change from 1.015 to 1.037 a small but significant change. 
+In the straight line example in Figure~\ref{fig:plot}, we were not working with ``real'' data as there was no uncertainty on the value of the data points. 
+However, if we compare the slope of the straight line in Figure~\ref{fig:plot} with that in Figure~\ref{fig:plot_err} (once we consider uncertainty), there is a change from 1.015 to 1.037 -- a small but significant change. 
 In order to consider the uncertainty, there is a slight modification to the $\chi^2$-value calculation, where the square residual is divided by the uncertainty at the point, 
 %
 \begin{equation}
@@ -198,12 +198,12 @@ We can optimise this value by finding the value that minimises the $\chi^2$-valu
 \end{center}
 
 \section{Markov chain Monte Carlo}
-If we think of uncertainties are representing a distribution of possible values for a data point, for example if the measurement was conducted 10 times, you would get values within this uncertainty. 
-Therefore, we can imagine that if the data in Figure~\ref{fig:plot} was collected 10 times, there would be some distribution of values, and if we independently fit a straightline to each of these 10 collection, we would get slightly different values for the slope. 
+If we think of uncertainties as representing a distribution of possible values for a data point, for example if the measurement was conducted 10 times, you would get values within this uncertainty. 
+Therefore, we can imagine that if the data in Figure~\ref{fig:plot} was collected 10 times, there would be some distribution of values, and if we independently fit a straightline to each of these 10 data collections, we would get slightly different values for the slope. 
 This distribution of values for the slope, leads to what is referred to as the \emph{inverse uncertainty} which is the uncertainty on a model's parameter that arises due to uncertainty in the measurement that is propagated through the fitting of the model. 
 There are a number of methods that we can use to quantify this inverse uncertainty, including the Markov chain Monte Carlo (MCMC) methods introduced here. 
 
-A Markov chain is a \emph{random-walk} through a series of numbers while the Monte Carlo part implies that we use your probability to determine if a \emph{transition} is possible.
+A Markov chain is a \emph{random-walk} through a series of numbers while the Monte Carlo part implies that we use probability to determine if a \emph{transition} is possible.
 In MCMC we start with an initial guess for a variable, which can be taken from a traditional minimisation such as that used in \texttt{minimize} and then perturb it by some random amount. 
 This random amount is typically obtained based on a step size change with respect to the value of the variable, 
 %
@@ -212,7 +212,7 @@ This random amount is typically obtained based on a step size change with respec
 \end{lstlisting}
 %
 where, \texttt{c} is the variable to be perturbed.
-We then we determine if this random perturbation has improved the agreement to the data (the $\chi^2$-value) or not. 
+We then determine if this random perturbation has improved the agreement to the data (the $\chi^2$-value) or not. 
 If it has, we \textbf{accept} this new value for our variable and perform another perturbation. 
 If the perturbation does not improve agreement to the data, the new value is \textbf{not} immediately rejected, rather it is only rejected if the probability of this \emph{transition} ($p$) is less than some random number from 0 to 1. 
 The probability is found by, 
@@ -268,9 +268,9 @@ The algorithm for a typical MCMC sampling process is as follows (this is also de
     \path [line] (newchi) -- (prob);
     \path [line] (prob) -- (decide);
     \path [line] (store) -- (perturb);
-    \path [line] (decide) -- node {if $p \ge n$} (store);
+    \path [line] (decide) -- node [near end] {if $p \ge n$} (store);
     \path [line] (decide) -- node {else} (perturb);
-    \path [line] (store) -- node {if iterations reached} (exit);
+    \path [line] (store) -- node [align=center] {if max iterations \\ is reached} (exit);
     %\path [line] (decide) -| node [near start] {yes} (update);
     %\path [line] (update) |- (identify);
     %\path [line] (decide) -- node {no}(stop);
