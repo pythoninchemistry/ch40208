@@ -3,6 +3,9 @@
 **/*.bbl
 **/*.blg
 **/*.out
+**/*.dvi
+**/*.fls
+**/*.fdb_latexmk
 **/rsc-*.bib
 .snakemake
 **/.DS_Store
