@@ -20,7 +20,13 @@ rule handout_8:
 	input:
 		'week_8/handout_source/handout_8.tex',
                 'week_8/figures/position_vectors_1.pdf',
+                'week_8/figures/position_vectors_2.pdf',
+                'week_8/figures/position_vectors_3.pdf',
                 'week_8/figures/position_vectors_4.pdf',
+                'week_8/figures/cross_product.pdf',
+                'week_8/figures/position_vectors_alternate_basis.pdf',
+                'week_8/figures/rotation_example.pdf',
+                'week_8/figures/vector_addition.pdf',
 
 	output:
 		'week_8/handout_8.pdf'

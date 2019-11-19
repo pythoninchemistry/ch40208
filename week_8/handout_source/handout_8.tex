@@ -232,7 +232,7 @@ where a prime symbol indicates we are in the new basis.
 \begin{figure}[tb]
   \centering
   \resizebox{12cm}{!}{\includegraphics*{rotation_example.pdf}} %
-    \caption{\label{fig:rotation_example}CAPTION}
+    \caption{\label{fig:rotation_example}An example of a linear transformation: rotation by \ang{90} anticlockwise.}
 \end{figure}
 What is the vector $\bvec{r^\prime}$ in the \emph{old} basis? We can see from Fig.~\ref{fig:rotation_example} that this should be $(-4,3)$, but can we calculate this?
 
@@ -270,7 +270,7 @@ We now have a matrix that describes a \ang{90} anti-clockwise rotation. What if 
 \end{equation*}
 The matrix $\bvec{N}$ is called the \emph{inverse} of the matrix $\bvec{M}$.
 \subsection{Matrix--matrix multiplication}
-What happens if we perform two matrix operations, one after the other? For example we perform \emph{two} successive \ang{90} rotations?
+What happens if we perform two matrix operations, one after the other? For example we perform \emph{two} successive \ang{90} rotations---giving a \ang{180} rotation?
 
 Mathematically this looks like
 \begin{eqnarray*}
@@ -288,7 +288,7 @@ We can determine the corresponsing matrix for a \ang{180} rotation by considerin
 \begin{eqnarray*}
 \begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\bvec{i} = \begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\cvec{1}{0}
 \end{eqnarray*}
-As we saw above, the first operation converts $\bvec{i}$ to $\bvec{i^\prime}=\cvec{0}{1}$. We now calculate the effect of the second operation
+As we saw above, the first operation (working from right to left) left converts $\bvec{i}$ to $\bvec{i^\prime}=\cvec{0}{1}$. We now calculate the effect of the second operation
 \begin{equation}
 \begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\cvec{0}{1} = 0\cvec{0}{1} + 1\cvec{-1}{0} = \cvec{-1}{0}.
 \end{equation}
@@ -319,12 +319,32 @@ The inverse of a matrix can be calculated (if it exists) using \texttt{numpy.lin
 \end{lstlisting}
 Matrix--matrix multiplication can also be performed with \texttt{numpy.matmul()}:
 \begin{lstlisting}
->>> O = np.matmul(M,M)
->>> print(O)
+>>> MM = np.matmul(M,M)
+>>> print(MM)
 [[-1  0]
  [ 0 -1]]
  \end{lstlisting}
 
+
+\vspace{\baselineskip}
+\begin{center}
+  \noindent\fbox{%
+      \begin{minipage}{0.9\textwidth}%
+          \vspace{0.15\baselineskip}
+      \subsubsection*{Exercise}
+          In week 4 you wrote some code to rotate a molecule in two-dimensions. The equations for the rotation of coordinates $(x,y)$ by $\beta$ are 
+          \begin{eqnarray*}
+          x^\prime & =&  x \cos \beta - y \sin \beta \\
+          y^\prime & = & y \cos \beta + x \sin \beta.
+          \end{eqnarray*}
+          By considering the effect of this rotation on the basis vectors $\bvec{i}$ and $\bvec{j}$ derive the rotation matrix for a rotation around the origin by $\beta$.
+
+          Starting from your previous code, or from scratch, create a module named \texttt{matrix\_transform} that includes a function \texttt{rotation}. that will take three variables \texttt{x}, \texttt{y}, and \texttt{angle}. This function will perform a rotation of \texttt{angle} on \texttt{x} and \texttt{y} to produce \texttt{x\_new} and \texttt{y\_new}, which are returned from the function. Use the \texttt{visualisation.show()} function to observe the rotation of the water molecule.
+
+          The \texttt{water.txt} file and the \texttt{visualisation.py} module can be downloaded from Moodle.
+      \end{minipage}
+    }
+\end{center}
 %\bibliographystyle{rsc}
 %\bibliography{handout_5}
 
