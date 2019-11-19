@@ -17,7 +17,7 @@
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
-
+\graphicspath{{../figures/}}
 
 \lstset{frame=tb,
   language=Python,
@@ -44,6 +44,8 @@
 \affil[2]{Diamond Light Source, email: andrew.mccluskey@diamond.ac.uk}
 \setcounter{Maxaffil}{0}
 \renewcommand\Affilfont{\itshape\small}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -55,237 +57,154 @@
 \maketitle
 
 \section*{Aim}
-This week gives a brief introduction to \emph{vectors} and \emph{matrices} and using these to perform mathematical manipulations in Python.
+This week gives a brief introduction to \emph{vectors} and \emph{matrices} and using these to perform mathematical manipulations in Python. 
+
+Working with vectors and matrics is common in computational chemistry, and understanding the underlying mathematical concepts helps with understanding the algorithms that are used, and the code that implements them. Working with vectors and matrices falls within the branch of mathematics called \emph{linear algebra}. The next two weeks aim to give you a taste of some of the mathematical properties of vectors and matrics, and why using these can be useful in computationally solving chemical problems. 
+
+If you would like to learn more about vectors, matrices, and linear algebra, I recommend the \emph{Essence of Linear Algebra} 3Blue1Brown YouTube series\footnote{\url{https://www.youtube.com/watch?v=fNk_zzaMoSs}}. Another useful resource is the \emph{Land on Vector Spaces} series of Jupyter notebooks by Lorena Barba's group\footnote{\url{https://github.com/engineersCode/EngComp4\_landlinear}}, which provides Jupyter-friendly tools for visualising vectors and matrix operations. If you prefer a more formal textbook, I recomment \emph{Introduction to Linear Algebra} by Gilbert Strang\footnote{\url{http://math.mit.edu/\~gs/linearalgebra/}}.
 
 \section{Vectors}
 Many problems in chemistry and physics involve working with \emph{vector} quantities. A common definition of a vector in a physics context is a quantity with both \emph{magnitude} and \emph{direction}; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.
 
 \subsection{Example 1: Atomic positions}
-Positions of atoms are always relative, i.e.\ defined with respect to some \emph{origin}.
+Defining atomic positions requires three pieces of information: the location of a reference position, called the \emph{origin}, the distance of each atom from the origin, and the direction we move from the origin to reach each atom. Positions are therefore \emph{vector} quantities (Fig.~\ref{fig:position_vectors}).
 \begin{figure*}
   \centering
-  \begin{subfigure}[b]{0.475\textwidth}
+  \begin{subfigure}[t]{0.475\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{../figures/position_vectors_1}
+    \includegraphics[width=\textwidth]{position_vectors_1}
     \caption[Network2]%
-      {{\small Network 1}}    
-    \label{fig:mean and std of net14}
+      {{\small Defining atomic positions requires knowing both distance and direction with respect to some reference \emph{origin}.}}    
+    \label{fig:position_vectors_1}
   \end{subfigure}
   \hfill
-  \begin{subfigure}[b]{0.475\textwidth}  
+  \begin{subfigure}[t]{0.475\textwidth}  
     \centering 
-    \includegraphics[width=\textwidth]{../figures/position_vectors_1}
-    \caption[]%
-      {{\small Network 2}}    
-    \label{fig:mean and std of net24}
+    \includegraphics[width=\textwidth]{position_vectors_2}
+  \caption[]%
+      {{\small Describing positions using Cartesian coordinates, i.e.\ $(x,y)$ coordinates in two dimensions, or $(x,y,z)$ in three dimensions.}}    
+    \label{fig:position_vectors_2}
   \end{subfigure}
   \vskip\baselineskip
-  \begin{subfigure}[b]{0.475\textwidth}   
+  \begin{subfigure}[t]{0.475\textwidth}   
     \centering 
-    \includegraphics[width=\textwidth]{../figures/position_vectors_1}
+    \includegraphics[width=\textwidth]{position_vectors_3}
     \caption[]%
-      {{\small Network 3}}    
-    \label{fig:mean and std of net34}
+      {{\small The choice of coordinate system implicitly defines \emph{basis} vectors, $\vec{i}$ and $\vec{j}$. Any position can be expressed as a linear combination of these basis vectors.}}    
+    \label{fig:position_vectors_3}
   \end{subfigure}
   \quad
-  \begin{subfigure}[b]{0.475\textwidth}   
+  \begin{subfigure}[t]{0.475\textwidth}   
      \centering 
-     \includegraphics[width=\textwidth]{../figures/position_vectors_4}
+     \includegraphics[width=\textwidth]{position_vectors_4}
      \caption[]%
-       {{\small Network 4}}    
-     \label{fig:mean and std of net44}
+       {{\small The $(x,y)$ coordinates given in \ref{fig:position_vectors_2} are the coefficients used to define each position in the basis $(\vec{i},\vec{j})$.}}    
+     \label{fig:position_vectors_4}
    \end{subfigure}
- \caption[ The average and standard deviation of critical parameters ]
-   {\small The average and standard deviation of critical parameters: Region R4} 
- \label{fig:mean and std of nets}
+ \caption
+   {} 
+ \label{fig:position_vectors}
 \end{figure*}
+A common choice for describing atomic positions is to use Cartesian coordinates, i.e.~$(x,y)$ in two dimensions, or $(x,y,z)$ in three dimensions \footnote{A good choice of coordinate system depends on the problem at hand, and Cartesian coordinated may not always be easiest to work with. For example, problems with spherical symmetry, such as describing atomic orbitals, will often be simpler when expressed in spherical coordinates $(r, \phi, \theta)$.}; this will be familiar from the interatomic distances (week 2) and molecular rotation (week 4) problems. In two dimensions, any position can be described by giving both the $x$ coordinate and the $y$ coordinate. Using the language of vectors, this choice of $x$ and $y$ coordinates defines a pair of \emph{basis} vectors, which we will denote $\vec{i}$ and $\vec{j}$. $\vec{i}$ is a vector of length $1$ pointing along $x$ and $\vec{j}$ is a vector of length $1$ pointing along $y$. Any position vector $\vec{r}=(x,y)$ can be expressed as a \emph{linear combination} of these basis vectors, i.e.\ $\vec{r} = x \times \vec{i} + y \times \vec{j}$. This means one way to think about the usual notation $(x,y)$ is that the two numbers describe the coefficients of $\vec{i}$ and $\vec{j}$ for a given linear combination. This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as $(3,4)$ is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the \emph{same} positions would be described with \emph{different} vectors.
+\begin{figure}[tb]
+  \centering
+  \resizebox{7cm}{!}{\includegraphics*{position_vectors_alternate_basis.pdf}} %
+    \caption{\label{fig:position_vectors_alternate_basis}The three positions from Fig.~\ref{fig:position_vectors}, in a different basis.}
+\end{figure}
 
-One of the benefits of using Python over other programming languages is the clear syntax.
-However, we can improve the readablity and comprehensibility of our code further by \emph{writing readable code}.
-Now, this isn't a comment on handwriting or grammar but rather a discussion into aspects such as:
-\begin{itemize}
-  \item{Using sensible variable names}
-  \item{Using relevant comments}
-  \item{Including descriptive docstrings for functions}
-  \item{Attempt to keep line length relatively short}
-  \item{Write modular code by writing short functions that perform just a single task and combining with other functions}
-\end{itemize}
-If we consider the following example, where we are trying to determine which elements in the list below are liquid at room temperature.
-The code below is not readable (at least not easily) but it is trying to print the elements that are liquid at room temperature,
-\begin{lstlisting}
-# Ugly, hard to read code
+\subsection{Vector addition, subtraction, scaling, and ``multiplication''}
+Vectors can be added together by adding the coefficients of each basis vector (Fig.~\ref{fig:vector_addition}). For example, adding together the vectors $\vec{v}_1=(5,1)$ and $\vec{v}_2=(2,4)$ gives us a new vector $\vec{v}_3=(7,6)$. \begin{figure}[htb]
+  \centering
+  \resizebox{7cm}{!}{\includegraphics*{vector_addition.pdf}} %
+    \caption{\label{fig:vector_addition}Vector addition,.}
+\end{figure}
+This rule is explained by writing $\vec{v}_1$ as $(5\vec{i}+1\vec{j})$ and $\vec{v}_2$ as $(2\vec{i}+4\vec{j})$. Adding $\vec{v1}$ and $\vec{v2}$ then gives $\left[(5\vec{i}+1\vec{j})+(2\vec{i}+4\vec{j})\right]$ and common terms can be collected together to give $\left[(5+2)\vec{i}+(1+4)\vec{j}\right]=(7\vec{i}+6\vec{j})$. Subtracting one vector from another follows the same rules, but with the coefficients of each basis vector subtracted; e.g. $\vec{v}_1-\vec{v}_2=(3,-3)$. 
 
-s = ['H', 'Ca', 'Fe', 'Hg', 'Br', 'Xe']
-m = [13.99, 1115, 1811, 234.321, 265.8, 161.4]
-b = [20.271, 1757, 3134, 629.88, 332, 165.051]
-for d in range(0, len(s)):
-    if m[d] < 273.15 and b[d] >= 273.15:
-        print(s[d])
-        print("This element is a liquid and not a solid or a gas at standard temperature and pressure.")
-\end{lstlisting}
-It is not immediately clear what this code is aiming to achieve.
-For example, the three lists are simply given the names \texttt{s}, \texttt{m}, and \texttt{b}, which the author (currently) knows are short for chemical \texttt{s}ymbols, \texttt{m}elting point, and \texttt{b}oiling point.
-However, if someone else was to try and understand this it is not clear, or if the original author comes back to the code many months (or years) later.
-There are no comments or documentation to explain the purpose of this code, in particular the \texttt{if} statement would benefit from some rationalisation.
-Finally, the final line is very long, running to over 100 characters (when is widely considered that the maximum readbility is found when there is less than 80 characters per line).
+Scaling a vector involved multiplying by a \emph{scalar} (hence the name). This changes the length of the vector, but not the direction, and involved multiplying each of the basis vector coefficients by the scalar value. i.e.~$\vec{v}_\mathrm{1}=(2,3)$. $\vec{v}_1\times2=(4,6)$. Again, we can understand this by expanding out the original vector in terms of the basis vectors, $\vec{i}$ and $\vec{j}$: $(2\vec{i}+3\vec{j})\times2=(4\vec{i}+6\vec{j})$.
 
-\vspace{\baselineskip}
-\begin{center}
-	\noindent\fbox{%
-	    \begin{minipage}{0.9\textwidth}%
-	        \vspace{0.15\baselineskip}
-			\subsubsection*{Exercise}
-	        Rewrite the code to be more readable and clear, remembering to have descriptive variable names, to be concise and to consider iteration conventions.
-	    \end{minipage}
-	}
-\end{center}
+\subsubsection{The dot-product and the cross-product}
+We can also ``multiply'' two vectors together, although this is more complex. In fact there are \emph{two} standard ways to define ``multiplication'' of vectors.
 
-\section{Comments and docstrings}
-One of the easiest ways to make it more clear what your code is trying to do is to add comments.
-These are lines in the code that are ignored by the Python interpreter.
-You will have seen these in most of the code blocks in these handouts, where the line starts with a \texttt{\#} symbol.
-This means that the line will be ignored, and these can be a great way to give the reason for a particular decision in your code.
-For example, before the fifth line of the code block above the following comment could be included,
-\begin{lstlisting}
-# This line determines if room temperature is between the
-# melting and boiling point of the given element
-\end{lstlisting}
-A comment like this makes the purpose of the \texttt{if} statement much clearer.
+The \emph{dot product} is also known as the ``scalar product''. This operation takes two vectors and returns a scalar quantity. The dot product of two vectors is denoted $\vec{a}\cdot\vec{b}$, and is defined as
+\begin{equation}
+\vec{a}\cdot\vec{b} = \sum_ia_ib_i = a_1b_1 + a_2b_2 + \ldots + a_nb_n.
+\end{equation}
+For example, if $\vec{a}=(2,1)$ and $\vec{b}=(3,2)$ then $\vec{a}\cdot\vec{b}$ is given by
+\begin{eqnarray}
+\vec{a}\cdot\vec{b} & = & (x_\mathrm{a} \times x_\mathrm{b})+ (y_\mathrm{a}\times y_\mathrm{b})\\
+& = & (2\times3 + 1\times2) \\
+& = & 8
+\end{eqnarray}
+An equivalent definition of the dot product is
+\begin{equation}
+\vec{a}\cdot\vec{b} = \norm{\vec{a}}\norm{\vec{b}}\cos\theta,
+\end{equation}
+where $\norm{\vec{a}}$ is the \emph{length} of vector $\vec{a}$, and $\theta$ is the angle between $\vec{a}$ and $\vec{b}$.
 
-A subset of the comments are \emph{docstrings}, these are comments that describe the purpose of a function, often including the expected parameters.
-There are a variety of styles that are used in docstrings; the most common are Sphinx, Google, and NumPy.
-However, we will focus on using the Google style as it is the most human readable, however you should be aware that these other styles exist.
-An example of a docstring is shown in the function definition below,
-\begin{lstlisting}
-# An example of a docstring
-import numpy as np
+The \emph{cross-product} is also known as the ``vector product''. This operation takes two vectors and returns a vector quantity, with magnitude and direction. The cross product between vectors $\vec{a}$ and $\vec{b}$ is denoted $\vec{a}\times\vec{b}$ and is defined as a vector \emph{perpendicular} to the plane containing $\vec{a}$ and $\vec{b}$ with a length given by the parallelogram with $\vec{a}$ and $\vec{b}$ as sides (Fig.~\ref{fig:cross_product}). 
+\begin{figure}[tb]
+  \centering
+  \resizebox{7cm}{!}{\includegraphics*{cross_product.pdf}} %
+    \caption{\label{fig:cross_product}The cross product of $\vec{a}$ and $\vec{b}$ is proportional to the area $A$ of the parallelogram with sides $\vec{a}$ and $\vec{b}$.}
+\end{figure}
+This can be computed as
+\begin{equation}
+\vec{a}\times\vec{b} = \norm{\vec{a}}\norm{\vec{b}}\sin\theta\,\vec{n},
+\end{equation}
+where $\vec{n}$ is the \emph{unit vector} (a vector with length 1) perpendicular to the plane containing $\vec{a}$ and $\vec{b}$.
 
-def pH(conc_h):
-    """Determine the pH for a given H+ concentration
-
-    Args:
-        conc_h (float): Concentration of H+ (or H3O+) in solution
-
-    Returns:
-        float: The pH value
-    """
-    return np.log10(conc_h)
-\end{lstlisting}
-As can be seen, the typical docstring consists of three parts, the function description, the input arguments, and the returned values.
-Note that the input arguments and returns statements include information about the variable types for each.
-
-The utility of the docstrings can be leveraged in the Jupyter notebook, as the docstring for a given function is easily accessible.
-For example, if you defined the \texttt{pH} function above, it would be possible to investigate the docstring using the following command in a Jupyter Notebook cell,
-\begin{lstlisting}
-pH?
-\end{lstlisting}
-This will return the docstring for the \texttt{pH} function in a pop up window at the bottom of the page.
-This helper functionality is not limited to custom functions, as most library functions include detailed docstrings aswell.
-
-\vspace{\baselineskip}
-\begin{center}
-	\noindent\fbox{%
-	    \begin{minipage}{0.9\textwidth}%
-	        \vspace{0.15\baselineskip}
-			\subsubsection*{Exercise}
-	        Use the docstring helper functionality to investigate some of the NumPy functions that you have encounters so far and the following:
-          \begin{itemize}
-            \item{\texttt{scipy.optimize.optimise}}
-            \item{\texttt{numpy.mean}}
-            \item{\texttt{matplotlib.pyplot.xlabel}}
-          \end{itemize}
-          Note for some of these you will need to \texttt{import} the appropriate libraries.
-	    \end{minipage}
-	}
-\end{center}
-
-\section{Controlling line length}
-The importance of relatively short lines of code was mentioned above. 
-However, as we have seen, Python takes new lines seriously (they seperate different commands), so new lines to improve lines length arbitrarily will cause problems. 
-Therefore, Python has some ways to ensure that you can safely take a new line, 
-\begin{lstlisting}
-# New lines!
-
-# Line breaking in a list is allowed
-homonuclear_diatomics = ['Hydrogen', 'Nitrogen', 'Oxygen', 
-                         'Fluorine', 'Chloride', 'Iodine', 
-                         'Bromine']
-
-# Brackets can be used to enable line breaking
-# and strings can be broken up by closing and opening the string
-for molecule in homonuclear_diatomics:
-    if (molecule != 'Nitrogen' 
-        and molecule != 'Oxygen'):
-        print('The {} molecule has a '
-              'single bond'.format(molecule))
-\end{lstlisting}
-If you continue to work on your Python skills you will see more examples of how line breaking can be achieved. 
-
-\section{Testing}
-The final topic to cover in this lecture is testing, that is tests for your code to ensure that they do what you think they do.
-It was mentioned in the debugging lecture that people aren't perfect and therefore cannot write perfect code.
-So it is important that we write tests to make sure that our code is doing the right thing under all circumstances.
-
-Typically tests are applied at a function level, where there is, at least, a test for each function.
-However, in order to achieve full test coverage for a given function more than one test may be necessary.
-Consider the function below, which will convert either degrees Fahrenheit or degress Celsius to Kelvin (similar to the Problem from the first week),
-\begin{lstlisting}
-# A temperature conversion
-
-def temp_conv(value, unit='C'):
-    """This can convert either Celsius or Fahrenheit to Kelvin
-
-    Args:
-        value (float): Temperature to be converted
-        unit (str): Unit of original temperuture (either 'C' or 'F', defaults to 'C')
-
-    Returns:
-        float: Converted temperature (in K)
-    """
-    if unit == 'C':
-        return value + 273.15
-    elif unit == 'F':
-        return (value + 459.67) * 5 / 9
-    else:
-        raise ValueError('The unit must be either C or F; no other units are supported')
-\end{lstlisting}
-In this example we have raised an error if the unit is neither \texttt{'C'} or \texttt{'F'}.
-
+\section{Working with vectors in Python}
+Working with vectors in Python is made simple by using \texttt{numpy} arrays.
 \begin{lstlisting}
 import numpy as np
 
-c = temp_conv(0, 'C')
-np.testing.assert_almost_equal(c, 273.15)
-print('Test 1 Passed!')
-f = temp_conv(32, 'F')
-np.testing.assert_almost_equal(f, 273.15)
-print('Test 2 Passed!')
-np.testing.assert_raises(ValueError, temp_conv, 0, 'c')
-print('Test 3 Passed!')
+# define two 2D vectors using numpy arrays
+a = np.array([5,1])
+b = np.array([2,4])
+print(a)
+print(b)
+
+# vector addition
+c = a + b
+print(c)
+
+# vector subtraction
+c = a - b
 \end{lstlisting}
-This \texttt{assert\_almost\_equal} function is an element of the NumPy testing library which acts on floating point number (which may not be \textbf{exactly} equal due to floating point precision).
-The first argument in this function is the result of the function we are testing, while the second argument is the expected result.
-While the \texttt{assert\_raises} function tests if the function \texttt{temp\_conv} raises a \texttt{ValueError} when called with arguments \texttt{0} and \texttt{'c'}.
+Remember that multiplication of \texttt{numpy} arrays involved element-wise multiplication and returns a new array.
+\begin{lstlisting}
+# vector multiplication?
+d = a * b
+print(d)
+\end{lstlisting}
+This is \emph{not} the same as $\vec{a}\cdot\vec{b}$ or $\vec{a}\times\vec{b}$. Instead we can use the \texttt{numpy.dot()} and \texttt{numpy.cross()} functions:
+\begin{lstlisting}
+# dot product
+dot = np.dot(a,b)
+print(dot)
+
+# cross product
+cross = np.cross(a,b)
+print(cross)
+\end{lstlisting}
 
 \vspace{\baselineskip}
 \begin{center}
-	\noindent\fbox{%
-	    \begin{minipage}{0.9\textwidth}%
-	        \vspace{0.15\baselineskip}
-			\subsubsection*{Exercise}
-	        Change the values of the expected result to see the output when the test fails. Add another error to be raised if the temperature being returned is less then \SI{0}{\kelvin} and is therefore unphysical, then add a test to check for this.
-	    \end{minipage}
-	}
+  \noindent\fbox{%
+      \begin{minipage}{0.9\textwidth}%
+          \vspace{0.15\baselineskip}
+      \subsubsection*{Exercise}
+          In week 2 you wrote some code to calculate interatomic distances (and angles) between pairs of atoms in example molecules, using the expression
+          \begin{equation}
+          r_{ij} = \sqrt{(x_i-x_j)^2+(y_i-y_j)^2+(z_i-z_j)^2}.
+          \end{equation}
+          Starting from your week 2 code, or from scratch, write a new version of this code that solves the problem using \texttt{numpy} arrays and \texttt{np.dot}.
+
+          The \texttt{molecule1.txt} and \texttt{molecule2.txt} files can be downloaded from Moodle.
+      \end{minipage}
+  }
 \end{center}
 
-\subsection{Test driven development}
-Test driven development (TDD) is a methodology for computer programming where the tests are written first for a particular use case, and then the operational code is written such that it will satisfy the tests.
-This methodology is different from that applied to this point in the course, however, it is very popular and powerful when used appropriately.
-In the problem below, you will be able to try your hand at some test driven development.
-
-\section{Problem}
-Download the folder entitled \texttt{testing} from moodle, and open the Python module included.
-This module includes a series of functions, you need to use the information given in the \texttt{tests.ipynb} notebook to determine what the function should do and then write a docstring and appropriate code such that the tests will pass. 
 
 %\bibliographystyle{rsc}
 %\bibliography{handout_5}
