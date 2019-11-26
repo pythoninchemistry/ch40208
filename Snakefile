@@ -1,4 +1,4 @@
-HANDOUTS = ['week_1/handout_1.pdf', 'week_2/handout_2.pdf', 'week_3/handout_3.pdf', 'week_4/handout_4.pdf', 'week_5/handout_5.pdf', 'data_analysis/handout.pdf', 'week_8/handout_8.pdf']
+HANDOUTS = ['week_1/handout_1.pdf', 'week_2/handout_2.pdf', 'week_3/handout_3.pdf', 'week_4/handout_4.pdf', 'week_5/handout_5.pdf', 'data_analysis/handout.pdf', 'week_8/handout_8.pdf', 'week_9/handout_9.pdf']
 
 rule all:
 	input:
@@ -16,6 +16,19 @@ rule data_analysis:
 		cd data_analysis/handout_source && pdflatex handout.tex && pdflatex handout.tex && cp handout.pdf ../
 		"""
 
+rule handout_9:
+	input:
+		'week_9/handout_source/handout_9.tex',
+                'week_9/figures/ellipse_major_minor_axes_transformation.pdf',
+                'week_9/figures/matrix_transformation_unit_circle.pdf',
+                'week_9/figures/matrix_transformation.pdf',
+	output:
+		'week_9/handout_9.pdf'
+	shell:
+		"""
+		cd week_9/handout_source && pdflatex handout_9.tex && pdflatex handout_9.tex && cp handout_9.pdf ../
+                """	
+
 rule handout_8:
 	input:
 		'week_8/handout_source/handout_8.tex',
@@ -27,7 +40,6 @@ rule handout_8:
                 'week_8/figures/position_vectors_alternate_basis.pdf',
                 'week_8/figures/rotation_example.pdf',
                 'week_8/figures/vector_addition.pdf',
-
 	output:
 		'week_8/handout_8.pdf'
 	shell:
