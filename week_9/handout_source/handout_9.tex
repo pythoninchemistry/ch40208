@@ -70,12 +70,13 @@ Key points from last week:
 
 \subsection{Vectors}
 \begin{itemize}
-  \item \emph{Vectors} are properties with both \emph{magnitude} and \emph{direction} (in contrast to \emph{scalars}, which only have magnitude.)
+  \item \emph{Vectors} are properties with both \emph{magnitude} and \emph{direction} (in contrast to \emph{scalars}, which only have magnitude).
   \item Vectors can be represented as a \emph{linear combination} of basis vectors:
     \begin{equation*}
     \bvec{v}=\sum_i c_i \phi_i.
     \end{equation*}
   e.g.\ for a two dimensional vector space with basis vectors $\bvec{i}$ and $\bvec{j}$, the column vector $\cvec{2}{3}$ describes a vector $2\bvec{i}+3\bvec{j}$.
+  \item The coefficients of a vector are only meaningful if we have defined the basis vectors. The same vector can have different numerical descriptions in different basis sets.
   \item In Python, we can represent vectors using one-dimensional numpy arrays, e.g.
   \begin{lstlisting}
   >>> import numpy as np
@@ -85,7 +86,7 @@ Key points from last week:
   \end{lstlisting}
   \item numpy arrays behave like vectors for addition and scalar multiplication:
   \begin{lstlisting}
-  >>> print(a*2)
+  >>> print(v*2)
   [4, 6]
   >>> u = np.array([3, 5])
   >>> print(u + v)
@@ -93,13 +94,14 @@ Key points from last week:
   >>> print(u - v)
   [1, 2]
   \end{lstlisting}
-  \item The dot product and cross product operations are provided as part of numpy:
+  \item The dot product and cross product operations are provided as part of numpy:\footnote{Note that the cross product of two vectors is a vector that is perpendicular to both original vectors (see week 8). Here, \texttt{numpy.cross()} returns just the magnitude in the implied $z$ direction.} 
   \begin{lstlisting}
   >>> print(np.dot(u, v))
   21
   >>> print(np.cross(u, v))
   -1
   \end{lstlisting}
+
 \end{itemize}
 
 \subsection{Matrices}
@@ -111,8 +113,8 @@ Key points from last week:
   \end{eqnarray}
   where
   \begin{eqnarray}
-  \bvec{i^\prime} & = & a\times\bvec{i} + b\times\bvec{j} \\
-  \bvec{j^\prime} & = & c\times\bvec{i} + d\times\bvec{j}.
+  \bvec{i^\prime} & = & a\,\bvec{i} + b\,\bvec{j} \\
+  \bvec{j^\prime} & = & c\,\bvec{i} + d\,\bvec{j}.
   \end{eqnarray}
   i.e.\ the \emph{columns} of the matrix $\bvec{M}$ describe the transformation of the vectors $\cvec{1}{0}$ and $\cvec{0}{1}$.
   \item We can calculate the effect of a matrix $\bvec{M}$ operating on a vector $\bvec{v}$ by calculating the effect of the matrix operating on the basis vectors $\bvec{i}$ and $\bvec{j}$ and then multiplying these by the vector elements, e.g.
@@ -120,7 +122,7 @@ Key points from last week:
   \bvec{v^\prime} & = & \bvec{M}\cdot\bvec{v}\\
   & = & \begin{bmatrix}a & c\\b & d\end{bmatrix}\cdot\cvec{v_1}{v_2} \\
   & = & v_1\cvec{a}{b} + v_2\cvec{c}{d} \\
-  & = & v_1\times\bvec{i^\prime} + v_2\times\bvec{j^\prime}.
+  & = & v_1\,\bvec{i^\prime} + v_2\,\bvec{j^\prime}.
   \end{eqnarray}
   \item In Python, we can represent vectors using one-dimensional numpy arrays, e.g.
   \begin{lstlisting}
@@ -130,12 +132,12 @@ Key points from last week:
   [[1 2]
    [-1 1]]
   \end{lstlisting}
-  \item Matix--vector multiplication can be performed using \texttt{np.matmul()}:
+  \item Matrix--vector multiplication can be performed using \texttt{np.matmul()}:
   \begin{lstlisting}
   >>> print(np.matmul(M,v))
   [8, 1]
   \end{lstlisting}
-  which gives the same result as a sum over vector elements times transformed basis vectors (matrix columns), using array slicing (see week ?):
+  which gives the same result as a sum over vector elements times transformed basis vectors (matrix columns), using array slicing (see week 2):
   \begin{lstlisting}
   >>> print(v[0]*M[:,0] + v[1]*M[:,1])
   [8, 1]
@@ -188,7 +190,7 @@ i.e. operating on $\bvec{v}$ by $\bvec{M}$ gives the \emph{same vector} $\bvec{v
     \caption{\label{fig:ellipse_major_minor_axes_transformation}Left: The two vectors corresponding to the major and minor axes of the ellipse in Figure~\ref{fig:matrix_transformation_unit_circle}. Right: The same two vectors \emph{before} the transformation. Both of these vectors have the same direction before and after the transformation by $\bvec{M}$ and are \emph{eigenvectors} of $\bvec{M}$.}
 \end{figure}
 
-We can calcuate the eigenvalues and eigenvectors of a matrix using texttt{np.linalg.eig()}\footnote{\url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.eig.html}}:
+We can calcuate the eigenvalues and eigenvectors of a matrix using \texttt{np.linalg.eig()}\footnote{\url{https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.eig.html}}:
 \begin{lstlisting}
 >>> print(np.linalg.eig(M))
 (array([3., 1.]), array([[ 0.70710678, -0.70710678],
@@ -204,11 +206,11 @@ This returns two arrays. The first array contains the eigenvalues of $\bvec{M}$,
 \end{lstlisting}
 Note that the eigenvectors are returned as a matrix. Each of the \emph{columns} of this matrix correspond to one of the eigenvectors. We can see that for the matrix $\bvec{M}=\tmatrix{2}{1}{1}{2}$ we get one eigenvector $\cvec{0.70710678}{0.70710678}$ with eigenvalue $3$, and a second eigenvector $\cvec{-0.70710678}{\phantom{-}0.70710678}$ with eigenvalue $1$.
 
-Calculating eigenvalues and eigenvectors is useful in a number of chemistry applications, for example:
+Calculating eigenvalues and eigenvectors has applications in a number of areas of chemistry. For example:
 \begin{itemize}
- \item Describing the rotational motions of molecules---finding principal axes of rotation and principal moments of inertia (eigenvectors and eigenvalues of the inertia matrix).
- \item Describing the vibrational motions of molecules---finding normal modes (eigenvectors of the dynamical matrix and their associated frequencies (eigenvectors and eigenvalues of the dynamical matrix).
- \item Solving the time-independent Schr\"{o}dinger equation $H\Psi=E\Psi$, which is an eigenvalue equation, to find molecular orbitals and their corresponding energies (eigenvectors and eigenvalues of the Hamiltonian matrix).
+ \item Describing the rotational motions of molecules: finding principal axes of rotation and principal moments of inertia (eigenvectors and eigenvalues of the inertia matrix).
+ \item Describing the vibrational motions of molecules: finding normal modes (eigenvectors and eigenvalues of the dynamical matrix).
+ \item Solving the time-independent Schr\"{o}dinger equation $H\Psi=E\Psi$, which is an eigenvalue equation: finding molecular orbitals and their corresponding energies (eigenvectors and eigenvalues of the Hamiltonian matrix).
 \end{itemize}
 
 \subsection{Key ideas}
@@ -224,15 +226,16 @@ q_\mathrm{rot} = \frac{\pi^{\frac{1}{2}}}{\sigma}\left(\frac{k_\mathrm{B}T}{hcA}
 \end{equation}
 where $A$, $B$, and $C$ and the \emph{principal moments of inertia} of a non-linear molecule.
 
-Moments of inertia, described by $\bvec{I}$, describe how a rigid body responds to angular acceleration, and are analogous to intertial mass for linear acceleration:
+Moments of inertia, described by $\bvec{I}$, describe how a rigid body responds to angular acceleration, and are analogous to inertial mass for linear acceleration:
 \begin{align*}
 \bvec{F} = m\bvec{a} && \bvec{\tau} = \bvec{I} \bvec{\alpha} \\
-\bvec{p} = m\bvec{v} && \bvec{h}    = \bvec{I}\bvec{\omega} 
+\bvec{p} = m\bvec{v} && \bvec{L}    = \bvec{I}\bvec{\omega} 
 \end{align*}
+Where $\bvec{alpha}$ is angular acceleration and $\bvec{tau}$ is torque, and $\bvec{omega}$ is angular velocity and $\bvec{L}$ is angular momentum.
 
-If we focus on angular momentum, then for a one-dimensional problem, where rotation occurs around a single axis (e.g. for a diatomic molecule), $\bvec{\omega}$ and $\bvec{h}$ are scalars and $\bvec{I}$ is also a scalar:
+If we focus on angular momentum, then for a one-dimensional problem, where rotation occurs around a single axis (e.g. for a diatomic molecule), $\bvec{\omega}$ and $\bvec{L}$ are scalars and $\bvec{I}$ is also a scalar:
 \begin{equation*}
-h = I\omega
+L = I\omega
 \end{equation*}
 For a rigid diatomic molecule the moment of inertia, $I$, is given by
 \begin{equation*}
@@ -244,13 +247,13 @@ I = \mu r^2
 \end{equation*}
 where $r$ is the molecular bond length.
 
-In three dimensions, however, $\bvec{\omega}$, and $\bvec{h}$ are \emph{vectors}, and are not required to have the same orientation. The quantity $\bvec{I}$, which translates one vector into another vector, is therefore a \emph{matrix}, called the \emph{intertia matrix}:
+In three dimensions, however, $\bvec{\omega}$, and $\bvec{L}$ are \emph{vectors}, and are not required to have the same orientation. The quantity $\bvec{I}$, which translates one vector into another vector, is therefore a \emph{matrix}, called the \emph{intertia matrix}:
 \begin{equation*}
-\begin{bmatrix}l_x\\l_y\\l_z\end{bmatrix} = 
+\begin{bmatrix}L_x\\L_y\\L_z\end{bmatrix} = 
 \begin{bmatrix} 
-I_{xx} & I_{xy} & I_{xz} \\
-I_{yx} & I_{yy} & I_{yz} \\
-I_{zx} & I_{zy} & I_{zz} 
+\phantom{-}I_{xx} & -I_{xy} & -I_{xz} \\
+-I_{yx} & \phantom{-}I_{yy} & -I_{yz} \\
+-I_{zx} & -I_{zy} & \phantom{-}I_{zz} 
 \end{bmatrix}
 \cdot
 \begin{bmatrix}\omega_x\\\omega_y\\\omega_z\end{bmatrix}.
@@ -263,9 +266,11 @@ I_{zz} = \sum_i m_i(x_i^2+y_i^2);
 \end{eqnarray*}
 but the \emph{off-diagonal} elements (called ``products of inertia'') must also be included:
 \begin{eqnarray*}
-I_{xy} = \sum_i m_ix_iy_i
+I_{xy} = \sum_i m_ix_iy_i, \\
+I_{xz} = \sum_i m_ix_iz_i, \\
+I_{yz} = \sum_i m_iy_iz_i.
 \end{eqnarray*}
-etc.
+In the case of a rotation molecule, the index $i$ runs over the atoms in the molecule.
 
 Having non-zero off-diagonal elements in the intertia matrix makes working with angular motion in 3D more complicated than in 1D. It is often useful therefore to seek a simpler form for $\bvec{I}$ that gives a more intuitive description of molecular rotational properties.
 
@@ -275,7 +280,7 @@ or $xy$, where $x$, $y$, and $z$ are distances of atoms along each direction fro
 
 If this were the case, our angular momentum equation would now be:
 \begin{equation*}
-\begin{bmatrix}l_x\\l_y\\l_z\end{bmatrix} = 
+\begin{bmatrix}L_x\\L_y\\L_z\end{bmatrix} = 
 \begin{bmatrix} 
 I_{xx} & 0 & 0 \\
 0 & I_{yy} & 0 \\
@@ -321,12 +326,12 @@ which can be rewritten in matrix form as
 \end{eqnarray*}
 This gives the simplified form that we wanted, \emph{if} we use the eigenvectors of $\bvec{I}$ as our basis vectors, i.e.\ as our coordinate system vectors. The eigenvectors of the inertia matrix are called the \emph{principal rotation axes} of our molecule, and the corresponding eigenvalues are the \emph{principal moments of inertia}.
 
-For a molecular in an arbitrary orientation, we can therefore calculate the principal moments of inertia by finding the eigenvalues of the inertia matrix. The corresponding eigenvectors give us the principal rotation axes, which are often used to define a ``natural'' coordinate system for the molecule.
+For a molecule in an arbitrary orientation, we can therefore calculate the principal moments of inertia by finding the eigenvalues of the inertia matrix. The corresponding eigenvectors give us the principal rotation axes, which are often used to define a ``natural'' coordinate system for the molecule.
 
-\subsection{Rotating molecules onto their principal rotation axes}.
+\subsection{Rotating molecules onto their principal rotation axes}
 If the principal rotation axes of a molecule define a natural coordinate system for that molecule, are we able to rotate an arbitrarily oriented molecule onto this coordinate system? The answer is yes, and it combines the rotataion matrices from week 8 with the eigenvectors discussed this week.
 
-For a given molecular rotation, the basis vectors $\bvec{i}$, $\bvec{j}$, and $\bvec{k}$ point along $x$, $y$, and $z$ respectively. But we would like to rotate our molecule (or equivalently to rotate the coordinate system) so that $x$, $y$, and $z$ point along the principal rotation axes of the molecule. This is equivalent to \emph{transforming} our coordinate system so that $\bvec{i}$, $\bvec{j}$, and $\bvec{k}$ are aligned with the eigenvectors of the inertia matrix $\bvec{I}$ (for the original coordinate system). Remember that a matrix transformation maps the original basis vectors onto the columns of the matrix. To map $\bvec{i}$, $\bvec{j}$, and $\bvec{k}$ onto $\bvec{v}_1$, $\bvec{v}_2$, and $\bvec{v}_3$ we operate on the vector coordinates of the atoms in the molecule with a matrix composed of $\bvec{k}$ onto $\bvec{v}_1$, $\bvec{v}_2$, and $\bvec{v}_3$ as columns.
+For a given molecular rotation, the basis vectors $\bvec{i}$, $\bvec{j}$, and $\bvec{k}$ point along $x$, $y$, and $z$ respectively. But we would like to rotate our molecule so that $x$, $y$, and $z$ point along the principal rotation axes of the molecule. This is equivalent to \emph{transforming} our coordinate system so that $\bvec{i}$, $\bvec{j}$, and $\bvec{k}$ are aligned with the eigenvectors of the inertia matrix $\bvec{I}$ (for the original coordinate system). Remember that a matrix transformation maps the original basis vectors onto the columns of the matrix. To map $\bvec{i}$, $\bvec{j}$, and $\bvec{k}$ onto $\bvec{v}_1$, $\bvec{v}_2$, and $\bvec{v}_3$ we would operate on the vector coordinates of the atoms in the molecule with a matrix composed of $\bvec{k}$ onto $\bvec{v}_1$, $\bvec{v}_2$, and $\bvec{v}_3$ as columns. This would rotate our basis vectors to align with the molecular principal axes. However, we want to do the \emph{inverse} of this operation, and rotate the principal axes of the molecule to align with our coordinate system. Our rotation matrix is therefore the \emph{inverse} matrix $\begin{bmatrix}\phantom{0}\\\bvec{v}_1&\bvec{v}_2&\bvec{v}_3\\\phantom{0}\end{bmatrix}^{-1}$.
 
 \vspace{\baselineskip}
 \begin{center}
@@ -334,7 +339,7 @@ For a given molecular rotation, the basis vectors $\bvec{i}$, $\bvec{j}$, and $\
       \begin{minipage}{0.9\textwidth}%
           \vspace{0.15\baselineskip}
       \subsubsection*{Exercise}
-          Today's exercise is to calculate principal moments of inertia and principal rotation axes of a series of molecules, and then to rotate these molecules so that they the principal axes are aligned with $\left\{x, y, z\right\}$.
+          Today's exercise is to calculate principal moments of inertia and principal rotation axes of a series of molecules, and then to rotate these molecules so that the principal axes are aligned with $\left\{x, y, z\right\}$.
 
           The coordinates of each molecule can be downloaded from Moodle, where you will also find a \texttt{visualisation2.py} module that contains some code for visualising your molecules and their orientations.
 
