@@ -30,7 +30,7 @@ def xyz_projections(coords):
     ax[0].plot(coords[:,1], coords[:,2], 'o', markersize=30, clip_on=False)
     ax[1].plot(coords[:,0], coords[:,2], 'o', markersize=30, clip_on=False)
     ax[2].plot(coords[:,0], coords[:,1], 'o', markersize=30, clip_on=False)
-    for i in range(2):
+    for i in range(3):
         ax[i].set_xticks([-1,0,1])
         ax[i].set_yticks([-1,0,1])
     fig.tight_layout()
