@@ -18,13 +18,13 @@ Therefore, we will aim to have the following *flipped* content ready for the sta
     - [Notebook](week_1/arithmetic.ipynb)
 - Print statements
     - Video
-    - Notebook
-- Flow control with if, elif, and else; including whitespace
-    - Video
-    - Notebook
+    - [Notebook](week_1/print_statements.ipynb)
 - Logical operators
     - Video 
-    - Notebook
+    - [Notebook](week_1/logical_operators.ipynb)
+- Flow control with if, elif, and else; including whitespace
+    - Video
+    - [Notebook](week_1/flow_control.ipynb)
 - Conversion of F and C to K
     - Free form exercise
 - Calculation of equilibrium constant from free energies
