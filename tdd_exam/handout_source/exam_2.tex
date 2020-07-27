@@ -1,0 +1,81 @@
+\documentclass[a4paper]{article}
+\usepackage{titling}
+\usepackage{authblk}
+\usepackage{fancyhdr}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\usepackage{rsc}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{mhchem}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[htt]{hyphenat}
+\usepackage{subcaption}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\graphicspath{{../figures/}}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+  columns=fixed,basewidth=.5em,
+}
+
+% \setcounter{section}{-1}
+
+\title{CH40208 Programming Assessment}
+\author{Assessment 2}
+% \author[1]{Dr Benjamin J. Morgan}
+% \author[1,2]{Dr Andrew R. McCluskey}
+% \affil[1]{Department of Chemistry, University of Bath, email: b.j.morgan@bath.ac.uk}
+% \affil[2]{Diamond Light Source, email: andrew.mccluskey@diamond.ac.uk}
+% \setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+\newcommand{\bvec}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\cvec}[2]{\begin{bmatrix}#1\\#2\end{bmatrix}}
+\newcommand{\tmatrix}[4]{\begin{bmatrix}#1&#2\\#3&#4\end{bmatrix}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CH40208}
+\lhead{\thetitle}
+\rfoot{\thepage}
+\date{11/12/19}
+
+\begin{document}
+\maketitle
+
+\section*{Instructions}
+\begin{enumerate}
+  \item Read through all of the files and these instructions before you begin. 
+  \item Before starting the assessment, ensure that you have downloaded the \texttt{functions.py} module and \texttt{tests.ipynb} notebook from Moodle. 
+  \item The aim of this assessment is to follows the function design specifications described in the notebook and write functions (in the \texttt{functions.py}) module that adhere to the specification and pass the tests in the notebook. 
+  \item Each of the five problems are weighted equally in the marking scheme; whcih includes a wide variety of aspects of programming.
+  \item Remember, that to get the notebook to recognise changes in the \texttt{functions.py} module is it necessary to run \\\textbf{Kernel \texttt{=>} Restart}\\ from the menu. 
+  \item \textbf{You will have up to 2 hours to work on this assessment}. The assessment is ``open book'' and you can refer to any notes you have from the course.
+  \item Once the assessment begins, no internet use is permitted.\\\textbf{Students using the internet will receive a mark of 0}.
+  \item When you have finished, or at the end of the assessment time, please upload your final \texttt{functions.py} to Moodle. Please run \\\textbf{Kernel \texttt{=>} Restart and Run All}\\ on the notebook and check your output. Be sure to upload the latest version of your module from your \texttt{H:} drive (check the modification time).
+  \item Before uploading, please change the name of the module to \texttt{Firstname\_Surname.py} (note you probably shouldn't do this until the end as each of the tests assumes the functions to be imported from the \texttt{functions.py} module).
+  \item You will be told when there are 15 minutes remaining.
+  \item If you finish with more than 30 minutes remaining, please upload your notebook and leave quietly without disturbing the other students.
+\end{enumerate}
+
+\end{document}
