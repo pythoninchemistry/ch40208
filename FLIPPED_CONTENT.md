@@ -26,6 +26,6 @@ Therefore, we will aim to have the following *flipped* content ready for the sta
     - Video
     - [Notebook](week_1/flow_control.ipynb)
 - Conversion of F and C to K
-    - Free form exercise
+    - [Free form exercise](week_1/exercise.ipynb)
 - Calculation of equilibrium constant from free energies
-    - Free form exercise
+    - [Free form exercise](week_1/exercise.ipynb)
