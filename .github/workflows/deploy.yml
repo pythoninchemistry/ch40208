@@ -1,15 +1,13 @@
 name: deploy-book
 
 # Only run this when the master branch changes
-on:
-  push:
-    branches:
-    - master
-    # If your git repository has the Jupyter Book within some-subfolder next to
-    # unrelated files, you can make this run only if a file within that specific
-    # folder has been modified.
-    paths:
-    - CH40208/
+on: 
+   push:
+     paths:
+       - CH40208/**
+   pull_request:
+     paths:
+       - CH40208/**
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
@@ -26,7 +24,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        pip install -r CH40208/requirements.txt
 
     # Build the book
     - name: Build the book
