@@ -24,7 +24,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install -r requirements.txt
+        pip install -r CH40208/requirements.txt
 
     # Build the book
     - name: Build the book
