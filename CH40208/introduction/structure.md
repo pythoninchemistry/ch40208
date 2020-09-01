@@ -4,8 +4,13 @@ The aim of this course is to offer a *taster* of some practical computational ch
 However, before this, it is necessary to develop the skills to handle these techniques, and the most important skill for a modern computational chemistry is **programming**. 
 Therefore, the structure of this course is well represented with the following figure. 
 
-<img src='./images/content.png' width='50%'>
-*What you can expect to be learning over time.*
+```{figure} ./images/content.png.png
+---
+height: 150px
+name: content
+---
+What you can expect to be learning over time.!
+```
 
 In additional to being and important skill, learning to program will also help in other ways:
 - you will be more capable of understanding **what** the computer is doing and **why**, 
