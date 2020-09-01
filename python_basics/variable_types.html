@@ -235,8 +235,12 @@ A variable may be created and then reused at a later stage in the code.
 When a variable is <em>assigned</em>, the <em>value</em> of the variable is set to some computer memory position which is indexed by the <em>variable name</em>.
 So the variable can be reused over and over by using this variable name.
 For example, the code below will assign the value <code class="docutils literal notranslate"><span class="pre">8.314</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">ideal_gas_constant</span></code>,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ideal_gas_constant</span> <span class="o">=</span> <span class="mf">8.314</span>
 </pre></div>
+</div>
+</div>
 </div>
 <p>Not all variables are the same, they can have different <em>types</em>.
 Different operations will be possible depending on the type of the variable involved.
@@ -245,16 +249,7 @@ Common variable types that are present in Python include:</p>
 <li><p><em>integers</em> (<code class="docutils literal notranslate"><span class="pre">int</span></code>): whole numbers (1, 0, 2, -3, etc.). There is no decimal point and they can be positive, negative, or zero.</p></li>
 <li><p><em>floats</em> (<code class="docutils literal notranslate"><span class="pre">float</span></code>): all real numbers (1.0, 3.14, 0.0, -6.4), any value that can be described with a decimal point. This includes numbers in scientific notation, which are written <code class="docutils literal notranslate"><span class="pre">6.02e23</span></code>, where the <code class="docutils literal notranslate"><span class="pre">eXX</span></code> takes the place of the <span class="math notranslate nohighlight">\(\times 10^{\text{XX}}\)</span>.</p></li>
 <li><p><em>complex</em> (<code class="docutils literal notranslate"><span class="pre">complex</span></code>): complex numbers, which should be familiar from mathematics, such as <span class="math notranslate nohighlight">\(1 + 2i\)</span>. However, in Python, a <code class="docutils literal notranslate"><span class="pre">j</span></code> is used instead of the <span class="math notranslate nohighlight">\(i\)</span> so <span class="math notranslate nohighlight">\(1+2i\)</span> becomes <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2j</span></code>.</p></li>
-<li><p><em>string</em> (<code class="docutils literal notranslate"><span class="pre">str</span></code>): textual information, such as a word or a sentence. These are written between single or double inverted commas, <code class="docutils literal notranslate"><span class="pre">'like</span> <span class="pre">this'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;this&quot;</span></code>.</p></li>
-</ul>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><code class="docutils literal notranslate"><span class="pre">str</span></code> objects are contained within either double or single quotes. However, you <strong>cannot</strong> use a mixture of the two, e.g. <code class="docutils literal notranslate"><span class="pre">my_string</span> <span class="pre">=</span> <span class="pre">'Hello</span> <span class="pre">World!&quot;</span></code> will return an error.</p>
-</div>
-</div>
-<ul class="simple">
+<li><p><em>string</em> (<code class="docutils literal notranslate"><span class="pre">str</span></code>): textual information, such as a word or a sentence. These are written between single or double inverted commas, <code class="docutils literal notranslate"><span class="pre">'like</span> <span class="pre">this'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;this&quot;</span></code>. <code class="docutils literal notranslate"><span class="pre">str</span></code> objects are contained within either double or single quotes. However, you <strong>cannot</strong> use a mixture of the two, e.g. <code class="docutils literal notranslate"><span class="pre">my_string</span> <span class="pre">=</span> <span class="pre">'Hello</span> <span class="pre">World!&quot;</span></code> will return an error.</p></li>
 <li><p><em>boolean</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>): a <em>logical</em> variable type, named for <a class="reference external" href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> who defined an algebraic logic system in the 19th century. These may hold one of two values, <code class="docutils literal notranslate"><span class="pre">True</span></code> or `false.</p></li>
 </ul>
 <p>The code above assigned a <code class="docutils literal notranslate"><span class="pre">float</span></code>-type variable to the name <code class="docutils literal notranslate"><span class="pre">ideal_gas_constant</span></code>.
