@@ -1,3 +1,4 @@
+- file: welcome
 - file: introduction/introduction
   sections:
     - file: introduction/overview
