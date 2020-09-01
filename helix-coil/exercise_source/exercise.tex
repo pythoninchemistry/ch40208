@@ -1,0 +1,88 @@
+\documentclass[a4paper]{article}
+\usepackage{titling}
+\usepackage{authblk}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{rsc}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+\DeclareSIUnit\Fahrenheit{\degree F}
+\setlength{\parindent}{0pt}
+\parskip 1.5ex
+
+\title{Problem Solving Exercise 1: Protein helix to coil transition}
+\author[1]{Dr Benjamin J. Morgan}
+\author[1,2]{Dr Andrew R. McCluskey}
+\affil[1]{Department of Chemistry, University of Bath, email: b.j.morgan@bath.ac.uk}
+\affil[2]{Diamond Light Source, email: andrew.mccluskey@diamond.ac.uk}
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{CH40208}
+\lhead{\thetitle}
+\rfoot{\thepage}
+
+\begin{document}
+\maketitle
+
+This exercise involves the modeling of cooperative protein unfolding using statistical thermodynamics. 
+You should use the information in the provided handout to carry out the folliwng tasks. 
+
+\begin{table}[h]
+    \centering
+    \caption{Transition energies for each of the steps in a $n=4$ amino acid system.}
+    \label{tab:energy}
+    \begin{tabular}{c | c | c}
+        Transition & Symbol & Energy/\si{\joule} \\
+        \hline
+        $0 \rightarrow 1$ & $q_1$ & \num{1.1e-19} \\
+        $0 \rightarrow 2$ & $q_2$ & \num{2.0e-19} \\
+        $0 \rightarrow 3$ & $q_3$ & \num{2.9e-19} \\
+        $0 \rightarrow 4$ & $q_4$ & \num{3.7e-19} \\
+    \end{tabular}
+\end{table}
+
+\begin{enumerate}
+    \item Write a function, that given an arbitrary number of amino acids in a randomly coiled conformation, $i$, and total amino acids, $n$, can determine the number of possible permutations $C(n, i)$. \\ Note, that the function \texttt{factorial} from the \texttt{scipy.special} module is capbale of returning an array of factorials from a NumPy array. 
+    \item Table~\ref{tab:energy} gives the energy for the transitions of a fully helical protein chain, of length 4, to having 1, 2, 3, and 4 randomly coiled amino acids. The partition coefficient associated with the fully helical structure is $q_0 = 1.21$. 
+    \begin{enumerate}
+        \item Using Equations~3 and 4 from the handout, determine the value of the total paritition function, $q$, for this system at a temperature of \SI{273.15}{\kelvin}.
+        \item Determine the total partition function at \SIlist{200;400;600;800;1000}{\kelvin}, and plot the variance as a function of temperature.  
+    \end{enumerate}
+    \item The partition function of this process can be generalised, initially by applying a non-cooperative model, create a function to evaluate the non-cooperative model for an arbitrary number of amino acids and plot how the result of this varies in the temperature series mentioned above for proteins with $4$, $20$, and $100$ amino acids, assume a value for $\gamma$ of \SI{1e-19}{\joule}.
+    \item The zipper model for protein unfolding is a form of cooperative model that is outlined in Equation 10.
+    \begin{enumerate}
+        \item Write three functions to determine; the partition function for the cooperative model, the fraction of proteins that would be found with $i$ randomly coiled amino acids, and the mean number of randomly coiled amino acids.
+        \item Plot the variation of $p_i$ as a function of $i$ for a protein consisting of 20 amino acids, where $sigma = $\num{5e-3} and $s$ is 1.5, 1, and 0.82. 
+        \item Determine the mean $i$ for each of the above stability parameters. 
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
