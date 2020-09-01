@@ -6,7 +6,7 @@ Therefore, the structure of this course is well represented with the following f
 
 ```{figure} ./images/content.png
 ---
-scale: 50%
+scale: 35%
 name: content
 ---
 What you can expect to be learning over time.!
