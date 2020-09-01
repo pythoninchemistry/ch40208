@@ -4,10 +4,10 @@ name: deploy-book
 on: 
    push:
      paths:
-       - CH40208/*  
+       - CH40208/**
    pull_request:
      paths:
-       - CH40208/*
+       - CH40208/**
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
