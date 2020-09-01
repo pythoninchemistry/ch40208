@@ -1,0 +1,6 @@
+- file: intro
+- file: week_1/week_1
+  sections:
+    - file: week_1/variable_types
+    - file: week_1/arithmetic
+    - file: week_1/print_statement
