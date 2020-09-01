@@ -185,9 +185,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/arithmetic.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/arithmetic.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -236,7 +236,7 @@
   <div class="section" id="arithmetic">
 <h1>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">¶</a></h1>
 <p>Let’s now look at how we can use the <em>numerical</em> variable types.
-Python and the Jupyter Notebook are able to perform simple mathematical operations <em>natively</em>.
+Python and the Jupyter Notebook can perform simple mathematical operations <em>natively</em>.
 Most powerful mathematical operations are discussed <a class="reference internal" href="../working_with_data/numpy_arrays.html"><span class="doc std std-doc">later</span></a>.</p>
 <p>The operations that Python can perform natively include,</p>
 <table class="colwidths-auto table">
@@ -273,12 +273,21 @@ Most powerful mathematical operations are discussed <a class="reference internal
 So in Python we would have <code class="docutils literal notranslate"><span class="pre">1.5</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">R</span> <span class="pre">*</span> <span class="pre">T</span></code>.</p>
 <p>With these basic tools alone, and the ability to assign variables, it is possible to use the Jupyter Notebook as a simple calculator.
 For example, we could assign some values to the variables <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, and <code class="docutils literal notranslate"><span class="pre">T</span></code>, and calculate the internal energy of a monatomic ideal gas.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>
 
 <span class="mf">1.5</span> <span class="o">*</span> <span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>3741.3
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="order-of-operations">
 <h2>Order of operations<a class="headerlink" href="#order-of-operations" title="Permalink to this headline">¶</a></h2>
@@ -307,15 +316,33 @@ Python follows the order of operations that should be familiar from mathematics,
 <h2>Mixed-type operations<a class="headerlink" href="#mixed-type-operations" title="Permalink to this headline">¶</a></h2>
 <p>When the two operands, <span class="math notranslate nohighlight">\(4\)</span> and <span class="math notranslate nohighlight">\(3\)</span> in the code <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">+</span> <span class="pre">3</span></code>, are of the same type, the result of some arithmetic operations will typically also be of this type.
 For example, below the two floats produce a float,</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">4.3</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">4.3</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>However, where the operations is on operands of different types, it is necessary to modify one of them before the operation can be performed.
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, where the operation is on operands of different types, it is necessary to modify one of them before the operation can be performed.
 For example, below an integer is multiplied by a float, which results in an object of type <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">4.0</span><span class="p">)</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">4.0</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This is because, Python is automatically converted the type of <code class="docutils literal notranslate"><span class="pre">2</span></code> before the operation.
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is because Python is automatically converted the type of <code class="docutils literal notranslate"><span class="pre">2</span></code> before the operation.
 If you could see all of the steps of the multiplication, it would look like this,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="mf">4.0</span>
 <span class="o">&gt;&gt;</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="mf">4.0</span>
@@ -324,15 +351,33 @@ If you could see all of the steps of the multiplication, it would look like this
 </div>
 <p>In Python 3 (the version of Python that we are working with), if one integer is divided by another, then both are converted to floats first.
 So in the code below, the variable <code class="docutils literal notranslate"><span class="pre">both_int</span></code> is a float with the value <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">both_int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">both_int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span>
 <span class="n">both_int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">both_int</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(0.5, float)
+</pre></div>
+</div>
+</div>
+</div>
 <p>In the older Python 2, this would have returned an integer with a value of <code class="docutils literal notranslate"><span class="pre">0</span></code>, as the number is rounded down.
 However, with Python 3, the operator <code class="docutils literal notranslate"><span class="pre">//</span></code> (known as floor division, because it rounds down) would be required to achieve this result.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">floor_division</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">//</span> <span class="mi">4</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">floor_division</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">//</span> <span class="mi">4</span>
 <span class="n">floor_division</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">floor_division</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(0, int)
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 </div>
