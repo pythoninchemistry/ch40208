@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Variable Types &#8212; CH40208: Topics in Computational Chemistry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/mystnb.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Arithmetic" href="arithmetic.html" />
+    <link rel="prev" title="Python Basics" href="python_basics.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/pic.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Welcome to CH40208
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/introduction.html">
+   Prerequisite Information
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="python_basics.html">
+   Python Basics
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Variable Types
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="arithmetic.html">
+     Arithmetic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="print_statements.html">
+     Print Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="collections.html">
+     Collections
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../structured_programming/structured_programming.html">
+   Structured Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/working_with_data.html">
+   Working with Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../good_practice/good_practice.html">
+   Good Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../object_oriented_programming/object_oriented_programming.html">
+   Objected Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../comp_chem_fundamentals/comp_chem_fundamentals.html">
+   Fundamentals of Computational Chemistry
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applied_comp_chem/applied_comp_chem.html">
+   Applied Computational Chemistry
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/python_basics/variable_types.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="variable-types">
+<h1>Variable Types<a class="headerlink" href="#variable-types" title="Permalink to this headline">¶</a></h1>
+<p>A <em>variable</em> is a container that Python uses to store some <em>data</em>.
+A variable may be created and then reused at a later stage in the code.
+When a variable is <em>assigned</em>, the <em>value</em> of the variable is set to some computer memory position which is indexed by the <em>variable name</em>.
+So the variable can be reused over and over by using this variable name.
+For example, the code below will assign the value <code class="docutils literal notranslate"><span class="pre">8.314</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">ideal_gas_constant</span></code>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ideal_gas_constant</span> <span class="o">=</span> <span class="mf">8.314</span>
+</pre></div>
+</div>
+<p>Not all variables are the same, they can have different <em>types</em>.
+Different operations will be possible depending on the type of the variable involved.
+Common variable types that are present in Python include:</p>
+<ul class="simple">
+<li><p><em>integers</em> (<code class="docutils literal notranslate"><span class="pre">int</span></code>): whole numbers (1, 0, 2, -3, etc.). There is no decimal point and they can be positive, negative, or zero.</p></li>
+<li><p><em>floats</em> (<code class="docutils literal notranslate"><span class="pre">float</span></code>): all real numbers (1.0, 3.14, 0.0, -6.4), any value that can be described with a decimal point. This includes numbers in scientific notation, which are written <code class="docutils literal notranslate"><span class="pre">6.02e23</span></code>, where the <code class="docutils literal notranslate"><span class="pre">eXX</span></code> takes the place of the <span class="math notranslate nohighlight">\(\times 10^{\text{XX}}\)</span>.</p></li>
+<li><p><em>complex</em> (<code class="docutils literal notranslate"><span class="pre">complex</span></code>): complex numbers, which should be familiar from mathematics, such as <span class="math notranslate nohighlight">\(1 + 2i\)</span>. However, in Python, a <code class="docutils literal notranslate"><span class="pre">j</span></code> is used instead of the <span class="math notranslate nohighlight">\(i\)</span> so <span class="math notranslate nohighlight">\(1+2i\)</span> becomes <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2j</span></code>.</p></li>
+<li><p><em>string</em> (<code class="docutils literal notranslate"><span class="pre">str</span></code>): textual information, such as a word or a sentence. These are written between single or double inverted commas, <code class="docutils literal notranslate"><span class="pre">'like</span> <span class="pre">this'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;this&quot;</span></code>.</p></li>
+</ul>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">str</span></code> objects are contained within either double or single quotes. However, you <strong>cannot</strong> use a mixture of the two, e.g. <code class="docutils literal notranslate"><span class="pre">my_string</span> <span class="pre">=</span> <span class="pre">'Hello</span> <span class="pre">World!&quot;</span></code> will return an error.</p>
+</div>
+</div>
+<ul class="simple">
+<li><p><em>boolean</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>): a <em>logical</em> variable type, named for <a class="reference external" href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> who defined an algebraic logic system in the 19th century. These may hold one of two values, <code class="docutils literal notranslate"><span class="pre">True</span></code> or `false.</p></li>
+</ul>
+<p>The code above assigned a <code class="docutils literal notranslate"><span class="pre">float</span></code>-type variable to the name <code class="docutils literal notranslate"><span class="pre">ideal_gas_constant</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">type()</span></code> function will inform you of the type of the variable that is passed as an argument.
+For example, we can use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function as shown below to get the type of the variable named <code class="docutils literal notranslate"><span class="pre">speed_of_light</span></code>,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">speed_of_light</span> <span class="o">=</span> <span class="mf">3.0e8</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">speed_of_light</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>In an empty Jupyter Notebook investigate the creation of variables of different types, try and come up with a chemistry example for each (complex might be a bit hard but investigate the literature, for example, the scattering length of a given atom).</p></li>
+<li><p>In the same Notebook, consider the difference between <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">1.</span></code> and <code class="docutils literal notranslate"><span class="pre">1.0</span></code> as interpreted by Python. From this, explain the importance of the decimal point in the definition of numerical types in Python.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./python_basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="python_basics.html" title="previous page">Python Basics</a>
+    <a class='right-next' id="next-link" href="arithmetic.html" title="next page">Arithmetic</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew R. McCluskey & Benjamin J. Morgan<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
