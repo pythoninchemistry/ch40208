@@ -185,9 +185,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/print_statements.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/print_statements.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -223,6 +223,60 @@
                 
   <div class="section" id="print-statements">
 <h1>Print Statements<a class="headerlink" href="#print-statements" title="Permalink to this headline">¶</a></h1>
+<p>Until now, we have been using the built-in functionality of the Juypter Notebook to “print” information from the code we are writing, such as the value of a variable or it’s type.
+You may have noticed that the result of the final line in a given Jupyter cell will be printed.
+For example, if you run the code below in your own Notebook so should get the same string shown,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">to_print</span> <span class="o">=</span> <span class="s2">&quot;Jupyter returns the information in the last line&quot;</span>
+
+<span class="n">to_print</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;Jupyter returns the information in the last line&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, if you would like to get information from other lines of the cell (or from within a <a class="reference internal" href="../good_practice/modules.html"><span class="doc std std-doc">large program</span></a> or <a class="reference internal" href="../structured_programming/functions.html"><span class="doc std std-doc">function</span></a>, it is necessary to be able to <em>print</em> from the code.
+This is where the <em>print statement</em> comes in, which in Python looks like this,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Hello World!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which will output the string <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World!</span></code> when run.
+Some of you may be aware of the context of <a class="reference external" href="https://en.wikipedia.org/wiki/%22Hello,_World%21%22_program">printing Hello World!</a> in the history of learning programming, it is typically the first thing someone learns when they are learning a new programming language.</p>
+<p>Any of the <a class="reference internal" href="variable_types.html"><span class="doc std std-doc">types</span></a> can be printed with the print statement.
+Additionally, it is also possibel to use the print statement to insert numerical values into a string.
+We can even prescribe how the number is written.
+For example, in the code below, the information between the curly brackets defines that a float (<code class="docutils literal notranslate"><span class="pre">f</span></code>) should be written with two (<code class="docutils literal notranslate"><span class="pre">2</span></code>) numbers following the decimal point (<code class="docutils literal notranslate"><span class="pre">.</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ideal_gas_constant</span> <span class="o">=</span> <span class="mf">8.314</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R is approximately </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ideal_gas_constant</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R to 2 decimal places is </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ideal_gas_constant</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>R is approximately 8.314
+R to 2 decimal places is 8.31
+</pre></div>
+</div>
+</div>
+</div>
+<p>More information cabout the <code class="docutils literal notranslate"><span class="pre">format</span></code> function can be found <a class="reference external" href="https://www.w3schools.com/python/ref_string_format.asp">online</a>.</p>
 </div>
 
     <script type="text/x-thebe-config">
