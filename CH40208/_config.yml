@@ -1,7 +1,7 @@
 # Book settings
 title: "CH40208: Topics in Computational Chemistry"
 author: Andrew R. McCluskey & Benjamin J. Morgan
-logo: logo.png
+logo: pic.png
 
 latex:
   latex_documents:
