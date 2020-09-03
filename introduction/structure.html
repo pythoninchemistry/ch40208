@@ -2,9 +2,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Course Structure &#8212; CH40208: Topics in Computational Chemistry</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
@@ -14,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -24,12 +25,10 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -212,7 +211,14 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-work-in-this-course">
+   How to work in this course?
+  </a>
+ </li>
+</ul>
+
         </nav>
     </div>
 </div>
@@ -227,8 +233,8 @@
 However, before this, it is necessary to develop the skills to handle these techniques, and the most important skill for a modern computational chemistry is <strong>programming</strong>.
 Therefore, the structure of this course is well represented with the following figure.</p>
 <div class="figure align-default" id="content">
-<a class="reference internal image-reference" href="../_images/content.png"><img alt="../_images/content.png" src="../_images/content.png" style="width: 630.0px; height: 420.0px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">What you can expect to be learning over time.!</span><a class="headerlink" href="#content" title="Permalink to this image">¶</a></p>
+<a class="reference internal image-reference" href="../_images/content.png"><img alt="A plot of the chemistry content increasing linearly over time while the programming content decreases at the same rate." src="../_images/content.png" style="width: 630.0px; height: 420.0px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">What you can expect to be learning over time.</span><a class="headerlink" href="#content" title="Permalink to this image">¶</a></p>
 </div>
 <p>In additional to being and important skill, learning to program will also help in other ways:</p>
 <ul class="simple">
@@ -237,6 +243,18 @@ Therefore, the structure of this course is well represented with the following f
 <li><p>programming is generally a useful skill to have (both in chemistry and outside)</p></li>
 </ul>
 <p>We will be introducing the Python from the basics (so you won’t need to remember the Python labs in years 1 and 2), and equip you with the tools to tackle <em>real</em> chemical problems computationally.</p>
+<div class="section" id="how-to-work-in-this-course">
+<h2>How to work in this course?<a class="headerlink" href="#how-to-work-in-this-course" title="Permalink to this headline">¶</a></h2>
+<p>The ongoing COVID-19 pandemic has had a significant impact on teaching across the University, and this module is no exception.
+In 2019-2020, the CH40208 was completely rewritten to account for a change from teaching <a class="reference external" href="https://en.wikipedia.org/wiki/Fortran">Fortran</a> in the chemistry degree to Python.
+This year, we have again been forced to rewrite the course, in order to make the most of the remote learning opportunities.</p>
+<p>The majority of the time, this resource will be used for asynchronous learning.
+You will be expected to work through the material at your own pace, completing the exercise as necessary.
+Twice a week, there will be online workshops with the lecturers (Mondays and Fridays at 10:15), where they will work through some example content, and there will be a chance to ask questions directly.
+Attendance at these workshops is strongly advised.
+Additionally, throughout the week, demonstrators will be available to help by email/video calls.
+If you have a question for a demonstrator, email xxx.comp.help&#64;bath.ac.uk](mailto:) and include “CH40208” in the subject, a demonstrator or one of the lecturers will be in touch as soon as they can.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">

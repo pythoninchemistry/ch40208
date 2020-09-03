@@ -2,9 +2,10 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercise 2 &#8212; CH40208: Topics in Computational Chemistry</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
@@ -14,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-dropdown.css" />
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -24,12 +25,10 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/mystnb.js"></script>
     <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -180,6 +179,28 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/week_1/exercise_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/week_1/exercise_2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -200,8 +221,7 @@
   <div class="section" id="exercise-2">
 <h1>Exercise 2<a class="headerlink" href="#exercise-2" title="Permalink to this headline">¶</a></h1>
 <p>In this exercise, we will design code to calculate the equilibrium constant, <span class="math notranslate nohighlight">\(K\)</span>, from the following equation,</p>
-<div class="math notranslate nohighlight">
-\[ K = \exp\bigg(\frac{\Delta G}{RT}\bigg) \]</div>
+<p>$<span class="math notranslate nohighlight">\( K = \exp\bigg(\frac{\Delta G}{RT}\bigg) \)</span>$,</p>
 <p>where <span class="math notranslate nohighlight">\(R = 8.314\)</span> JK<sup>-1</sup>mol<sup>-1</sup>, <span class="math notranslate nohighlight">\(\Delta G\)</span> is the free energy change, and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.</p>
 <p>You code should be able to handle values of the free energy change in any of kJmol<sup>-1</sup>, Jmol<sup>-1</sup> or eV (where <span class="math notranslate nohighlight">\(1\)</span> eV = <span class="math notranslate nohighlight">\(96485\)</span> Jmol<sup>-1</sup>).
 The unit of the temperature is only going to be K.</p>
@@ -209,8 +229,7 @@ The unit of the temperature is only going to be K.</p>
 <p>First, we need to have the definition of the temperature, value of <span class="math notranslate nohighlight">\(\Delta G\)</span> and the units that are being used.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a variable for each of the temperature, the free energy change value and associated unit</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a variable for each of the temperature, the free energy change value and associated unit</span>
 </pre></div>
 </div>
 </div>
@@ -218,8 +237,7 @@ The unit of the temperature is only going to be K.</p>
 <p>If it unit is Jmol<sup>-1</sup>, no change is necessary to the value (as this agrees with the unit of <span class="math notranslate nohighlight">\(R\)</span>). Therefore this will be our <code class="docutils literal notranslate"><span class="pre">else</span></code>, but we need to perform a unit conversion <code class="docutils literal notranslate"><span class="pre">if</span></code> the unit is kJmol<sup>-1</sup> (a multiplication by 1000) of <code class="docutils literal notranslate"><span class="pre">elif</span></code> the unit is eV (a multiplication by 96485).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using if, elif, and else convert the free energy value to J/mol</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using if, elif, and else convert the free energy value to J/mol</span>
 </pre></div>
 </div>
 </div>
@@ -230,7 +248,7 @@ This means that we will have to <code class="docutils literal notranslate"><span
 Please make sure that the cell below is run, or else the code will not work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing the exp function </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># importing the exp function </span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">exp</span>
 </pre></div>
 </div>
@@ -240,8 +258,7 @@ Please make sure that the cell below is run, or else the code will not work.</p>
 For example, to calculate the exponential of 2, the code would be <code class="docutils literal notranslate"><span class="pre">exp(2)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do the arithmatic in this cell, using the exp function</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do the arithmatic in this cell, using the exp function</span>
 </pre></div>
 </div>
 </div>
@@ -249,8 +266,7 @@ For example, to calculate the exponential of 2, the code would be <code class="d
 <p>Finally, print the result (use a formatted string to make the result clear).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># print here</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print here</span>
 </pre></div>
 </div>
 </div>
