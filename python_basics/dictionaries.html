@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accessing the JupyterHub &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Dictionaries &#8212; CH40208: Topics in Computational Chemistry</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -38,8 +38,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using Jupyter Notebooks" href="using_notebooks.html" />
-    <link rel="prev" title="Course Structure" href="structure.html" />
+    <link rel="next" title="Functions" href="../structured_programming/functions.html" />
+    <link rel="prev" title="Tuples" href="tuples.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -84,24 +84,24 @@
   Introduction
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
+  <a class="reference internal" href="../introduction/overview.html">
    Course Overview
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="structure.html">
+  <a class="reference internal" href="../introduction/structure.html">
    Course Structure
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../introduction/jupyterhub.html">
    Accessing the JupyterHub
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="using_notebooks.html">
+  <a class="reference internal" href="../introduction/using_notebooks.html">
    Using Jupyter Notebooks
   </a>
  </li>
@@ -111,26 +111,43 @@
   Python Basics
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/variable_types.html">
+  <a class="reference internal" href="variable_types.html">
    Variable Types
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/arithmetic.html">
+  <a class="reference internal" href="arithmetic.html">
    Arithmetic
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/print_statements.html">
+  <a class="reference internal" href="print_statements.html">
    Print Statements
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/collections.html">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="collections.html">
    Collections
   </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lists.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tuples.html">
+     Tuples
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Dictionaries
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p class="caption">
@@ -346,9 +363,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/introduction/jupyterhub.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/dictionaries.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -364,6 +381,28 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/dictionaries.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_basics/dictionaries.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -382,8 +421,118 @@
         
               <div>
                 
-  <div class="section" id="accessing-the-jupyterhub">
-<h1>Accessing the JupyterHub<a class="headerlink" href="#accessing-the-jupyterhub" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="dictionaries">
+<h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h1>
+<p>The last collection type we will look at is the dictionary or <code class="docutils literal notranslate"><span class="pre">dict</span></code>.
+This type consists of <code class="docutils literal notranslate"><span class="pre">keys</span></code> and <code class="docutils literal notranslate"><span class="pre">values</span></code>, which are analogous to the words and definitions in a traditional dictionary.
+Consider if we rewrite the <code class="docutils literal notranslate"><span class="pre">chlorine</span></code> list as a dictionary,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;chemical symbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Cl&#39;</span><span class="p">,</span> <span class="s1">&#39;atomic number&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;average mass number&#39;</span><span class="p">:</span> <span class="mf">35.45</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<p>The meaning of each of the values is sudden a lot more clear than in the list object.
+We can print all of the keys, which is helping if you are passed a dictionary from another function and need to understand the contents,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;chemical symbol&#39;, &#39;atomic number&#39;, &#39;average mass number&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is possible to access one of the values by passing the relevant <code class="docutils literal notranslate"><span class="pre">key</span></code> as one would pass an index,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;atomic number&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, indexing does not work for dictionaries as the index is not a valid <code class="docutils literal notranslate"><span class="pre">key</span></code>,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">a0685985ddc1</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">chlorine</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="ne">KeyError</span>: 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also increase the information in a dictionary by adding new keys.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;number of isotopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;number of isotopes&#39;: 2}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, the dictionaries items need not be single variables, like floats and strings, they can also be collections,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;mass numbers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;number of isotopes&#39;: 2, &#39;mass numbers&#39;: (35, 37)}
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong>Exercise</strong>: Create a dictionary-type object (with the variable name <code class="docutils literal notranslate"><span class="pre">d_block</span></code>) where the <code class="docutils literal notranslate"><span class="pre">keys</span></code> are the names of the first row of transition metals, and the <code class="docutils literal notranslate"><span class="pre">values</span></code> are the numbers of valence electrons.</p>
+</div></blockquote>
 </div>
 
     <script type="text/x-thebe-config">
@@ -399,7 +548,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./introduction"
+            path: "./python_basics"
         },
         predefinedOutput: true
     }
@@ -414,8 +563,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="structure.html" title="previous page">Course Structure</a>
-    <a class='right-next' id="next-link" href="using_notebooks.html" title="next page">Using Jupyter Notebooks</a>
+    <a class='left-prev' id="prev-link" href="tuples.html" title="previous page">Tuples</a>
+    <a class='right-next' id="next-link" href="../structured_programming/functions.html" title="next page">Functions</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

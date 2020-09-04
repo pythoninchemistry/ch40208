@@ -17,14 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-orbital_occupancy[1] = 5
+chlorine[1]
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m<ipython-input-18-1947876d2b32>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0morbital_occupancy[0m[0;34m[[0m[0;36m1[0m[0;34m][0m [0;34m=[0m [0;36m5[0m[0;34m[0m[0;34m[0m[0m
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+[0;32m<ipython-input-5-a0685985ddc1>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mchlorine[0m[0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;31mTypeError[0m: 'tuple' object does not support item assignment
-TypeError: 'tuple' object does not support item assignment
+[0;31mKeyError[0m: 1
+KeyError: 1
 
