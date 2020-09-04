@@ -1,52 +1,55 @@
 - file: welcome
-- file: introduction/introduction
-  sections:
+- part: Introduction
+  chapters:
     - file: introduction/overview
     - file: introduction/structure
     - file: introduction/jupyterhub
     - file: introduction/using_notebooks
-- file: python_basics/python_basics
-  sections:
+- part: Python Basics
+  chapters:
     - file: python_basics/variable_types
     - file: python_basics/arithmetic
     - file: python_basics/print_statements
     - file: python_basics/collections
-- file: structured_programming/structured_programming
-  sections:
+      sections:
+        - file: python_basics/lists
+        - file: python_basics/tuples
+        - file: python_basics/dictionaries
+- part: Structured Programming
+  chapters:
     - file: structured_programming/functions
     - file: structured_programming/logical_operators
     - file: structured_programming/flow_control
     - file: structured_programming/loops
-- file: working_with_data/working_with_data
-  sections:
+- part: Working with Data
+  chapters:
     - file: working_with_data/numpy_arrays
     - file: working_with_data/vectorisation
     - file: working_with_data/plotting
     - file: working_with_data/file_io
     - file: working_with_data/pandas
-- file: good_practice/good_practice
-  sections:
+- part: Good Practice
+  chapters:
     - file: good_practice/modules
     - file: good_practice/debugging
     - file: good_practice/raising_errors
     - file: good_practice/testing
     - file: good_practice/markdown
-- file: object_oriented_programming/object_oriented_programming
-  sections: 
+- part: Object Oriented Programming
+  chapters:
     - file: object_oriented_programming/classes
     - file: object_oriented_programming/attributes_methods
     - file: object_oriented_programming/private_public
     - file: object_oriented_programming/inheritance
-- file: comp_chem_fundamentals/comp_chem_fundamentals
-  sections:
+- part: Fundamentals of Computational Chemistry
+  chapters:
     - file: comp_chem_fundamentals/optimisation
     - file: comp_chem_fundamentals/model_fitting
     - file: comp_chem_fundamentals/linear_algebra
-- file: applied_comp_chem/applied_comp_chem
-  sections:
+- part: Applied Computational Chemistry
+  chapters:
     - file: applied_comp_chem/molecular_dynamics
     - file: applied_comp_chem/monte_carlo
     - file: applied_comp_chem/vibrational_analysis
     - file: applied_comp_chem/electronic_structure
-    - file: applied_comp_chem/big_data 
-
+    - file: applied_comp_chem/big_data
