@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 667.9 200.5" style="enable-background:new 0 0 667.9 200.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{font-family:'AndaleMono';}
+	.st1{font-size:11px;}
+	.st2{fill:none;stroke:#000000;stroke-miterlimit:10;}
+	.st3{font-size:14px;}
+	.st4{fill:none;stroke:#000000;stroke-miterlimit:10;stroke-dasharray:4.1061,4.1061;}
+	.st5{fill:none;stroke:#000000;stroke-miterlimit:10;stroke-dasharray:4.0542,4.0542;}
+</style>
+<text transform="matrix(1 0 0 1 22.8558 133.9602)" class="st0 st1">‘Helium’</text>
+<rect x="8.8" y="89.3" class="st2" width="81" height="81"/>
+<text transform="matrix(1 0 0 1 110.4568 133.9602)" class="st0 st1">‘Neon’</text>
+<rect x="89.8" y="89.3" class="st2" width="81" height="81"/>
+<text transform="matrix(1 0 0 1 187.8062 133.9602)" class="st0 st1">‘Argon’</text>
+<rect x="170.4" y="89.3" class="st2" width="81" height="81"/>
+<text transform="matrix(1 0 0 1 261.8552 133.9602)" class="st0 st1">‘Krypton’</text>
+<rect x="251.1" y="89.3" class="st2" width="81" height="81"/>
+<text transform="matrix(1 0 0 1 430.0961 133.9602)" class="st0 st1">‘Radon’</text>
+<rect x="332.1" y="89.3" class="st2" width="81" height="81"/>
+<rect x="412.7" y="89.3" class="st2" width="81" height="81"/>
+<text transform="matrix(1 0 0 1 349.4563 133.9602)" class="st0 st1">‘Xenon’</text>
+<g>
+	<g>
+		<line class="st2" x1="89.8" y1="25.2" x2="89.8" y2="56.4"/>
+		<g>
+			<polygon points="89.8,64.8 84.9,52.9 89.8,55.8 94.6,52.9 			"/>
+		</g>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 89.7598 20.0321)" class="st0 st1">noble_gases[1]</text>
+<text transform="matrix(1 0 0 1 332.0602 20.0319)" class="st0 st1">noble_gases[4]</text>
+<text transform="matrix(1 0 0 1 5.7633 83.3901)" class="st0 st3">0</text>
+<text transform="matrix(1 0 0 1 85.559 83.3901)" class="st0 st3">1</text>
+<text transform="matrix(1 0 0 1 167.7633 83.3902)" class="st0 st3">2</text>
+<text transform="matrix(1 0 0 1 246.8591 83.4848)" class="st0 st3">3</text>
+<text transform="matrix(1 0 0 1 327.8596 83.4849)" class="st0 st3">4</text>
+<text transform="matrix(1 0 0 1 408.4994 83.4849)" class="st0 st3">5</text>
+<g>
+	<g>
+		<line class="st2" x1="155.4" y1="39.4" x2="153.4" y2="39.4"/>
+		<line class="st4" x1="149.2" y1="39.4" x2="93.8" y2="39.4"/>
+		<line class="st2" x1="91.8" y1="39.4" x2="89.8" y2="39.4"/>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 158.8291 43.003)" class="st0 st1">noble_gases[1:4]</text>
+<text transform="matrix(1 0 0 1 0.3586 186.8193)" class="st0 st3">-6</text>
+<text transform="matrix(1 0 0 1 81.3587 186.8193)" class="st0 st3">-5</text>
+<text transform="matrix(1 0 0 1 162.0086 186.8194)" class="st0 st3">-4</text>
+<text transform="matrix(1 0 0 1 242.6587 186.914)" class="st0 st3">-3</text>
+<text transform="matrix(1 0 0 1 323.6584 186.9141)" class="st0 st3">-2</text>
+<text transform="matrix(1 0 0 1 404.2986 186.9141)" class="st0 st3">-1</text>
+<g>
+	<g>
+		<line class="st2" x1="332.1" y1="25.2" x2="332.1" y2="56.4"/>
+		<g>
+			<polygon points="332.1,64.8 327.2,52.9 332.1,55.8 336.9,52.9 			"/>
+		</g>
+	</g>
+</g>
+<g>
+	<g>
+		<line class="st2" x1="267.2" y1="39.4" x2="269.2" y2="39.4"/>
+		<line class="st5" x1="273.3" y1="39.4" x2="328" y2="39.4"/>
+		<line class="st2" x1="330.1" y1="39.4" x2="332.1" y2="39.4"/>
+	</g>
+</g>
+</svg>
