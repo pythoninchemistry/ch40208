@@ -144,11 +144,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="#id1">
-   Functions
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="logical_operators.html">
    Logical Operators
   </a>
@@ -401,36 +396,29 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definition-of-a-function">
-   Definition of a function
+  <a class="reference internal nav-link" href="#whitespace-and-indentation">
+   Whitespace and indentation
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#whitespace-and-indentation">
-     Whitespace and indentation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#definition">
-     Definition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#docstring">
-     Docstring
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#content">
-     Content
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#return">
-     Return
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docstring">
+   Docstring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#content">
+   Content
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#return">
+   Return
+  </a>
  </li>
 </ul>
 
@@ -492,8 +480,6 @@ You can imagine that any time the function is called, the contents of the functi
 </pre></div>
 </div>
 <p>So the result of that calculation is returned.</p>
-<div class="section" id="definition-of-a-function">
-<h2>Definition of a function<a class="headerlink" href="#definition-of-a-function" title="Permalink to this headline">¶</a></h2>
 <p>Let us look in a bit more detail about the structure of a function definition.
 Considering the <code class="docutils literal notranslate"><span class="pre">kinetic_energy</span></code> function above, there are four main elements:</p>
 <ul class="simple">
@@ -503,7 +489,7 @@ Considering the <code class="docutils literal notranslate"><span class="pre">kin
 <li><p><strong>Return</strong>: The information that is returned from the function is passed with the command <code class="docutils literal notranslate"><span class="pre">return</span></code>. The <code class="docutils literal notranslate"><span class="pre">kinetic_energy</span></code> function returns the <code class="docutils literal notranslate"><span class="pre">ke</span></code> variable in the line <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">ke</span></code>.</p></li>
 </ul>
 <div class="section" id="whitespace-and-indentation">
-<h3>Whitespace and indentation<a class="headerlink" href="#whitespace-and-indentation" title="Permalink to this headline">¶</a></h3>
+<h2>Whitespace and indentation<a class="headerlink" href="#whitespace-and-indentation" title="Permalink to this headline">¶</a></h2>
 <p>Python takes whitespace and indentation very seriously.
 It is used to identify a <em>block</em>; such as a function.
 The function content begins when the indented section starts and ends when the indentation is removed.
@@ -512,7 +498,7 @@ The indentation can be any length (although 4 spaces are the most commonly found
 Through this course, we will encounter quite a few examples of other <em>blocks</em>, when you come across these try to take note of the importance of the whitespace that is used.</p>
 </div>
 <div class="section" id="definition">
-<h3>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
 <p>A function is defined using the command <code class="docutils literal notranslate"><span class="pre">def</span></code>, which tell the Python interpreter that a function definition is occurring in that line.
 The function definition consists of a function name followed by brackets, some arguments (although not essential), and a colon.
 The number of arguments that a function may have can be anything from 0 to infinity (although the latter is obviously impractical).
@@ -583,7 +569,7 @@ This means that there is now two possible ways to call the function.
 </div>
 </div>
 <div class="section" id="docstring">
-<h3>Docstring<a class="headerlink" href="#docstring" title="Permalink to this headline">¶</a></h3>
+<h2>Docstring<a class="headerlink" href="#docstring" title="Permalink to this headline">¶</a></h2>
 <p>The doctstring is an important (although not essential) component of any function.
 Describing the purpose of a function is valuable for many resaons, it helps to clarify what the function will do, it offers guidence for others on how to use the function, and it acts to remind the future you why it is that you have a particular function and what is does.
 You may read this final point an droll your eyes, however, I promise you that code you write today will not stay present in your memory forever.</p>
@@ -594,7 +580,7 @@ The Google style indicates the arguments with the keyword <code class="docutils 
 The <code class="docutils literal notranslate"><span class="pre">Returns</span></code> keyword is followed by a list of objects that are returned from the function.</p>
 </div>
 <div class="section" id="content">
-<h3>Content<a class="headerlink" href="#content" title="Permalink to this headline">¶</a></h3>
+<h2>Content<a class="headerlink" href="#content" title="Permalink to this headline">¶</a></h2>
 <p>The content of a function is relatively straight forward, it is the code that makes the function do something.
 However, be aware that a variable created within a function cannot be used elsewhere in the code, including argument variable.
 This is an aspect of programming known as <em>scope</em>.
@@ -637,7 +623,7 @@ Considering the following function definition.</p>
 </div>
 </div>
 <div class="section" id="return">
-<h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
+<h2>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">return</span></code> statement is the command that tells the Python interpretor to stop the function and return the value(s) given.
 You will not that in the <code class="docutils literal notranslate"><span class="pre">photon_energy</span></code> function above, there is a mathematical operation given in the <code class="docutils literal notranslate"><span class="pre">return</span></code> line.
 This is acceptable as the mathematics will be performed before the value is returned.</p>
@@ -679,263 +665,16 @@ An example where more than one variable is returned is shown below.</p>
 </div>
 </div>
 <blockquote>
-<div><p><strong>Exercise</strong>: Write a function that returns the momentum of a particle, given the particle’s mass and velocity, using the following equation,
-$<span class="math notranslate nohighlight">\( p = mv, \)</span><span class="math notranslate nohighlight">\(
-where \)</span>p<span class="math notranslate nohighlight">\( is the momentum, \)</span>m<span class="math notranslate nohighlight">\( is the mass, and \)</span>v<span class="math notranslate nohighlight">\( is the velocity. 
-Following this, write another function that uses the momentum function to calculate the kinetic energy of the particle, \)</span>E_k<span class="math notranslate nohighlight">\(, using, 
-\)</span><span class="math notranslate nohighlight">\( E_k = \frac{p^2}{2m}. \)</span>$
-Check that your function returns the same value of kinetic energy for a give mass and velocity as the <code class="docutils literal notranslate"><span class="pre">kinetic_energy</span></code> function defined earlier.
+<div><p><strong>Exercise</strong>: Write a function that returns the momentum of a particle, given the particle’s mass and velocity, using the following equation,</p>
+<div class="math notranslate nohighlight">
+\[ p = mv, \]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> is the momentum, <span class="math notranslate nohighlight">\(m\)</span> is the mass, and <span class="math notranslate nohighlight">\(v\)</span> is the velocity.
+Following this, write another function that uses the momentum function to calculate the kinetic energy of the particle, <span class="math notranslate nohighlight">\(E_k\)</span>, using,</p>
+<div class="math notranslate nohighlight">
+\[ E_k = \frac{p^2}{2m}. \]</div>
+<p>Check that your function returns the same value of kinetic energy for a give mass and velocity as the <code class="docutils literal notranslate"><span class="pre">kinetic_energy</span></code> function defined earlier.
 Ensure that you have appropriate docstrings of that a colleague could reuse your code.</p>
 </div></blockquote>
-</div>
-</div>
-</div>
-<div class="section" id="id1">
-<h1>Functions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Frequently in programming, there is a piece of code that you want to reuse, after all, one of the major utilities of writing some program to perform an action it the automation.
-Python (along with most programming languages) allows <em>functions</em> to be written.
-These are segments of code to which <em>arguments</em> are passed and some operation is performed.</p>
-<p>You have already encountered a few examples of functions, such as <code class="docutils literal notranslate"><span class="pre">print()</span></code> and <code class="docutils literal notranslate"><span class="pre">type()</span></code>.
-However, now we will see how you can write your own functions.
-A fucntion is easily recognised in Python, as it is some statement followed immediately by a set of brackets (which contain the arguments).</p>
-<p>This general syntax for <em>defining</em> a Python function is as follows.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kinetic_energy</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Determine the kinetic energy of a particle.</span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        mass (float): Particle mass (kg)</span>
-<span class="sd">        velocity (float): Particle velocity (m/s)</span>
-<span class="sd">        </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        (float): Particle kinetic energy (J)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ke</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">velocity</span> <span class="o">**</span> <span class="mi">2</span>
-    <span class="k">return</span> <span class="n">ke</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Above, the function has been given the name <code class="docutils literal notranslate"><span class="pre">kinetic_energy</span></code> (note that like variables, function names must all be one word) and takes two arguments; <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code>, the kinetic energy is then found and <em>returned</em>.</p>
-<p>Following the definition of a function, it is possible to use it as follows.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kinetic_energy</span><span class="p">(</span><span class="mf">1.67e-27</span><span class="p">,</span> <span class="mf">2.88e8</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.925824000000001e-11
-</pre></div>
-</div>
-</div>
-</div>
-<p>The function has been called with the variables <code class="docutils literal notranslate"><span class="pre">mass=1.67e-27</span></code> (the mass of a single proton) and <code class="docutils literal notranslate"><span class="pre">velocity=2.97e8</span></code> (96 % the speed of light).
-You can imagine that any time the function is called, the contents of the function replace the function call itself.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">kinetic_energy</span><span class="p">(</span><span class="mf">1.67e-26</span><span class="p">,</span> <span class="mf">2.88e8</span><span class="p">)</span>
-<span class="o">&gt;&gt;</span> <span class="n">ke</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mf">1.67e-27</span> <span class="o">*</span> <span class="mf">2.88e8</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="o">&gt;&gt;</span> <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mf">1.67e-27</span> <span class="o">*</span> <span class="mf">2.88e8</span> <span class="o">**</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>So the result of that calculation is returned.</p>
-<div class="section" id="id2">
-<h2>Definition of a function<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Let us look in a bit more detail about the structure of a function definition.
-Considering the <code class="docutils literal notranslate"><span class="pre">kinetic_energy</span></code> function above, there are four main elements:</p>
-<ul class="simple">
-<li><p><strong>Definition</strong>: This is the first line (<code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">kinetic_energy(mass,</span> <span class="pre">velocity):</span></code>) where the name and arguments of the function are defined. Note that the Python interpreter identifies a function by the <code class="docutils literal notranslate"><span class="pre">def</span></code> command that preceeds the function name.</p></li>
-<li><p><strong>Docstring</strong>: This is the content between the triple quotation marks (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>). This contains documentation about what the function does, including the arguments (<code class="docutils literal notranslate"><span class="pre">Args:</span></code>) and what is returned (<code class="docutils literal notranslate"><span class="pre">Returns:</span></code>).</p></li>
-<li><p><strong>Content</strong>: This is the code of the function, in the example above, this is just one line (<code class="docutils literal notranslate"><span class="pre">ke</span> <span class="pre">=</span> <span class="pre">0.5</span> <span class="pre">*</span> <span class="pre">mass</span> <span class="pre">*</span> <span class="pre">velocity</span> <span class="pre">**</span> <span class="pre">2</span></code>), however it can be very long.</p></li>
-<li><p><strong>Return</strong>: The information that is returned from the function is passed with the commadn <code class="docutils literal notranslate"><span class="pre">return</span></code>. The <code class="docutils literal notranslate"><span class="pre">kinetic_energy</span></code> function returns the <code class="docutils literal notranslate"><span class="pre">ke</span></code> variable in the line <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">ke</span></code>.</p></li>
-</ul>
-<div class="section" id="id3">
-<h3>Whitespace and indentation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>Python takes whitespace and indentation very seriously.
-It is used to identify a <em>block</em>; such as a function.
-The function content begins when the indented section starts and ends when the indentation is removed.
-In the function above, the docstring, content and return of the function are all with this block, if the whitespace is removed, then Python will consider the function completed at this point.
-The indentiation can be any length (although 4 spaces is the most commonly found), but it needs to be consistent.
-Through this course, we will encounter quite a few examples of other <em>blocks</em>, when you come across these try to take note of the importance of the whitespace that is used.</p>
-</div>
-<div class="section" id="id4">
-<h3>Definition<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>A function is defined using the command <code class="docutils literal notranslate"><span class="pre">def</span></code>, which tell the Python interpreter that a function definition is occuring in that line.
-The function definition consists of a funciton name followed by brackets, some arguments (although not essential), and a colon.
-The number of arguments that a function may have can be anything from 0 to infinity (although the latter is obviously impractical).
-If a function has no arguments, the brackets are still necessary, athough there will be nothing between them.</p>
-<p>In addition to arguments, a function may alos have keyword arguments.
-These are arguments that have <em>default</em> values given in the function definition that may be changed when the function is called.
-An example of a keyword argument is shown below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">beer_lambert</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">absorbance</span><span class="p">,</span> <span class="n">path_length</span><span class="o">=</span><span class="mf">1.</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Evaluate the concentration of a solution, using the Beer-Lambert law.</span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        epsilon (float): Molar attenuation coefficient (L/(mol cm))</span>
-<span class="sd">        absorbance (float): Absorbance of the solution</span>
-<span class="sd">        path_lenght (float, optional): Distance travelled through the sample (cm).</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        (float): Concentration of solution (mol/L)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">concentration</span> <span class="o">=</span> <span class="n">absorbance</span> <span class="o">/</span> <span class="p">(</span><span class="n">epsilon</span> <span class="o">*</span> <span class="n">path_length</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">concentration</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>In the Beer-Lambert law function above, the path length is assumed to be 1 cm, if no other value is given (this is because most spectroscopic cuvettes are 1 cm wide).
-This means that there is now two possible ways to call the function.
-<em>If</em> the path length is 1 cm, the following can be run.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beer_lambert</span><span class="p">(</span><span class="mi">21000</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.009523809523809525
-</pre></div>
-</div>
-</div>
-</div>
-<p><em>Else</em> if the path length is some other value (e.g. 10 cm), then the following is run.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beer_lambert</span><span class="p">(</span><span class="mi">21000</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="n">path_length</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0009523809523809524
-</pre></div>
-</div>
-</div>
-</div>
-<p>While it makes the code clearer, the <code class="docutils literal notranslate"><span class="pre">path_length</span></code> keyword is not necessary for the code to run.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">beer_lambert</span><span class="p">(</span><span class="mi">21000</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0009523809523809524
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id5">
-<h3>Docstring<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>The docstring is an important (although not essential) component of any function.
-Describing the purpose of a function is valuable for many reasons, it helps to clarify what the function will do, it offers guidance for others on how to use the function, and it acts to remind the future you why it is that you have a particular function and what it does.
-You may read this final point and roll your eyes, however, I promise you that code you write today will not stay present in your memory forever.</p>
-<p>In addition to a description of the function, the docstring will typically include information about the arguments taken by the function and objects returned.
-There are common ways to write this, throughout this course we will use the <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google-style</a>, however, other styles exist.
-Using a standard style of docstring is very useful when writing larger software packages, due to the availability of tools that will automatically generate formatted documentation from the docstrings.
-The Google-style indicates the arguments with the keyword <code class="docutils literal notranslate"><span class="pre">Args</span></code> before listing the arguments, their expected type and a short description.
-The <code class="docutils literal notranslate"><span class="pre">Returns</span></code> keyword is followed by a list of objects that are returned from the function.</p>
-</div>
-<div class="section" id="id6">
-<h3>Content<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>The content of a function is relatively straight forward, it is the code that makes the function do something.
-However, be aware that a variable created within a function cannot be used elsewhere in the code, including argument variables.
-This is an aspect of programming known as <em>scope</em>.
-The scope of a variable is the parts of a given code that the variables are valid in.
-For example, the variable <code class="docutils literal notranslate"><span class="pre">concentration</span></code> is defined in the <code class="docutils literal notranslate"><span class="pre">beer_lambert</span></code> function above, but nowhere else in the code.
-Therefore, that variable’s scope is only within the <code class="docutils literal notranslate"><span class="pre">beer_lambert</span></code> function block and cannot be used outside of it.
-Variables defined outside of a function can be used within the function, but <em>only</em> if they are defined before the function is defined, as a piece of Python code is interpreted from top-to-bottom.
-Considering the following function definition.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">speed_of_light</span> <span class="o">=</span> <span class="mf">2.99792458e8</span>
-<span class="n">planck</span> <span class="o">=</span> <span class="mf">6.62607004e-34</span>
-
-<span class="k">def</span> <span class="nf">photon_energy</span><span class="p">(</span><span class="n">wavelength</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Determines the energy of a single photon with a given wavelength.</span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        wavelength (float): Photon wavelength (m)</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        (float): Photon energy (J)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">planck</span> <span class="o">*</span> <span class="n">speed_of_light</span> <span class="o">/</span> <span class="n">wavelength</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">photon_energy</span><span class="p">(</span><span class="mf">600e-9</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.310743040286264e-19
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id7">
-<h3>Return<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">return</span></code> statement is the command that tells the Python interpreter to stop the function and return the value(s) given.
-You will note that in the <code class="docutils literal notranslate"><span class="pre">photon_energy</span></code> function above, there is a mathematical operation given in the <code class="docutils literal notranslate"><span class="pre">return</span></code> line.
-This is acceptable as the mathematics will be performed before the value is returned.</p>
-<p>It is possible to return more than one variable from a function.
-These will be returned as a <code class="docutils literal notranslate"><span class="pre">tuple</span></code>-type collection.
-An example where more than one variable is returned is shown below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">speed_of_light</span> <span class="o">=</span> <span class="mf">2.99792458e8</span>
-<span class="n">planck</span> <span class="o">=</span> <span class="mf">6.62607004e-34</span>
-
-<span class="k">def</span> <span class="nf">photon_energy</span><span class="p">(</span><span class="n">wavelength</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Determines the energy of a single photon with a given wavelength in both</span>
-<span class="sd">    Joules and electron volts.</span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        wavelength (float): Photon wavelength (m)</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        (tuple of length 2, float): Photon energy in J and eV respectively</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">energy</span> <span class="o">=</span> <span class="n">planck</span> <span class="o">*</span> <span class="n">speed_of_light</span> <span class="o">/</span> <span class="n">wavelength</span>
-    <span class="k">return</span> <span class="n">energy</span><span class="p">,</span> <span class="n">energy</span> <span class="o">*</span> <span class="mf">6.242e+18</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">photon_energy</span><span class="p">(</span><span class="mf">600e-9</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.310743040286264e-19, 2.066565805746686)
-</pre></div>
-</div>
-</div>
-</div>
-<blockquote>
-<div><p><strong>Exercise</strong>: Write a function that returns the momentum of a particle, given the particle’s mass and velocity, using the following equation,
-$<span class="math notranslate nohighlight">\( p = mv, \)</span><span class="math notranslate nohighlight">\(
-where \)</span>p<span class="math notranslate nohighlight">\( is the momentum, \)</span>m<span class="math notranslate nohighlight">\( is the mass, and \)</span>v<span class="math notranslate nohighlight">\( is the velocity. 
-Following this, write another function that uses the momentum function to calculate the kinetic energy of the particle, \)</span>E_k<span class="math notranslate nohighlight">\(, using, 
-\)</span><span class="math notranslate nohighlight">\( E_k = \frac{p^2}{2m}. \)</span>$
-Check that your function returns the same value of kinetic energy for a given mass and velocity as the <code class="docutils literal notranslate"><span class="pre">kinetic_energy</span></code> function defined earlier.
-Ensure that you have appropriate docstrings of that a colleague could reuse your code.</p>
-</div></blockquote>
-</div>
 </div>
 </div>
 
