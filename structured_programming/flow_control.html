@@ -345,9 +345,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/structured_programming/flow_control.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/structured_programming/flow_control.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -363,6 +363,28 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/structured_programming/flow_control.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/structured_programming/flow_control.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -383,6 +405,109 @@
                 
   <div class="section" id="flow-control">
 <h1>Flow Control<a class="headerlink" href="#flow-control" title="Permalink to this headline">¶</a></h1>
+<p>To make our code <em>intelligent</em> we must write code that can make decisions.
+This is achieved with a broad tool known as <em>flow control</em>, where different commands are used to <em>control</em> the <em>flow</em> of the program depending on some Boolean variables.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is the simplest element of flow control but used correctly it can be very powerful.
+It allows a different <em>branch</em> of the code to accessed <em>if</em> a given Boolean variable is <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+An example of a simple Pythonic if statement is shown here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">highest_occupied_molecular_orbital</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
+
+<span class="k">if</span> <span class="n">highest_occupied_molecular_orbital</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Group 1 or 2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group 1 or 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Above the <code class="docutils literal notranslate"><span class="pre">==</span></code> <a class="reference internal" href="logical_operators.html"><span class="doc std std-doc">logical operator</span></a> is used, and when the variable <code class="docutils literal notranslate"><span class="pre">highest_occupied_molecular_orbital</span></code> is equal to the string <code class="docutils literal notranslate"><span class="pre">'s'</span></code>, this will return the value of <code class="docutils literal notranslate"><span class="pre">True</span></code> meaning that the branch of code within the if statement <a class="reference external" href="./functions.html#whitespace-and-indentation"><em>block</em></a> may be accessed.
+We can think of the above code asking “does <code class="docutils literal notranslate"><span class="pre">highest_occupied_molecular_orbital</span></code> equal <code class="docutils literal notranslate"><span class="pre">'s'</span></code>?” and if it does, <code class="docutils literal notranslate"><span class="pre">'Group</span> <span class="pre">1</span> <span class="pre">or</span> <span class="pre">2'</span></code> will be printed.</p>
+<blockquote>
+<div><p><strong>Exercise</strong>: Write the code above into your Notebook and test what happens if you change the variable to <code class="docutils literal notranslate"><span class="pre">'p'</span></code>.</p>
+</div></blockquote>
+<p>Any logical operation can be used in an if statement.
+Additionally, you can also make use of an additional command to invert the logical operation of an if statement.
+This is the <code class="docutils literal notranslate"><span class="pre">not</span></code> command, which negates the logical operation it precedes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">highest_occupied_molecular_orbital</span> <span class="o">=</span> <span class="s1">&#39;p&#39;</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">highest_occupied_molecular_orbital</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not group 1 or 2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Not group 1 or 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>The functionality of the if statement can be extended, adding the ability to include a different code <em>block</em> if the logical operation returns <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+This is known as <code class="docutils literal notranslate"><span class="pre">else</span></code>, an example of this is included below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">highest_occupied_molecular_orbital</span> <span class="o">=</span> <span class="s1">&#39;p&#39;</span>
+
+<span class="k">if</span> <span class="n">highest_occupied_molecular_orbital</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Group 1 or 2&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not group 1 or 2&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Not group 1 or 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice, that the <code class="docutils literal notranslate"><span class="pre">else</span></code> command does not have a logical operation associated with it, as it catches everything possible option that returns <code class="docutils literal notranslate"><span class="pre">False</span></code> from the <code class="docutils literal notranslate"><span class="pre">if</span></code> command.
+Additional logical operations can be included using the <code class="docutils literal notranslate"><span class="pre">elif</span></code> keyword, which can be seen in action below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">highest_occupied_molecular_orbital</span> <span class="o">=</span> <span class="s1">&#39;p&#39;</span>
+
+<span class="k">if</span> <span class="n">highest_occupied_molecular_orbital</span> <span class="o">==</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Group 1 or 2&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">highest_occupied_molecular_orbital</span> <span class="o">==</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Group 13 to 17&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">highest_occupied_molecular_orbital</span> <span class="o">==</span> <span class="s1">&#39;d&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Transition metal&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">highest_occupied_molecular_orbital</span> <span class="o">==</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lanthanide or actinide&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;We only accept experimentally measured elements&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Group 13 to 17
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above code, the following sequence of questions is considered:</p>
+<ul class="simple">
+<li><p>Does <code class="docutils literal notranslate"><span class="pre">highest_occupied_molecular_orbital</span></code> have the value <code class="docutils literal notranslate"><span class="pre">'s'</span></code>? If yes print <code class="docutils literal notranslate"><span class="pre">'Group</span> <span class="pre">1</span> <span class="pre">or</span> <span class="pre">2'</span></code> else go to the next step.</p></li>
+<li><p>Does <code class="docutils literal notranslate"><span class="pre">highest_occupied_molecular_orbital</span></code> have the value <code class="docutils literal notranslate"><span class="pre">'p'</span></code>? If yes print <code class="docutils literal notranslate"><span class="pre">'Group</span> <span class="pre">13</span> <span class="pre">or</span> <span class="pre">17'</span></code> else go to the next step.</p></li>
+<li><p>Does <code class="docutils literal notranslate"><span class="pre">highest_occupied_molecular_orbital</span></code> have the value <code class="docutils literal notranslate"><span class="pre">'d'</span></code>? If yes print <code class="docutils literal notranslate"><span class="pre">'Transition</span> <span class="pre">metal'</span></code> else go to the next step.</p></li>
+<li><p>Does <code class="docutils literal notranslate"><span class="pre">highest_occupied_molecular_orbital</span></code> have the value <code class="docutils literal notranslate"><span class="pre">'f'</span></code>? If yes print <code class="docutils literal notranslate"><span class="pre">'Lanthanide</span> <span class="pre">or</span> <span class="pre">actinide'</span></code> else go to the next step.</p></li>
+<li><p>You have exhausted the discovered ground state orbitals (and probably your patience!), print some explanation.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Exercise</strong>: Write a function that is passed and energy and a unit, that is either kilocalories (kcal) or electronvolts (eV).
+Using flow control, determine the correction conversion to perform to return a value for the energy in units of joules (J).
+The conversion factors are given below.</p>
+<div class="math notranslate nohighlight">
+\[1\;\text{kcal} = 4184\;\text{J}\;\;\;\;1\;\text{eV}=1.6022\times10^{-19}\;\text{J} \]</div>
+<p>Make sure to print something apropriate if the unit passed is not compatible (e.g. it is not kcal or eV).</p>
+</div></blockquote>
 </div>
 
     <script type="text/x-thebe-config">
