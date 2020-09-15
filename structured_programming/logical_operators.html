@@ -345,9 +345,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/structured_programming/logical_operators.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/structured_programming/logical_operators.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -364,6 +364,28 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/structured_programming/logical_operators.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/structured_programming/logical_operators.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
@@ -372,7 +394,14 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#combining-operators">
+   Combining operators
+  </a>
+ </li>
+</ul>
+
         </nav>
     </div>
 </div>
@@ -383,6 +412,180 @@
                 
   <div class="section" id="logical-operators">
 <h1>Logical Operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h1>
+<p>When you were introduced to the different <a class="reference internal" href="../python_basics/variable_types.html"><span class="doc std std-doc">variable types</span></a> Boolean variables, which can be either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, were shown.
+Logical operators are pieces of code that will return a Boolean-type variable depending on some condition.
+For example, <code class="docutils literal notranslate"><span class="pre">==</span></code> is one of the most common logical operators and translates to <em>is equal to</em>, this logical operator will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if the values on either side are equal and <code class="docutils literal notranslate"><span class="pre">False</span></code> if they are not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Logical operators are incredibly important for developing <em>intelligent</em> code that can make decisions in an automated fashion based on some input.
+In the <a class="reference internal" href="flow_control.html"><span class="doc std std-doc">next section</span></a>, we will see how these logical operators can be used to affect the flow of your code.
+The <code class="docutils literal notranslate"><span class="pre">==</span></code> operator is not the only logical operator that is available in Python, a full range can be found in the table below.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Mathematical symbol</p></th>
+<th class="head"><p>Pythonic operator</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>is equal to</p></td>
+<td><p><span class="math notranslate nohighlight">\(=\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>is less than</p></td>
+<td><p><span class="math notranslate nohighlight">\(&lt;\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>is less than or equal to</p></td>
+<td><p><span class="math notranslate nohighlight">\(\leq\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>is greater than</p></td>
+<td><p><span class="math notranslate nohighlight">\(&gt;\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>is greater than or equal to</p></td>
+<td><p><span class="math notranslate nohighlight">\(\geq\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>is not equal to</p></td>
+<td><p><span class="math notranslate nohighlight">\(\neq\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p><strong>Exercise</strong>: In a Jupyter Notebook, write code that will return the Boolean result of the following logical operations:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(1 = 4\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(10 \leq 15\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(3.1415 \neq 3\)</span></p></li>
+</ol>
+</div></blockquote>
+<div class="section" id="combining-operators">
+<h2>Combining operators<a class="headerlink" href="#combining-operators" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the use of an individual logical operator, it is possible to use additional commands to combine multiple operators. These commands are <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code>, they have different actions:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">and</span></code> command will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>both</strong> operations are <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">or</span></code> command will return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>either</strong> operation is `True</p></li>
+</ul>
+<p>Consider the example below from rotational spectroscopy, where the selection rule is <span class="math notranslate nohighlight">\(\Delta J = \pm 1\)</span>, so we would like <code class="docutils literal notranslate"><span class="pre">True</span></code> to be returned from the function if the change in <span class="math notranslate nohighlight">\(J\)</span> is <span class="math notranslate nohighlight">\(+1\)</span> <em>or</em> <span class="math notranslate nohighlight">\(-1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_selection_rule</span><span class="p">(</span><span class="n">initial_J</span><span class="p">,</span> <span class="n">final_J</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Checks the rotational spectroscopy selection rule. </span>
+<span class="sd">    </span>
+<span class="sd">    Args: </span>
+<span class="sd">        initial_J (int): The initial rotational quantum number.</span>
+<span class="sd">        final_J (int): The final rotational quantum number. </span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (bool): If the selection rule is adhered to.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">delta_J</span> <span class="o">=</span> <span class="n">final_J</span> <span class="o">-</span> <span class="n">initial_J</span>
+    <span class="n">selection_rule</span> <span class="o">=</span> <span class="n">delta_J</span> <span class="o">==</span> <span class="o">+</span><span class="mi">1</span> <span class="ow">or</span> <span class="n">delta_J</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">selection_rule</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check_selection_rule</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check_selection_rule</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the <code class="docutils literal notranslate"><span class="pre">check_selection_rule</span></code> function, the following process is occurring when the arguments <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code> are given.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;&gt;</span> <span class="n">delta_J</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;</span> <span class="n">delta_J</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">&gt;&gt;</span> <span class="n">selection_rule</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">==</span> <span class="o">+</span><span class="mi">1</span> <span class="ow">or</span> <span class="mi">1</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span>
+<span class="o">&gt;&gt;</span> <span class="n">selection_rule</span> <span class="o">=</span> <span class="kc">True</span> <span class="ow">or</span> <span class="kc">False</span>
+<span class="o">&gt;&gt;</span> <span class="n">selection_rule</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="o">&gt;&gt;</span> <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>However, when the arguments <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">3</span></code> were passed, both operations around the <code class="docutils literal notranslate"><span class="pre">or</span></code> command are <code class="docutils literal notranslate"><span class="pre">False</span></code>, so <code class="docutils literal notranslate"><span class="pre">False</span></code> is returned.</p>
+<p>The table below shows the result of an <code class="docutils literal notranslate"><span class="pre">and</span></code> and an <code class="docutils literal notranslate"><span class="pre">or</span></code> command depending on different inputs.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Input A</p></th>
+<th class="head"><p>Input B</p></th>
+<th class="head"><p>Logic</p></th>
+<th class="head"><p>Output</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><p><strong>Exercise</strong>: Consider electronic spectroscopy, where there are two selection rules, the spin and Laporte rules,</p>
+<div class="math notranslate nohighlight">
+\[ \Delta S = 0\;\;\;\;\Delta l = \pm1 \]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta S\)</span> is the change in the spin quantum number and <span class="math notranslate nohighlight">\(\Delta l\)</span> is the change in the orbital quantum number.
+Both of these selection rules must be adhered to for the spectroscopic transition to be <em>allowed</em>.
+Write a function (with an appropriate docstring) that when passed four arguments (the initial and final spin and orbital quantum numbers) will return if the transition is allowed or not.</p>
+<p>Once you have a <em>working</em> function, consult with a colleague and compare the differences in your approaches.</p>
+</div></blockquote>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
