@@ -36,6 +36,7 @@ plt.xlabel('x')
 plt.legend()
 plt.show()
 ```
+
 Do not worry if none of this makes sense. It will all be covered later in the course.
 
 When you run the cell you should get the following output plot, showing how a few lines of Python can be used to perform a numerical calculation (in this case calculating sin(_x_) and cos(_x_) for a range of _x_ values) and the plotting the resulting values.
