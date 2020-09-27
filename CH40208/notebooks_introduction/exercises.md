@@ -2,7 +2,7 @@
 
 The main exercise for this session is to check that you can login to the JupyterHub server, launch a Notebook, and execute code and Markdown cells.
 
-## Exercise 1
+## 1. Launching a Notebook
 
 Login to the JupyterHub server. 
 
@@ -10,7 +10,7 @@ Create a new Notebook (rename this to something sensible).
 
 Then launch the User Interface Tour.
 
-## Exercise 2 - Hello World
+## 2. Hello World
 
 In the tradition of nearly every introductory programming tutorial, you are going to make the computer print &ldquo;Hello world&rdquo;. When entering code from the Course Book into your Notebooks, we strongly recommend that you _type_ the code out, and do not just copy and paste. Typing the code will give your brain long enough to register what you are actually doing, and has the side benefit that you will make at least a few mistakes that you can then practice fixing.
 
@@ -22,7 +22,7 @@ When you run this cell, you should get output that looks like:
 ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FrUYgUm7Q_V.png?alt=media&token=d3bfd756-2b51-4960-bf18-f45b684ba5ad)
 The cell has executed, and produce `Hello world` as output, and a new empty code cell has been created underneath. Notice that the `In [  ]` next to the top cell now shows `In [1]`, showing the order of execution of cells.
 
-## Exercise 3 - Plotting sin(x) and cos(x)
+## 3. Plotting sin(x) and cos(x)
 Common uses of Python within scientific work are numerical calculations and the plotting of data. We will be covering both of these in detail in later sessions. As an example however, type the following code into a **code cell** and **run** the cell:
 ```python
 import matplotlib.pyplot as plt
@@ -40,11 +40,14 @@ Do not worry if none of this makes sense. It will all be covered later in the co
 
 When you run the cell you should get the following output plot, showing how a few lines of Python can be used to perform a numerical calculation (in this case calculating sin(_x_) and cos(_x_) for a range of _x_ values) and the plotting the resulting values.
 
-<p align="center">
-  <img src="images/sin_cos.png" width="50%" />
-</p>
+```{figure} ./images/sin_cos.png
+---
+scale: 50%
+name: content
+---
+```
 
-## Exercise 4 - Embedding a YouTube video
+## 4. Embedding a YouTube video
 
 Because Jupyter Notebooks are (interactive) webpages, they can display rich media. The following code will embed a YouTube video into your notebook (you probably will want to copy and paste this example, instead of copying it):
 ```python
