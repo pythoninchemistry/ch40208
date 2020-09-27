@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>File I/O &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercises &#8212; CH40208: Topics in Computational Chemistry</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -38,6 +38,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="The Jupyter Notebook Interface" href="the_notebook_interface.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -82,29 +83,29 @@
   Introduction to Jupyter Notebooks
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
+  <a class="reference internal" href="what_is_a_jupyter_notebook.html">
    What is a Jupyter Notebook?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/how_to_access_the_jupyterhub_server.html">
+  <a class="reference internal" href="how_to_access_the_jupyterhub_server.html">
    How to access the JupyterHub server?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/getting_started_with_jupyter_notebooks.html">
+  <a class="reference internal" href="getting_started_with_jupyter_notebooks.html">
    Getting started with Jupyter Notebooks
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">
+  <a class="reference internal" href="the_notebook_interface.html">
    The Jupyter Notebook Interface
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/exercises.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Exercises
   </a>
  </li>
@@ -150,7 +151,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/working_with_data/file_io.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks_introduction/exercises.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -177,7 +178,19 @@
             <i class="fas fa-list"></i> Contents
         </div>
         <nav id="bd-toc-nav">
-            
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-1">
+   Exercise 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2-hello-world">
+   Exercise 2 - Hello World
+  </a>
+ </li>
+</ul>
+
         </nav>
     </div>
 </div>
@@ -186,8 +199,21 @@
         
               <div>
                 
-  <div class="section" id="file-i-o">
-<h1>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<p>The main exercise for this session is to check that you can login to the JupyterHub server, launch a Notebook, and execute code and Markdown cells.</p>
+<div class="section" id="exercise-1">
+<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
+<p>Login to the JupyterHub server. Create a new Notebook (rename this to something sensible). Then launch the User Interface Tour.</p>
+</div>
+<div class="section" id="exercise-2-hello-world">
+<h2>Exercise 2 - Hello World<a class="headerlink" href="#exercise-2-hello-world" title="Permalink to this headline">¶</a></h2>
+<p>In the tradition of nearly every introductory programming tutorial, you are going to make the computer print “Hello world”. When entering code from the Course Book into your Notebooks, we strongly recommend that you <em>type</em> the code out, and do not just copy and paste. Typing the code will give your brain long enough to register what you are actually doing, and has the side benefit that you will make at least a few mistakes that you can then practice fixing.</p>
+<p>You should have a pristine Notebook from completing Exercise 1. The first cell will be a code cell. Type the following into your code cell and run the cell using ⌘+<code class="docutils literal notranslate"><span class="pre">Enter</span></code>, or clicking the <code class="docutils literal notranslate"><span class="pre">Run</span></code> Toolbar button.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -203,7 +229,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./working_with_data"
+            path: "./notebooks_introduction"
         },
         predefinedOutput: true
     }
@@ -218,6 +244,7 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="the_notebook_interface.html" title="previous page">The Jupyter Notebook Interface</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

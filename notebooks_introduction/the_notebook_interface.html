@@ -1,0 +1,362 @@
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Jupyter Notebook Interface &#8212; CH40208: Topics in Computational Chemistry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercises" href="exercises.html" />
+    <link rel="prev" title="Getting started with Jupyter Notebooks" href="getting_started_with_jupyter_notebooks.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/pic.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Welcome to CH40208
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction to Jupyter Notebooks
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="what_is_a_jupyter_notebook.html">
+   What is a Jupyter Notebook?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="how_to_access_the_jupyterhub_server.html">
+   How to access the JupyterHub server?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_with_jupyter_notebooks.html">
+   Getting started with Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The Jupyter Notebook Interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks_introduction/the_notebook_interface.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interface-elements">
+   Interface Elements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cells">
+   Cells
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#code-cells">
+     Code Cells
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#markdown-cells">
+     Markdown Cells
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#active-cells">
+     Active cells
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#command-mode">
+       Command mode
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#edit-mode">
+       Edit mode
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-jupyter-notebook-interface">
+<h1>The Jupyter Notebook Interface<a class="headerlink" href="#the-jupyter-notebook-interface" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="interface-elements">
+<h2>Interface Elements<a class="headerlink" href="#interface-elements" title="Permalink to this headline">¶</a></h2>
+<p>There are a few sections of the Notebook interface that will be useful to know your way around:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FwIDS3IJFAR.png?alt=media&amp;token=258e8e5c-99d2-4448-bdce-0b0039613d0a" /></p>
+<ol class="simple">
+<li><p>The jupyterhub logo. Clicking on this takes you back to your <strong>Notebook Dashboard</strong>.</p></li>
+<li><p>The name of your Notebook. Please do not leave this as <code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code>. You will thank me later.</p></li>
+<li><p>Information about when this Notebook was last saved. (or, in Jupyter parlance, when a <strong>checkpoint</strong> was last created.).
+You can force your Notebook to save using:</p>
+<ul class="simple">
+<li><p>⌘S (Mac) / alt+S (Windows)</p></li>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">File</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">Checkpoint</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Logout of the JupyterHub server.</p></li>
+<li><p>Open your <strong>Control Panel</strong>. You almost certainly will not need to go in here.</p></li>
+<li><p>The <strong>Notebook Menubar</strong>. This contains:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">File</span></code>: File operations, e.g. create a new Notebook, open an existing Notebook, Copy your current Notebook, Save, etc.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Edit</span></code>: Manipulating <strong>cells</strong></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">View</span></code>: Options for what appears on your screen, and for toggling various aspects on and off.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cell</span></code>: Executing one of more <strong>cells</strong>, and manipulating the output of <strong>cells</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Kernel</span></code>: Stop, start, etc. the <strong>kernel</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Widgets</span></code>: Managing plugins and extensions that you might have installed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Help</span></code>: Access to the built-in help.</p>
+<ul>
+<li><p>Particularly useful items here are <code class="docutils literal notranslate"><span class="pre">Help</span></code> → <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">Interface</span> <span class="pre">Tour</span></code> and <code class="docutils literal notranslate"><span class="pre">Help</span></code> → <code class="docutils literal notranslate"><span class="pre">Notebook</span> <span class="pre">Help</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The <strong>Notebook Toolbar</strong>
+This contains buttons for the most common actions for working with Notebooks. Hovering you mouse over each button will show you a popup with some information about the associated action.</p></li>
+<li><p>The currently selected cell.</p></li>
+<li><p>Indicates whether a cell has run or not, and for cells that have been run, the order they ran in.</p></li>
+<li><p>The text area for the <strong>code cell</strong>. This is where you can type in Pyton code to then run.</p></li>
+</ol>
+</div>
+<div class="section" id="cells">
+<h2>Cells<a class="headerlink" href="#cells" title="Permalink to this headline">¶</a></h2>
+<p>The body of the notebook is made up of <strong>cells</strong>. When you open a new notebook it will contain only one empty cell. In the screenshots so far, the cell is the grey box with <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span>&#160; <span class="pre">]:</span></code> to the left. There are two main types of cell that you will need to know about.</p>
+<div class="section" id="code-cells">
+<h3>Code Cells<a class="headerlink" href="#code-cells" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>code cell</strong> contains code that can be executed. When the code is run, the notebook displays any output generated by that code below the corresponding cell.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F283Tca_wek.png?alt=media&amp;token=2836968a-3052-4fe4-b91c-81f041e9bdb4" /></p>
+<p>A code cell with some Python code. &amp;lqduo;Running” this cell executes the code in the cell. The output produced by running the code is displayed underneath. In this case I have used the <code class="docutils literal notranslate"><span class="pre">print()</span></code> <strong>function</strong> to show the result of calculating <code class="docutils literal notranslate"><span class="pre">4+3</span></code>.</p>
+</div>
+<div class="section" id="markdown-cells">
+<h3>Markdown Cells<a class="headerlink" href="#markdown-cells" title="Permalink to this headline">¶</a></h3>
+<p>A <strong>markdown cell</strong> contains text formatted using <a class="reference external" href="https://www.markdownguide.org/basic-syntax/">Markdown</a>, which is a lightweight markup language for writing html documents. When a <strong>markdown cell</strong> is run, the markdown is formatted to html, with the formatted text then shown <em>in place</em> of the cell.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FerioEBRpW7.png?alt=media&amp;token=bafbdf71-d0e2-4d2e-8601-7469427d2049" /></p>
+<p align="center">A **markdown cell** being edited.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F2Xrw9UnDTl.png?alt=media&amp;token=19d39e33-405c-4393-9085-4e273a4d8ec4" /></p>
+<p align="center">Executing the cell formats the contents.</p>
+<p>Cells can be switched between <strong>code</strong> and <strong>markdown</strong> using the <code class="docutils literal notranslate"><span class="pre">Cell</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Cell</span> <span class="pre">Type</span></code> menu options:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FIvSt76vNot.png?alt=media&amp;token=e2e3d6d9-9956-4a6f-916d-4cd54346744f" /></p>
+</div>
+<div class="section" id="active-cells">
+<h3>Active cells<a class="headerlink" href="#active-cells" title="Permalink to this headline">¶</a></h3>
+<p>A cell is marked as <strong>active</strong> if it is highlighted. The colour of the highlight depends on whether you are in <strong>command mode</strong> or <strong>edit mode</strong></p>
+<div class="section" id="command-mode">
+<h4>Command mode<a class="headerlink" href="#command-mode" title="Permalink to this headline">¶</a></h4>
+<p><strong>Command mode</strong> is indicated by a blue highlight. When you are in command mode you can use <strong>keyboard shortcuts</strong> to cut, paste, and move cells, etc. You can see all the <strong>keyboard shortcuts</strong> under <code class="docutils literal notranslate"><span class="pre">Help</span></code> → <code class="docutils literal notranslate"><span class="pre">Keyboard</span> <span class="pre">Shortcuts</span></code>.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FpUmEk8BFVJ.png?alt=media&amp;token=183593d4-f000-4eaf-b92c-49ec34c1f29f" /></p>
+</div>
+<div class="section" id="edit-mode">
+<h4>Edit mode<a class="headerlink" href="#edit-mode" title="Permalink to this headline">¶</a></h4>
+<p>If you are in <strong>command mode</strong> then pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code> or clicking in the input text area of a cell will switch you to <strong>edit mode</strong>. <strong>Edit mode</strong> is indicated by a green highlight, and a pencil icon in the top right of the Notebook window.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F0lteja4WpB.png?alt=media&amp;token=af5a92f4-16ec-4792-95af-70ce7edd0be5" /></p>
+<p>Typing now inserts text into the currently active cell:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FVnf9bqY_YO.png?alt=media&amp;token=cae257e8-80b9-4d0e-a7fd-2a30d3561127" /></p>
+<p>To get out of <strong>Edit Mode</strong>, and back into <strong>Command Mode</strong>, press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> or click outside the text entry area.</p>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks_introduction"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="getting_started_with_jupyter_notebooks.html" title="previous page">Getting started with Jupyter Notebooks</a>
+    <a class='right-next' id="next-link" href="exercises.html" title="next page">Exercises</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew R. McCluskey & Benjamin J. Morgan<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../_static/js/index.js"></script>
+    
+  </body>
+</html>
