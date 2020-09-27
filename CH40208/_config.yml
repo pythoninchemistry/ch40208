@@ -6,3 +6,6 @@ logo: pic.png
 latex:
   latex_documents:
     targetname: book.tex
+
+#parse:
+#  myst_extended_syntax: true

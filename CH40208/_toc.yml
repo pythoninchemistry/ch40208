@@ -8,6 +8,8 @@
     - file: notebooks_introduction/what_is_a_jupyter_notebook
     - file: notebooks_introduction/how_to_access_the_jupyterhub_server
     - file: notebooks_introduction/getting_started_with_jupyter_notebooks
+    - file: notebooks_introduction/the_notebook_interface
+    - file: notebooks_introduction/exercises
 #- part: Python Basics
 #  chapters:
 #    - file: python_basics/variable_types
