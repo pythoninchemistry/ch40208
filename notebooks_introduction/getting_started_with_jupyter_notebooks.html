@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Attributes and Methods &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Getting started with Jupyter Notebooks &#8212; CH40208: Topics in Computational Chemistry</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="../_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
@@ -38,6 +38,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="How to access the JupyterHub server?" href="how_to_access_the_jupyterhub_server.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -82,19 +83,19 @@
   Introduction to Jupyter Notebooks
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
+  <a class="reference internal" href="what_is_a_jupyter_notebook.html">
    What is a Jupyter Notebook?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/how_to_access_the_jupyterhub_server.html">
+  <a class="reference internal" href="how_to_access_the_jupyterhub_server.html">
    How to access the JupyterHub server?
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/getting_started_with_jupyter_notebooks.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Getting started with Jupyter Notebooks
   </a>
  </li>
@@ -140,7 +141,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/object_oriented_programming/attributes_methods.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks_introduction/getting_started_with_jupyter_notebooks.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -176,8 +177,22 @@
         
               <div>
                 
-  <div class="section" id="attributes-and-methods">
-<h1>Attributes and Methods<a class="headerlink" href="#attributes-and-methods" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="getting-started-with-jupyter-notebooks">
+<h1>Getting started with Jupyter Notebooks<a class="headerlink" href="#getting-started-with-jupyter-notebooks" title="Permalink to this headline">¶</a></h1>
+<p>When you first log on to the <a class="reference internal" href="how_to_access_the_jupyterhub_server.html"><span class="doc std std-doc">JupyterHub server</span></a> you should see a screen like this:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FyM-hR6PUUt.png?alt=media&amp;token=45a46649-ac81-45d3-a8d2-a32c5078efd0" /></p>
+<p>This is the <strong>Notebook Dashboard</strong>, which allows you to access and manage your Jupyter Notebooks. The Dashboard allows you to create, open, rename, move, and delete Notebooks.</p>
+<p>If you have just logged onto the JupyterHub server for the first time, You should have two items already listed in your Dashboard:</p>
+<ul class="simple">
+<li><p>A folder named <code class="docutils literal notranslate"><span class="pre">courses</span></code>.</p></li>
+<li><p>A Notebook named <code class="docutils literal notranslate"><span class="pre">Welcome.ipynb</span></code>.
+The <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file extension indicates that <code class="docutils literal notranslate"><span class="pre">Welcome.ipynb</span></code> is a Jupyter notebook.</p></li>
+</ul>
+<p>Clicking on <code class="docutils literal notranslate"><span class="pre">Welcome.ipynb</span></code> should open a new tab with the <strong>Welcome Notebook</strong> running inside it.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FbWPPWc4YEE.png?alt=media&amp;token=2a489d08-7c67-4a90-ab4c-32c68fc6140d" /></p>
+<p>There is not much to see or do in this Notebook, but if you can open it up then you know that you have connected properly to the Jupyterhub Server and are able to run Notebooks.</p>
+<p>The <strong>Welcome Notebook</strong> contains links to a set of other Notebooks; one for each course that will be using the Chemistry JupyterHub server for running Python. You will see a dedicated <strong>CH40208 Notebook</strong>:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F-bmvmUcXJb.png?alt=media&amp;token=a294ab34-59c9-4287-b95d-6266697e39f3" /></p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -193,7 +208,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./object_oriented_programming"
+            path: "./notebooks_introduction"
         },
         predefinedOutput: true
     }
@@ -208,6 +223,7 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="how_to_access_the_jupyterhub_server.html" title="previous page">How to access the JupyterHub server?</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
