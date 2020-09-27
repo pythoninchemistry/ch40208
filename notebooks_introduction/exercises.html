@@ -189,6 +189,16 @@
    Exercise 2 - Hello World
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3-plotting-sin-x-and-cos-x">
+   Exercise 3 - Plotting sin(x) and cos(x)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4-embedding-a-youtube-video">
+   Exercise 4 - Embedding a YouTube video
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -204,13 +214,48 @@
 <p>The main exercise for this session is to check that you can login to the JupyterHub server, launch a Notebook, and execute code and Markdown cells.</p>
 <div class="section" id="exercise-1">
 <h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Permalink to this headline">¶</a></h2>
-<p>Login to the JupyterHub server. Create a new Notebook (rename this to something sensible). Then launch the User Interface Tour.</p>
+<p>Login to the JupyterHub server.</p>
+<p>Create a new Notebook (rename this to something sensible).</p>
+<p>Then launch the User Interface Tour.</p>
 </div>
 <div class="section" id="exercise-2-hello-world">
 <h2>Exercise 2 - Hello World<a class="headerlink" href="#exercise-2-hello-world" title="Permalink to this headline">¶</a></h2>
 <p>In the tradition of nearly every introductory programming tutorial, you are going to make the computer print “Hello world”. When entering code from the Course Book into your Notebooks, we strongly recommend that you <em>type</em> the code out, and do not just copy and paste. Typing the code will give your brain long enough to register what you are actually doing, and has the side benefit that you will make at least a few mistakes that you can then practice fixing.</p>
 <p>You should have a pristine Notebook from completing Exercise 1. The first cell will be a code cell. Type the following into your code cell and run the cell using ⌘+<code class="docutils literal notranslate"><span class="pre">Enter</span></code>, or clicking the <code class="docutils literal notranslate"><span class="pre">Run</span></code> Toolbar button.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>When you run this cell, you should get output that looks like:
+<img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FrUYgUm7Q_V.png?alt=media&amp;token=d3bfd756-2b51-4960-bf18-f45b684ba5ad" />
+The cell has executed, and produce <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">world</span></code> as output, and a new empty code cell has been created underneath. Notice that the <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span>&#160; <span class="pre">]</span></code> next to the top cell now shows <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[1]</span></code>, showing the order of execution of cells.</p>
+</div>
+<div class="section" id="exercise-3-plotting-sin-x-and-cos-x">
+<h2>Exercise 3 - Plotting sin(x) and cos(x)<a class="headerlink" href="#exercise-3-plotting-sin-x-and-cos-x" title="Permalink to this headline">¶</a></h2>
+<p>Common uses of Python within scientific work are numerical calculations and the plotting of data. We will be covering both of these in detail in later sessions. As an example however, type the following code into a <strong>code cell</strong> and <strong>run</strong> the cell:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span> <span class="o">=</span> <span class="s1">&#39;retina&#39;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cos(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Do not worry if none of this makes sense. It will all be covered later in the course.</p>
+<p>When you run the cell you should get the following output plot, showing how a few lines of Python can be used to perform a numerical calculation (in this case calculating sin(<em>x</em>) and cos(<em>x</em>) for a range of <em>x</em> values) and the plotting the resulting values.</p>
+<p align="center">
+  <img src="./images/sin_cos.png" width="50%" />
+</p>
+</div>
+<div class="section" id="exercise-4-embedding-a-youtube-video">
+<h2>Exercise 4 - Embedding a YouTube video<a class="headerlink" href="#exercise-4-embedding-a-youtube-video" title="Permalink to this headline">¶</a></h2>
+<p>Because Jupyter Notebooks are (interactive) webpages, they can display rich media. The following code will embed a YouTube video into your notebook (you probably will want to copy and paste this example, instead of copying it):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;oHg5SJYRHA0&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">autoplay</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

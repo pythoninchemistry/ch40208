@@ -4,7 +4,11 @@ The main exercise for this session is to check that you can login to the Jupyter
 
 ## Exercise 1
 
-Login to the JupyterHub server. Create a new Notebook (rename this to something sensible). Then launch the User Interface Tour.
+Login to the JupyterHub server. 
+
+Create a new Notebook (rename this to something sensible). 
+
+Then launch the User Interface Tour.
 
 ## Exercise 2 - Hello World
 
@@ -14,3 +18,37 @@ You should have a pristine Notebook from completing Exercise 1. The first cell w
 ```python
 print("Hello world")
 ``` 
+When you run this cell, you should get output that looks like:
+![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FrUYgUm7Q_V.png?alt=media&token=d3bfd756-2b51-4960-bf18-f45b684ba5ad)
+The cell has executed, and produce `Hello world` as output, and a new empty code cell has been created underneath. Notice that the `In [  ]` next to the top cell now shows `In [1]`, showing the order of execution of cells.
+
+## Exercise 3 - Plotting sin(x) and cos(x)
+Common uses of Python within scientific work are numerical calculations and the plotting of data. We will be covering both of these in detail in later sessions. As an example however, type the following code into a **code cell** and **run** the cell:
+```python
+import matplotlib.pyplot as plt
+%config InlineBackend.figure_format = 'retina'
+import numpy as np
+
+x = np.arange(0, 6*np.pi, 0.1)
+plt.plot(x, np.sin(x), label='sin(x)')
+plt.plot(x, np.cos(x), label='cos(x)')
+plt.xlabel('x')
+plt.legend()
+plt.show()
+```
+Do not worry if none of this makes sense. It will all be covered later in the course.
+
+When you run the cell you should get the following output plot, showing how a few lines of Python can be used to perform a numerical calculation (in this case calculating sin(_x_) and cos(_x_) for a range of _x_ values) and the plotting the resulting values.
+
+<p align="center">
+  <img src="./images/sin_cos.png" width="50%" />
+</p>
+
+## Exercise 4 - Embedding a YouTube video
+
+Because Jupyter Notebooks are (interactive) webpages, they can display rich media. The following code will embed a YouTube video into your notebook (you probably will want to copy and paste this example, instead of copying it):
+```python
+from IPython.display import YouTubeVideo
+
+YouTubeVideo('oHg5SJYRHA0', width=800, height=300, autoplay=True)
+```
