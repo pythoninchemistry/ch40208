@@ -41,7 +41,7 @@ Do not worry if none of this makes sense. It will all be covered later in the co
 When you run the cell you should get the following output plot, showing how a few lines of Python can be used to perform a numerical calculation (in this case calculating sin(_x_) and cos(_x_) for a range of _x_ values) and the plotting the resulting values.
 
 <p align="center">
-  <img src="./images/sin_cos.png" width="50%" />
+  <img src="images/sin_cos.png" width="50%" />
 </p>
 
 ## Exercise 4 - Embedding a YouTube video
