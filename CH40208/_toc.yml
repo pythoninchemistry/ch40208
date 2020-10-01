@@ -10,8 +10,13 @@
     - file: notebooks_introduction/getting_started_with_jupyter_notebooks
     - file: notebooks_introduction/the_notebook_interface
     - file: notebooks_introduction/exercises
-#- part: Python Basics
-#  chapters:
+- part: Python Basics
+  chapters:
+    - file: python_basics/python_first_chemistry_later.md
+    - file: python_basics/why_we_encourage_typing_out_the_code_examples.md
+    - file: python_basics/using_Python_as_a_calculator.md
+    - file: python_basics/getting_started_with_strings.md
+#    - file: python_basics/objects_and_operations.ipynb
 #    - file: python_basics/variable_types
 #    - file: python_basics/arithmetic
 #    - file: python_basics/print_statements
