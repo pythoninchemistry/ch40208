@@ -1,4 +1,4 @@
-# The Jupyter Notebook Interface
+# The Jupyter Notebook interface
 
 ## Interface Elements
 
