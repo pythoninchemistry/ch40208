@@ -197,9 +197,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/getting_started_with_strings.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/getting_started_with_strings.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -215,6 +215,28 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/getting_started_with_strings.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_basics/getting_started_with_strings.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -247,17 +269,46 @@
 <p>We will also be working with pieces of text, which are represented in Python as <strong>strings</strong>.</p>
 <p>A <strong>string</strong> must be enclosed in a matching pair of <strong>single quotes</strong> <code class="docutils literal notranslate"><span class="pre">'text</span> <span class="pre">goes</span> <span class="pre">here'</span></code> or <strong>double quotes</strong> <code class="docutils literal notranslate"><span class="pre">&quot;text</span> <span class="pre">goes</span> <span class="pre">here&quot;</span></code>.</p>
 <p>Entering a string into a <strong>code cell</strong> and running the cell will just output the string:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I am a string with single quotes&#39;</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I am a string with single quotes&#39;</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;I am a string with double quotes&quot;</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;I am a string with single quotes&#39;
 </pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;I am a string with double quotes&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;I am a string with double quotes&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Trying to pair single and double quotes will give an error or an unexpected output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I am a string with mismatched quotes&quot;</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I am a string with mismatched quotes&quot;</span>
 </pre></div>
 </div>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FnHqYMOChKp.png?alt=media&amp;token=dc9aff05-113d-413d-9232-f24382f48989" /></p>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-3-4b5c4a6d02da&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="s1">&#39;I am a string with mismatched quotes&quot;</span>
+                                          <span class="o">^</span>
+<span class="ne">SyntaxError</span>: EOL while scanning string literal
+</pre></div>
+</div>
+</div>
+</div>
 <p>This gives a <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>, which is one of the many error types invalid Python code can produce. A syntax error is one of the most basic error types and means that the Python interpreter is not able to understand the code.</p>
 <p>We will dive into error messages and types of errors in Python in more detail later in the course.</p>
 <p>You can include single quotes in a string that is enclosed in double quotes:</p>
