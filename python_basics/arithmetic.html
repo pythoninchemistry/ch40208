@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 
 <html>
@@ -7,9 +6,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arithmetic &#8212; CH40208: Topics in Computational Chemistry</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="../_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css" type="text/css" />
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -17,6 +33,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -25,8 +44,8 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/sphinx-book-theme.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -39,8 +58,8 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
 
 
 
@@ -100,12 +119,39 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">
-   The Jupyter Notebook Interface
+   The Jupyter Notebook interface
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../notebooks_introduction/exercises.html">
    Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Python Basics
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_first_chemistry_later.html">
+   Python first, chemistry later
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">
+   Why we encourage typing out the code examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="using_Python_as_a_calculator.html">
+   Using Python as a calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_with_strings.html">
+   Getting started with strings
   </a>
  </li>
 </ul>
@@ -195,6 +241,7 @@
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
         <div class="tocsection onthispage pt-5 pb-3">
             <i class="fas fa-list"></i> Contents
         </div>
@@ -213,6 +260,7 @@
 </ul>
 
         </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -224,7 +272,7 @@
 <h1>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">¶</a></h1>
 <p>Let’s now look at how we can use the <em>numerical</em> variable types.
 Python and the Jupyter Notebook can perform simple mathematical operations <em>natively</em>.
-Most powerful mathematical operations are discussed <a class="reference internal" href="../working_with_data/numpy_arrays.html"><span class="doc std std-doc">later</span></a>.</p>
+Most powerful mathematical operations are discussed later.</p>
 <p>The operations that Python can perform natively include,</p>
 <table class="colwidths-auto table">
 <thead>
@@ -302,7 +350,7 @@ Python follows the order of operations that should be familiar from mathematics,
 <div class="section" id="mixed-type-operations">
 <h2>Mixed-type operations<a class="headerlink" href="#mixed-type-operations" title="Permalink to this headline">¶</a></h2>
 <p>When the two operands, <span class="math notranslate nohighlight">\(4\)</span> and <span class="math notranslate nohighlight">\(3\)</span> in the code <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">+</span> <span class="pre">3</span></code>, are of the same type, the result of some arithmetic operations will typically also be of this type.
-For example, below the two floats produce a float,</p>
+For example, below the two floats produce a float.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">4.3</span> <span class="o">+</span> <span class="mf">2.5</span><span class="p">)</span>
@@ -366,6 +414,10 @@ However, with Python 3, the operator <code class="docutils literal notranslate">
 </div>
 </div>
 </div>
+<blockquote>
+<div><p><strong>Exercise</strong>: In the exercise last week, you investigated the effect of performing different mathematical operations on <code class="docutils literal notranslate"><span class="pre">str</span></code>-type objects.
+Now, considering the binary nature of the <code class="docutils literal notranslate"><span class="pre">bool</span></code>-type variables (e.g. <code class="docutils literal notranslate"><span class="pre">True</span></code> can be represented as <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> as <code class="docutils literal notranslate"><span class="pre">0</span></code>) what will the result of performing mathematical operations (such as addition and multiplication) on these object types be?</p>
+</div></blockquote>
 </div>
 </div>
 
@@ -415,7 +467,10 @@ However, with Python 3, the operator <code class="docutils literal notranslate">
       </div>
     </div>
 
-    <script src="../_static/js/index.js"></script>
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
     
   </body>
 </html>
