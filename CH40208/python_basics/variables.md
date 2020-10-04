@@ -62,9 +62,15 @@ Because `b` is assigned to the **value** stored in `a`, and not to `a` itself, i
     <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fs1JfhRYRHR.png?alt=media&token=18c052f7-76e1-48bc-9ac7-861903d6fd3d" width="50%" />
 </p>
 
-## multiple assignment
+## Multiple assignment
 
 Python allows multiple variables to be assigned in the same statement:
 
 ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F9Oq6l6l3au.png?alt=media&token=f9f20547-0042-4b2d-8f82-462cc23b0050)
+
+## Empty variables
+
+A variable may also be set to contain no value by assigning it `None`.
+
+![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FXy-esPUMZ0.png?alt=media&token=34d067d6-07fd-4b26-b1cb-c1cee449755f)
 
