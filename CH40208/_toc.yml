@@ -16,9 +16,10 @@
     - file: python_basics/why_we_encourage_typing_out_the_code_examples.md
     - file: python_basics/using_Python_as_a_calculator.md
     - file: python_basics/getting_started_with_strings.md
-    - file: python_basics/variable_types
+    - file: python_basics/print_statements.md
+    - file: python_basics/types.md
+    - file: python_basics/variables.md
     - file: python_basics/arithmetic
-    - file: python_basics/print_statements
 #    - file: python_basics/collections
 #      sections:
 #        - file: python_basics/lists
