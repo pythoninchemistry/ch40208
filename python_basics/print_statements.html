@@ -273,10 +273,10 @@
 <div class="section" id="displaying-data">
 <h2>Displaying data<a class="headerlink" href="#displaying-data" title="Permalink to this headline">¶</a></h2>
 <p>Until now, we have been using the built-in functionality of the Jupyter Notebook to display data on the screen.</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F6d1q87iYba.png?alt=media&amp;token=6fb5c325-8986-4dfc-a96a-fb45f7d9bd3e" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/hello_world.png" /></p>
 <p><strong>Code blocks</strong> are not limited to single lines of code—this would make working in Jupyter Notebooks extremely tedious when writing more complicated programs.</p>
 <p>But what happens if we run a cell that contains more than one statement?</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FU3NR07xlwM.png?alt=media&amp;token=12897531-b40f-4a82-ad67-39dca83b695f" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/first_second_third.png" /></p>
 <p>Only the output from the <strong>last</strong> statement is displayed as the cell output. The first two statements have been executed when we run the cell, but no output is displayed.</p>
 <p>The default setting for Jupyter Notebooks is to only display the output from the final statement in any code cell. While it is possible to <a class="reference external" href="https://stackoverflow.com/questions/36786722/how-to-display-full-output-in-jupyter-not-only-last-result">change this setting</a> so that all the output is displayed, the usual way to control what is displayed is to use the <code class="docutils literal notranslate"><span class="pre">print</span></code> <strong>function</strong>.</p>
 </div>
@@ -289,28 +289,28 @@
 </div>
 <p>Here, we are calling the <code class="docutils literal notranslate"><span class="pre">print</span></code> function with one argument; the <strong>string</strong> <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World!</span></code>.</p>
 <p>If we run this in a <strong>code cell</strong>, the string is printed:</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F78cWkzJ9yI.png?alt=media&amp;token=6d80ff9a-7e6e-43ea-b1e3-9612d0e4de69" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/print_hello_world" /></p>
 <p>Returning to our previous example, the following set of print statements displays all three strings:</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FT786f2Vgia.png?alt=media&amp;token=20fdca16-469e-4c02-a6a4-08f7bd04ce81" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/print_first_second_third.png" /></p>
 <p>You might have spotted that these examples using <code class="docutils literal notranslate"><span class="pre">print</span></code> do not give an <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[</span> <span class="pre">]:</span></code> output under the code cell.</p>
 <p>Remember that a <strong>function</strong> is a piece of code that returns an output. So what is the output returned by <code class="docutils literal notranslate"><span class="pre">print</span></code>? 🤔</p>
 <p>Somewhat confusingly, <code class="docutils literal notranslate"><span class="pre">print</span></code> returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> is a <strong>null object</strong> that represents no data.</p>
 <p>Remember that when you run a code cell, whatever data is produced by the final statement in that cell is displayed as the <strong>cell output</strong> after <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[</span> <span class="pre">]:</span></code>.</p>
 <p>But calling <code class="docutils literal notranslate"><span class="pre">print</span></code> returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. The examples above produce <strong>no data</strong>, and so there is nothing to display as the <strong>cell output</strong>.</p>
 <p align="center">
-    <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FSS2_oGj9Sp.png?alt=media&token=c7542ed7-1d4f-48f4-a804-980677edc0ef" width="50%" />
+    <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/function_action.png" width="50%" />
 </p>
 <p>If zero <strong>arguments</strong> are passed to an <strong>function</strong>, the <strong>function</strong> is still <strong>called</strong> by writing the function name followed by a pair of brackets. e.g.</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FQ2thbkGKv6.png?alt=media&amp;token=b6d50780-2109-4d6f-9637-a3cd0ec6fa58" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/empty_print.png" /></p>
 <p><strong>Calling</strong> <code class="docutils literal notranslate"><span class="pre">print</span></code> with no arguments prints a blank line (and returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, so no cell output is displayed).</p>
 <p>Writing a function name <strong>without</strong> the following brackets is still valid Python. But instead of <strong>calling</strong> the function, and performing whatever computation you expected, you are simply referring to the data that represents that function. e.g.</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FBTocyIH_qH.png?alt=media&amp;token=5205b8dc-1b32-41bf-9ace-4bfe75580a90" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/output_print.png" /></p>
 <p>Now the cell output shows a string representation of the data produced by the final statement; in this case this is the <code class="docutils literal notranslate"><span class="pre">print</span></code> function itself.</p>
 </div>
 <div class="section" id="slightly-more-complex-print-statements">
 <h2>Slightly more complex print statements<a class="headerlink" href="#slightly-more-complex-print-statements" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">print</span></code> function can also be passed more than one argument. <code class="docutils literal notranslate"><span class="pre">print</span></code> will try to convert each argument to a string and then <strong>concatenate</strong> these into a single output, e.g.</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FQtqxmcuZsV.png?alt=media&amp;token=07677f56-686d-4484-88c4-64c4f03291f0" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/complex_print.png" /></p>
 </div>
 </div>
 
