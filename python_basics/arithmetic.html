@@ -57,6 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Variables" href="variables.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,7 +134,7 @@
   Python Basics
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -152,6 +153,26 @@
  <li class="toctree-l1">
   <a class="reference internal" href="getting_started_with_strings.html">
    Getting started with strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="print_statements.html">
+   Print statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="types.html">
+   Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="variables.html">
+   Variables
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Arithmetic
   </a>
  </li>
 </ul>
@@ -257,6 +278,22 @@
    Mixed-type operations
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-math-module">
+   The
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     math
+    </span>
+   </code>
+   module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises:
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -270,10 +307,10 @@
                 
   <div class="section" id="arithmetic">
 <h1>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this headline">¶</a></h1>
-<p>Let’s now look at how we can use the <em>numerical</em> variable types.
-Python and the Jupyter Notebook can perform simple mathematical operations <em>natively</em>.
-Most powerful mathematical operations are discussed later.</p>
-<p>The operations that Python can perform natively include,</p>
+<p>Let’s look now at how we can use assigned numerical variables in mathematical operations.
+Previously, we saw simple maths, using the Notebook as a basic calculator.
+In this section, we will discuss more powerful mathematics, making you of variables.
+The operations that Python can perform natively include,</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Operation</p></th>
@@ -283,31 +320,30 @@ Most powerful mathematical operations are discussed later.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Addition</p></td>
-<td><p><span class="math notranslate nohighlight">\( a + b \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a + b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Subtraction</p></td>
-<td><p><span class="math notranslate nohighlight">\( a - b \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a - b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Multiplication</p></td>
-<td><p><span class="math notranslate nohighlight">\( a \times b \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a \times b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Division</p></td>
-<td><p><span class="math notranslate nohighlight">\( a \div b \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a \div b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">/</span> <span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Exponent</p></td>
-<td><p><span class="math notranslate nohighlight">\( a ^ b \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a^b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">**</span> <span class="pre">b</span></code></p></td>
 </tr>
 </tbody>
 </table>
 <p>Beware that the multiplication in Python is explicit, while in mathematics you could write <span class="math notranslate nohighlight">\(1.5nRT\)</span> to indicate <span class="math notranslate nohighlight">\(1.5 \times n \times R \times T\)</span>, in Python all of the previous implicit multiplication must be included.
 So in Python we would have <code class="docutils literal notranslate"><span class="pre">1.5</span> <span class="pre">*</span> <span class="pre">n</span> <span class="pre">*</span> <span class="pre">R</span> <span class="pre">*</span> <span class="pre">T</span></code>.</p>
-<p>With these basic tools alone, and the ability to assign variables, it is possible to use the Jupyter Notebook as a simple calculator.
-For example, we could assign some values to the variables <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, and <code class="docutils literal notranslate"><span class="pre">T</span></code>, and calculate the internal energy of a monatomic ideal gas.</p>
+<p>With these basic tools alone, and the ability to assign variables, it is possible to write a Jupyter cell that will calculate the internal energy of a monatomic gas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
@@ -324,6 +360,7 @@ For example, we could assign some values to the variables <code class="docutils 
 </div>
 </div>
 </div>
+<p>Test for yourself, the result of varying the values of <code class="docutils literal notranslate"><span class="pre">n</span></code>, and <code class="docutils literal notranslate"><span class="pre">T</span></code> in the above cell.</p>
 <div class="section" id="order-of-operations">
 <h2>Order of operations<a class="headerlink" href="#order-of-operations" title="Permalink to this headline">¶</a></h2>
 <p>A single line of code can include a series of different arithmetic operations.
@@ -337,19 +374,10 @@ Python follows the order of operations that should be familiar from mathematics,
 <li><p><strong>A</strong>ddition</p></li>
 <li><p><strong>S</strong>ubtraction</p></li>
 </ul>
-<blockquote>
-<div><p><strong>Exercise</strong>: Without using the computer or a calculator, and following the BODMAS order of operations, calculate the following:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(24 \div (10 + 2)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(5 + 16 \div 2 \times 3\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\([32 \div (6 + 2)] ^ 2\)</span></p></li>
-</ol>
-<p>Now check that your answers match the result that Python produces using a Jupyter Notebook.</p>
-</div></blockquote>
 </div>
 <div class="section" id="mixed-type-operations">
 <h2>Mixed-type operations<a class="headerlink" href="#mixed-type-operations" title="Permalink to this headline">¶</a></h2>
-<p>When the two operands, <span class="math notranslate nohighlight">\(4\)</span> and <span class="math notranslate nohighlight">\(3\)</span> in the code <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">+</span> <span class="pre">3</span></code>, are of the same type, the result of some arithmetic operations will typically also be of this type.
+<p>When the two operands, <span class="math notranslate nohighlight">\(4\)</span> and <span class="math notranslate nohighlight">\(3\)</span> in the code <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">+</span> <span class="pre">3</span></code>, are of the same type, the result of some arithmetic operations wi\ll typically also be of this type.
 For example, below the two floats produce a float.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -384,40 +412,76 @@ If you could see all of the steps of the multiplication, it would look like this
 <span class="o">&gt;&gt;</span> <span class="mf">6.0</span>
 </pre></div>
 </div>
-<p>In Python 3 (the version of Python that we are working with), if one integer is divided by another, then both are converted to floats first.
-So in the code below, the variable <code class="docutils literal notranslate"><span class="pre">both_int</span></code> is a float with the value <code class="docutils literal notranslate"><span class="pre">0.5</span></code>.</p>
+<br>
+</div>
+<div class="section" id="the-math-module">
+<h2>The <code class="docutils literal notranslate"><span class="pre">math</span></code> module<a class="headerlink" href="#the-math-module" title="Permalink to this headline">¶</a></h2>
+<p>Python can access more advanced mathematical functions using the <code class="docutils literal notranslate"><span class="pre">math</span></code> module.
+To access this, we must import this module to use the functions in our kernel.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">both_int</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="mi">4</span>
-<span class="n">both_int</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">both_int</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <a class="reference external" href="https://en.wikipedia.org/wiki/Bragg%27s_law">Bragg’s law</a> to calculate the <span class="math notranslate nohighlight">\(d\)</span> spacing in a crystal structure, based on the wavelength (<span class="math notranslate nohighlight">\(\lamdba\)</span>) of the light, the angle of incidence (<span class="math notranslate nohighlight">\(\theta\)</span>) and <span class="math notranslate nohighlight">\(n\)</span> which is a positive integer.</p>
+<div class="math notranslate nohighlight">
+\[ 2d\sin(\theta) = n\lambda \]</div>
+<p>Unlike the calculation of internal energy above, this function is not possible with the basic operations shown above.
+However, the <code class="docutils literal notranslate"><span class="pre">math</span></code> module offers access to many functions such as the <code class="docutils literal notranslate"><span class="pre">math.sin()</span></code> function (note that these function assume the angle to be given in radians).
+Therefore, in the cell below we can determine the <span class="math notranslate nohighlight">\(d\)</span> spacing for a typical crystal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wavelength</span> <span class="o">=</span> <span class="mf">9.925e-10</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="mf">1.07553</span>
+
+<span class="n">n</span> <span class="o">*</span> <span class="n">wavelength</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5, float)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.640216163265237e-10
 </pre></div>
 </div>
 </div>
 </div>
-<p>In the older Python 2, this would have returned an integer with a value of <code class="docutils literal notranslate"><span class="pre">0</span></code>, as the number is rounded down.
-However, with Python 3, the operator <code class="docutils literal notranslate"><span class="pre">//</span></code> (known as floor division, because it rounds down) would be required to achieve this result.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">math</span></code> module enables access to a variety of functions and objects that can be useful in scientific research.
+Including the trigonometric functions alluded to above and important mathematical constants, such as <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">floor_division</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">//</span> <span class="mi">4</span>
-<span class="n">floor_division</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">floor_division</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, int)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
 </pre></div>
 </div>
 </div>
 </div>
-<blockquote>
-<div><p><strong>Exercise</strong>: In the exercise last week, you investigated the effect of performing different mathematical operations on <code class="docutils literal notranslate"><span class="pre">str</span></code>-type objects.
-Now, considering the binary nature of the <code class="docutils literal notranslate"><span class="pre">bool</span></code>-type variables (e.g. <code class="docutils literal notranslate"><span class="pre">True</span></code> can be represented as <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> as <code class="docutils literal notranslate"><span class="pre">0</span></code>) what will the result of performing mathematical operations (such as addition and multiplication) on these object types be?</p>
-</div></blockquote>
+<p>More information about the fucntions and objects that can be accessed from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module can be found in the appropriate <a class="reference external" href="https://docs.python.org/3/library/math.html">documentation</a>.</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Without using the computer or a calculator, and following the BODMAS order of operations, calculate the following:</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(24 \div (10 + 2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(5 + 16 \div 2 \times 3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\([32 \div (6 + 2)]^2\)</span></p></li>
+</ol>
+<p>Now check that your answers match the result that Python produces using a Jupyter Notebook.</p>
+</li>
+<li><p>Write Jupyter cells for each of the following chemical equations.</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(E=hc\nu\)</span>, where <span class="math notranslate nohighlight">\(c\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Speed_of_light">speed of light</a>, <span class="math notranslate nohighlight">\(h\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Planck_constant">Planck constant</a>, and <span class="math notranslate nohighlight">\(\nu\)</span> is <span class="math notranslate nohighlight">\(1700\)</span> cm<sup>-1</sup>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta G = -RT\ln{K}\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Gas_constant">ideal gas constant</a>, <span class="math notranslate nohighlight">\(T\)</span> is initially <span class="math notranslate nohighlight">\(300\)</span> K, and <span class="math notranslate nohighlight">\(K\)</span> is <span class="math notranslate nohighlight">\(2.14\times 10^{-4}\)</span>.</p></li>
+<li><p>TODO ANOTHER EXAMPLE WITH <span class="math notranslate nohighlight">\(\pi\)</span>.</p></li>
+</ol>
+</li>
+</ul>
 </div>
 </div>
 
@@ -449,6 +513,7 @@ Now, considering the binary nature of the <code class="docutils literal notransl
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="variables.html" title="previous page">Variables</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

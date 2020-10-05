@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Private and Public &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Types &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Variables" href="variables.html" />
+    <link rel="prev" title="Print statements" href="print_statements.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,44 +135,44 @@
   Python Basics
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/python_first_chemistry_later.html">
+  <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">
+  <a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">
    Why we encourage typing out the code examples
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">
+  <a class="reference internal" href="using_Python_as_a_calculator.html">
    Using Python as a calculator
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/getting_started_with_strings.html">
+  <a class="reference internal" href="getting_started_with_strings.html">
    Getting started with strings
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/print_statements.html">
+  <a class="reference internal" href="print_statements.html">
    Print statements
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/types.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Types
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/variables.html">
+  <a class="reference internal" href="variables.html">
    Variables
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/arithmetic.html">
+  <a class="reference internal" href="arithmetic.html">
    Arithmetic
   </a>
  </li>
@@ -216,7 +218,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/object_oriented_programming/private_public.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/types.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -240,6 +242,35 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#checking-types-using-type">
+   Checking Types using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     type
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numeric-data-types">
+   numeric data types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-data">
+   Boolean data
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -247,8 +278,33 @@
         
               <div>
                 
-  <div class="section" id="private-and-public">
-<h1>Private and Public<a class="headerlink" href="#private-and-public" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="types">
+<h1>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="checking-types-using-type">
+<h2>Checking Types using <code class="docutils literal notranslate"><span class="pre">type</span></code><a class="headerlink" href="#checking-types-using-type" title="Permalink to this headline">¶</a></h2>
+<p>We have seen that data in Python can be classified as belonging to a specific <strong>type</strong>, e.g.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> is an <strong>integer</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">5.2123</span></code> is a <strong>floating-point number</strong>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Tuesday&quot;</span></code> is a string.</p></li>
+</ul>
+<p>We can check the <strong>type</strong> of a data value using the <code class="docutils literal notranslate"><span class="pre">type</span></code> <strong>function</strong>.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FydfeB04iDM.png?alt=media&amp;token=6ff27479-516f-4861-8bfd-536d4775e38b" /></p>
+<p>This also works for <code class="docutils literal notranslate"><span class="pre">None</span></code>:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FJlwgA41Dsx.png?alt=media&amp;token=43477589-ea0b-4c8d-a913-3d6d88e98593" /></p>
+<p>And even for functions:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fz_W2JKGCyk.png?alt=media&amp;token=92bf722e-809b-4743-b176-4df20e688d7b" /></p>
+</div>
+<div class="section" id="numeric-data-types">
+<h2>numeric data types<a class="headerlink" href="#numeric-data-types" title="Permalink to this headline">¶</a></h2>
+<p><strong>integers</strong> and <strong>floating-point numbers</strong> are both examples of <strong>numeric</strong> data types. Python also has a built in <strong>complex</strong> data type that can be used for working with complex numbers. Complex numbers in python are written using <code class="docutils literal notranslate"><span class="pre">j</span></code> to denote the imaginary component:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fuye5V8R1lF.png?alt=media&amp;token=6e654cf0-9294-402e-98c2-f15010120f89" /></p>
+</div>
+<div class="section" id="boolean-data">
+<h2>Boolean data<a class="headerlink" href="#boolean-data" title="Permalink to this headline">¶</a></h2>
+<p>The other simple data type we will be working with a lot is the <code class="docutils literal notranslate"><span class="pre">bool</span></code> type, which represents <span class="xref myst"><strong>Boolean</strong></span>https://en.wikipedia.org/wiki/George_Boole) or “logical” data. <strong>Boolean</strong> data can take one of two values: <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FsmPOPzAMXo.png?alt=media&amp;token=7390f596-ea83-4937-98f7-b98f5e6d55f1" /></p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -264,7 +320,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./object_oriented_programming"
+            path: "./python_basics"
         },
         predefinedOutput: true
     }
@@ -279,6 +335,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="print_statements.html" title="previous page">Print statements</a>
+    <a class='right-next' id="next-link" href="variables.html" title="next page">Variables</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Variable Types and Assignment &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Variables &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Arithmetic" href="arithmetic.html" />
+    <link rel="prev" title="Types" href="types.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,7 +135,7 @@
   Python Basics
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -164,8 +166,8 @@
    Types
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="variables.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Variables
   </a>
  </li>
@@ -216,9 +218,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/variable_types.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/variables.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -235,28 +237,6 @@
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/variable_types.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_basics/variable_types.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
     </div>
 
     <!-- Table of contents -->
@@ -268,8 +248,30 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise:
+  <a class="reference internal nav-link" href="#what-is-a-variable">
+   What is a variable?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assigning-a-variable">
+   Assigning a variable
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#aside-f-strings">
+     aside: f-strings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-assignment">
+   Multiple assignment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#empty-variables">
+   Empty variables
   </a>
  </li>
 </ul>
@@ -283,89 +285,65 @@
         
               <div>
                 
-  <div class="section" id="variable-types-and-assignment">
-<h1>Variable Types and Assignment<a class="headerlink" href="#variable-types-and-assignment" title="Permalink to this headline">¶</a></h1>
-<p>Last week, we looked at some simple operations and objects.
-Here, we will see how we can package these objects into <em>variables</em>, enabling their reuse in other parts of the code.
-Additionally, we will investigate, in detail, the different variable types that are present in Python (previously we saw just <strong>integers</strong>, <strong>floats</strong>, and <strong>strings</strong>).</p>
-<p>A variable is a container that Python uses to store some from of <em>data</em>.
-A variable may be created and then reused at a later stage in the code.
-When a variable is <em>assigned</em>, the <em>value</em> of the variable is set to some computer memory position which is indexed by the <em>variable name</em>.
-So the variable can be reused over and over by using this variable name.
-For example, the code below will assign the value <code class="docutils literal notranslate"><span class="pre">8.314</span></code> to the variable <code class="docutils literal notranslate"><span class="pre">ideal_gas_constant</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ideal_gas_constant</span> <span class="o">=</span> <span class="mf">8.314</span>
+  <div class="section" id="variables">
+<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h1>
+<p>Until now, all of the Python examples have used explicit data values typed directly into the <strong>code cells</strong>. This is okay for typing out a quick numerical calculation, but does not let us do anything any more sophisticated with our data. To do anything more complex your code will need to store and retrieve data, and to change the values of these data as you perform your calculations, which we do using <strong>variables</strong>.</p>
+<div class="section" id="what-is-a-variable">
+<h2>What is a variable?<a class="headerlink" href="#what-is-a-variable" title="Permalink to this headline">¶</a></h2>
+<p>A variable is a Python is an object that stores some data.</p>
+<p>This data can be a wide range of <strong>types</strong>, including <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, or <code class="docutils literal notranslate"><span class="pre">complex</span></code>; a <code class="docutils literal notranslate"><span class="pre">string</span></code>; a <code class="docutils literal notranslate"><span class="pre">bool</span></code>; even a function, or a <strong>collection</strong> of other variables.</p>
+</div>
+<div class="section" id="assigning-a-variable">
+<h2>Assigning a variable<a class="headerlink" href="#assigning-a-variable" title="Permalink to this headline">¶</a></h2>
+<p>To create a new variable and <strong>assign</strong> it a value we use <code class="docutils literal notranslate"><span class="pre">=</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">days_in_october</span> <span class="o">=</span> <span class="mi">31</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>Not all variables are the same, they can have different <em>types</em>.
-Different operations will be possible depending on the type of the variable involved.
-Common variable types that are present in Python include:</p>
+<p>This creates a variable named <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> and assigns it the integer value <code class="docutils literal notranslate"><span class="pre">31</span></code>.</p>
+<p align="center">
+    <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fa6JgzoVeFq.png?alt=media&token=a005e60b-a5a0-42a8-a57d-2d02e7c5fc1d" width="32%" />
+</p>
+<p>The left-hand side of the assignment expression is the <strong>variable name</strong>.</p>
 <ul class="simple">
-<li><p><em>integers</em> (<code class="docutils literal notranslate"><span class="pre">int</span></code>): whole numbers (1, 0, 2, -3, etc.). There is no decimal point and they can be positive, negative, or zero.</p></li>
-<li><p><em>floats</em> (<code class="docutils literal notranslate"><span class="pre">float</span></code>): all real numbers (1.0, 3.14, 0.0, -6.4), any value that can be described with a decimal point. This includes numbers in scientific notation, which are written <code class="docutils literal notranslate"><span class="pre">6.02e23</span></code>, where the <code class="docutils literal notranslate"><span class="pre">eXX</span></code> takes the place of the <span class="math notranslate nohighlight">\(\times 10^{\text{XX}}\)</span>.</p></li>
-<li><p><em>complex</em> (<code class="docutils literal notranslate"><span class="pre">complex</span></code>): complex numbers, which should be familiar from mathematics, such as <span class="math notranslate nohighlight">\(1 + 2i\)</span>. However, in Python, a <code class="docutils literal notranslate"><span class="pre">j</span></code> is used instead of the <span class="math notranslate nohighlight">\(i\)</span> so <span class="math notranslate nohighlight">\(1+2i\)</span> becomes <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2j</span></code>.</p></li>
-<li><p><em>string</em> (<code class="docutils literal notranslate"><span class="pre">str</span></code>): textual information, such as a word or a sentence. These are written between single or double inverted commas, <code class="docutils literal notranslate"><span class="pre">'like</span> <span class="pre">this'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;this&quot;</span></code>. <code class="docutils literal notranslate"><span class="pre">str</span></code>-type objects are contained within either double or single quotes. However, you <strong>cannot</strong> use a mixture of the two, e.g. <code class="docutils literal notranslate"><span class="pre">my_string</span> <span class="pre">=</span> <span class="pre">'Hello</span> <span class="pre">World!&quot;</span></code> will return an error.</p></li>
-<li><p><em>boolean</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>): a <em>logical</em> variable type, named for <a class="reference external" href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> who defined an algebraic logic system in the 19th century. These may hold one of two values, <code class="docutils literal notranslate"><span class="pre">True</span></code> or `false.</p></li>
+<li><p>Variable name must start with a letter or an underscore.</p></li>
+<li><p>Variable names can be any length and can contain upper- and lower-case letters, numbers, and underscores.</p></li>
+<li><p>Variable names are <strong>case sensitive</strong>. <code class="docutils literal notranslate"><span class="pre">my_name</span></code> and <code class="docutils literal notranslate"><span class="pre">My_Name</span></code> are two different variables.</p></li>
+<li><p>Variable names cannot be special <strong>reserved keywords</strong>. You can see the full list of <strong>reserved keywords</strong> by running the command <code class="docutils literal notranslate"><span class="pre">help(&quot;keywords&quot;)</span></code> in a <strong>code cell</strong>.</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">ideal_gas_constant</span></code> code above assigned a <code class="docutils literal notranslate"><span class="pre">float</span></code>-type variable to the name <code class="docutils literal notranslate"><span class="pre">ideal_gas_constant</span></code>.
-The <code class="docutils literal notranslate"><span class="pre">type()</span></code> function will inform you of the type of the variable that is passed as an argument.
-For example, we can use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function to get the type of the variable named <code class="docutils literal notranslate"><span class="pre">speed_of_light</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">speed_of_light</span> <span class="o">=</span> <span class="mf">3.0e8</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">speed_of_light</span><span class="p">)</span>
-</pre></div>
+<p>Now we can use the variable <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> in place of the integer <code class="docutils literal notranslate"><span class="pre">31</span></code>:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F5a1IjNuv90.png?alt=media&amp;token=eb858444-a256-4723-9804-24f16aa7c4c6" /></p>
+<div class="section" id="aside-f-strings">
+<h3>aside: f-strings<a class="headerlink" href="#aside-f-strings" title="Permalink to this headline">¶</a></h3>
+<p>A neater way to do this is to use <strong>f-strings</strong>, which provide a way to embed expressions inside strings. An <strong>f-string</strong> is a <strong>string literal</strong> with an <code class="docutils literal notranslate"><span class="pre">f</span></code> character at the beginning, and curly brackets enclosing any expressions. When the <strong>f-string</strong> is created, any enclosed expressions are evaluated to give a single <strong>interpolated</strong> string:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FvwPHubLqtf.png?alt=media&amp;token=38254aab-a9dd-4ca1-8426-bcee67b5dec6" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> can be used in any of the ways that we might use the value assigned to it. i.e. <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> behaves like an <strong>integer</strong>. If we call type with <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> we can confirm the assigned value is an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F-ad776-SGA.png?alt=media&amp;token=d01ffa6f-01b9-42d8-a5fe-a407243822bb" /></p>
+<p>Variables can also appear on the right-hand side of variable assignments.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fj93ImUGW5v.png?alt=media&amp;token=0f34ff15-c380-4d44-860a-5bae7806b8b3" /></p>
+<ul class="simple">
+<li><p>In the first line, we create a variable <code class="docutils literal notranslate"><span class="pre">a</span></code> and assign it the value <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
+<li><p>In the second line, we create a variable <code class="docutils literal notranslate"><span class="pre">b</span></code> and assign it to the same value as the variable <code class="docutils literal notranslate"><span class="pre">a</span></code>. This is the same as if we had written <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">3</span></code>.</p></li>
+<li><p>In the third line we print <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
+</ul>
+<p align="center">
+    <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FvVo9nrs0yZ.png?alt=media&token=77d56d32-574b-4bf1-bd2a-bf41c09a1a0b" width="30%" />
+</p>
+<p>Because <code class="docutils literal notranslate"><span class="pre">b</span></code> is assigned to the <strong>value</strong> stored in <code class="docutils literal notranslate"><span class="pre">a</span></code>, and not to <code class="docutils literal notranslate"><span class="pre">a</span></code> itself, if we <strong>reassign</strong> <code class="docutils literal notranslate"><span class="pre">a</span></code>, the value stored in <code class="docutils literal notranslate"><span class="pre">b</span></code> does not change.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FBh8Rmkvzww.png?alt=media&amp;token=602398c3-251a-4d40-b786-a4afbd46d5bb" /></p>
+<p align="center">
+    <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fs1JfhRYRHR.png?alt=media&token=18c052f7-76e1-48bc-9ac7-861903d6fd3d" width="50%" />
+</p>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
-</pre></div>
+<div class="section" id="multiple-assignment">
+<h2>Multiple assignment<a class="headerlink" href="#multiple-assignment" title="Permalink to this headline">¶</a></h2>
+<p>Python allows multiple variables to be assigned in the same statement:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F9Oq6l6l3au.png?alt=media&amp;token=f9f20547-0042-4b2d-8f82-462cc23b0050" /></p>
 </div>
-</div>
-</div>
-<p>Above, we reused the <code class="docutils literal notranslate"><span class="pre">speed_of_light</span></code> variable within a single cell.
-But the definition of the variable is stored in the kernel until the kernel is restarted or the variable is redefined.
-This means we can check the type of <code class="docutils literal notranslate"><span class="pre">ideal_gas_constant</span></code> below, and then redefine the value.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ideal_gas_constant</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ideal_gas_constant</span> <span class="o">=</span> <span class="mf">1.987e-3</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We have redefined the ideal gas constant in units of kcalK<sup>-1</sup>mol<sup>-1</sup>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ideal_gas_constant</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="exercise">
-<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<p>Investigate the creation of variables of different types.
-Come up with an example of for each of the variable types that is descriptively named.
-For each check that the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function returns the expected type.</p>
+<div class="section" id="empty-variables">
+<h2>Empty variables<a class="headerlink" href="#empty-variables" title="Permalink to this headline">¶</a></h2>
+<p>A variable may also be set to contain no value by assigning it <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FXy-esPUMZ0.png?alt=media&amp;token=34d067d6-07fd-4b26-b1cb-c1cee449755f" /></p>
 </div>
 </div>
 
@@ -397,6 +375,8 @@ For each check that the <code class="docutils literal notranslate"><span class="
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="types.html" title="previous page">Types</a>
+    <a class='right-next' id="next-link" href="arithmetic.html" title="next page">Arithmetic</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

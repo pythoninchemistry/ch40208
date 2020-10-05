@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Print Statements &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Print statements &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Types" href="types.html" />
+    <link rel="prev" title="Getting started with strings" href="getting_started_with_strings.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,7 +135,7 @@
   Python Basics
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -152,6 +154,26 @@
  <li class="toctree-l1">
   <a class="reference internal" href="getting_started_with_strings.html">
    Getting started with strings
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Print statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="types.html">
+   Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="variables.html">
+   Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="arithmetic.html">
+   Arithmetic
   </a>
  </li>
 </ul>
@@ -196,9 +218,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/print_statements.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/print_statements.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -215,32 +237,34 @@
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/print_statements.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_basics/print_statements.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#displaying-data">
+   Displaying data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-brief-intro-to-functions">
+   A brief intro to functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slightly-more-complex-print-statements">
+   Slightly more complex print statements
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -250,61 +274,49 @@
               <div>
                 
   <div class="section" id="print-statements">
-<h1>Print Statements<a class="headerlink" href="#print-statements" title="Permalink to this headline">¶</a></h1>
-<p>Until now, we have been using the built-in functionality of the Jupyter Notebook to “print” information from the code we are writing, such as the value of a variable or it’s type.
-You may have noticed that the result of the final line in a given Jupyter cell will be printed.
-For example, if you run the code below in your Notebook so should get the same string shown,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">to_print</span> <span class="o">=</span> <span class="s2">&quot;Jupyter returns the information in the last line&quot;</span>
-
-<span class="n">to_print</span>
+<h1>Print statements<a class="headerlink" href="#print-statements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="displaying-data">
+<h2>Displaying data<a class="headerlink" href="#displaying-data" title="Permalink to this headline">¶</a></h2>
+<p>Until now, we have been using the built-in functionality of the Jupyter Notebook to display data on the screen.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F6d1q87iYba.png?alt=media&amp;token=6fb5c325-8986-4dfc-a96a-fb45f7d9bd3e" /></p>
+<p><strong>Code blocks</strong> are not limited to single lines of code—this would make working in Jupyter Notebooks extremely tedious when writing more complicated programs.</p>
+<p>But what happens if we run a cell that contains more than one statement?</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FU3NR07xlwM.png?alt=media&amp;token=12897531-b40f-4a82-ad67-39dca83b695f" /></p>
+<p>Only the output from the <strong>last</strong> statement is displayed as the cell output. The first two statements have been executed when we run the cell, but no output is displayed.</p>
+<p>The default setting for Jupyter Notebooks is to only display the output from the final statement in any code cell. While it is possible to <a class="reference external" href="https://stackoverflow.com/questions/36786722/how-to-display-full-output-in-jupyter-not-only-last-result">change this setting</a> so that all the output is displayed, the usual way to control what is displayed is to use the <code class="docutils literal notranslate"><span class="pre">print</span></code> <strong>function</strong>.</p>
+</div>
+<div class="section" id="a-brief-intro-to-functions">
+<h2>A brief intro to functions<a class="headerlink" href="#a-brief-intro-to-functions" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>function</strong> is a piece of reusable code that takes zero or more inputs, performs a specific computation, and <strong>returns</strong> an output.</p>
+<p>To use a function (known as <strong>calling</strong> the function) we type the function name, followed by a pair of brackets. Anything inside the brackets specifies the inputs to the function. These inputs are called <strong>arguments</strong>, and are said to be <strong>passed</strong> to the function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Here, we are calling the <code class="docutils literal notranslate"><span class="pre">print</span></code> function with one argument; the <strong>string</strong> <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World!</span></code>.</p>
+<p>If we run this in a <strong>code cell</strong>, the string is printed:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F78cWkzJ9yI.png?alt=media&amp;token=6d80ff9a-7e6e-43ea-b1e3-9612d0e4de69" /></p>
+<p>Returning to our previous example, the following set of print statements displays all three strings:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FT786f2Vgia.png?alt=media&amp;token=20fdca16-469e-4c02-a6a4-08f7bd04ce81" /></p>
+<p>You might have spotted that these examples using <code class="docutils literal notranslate"><span class="pre">print</span></code> do not give an <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[</span> <span class="pre">]:</span></code> output under the code cell.</p>
+<p>Remember that a <strong>function</strong> is a piece of code that returns an output. So what is the output returned by <code class="docutils literal notranslate"><span class="pre">print</span></code>? 🤔</p>
+<p>Somewhat confusingly, <code class="docutils literal notranslate"><span class="pre">print</span></code> returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> is a <strong>null object</strong> that represents no data.</p>
+<p>Remember that when you run a code cell, whatever data is produced by the final statement in that cell is displayed as the <strong>cell output</strong> after <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[</span> <span class="pre">]:</span></code>.</p>
+<p>But calling <code class="docutils literal notranslate"><span class="pre">print</span></code> returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. The examples above produce <strong>no data</strong>, and so there is nothing to display as the <strong>cell output</strong>.</p>
+<p align="center">
+    <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FSS2_oGj9Sp.png?alt=media&token=c7542ed7-1d4f-48f4-a804-980677edc0ef" width="50%" />
+</p>
+<p>If zero <strong>arguments</strong> are passed to an <strong>function</strong>, the <strong>function</strong> is still <strong>called</strong> by writing the function name followed by a pair of brackets. e.g.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FQ2thbkGKv6.png?alt=media&amp;token=b6d50780-2109-4d6f-9637-a3cd0ec6fa58" /></p>
+<p><strong>Calling</strong> <code class="docutils literal notranslate"><span class="pre">print</span></code> with no arguments prints a blank line (and returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, so no cell output is displayed).</p>
+<p>Writing a function name <strong>without</strong> the following brackets is still valid Python. But instead of <strong>calling</strong> the function, and performing whatever computation you expected, you are simply referring to the data that represents that function. e.g.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FBTocyIH_qH.png?alt=media&amp;token=5205b8dc-1b32-41bf-9ace-4bfe75580a90" /></p>
+<p>Now the cell output shows a string representation of the data produced by the final statement; in this case this is the <code class="docutils literal notranslate"><span class="pre">print</span></code> function itself.</p>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Jupyter returns the information in the last line&#39;
-</pre></div>
+<div class="section" id="slightly-more-complex-print-statements">
+<h2>Slightly more complex print statements<a class="headerlink" href="#slightly-more-complex-print-statements" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">print</span></code> function can also be passed more than one argument. <code class="docutils literal notranslate"><span class="pre">print</span></code> will try to convert each argument to a string and then <strong>concatenate</strong> these into a single output, e.g.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FQtqxmcuZsV.png?alt=media&amp;token=07677f56-686d-4484-88c4-64c4f03291f0" /></p>
 </div>
-</div>
-</div>
-<p>However, if you would like to get information from other lines of the cell (or from within a <a class="reference internal" href="../good_practice/modules.html"><span class="doc std std-doc">large program</span></a> or <a class="reference internal" href="../structured_programming/functions.html"><span class="doc std std-doc">function</span></a>, it is necessary to be able to <em>print</em> from the code.
-This is where the <em>print statement</em> comes in, which in Python looks like this,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello World!
-</pre></div>
-</div>
-</div>
-</div>
-<p>Which will output the string <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World!</span></code> when run.
-Some of you may be aware of the context of <a class="reference external" href="https://en.wikipedia.org/wiki/%22Hello,_World%21%22_program">printing Hello World!</a> in the history of learning programming, it is typically the first thing someone learns when they are learning a new programming language.</p>
-<p>Any of the <a class="reference internal" href="variable_types.html"><span class="doc std std-doc">types</span></a> can be printed with the print statement.
-Additionally, it is also possible to use the print statement to insert numerical values into a string.
-We can even prescribe how the number is written.
-For example, in the code below, the information between the curly brackets defines that a float (<code class="docutils literal notranslate"><span class="pre">f</span></code>) should be written with two (<code class="docutils literal notranslate"><span class="pre">2</span></code>) numbers following the decimal point (<code class="docutils literal notranslate"><span class="pre">.</span></code>).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ideal_gas_constant</span> <span class="o">=</span> <span class="mf">8.314</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R is approximately </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ideal_gas_constant</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R to 2 decimal places is </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ideal_gas_constant</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R is approximately 8.314
-R to 2 decimal places is 8.31
-</pre></div>
-</div>
-</div>
-</div>
-<p>More information about the <code class="docutils literal notranslate"><span class="pre">format</span></code> function can be found <a class="reference external" href="https://www.w3schools.com/python/ref_string_format.asp">online</a>.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -335,6 +347,8 @@ R to 2 decimal places is 8.31
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="getting_started_with_strings.html" title="previous page">Getting started with strings</a>
+    <a class='right-next' id="next-link" href="types.html" title="next page">Types</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
