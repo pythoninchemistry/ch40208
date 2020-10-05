@@ -30,7 +30,7 @@ Here, we are calling the `print` function with one argument; the **string** `"He
 
 If we run this in a **code cell**, the string is printed:
 
-![](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/print_hello_world)
+![](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/print_hello_world.png)
 
 Returning to our previous example, the following set of print statements displays all three strings:
 
