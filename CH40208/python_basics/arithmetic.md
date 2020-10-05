@@ -20,7 +20,7 @@ $$x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}$$
 
 Consider the example, $a=1.0$, $b=2.0$, $c=-3.0$:
 
-Using &ldquo;Python as a calculator&rdqou; we can find one of the solutions $x$ using
+Using &ldquo;Python as a calculator&rdquo; we can find one of the solutions $x$ using
 
 ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FaPIcn1N9uZ.png?alt=media&token=19c4b5bd-8b9e-460e-add5-076b28385a5f)
 
