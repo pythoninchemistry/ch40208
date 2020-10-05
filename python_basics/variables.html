@@ -57,7 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Arithmetic" href="arithmetic.html" />
     <link rel="prev" title="Types" href="types.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -171,11 +170,6 @@
    Variables
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="arithmetic.html">
-   Arithmetic
-  </a>
- </li>
 </ul>
 
 </nav>
@@ -218,9 +212,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/variables.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/variables.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -236,6 +230,28 @@
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/variables.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_basics/variables.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
 
     </div>
 
@@ -259,7 +275,7 @@
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#aside-f-strings">
-     aside: f-strings
+     Aside: f-strings
     </a>
    </li>
   </ul>
@@ -296,13 +312,18 @@
 <div class="section" id="assigning-a-variable">
 <h2>Assigning a variable<a class="headerlink" href="#assigning-a-variable" title="Permalink to this headline">¶</a></h2>
 <p>To create a new variable and <strong>assign</strong> it a value we use <code class="docutils literal notranslate"><span class="pre">=</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">days_in_october</span> <span class="o">=</span> <span class="mi">31</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">days_in_october</span> <span class="o">=</span> <span class="mi">31</span>
 </pre></div>
 </div>
+</div>
+</div>
 <p>This creates a variable named <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> and assigns it the integer value <code class="docutils literal notranslate"><span class="pre">31</span></code>.</p>
-<p align="center">
-    <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fa6JgzoVeFq.png?alt=media&token=a005e60b-a5a0-42a8-a57d-2d02e7c5fc1d" width="32%" />
-</p>
+<div class="figure align-default" id="days-in-october">
+<a class="reference internal image-reference" href="python_basics/./images/days_in_october.png"><img alt="The assignment of the value 31 to the variable named days_in_october." src="python_basics/./images/days_in_october.png" style="width: 32%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">The assignment of the value 31 to the variable named days_in_october.</span><a class="headerlink" href="#days-in-october" title="Permalink to this image">¶</a></p>
+</div>
 <p>The left-hand side of the assignment expression is the <strong>variable name</strong>.</p>
 <ul class="simple">
 <li><p>Variable name must start with a letter or an underscore.</p></li>
@@ -311,39 +332,133 @@
 <li><p>Variable names cannot be special <strong>reserved keywords</strong>. You can see the full list of <strong>reserved keywords</strong> by running the command <code class="docutils literal notranslate"><span class="pre">help(&quot;keywords&quot;)</span></code> in a <strong>code cell</strong>.</p></li>
 </ul>
 <p>Now we can use the variable <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> in place of the integer <code class="docutils literal notranslate"><span class="pre">31</span></code>:</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F5a1IjNuv90.png?alt=media&amp;token=eb858444-a256-4723-9804-24f16aa7c4c6" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;There are&quot;</span><span class="p">,</span> <span class="n">days_in_october</span><span class="p">,</span> <span class="s2">&quot;days in October&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 31 days in October
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="aside-f-strings">
-<h3>aside: f-strings<a class="headerlink" href="#aside-f-strings" title="Permalink to this headline">¶</a></h3>
+<h3>Aside: f-strings<a class="headerlink" href="#aside-f-strings" title="Permalink to this headline">¶</a></h3>
 <p>A neater way to do this is to use <strong>f-strings</strong>, which provide a way to embed expressions inside strings. An <strong>f-string</strong> is a <strong>string literal</strong> with an <code class="docutils literal notranslate"><span class="pre">f</span></code> character at the beginning, and curly brackets enclosing any expressions. When the <strong>f-string</strong> is created, any enclosed expressions are evaluated to give a single <strong>interpolated</strong> string:</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FvwPHubLqtf.png?alt=media&amp;token=38254aab-a9dd-4ca1-8426-bcee67b5dec6" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s2">&quot;There are </span><span class="si">{</span><span class="n">days_in_october</span><span class="si">}</span><span class="s2"> days in October&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;There are 31 days in October&#39;
+</pre></div>
+</div>
+</div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> can be used in any of the ways that we might use the value assigned to it. i.e. <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> behaves like an <strong>integer</strong>. If we call type with <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> we can confirm the assigned value is an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F-ad776-SGA.png?alt=media&amp;token=d01ffa6f-01b9-42d8-a5fe-a407243822bb" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">days_in_october</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+</pre></div>
+</div>
+</div>
+</div>
 <p>Variables can also appear on the right-hand side of variable assignments.</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fj93ImUGW5v.png?alt=media&amp;token=0f34ff15-c380-4d44-860a-5bae7806b8b3" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
 <ul class="simple">
 <li><p>In the first line, we create a variable <code class="docutils literal notranslate"><span class="pre">a</span></code> and assign it the value <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p></li>
 <li><p>In the second line, we create a variable <code class="docutils literal notranslate"><span class="pre">b</span></code> and assign it to the same value as the variable <code class="docutils literal notranslate"><span class="pre">a</span></code>. This is the same as if we had written <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">3</span></code>.</p></li>
 <li><p>In the third line we print <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
 </ul>
-<p align="center">
-    <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FvVo9nrs0yZ.png?alt=media&token=77d56d32-574b-4bf1-bd2a-bf41c09a1a0b" width="30%" />
-</p>
+<div class="figure align-default" id="a-and-b">
+<a class="reference internal image-reference" href="python_basics/./images/a_and_b.png"><img alt="The assignment of 3 to the variable a and the assigment of this to b." src="python_basics/./images/a_and_b.png" style="width: 30%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">The assignment of 3 to the variable a and the assigment of this to b.</span><a class="headerlink" href="#a-and-b" title="Permalink to this image">¶</a></p>
+</div>
 <p>Because <code class="docutils literal notranslate"><span class="pre">b</span></code> is assigned to the <strong>value</strong> stored in <code class="docutils literal notranslate"><span class="pre">a</span></code>, and not to <code class="docutils literal notranslate"><span class="pre">a</span></code> itself, if we <strong>reassign</strong> <code class="docutils literal notranslate"><span class="pre">a</span></code>, the value stored in <code class="docutils literal notranslate"><span class="pre">b</span></code> does not change.</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FBh8Rmkvzww.png?alt=media&amp;token=602398c3-251a-4d40-b786-a4afbd46d5bb" /></p>
-<p align="center">
-    <img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fs1JfhRYRHR.png?alt=media&token=18c052f7-76e1-48bc-9ac7-861903d6fd3d" width="50%" />
-</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = 2
+b = 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="figure align-default" id="a-and-b-switch">
+<a class="reference internal image-reference" href="python_basics/./images/a_and_b_switch.png"><img alt="The assignment of 3 to the variable a and the assigment of this to b, followed by the reassignment of a as 2." src="python_basics/./images/a_and_b_switch.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The assignment of 3 to the variable a and the assigment of this to b, followed by the reassignment of a as 2.</span><a class="headerlink" href="#a-and-b-switch" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 </div>
 <div class="section" id="multiple-assignment">
 <h2>Multiple assignment<a class="headerlink" href="#multiple-assignment" title="Permalink to this headline">¶</a></h2>
 <p>Python allows multiple variables to be assigned in the same statement:</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F9Oq6l6l3au.png?alt=media&amp;token=f9f20547-0042-4b2d-8f82-462cc23b0050" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21 21 21
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="empty-variables">
 <h2>Empty variables<a class="headerlink" href="#empty-variables" title="Permalink to this headline">¶</a></h2>
 <p>A variable may also be set to contain no value by assigning it <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FXy-esPUMZ0.png?alt=media&amp;token=34d067d6-07fd-4b26-b1cb-c1cee449755f" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -376,7 +491,6 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="types.html" title="previous page">Types</a>
-    <a class='right-next' id="next-link" href="arithmetic.html" title="next page">Arithmetic</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
