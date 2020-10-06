@@ -470,36 +470,40 @@
 </ol>
 </li>
 <li><p>Write Jupyter cells for each of the following chemical calculations:</p>
-<ol class="simple">
-<li><p>Calculate the energy, in Joules, of radiation with a particular wavenumber,</p></li>
-</ol>
+<ol>
+<li><p>Calculate the energy, in Joules, of radiation with a particular wavenumber,</p>
 <p><span class="math notranslate nohighlight">\(E = hc\bar{\nu}\)</span>,</p>
 <p>where <span class="math notranslate nohighlight">\(c\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Speed_of_light">speed of light</a>, <span class="math notranslate nohighlight">\(h\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Planck_constant">Planck’s constant</a>, and <span class="math notranslate nohighlight">\(\bar{\nu}\)</span> is <span class="math notranslate nohighlight">\(1700\)</span> cm<sup>-1</sup>.</p>
-<ol class="simple">
-<li><p>Evaluate the <span class="math notranslate nohighlight">\(\text{pH}\)</span> when the concentration of hydroium ions is <span class="math notranslate nohighlight">\(1.524\times10^{-5}\)</span>,</p></li>
-</ol>
+</li>
+<li><p>Evaluate the <span class="math notranslate nohighlight">\(\text{pH}\)</span> when the concentration of hydroium ions is <span class="math notranslate nohighlight">\(1.524\times10^{-5}\)</span>,</p>
 <p><span class="math notranslate nohighlight">\(\text{pH} = -\log_{10}{[\text{H}_3\text{O}^+]}\)</span>.</p>
 <p>You may need to check the <span class="math notranslate nohighlight">\(\log_{10}\)</span> function in the <a class="reference external" href="https://docs.python.org/3/library/math.html">math module documentation</a>.</p>
-<ol class="simple">
-<li><p>Find the potential energy, in Joules, between two atoms at a distance of <span class="math notranslate nohighlight">\(2\)</span> Å, modelled with the Lennard-Jones potential model,</p></li>
-</ol>
+</li>
+<li><p>Find the potential energy, in Joules, between two atoms at a distance of <span class="math notranslate nohighlight">\(2\)</span> Å, modelled with the Lennard-Jones potential model,</p>
 <p><span class="math notranslate nohighlight">\(E = \frac{A}{r^{12}} - \frac{B}{r^6} \)</span>,</p>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> is the interatomic distance, and <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are interaction specific constants, for the Argon-Argon interaction these are <span class="math notranslate nohighlight">\(1.36\times10^{-134}\)</span> Jm<sup>12</sup> and <span class="math notranslate nohighlight">\(9.27\times10^{-78}\)</span> Jm<sup>6</sup> respectively.</p>
 </li>
-<li><p>Write a Jupyter Notebook cell to achieve the following.
-The stardard Gibbs free energy for a reaction at a particular temperature is related to the equilibrium constant at that temperature via,</p>
+</ol>
+</li>
+<li><p>The stardard Gibbs free energy for a reaction at a particular temperature is related to the equilibrium constant at that temperature via,</p>
 <p><span class="math notranslate nohighlight">\(\Delta G = -RT\ln{K}\)</span></p>
 <p>For the reaction:</p>
 <p>PCl<sub>3</sub> (g) + Cl<sub>2</sub> (g) → PCl<sub>5</sub> (g)</p>
 <p>The standard free energies of formation, <span class="math notranslate nohighlight">\(\Delta G^\circ_{\text{f}}\)</span> for each reactant are given in the table below,</p>
-<ul class="simple">
+<blockquote>
+<div><ul class="simple">
 <li><p>PCl<sub>3</sub>: <span class="math notranslate nohighlight">\(-267.8\)</span> kJmol<sup>-1</sup></p></li>
 <li><p>PCl<sub>5</sub>: <span class="math notranslate nohighlight">\(-305.0\)</span> kJmol<sup>-1</sup></p></li>
 <li><p>Cl<sub>2</sub>: <span class="math notranslate nohighlight">\(0\)</span> kJmol<sup>-1</sup></p></li>
 </ul>
-<p>Using <a class="reference external" href="https://en.wikipedia.org/wiki/Hess%27s_law">Hess’s law</a>, find the equilibrium constant, <span class="math notranslate nohighlight">\(K_p\)</span>, for the above reaction.</p>
-<p>Then, assuming that <span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span> are independent of temperature between 298 K and 350 K, calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> (e.g. at 298 K), given that <span class="math notranslate nohighlight">\(\Delta G^\circ_{\text{f}}\)</span> is <span class="math notranslate nohighlight">\(-20.2\)</span> kJmol<sup>-1</sup> at 350 K. The following relation may help,</p>
+</div></blockquote>
+<p>Write a Jupyter Notebook cell to achieve the following:</p>
+<ul>
+<li><p>Using <a class="reference external" href="https://en.wikipedia.org/wiki/Hess%27s_law">Hess’s law</a>, find the equilibrium constant, <span class="math notranslate nohighlight">\(K_p\)</span>, for the above reaction.</p></li>
+<li><p>Then, assuming that <span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span> are independent of temperature between 298 K and 350 K, calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> (e.g. at 298 K), given that <span class="math notranslate nohighlight">\(\Delta G^\circ_{\text{f}}\)</span> is <span class="math notranslate nohighlight">\(-20.2\)</span> kJmol<sup>-1</sup> at 350 K. The following relation may help,</p>
 <p><span class="math notranslate nohighlight">\( \Delta G = \Delta H - T \Delta S \)</span>.</p>
+</li>
+</ul>
 </li>
 </ul>
 </div>
