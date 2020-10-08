@@ -20,7 +20,7 @@ print("Hello world")
 ``` 
 When you run this cell, you should get output that looks like:
 
-![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FrUYgUm7Q_V.png?alt=media&token=d3bfd756-2b51-4960-bf18-f45b684ba5ad)
+![](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/hello_world.png)
 
 The cell has executed, and produce `Hello world` as output, and a new empty code cell has been created underneath. Notice that the `In [  ]` next to the top cell now shows `In [1]`, showing the order of execution of cells.
 
