@@ -20,9 +20,9 @@
     - file: python_basics/types.md
     - file: python_basics/variables.md
     - file: python_basics/arithmetic.md
-#    - file: python_basics/collections
-#      sections:
-#        - file: python_basics/lists
+    - file: python_basics/collections.md
+      sections:
+        - file: python_basics/lists.md
 #        - file: python_basics/tuples
 #        - file: python_basics/dictionaries
 #- part: Structured Programming
