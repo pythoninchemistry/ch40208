@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dictionaries &#8212; CH40208: Topics in Computational Chemistry</title>
     
-  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
     
   <link rel="stylesheet"
@@ -25,7 +25,7 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NumPy" href="../working_with_data/numpy_arrays.html" />
+    <link rel="prev" title="Tuples" href="tuples.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,7 +135,7 @@
   Python Basics
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -172,6 +174,50 @@
  <li class="toctree-l1">
   <a class="reference internal" href="arithmetic.html">
    Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="collections.html">
+   Collections
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lists.html">
+     lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tuples.html">
+     Tuples
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Dictionaries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Working with Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
+   NumPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/ideal_gas_law.html">
+   Investigation of the ideal gas law
   </a>
  </li>
 </ul>
@@ -230,7 +276,8 @@
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
@@ -261,6 +308,20 @@
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise:
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -352,11 +413,6 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;number of isotopes&#39;: 2}
-</pre></div>
-</div>
-</div>
 </div>
 <p>Finally, the dictionaries items need not be single variables, like floats and strings, they can also be collections,</p>
 <div class="cell docutils container">
@@ -372,15 +428,11 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;number of isotopes&#39;: 2, &#39;mass numbers&#39;: (35, 37)}
-</pre></div>
 </div>
+<div class="section" id="exercise">
+<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Create a dictionary-type object (with the variable name <code class="docutils literal notranslate"><span class="pre">d_block</span></code>) where the <code class="docutils literal notranslate"><span class="pre">keys</span></code> are the names of the first row of transition metals, and the <code class="docutils literal notranslate"><span class="pre">values</span></code> are the numbers of valence electrons.</p>
 </div>
-</div>
-<blockquote>
-<div><p><strong>Exercise</strong>: Create a dictionary-type object (with the variable name <code class="docutils literal notranslate"><span class="pre">d_block</span></code>) where the <code class="docutils literal notranslate"><span class="pre">keys</span></code> are the names of the first row of transition metals, and the <code class="docutils literal notranslate"><span class="pre">values</span></code> are the numbers of valence electrons.</p>
-</div></blockquote>
 </div>
 
     <script type="text/x-thebe-config">
@@ -411,6 +463,8 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="tuples.html" title="previous page">Tuples</a>
+    <a class='right-next' id="next-link" href="../working_with_data/numpy_arrays.html" title="next page">NumPy</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -430,7 +484,7 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
     </div>
 
     
-  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
     

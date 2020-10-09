@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Collections &#8212; CH40208: Topics in Computational Chemistry</title>
     
-  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
     
   <link rel="stylesheet"
@@ -25,7 +25,7 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="lists" href="lists.html" />
+    <link rel="prev" title="Arithmetic" href="arithmetic.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,7 +135,7 @@
   Python Basics
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -172,6 +174,50 @@
  <li class="toctree-l1">
   <a class="reference internal" href="arithmetic.html">
    Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Collections
+  </a>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lists.html">
+     lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tuples.html">
+     Tuples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dictionaries.html">
+     Dictionaries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Working with Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
+   NumPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/ideal_gas_law.html">
+   Investigation of the ideal gas law
   </a>
  </li>
 </ul>
@@ -216,9 +262,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/collections.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/collections.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -230,32 +276,11 @@
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/collections.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_basics/collections.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
 
     </div>
 
@@ -271,15 +296,22 @@
                 
   <div class="section" id="collections">
 <h1>Collections<a class="headerlink" href="#collections" title="Permalink to this headline">¶</a></h1>
-<p>At the beginning of this section, we introduced the <a class="reference internal" href="variable_types.html"><span class="doc std std-doc">variable types</span></a> that are present in Python.
-However, we only showed types that exist <em>individually</em>, e.g. one float or a single string, but Python can go beyond individual items and natively has objects that can hold <em>collections</em> of variables.
-In this section, we will look in detail at three different types of collections in Python, namely:</p>
+<p>Up until now we have dealt with individual pieces of data, such <strong>integer</strong> or <strong>floating point</strong> data types to store numerical data, or <strong>strings</strong> to represent textual data.</p>
+<p>Often we want to work with <strong>collections</strong> of data, such as a time-series of concentrations from an experiment, or a set of yields obtained from different experimental protocols, or the list of students enrolled in <strong>CH40208 Topics in Computational Chemistry</strong>.</p>
+<p>Python includes a number of built-in <strong>container</strong> datatypes, that can be used to store multiple pieces of data in a structured way.</p>
+<p>Three commonly used data structures in Python are:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="lists.html"><span class="doc std std-doc">Lists</span></a></p></li>
-<li><p><a class="reference internal" href="tuples.html"><span class="doc std std-doc">Tuples</span></a></p></li>
-<li><p><a class="reference internal" href="dictionaries.html"><span class="doc std std-doc">Dictionaries</span></a></p></li>
+<li><p><strong>lists</strong> — which are used to store an <strong>ordered sequence</strong> of data that is <strong>changeable</strong>.</p></li>
+<li><p><strong>tuples</strong> — which are used to store an <strong>ordered sequence</strong> of data that is <strong>unchangeable</strong>.</p></li>
+<li><p><strong>dictionaries</strong> — which are used to store <strong>unordered</strong> data as <strong>key–value pairs</strong> (the data in dictionaries can be changed).</p></li>
 </ul>
-<p>Similarly to the individual object types, different operations can be performed on each of these collection types.</p>
+<p><strong>Lists</strong> and <strong>tuples</strong> can be used in lots of the same places, but they differ in one very important way:</p>
+<ul class="simple">
+<li><p><strong>lists</strong> are <strong>mutable</strong>—the data stored in them can be altered, new data can be added to the list, and existing data can be removed from the list.</p></li>
+<li><p><strong>tuples</strong> are <strong>immutable</strong>—once a tuple has been created, the data stored cannot be changed, new data cannot be added, and existing data cannot be removed.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -310,6 +342,8 @@ In this section, we will look in detail at three different types of collections 
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="arithmetic.html" title="previous page">Arithmetic</a>
+    <a class='right-next' id="next-link" href="lists.html" title="next page">lists</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -329,7 +363,7 @@ In this section, we will look in detail at three different types of collections 
     </div>
 
     
-  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
     

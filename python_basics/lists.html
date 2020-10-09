@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lists &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>lists &#8212; CH40208: Topics in Computational Chemistry</title>
     
-  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
     
   <link rel="stylesheet"
@@ -25,7 +25,7 @@
     href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tuples" href="tuples.html" />
+    <link rel="prev" title="Collections" href="collections.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -133,7 +135,7 @@
   Python Basics
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -172,6 +174,50 @@
  <li class="toctree-l1">
   <a class="reference internal" href="arithmetic.html">
    Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="collections.html">
+   Collections
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tuples.html">
+     Tuples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dictionaries.html">
+     Dictionaries
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Working with Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
+   NumPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/ideal_gas_law.html">
+   Investigation of the ideal gas law
   </a>
  </li>
 </ul>
@@ -216,9 +262,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/lists.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/lists.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -230,37 +276,62 @@
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/lists.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_basics/lists.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
 
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-lists">
+   creating lists
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-indexing">
+   list indexing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modifying-lists">
+   Modifying lists
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-elements-to-lists">
+     adding elements to lists
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deleting-elements-from-lists">
+     deleting elements from lists
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-slices">
+   list slices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-nested-lists">
+   working with nested lists
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -270,207 +341,107 @@
               <div>
                 
   <div class="section" id="lists">
-<h1>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
-<p>Starting with <code class="docutils literal notranslate"><span class="pre">list</span></code>-type collection objects.
-Let’s see how we can go about creating a Python list,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;helium&#39;</span><span class="p">,</span> <span class="s1">&#39;Neon&#39;</span><span class="p">,</span> <span class="s1">&#39;Argon&#39;</span><span class="p">]</span>
+<h1>lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>list</strong> is an <strong>ordered</strong> collection of values. The values that make up a <strong>list</strong> are called <strong>elements</strong> or <strong>items</strong>, so we might talk of a list that contains 4 <strong>items</strong>, or the 2nd <strong>element</strong> in a list.</p>
+<div class="section" id="creating-lists">
+<h2>creating lists<a class="headerlink" href="#creating-lists" title="Permalink to this headline">¶</a></h2>
+<p>A list in Python is written as a sequence of values separated by commas and enclosed by square brackets.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>We can assign a list to a variable the same way as with single-value datatypes:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FYNjawzo-AX.png?alt=media&amp;token=a7a16f67-82fe-49dd-8aa9-515038b5872f" /></p>
+<p>A list can contain any datatype:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FCjXg8n0g0E.png?alt=media&amp;token=3bccbe54-a294-40b5-b623-e1cb1b2d8c0c" /></p>
+<p>even mixtures of different datatypes:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F7Jg0XNUXHC.png?alt=media&amp;token=dbaddf86-5019-48c2-9949-4dcd393e1faf" /></p>
+<p>or other lists:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FWGGZytzWCc.png?alt=media&amp;token=e63b03f6-d52c-4ce2-8649-b12039f2911a" /></p>
+<p>This last example would be described as a <strong>nested</strong> list (a list inside another list).</p>
+</div>
+<div class="section" id="list-indexing">
+<h2>list indexing<a class="headerlink" href="#list-indexing" title="Permalink to this headline">¶</a></h2>
+<p>Individual elements of a list can be referred to by using <strong>list indexing</strong>. For example, the first item in our <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list can be accessed using</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FbgRS8a7p44.png?alt=media&amp;token=96acb202-0dcb-43e1-9bee-a799e6c40a0b" /></p>
+<p>the second item using</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FuFyzOn7awF.png?alt=media&amp;token=db5b53a8-aeac-40b4-9eb0-5a0547781024" /></p>
+<p>and the third item using</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FLZU-KVAGo8.png?alt=media&amp;token=6e0bbacf-3f9c-498a-93c7-5d19f7569444" /></p>
+<p>Note that to reference the 1st element we use <code class="docutils literal notranslate"><span class="pre">[0]</span></code> after the list variable name, to reference the 2nd element we use <code class="docutils literal notranslate"><span class="pre">[1]</span></code>, and to reference the 3rd element we use <code class="docutils literal notranslate"><span class="pre">[2]</span></code>. This convention is because the list index describes the number of entries <strong>from the start of the list</strong>. i.e. the first entry is <strong>zero</strong> entries from the start.</p>
+<p>Trying to access a list element that does not exist raises an <code class="docutils literal notranslate"><span class="pre">IndexError</span></code>:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F1HKLznOXKz.png?alt=media&amp;token=c6340cab-a1d5-45a1-81b7-5b0fdf0e74b2" /></p>
+<p>We can also refer to individual elements counting backwards from the end of the list, using <strong>negative indexing</strong>:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FJlfuwWjLnF.png?alt=media&amp;token=7fcc64b5-1808-445c-8c17-f5a51d681a62" /></p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FC1fDHz7_jv.png?alt=media&amp;token=dcd553f8-0887-410b-8345-4e9ff7a42c94" /></p>
+<p>Using positive and negative indexing to refer to individual elements of the <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list.</p>
+</div>
+<div class="section" id="modifying-lists">
+<h2>Modifying lists<a class="headerlink" href="#modifying-lists" title="Permalink to this headline">¶</a></h2>
+<p>An important feature of <strong>lists</strong> is that they are <strong>mutable</strong>—values in the list can be changed; new elements can be added; existing elements can be deleted.</p>
+<p>You might have noticed that the first of our noble gases is <code class="docutils literal notranslate"><span class="pre">&quot;helium&quot;</span></code>, which is missing a capital letter. We can fix that by assigning a new value to <code class="docutils literal notranslate"><span class="pre">nobel_gases[0]</span></code></p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FDyKV534WIf.png?alt=media&amp;token=c6c69522-aec5-458d-ab31-6a30e50fac9b" /></p>
+<div class="section" id="adding-elements-to-lists">
+<h3>adding elements to lists<a class="headerlink" href="#adding-elements-to-lists" title="Permalink to this headline">¶</a></h3>
+<p>Lists have a number of special functions (called <strong>methods</strong>) that we can use to add elements to a pre-existing list.</p>
+<p>A <strong>method</strong> is somewhat similar to a <strong>function</strong>, except it is associated with a particular object. Using a method lets us implicitly refer to the associated object.</p>
+<p>Calling a method of a list implicitly refers to that list. For example, to append another nobel gas string to our <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list we can use the <code class="docutils literal notranslate"><span class="pre">append()</span></code> method:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fct3aUoRie-.png?alt=media&amp;token=adfae578-520f-4f8e-b51b-2eb593fff5c6" /></p>
+<p>This is equivalent to a function that takes <strong>two</strong> arguments: the list we want to append to, and the object to be appended. For example, we might imagine an <code class="docutils literal notranslate"><span class="pre">append_to_list()</span></code> function that works as follows:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FD9zd9P_ads.png?alt=media&amp;token=d6d502fd-73e6-4aa1-a49f-ea7f6a26f1a7" /></p>
+<p>Because the <code class="docutils literal notranslate"><span class="pre">append()</span></code> method belongs to the <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list, when we use <code class="docutils literal notranslate"><span class="pre">nobel_gases.append()</span></code> we don’t need to specify the list that we are appending to.</p>
+<p>Another list method that can be used to add elements is <code class="docutils literal notranslate"><span class="pre">insert()</span></code>, which inserts an object at a given index:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FbRG6x8hhra.png?alt=media&amp;token=c922fbe5-f631-4f5b-b390-0c66a371af21" /></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">insert()</span></code> methods takes <strong>two</strong> arguments: the index where the insertion will take place (in this case <code class="docutils literal notranslate"><span class="pre">2</span></code>), and the object to insert (in this case <code class="docutils literal notranslate"><span class="pre">&quot;Argon&quot;</span></code>).</p>
+<p>You can also <strong>extend</strong> a list with another list, by using the <code class="docutils literal notranslate"><span class="pre">extend()</span></code> method:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FDm7Ti_3X9Q.png?alt=media&amp;token=5b0a576e-a075-4979-9a29-de41e22ddaa3" /></p>
+<p>Or you can <strong>concatenate</strong> two lists using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator (this is similar to “adding” strings):</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fc9xJM5feJ0.png?alt=media&amp;token=1c23a887-ded7-4c17-9867-9082b058d25c" /></p>
+</div>
+<div class="section" id="deleting-elements-from-lists">
+<h3>deleting elements from lists<a class="headerlink" href="#deleting-elements-from-lists" title="Permalink to this headline">¶</a></h3>
+<p>Lists also have methods for deleting or removing elements. These include <code class="docutils literal notranslate"><span class="pre">remove()</span></code> which removes the first matching object in a list.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Ftoh96JMSy5.png?alt=media&amp;token=7cdcb00e-5358-4b6f-9217-8bbaf6b9e0b4" /></p>
+</div>
+</div>
+<div class="section" id="list-slices">
+<h2>list slices<a class="headerlink" href="#list-slices" title="Permalink to this headline">¶</a></h2>
+<p>By referring to a single list index, we can access a single item of a list. Python also allows us to use <strong>slice notation</strong> to access a <strong>range</strong> of items from a list, e.g.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F9MzsO_8mId.png?alt=media&amp;token=35839115-2b79-4dfb-9993-75a90b11aac9" /></p>
+<p>This gives us just those elements of a list starting from <code class="docutils literal notranslate"><span class="pre">nobel_gases[1]</span></code> up to <strong>but not including</strong> <code class="docutils literal notranslate"><span class="pre">nobel_gases[4]</span></code>.</p>
+<p>This behaviour, where the first index is included in the slice, but the last index is not included might seem strange at first (you will get used to this with practice and experience). The reasoning behind this behaviour is that a slice <code class="docutils literal notranslate"><span class="pre">nobel_gases[1:4]</span></code> should contain 4-1=3 elements, and should start from the same element as (in this case) <code class="docutils literal notranslate"><span class="pre">nobel_gases[1]</span></code>.</p>
+<p>Either the first or last index can be left out, in which case you get a slice starting from the first element, or finishing with the last element, respectively.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2Fuqkdi7NGOW.png?alt=media&amp;token=0309e0c2-92f5-445d-b0a8-752f51f1d39f" /></p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F3ZLQeV43jI.png?alt=media&amp;token=b6af6811-9bf3-4c1e-b939-04eae39bdf53" /></p>
+<p>List slices can also be given a third integer, which describes a <strong>step</strong> size. This is implicitly equal to <code class="docutils literal notranslate"><span class="pre">1</span></code> when it is not specified</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FOQy5wgoWxy.png?alt=media&amp;token=8d34cfb2-618d-4406-a598-aaac39facf33" /></p>
+<p>In this example. we start from the first element, and go up to the last element, in steps of 2, giving elements 0, 2, and 4.</p>
+<p>In addition to the <code class="docutils literal notranslate"><span class="pre">remove()</span></code> method above, list slicing gives us another way to “delete” elements from a list:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FGySpV0MpNO.png?alt=media&amp;token=bbb5312f-4b1e-4ae2-acc3-4f7d16a05279" /></p>
+<p>In the second line here we select elements 1 and 2 from the original <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list, using <strong>slice notation</strong>, which gives us <code class="docutils literal notranslate"><span class="pre">['Neon',</span> <span class="pre">'Argon']</span></code>. We then <em>assign</em> this value to the variable name <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code>, which overwrites the original list.</p>
+</div>
+<div class="section" id="working-with-nested-lists">
+<h2>working with nested lists<a class="headerlink" href="#working-with-nested-lists" title="Permalink to this headline">¶</a></h2>
+<p>We saw above that a list can contain one or more other lists, giving a <strong>nested list</strong>. How then do these work with indexing?</p>
+<p>Consider the following nested list:</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FcMHgdcmBCd.png?alt=media&amp;token=531606ff-5083-448e-8d78-b6527250d8ee" /></p>
+<p>The list <code class="docutils literal notranslate"><span class="pre">letters</span></code> has <strong>five</strong> elements, these are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'a'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'b'</span></code></p></li>
+<li><p>the list <code class="docutils literal notranslate"><span class="pre">['c',</span> <span class="pre">'d']</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'e'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'f'</span></code></p></li>
+</ul>
+<p>We can confirm this using the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function. If we pass <code class="docutils literal notranslate"><span class="pre">len()</span></code> a list, it returns the number of elements in that list (i.e. the <strong>length</strong>).</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F3G2FN67Kje.png?alt=media&amp;token=1bbaa384-5a2c-4d1c-9b76-aa563ff8ed98" /></p>
+<p>The <strong>third</strong> element is the sublist <code class="docutils literal notranslate"><span class="pre">['c',</span> <span class="pre">'d']</span></code>, which we can access using <code class="docutils literal notranslate"><span class="pre">letters[2]</span></code></p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FUt-_tQC0n-.png?alt=media&amp;token=e1634235-a810-4f0d-b4e9-14c8cfd3bb4b" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">letters[2]</span></code> is a list</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2FWFQxwNWz0l.png?alt=media&amp;token=4d1370c8-e65e-45db-8828-cefbfd47fa92" /></p>
+<p>and we can interact with this in the same way as any other list, e.g.</p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F5FSGGtf3dG.png?alt=media&amp;token=3f0e98ca-2ddc-4410-998f-6e5b145a336f" /></p>
+<p><img alt="" src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2Fbjmorgan%2F9Ue2l6F3Oh.png?alt=media&amp;token=53dd497f-e9fc-4b7d-855c-3724902ac879" /></p>
 </div>
-</div>
-<p>A <code class="docutils literal notranslate"><span class="pre">list</span></code> is created by putting multiple objects between square brackets separated by commas.
-We can confirm this has created a list using the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
-</pre></div>
-</div>
-</div>
-</div>
-<p>Additionally, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function can handle printing a list,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;helium&#39;, &#39;Neon&#39;, &#39;Argon&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we want to access one of the items within a list, then we make use of the <em>index</em> notation.
-One of the strange things to note about this notation is that is it starts counting from <span class="math notranslate nohighlight">\(0\)</span>, so the first item of the list is found with,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;helium&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="xref std std-numref docutils literal notranslate"><span class="pre">list_indexing</span></code> shows graphically how the indexing of lists can be considered in Python.</p>
-<div class="figure align-default" id="list-indexing">
-<a class="reference internal image-reference" href="../_images/list_indexing.png"><img alt="A graphical description of a list, where the positive indexing is shown above the element name for the first three noble gases and the negative indexing is below." src="../_images/list_indexing.png" style="width: 323.0px; height: 246.0px;" /></a>
-<p class="caption"><span class="caption-text">A graphical description of the <code class="docutils literal notranslate"><span class="pre">noble_gases</span></code> list, showing positive and negative indexes.</span><a class="headerlink" href="#list-indexing" title="Permalink to this image">¶</a></p>
-</div>
-<p>An important feature of Python lists is that they are <em>mutable</em> which means that we can change values in the list.
-For example, you may have noticed at the <code class="docutils literal notranslate"><span class="pre">noble_gases</span></code> list lacked a capital letter in <code class="docutils literal notranslate"><span class="pre">'helium'</span></code>, let’s fix that,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Helium&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Helium&#39;, &#39;Neon&#39;, &#39;Argon&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Notice that the string has been updated.</p>
-<p>As can be seen from <code class="xref std std-numref docutils literal notranslate"><span class="pre">list_indexing</span></code>, the final element of the list has an index of <span class="math notranslate nohighlight">\(n-1\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the length of the list.
-The length of a given list can be found with the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function, so we can access the final item in the list with the following,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Argon&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>However, there is a more efficient method, that can be seen below the list in <code class="xref std std-numref docutils literal notranslate"><span class="pre">list_indexing</span></code>, where <em>negative indexing</em> is used.
-So <span class="math notranslate nohighlight">\(-1\)</span> is the final element in the list,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Argon&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can concatenate two lists, for example, say we have a few more gases to add to our <code class="docutils literal notranslate"><span class="pre">noble_gases</span></code> list,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span> <span class="o">=</span> <span class="n">noble_gases</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;Krypton&#39;</span><span class="p">,</span> <span class="s1">&#39;Xenon&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Helium&#39;, &#39;Neon&#39;, &#39;Argon&#39;, &#39;Krypton&#39;, &#39;Xenon&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you just want to add a single variable to the list, we can <code class="docutils literal notranslate"><span class="pre">append</span></code> to the list as follows,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Radon&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Helium&#39;, &#39;Neon&#39;, &#39;Argon&#39;, &#39;Krypton&#39;, &#39;Xenon&#39;, &#39;Radon&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>In addition to getting single items from the list, we are also able to access ranges of items, referred to as <em>slices</em>, using the <code class="docutils literal notranslate"><span class="pre">:</span></code> notation.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Neon&#39;, &#39;Argon&#39;, &#39;Krypton&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>The slicing notation can be a bit confusing, it is inclusive then exclusive.
-The slice of the list <em>includes</em> the item with the index that precedes the colon and <em>excludes</em> that which follows the colon.
-In the code about, we can see that the item with index <span class="math notranslate nohighlight">\(1\)</span> is included, but that with index <span class="math notranslate nohighlight">\(4\)</span> is excluded.
-<code class="xref std std-numref docutils literal notranslate"><span class="pre">list_slice</span></code> shows slicing graphically.</p>
-<div class="figure align-default" id="list-slice">
-<a class="reference internal image-reference" href="../_images/list_slicing.png"><img alt="A graphical description of list slicing, where the positive indexing is shown above the element name for the first three noble gases and the negative indexing is below. The slice from 1 to 4 is idenfied." src="../_images/list_slicing.png" style="width: 495.0px; height: 180.0px;" /></a>
-<p class="caption"><span class="caption-text">A graphical description of slicing for lists.</span><a class="headerlink" href="#list-slice" title="Permalink to this image">¶</a></p>
-</div>
-<p>We can also <em>skip</em> elements from a list slice, using a second colon.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Radon&#39;, &#39;Xenon&#39;, &#39;Krypton&#39;, &#39;Argon&#39;, &#39;Neon&#39;, &#39;Helium&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Notice that by omitting the second index (between the two colons), implicitly we have said to run to the end of the list (index <code class="docutils literal notranslate"><span class="pre">-1</span></code>).
-The same can be done for the first index, and the start of the list (index <code class="docutils literal notranslate"><span class="pre">0</span></code>) will be used.</p>
-<p>Finally, a list does <em>not</em> need to made up of items of a consistent type.
-The above examples have focused on a list containing all strings, however, the list can handle disparate types of information.
-For example, below we have a list that contains a string, integer, and a float,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Cl&#39;</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mf">35.5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Cl&#39;, 17, 35.5]
-</pre></div>
-</div>
-</div>
-</div>
-<blockquote>
-<div><p><strong>Exercise</strong>: Create a new list called <code class="docutils literal notranslate"><span class="pre">halogens</span></code> and populate it with the names of the halogen elements, in order of increasing atomic number. Using this list, determine what using a negative number following the second colon (e.g. <code class="docutils literal notranslate"><span class="pre">[::-1]</span></code>) will result in.</p>
-</div></blockquote>
 </div>
 
     <script type="text/x-thebe-config">
@@ -501,6 +472,8 @@ For example, below we have a list that contains a string, integer, and a float,<
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="collections.html" title="previous page">Collections</a>
+    <a class='right-next' id="next-link" href="tuples.html" title="next page">Tuples</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
@@ -520,7 +493,7 @@ For example, below we have a list that contains a string, integer, and a float,<
     </div>
 
     
-  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
     
