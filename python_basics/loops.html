@@ -1,0 +1,792 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loops &#8212; CH40208: Topics in Computational Chemistry</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NumPy" href="../working_with_data/numpy_arrays.html" />
+    <link rel="prev" title="Lists" href="lists.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/pic.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Welcome to CH40208
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction to Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
+   What is a Jupyter Notebook?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/how_to_access_the_jupyterhub_server.html">
+   How to access the JupyterHub server?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/getting_started_with_jupyter_notebooks.html">
+   Getting started with Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">
+   The Jupyter Notebook interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Python Basics
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_first_chemistry_later.html">
+   Python first, chemistry later
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">
+   Why we encourage typing out the code examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="using_Python_as_a_calculator.html">
+   Using Python as a calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_with_strings.html">
+   Getting started with strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="print_statements.html">
+   Print statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="types.html">
+   Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="variables.html">
+   Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="arithmetic.html">
+   Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Loops
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Working with Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
+   NumPy
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/python_basics/loops.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/loops.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/python_basics/loops.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#looping-over-elements-of-a-list-using-for">
+   Looping over elements of a list using
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     for
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#enumerating-loop-iterations">
+   Enumerating loop iterations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-comprehensions">
+   List comprehensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#nested-loops">
+   Nested loops
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="loops">
+<h1>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">¶</a></h1>
+<p>A common use for <strong>lists</strong> is to store a <strong>homogeneous</strong> set of data (meaning, each element has the same <strong>type</strong>). For example, we might store a set of reactant concentrations recorded at different times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reactant_concentrations</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We may want to perform the same calculation on each element of a <strong>list</strong>; for example, calculating the square of each concentration, and then store these results in a new *<em>list</em>.</p>
+<p>We <em>could</em> do this using <strong>list indexing</strong>, e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squared_concentrations</span> <span class="o">=</span> <span class="p">[</span><span class="n">reactant_concentrations</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> 
+                          <span class="n">reactant_concentrations</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+                          <span class="n">reactant_concentrations</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+                          <span class="n">reactant_concentrations</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span>
+                          <span class="n">reactant_concentrations</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squared_concentrations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[25.0, 16.0, 9.0, 4.0, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the new list created on the right hand side has been written split over multiple line.</p>
+<p>Python ignores the end of a line within pairs of brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>, <code class="docutils literal notranslate"><span class="pre">()</span></code>, or <code class="docutils literal notranslate"><span class="pre">{}</span></code>.</p>
+<p>This approach is clunky, and error-prone, and does not scale (imagine if we had 100 values in our dataset!).</p>
+<div class="section" id="looping-over-elements-of-a-list-using-for">
+<h2>Looping over elements of a list using <code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#looping-over-elements-of-a-list-using-for" title="Permalink to this headline">¶</a></h2>
+<p>We can <strong>loop</strong> over every element of a list (or indeed of any object that represents an ordered set of values), performing the same operation on each element in turn, using a <strong>for loop</strong>.</p>
+<p>A <strong>for loop</strong> has the following general syntax</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="n">do</span> <span class="n">something</span>
+</pre></div>
+</div>
+<p>For example, our calculation above to get the squared concentrations might be rewritten as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">reactant_concentrations</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25.0
+16.0
+9.0
+4.0
+1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first line defines the start of the <strong>loop</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">…</span> <span class="pre">in</span> <span class="pre">reactant_concentrations:</span></code>: We are going to loop over each element in turn of the <strong>list</strong> <code class="docutils literal notranslate"><span class="pre">reactant_concentrations</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">c</span></code>: At each <strong>iteration</strong> of the loop, we will assign the variable <code class="docutils literal notranslate"><span class="pre">c</span></code> to the corresponding element in <code class="docutils literal notranslate"><span class="pre">reactant_concentrations</span></code></p></li>
+</ul>
+<p>The first line finishes with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
+<p>After the first line we define what will happen <strong>inside</strong> the loop. The code <strong>inside</strong> a loop is denoted by being <strong>indented</strong> by a fixed amount of <strong>whitespace</strong>; in this case, four spaces.</p>
+<p><strong>Indentation</strong> plays a very important in Python, because it marks out where <strong>blocks</strong> of code, such as the code <strong>inside</strong> loops, start and finish.</p>
+<p>When we run this code, for the <strong>first</strong> iteration, the variable <code class="docutils literal notranslate"><span class="pre">c</span></code> is assigned to the <strong>first</strong> value stored in <code class="docutils literal notranslate"><span class="pre">reactant_concentration</span></code>. This is equivalent to writing</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">reactant_concentration</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The line of code <strong>inside</strong> the loop uses this value of <code class="docutils literal notranslate"><span class="pre">c</span></code> to execute the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement.</p>
+<p>We then perform the <strong>second</strong> iteration: now the variable <code class="docutils literal notranslate"><span class="pre">c</span></code> is assigned to the <strong>second</strong> value stored in <code class="docutils literal notranslate"><span class="pre">reactant_concentration</span></code>. This is equivalent to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">reactant_concentration</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The line of code <strong>inside</strong> the loop uses this value of <code class="docutils literal notranslate"><span class="pre">c</span></code> to execute the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement.</p>
+<p>This is repeated, each time assigning <code class="docutils literal notranslate"><span class="pre">c</span></code> to the next element in the <code class="docutils literal notranslate"><span class="pre">reactant_concentration</span></code> list.</p>
+<p>Once each element in <code class="docutils literal notranslate"><span class="pre">reactant_concentration</span></code> has been processed, we <strong>exit</strong> the loop.</p>
+<p>The end of a loop is indicated by <strong>removing</strong> the previous <strong>indentation</strong> e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">reactant_concentrations</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inside the loop&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Outside the loop&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Inside the loop
+25.0
+Inside the loop
+16.0
+Inside the loop
+9.0
+Inside the loop
+4.0
+Inside the loop
+1.0
+Outside the loop
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the variable <code class="docutils literal notranslate"><span class="pre">c</span></code> can still be used <strong>after</strong> the loop has finished. Furthermore, if you were using a variable <code class="docutils literal notranslate"><span class="pre">c</span></code> <strong>before</strong> this loop, the value will be overwritten:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;32.0&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;c = </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">reactant_concentrations</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;finished the loop&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;c = </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c = 32.0
+25.0
+16.0
+9.0
+4.0
+1.0
+finished the loop
+c = 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>To use a <strong>for loop</strong> to calculate the squared concentrations and store them in a new list, we can use <code class="docutils literal notranslate"><span class="pre">append()</span></code> for each iteration of the loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squared_concentrations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">reactant_concentrations</span><span class="p">:</span>
+    <span class="n">squared_concentrations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squared_concentrations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[25.0, 16.0, 9.0, 4.0, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we create and <strong>empty</strong> list on the first line. Then each iteration of the loop calculates the square of the relevant element of <code class="docutils literal notranslate"><span class="pre">reactant_concentrations</span></code>, and uses <code class="docutils literal notranslate"><span class="pre">append()</span></code> to add this to the end of <code class="docutils literal notranslate"><span class="pre">squared_concentrations</span></code>.</p>
+<p>By adding a <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement inside the loop, we can see how this builds up the final <code class="docutils literal notranslate"><span class="pre">squared_concentrations</span></code> list:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squared_concentrations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">reactant_concentrations</span><span class="p">:</span>
+    <span class="n">squared_concentrations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;In the loop&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;squared_concentrations = </span><span class="si">{</span><span class="n">squared_concentrations</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Outside the loop&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squared_concentrations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the loop
+squared_concentrations = [25.0]
+In the loop
+squared_concentrations = [25.0, 16.0]
+In the loop
+squared_concentrations = [25.0, 16.0, 9.0]
+In the loop
+squared_concentrations = [25.0, 16.0, 9.0, 4.0]
+In the loop
+squared_concentrations = [25.0, 16.0, 9.0, 4.0, 1.0]
+Outside the loop
+[25.0, 16.0, 9.0, 4.0, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="enumerating-loop-iterations">
+<h2>Enumerating loop iterations<a class="headerlink" href="#enumerating-loop-iterations" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we want to track which iteration of a loop we are on, while we are going through it. One way to do this is to add another variable that we use to track the numbers of iterations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squared_concentrations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">reactant_concentrations</span><span class="p">:</span>
+    <span class="n">squared_concentrations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;In the loop, iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;squared_concentrations = </span><span class="si">{</span><span class="n">squared_concentrations</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Outside the loop&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squared_concentrations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the loop, iteration 0
+squared_concentrations = [25.0]
+In the loop, iteration 1
+squared_concentrations = [25.0, 16.0]
+In the loop, iteration 2
+squared_concentrations = [25.0, 16.0, 9.0]
+In the loop, iteration 3
+squared_concentrations = [25.0, 16.0, 9.0, 4.0]
+In the loop, iteration 4
+squared_concentrations = [25.0, 16.0, 9.0, 4.0, 1.0]
+Outside the loop
+[25.0, 16.0, 9.0, 4.0, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>A better way to do this is to use the <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squared_concentrations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reactant_concentrations</span><span class="p">):</span>
+    <span class="n">squared_concentrations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;In the loop, iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;squared_concentrations = </span><span class="si">{</span><span class="n">squared_concentrations</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Outside the loop&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squared_concentrations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the loop, iteration 0
+squared_concentrations = [25.0]
+In the loop, iteration 1
+squared_concentrations = [25.0, 16.0]
+In the loop, iteration 2
+squared_concentrations = [25.0, 16.0, 9.0]
+In the loop, iteration 3
+squared_concentrations = [25.0, 16.0, 9.0, 4.0]
+In the loop, iteration 4
+squared_concentrations = [25.0, 16.0, 9.0, 4.0, 1.0]
+Outside the loop
+[25.0, 16.0, 9.0, 4.0, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> function effectively converts a simple <strong>list</strong> such as <code class="docutils literal notranslate"><span class="pre">reactant_concentrations</span></code> into a sequence of <strong>pairs</strong> of values, i.e.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Now each iteration of the loop assigns <code class="docutils literal notranslate"><span class="pre">i</span></code> <em>and</em> <code class="docutils literal notranslate"><span class="pre">c</span></code> to their respective values.</p>
+</div>
+<div class="section" id="list-comprehensions">
+<h2>List comprehensions<a class="headerlink" href="#list-comprehensions" title="Permalink to this headline">¶</a></h2>
+<p>In the example above, we started with a list of values, looped over every element and performed an operation on that element (squaring it) and then stored the results, in order, in a new list. This is a commmon programming pattern, and Python provides a shorthand syntax for doing this, called <strong>list comprehensions</strong>.</p>
+<p>The general syntax of a <strong>list comprehension</strong> is</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Compare this to the equivalent <strong>for loop</strong> construction:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">iterable</span><span class="p">:</span>
+    <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Our example of computing squared reactant concentrations can be rewritten using a <strong>list comprehension</strong> as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">squared_concentrations</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">reactant_concentrations</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squared_concentrations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[25.0, 16.0, 9.0, 4.0, 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="nested-loops">
+<h2>Nested loops<a class="headerlink" href="#nested-loops" title="Permalink to this headline">¶</a></h2>
+<p>We saw previously that <strong>lists</strong> can be <strong>nested</strong>, i.e. a <strong>list</strong> may contain one of more <strong>sublists</strong> e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+[4, 5, 6]
+6
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we loop over the elements of this <strong>nested list</strong>, we get each <strong>sublist</strong> in turn:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sublist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 [1, 2, 3]
+1 [4, 5, 6]
+2 [7, 8, 9]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can loop over each element in each <strong>sublist</strong> by writing a second <strong>loop</strong> inside the first <strong>loop</strong> (giving us a pair of <strong>nested loops</strong>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sublist</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;outer loop iteration: </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;inner loop iteration: </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;element = </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>outer loop iteration: 0
+inner loop iteration: 0
+element = 1
+outer loop iteration: 0
+inner loop iteration: 1
+element = 2
+outer loop iteration: 0
+inner loop iteration: 2
+element = 3
+outer loop iteration: 1
+inner loop iteration: 0
+element = 4
+outer loop iteration: 1
+inner loop iteration: 1
+element = 5
+outer loop iteration: 1
+inner loop iteration: 2
+element = 6
+outer loop iteration: 2
+inner loop iteration: 0
+element = 7
+outer loop iteration: 2
+inner loop iteration: 1
+element = 8
+outer loop iteration: 2
+inner loop iteration: 2
+element = 9
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also write a <strong>nested loop</strong> so that code is only executed as part of the <strong>outer</strong> loop, e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">my_list</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;In the outer loop: iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">element</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sublist</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    In the inner loop: iteration </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    element = </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;In the outer loop again: iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>In the outer loop: iteration 0
+    In the inner loop: iteration 0
+    element = 1
+    In the inner loop: iteration 1
+    element = 2
+    In the inner loop: iteration 2
+    element = 3
+In the outer loop again: iteration 0
+In the outer loop: iteration 1
+    In the inner loop: iteration 0
+    element = 4
+    In the inner loop: iteration 1
+    element = 5
+    In the inner loop: iteration 2
+    element = 6
+In the outer loop again: iteration 1
+In the outer loop: iteration 2
+    In the inner loop: iteration 0
+    element = 7
+    In the inner loop: iteration 1
+    element = 8
+    In the inner loop: iteration 2
+    element = 9
+In the outer loop again: iteration 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Rewrite or modify your code from the <strong>Lists</strong> exercise 2 to calculate the distances between each pair of atoms, using a <strong>nested loop</strong>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./python_basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="lists.html" title="previous page">Lists</a>
+    <a class='right-next' id="next-link" href="../working_with_data/numpy_arrays.html" title="next page">NumPy</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew R. McCluskey & Benjamin J. Morgan<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>

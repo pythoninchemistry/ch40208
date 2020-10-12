@@ -57,6 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Loops" href="../python_basics/loops.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -177,6 +178,23 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../python_basics/lists.html">
    Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/loops.html">
+   Loops
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Working with Data
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   NumPy
   </a>
  </li>
 </ul>
@@ -449,7 +467,8 @@ For example, all of the items in an array can be multipled by a single value.</p
 </div>
 </div>
 </div>
-<p>Using NumPy arrays for value-wise operations such as those shown where are <strong>very</strong> efficient, much more so that looping through the values as can be achieved with a list-type object (this will be introduced at later stage).</p>
+<p>These operations on every element of a NumPy array are called <strong>vector operations</strong>.</p>
+<p>Using NumPy arrays for value-wise operations such as those shown where are <strong>very</strong> efficient and run much faster than explicitly looping over elements in a list.</p>
 </div>
 <div class="section" id="numpy-functions">
 <h2>NumPy functions<a class="headerlink" href="#numpy-functions" title="Permalink to this headline">¶</a></h2>
@@ -533,9 +552,10 @@ For example, sum, mean and standard deviations are easy to find.</p>
 </div>
 <div class="section" id="exercises">
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
+<ol class="simple">
 <li><p>Using the <code class="docutils literal notranslate"><span class="pre">mass_numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">isotopic_abundences</span></code> arrays above, evaluate the average mass number for tin.</p></li>
-</ul>
+<li><p>Rewrite or modify your code from the <strong>Loops</strong> Exercise to calculate the distances between each pair of atoms, using <strong>numpy arrays</strong> to store the atom positions, and <strong>vector arithmetic</strong> to calculate the vectors between pairs of atoms.</p></li>
+</ol>
 </div>
 </div>
 
@@ -567,6 +587,7 @@ For example, sum, mean and standard deviations are easy to find.</p>
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../python_basics/loops.html" title="previous page">Loops</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
