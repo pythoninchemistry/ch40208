@@ -398,8 +398,8 @@ We can initialise a NumPy array with the following.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">isotopic_abundences</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0097</span><span class="p">,</span> <span class="mf">0.0066</span><span class="p">,</span> <span class="mf">0.0034</span><span class="p">,</span> <span class="mf">0.1454</span><span class="p">,</span> <span class="mf">0.0768</span><span class="p">,</span> <span class="mf">0.2422</span><span class="p">,</span> <span class="mf">0.0859</span><span class="p">,</span> <span class="mf">0.3258</span><span class="p">,</span> <span class="mf">0.0463</span><span class="p">,</span> <span class="mf">0.0579</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">isotopic_abundences</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">isotopic_abundances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0097</span><span class="p">,</span> <span class="mf">0.0066</span><span class="p">,</span> <span class="mf">0.0034</span><span class="p">,</span> <span class="mf">0.1454</span><span class="p">,</span> <span class="mf">0.0768</span><span class="p">,</span> <span class="mf">0.2422</span><span class="p">,</span> <span class="mf">0.0859</span><span class="p">,</span> <span class="mf">0.3258</span><span class="p">,</span> <span class="mf">0.0463</span><span class="p">,</span> <span class="mf">0.0579</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">isotopic_abundances</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -409,7 +409,7 @@ We can initialise a NumPy array with the following.</p>
 </div>
 </div>
 </div>
-<p>Above, we have defined two NumPy arrays, the first are the mass numbers for the stable isotopes of tin and the second are the abundences of each isotope.
+<p>Above, we have defined two NumPy arrays, the first are the mass numbers for the stable isotopes of tin and the second are the abundances of each isotope.
 The efficiency of the NumPy array comes from the fact that all of the items in the array <strong>must</strong> be of the same type.
 We can see the type by investigating the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> object of the array.</p>
 <div class="cell docutils container">
@@ -426,7 +426,7 @@ We can see the type by investigating the <code class="docutils literal notransla
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">isotopic_abundences</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">isotopic_abundances</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -553,7 +553,7 @@ For example, sum, mean and standard deviations are easy to find.</p>
 <div class="section" id="exercises">
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p>Using the <code class="docutils literal notranslate"><span class="pre">mass_numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">isotopic_abundences</span></code> arrays above, evaluate the average mass number for tin.</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">mass_numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">isotopic_abundances</span></code> arrays above, evaluate the average mass number for tin.</p></li>
 <li><p>Rewrite or modify your code from the <strong>Loops</strong> Exercise to calculate the distances between each pair of atoms, using <strong>numpy arrays</strong> to store the atom positions, and <strong>vector arithmetic</strong> to calculate the vectors between pairs of atoms.</p></li>
 </ol>
 </div>
