@@ -313,6 +313,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#looping-over-two-lists-in-parallel">
+   Looping over two lists in parallel
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
    Exercise
   </a>
@@ -719,6 +724,93 @@ In the outer loop: iteration 2
     In the inner loop: iteration 2
     element = 9
 In the outer loop again: iteration 2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="looping-over-two-lists-in-parallel">
+<h2>Looping over two lists in parallel<a class="headerlink" href="#looping-over-two-lists-in-parallel" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we want to loop over two or more lists in parallel. For example, imagine we want to match up the nobel gases with their atomic numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nobel_gases</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Helium&quot;</span><span class="p">,</span> <span class="s2">&quot;Neon&quot;</span><span class="p">,</span> <span class="s2">&quot;Argon&quot;</span><span class="p">,</span> <span class="s2">&quot;Krypton&quot;</span><span class="p">,</span> <span class="s2">&quot;Radon&quot;</span><span class="p">]</span>
+<span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">86</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can create a sequence of pairs from two lists using the <code class="docutils literal notranslate"><span class="pre">zip()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">zip</span><span class="p">(</span><span class="n">nobel_gases</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zip at 0x7fd8041d8a00&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This has given us a <code class="docutils literal notranslate"><span class="pre">zip</span></code> object, which represents a sequence of pairs from our two original lists.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nobel_gases</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zip
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see how this pairing has worked by converting the <code class="docutils literal notranslate"><span class="pre">zip</span></code> object into another <strong>list</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nobel_gases</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Helium&#39;, 2), (&#39;Neon&#39;, 10), (&#39;Argon&#39;, 18), (&#39;Krypton&#39;, 36), (&#39;Radon&#39;, 54)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is similar to the result of using <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> we saw earlier, which we could similarly convert to a <strong>list</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">nobel_gases</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(0, &#39;Helium&#39;), (1, &#39;Neon&#39;), (2, &#39;Argon&#39;), (3, &#39;Krypton&#39;), (4, &#39;Radon&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>When using <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> we were able to simultaneously iterate over the list index <strong>and</strong> the corresponding list element using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>for i, element in enumerate(nobel_gases):
+    …
+</pre></div>
+</div>
+<p>We can iterate over the <strong>pairs</strong> of values created by the <code class="docutils literal notranslate"><span class="pre">zip()</span></code> function in a similar way:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">nobel_gases</span><span class="p">,</span> <span class="n">atomic_numbers</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The atomic mass of </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The atomic mass of Helium is 2
+The atomic mass of Neon is 10
+The atomic mass of Argon is 18
+The atomic mass of Krypton is 36
+The atomic mass of Radon is 54
 </pre></div>
 </div>
 </div>
