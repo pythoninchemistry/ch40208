@@ -1,6 +1,6 @@
 # Investigation of the ideal gas law
 
-A large ballon is filled with argon gas, the temperature is then varied and the volume and pressure is measured. 
+A large balloon is filled with argon gas, the temperature is then varied and the volume and pressure are measured. 
 The results of this are shown in the table below.
 
 | Temperature/K | Volume/m<sup>3</sup> | Pressure/Pa |
