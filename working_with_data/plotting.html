@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Investigation of the ideal gas law" href="ideal_gas_law.html" />
+    <link rel="prev" title="NumPy" href="numpy_arrays.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -190,10 +192,25 @@
   Working with Data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_arrays.html">
    NumPy
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ideal_gas_law.html">
+   Investigation of the ideal gas law
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="file_io.html">
+   File I/O
   </a>
  </li>
 </ul>
@@ -271,11 +288,6 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/working_with_data/plotting.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="../_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
         
     </div>
 </div>
@@ -294,8 +306,7 @@
                 
   <div class="section" id="plotting">
 <h1>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h1>
-<p>In addition to the <strong>very</strong> efficient numerical computation that is possible with the NumPy array.
-Another majoring selling point of the Python language for scientific applications is the ability to produce high quality plots and graphs easily.
+<p>In addition to the <strong>very</strong> efficient numerical computation that is possible with the NumPy array, another majoring selling point of the Python language for scientific applications is the ability to produce high-quality plots and graphs easily.
 This is due to the package known as <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, pronounced <em>mat-plot-lib</em>.</p>
 <p><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is particularly useful in combination with the NumPy arrays introduced previously.
 Let’s see an example,</p>
@@ -312,13 +323,10 @@ Let’s see an example,</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Values in the array: [-5.   -3.75 -2.5  -1.25  0.    1.25  2.5   3.75  5.  ]
 </pre></div>
 </div>
-<img alt="../_images/plotting_1_2.png" src="../_images/plotting_1_2.png" />
+<img alt="../_images/plotting_1_1.png" src="../_images/plotting_1_1.png" />
 </div>
 </div>
 <p>In the cell above we do the following:</p>
@@ -407,8 +415,8 @@ Additionally, strings given to the <code class="docutils literal notranslate"><s
 <img alt="../_images/plotting_7_0.png" src="../_images/plotting_7_0.png" />
 </div>
 </div>
-<p>Above, the <code class="docutils literal notranslate"><span class="pre">plt.errorbar()</span></code> function is used instead of the <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> function, be aware that the <code class="docutils literal notranslate"><span class="pre">'o'</span></code> argument will only work for this function if preceeded by <code class="docutils literal notranslate"><span class="pre">marker=</span></code>.
-Additionally, we can produce a logarithmic <em>y</em>-axis (particularly useful for this example with a first order rate law) using the <code class="docutils literal notranslate"><span class="pre">plt.yscale()</span></code> command (a similar <code class="docutils literal notranslate"><span class="pre">plt.xscale()</span></code> command also exists.</p>
+<p>Above, the <code class="docutils literal notranslate"><span class="pre">plt.errorbar()</span></code> function is used instead of the <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> function, be aware that the <code class="docutils literal notranslate"><span class="pre">'o'</span></code> argument will only work for this function if preceded by <code class="docutils literal notranslate"><span class="pre">marker=</span></code>.
+Additionally, we can produce a logarithmic <em>y</em>-axis (particularly useful for this example with a first-order rate law) using the <code class="docutils literal notranslate"><span class="pre">plt.yscale()</span></code> command (a similar <code class="docutils literal notranslate"><span class="pre">plt.xscale()</span></code> command also exists.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -439,6 +447,8 @@ Additionally, we can produce a logarithmic <em>y</em>-axis (particularly useful 
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="numpy_arrays.html" title="previous page">NumPy</a>
+    <a class='right-next' id="next-link" href="ideal_gas_law.html" title="next page">Investigation of the ideal gas law</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

@@ -57,6 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Investigation of the ideal gas law" href="ideal_gas_law.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -190,10 +191,25 @@
   Working with Data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_arrays.html">
    NumPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ideal_gas_law.html">
+   Investigation of the ideal gas law
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   File I/O
   </a>
  </li>
 </ul>
@@ -238,9 +254,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/working_with_data/file_io.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/working_with_data/file_io.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -258,10 +274,61 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/working_with_data/file_io.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#txt-files">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .txt
+    </span>
+   </code>
+   files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#csv-files">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .csv
+    </span>
+   </code>
+   files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise:
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -272,6 +339,226 @@
                 
   <div class="section" id="file-i-o">
 <h1>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this headline">¶</a></h1>
+<p>Now that you are confident in mathematical operations and the plotting of arrays of data, it will be useful to be able to read data (for example from an experimental measurement) into the Python kernel.
+This will allow you to perform mathematical operations on data from the file and potentially plot the analysed result.</p>
+<p>In this section, we will show the parsing of two common types of file, known as <code class="docutils literal notranslate"><span class="pre">.txt</span></code> (text files) and <code class="docutils literal notranslate"><span class="pre">.csv</span></code> (comma-separated value file).
+The same basic function, from the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> library, is used to read these files in, with some changes necessary to the keyword arguments that are passed to the function.</p>
+<div class="section" id="txt-files">
+<h2><code class="docutils literal notranslate"><span class="pre">.txt</span></code> files<a class="headerlink" href="#txt-files" title="Permalink to this headline">¶</a></h2>
+<p>Text files look like the following,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># A text file with ideal gas information</span>
+<span class="c1"># The rows are temperature (K), volume (cubic meters), and pressure (Pa)</span>
+<span class="mi">200</span> <span class="mi">600</span> <span class="mi">1000</span> <span class="mi">1400</span> <span class="mi">1800</span>
+<span class="mf">0.8</span> <span class="mf">0.2</span> <span class="mf">1.0</span> <span class="mf">0.6</span> <span class="mf">0.1</span>
+<span class="mi">5020</span> <span class="mi">60370</span> <span class="mi">20110</span> <span class="mi">46940</span> <span class="mi">362160</span>
+</pre></div>
+</div>
+<p>This file is available from <a href="ideal_gas_rows.txt" download>this link</a>, you will need to <a class="reference external" href="https://tljh.jupyter.org/en/latest/howto/content/add-data.html#adding-data-from-your-local-machine">upload the file</a> to the chemistry JupyterHub.
+We can input the data from this file into three NumPy arrays with the following function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">temperature</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">pressure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ideal_gas_rows.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 200.  600. 1000. 1400. 1800.]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.8 0.2 1.  0.6 0.1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  5020.  60370.  20110.  46940. 362160.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then plot the pressure multiplied by the volume, against the temperature to observe the ideal gas relationship that was introduced in the previous exercise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">pressure</span> <span class="o">*</span> <span class="n">volume</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;pV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/file_io_7_0.png" src="../_images/file_io_7_0.png" />
+</div>
+</div>
+<p>Often experimental devices will output data as columns, rather than rows (this is probably more common in <strong>real</strong> measurement devices), such as in <a href="ideal_gas_cols.txt" download>this file</a>, shown below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># A text file with columnar ideal gas information</span>
+<span class="c1"># temperature (K) volume (cubic meters) pressure (Pa)</span>
+<span class="mi">200</span> <span class="mf">0.8</span> <span class="mi">5020</span>
+<span class="mi">600</span> <span class="mf">0.2</span> <span class="mi">60370</span>
+<span class="mi">1000</span> <span class="mf">1.0</span> <span class="mi">20110</span>
+<span class="mi">1400</span> <span class="mf">0.6</span> <span class="mi">46940</span>
+<span class="mi">1800</span> <span class="mf">0.1</span> <span class="mi">362160</span>
+</pre></div>
+</div>
+<p>Therefore it is necessary to modify the <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code> function to account for this.
+To do so, we use a <strong>keyword argument</strong>, this is a function argument that has a special identifier preceding it.
+To read in the columnar data we can use the following.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">pressure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ideal_gas_cols.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 200.  600. 1000. 1400. 1800.]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.8 0.2 1.  0.6 0.1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  5020.  60370.  20110.  46940. 362160.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For this function, to get a columnar data read in we set the variable in the arguments <code class="docutils literal notranslate"><span class="pre">unpack</span></code> to be <code class="docutils literal notranslate"><span class="pre">True</span></code>.
+By default this variable is <code class="docutils literal notranslate"><span class="pre">False</span></code>, leading to the first result above.</p>
+</div>
+<div class="section" id="csv-files">
+<h2><code class="docutils literal notranslate"><span class="pre">.csv</span></code> files<a class="headerlink" href="#csv-files" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.csv</span></code> files are extremely popular output data files for experimental equipment.
+While the <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files above use white-space (spaces or tabs) to separate the values in a row, the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format uses commas (hence the name).
+The <code class="docutils literal notranslate"><span class="pre">.csv</span></code> equivalent of the previous text files are available <a href="ideal_gas_rows.csv" download>as rows</a> and <a href="ideal_gas_cols.csv" download>as columns</a>.
+We can use the Jupyter notebook to have a look at the files if we wish, using the <code class="docutils literal notranslate"><span class="pre">!head</span></code> command (this is part of the Jupyter Notebook <strong>not</strong> standard Python).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>head ideal_gas_cols.csv
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># A csv file with columnar ideal gas information
+# temperature (K) volume (cubic meters) pressure (Pa)
+200, 0.8, 5020
+600, 0.2, 60370
+1000, 1.0, 20110
+1400, 0.6, 46940
+1800, 0.1, 362160
+</pre></div>
+</div>
+</div>
+</div>
+<p>This command will print the first ten lines of a file since this file is less than ten lines, we can see the whole thing.</p>
+<p>The reading of <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files requires another keyword argument, this time called <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> (this is the name given to the string that separates the values).
+Therefore, for <code class="docutils literal notranslate"><span class="pre">.csv</span></code> files the <code class="docutils literal notranslate"><span class="pre">delimiter</span></code> is the comma.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">pressure</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;ideal_gas_cols.csv&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 200.  600. 1000. 1400. 1800.]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.8 0.2 1.  0.6 0.1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  5020.  60370.  20110.  46940. 362160.]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code> function will only read in numerical information, and ignores completely any lines starting with a hash symbol, <code class="docutils literal notranslate"><span class="pre">#</span></code>.</p>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Investigate the <a href="toulene_ir.csv" download>IR spectra</a> data for toulene, initially using the <code class="docutils literal notranslate"><span class="pre">!head</span></code> command and then read in the data with the <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code> function.</p></li>
+<li><p>Plot the data and correctly label the axis, following the information given in the file header (the part with the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbols that is not parsed by the <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code> function).</p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -302,6 +589,7 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="ideal_gas_law.html" title="previous page">Investigation of the ideal gas law</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
