@@ -353,7 +353,7 @@ The same basic function, from the <code class="docutils literal notranslate"><sp
 <span class="mi">5020</span> <span class="mi">60370</span> <span class="mi">20110</span> <span class="mi">46940</span> <span class="mi">362160</span>
 </pre></div>
 </div>
-<p>This file is available from <a href="ideal_gas_rows.txt" download>this link</a>, you will need to <a class="reference external" href="https://tljh.jupyter.org/en/latest/howto/content/add-data.html#adding-data-from-your-local-machine">upload the file</a> to the chemistry JupyterHub.
+<p>This file is available from <a href="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/working_with_data/ideal_gas_rows.txt" download>this link</a>, you will need to <a class="reference external" href="https://tljh.jupyter.org/en/latest/howto/content/add-data.html#adding-data-from-your-local-machine">upload the file</a> to the chemistry JupyterHub.
 We can input the data from this file into three NumPy arrays with the following function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -421,7 +421,7 @@ We can input the data from this file into three NumPy arrays with the following 
 <img alt="../_images/file_io_7_0.png" src="../_images/file_io_7_0.png" />
 </div>
 </div>
-<p>Often experimental devices will output data as columns, rather than rows (this is probably more common in <strong>real</strong> measurement devices), such as in <a href="ideal_gas_cols.txt" download>this file</a>, shown below.</p>
+<p>Often experimental devices will output data as columns, rather than rows (this is probably more common in <strong>real</strong> measurement devices), such as in <a href="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/working_with_data/ideal_gas_cols.txt" download>this file</a>, shown below.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># A text file with columnar ideal gas information</span>
 <span class="c1"># temperature (K) volume (cubic meters) pressure (Pa)</span>
 <span class="mi">200</span> <span class="mf">0.8</span> <span class="mi">5020</span>
@@ -484,7 +484,7 @@ By default this variable is <code class="docutils literal notranslate"><span cla
 <h2><code class="docutils literal notranslate"><span class="pre">.csv</span></code> files<a class="headerlink" href="#csv-files" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">.csv</span></code> files are extremely popular output data files for experimental equipment.
 While the <code class="docutils literal notranslate"><span class="pre">.txt</span></code> files above use white-space (spaces or tabs) to separate the values in a row, the <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format uses commas (hence the name).
-The <code class="docutils literal notranslate"><span class="pre">.csv</span></code> equivalent of the previous text files are available <a href="ideal_gas_rows.csv" download>as rows</a> and <a href="ideal_gas_cols.csv" download>as columns</a>.
+The <code class="docutils literal notranslate"><span class="pre">.csv</span></code> equivalent of the previous text files are available <a href="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/working_with_data/ideal_gas_rows.csv" download>as rows</a> and <a href="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/working_with_data/ideal_gas_cols.csv" download>as columns</a>.
 We can use the Jupyter notebook to have a look at the files if we wish, using the <code class="docutils literal notranslate"><span class="pre">!head</span></code> command (this is part of the Jupyter Notebook <strong>not</strong> standard Python).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,7 +555,7 @@ Therefore, for <code class="docutils literal notranslate"><span class="pre">.csv
 <div class="section" id="exercise">
 <h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Investigate the <a href="toulene_ir.csv" download>IR spectra</a> data for toulene, initially using the <code class="docutils literal notranslate"><span class="pre">!head</span></code> command and then read in the data with the <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code> function.</p></li>
+<li><p>Investigate the <a href="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/working_with_data/toluene_ir.csv" download>IR spectra</a> data for toulene, initially using the <code class="docutils literal notranslate"><span class="pre">!head</span></code> command and then read in the data with the <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code> function.</p></li>
 <li><p>Plot the data and correctly label the axis, following the information given in the file header (the part with the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbols that is not parsed by the <code class="docutils literal notranslate"><span class="pre">np.loadtxt()</span></code> function).</p></li>
 </ul>
 </div>
