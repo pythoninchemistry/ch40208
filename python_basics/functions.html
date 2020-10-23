@@ -338,6 +338,13 @@
   <a class="reference internal nav-link" href="#exercise">
    Exercise:
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-table">
+     Data table
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -630,18 +637,21 @@ For example, we can repeat the above function but return the photon energy in bo
 <li><p>Write a function to calculate the distance between two atoms.
 Then rewrite to exercise in the loops section to utilise this function.
 Make sure to include a docstring describing the purpose of the function and outlining the arguments.</p></li>
-<li><p>Write another function that implements the second-order rate equation,
-$<span class="math notranslate nohighlight">\( [A]_t = \frac{[A]_0}{[A]_0kt + 1}, \)</span><span class="math notranslate nohighlight">\(
-where \)</span>[A]_t<span class="math notranslate nohighlight">\( is the concentration at time \)</span>t<span class="math notranslate nohighlight">\(, \)</span>[A]_0<span class="math notranslate nohighlight">\( is the initial concentration and \)</span>k<span class="math notranslate nohighlight">\( is the rate constant (note this a rearrangement from the familiar way of writing this equation where \)</span>[A]_t$ is a reciprocal).</p>
+<li><p>Write another function that implements the second-order rate equation,</p>
+<div class="math notranslate nohighlight">
+\[ [A]_t = \frac{[A]_0}{[A]_0kt + 1}, \]</div>
+<p>where <span class="math notranslate nohighlight">\([A]_t\)</span> is the concentration at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\([A]_0\)</span> is the initial concentration and <span class="math notranslate nohighlight">\(k\)</span> is the rate constant (note this a rearrangement from the familiar way of writing this equation where <span class="math notranslate nohighlight">\([A]_t\)</span> is a reciprocal).</p>
 <p>Plot the data below, as <span class="math notranslate nohighlight">\([A]_t\)</span> (<em>y</em>-axis) against <span class="math notranslate nohighlight">\(t\)</span> (<em>x</em>-axis), with a scatter plot (where you use <code class="docutils literal notranslate"><span class="pre">'o'</span></code>) and make sure to label your axes.
-Using, either a loop or the NumPy array operations and the function that you have defined, test if the following values of <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\([A]_0\)</span> accurately model the reaction by plotting the model data as a line on top of your scatter plot.</p>
-<ul class="simple">
+Using, either a loop or the NumPy array operations and the function that you have defined, test if the following values of <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\([A]_0\)</span> accurately model the reaction by plotting the model data as a line on top of your scatter plot:</p>
+<ol class="simple">
 <li><p><span class="math notranslate nohighlight">\(k = 0.006\)</span> mol<sup>-1</sup>dm<sup>3</sup>s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.6\)</span> moldm<sup>-3</sup></p></li>
 <li><p><span class="math notranslate nohighlight">\(k = 0.0006\)</span> mol<sup>-1</sup>dm<sup>3</sup>s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.4\)</span> moldm<sup>-3</sup></p></li>
 <li><p><span class="math notranslate nohighlight">\(k = 0.6\)</span> mol<sup>-1</sup>dm<sup>3</sup>s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.2\)</span> moldm<sup>-3</sup></p></li>
-</ul>
+</ol>
 </li>
 </ul>
+<div class="section" id="data-table">
+<h3>Data table<a class="headerlink" href="#data-table" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(t\)</span>/s</p></th>
@@ -662,6 +672,7 @@ Using, either a loop or the NumPy array operations and the function that you hav
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 
