@@ -26,7 +26,7 @@ Carry out the following:
 
 ## Tip 
 
-The ideal gas law can be imported from the SciPy package and stored as the variable `R` with the following code:
+The [ideal gas constant](https://en.wikipedia.org/wiki/Gas_constant) can be imported from the SciPy package and stored as the variable `R` with the following code:
 
 ```
 from scipy.constants import R
