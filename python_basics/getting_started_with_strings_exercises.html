@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Getting started with strings &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercises &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Print statements" href="print_statements.html" />
-    <link rel="prev" title="Using Python as a calculator" href="using_Python_as_a_calculator.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -135,7 +133,7 @@
   Python Basics
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -151,8 +149,8 @@
    Using Python as a calculator
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="getting_started_with_strings.html">
    Getting started with strings
   </a>
  </li>
@@ -255,7 +253,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/getting_started_with_strings.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/getting_started_with_strings_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -280,7 +278,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/getting_started_with_strings.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/getting_started_with_strings_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -297,20 +295,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises:
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -318,82 +302,122 @@
         
               <div>
                 
-  <div class="section" id="getting-started-with-strings">
-<h1>Getting started with strings<a class="headerlink" href="#getting-started-with-strings" title="Permalink to this headline">¶</a></h1>
-<p>We will also be working with pieces of text, which are represented in Python as <strong>strings</strong>.</p>
-<p>A <strong>string</strong> must be enclosed in a matching pair of <strong>single quotes</strong> <code class="docutils literal notranslate"><span class="pre">'text</span> <span class="pre">goes</span> <span class="pre">here'</span></code> or <strong>double quotes</strong> <code class="docutils literal notranslate"><span class="pre">&quot;text</span> <span class="pre">goes</span> <span class="pre">here&quot;</span></code>.</p>
-<p>Entering a string into a <strong>code cell</strong> and running the cell will just output the string:</p>
+  <div class="section" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<p>The focus of these exercises was on string manipulation.
+First, let us add two strings.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I am a string with single quotes&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;John went &#39;</span> <span class="o">+</span> <span class="s1">&#39;for a walk&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;I am a string with single quotes&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;John went for a walk&#39;
 </pre></div>
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">+</span></code> operator will <a class="reference external" href="https://en.wikipedia.org/wiki/Concatenation">concatenate</a> these two string objects, merging them into a single string.</p>
+<p>Now we will try to subtract one string from another.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;I am a string with double quotes&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;The bird &#39;</span> <span class="o">-</span> <span class="s1">&#39;that never flew&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;I am a string with double quotes&#39;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="n">f8d00f19706</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="s1">&#39;The bird &#39;</span> <span class="o">-</span> <span class="s1">&#39;that never flew&#39;</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;str&#39; and &#39;str&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Trying to pair single and double quotes will give an error or an unexpected output:</p>
+<p>This operation is not possible.
+This is due to the fact there is no logical way that one string may be <em>subtracted</em> from another.</p>
+<p>Let’s try adding a string to a floating point number.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I am a string with mismatched quotes&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;I like to eat &#39;</span> <span class="o">+</span> <span class="mf">3.14</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-3-4b5c4a6d02da&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
-    <span class="s1">&#39;I am a string with mismatched quotes&quot;</span>
-                                          <span class="o">^</span>
-<span class="ne">SyntaxError</span>: EOL while scanning string literal
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">2</span><span class="n">fff164c0979</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="s1">&#39;I like to eat &#39;</span> <span class="o">+</span> <span class="mf">3.14</span>
+
+<span class="ne">TypeError</span>: can only concatenate str (not &quot;float&quot;) to str
 </pre></div>
 </div>
 </div>
 </div>
-<p>This gives a <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>, which is one of the many error types invalid Python code can produce. A syntax error is one of the most basic error types and means that the Python interpreter is not able to understand the code.</p>
-<p>We will dive into error messages and types of errors in Python in more detail later in the course.</p>
-<p>You can include single quotes in a string that is enclosed in double quotes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Well isn&#39;t that clever?&quot;</span>
+<p>Again, this raises and error as the there is no way that the Python kernel understands to concatenate a string and a floating point number.</p>
+<p>It is possible to multiply two strings?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Multiplication is &#39;</span> <span class="o">*</span> <span class="s1">&#39;multiple addition&#39;</span>
 </pre></div>
 </div>
-<br>
-<p>and double quotes in a string that is enclosed in single quotes:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;The cat asked, “Where do you want to go?”&#39;</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="mi">0</span><span class="n">d995f65bc13</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="s1">&#39;Multiplication is &#39;</span> <span class="o">*</span> <span class="s1">&#39;multiple addition&#39;</span>
+
+<span class="ne">TypeError</span>: can&#39;t multiply sequence by non-int of type &#39;str&#39;
 </pre></div>
 </div>
-<br>
-<p>or you can indicate that quotes should be treated as text and not as string delimiters by preceding them with a backslash <code class="docutils literal notranslate"><span class="pre">\</span></code> (called <strong>escaping</strong> the quote):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Well isn</span><span class="se">\&#39;</span><span class="s1">t that clever&#39;</span>
+</div>
+</div>
+<p>It would appear not, again we can understand this as there is no rational to the operation.</p>
+<p>However, it is possible to multiply a string by an integer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Around the world. &#39;</span> <span class="o">*</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<div class="section" id="exercises">
-<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>Strings can be manipulated using <em>some</em> mathematical operations (but not others).<br />
-Investigate what happens when you try:</p>
-<ul class="simple">
-<li><p>Adding two strings, using <code class="docutils literal notranslate"><span class="pre">+</span></code>.</p></li>
-<li><p>Subtracting one string from another, using <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p></li>
-<li><p>Adding a string to an integer or a float, using <code class="docutils literal notranslate"><span class="pre">+</span></code>.</p></li>
-<li><p>Mutiplying two strings together, using <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p></li>
-<li><p>Multiplying a string by a float, using <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p></li>
-<li><p>Multiplying a string by an integer, using <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p></li>
-</ul>
-<p>Can you reason why you get the results (and errors) that you do?</p>
-<p><span class="xref myst">Worked Example</span></p>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Around the world. Around the world. Around the world. Around the world. Around the world. &#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is because multiplication is essentially multiple addition.
+So</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Around the world. &#39;</span> <span class="o">*</span> <span class="mi">10</span>
+</pre></div>
+</div>
+<p>is equivalent to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Around the world. &#39;</span> <span class="o">+</span> <span class="s1">&#39;Around the world. &#39;</span> <span class="o">+</span> <span class="s1">&#39;Around the world. &#39;</span> <span class="o">+</span> <span class="s1">&#39;Around the world. &#39;</span> <span class="o">+</span> <span class="s1">&#39;Around the world. &#39;</span>
+</pre></div>
+</div>
+<p>Finally, we will consider multiplication of a string by a float.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Around the world. &#39;</span> <span class="o">*</span> <span class="mf">8.314</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">5</span><span class="n">f68f15b5d3f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="s1">&#39;Around the world. &#39;</span> <span class="o">*</span> <span class="mf">8.314</span>
+
+<span class="ne">TypeError</span>: can&#39;t multiply sequence by non-int of type &#39;float&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>This gives an error as it is not rational to are 0.314 of a string object.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -424,8 +448,6 @@ Investigate what happens when you try:</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="using_Python_as_a_calculator.html" title="previous page">Using Python as a calculator</a>
-    <a class='right-next' id="next-link" href="print_statements.html" title="next page">Print statements</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
