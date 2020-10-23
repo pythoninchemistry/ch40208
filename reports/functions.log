@@ -17,20 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from scipy.constants import R
-
-def R_kJpermol():
-    return R * 1e-3
+greet()
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m<ipython-input-3-139480ac83ef>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;32mfrom[0m [0mscipy[0m[0;34m.[0m[0mconstants[0m [0;32mimport[0m [0mR[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m [0;34m[0m[0m
-[1;32m      3[0m [0;32mdef[0m [0mR_kJpermol[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m     [0;32mreturn[0m [0mR[0m [0;34m*[0m [0;36m1e-3[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mModuleNotFoundError[0m: No module named 'scipy'
-ModuleNotFoundError: No module named 'scipy'
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-10-db845682bfe7>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mgreet[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+[0;31mTypeError[0m: greet() missing 1 required positional argument: 'name'
+TypeError: greet() missing 1 required positional argument: 'name'
 

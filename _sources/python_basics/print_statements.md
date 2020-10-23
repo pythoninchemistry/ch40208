@@ -16,6 +16,8 @@ Only the output from the **last** statement is displayed as the cell output. The
 
 The default setting for Jupyter Notebooks is to only display the output from the final statement in any code cell. While it is possible to [change this setting](https://stackoverflow.com/questions/36786722/how-to-display-full-output-in-jupyter-not-only-last-result) so that all the output is displayed, the usual way to control what is displayed is to use the `print` **function**.
 
+
+(content:intro_to_functions)=
 ## A brief intro to functions
 
 A **function** is a piece of reusable code that takes zero or more inputs, performs a specific computation, and **returns** an output. 
