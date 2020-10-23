@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Attributes and Methods &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Minimisation &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -197,22 +197,22 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
+  <a class="reference internal" href="numpy_arrays.html">
    NumPy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/plotting.html">
+  <a class="reference internal" href="plotting.html">
    Plotting
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/ideal_gas_law.html">
+  <a class="reference internal" href="ideal_gas_law.html">
    Investigation of the ideal gas law
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/file_io.html">
+  <a class="reference internal" href="file_io.html">
    File I/O
   </a>
  </li>
@@ -258,9 +258,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/object_oriented_programming/attributes_methods.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/working_with_data/minimisation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -278,10 +278,46 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/working_with_data/minimisation.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lennard-jones-potential">
+   Lennard-Jones potential
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise:
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -290,8 +326,71 @@
         
               <div>
                 
-  <div class="section" id="attributes-and-methods">
-<h1>Attributes and Methods<a class="headerlink" href="#attributes-and-methods" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="minimisation">
+<h1>Minimisation<a class="headerlink" href="#minimisation" title="Permalink to this headline">¶</a></h1>
+<p>An important component of computational chemistry is the study of atoms and molecules and their energy under different circumstances.
+There are a couple of different methods that can be used to calculate the energy of an atom or molecule:</p>
+<ul class="simple">
+<li><p>quantum mechanical approaches: where an approximation to the Schrödinger equation is used to evaluate the energy of a molecule, such as <a class="reference external" href="https://en.wikipedia.org/wiki/Density_functional_theory">density functional theory</a>.</p></li>
+<li><p>classical atomistic models: where functional description of atomic and molecular interactions are used, and parameters are refined to give the best agreement with experimental methods, these models are referred to as <a class="reference external" href="https://en.wikipedia.org/wiki/Force_field_(chemistry)">force fields</a>.</p></li>
+</ul>
+<p>In this exercise, we will look at one of these force fields in detail and use minimisation to determine the minimum energy distance between to interacting atoms.</p>
+<div class="section" id="lennard-jones-potential">
+<h2>Lennard-Jones potential<a class="headerlink" href="#lennard-jones-potential" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">Lennard-Jones potential</a> is a force field that describes the interation between two atoms.
+The aim of this potential is to describe the both the long-ranged attraction of two atoms due to the London dispersion force and the repulsion at short-range of the Pauli exclusion principle (the two atoms cannot sit on top of each other).
+The functional form of the Lennard-Jones potential is,
+$<span class="math notranslate nohighlight">\( E(r_{ij}) = \frac{A}{r_{ij}^{12}} - \frac{B}{r_{ij}^6}, \)</span><span class="math notranslate nohighlight">\(
+where \)</span>E(r_{ij})<span class="math notranslate nohighlight">\( is the potential energy, \)</span>r_{ij}<span class="math notranslate nohighlight">\( is the distance between atoms \)</span>i<span class="math notranslate nohighlight">\( and \)</span>j<span class="math notranslate nohighlight">\(, and \)</span>A<span class="math notranslate nohighlight">\( and \)</span>B$ are interaction specific constants.
+These constants at the parameters that are determined from comparison with experimental methods.
+The first part of the above equation represents the Pauli exclusion principle, while the second part respresents the weaker dispersion forces (remember that negative energy indicates attraction).</p>
+<p>Below, is plotted the energy of the Lennard-Jones potential model, where the values of the interaction specific parameters are <span class="math notranslate nohighlight">\(1\times 10^{5}\)</span> eVÅ<sup>12</sup> and <span class="math notranslate nohighlight">\(40\)</span> eVÅ<sup>6</sup> for <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> respectively.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mf">1e5</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">12</span><span class="p">)</span> <span class="o">-</span> <span class="mi">40</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;rij/Å&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;E/eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/minimisation_1_0.png" src="../_images/minimisation_1_0.png" />
+</div>
+</div>
+<p>In the above plot, we can visually see where the energy is minimised, at around 4.1 Å.
+However, how can we use the computer to reach this same result?
+This is where we can use minimisation algorithms, in this case the algorithm that we will use is called the Newton-Raphson method (it was first derived by Isaac Newton).
+The Newton-Raphson method works as follows:</p>
+<ol class="simple">
+<li><p>Select an initial guess for the minimum distance between the two atoms</p></li>
+<li><p>Calculate the first and second derivatives of the energy at this distance</p></li>
+<li><p>Update the distance between the atoms with the following relationship,
+$<span class="math notranslate nohighlight">\( r_{\text{new}} = r_{\text{old}} = \frac{E'}{E''}, \)</span><span class="math notranslate nohighlight">\(
+ where \)</span>E’<span class="math notranslate nohighlight">\( is the first derivative of the energy, \)</span>E’’<span class="math notranslate nohighlight">\( is the second derivative, and \)</span>r_{\text{old}}$ is the previous distance.</p></li>
+<li><p>Go to step 2.
+By repeating this process multiple times, it should be possible to find the minimum of the potential energy, which is the minimum energy distance.</p></li>
+</ol>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>This weeks exercise is to write code that will perform a Newton Raphson minimisation and find the minimum energy distance.
+In order to achieve this, you should do the following:</p>
+<ul class="simple">
+<li><p>Write a function for the energy, the first derivative and the second derivative</p></li>
+<li><p>Implement the above algorithm, such that it will perform at least 10 iterations</p></li>
+<li><p>Plot the function, and the minimum energy distance that is found in 10 iterations (the <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.axvline.html"><code class="docutils literal notranslate"><span class="pre">plt.axvline()</span></code></a> function will be useful for this visualisation).</p></li>
+</ul>
+<p>Determine the minimum energy distance for each of the following sets of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = <span class="math notranslate nohighlight">\(1\times 10^{5}\)</span> eVÅ<sup>12</sup>, <span class="math notranslate nohighlight">\(B\)</span> = <span class="math notranslate nohighlight">\(40\)</span> eVÅ<sup>6</sup></p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = <span class="math notranslate nohighlight">\(4\times 10^{5}\)</span> eVÅ<sup>12</sup>, <span class="math notranslate nohighlight">\(B\)</span> = <span class="math notranslate nohighlight">\(1\)</span> eVÅ<sup>6</sup></p></li>
+</ul>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -307,7 +406,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./object_oriented_programming"
+            path: "./working_with_data"
         },
         predefinedOutput: true
     }
