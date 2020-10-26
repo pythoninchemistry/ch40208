@@ -44,7 +44,7 @@ In the example above, the relative positions of the atoms A, B, and C are given 
 
 The figure below shows the potential energy surface for a reaction A + BC → AB + C via a collinear transition state.
 
-![](figures/3-body-collinear_PES.png)
+![](figures/3-body_collinear_PES.png)
 
 In our initial configuration, B and C are bonded, so $r_\mathrm{BC}$ is small; while A and B are well separated, so $r_\mathrm{AB}$ is large.
 
