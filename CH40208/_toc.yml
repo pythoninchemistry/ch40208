@@ -3,14 +3,14 @@
 #  chapters:
 #    - file: overview/course_overview
 #    - file: overview/course_structure
-- part: Introduction to Jupyter Notebooks
+- part: Jupyter Notebooks
   chapters:
     - file: notebooks_introduction/what_is_a_jupyter_notebook
     - file: notebooks_introduction/how_to_access_the_jupyterhub_server
     - file: notebooks_introduction/getting_started_with_jupyter_notebooks
     - file: notebooks_introduction/the_notebook_interface
     - file: notebooks_introduction/exercises
-- part: Python Basics
+- part: Python
   chapters:
     - file: python_basics/python_first_chemistry_later
     - file: python_basics/why_we_encourage_typing_out_the_code_examples
@@ -24,7 +24,7 @@
 #      sections:
     - file: python_basics/lists
     - file: python_basics/loops
-#    - file: python_basics/functions
+    - file: python_basics/functions
 #        - file: python_basics/tuples
 #        - file: python_basics/dictionaries
 - part: Working with Data
@@ -33,6 +33,15 @@
     - file: working_with_data/plotting
     - file: working_with_data/ideal_gas_law
     - file: working_with_data/file_io
+    - file: working_with_data/minimisation
+- part: Computational Chemistry Methods
+  chapters:
+    - file: comp_chem_methods/potential_energy_surfaces
+    - file: comp_chem_methods/geometry_optimisation
+    - file: comp_chem_methods/minimisation
+      sections:
+        - file: comp_chem_methods/gradient_descent
+        - file: comp_chem_methods/newton_raphson
 #- part: Structured Programming
 #  chapters:
 #    - file: structured_programming/functions
@@ -59,7 +68,7 @@
 #    - file: object_oriented_programming/attributes_methods
 #    - file: object_oriented_programming/private_public
 #    - file: object_oriented_programming/inheritance
-#- part: Fundamentals of Computational Chemistry
+#- part: Computational Chemistry Methods
 #  chapters:
 #    - file: comp_chem_fundamentals/optimisation
 #    - file: comp_chem_fundamentals/model_fitting
