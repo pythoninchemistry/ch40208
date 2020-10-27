@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Function minimisation" href="minimisation.html" />
+    <link rel="prev" title="Potential Energy Surfaces" href="potential_energy_surfaces.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -222,10 +224,20 @@
   Computational Chemistry Methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="potential_energy_surfaces.html">
    Potential Energy Surfaces
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Geometry Optimisation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="minimisation.html">
+   Function minimisation
   </a>
  </li>
 </ul>
@@ -295,6 +307,42 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stationary-points">
+   Stationary points
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-do-we-care-about-stationary-points">
+   Why do we care about stationary points?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#minimum-maximum-or-saddle-point">
+   Minimum, maximum, or saddle point?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Geometry optimisation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gradients-as-forces">
+     gradients as forces
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -304,6 +352,86 @@
                 
   <div class="section" id="geometry-optimisation">
 <h1>Geometry Optimisation<a class="headerlink" href="#geometry-optimisation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="stationary-points">
+<h2>Stationary points<a class="headerlink" href="#stationary-points" title="Permalink to this headline">¶</a></h2>
+<p>Chemists are often interested in finding <strong>stationary points</strong> on <a class="reference internal" href="potential_energy_surfaces.html"><span class="doc std std-doc">potential energy surfaces</span></a>.</p>
+<p><strong>Stationary points</strong> are points where the <strong>gradient</strong> of the <strong>potential energy surface</strong> is zero.</p>
+<p>i.e. in one dimension</p>
+<div class="math notranslate nohighlight">
+\[\frac{\mathrm{d}E}{\mathrm{d}x}=0.\]</div>
+<p>In higher dimensions we require all the <strong>partial derivatives</strong> to be zero:</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\partial E}{\partial \alpha}\right)=0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> runs over all degrees of freedom.</p>
+<p>Stationary points can be <strong>minima</strong>, <strong>saddle points</strong>, or <strong>maxima</strong>.</p>
+<p><img alt="" src="../_images/stationary_points.png" /></p>
+</div>
+<div class="section" id="why-do-we-care-about-stationary-points">
+<h2>Why do we care about stationary points?<a class="headerlink" href="#why-do-we-care-about-stationary-points" title="Permalink to this headline">¶</a></h2>
+<p>Remember that every point on a <strong>potential energy surface</strong> corresponds to specific atomic geometry. <strong>Stationary points</strong> correspond to specific geometries that are often particularly important in a chemsitry context:</p>
+<p><strong>Minima</strong> correspond to equilibrium geometries of reactants, products, or intermediates.</p>
+<ul class="simple">
+<li><p>The global minimum gives the thermodynamic product.</p></li>
+<li><p>Local minima give metastable products or intermediates.</p></li>
+<li><p>The relative energies of various minima give the difference in potential energies between e.g. reactants and products.</p></li>
+</ul>
+<p><strong>Saddle points</strong> correspond to a transition state between the two adjacent minima.</p>
+<ul class="simple">
+<li><p>Finding the saddle point gives us the transition state geometry.</p></li>
+<li><p>The energy difference between the transition state and the adjacent potential energy minimum, corresponding to the <strong>reactants</strong>, gives the energy barrier along the <strong>reaction coordinate</strong> for a chemical process.</p></li>
+<li><p>Note that we cannot have saddle-points on a one-dimensional potential energy surface.</p></li>
+</ul>
+<p><strong>Maxima</strong> are often less relevant to understanding chemical behaviour.</p>
+<ul class="simple">
+<li><p>If we consider the complete potential energy surface then we will have a number of poorly defined “maxima” with infinite energy, corresponding to atoms sitting on top of one another.</p></li>
+<li><p>If we consider a reduced number of degrees of freedom (for example we consider the potential energy along a reaction coordinate) then maxima in this reduced basis correspond to <strong>saddle points</strong> on the complete potential energy surface. It can therefore be useful to know mathematically how to find maxima, because this allows us to find transition states while working in a much smaller number of dimensions that if we try to find saddle points when considering the full number of degrees of freedom.</p></li>
+</ul>
+</div>
+<div class="section" id="minimum-maximum-or-saddle-point">
+<h2>Minimum, maximum, or saddle point?<a class="headerlink" href="#minimum-maximum-or-saddle-point" title="Permalink to this headline">¶</a></h2>
+<p>We have already noted that <strong>minima</strong>, <strong>saddle points</strong>, and <strong>maxima</strong> are all <strong>stationary points</strong> with gradients of zero.</p>
+<p>We can distinguish between these three types of <strong>stationary points</strong> by considering <strong>second derivatives</strong> (i.e. <strong>curvature</strong>).</p>
+<p>Moving away from a <strong>minimum</strong>, the energy <strong>increases</strong> in all directions. A <strong>minimum</strong> therefore is characterised by <strong>positive curvature</strong>. e.g. for a two-dimensional potential energy surface:</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\partial^2 E}{\partial x^2}\right)&gt;0, \left(\frac{\partial^2 E}{\partial y^2}\right)&gt;.0\]</div>
+<p>Moving away from a <strong>maximum</strong>, the energy <strong>decreases</strong> in all directions. A <strong>maximum</strong> is therefore characterised by <strong>negative curvature</strong>. e.g.  for a 2D PES:</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\partial^2 E}{\partial x^2}\right)&lt;0, \left(\frac{\partial^2 E}{\partial y^2}\right)&lt;0.\]</div>
+<p>At a <strong>saddle point</strong>, the energy <strong>decreases</strong> in one or more directions, but <strong>increases</strong> in the others. e.g. for a 2D potential-energy surface:</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\partial^2 E}{\partial x_\parallel^2}\right)&gt;0, \left(\frac{\partial^2 E}{\partial x_\perp^2}\right)&lt;0.\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_\parallel\)</span> and <span class="math notranslate nohighlight">\(x_\perp\)</span> are vectors <strong>parallel</strong> and <strong>perpendicular</strong> to the reaction coordinate, respectively.</p>
+</div>
+<div class="section" id="id1">
+<h2>Geometry optimisation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The technique of <strong>geometry optimisation</strong> consists of finding the <strong>minima</strong> on a <strong>potential energy surface</strong> as a way of calculating equilibrium structures.</p>
+<p>One common method for <strong>geometry optimisation</strong> is to use so-called <strong>gradient descent</strong> methods. These consist of picking some starting point on the potential energy surface, and calculating the gradient. Then moving “downhill”, following this gradient, to a new point. At this point we recalculate the gradient and move downhill again to a third point. Repeating this process, in principle, brings us closer and closer to a (local) minimum. At the minimum the gradient is zero (because this is a stationary point), so we generally stop once the gradient is smaller than some <strong>convergence threshold</strong>.</p>
+<div class="section" id="gradients-as-forces">
+<h3>gradients as forces<a class="headerlink" href="#gradients-as-forces" title="Permalink to this headline">¶</a></h3>
+<p>The <strong>gradient</strong> of a function is the <strong>first derivative</strong> with respect to position. e.g.</p>
+<div class="math notranslate nohighlight">
+\[g = \frac{\mathrm{d}f}{dx}\]</div>
+<p>If our function describes potential energy, then the gradient at a particular point is equal to <strong>minus</strong> the force on the system.</p>
+<div class="math notranslate nohighlight">
+\[F = -\frac{\mathrm{d}U}{\mathrm{d}x}\]</div>
+<p>We can therefore think of <strong>gradient descent</strong> as analogous to letting a ball roll &amp;lqduo;downhill” on our potential energy surface, until it reaches a minimum.</p>
+<p>In general then, we can perform a computational geometry optimisation with the following sequence of steps:</p>
+<ol class="simple">
+<li><p>Starting with some approximate guess <span class="math notranslate nohighlight">\(r_0\)</span>:</p></li>
+<li><p>Calculate the force at <span class="math notranslate nohighlight">\(r_0\)</span>.</p></li>
+</ol>
+<ul class="simple">
+<li><p>For a potential-energy surface with one dimension, <span class="math notranslate nohighlight">\(F = -\frac{\mathrm{d}U}{\mathrm{d}r}\)</span>.</p></li>
+<li><p>For a potential-energy surface with more than one dimension, the force is a <strong>vector</strong>. Each component of this vector is calculated from the partial derivative of the energy with respect to each degree of freedom, i.e. <span class="math notranslate nohighlight">\(\vec{F}_\alpha = -\left(\frac{\partial E}{\partial \alpha}\right)\)</span>.</p></li>
+</ul>
+<ol class="simple">
+<li><p>Move some distance “downhill”.</p></li>
+<li><p>If we are not close to a minimum, go back to step 2 and calculate the force at our new position <span class="math notranslate nohighlight">\(r_1\)</span>.</p></li>
+<li><p>Repeat until converged.</p></li>
+</ol>
+<p>There are a number of different optimisation algorithms that use this general approach, but differ in specifics such as how to decide how far to move each jump. Different algorithms can perform better for different optimisation problems, depending on the specific profile of the potential energy surface you are working with. Ideally you want an algorithm that finds the minimum in as few iterations as possible (i.e. it is <strong>fast</strong>) without getting stuck or in some cases failing to find the minimum (i.e. it is <strong>reliable</strong>).</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -334,6 +462,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="potential_energy_surfaces.html" title="previous page">Potential Energy Surfaces</a>
+    <a class='right-next' id="next-link" href="minimisation.html" title="next page">Function minimisation</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

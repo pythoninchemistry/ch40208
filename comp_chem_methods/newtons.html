@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Big Data &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Newton’s method &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,6 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Gradient descent" href="gradient_descent.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -222,21 +223,33 @@
   Computational Chemistry Methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">
+  <a class="reference internal" href="potential_energy_surfaces.html">
    Potential Energy Surfaces
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">
+  <a class="reference internal" href="geometry_optimisation.html">
    Geometry Optimisation
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/minimisation.html">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="minimisation.html">
    Function minimisation
   </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="gradient_descent.html">
+     Gradient descent
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Newton’s method
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -280,9 +293,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/applied_comp_chem/big_data.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/comp_chem_methods/newtons.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -300,10 +313,41 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/comp_chem_methods/newtons.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise:
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -312,8 +356,25 @@
         
               <div>
                 
-  <div class="section" id="big-data">
-<h1>Big Data<a class="headerlink" href="#big-data" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="newton-s-method">
+<h1>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">¶</a></h1>
+<p>A potentially more efficient method for minimisation is the potential energy function is Newton’s method (developed by Isaac Newton).
+This method uses both the first and second derivatives of the potential energy, the latter is found from the following equation,
+$<span class="math notranslate nohighlight">\( E''(r_{ij}) = 156\frac{A}{r_{ij}^{14}} - 42\frac{B}{r_{ij}^8}, \)</span>$
+where again, the parameters are given previously.</p>
+<p>The second derivative of a function describes the curvature of the function and can offer a more direct root to the minimum energy solution.
+The algorithm for Newton’s method is identical to the gradient descent method, but the update formula is changed to,
+$<span class="math notranslate nohighlight">\( r_{\text{new}} = r_{\text{old}} - \frac{E'(r_{ij})}{E''(r_{ij})},\)</span>$
+where the parameters are introduced previously.
+As can be seen, this method has the benefit that there is no need to determine a hyperparameter.
+Additionally, under certain circumstances, it can be more efficient than the gradient descent method.</p>
+<p>Newton’s method in action is shown below.</p>
+<p><img alt="" src="../_images/line.gif" /></p>
+<div class="section" id="exercise">
+<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Implement Newton’s method algorithm for the same system as previously.
+Investigate how the algorithm performs against the gradient descent method for starting points of <span class="math notranslate nohighlight">\(3.2\)</span> Å, <span class="math notranslate nohighlight">\(4.4\)</span> Å, and <span class="math notranslate nohighlight">\(6.0\)</span> Å (consider the cause of the result for Newton’s method starting at <span class="math notranslate nohighlight">\(6.0\)</span> Å).</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -329,7 +390,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./applied_comp_chem"
+            path: "./comp_chem_methods"
         },
         predefinedOutput: true
     }
@@ -344,6 +405,7 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="gradient_descent.html" title="previous page">Gradient descent</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
