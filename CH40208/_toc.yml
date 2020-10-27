@@ -38,10 +38,10 @@
   chapters:
     - file: comp_chem_methods/potential_energy_surfaces
 #    - file: comp_chem_methods/geometry_optimisation
-#    - file: comp_chem_methods/minimisation
-#      sections:
-#        - file: comp_chem_methods/gradient_descent
-#        - file: comp_chem_methods/newton_raphson
+    - file: comp_chem_methods/minimisation
+      sections:
+        - file: comp_chem_methods/gradient_descent
+        - file: comp_chem_methods/newtons
 #- part: Structured Programming
 #  chapters:
 #    - file: structured_programming/functions
