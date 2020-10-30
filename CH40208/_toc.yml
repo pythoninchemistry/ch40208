@@ -25,7 +25,7 @@
     - file: python_basics/lists
     - file: python_basics/loops
     - file: python_basics/functions
-    - file: python_basics/logic
+    - file: python_basics/logic_and_flow_control
 #        - file: python_basics/tuples
 #        - file: python_basics/dictionaries
 - part: Working with Data
