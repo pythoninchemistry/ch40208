@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Using Python as a calculator &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercises &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Getting started with strings" href="getting_started_with_strings.html" />
-    <link rel="prev" title="Why we encourage typing out the code examples" href="why_we_encourage_typing_out_the_code_examples.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -135,7 +133,7 @@
   Python
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -146,8 +144,8 @@
    Why we encourage typing out the code examples
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="using_Python_as_a_calculator.html">
    Using Python as a calculator
   </a>
  </li>
@@ -287,7 +285,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/using_Python_as_a_calculator.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/python_basics/lists_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -312,7 +310,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/using_Python_as_a_calculator.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/lists_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -335,18 +333,13 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#calculating-2-2">
-   Calculating 2+2
+  <a class="reference internal nav-link" href="#molecule-1">
+   Molecule 1
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simple-arithmetic">
-   Simple arithmetic
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#integers-and-floats">
-   Integers and Floats
+  <a class="reference internal nav-link" href="#molecule-2">
+   Molecule 2
   </a>
  </li>
 </ul>
@@ -360,167 +353,97 @@
         
               <div>
                 
-  <div class="section" id="using-python-as-a-calculator">
-<h1>Using Python as a calculator<a class="headerlink" href="#using-python-as-a-calculator" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="calculating-2-2">
-<h2>Calculating 2+2<a class="headerlink" href="#calculating-2-2" title="Permalink to this headline">¶</a></h2>
-<p>One of the simplest uses of Python is as a simple calculator.</p>
-<p>This also introduces us to the idea of working with numbers which is a key part of using Python for scientific applications.</p>
-<p>Open a new Notebook and enter into a <strong>code cell</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
-</pre></div>
-</div>
-<p>If you run this cell you should get something that looks like the screenshot below.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/two_plus_two.png" /></p>
-<p>The cell has run (indicated by the number 1 to the left of the cell), and the “code” has produced a result, which is printed below the cell.
-Beneath that you get a new, empty cell for your next piece of code.</p>
-<p>Within this course book cells that have been run are rendered as follows:</p>
+  <div class="section" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<p>Let’s first look at the halogens list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">halogens</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fluorine&#39;</span><span class="p">,</span> <span class="s1">&#39;chlorine&#39;</span><span class="p">,</span> <span class="s1">&#39;bromine&#39;</span><span class="p">,</span> <span class="s1">&#39;iodine&#39;</span><span class="p">,</span> <span class="s1">&#39;astatine&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">halogens</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;astatine&#39;, &#39;iodine&#39;, &#39;bromine&#39;, &#39;chlorine&#39;, &#39;fluorine&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<p>You can add space between the numbers to make things easier to read:</p>
+<p>Using a negative number reverses the list.</p>
+<p>Now for the distance calculations.</p>
+<div class="section" id="molecule-1">
+<h2>Molecule 1<a class="headerlink" href="#molecule-1" title="Permalink to this headline">¶</a></h2>
+<p>First we will define the atom positions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom_1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">]</span>
+<span class="n">atom_2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">]</span>
+<span class="n">atom_3</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_12</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">r_13</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">r_23</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">atom_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r_12</span><span class="p">,</span> <span class="n">r_13</span><span class="p">,</span> <span class="n">r_23</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9486832980505141 1.5652475842498532 0.9433981132056602
 </pre></div>
 </div>
 </div>
 </div>
-<p>Or wrap the expression in brackets:</p>
+<p>The distance between atoms 1 and 3 is less than half the distance between atoms 1 and 2 plus the distance between atoms 2 and 3.
+This indicates that the atoms are in a bent shape.</p>
+</div>
+<div class="section" id="molecule-2">
+<h2>Molecule 2<a class="headerlink" href="#molecule-2" title="Permalink to this headline">¶</a></h2>
+<p>Again, define the atom positions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom_1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
+<span class="n">atom_2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">]</span>
+<span class="n">atom_3</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can reuse the code above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_12</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_2</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">r_13</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">r_23</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">atom_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">atom_2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom_3</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r_12</span><span class="p">,</span> <span class="n">r_13</span><span class="p">,</span> <span class="n">r_23</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.140175425099138 2.280350850198276 1.140175425099138
 </pre></div>
 </div>
 </div>
 </div>
-<p>And still get the same result.</p>
-</div>
-<div class="section" id="simple-arithmetic">
-<h2>Simple arithmetic<a class="headerlink" href="#simple-arithmetic" title="Permalink to this headline">¶</a></h2>
-<p>You are not limited to adding numbers. Try entering the following expressions into code cells and <strong>executing</strong> them (running the cells.):</p>
-<ul class="simple">
-<li><p>subtraction:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span>
-</pre></div>
-</div>
-<br>
-<ul class="simple">
-<li><p>multiplication:</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<ul class="simple">
-<li><p>powers (e.g. 4<sup>2</sup>)</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">**</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<ul class="simple">
-<li><p>division</p></li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="integers-and-floats">
-<h2>Integers and Floats<a class="headerlink" href="#integers-and-floats" title="Permalink to this headline">¶</a></h2>
-<p>Notice that the last example gives <code class="docutils literal notranslate"><span class="pre">3.0</span></code> and not <code class="docutils literal notranslate"><span class="pre">3</span></code> as the result. Python distinguishes between <strong>integers</strong> (also called <strong>ints</strong>) and <strong>floating point numbers</strong> (also called <strong>floats</strong>):</p>
-<ul class="simple">
-<li><p>Integers: A number <strong>without</strong> a decimal point: e.g. 1, 2, 100, 2<sup>100</sup>.</p></li>
-<li><p>Floats: A number <strong>with</strong> a decimal point. e.g. 3.14159, 12.0107, 8.3144 (you might recognise these).</p></li>
-</ul>
-<p>Arithmetic also works with <strong>floats</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">2.0</span> <span class="o">+</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">*</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">**</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">6.0</span> <span class="o">/</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<p>And with mixtures of <strong>integers</strong> and <strong>floats</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">**</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<p>Notice how these last examples always output a <strong>float</strong>.</p>
-<p><strong>floats</strong> can also be written without any numbers after the decimal point, e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">42.</span>
-</pre></div>
-</div>
-<p>is the same as <code class="docutils literal notranslate"><span class="pre">42.0</span></code>.</p>
-<p>You can do integer division (also called <strong>floor division</strong> ) using <code class="docutils literal notranslate"><span class="pre">//</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">//</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<p>Integer division rounds down:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<p>You can calculate the <strong>remainder</strong> of integer division using the <code class="docutils literal notranslate"><span class="pre">%</span></code> symbol (called the <strong>modulo</strong> operator).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span> <span class="o">%</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>Brackets can be used to specify the order of operations in more complicated expressions, according to the usual mathematical rules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-<br>
-<p>We will return to mathematical expressions in Python in more detail later in the course.</p>
+<p>Now that middle distance is the same as the sum of the other two.
+So the molecule is linearly shaped.</p>
 </div>
 </div>
 
@@ -552,8 +475,6 @@ Beneath that you get a new, empty cell for your next piece of code.</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="why_we_encourage_typing_out_the_code_examples.html" title="previous page">Why we encourage typing out the code examples</a>
-    <a class='right-next' id="next-link" href="getting_started_with_strings.html" title="next page">Getting started with strings</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
