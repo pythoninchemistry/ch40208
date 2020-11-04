@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Investigation of the ideal gas law &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercises &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="File I/O" href="file_io.html" />
-    <link rel="prev" title="Plotting" href="plotting.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -202,7 +200,7 @@
   Working with Data
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_arrays.html">
    NumPy
@@ -213,8 +211,8 @@
    Plotting
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ideal_gas_law.html">
    Investigation of the ideal gas law
   </a>
  </li>
@@ -287,9 +285,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/working_with_data/ideal_gas_law.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/working_with_data/ideal_gas_law_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -307,24 +305,27 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/working_with_data/ideal_gas_law_exercises.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tip">
-   Tip
-  </a>
- </li>
-</ul>
-
-        </nav>
         
     </div>
 </div>
@@ -333,60 +334,137 @@
         
               <div>
                 
-  <div class="section" id="investigation-of-the-ideal-gas-law">
-<h1>Investigation of the ideal gas law<a class="headerlink" href="#investigation-of-the-ideal-gas-law" title="Permalink to this headline">¶</a></h1>
-<p>A large balloon is filled with argon gas, the temperature is then varied and the volume and pressure are measured.
-The results of this are shown in the table below.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Temperature/K</p></th>
-<th class="head"><p>Volume/m<sup>3</sup></p></th>
-<th class="head"><p>Pressure/Pa</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>200</p></td>
-<td><p>0.8</p></td>
-<td><p>5020</p></td>
-</tr>
-<tr class="row-odd"><td><p>600</p></td>
-<td><p>0.2</p></td>
-<td><p>60370</p></td>
-</tr>
-<tr class="row-even"><td><p>1000</p></td>
-<td><p>1.0</p></td>
-<td><p>20110</p></td>
-</tr>
-<tr class="row-odd"><td><p>1400</p></td>
-<td><p>0.6</p></td>
-<td><p>46940</p></td>
-</tr>
-<tr class="row-even"><td><p>1800</p></td>
-<td><p>0.1</p></td>
-<td><p>362160</p></td>
-</tr>
-</tbody>
-</table>
-<p>We will assume that the argon gas will follow the ideal gas law, which states,</p>
-<div class="math notranslate nohighlight">
-\[ pV = nRT, \]</div>
-<p>where, <span class="math notranslate nohighlight">\(p\)</span> is the pressure, <span class="math notranslate nohighlight">\(V\)</span> is the volume, <span class="math notranslate nohighlight">\(n\)</span> is the number of moles of gas, <span class="math notranslate nohighlight">\(R\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Gas_constant">ideal gas constant</a>, and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.
-Carry out the following:</p>
-<ul class="simple">
-<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
-<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
-<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(pV\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
-<li><p>For each data point calculate the value of <span class="math notranslate nohighlight">\(n\)</span>, the number of moles of argon in the ballon, and store these values in a NumPy array.</p></li>
-<li><p>Find the mean and standard error of this array (the standard error is the standard deviation divde by the [square root] of the sample size) and print these values in a string using the <a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/variables.html#aside-f-strings">f-strings</a> syntax.</p></li>
-</ul>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/ideal_gas_law_exercises.html">Worked Examples</a></p>
-<div class="section" id="tip">
-<h2>Tip<a class="headerlink" href="#tip" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Gas_constant">ideal gas constant</a> can be imported from the SciPy package and stored as the variable <code class="docutils literal notranslate"><span class="pre">R</span></code> with the following code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span>
+  <div class="section" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<p>First, we must create NumPy arrays to storage each of the three columns of data in the table.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5020</span><span class="p">,</span> <span class="mi">60370</span><span class="p">,</span> <span class="mi">20110</span><span class="p">,</span> <span class="mi">46940</span><span class="p">,</span> <span class="mi">362160</span><span class="p">])</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">200</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1400</span><span class="p">,</span> <span class="mi">1800</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we plot, <span class="math notranslate nohighlight">\(p\)</span> against <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$T$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$p$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ideal_gas_law_exercises_5_0.png" src="../_images/ideal_gas_law_exercises_5_0.png" />
+</div>
+</div>
+<p>Then <span class="math notranslate nohighlight">\(V\)</span> against <span class="math notranslate nohighlight">\(T\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$T$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$V$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ideal_gas_law_exercises_7_0.png" src="../_images/ideal_gas_law_exercises_7_0.png" />
+</div>
+</div>
+<p>Finally, <span class="math notranslate nohighlight">\(pV\)</span> against <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="n">V</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$T$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$pV$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ideal_gas_law_exercises_9_0.png" src="../_images/ideal_gas_law_exercises_9_0.png" />
+</div>
+</div>
+<p>There is a clear linear relationship between <span class="math notranslate nohighlight">\(pV\)</span> and <span class="math notranslate nohighlight">\(T\)</span>, the ideal gas relation.</p>
+<p>We can now calculate <span class="math notranslate nohighlight">\(n\)</span> for each data point by rearranging the ideal gas law to read,</p>
+<div class="math notranslate nohighlight">
+\[ n = \frac{pV}{RT} \]</div>
+<p>and we can use NumPy array to perform this mathematics.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="mi">91</span><span class="n">b32f7cb7e3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;scipy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">V</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.41506889 2.42028069 2.41867706 2.41953615 2.41987978]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then find the mean <span class="math notranslate nohighlight">\(n\)</span> and standard error as follows,</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">std_err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std_err</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.4186885144638026 0.00037708831485353504
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function will return the number of items in a list as an <code class="docutils literal notranslate"><span class="pre">int</span></code>.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -417,8 +495,6 @@ Carry out the following:</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="plotting.html" title="previous page">Plotting</a>
-    <a class='right-next' id="next-link" href="file_io.html" title="next page">File I/O</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
