@@ -43,6 +43,7 @@
       sections:
         - file: comp_chem_methods/gradient_descent
         - file: comp_chem_methods/newtons
+    - file: comp_chem_methods/scipy_opt_minimize
 #- part: Structured Programming
 #  chapters:
 #    - file: structured_programming/functions
