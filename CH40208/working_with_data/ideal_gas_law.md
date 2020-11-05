@@ -22,7 +22,9 @@ Carry out the following:
 - Plot the relationship between $V$ and $T$.
 - Plot the relationship between $pV$ and $T$.
 - For each data point calculate the value of $n$, the number of moles of argon in the ballon, and store these values in a NumPy array.
-- Find the mean and standard error of this array (the standard error is the [square root](https://numpy.org/doc/stable/reference/generated/numpy.sqrt.html) of the standard deviation) and print these values in a string using the [f-strings](https://pythoninchemistry.org/ch40208/python_basics/variables.html#aside-f-strings) syntax.
+- Find the mean and standard error of this array (the standard error is the standard deviation divde by the [square root] of the sample size) and print these values in a string using the [f-strings](https://pythoninchemistry.org/ch40208/python_basics/variables.html#aside-f-strings) syntax.
+
+[Worked Examples](https://pythoninchemistry.org/ch40208/working_with_data/ideal_gas_law_exercises.html)
 
 ## Tip 
 
