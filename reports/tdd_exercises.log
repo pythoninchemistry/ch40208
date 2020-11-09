@@ -1,0 +1,51 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/jupyter_cache/executors/utils.py", line 56, in single_nb_execution
+    record_timing=False,
+  File "/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nbclient/client.py", line 1087, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/asyncio/base_events.py", line 587, in run_until_complete
+    return future.result()
+  File "/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nbclient/client.py", line 541, in async_execute
+    cell, index, execution_count=self.code_cells_executed + 1
+  File "/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nbclient/client.py", line 832, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/nbclient/client.py", line 740, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply['content'])
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from scipy.constants import c, h
+
+def energy(wavenumber):
+    return
+
+np.testing.assert_almost_equal(energy(5.03411665e24), 1)
+print('Test 1 for Problem 1 Passed!')
+np.testing.assert_almost_equal(energy(755117497.6671815), 1.5e-16)
+print('Test 2 for Problem 1 Passed!')
+np.testing.assert_almost_equal(energy(5.663381232503861e+28), 1.125e4)
+print('Test 3 for Problem 1 Passed!')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mTypeError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-2-b5af79b3711c>[0m in [0;36m<module>[0;34m[0m
+[1;32m      4[0m     [0;32mreturn[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0;34m[0m[0m
+[0;32m----> 6[0;31m [0mnp[0m[0;34m.[0m[0mtesting[0m[0;34m.[0m[0massert_almost_equal[0m[0;34m([0m[0menergy[0m[0;34m([0m[0;36m5.03411665e24[0m[0;34m)[0m[0;34m,[0m [0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      7[0m [0mprint[0m[0;34m([0m[0;34m'Test 1 for Problem 1 Passed!'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m [0mnp[0m[0;34m.[0m[0mtesting[0m[0;34m.[0m[0massert_almost_equal[0m[0;34m([0m[0menergy[0m[0;34m([0m[0;36m755117497.6671815[0m[0;34m)[0m[0;34m,[0m [0;36m1.5e-16[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/testing/_private/utils.py[0m in [0;36massert_almost_equal[0;34m(actual, desired, decimal, err_msg, verbose)[0m
+[1;32m    592[0m     [0;32mexcept[0m [0;34m([0m[0mNotImplementedError[0m[0;34m,[0m [0mTypeError[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    593[0m         [0;32mpass[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 594[0;31m     [0;32mif[0m [0mabs[0m[0;34m([0m[0mdesired[0m [0;34m-[0m [0mactual[0m[0;34m)[0m [0;34m>=[0m [0;36m1.5[0m [0;34m*[0m [0;36m10.0[0m[0;34m**[0m[0;34m([0m[0;34m-[0m[0mdecimal[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    595[0m         [0;32mraise[0m [0mAssertionError[0m[0;34m([0m[0m_build_err_msg[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    596[0m [0;34m[0m[0m
+
+[0;31mTypeError[0m: unsupported operand type(s) for -: 'int' and 'NoneType'
+TypeError: unsupported operand type(s) for -: 'int' and 'NoneType'
+

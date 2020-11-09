@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modules &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Writing readable code &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -45,7 +45,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Raising errors" href="raising_errors.html" />
+    <link rel="prev" title="Logical Operations and Flow Control" href="../python_basics/logic_and_flow_control.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -81,22 +83,19 @@
   <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
   
 </a>
-</div>
-
-<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form>
-
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="nav sidenav_l1">
+    <ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../welcome.html">
    Welcome to CH40208
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Jupyter Notebooks
  </span>
@@ -128,7 +127,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Python
  </span>
@@ -195,7 +194,29 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Good Practice
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Writing readable code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raising_errors.html">
+   Raising errors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testing.html">
+   Testing
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Working with Data
  </span>
@@ -222,7 +243,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption collapsible-parent">
  <span class="caption-text">
   Computational Chemistry Methods
  </span>
@@ -238,10 +259,24 @@
    Geometry Optimisation
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../comp_chem_methods/minimisation.html">
    Function minimisation
   </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/gradient_descent.html">
+     Gradient descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/newtons.html">
+     Newton’s method
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">
@@ -250,9 +285,7 @@
  </li>
 </ul>
 
-</nav>
-
- <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
   Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
@@ -281,24 +314,24 @@
             <i class="fas fa-arrow-up"></i>
         </button>
         
-        <div class="dropdown-buttons-trigger">
+        
+<div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
-    
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/good_practice/modules.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/good_practice/readable.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
-    
 </div>
+
         <!-- Source interaction buttons -->
 
 
@@ -310,10 +343,41 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/good_practice/readable.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+ </li>
+</ul>
+
+        </nav>
         
     </div>
 </div>
@@ -322,8 +386,50 @@
         
               <div>
                 
-  <div class="section" id="modules">
-<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="writing-readable-code">
+<h1>Writing readable code<a class="headerlink" href="#writing-readable-code" title="Permalink to this headline">¶</a></h1>
+<p>One of the benefits of using Python over other programming languages is clear syntax.
+However, we can ensure the understandability of our code further by writing readable code.
+Readable code includes:</p>
+<ul class="simple">
+<li><p>Using sensible variable names</p></li>
+<li><p>Using relevant comments (a comment is where we start a line with <code class="docutils literal notranslate"><span class="pre">#</span></code> and that line is ignored by the Python kernel)</p></li>
+<li><p>Including descriptive docstrings for functions</p></li>
+<li><p>Writing modular code with short functions that perform a small number of tasks</p></li>
+</ul>
+<p>If we consider the following example, where we are trying to determine which elements in the list below are liquid at room temperature.
+The code below is not readable (at least not easily) but it is trying to print the elements that are liquid at room temperature.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some ugly, hard to read code</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;Ca&#39;</span><span class="p">,</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;Hg&#39;</span><span class="p">,</span> <span class="s1">&#39;Br&#39;</span><span class="p">,</span> <span class="s1">&#39;Xe&#39;</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">[</span><span class="mf">13.99</span><span class="p">,</span> <span class="mi">1115</span><span class="p">,</span> <span class="mi">1811</span><span class="p">,</span> <span class="mf">234.321</span><span class="p">,</span> <span class="mf">265.8</span><span class="p">,</span> <span class="mf">161.4</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">20.271</span><span class="p">,</span> <span class="mi">1757</span><span class="p">,</span> <span class="mi">3134</span><span class="p">,</span> <span class="mf">629.88</span><span class="p">,</span> <span class="mi">332</span><span class="p">,</span> <span class="mf">165.051</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">m</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">273.15</span> <span class="ow">and</span> <span class="n">b</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">273.15</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This element is a liquid at standard temperature and pressure.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hg
+This element is a liquid at standard temperature and pressure.
+Br
+This element is a liquid at standard temperature and pressure.
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is not immediately clear what this code is trying to achieve.
+For example, the three lists are simply given the names <code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, and <code class="docutils literal notranslate"><span class="pre">b</span></code>, which the author (currently) knows are short for chemical <code class="docutils literal notranslate"><span class="pre">s</span></code>ymbols, <code class="docutils literal notranslate"><span class="pre">m</span></code>elting point, and <code class="docutils literal notranslate"><span class="pre">b</span></code>oiling point.
+However, if someone else was to try and understand this it is not clear, or if the original author comes back to the code many months (or years) later.
+There are no comments or documentation to explain the purpose of this code, in particular, the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement would benefit from some rationalisation.</p>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Rewrite the code above to be more readable and clear, remembering to have descriptive variable names and include relevant and informative comments.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -354,6 +460,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="../python_basics/logic_and_flow_control.html" title="previous page">Logical Operations and Flow Control</a>
+    <a class='right-next' id="next-link" href="raising_errors.html" title="next page">Raising errors</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

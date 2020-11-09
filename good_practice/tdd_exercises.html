@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Testing &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercise &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="NumPy" href="../working_with_data/numpy_arrays.html" />
-    <link rel="prev" title="Raising errors" href="raising_errors.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -199,7 +197,7 @@
   Good Practice
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="readable.html">
    Writing readable code
@@ -210,8 +208,8 @@
    Raising errors
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="testing.html">
    Testing
   </a>
  </li>
@@ -323,7 +321,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/good_practice/testing.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/good_practice/tdd_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -348,7 +346,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/good_practice/testing.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/good_practice/tdd_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -371,13 +369,28 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-driven-development">
-   Test-driven development
+  <a class="reference internal nav-link" href="#problem-1">
+   Problem 1
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#problem-2">
+   Problem 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-3">
+   Problem 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-4">
+   Problem 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-5">
+   Problem 5
   </a>
  </li>
 </ul>
@@ -391,42 +404,10 @@
         
               <div>
                 
-  <div class="section" id="testing">
-<h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
-<p>When we write code, we want to be sure that it is doing <strong>exactly</strong> what we thinking it is doing.
-Unfortunately, no one is perfect and this property is transferred to the code that we write.
-So we, as conscious, programmers, should write tests for all of your code ensuring that is it doing the right thing in all circumstances.</p>
-<p>Typically we apply tests for our code that the function level, where there is, at least a test for each of the functions in our program.
-However, in order to achieve full test coverage, it may be necessary to have more than one test for a given function.
-Consider the code below, which performs simple temperature conversions, using logic to change the arithmetic as appropriate.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">temperature_conversion</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">unit</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Temperature conversion that is dependent on </span>
-<span class="sd">    the input unit. </span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        value (float): Temperature to be converted. </span>
-<span class="sd">        unit (str): Unit of the original temperature.</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        (float): Temperature converted to Kelvin.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">unit</span> <span class="o">==</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">value</span> <span class="o">+</span> <span class="mf">273.15</span>
-    <span class="k">elif</span> <span class="n">unit</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">+</span> <span class="mf">459.67</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The supported units are C or F.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>In this example, our code will <a class="reference external" href="https://pythoninchemistry.org/ch40208/good_practice/raising_errors.html">raise an error</a> if the unit argument is neither <code class="docutils literal notranslate"><span class="pre">'C'</span></code> or <code class="docutils literal notranslate"><span class="pre">'F'</span></code>.</p>
-<p>We can now write some tests for this function.
-We know that the melting point is water is 0 <sup>o</sup>C, 273.15 K and 32 <sup>o</sup>F.
-Therefore our tests should reflect this knowledge.</p>
+  <div class="section" id="exercise">
+<h1>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h1>
+<p>The idea for this exercise is to copy and paste the tests and the function definitions into your own Notebook.
+Once the function that your write satifies the test, only <code class="docutils literal notranslate"><span class="pre">'Test</span> <span class="pre">X</span> <span class="pre">for</span> <span class="pre">Problem</span> <span class="pre">Y</span> <span class="pre">Passed!'</span></code> will be printed when the cell is run.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -434,95 +415,116 @@ Therefore our tests should reflect this knowledge.</p>
 </div>
 </div>
 </div>
+<div class="section" id="problem-1">
+<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a></h2>
+<p>The first function should produce the energy of a photon given a particular wavenumber. Note that the speed of light and Planck’s constnat are imported from the <code class="docutils literal notranslate"><span class="pre">scipy.constants</span></code> library as <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code> respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">temperature_conversion</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mf">273.15</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 Passed!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test 1 Passed!
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="n">temperature_conversion</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">273.15</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 Passed!&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test 2 Passed!
-</pre></div>
-</div>
-</div>
-</div>
-<p>These two tests will cover two of the branches of our function.
-The <code class="docutils literal notranslate"><span class="pre">np.testing.assert_almost_equal</span></code> function is an element of the NumPy testing library.
-This test function checks if the two arguments are <strong>approximately</strong> equal.
-This must be approximate due to the <a class="reference external" href="https://floating-point-gui.de">floating point arithmetic</a> problems.
-For an integer, string, or Boolean where the value does not need to be approximate, the <code class="docutils literal notranslate"><span class="pre">np.testing.assert_equal</span></code> function may be used.
-If the values are not almost equal, and error will be thrown.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mf">270.15</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 3 Passed!&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span>
+
+<span class="k">def</span> <span class="nf">energy</span><span class="p">(</span><span class="n">wavenumber</span><span class="p">):</span>
+    <span class="k">return</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">energy</span><span class="p">(</span><span class="mf">5.03411665e24</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">energy</span><span class="p">(</span><span class="mf">755117497.6671815</span><span class="p">),</span> <span class="mf">1.5e-16</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">energy</span><span class="p">(</span><span class="mf">5.663381232503861e+28</span><span class="p">),</span> <span class="mf">1.125e4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 3 for Problem 1 Passed!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="mi">0</span><span class="n">ecc932d8f1f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mf">270.15</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 3 Passed!&#39;</span><span class="p">)</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">b5af79b3711c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">energy</span><span class="p">(</span><span class="mf">5.03411665e24</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">energy</span><span class="p">(</span><span class="mf">755117497.6671815</span><span class="p">),</span> <span class="mf">1.5e-16</span><span class="p">)</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/testing/_private/utils.py</span> in <span class="ni">assert_almost_equal</span><span class="nt">(actual, desired, decimal, err_msg, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="k">except</span> <span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">593</span>         <span class="k">pass</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span>     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">desired</span> <span class="o">-</span> <span class="n">actual</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="mf">10.0</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">decimal</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">595</span>         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">_build_err_msg</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">594</span>     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">desired</span> <span class="o">-</span> <span class="n">actual</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="mf">10.0</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">decimal</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">_build_err_msg</span><span class="p">())</span>
 <span class="g g-Whitespace">    </span><span class="mi">596</span> 
-<span class="g g-Whitespace">    </span><span class="mi">597</span> 
 
-<span class="ne">AssertionError</span>: 
-<span class="n">Arrays</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">almost</span> <span class="n">equal</span> <span class="n">to</span> <span class="mi">7</span> <span class="n">decimals</span>
- <span class="n">ACTUAL</span><span class="p">:</span> <span class="mf">273.15</span>
- <span class="n">DESIRED</span><span class="p">:</span> <span class="mf">270.15</span>
+<span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;int&#39; and &#39;NoneType&#39;
 </pre></div>
 </div>
 </div>
 </div>
-<p>Notice that the Python kernel never reaches the print statement.</p>
-<p>However, so far our tests do not cover every possible operation of the function.
-We have a test for the <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code> branches, but not the <code class="docutils literal notranslate"><span class="pre">else</span></code> branch.
-Therefore, we must introduce another type of test, that checks if an error is raised.</p>
+</div>
+<div class="section" id="problem-2">
+<h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a></h2>
+<p>The second function should be able to determine the volume of a system (assuming the gas is ideal) given the number of moles of gas <span class="math notranslate nohighlight">\(n\)</span>, the temperature <span class="math notranslate nohighlight">\(T\)</span> and the pressure <span class="math notranslate nohighlight">\(p\)</span>. Again the ideal gas constant is imported for you as <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
+<p>Remember,</p>
+<div class="math notranslate nohighlight">
+\[pV = nRT\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">temperature_conversion</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 4 Passed!&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span>
+
+<span class="k">def</span> <span class="nf">ideal_gas_law</span><span class="p">(</span><span class="n">number_of_moles</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">pressure</span><span class="p">):</span>
+    <span class="k">return</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101325</span><span class="p">),</span> <span class="mf">0.82057338</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">10132500</span><span class="p">),</span> <span class="mf">4.10286691e-04</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">ideal_gas_law</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 3 for Problem 2 Passed!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test 4 Passed!
+</div>
+</div>
+<div class="section" id="problem-3">
+<h2>Problem 3<a class="headerlink" href="#problem-3" title="Permalink to this headline">¶</a></h2>
+<p>This function should return the allowed values of the angular momentum quantum number <span class="math notranslate nohighlight">\(l\)</span>, given a particular principal quantum number <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>Remember,</p>
+<div class="math notranslate nohighlight">
+\[ 0 \le l \le n - 1 \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">allowed_angular_momentum_quantum_numbers</span><span class="p">(</span><span class="n">principal_quantum_number</span><span class="p">):</span>
+    <span class="k">return</span> 
 </pre></div>
 </div>
 </div>
 </div>
-<p>This function takes the expected error type, the function and the input arguments and will pass if the error is thrown under these circumstances.</p>
-<div class="section" id="test-driven-development">
-<h2>Test-driven development<a class="headerlink" href="#test-driven-development" title="Permalink to this headline">¶</a></h2>
-<p>Test-driven development (TDD) is a methodology for computer programming, where the tests are written first for a particular use case and then the operational code is written such that it passes these tests.
-This methodology is different from that applied to this point in the course, however, it is very popular and powerful when applied properly.
-In the exercise below, and the assessment later in the semester, you will be asked to try your hand at some test-driven development.</p>
 </div>
-<div class="section" id="exercises">
-<h2><a class="reference external" href="https://pythoninchemistry.org/ch40208/good_practice/tdd_exercises.html">Exercises</a><a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="problem-4">
+<h2>Problem 4<a class="headerlink" href="#problem-4" title="Permalink to this headline">¶</a></h2>
+<p>This function should return the rate constants <span class="math notranslate nohighlight">\(k\)</span> for a reaction with a given activation energy <span class="math notranslate nohighlight">\(E_a\)</span> and pre-exponential factor <span class="math notranslate nohighlight">\(A\)</span>, and at a range of temperatures <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p>Remember,</p>
+<div class="math notranslate nohighlight">
+\[ k = A \exp{\frac{-E_a}{RT}} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arrhenius_equation</span><span class="p">(</span><span class="n">pre_exponential_factor</span><span class="p">,</span> <span class="n">activation_energy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
+    <span class="k">return</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-5">
+<h2>Problem 5<a class="headerlink" href="#problem-5" title="Permalink to this headline">¶</a></h2>
+<p>Write a function to calculate the energy of a Morse potential (this potential is a good model of a chemical bond) at a given set of distances. The functional form of a Morse potential is,</p>
+<div class="math notranslate nohighlight">
+\[E(r) = D_e\{1-\exp{[-(r-r_e)]}\}^2 \]</div>
+<p>where <span class="math notranslate nohighlight">\(D_e\)</span> is the dissociation energy, <span class="math notranslate nohighlight">\(r\)</span> is the bond length, and <span class="math notranslate nohighlight">\(r_e\)</span> is the equilibrium bond length.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">morse</span><span class="p">(</span><span class="n">dissociation_energy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_e</span><span class="p">):</span>
+    <span class="k">return</span> 
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -554,8 +556,6 @@ In the exercise below, and the assessment later in the semester, you will be ask
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="raising_errors.html" title="previous page">Raising errors</a>
-    <a class='right-next' id="next-link" href="../working_with_data/numpy_arrays.html" title="next page">NumPy</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
