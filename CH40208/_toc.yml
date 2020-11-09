@@ -28,6 +28,11 @@
     - file: python_basics/logic_and_flow_control
 #        - file: python_basics/tuples
 #        - file: python_basics/dictionaries
+- part: Good Practice
+  chapters:
+    - file: good_practice/readable
+    - file: good_practice/raising_errors
+    - file: good_practice/testing
 - part: Working with Data
   chapters: 
     - file: working_with_data/numpy_arrays
