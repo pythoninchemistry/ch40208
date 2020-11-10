@@ -39,7 +39,7 @@ from scipy.constants import R
 def ideal_gas_law(number_of_moles, temperature, pressure):
     return
 
-np.testing.assert_almost_equal(ideal_gas_law(100, 100, 101325), 0.82057337)
+np.testing.assert_almost_equal(ideal_gas_law(100, 100, 101325), 0.82057367)
 print('Test 1 for Problem 2 Passed!')
 np.testing.assert_almost_equal(ideal_gas_law(1, 500, 10132500), 4.10286691e-04)
 print('Test 2 for Problem 2 Passed!')
