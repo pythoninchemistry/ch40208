@@ -1,7 +1,8 @@
 # Exercise 
 
 The idea for this exercise is to copy and paste the tests and the function definitions into your own Notebook. 
-Once the function that your write satifies the test, only `'Test X for Problem Y Passed!'` will be printed when the cell is run. 
+Once the function that your write satifies the test, only `'Test X for Problem Y Passed!'` will be printed when the cell is run.
+Unless otherwise stated, all values are in SI units.
 
 ```
 import numpy as np
@@ -10,7 +11,6 @@ import numpy as np
 ## Problem 1 
 
 The first function should produce the energy of a photon given a particular wavenumber. Note that the speed of light and Planck's constant are imported from the `scipy.constants` library as `c` and `h` respectively. 
-Note, the test wavenumber values are in m<sup>-1</sup>. 
 
 ```
 from scipy.constants import c, h
