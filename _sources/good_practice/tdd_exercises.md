@@ -72,7 +72,7 @@ print('Test 4 for Problem 3 Passed!')
 
 ## Problem 4
 
-This function should return the rate constants $k$ for a reaction with a given activation energy $E_a$ and pre-exponential factor $A$, and at a range of temperatures $T$.
+This function should return the rate constants $k$ for a reaction with a given activation energy $E_a$ (in joules) and pre-exponential factor $A$, and at a range of temperatures $T$.
 
 Remember,
 
@@ -80,12 +80,12 @@ $$ k = A \exp{\frac{-E_a}{RT}} $$
 
 ```
 def arrhenius_equation(pre_exponential_factor, activation_energy, temperature):
-    return
+    return pre_exponential_factor * np.exp(-activation_energy / (R * temperature))
 
-np.testing.assert_almost_equal(arrhenius_equation(23e10, 24.131, 300), 14462039.570798188)
+np.testing.assert_almost_equal(arrhenius_equation(23e10, 24.131, 300), 227785637794.47137)
 print('Test 1 for Problem 4 Passed!')
 np.testing.assert_almost_equal(arrhenius_equation(29, 10, np.array([6, 26, 226])), 
-                               [2.5489685e-86, 2.3580017e-19, 1.4163672e-01])
+                               [23.7324167, 27.6890556, 28.8460781])
 print('Test 2 for Problem 4 Passed!')
 ```
 

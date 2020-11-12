@@ -454,17 +454,17 @@ Unless otherwise stated, all values are in SI units.</p>
 </div>
 <div class="section" id="problem-4">
 <h2>Problem 4<a class="headerlink" href="#problem-4" title="Permalink to this headline">¶</a></h2>
-<p>This function should return the rate constants <span class="math notranslate nohighlight">\(k\)</span> for a reaction with a given activation energy <span class="math notranslate nohighlight">\(E_a\)</span> and pre-exponential factor <span class="math notranslate nohighlight">\(A\)</span>, and at a range of temperatures <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p>This function should return the rate constants <span class="math notranslate nohighlight">\(k\)</span> for a reaction with a given activation energy <span class="math notranslate nohighlight">\(E_a\)</span> (in joules) and pre-exponential factor <span class="math notranslate nohighlight">\(A\)</span>, and at a range of temperatures <span class="math notranslate nohighlight">\(T\)</span>.</p>
 <p>Remember,</p>
 <div class="math notranslate nohighlight">
 \[ k = A \exp{\frac{-E_a}{RT}} \]</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arrhenius_equation</span><span class="p">(</span><span class="n">pre_exponential_factor</span><span class="p">,</span> <span class="n">activation_energy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
-    <span class="k">return</span>
+    <span class="k">return</span> <span class="n">pre_exponential_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">activation_energy</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">temperature</span><span class="p">))</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">arrhenius_equation</span><span class="p">(</span><span class="mf">23e10</span><span class="p">,</span> <span class="mf">24.131</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mf">14462039.570798188</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">arrhenius_equation</span><span class="p">(</span><span class="mf">23e10</span><span class="p">,</span> <span class="mf">24.131</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mf">227785637794.47137</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 4 Passed!&#39;</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">arrhenius_equation</span><span class="p">(</span><span class="mi">29</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">226</span><span class="p">])),</span> 
-                               <span class="p">[</span><span class="mf">2.5489685e-86</span><span class="p">,</span> <span class="mf">2.3580017e-19</span><span class="p">,</span> <span class="mf">1.4163672e-01</span><span class="p">])</span>
+                               <span class="p">[</span><span class="mf">23.7324167</span><span class="p">,</span> <span class="mf">27.6890556</span><span class="p">,</span> <span class="mf">28.8460781</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 4 Passed!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
