@@ -82,10 +82,10 @@ $$ k = A \exp{\frac{-E_a}{RT}} $$
 def arrhenius_equation(pre_exponential_factor, activation_energy, temperature):
     return
 
-np.testing.assert_almost_equal(arrhenius_equation(23e10, 24131, 300), 14461992.1514407)
+np.testing.assert_almost_equal(arrhenius_equation(23e10, 24.131, 300), 14462039.570798188)
 print('Test 1 for Problem 4 Passed!')
 np.testing.assert_almost_equal(arrhenius_equation(29, 10, np.array([6, 26, 226])), 
-                               [23.73241504, 27.68905521, 28.8460781])
+                               [2.5489685e-86, 2.3580017e-19, 1.4163672e-01])
 print('Test 2 for Problem 4 Passed!')
 ```
 
