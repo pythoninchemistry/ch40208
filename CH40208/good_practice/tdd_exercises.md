@@ -22,7 +22,7 @@ np.testing.assert_almost_equal(energy(5.03411665e24), 1)
 print('Test 1 for Problem 1 Passed!')
 np.testing.assert_almost_equal(energy(755117497.6671815), 1.5e-16)
 print('Test 2 for Problem 1 Passed!')
-np.testing.assert_almost_equal(energy(5.663381232503861e+28), 1.125e4)
+np.testing.assert_almost_equal(energy(5.663381232503861e+28), 11250.000186762287)
 print('Test 3 for Problem 1 Passed!')
 ```
 
@@ -80,8 +80,8 @@ $$ k = A \exp{\frac{-E_a}{RT}} $$
 
 ```
 def arrhenius_equation(pre_exponential_factor, activation_energy, temperature):
-    return pre_exponential_factor * np.exp(-activation_energy / (R * temperature))
-
+    return 
+    
 np.testing.assert_almost_equal(arrhenius_equation(23e10, 24.131, 300), 227785637794.47137)
 print('Test 1 for Problem 4 Passed!')
 np.testing.assert_almost_equal(arrhenius_equation(29, 10, np.array([6, 26, 226])), 
