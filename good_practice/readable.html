@@ -371,6 +371,28 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#principles-of-readable-code">
+   Principles of readable code
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#thoughtful-naming">
+     Thoughtful naming
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comments-explain-the-why">
+     Comments explain the “why”
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#write-modular-code">
+     Write modular code
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
    Exercise
   </a>
@@ -388,17 +410,49 @@
                 
   <div class="section" id="writing-readable-code">
 <h1>Writing readable code<a class="headerlink" href="#writing-readable-code" title="Permalink to this headline">¶</a></h1>
-<p>One of the benefits of using Python over other programming languages is clear syntax.
-However, we can ensure the understandability of our code further by writing readable code.
-Readable code includes:</p>
-<ul class="simple">
-<li><p>Using sensible variable names</p></li>
-<li><p>Using relevant comments (a comment is where we start a line with <code class="docutils literal notranslate"><span class="pre">#</span></code> and that line is ignored by the Python kernel)</p></li>
-<li><p>Including descriptive docstrings for functions</p></li>
-<li><p>Writing modular code with short functions that perform a small number of tasks</p></li>
-</ul>
-<p>If we consider the following example, where we are trying to determine which elements in the list below are liquid at room temperature.
-The code below is not readable (at least not easily) but it is trying to print the elements that are liquid at room temperature.</p>
+<p>There are usually several ways to solve a particular programming problem, and the code you write may be very different from the code that someone else might write when faced with the same problem.</p>
+<p>While any code that solves the problem at hand might be said to be “correct”, <strong>style</strong> is also important. Here we focus on one of the most important aspects of coding style; that of writing code that is <strong>readable</strong>.</p>
+<p>Pieces of code are rarely used once and then thrown away. Even code that is written to solve a small problem <strong>right now</strong> can find itself being used months or years later, either by the original author or by other users. By making your code <strong>readable</strong> you make it easier for someone reading the code to understand and follow what it does, whether this is someone else, or you in six months time when you need to reanalyse that one last piece of data.</p>
+<p>Making your code readable also makes it easier to spot mistakes and bugs. Writing more readable code helps you to focus more on how pieces of your code work together, and focus less on exactly what line 36 is doing. Thinking about making your code readable also helps you to identify problems in your logic or code structure <strong>before</strong> you commit these to code, possibly creating bugs that do not reveal themselves until much later (and then are hard to track down and fix).</p>
+<p>Readability is a question of <strong>style</strong> and is therefore something of a personal preference. As you write more code, you will develop your own taste for whether code is “readable” or not. A good first test for whether code is readable is to review it after a short break from writing: can you follow what it does, or do you need to start making notes to keep track of the details? An even better test is to ask <strong>someone else</strong> to review your code (called “code review”) and to comment on whether they follow what it is doing.</p>
+<p>What makes one piece of code more or less readable than another is somewhat a matter of personal taste. But there are some basic principles to consider that can help your code to be more readable:</p>
+<div class="section" id="principles-of-readable-code">
+<h2>Principles of readable code<a class="headerlink" href="#principles-of-readable-code" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="thoughtful-naming">
+<h3>Thoughtful naming<a class="headerlink" href="#thoughtful-naming" title="Permalink to this headline">¶</a></h3>
+<p>Your choices of function and variable names should help explain what they are doing. Naming a function <code class="docutils literal notranslate"><span class="pre">my_func()</span></code> is not particularly helpful when later reading the code. Calling a function <code class="docutils literal notranslate"><span class="pre">potential_energy()</span></code> gives the reader a better idea what this function is used for. Similarly, calling a variable <code class="docutils literal notranslate"><span class="pre">i</span></code> is less helpful than calling it <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
+</div>
+<div class="section" id="comments-explain-the-why">
+<h3>Comments explain the “why”<a class="headerlink" href="#comments-explain-the-why" title="Permalink to this headline">¶</a></h3>
+<p>Comments in Python are denoted using the <code class="docutils literal notranslate"><span class="pre">#</span></code> character. The Python interpreter will ignore all the text the appears after this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a comment, with nothing else on this line.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span> <span class="c1"># This comment is on the same line as executable code.</span>
+</pre></div>
+</div>
+<p>In an ideal world your code would be written so that someone reading it can understand what the code is doing <strong>without</strong> comments.</p>
+<p>Comments fill in the gaps, and should be used to explain <strong>why</strong> you are doing something, rather than <strong>how</strong>.</p>
+<p>Here is a helpful comment:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the distance between atoms i and j</span>
+<span class="n">dr_ij</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">ri</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">rj</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">ri</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rj</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">ri</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">rj</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and here is a less helpful comment:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># From Pythagoras&#39;s theorem, the square root of the distance between points i and j is equal to the </span>
+<span class="c1"># sum of squares of the differences in position along x, y, and z.</span>
+<span class="n">dr_ij</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">ri</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">rj</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">ri</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">rj</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">ri</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">rj</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Function <strong>docstrings</strong> are a particularly useful type of comment. They describe what functions do,  what required and optional arguments inputs they require (or which arguments are optional) and what they return. Docstrings should always be included.</p>
+</div>
+<div class="section" id="write-modular-code">
+<h3>Write modular code<a class="headerlink" href="#write-modular-code" title="Permalink to this headline">¶</a></h3>
+<p>Books are divided into chapters, sections, paragraphs, and sentences to help the reader to mentally organise similar ideas together and to mark transitions. A book without paragraph breaks or chapters would be much more difficult to read.</p>
+<p>Similarly, well written code is divided into modular components: modules, classes, functions. Breaking your code up into smaller building blocks, instead of always keeping everything in one unstructured file makes it much easier to read and to edit. Writing modular code also makes it easier to build more complex programs comprising 100s or 1000s of lines of code.</p>
+<p>Each component should have one clearly defined role in the overall program. This allows you to write small clear blocks of code, each with a well-defined purpose, and then link these together to build your complete program. The structure of how you write your code should follow the structure of the problem you are trying to solve.</p>
+<p>Making code modular also makes it easier to <strong>test</strong> your code to be more confident that it is doing what you want it to do.</p>
+<p>The following code is only a few lines long, but is not particularly readable. (Can you figure out what this code is supposed to do?)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some ugly, hard to read code</span>
@@ -422,10 +476,14 @@ This element is a liquid at standard temperature and pressure.
 </div>
 </div>
 </div>
-<p>It is not immediately clear what this code is trying to achieve.
-For example, the three lists are simply given the names <code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, and <code class="docutils literal notranslate"><span class="pre">b</span></code>, which the author (currently) knows are short for chemical <code class="docutils literal notranslate"><span class="pre">s</span></code>ymbols, <code class="docutils literal notranslate"><span class="pre">m</span></code>elting point, and <code class="docutils literal notranslate"><span class="pre">b</span></code>oiling point.
-However, if someone else was to try and understand this it is not clear, or if the original author comes back to the code many months (or years) later.
-There are no comments or documentation to explain the purpose of this code, in particular, the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement would benefit from some rationalisation.</p>
+<p>We can check this code against our three principles above and see where it could be improved:</p>
+<ul class="simple">
+<li><p>The three lists are simply given the names <code class="docutils literal notranslate"><span class="pre">s</span></code>, <code class="docutils literal notranslate"><span class="pre">m</span></code>, and <code class="docutils literal notranslate"><span class="pre">b</span></code>, which represent chemical <code class="docutils literal notranslate"><span class="pre">s</span></code>ymbols, <code class="docutils literal notranslate"><span class="pre">m</span></code>elting points, and <code class="docutils literal notranslate"><span class="pre">b</span></code>oiling points.</p></li>
+<li><p>There are no comments or other documentation to explain the purpose of the code. What is the overall aim? What is the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement for?</p></li>
+<li><p>The code is not modular. In this case splitting up code that is only 7 lines long into functions is probably not necessary, although it might be helpful if there are a few key lines that would benefit from being separated into their own well-defined function.</p></li>
+</ul>
+</div>
+</div>
 <div class="section" id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>Rewrite the code above to be more readable and clear, remembering to have descriptive variable names and include relevant and informative comments.</p>
