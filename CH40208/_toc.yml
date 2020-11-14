@@ -39,7 +39,8 @@
     - file: working_with_data/plotting
     - file: working_with_data/ideal_gas_law
     - file: working_with_data/file_io
-#    - file: working_with_data/minimisation
+    - file: working_with_data/curve_fitting
+    #    - file: working_with_data/minimisation
 - part: Computational Chemistry Methods
   chapters:
     - file: comp_chem_methods/potential_energy_surfaces

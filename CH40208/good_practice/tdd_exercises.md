@@ -1,7 +1,8 @@
 # Exercise 
 
 The idea for this exercise is to copy and paste the tests and the function definitions into your own Notebook. 
-Once the function that your write satifies the test, only `'Test X for Problem Y Passed!'` will be printed when the cell is run. 
+Once the function that your write satifies the test, only `'Test X for Problem Y Passed!'` will be printed when the cell is run.
+Unless otherwise stated, all values are in SI units.
 
 ```
 import numpy as np
@@ -21,7 +22,7 @@ np.testing.assert_almost_equal(energy(5.03411665e24), 1)
 print('Test 1 for Problem 1 Passed!')
 np.testing.assert_almost_equal(energy(755117497.6671815), 1.5e-16)
 print('Test 2 for Problem 1 Passed!')
-np.testing.assert_almost_equal(energy(5.663381232503861e+28), 1.125e4)
+np.testing.assert_almost_equal(energy(5.663381232503861e+28), 11250.000186762287)
 print('Test 3 for Problem 1 Passed!')
 ```
 
@@ -39,7 +40,7 @@ from scipy.constants import R
 def ideal_gas_law(number_of_moles, temperature, pressure):
     return
 
-np.testing.assert_almost_equal(ideal_gas_law(100, 100, 101325), 0.82057338)
+np.testing.assert_almost_equal(ideal_gas_law(100, 100, 101325), 0.82057367)
 print('Test 1 for Problem 2 Passed!')
 np.testing.assert_almost_equal(ideal_gas_law(1, 500, 10132500), 4.10286691e-04)
 print('Test 2 for Problem 2 Passed!')
@@ -71,7 +72,7 @@ print('Test 4 for Problem 3 Passed!')
 
 ## Problem 4
 
-This function should return the rate constants $k$ for a reaction with a given activation energy $E_a$ and pre-exponential factor $A$, and at a range of temperatures $T$.
+This function should return the rate constants $k$ for a reaction with a given activation energy $E_a$ (in joules) and pre-exponential factor $A$, and at a range of temperatures $T$.
 
 Remember,
 
@@ -79,12 +80,12 @@ $$ k = A \exp{\frac{-E_a}{RT}} $$
 
 ```
 def arrhenius_equation(pre_exponential_factor, activation_energy, temperature):
-    return
-
-np.testing.assert_almost_equal(arrhenius_equation(23e10, 24131, 300), 14461992.1514407)
+    return 
+    
+np.testing.assert_almost_equal(arrhenius_equation(23e10, 24.131, 300), 227785637794.47137)
 print('Test 1 for Problem 4 Passed!')
 np.testing.assert_almost_equal(arrhenius_equation(29, 10, np.array([6, 26, 226])), 
-                               [23.73241504, 27.68905521, 28.8460781])
+                               [23.7324167, 27.6890556, 28.8460781])
 print('Test 2 for Problem 4 Passed!')
 ```
 
