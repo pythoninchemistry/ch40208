@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Investigation of the ideal gas law &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercise: Monte Carlo &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="File I/O" href="file_io.html" />
-    <link rel="prev" title="Plotting" href="plotting.html" />
+    <link rel="next" title="Potential Energy Surfaces" href="../comp_chem_methods/potential_energy_surfaces.html" />
+    <link rel="prev" title="Model fitting" href="curve_fitting.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -232,8 +232,8 @@
    Plotting
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ideal_gas_law.html">
    Investigation of the ideal gas law
   </a>
  </li>
@@ -247,8 +247,8 @@
    Model fitting
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="monte_carlo.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Exercise: Monte Carlo
   </a>
  </li>
@@ -333,7 +333,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/working_with_data/ideal_gas_law.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/working_with_data/monte_carlo.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -364,8 +364,23 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#tip">
-   Tip
+  <a class="reference internal nav-link" href="#our-model">
+   Our model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolation">
+   Interpolation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimisation">
+   Optimisation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sampling">
+   Sampling
   </a>
  </li>
 </ul>
@@ -379,59 +394,103 @@
         
               <div>
                 
-  <div class="section" id="investigation-of-the-ideal-gas-law">
-<h1>Investigation of the ideal gas law<a class="headerlink" href="#investigation-of-the-ideal-gas-law" title="Permalink to this headline">¶</a></h1>
-<p>A large balloon is filled with argon gas, the temperature is then varied and the volume and pressure are measured.
-The results of this are shown in the table below.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Temperature/K</p></th>
-<th class="head"><p>Volume/m<sup>3</sup></p></th>
-<th class="head"><p>Pressure/Pa</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>200</p></td>
-<td><p>0.8</p></td>
-<td><p>5020</p></td>
-</tr>
-<tr class="row-odd"><td><p>600</p></td>
-<td><p>0.2</p></td>
-<td><p>60370</p></td>
-</tr>
-<tr class="row-even"><td><p>1000</p></td>
-<td><p>1.0</p></td>
-<td><p>20110</p></td>
-</tr>
-<tr class="row-odd"><td><p>1400</p></td>
-<td><p>0.6</p></td>
-<td><p>46940</p></td>
-</tr>
-<tr class="row-even"><td><p>1800</p></td>
-<td><p>0.1</p></td>
-<td><p>362160</p></td>
-</tr>
-</tbody>
-</table>
-<p>We will assume that the argon gas will follow the ideal gas law, which states,</p>
+  <div class="section" id="exercise-monte-carlo">
+<h1>Exercise: Monte Carlo<a class="headerlink" href="#exercise-monte-carlo" title="Permalink to this headline">¶</a></h1>
+<p>Monte Carlo methods may be familiar from earlier years, where stochastic (random) processes are used to find, for example, the minimum energy position of some atom in space.
+Here we will look at using Monte Carlo to improve our model-fitting methods, in particular the quantification of the uncertainties on the model parameters.</p>
+<p>In the <a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/curve_fitting.html">model fitting</a> section, you were shown how the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function can get estimations of these inverse uncertainties (a fancy name for the parameter uncertainties in the model).
+However, these uncertainties are only estimates and are based on assumptions about the fitting process (the particular assumptions made are beyond the scope of this course).
+Therefore, we will use a stochastic method to more completely probe these uncertainties.</p>
+<p>For this problem, we are going to look at the investigation of a mixture of organic species by IR spectroscopy.
+We have been given <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/working_with_data/mixture.csv">this data set</a>, and are told it contains a mixture of toluene and benzyl alcohol.</p>
+<blockquote>
+<div><p>Use the <code class="docutils literal notranslate"><span class="pre">!head</span></code> command to investigate the experimental data file and plot the data using the <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.errorbar.html"><code class="docutils literal notranslate"><span class="pre">plt.errorbar</span></code></a> function.</p>
+</div></blockquote>
+<div class="section" id="our-model">
+<h2>Our model<a class="headerlink" href="#our-model" title="Permalink to this headline">¶</a></h2>
+<p>This exercise aims to determine the relative concentration of toluene and benzyl alcohol that make up the mixture data that you have just plotted.
+To achieve this, we must define a model to describe this data.
+The transmittance data from the mixture (<span class="math notranslate nohighlight">\(T_{\text{mix}}\)</span>) is made up of transmittance data from toluene (<span class="math notranslate nohighlight">\(T_{\text{t}}\)</span>) and benzyl alcohol (<span class="math notranslate nohighlight">\(T_{\text{b}}\)</span>), and nothing else.
+Since we are interested in the <strong>relative</strong> concentration, we can describe this as a fraction of the composition and since the transmittances are additive, we can define the following model.</p>
 <div class="math notranslate nohighlight">
-\[ pV = nRT, \]</div>
-<p>where, <span class="math notranslate nohighlight">\(p\)</span> is the pressure, <span class="math notranslate nohighlight">\(V\)</span> is the volume, <span class="math notranslate nohighlight">\(n\)</span> is the number of moles of gas, <span class="math notranslate nohighlight">\(R\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Gas_constant">ideal gas constant</a>, and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.
-Carry out the following:</p>
-<ul class="simple">
-<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
-<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
-<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(pV\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
-<li><p>For each data point calculate the value of <span class="math notranslate nohighlight">\(n\)</span>, the number of moles of argon in the ballon, and store these values in a NumPy array.</p></li>
-<li><p>Find the mean and standard error of this array (the standard error is the standard deviation divde by the [square root] of the sample size) and print these values in a string using the <a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/variables.html#aside-f-strings">f-strings</a> syntax.</p></li>
-</ul>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/ideal_gas_law_exercises.html">Worked Examples</a></p>
-<div class="section" id="tip">
-<h2>Tip<a class="headerlink" href="#tip" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Gas_constant">ideal gas constant</a> can be imported from the SciPy package and stored as the variable <code class="docutils literal notranslate"><span class="pre">R</span></code> with the following code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span>
-</pre></div>
+\[T_{\text{mix}} = cT_{\text{t}} + (1 - c)T_{\text{b}}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> describes the composition of the mixture and is the single parameter in our model.</p>
+<blockquote>
+<div><p>Write a function for the above model, <code class="docutils literal notranslate"><span class="pre">c</span></code> should be the first argument as this is the variable parameter we are investigating. Other arguments should include the transmittance from the pure samples.</p>
+</div></blockquote>
+<p>We don’t yet have IR spectra for the pure samples that we can use in the above model.
+Files for these spectra are available <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/working_with_data/toluene.csv">here for toluene</a> and <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/working_with_data/benzyl_alcohol.csv">here for benzyl alcohol</a>.</p>
+<blockquote>
+<div><p>Read in and plot each of the pure datasets.</p>
+</div></blockquote>
 </div>
+<div class="section" id="interpolation">
+<h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h2>
+<p>You will have noticed that the <em>x</em>-axis on each of the three plots created so far do not cover the same range.
+However, to accurately use the model outline above, the transmittance values for all three IR spectra should be at the same wavenumbers.
+Therefore, we must interpolate the two pure datasets such that the wavenumber values are the same as for the mixture.</p>
+<p>Interpolation is where we determine new data points within the range of a discrete set of known points.
+Essentially, we use what we know about the <em>x</em>- and <em>y</em>-values to determine the <em>y</em>-values for a different set of <em>x</em>-values.
+It is important that the new range of <em>x</em>-values is from within the existing range, or else we are extrapolating (which is often unscientific).
+In the three datasets that you have, the two pure samples both have broader ranges than the mixture.
+Therefore, we will use the <em>x</em>-values for the mixture and extrapolate new <em>y</em>-values for each of the pure samples.</p>
+<p>For interpolation, we can use the <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.interp.html"><code class="docutils literal notranslate"><span class="pre">np.interp</span></code></a> method.
+This method takes three arguments, <code class="docutils literal notranslate"><span class="pre">x</span></code> the new <em>x</em>-axis, <code class="docutils literal notranslate"><span class="pre">xp</span></code> the old <em>x</em>-axis, and <code class="docutils literal notranslate"><span class="pre">fp</span></code> the old <em>y</em>-axis.
+It will return a new set of <em>y</em>-values.</p>
+<blockquote>
+<div><p>Interpolate transmittance values for the two model IR spectra and plot these over the original data to check that they agree.</p>
+</div></blockquote>
+</div>
+<div class="section" id="optimisation">
+<h2>Optimisation<a class="headerlink" href="#optimisation" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have the pure data read in and on the correct <em>x</em>-axis, we can test the model that we created earlier.</p>
+<blockquote>
+<div><p>Generate the model transmittance data that would arise from a 50:50 mixture of the two components.
+Plot this data on top of the mixture data and see if it agrees visually.</p>
+</div></blockquote>
+<p>Now that our model is working, we can use the methodology introduced previously to minimise the difference between our model and the data.</p>
+<blockquote>
+<div><p>Write a chi-squared function and minimise this using the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code> function. This will give an optimised value for <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="sampling">
+<h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">¶</a></h2>
+<p>Having found the optimised value for the concentration, we can now use a modification of a Monte Carlo process to sample the uncertainty in this concentration parameter.
+This methodology is called Markov chain Monte Carlo (MCMC), it involves starting from some value and then changing the value by some small random amount with each iteration.
+The fact that the next parameter value depends on the previous one makes the sampling a Markov chain, while the use of random perturbations is Monte Carlo.</p>
+<p>In MCMC we start from an initial value, usually found by obtaining an optimised solution.
+This initial value is changed by some random amount (<span class="math notranslate nohighlight">\(\delta\)</span>), which is obtained based on some defined. step size (<span class="math notranslate nohighlight">\(s\)</span>) change with respect to the variable (<span class="math notranslate nohighlight">\(v\)</span>),</p>
+<div class="math notranslate nohighlight">
+\[ \delta = Nsv, \]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is some random number, obtained from a normal distribution centred on 0 with a standard deviation of 1.
+In Python, <span class="math notranslate nohighlight">\(R\)</span> can be obtained with the function <code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code>.
+We then determine if this random perturbation has improved the. agreement to the data or not.
+If it has, we accept this new value for our variable (<span class="math notranslate nohighlight">\(v + \delta\)</span>) and perform another perturbation.
+If this perturbation does not improve agreement with the data, the new value is not immediately rejected, rather it is only rejected if the probability of this transition (<span class="math notranslate nohighlight">\(p\)</span>) is less than some random number from 0 to 1 (this time we use <code class="docutils literal notranslate"><span class="pre">np.random.random()</span></code> to obtain such a number).
+The probability is found by,</p>
+<div class="math notranslate nohighlight">
+\[p = \exp\Bigg(\frac{-\chi^2_{\text{new}} + \chi^2}{2}\Bigg), \]</div>
+<p>where <span class="math notranslate nohighlight">\(\chi^2\)</span> is the original goodness of fit and  <span class="math notranslate nohighlight">\(\chi^2_{\text{new}}\)</span> is the goodness of fit after the perturbation.
+This means that it is possible for the agreement to get worse over time.
+However, the amount by which it can get worse is controlled by the probability.
+The result of this is that the values of our Markov chain that are accepted will describe the statistically feasible value for our parameter given the uncertainty in the experimental measurements.</p>
+<p>The algorithm for a typical MCMC sampling process is as follows:</p>
+<ol class="simple">
+<li><p>Create an empty list for the accepted values</p></li>
+<li><p>Evaluate <span class="math notranslate nohighlight">\(\chi^2\)</span> for the initial guess, typically this initial guess will be the optimised solution.</p></li>
+<li><p>Perturb the parameter value (<span class="math notranslate nohighlight">\(v + \delta\)</span>)</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\(\chi^2_{\text{new}}\)</span> for the perturbed value</p></li>
+<li><p>Determine the probability of this transition</p></li>
+<li><p>Check that <span class="math notranslate nohighlight">\(p\geq R\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is a random number from 0 to 1, if the new <span class="math notranslate nohighlight">\(\chi^2\)</span> is less than the old one, then <span class="math notranslate nohighlight">\(p&gt;1\)</span> and therefore always accepted</p></li>
+<li><p>If true, updated the values of <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\chi^2\)</span>, and append <span class="math notranslate nohighlight">\(v\)</span> to the list of the accepted values</p></li>
+<li><p>Go to step 3 and repeat until the desired number of iterations have been achieved.</p></li>
+</ol>
+<blockquote>
+<div><p>Write a function to perform the MCMC algorithm outlined above, this should take a number of iterations (this should be no more than 2000) and step size as arguments and return the list of accepted values.
+Plot a histogram of the accepted values (using <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code>), these should be normally distributed (you may need to google to see what this looks like).
+Vary the step size between 1 and 0.001 to get the most normally distributed data you can.
+Using the statistical functions in NumPy, calculate the mean and standard deviation of this distribution.</p>
+</div></blockquote>
 </div>
 </div>
 
@@ -463,8 +522,8 @@ Carry out the following:</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="plotting.html" title="previous page">Plotting</a>
-    <a class='right-next' id="next-link" href="file_io.html" title="next page">File I/O</a>
+    <a class='left-prev' id="prev-link" href="curve_fitting.html" title="previous page">Model fitting</a>
+    <a class='right-next' id="next-link" href="../comp_chem_methods/potential_energy_surfaces.html" title="next page">Potential Energy Surfaces</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
