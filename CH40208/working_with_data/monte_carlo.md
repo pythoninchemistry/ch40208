@@ -91,4 +91,4 @@ The algorithm for a typical MCMC sampling process is as follows:
 > Write a function to perform the MCMC algorithm outlined above, this should take a number of iterations (this should be no more than 2000) and step size as arguments and return the list of accepted values. 
 > Plot a histogram of the accepted values (using `plt.hist`), these should be normally distributed (you may need to google to see what this looks like).
 > Vary the step size between 1 and 0.001 to get the most normally distributed data you can. 
-> Using the statistical function in NumPy, calculate the mean and standard deviation of this distribution. 
+> Using the statistical functions in NumPy, calculate the mean and standard deviation of this distribution. 
