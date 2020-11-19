@@ -9,3 +9,12 @@ latex:
 
 parse:
   myst_extended_syntax: true
+
+sphinx:
+  config:
+    mathjax_config:
+      TeX:
+        Macros:
+          "bvec": ["\\mathbf{#1}", 1]
+          "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2]
+          "norm": ["\\left\\lVert #1\\right\\rVert", 1]

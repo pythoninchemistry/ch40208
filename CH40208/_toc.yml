@@ -53,7 +53,10 @@
     - file: comp_chem_methods/vectors_and_matrices
       sections:
         - file: comp_chem_methods/vectors
-        - file: comp_chem_methods/working_with_vectors_in_python
+        - file: comp_chem_methods/vectors_in_python
+        - file: comp_chem_methods/matrices
+        - file: comp_chem_methods/matrices_in_python
+        
 #- part: Structured Programming
 #  chapters:
 #    - file: structured_programming/functions
