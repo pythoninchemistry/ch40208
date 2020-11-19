@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gradient descent &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercise &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Newton’s method" href="newtons.html" />
-    <link rel="prev" title="Function minimisation" href="minimisation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -258,7 +256,7 @@
   Computational Chemistry Methods
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="potential_energy_surfaces.html">
    Potential Energy Surfaces
@@ -269,13 +267,13 @@
    Geometry Optimisation
   </a>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="minimisation.html">
    Function minimisation
   </a>
-  <ul class="current collapse-ul">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="gradient_descent.html">
      Gradient descent
     </a>
    </li>
@@ -333,7 +331,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/comp_chem_methods/gradient_descent.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/comp_chem_methods/newtons_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -358,7 +356,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/comp_chem_methods/gradient_descent.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/comp_chem_methods/newtons_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -375,20 +373,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise:
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -396,59 +380,76 @@
         
               <div>
                 
-  <div class="section" id="gradient-descent">
-<h1>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h1>
-<p>The first algorithm that we will investigate considers only the gradient of the function and changes the reaction parameter based on this.
-Therefore we must define two functions, one for the energy of the potential energy surface (the Lennard-Jones potential outlined earlier) and another for the gradient of the potential energy surface (this is the first derivative of the Lennard-Jones potential).
-The function for the gradient of the potential energy surface is given below.</p>
-<div class="math notranslate nohighlight">
-\[ E'(r_{ij}) = -12\frac{A}{r_{ij}^{13}} + 6\frac{B}{r_{ij}^7}, \]</div>
-<p>where the parameters are the same as outlined <span class="xref myst">previously</span>.</p>
-<p>Considering the shape of the potential energy surface,</p>
+  <div class="section" id="exercise">
+<h1>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h1>
+<p>This time we need the first and second derivatives.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">first_derivative</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The first derivative of the Lennard-Jones potential model. </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Atom-atom distance (Å).</span>
+<span class="sd">        A (float): Interaction parameter (eVÅ^12).</span>
+<span class="sd">        B (float): Interaction parameter (eVÅ^6).</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Potential energy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mf">12.</span> <span class="o">*</span> <span class="n">A</span> <span class="o">/</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">13</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">B</span> <span class="o">/</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">7</span>
 
-<span class="n">A</span> <span class="o">=</span> <span class="mf">1e5</span>
+<span class="k">def</span> <span class="nf">second_derivative</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The second derivative of the Lennard-Jones potential model. </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Atom-atom distance (Å).</span>
+<span class="sd">        A (float): Interaction parameter (eVÅ^12).</span>
+<span class="sd">        B (float): Interaction parameter (eVÅ^6).</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Potential energy.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">156.</span> <span class="o">*</span> <span class="n">A</span> <span class="o">/</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">14</span> <span class="o">-</span> <span class="mi">42</span> <span class="o">*</span> <span class="n">B</span> <span class="o">/</span> <span class="n">r</span> <span class="o">**</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We when implement Newtons method, which does not need hyperparameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="mf">1e5</span>
 <span class="n">B</span> <span class="o">=</span> <span class="mi">40</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">12</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$r_</span><span class="si">{ij}</span><span class="s1">$/Å&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$E$/eV&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">4.4</span>
+<span class="n">r_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+    <span class="n">E_dash</span> <span class="o">=</span> <span class="n">first_derivative</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="n">E_ddash</span> <span class="o">=</span> <span class="n">second_derivative</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">E_dash</span> <span class="o">/</span> <span class="n">E_ddash</span>
+    <span class="n">r_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is easier to show the convergence with a plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">31</span><span class="p">),</span> <span class="n">r_list</span><span class="p">,</span> <span class="s1">&#39;o--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Iteration&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/gradient_descent_1_0.png" src="../_images/gradient_descent_1_0.png" />
+<img alt="../_images/newtons_exercises_5_0.png" src="../_images/newtons_exercises_5_0.png" />
 </div>
 </div>
-<p>When the gradient is positive, where <span class="math notranslate nohighlight">\(r_{ij} &gt; 4.1\)</span> Å, then we want to reduce the value of <span class="math notranslate nohighlight">\(r_{ij}\)</span>, such that we go downhill towards the minimum.
-Where the gradient is negative, <span class="math notranslate nohighlight">\(r_{ij} &lt; 4.1\)</span> Å, the value of <span class="math notranslate nohighlight">\(r_{ij}\)</span> needs to increase to move towards the minimum.
-This gives rise to the following algorithm,</p>
-<ol>
-<li><p>An initial guess of the minimum energy distance is made</p></li>
-<li><p>The first derivative of the energy at that distance is calculated</p></li>
-<li><p>The distance is updated based on the following relationship,</p>
-<div class="math notranslate nohighlight">
-\[ r_{\text{new}} = r_{\text{old}} - \alpha E'(r_{\text{old}}), \]</div>
-<p>where, <span class="math notranslate nohighlight">\(E'(r)\)</span> is the first derivative of the energy, <span class="math notranslate nohighlight">\(r_{\text{old}}\)</span> is the original distance, and <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter.</p>
-</li>
-<li><p>Go to step 2.</p></li>
-</ol>
-<p>The hyperparameter, <span class="math notranslate nohighlight">\(\alpha\)</span>, is a variable that we need to find for our given optimisation, which scales the magnitude of the change in <span class="math notranslate nohighlight">\(r\)</span>.
-The figure below shows the gradient descent method in action, where <span class="math notranslate nohighlight">\(\alpha = 2.0\)</span>.</p>
-<p><img alt="" src="../_images/grad.gif" /></p>
-<div class="section" id="exercise">
-<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<p>Implement a gradient descent algorithm by writing a function for the first derivative of the energy.
-Using a loop, iterate the algorithm at least 30 times.
-Test different starting points, values of <span class="math notranslate nohighlight">\(\alpha\)</span>, and numbers of iterations, by printing the distance <span class="math notranslate nohighlight">\(r_{ij}\)</span> for each iteration of the loop watch for the value converging.
-Use <span class="math notranslate nohighlight">\(A\)</span> = <span class="math notranslate nohighlight">\(1\times 10^{5}\)</span> eVÅ<sup>12</sup>, <span class="math notranslate nohighlight">\(B\)</span> = <span class="math notranslate nohighlight">\(40\)</span> eVÅ<sup>6</sup>.</p>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/comp_chem_methods/gradient_descent_exercises.html">Worked Example</a></p>
-</div>
+<p>To consider the cause of the result where the starting value is 6.0 Å, watch the <a class="reference external" href="https://moodle.bath.ac.uk/mod/url/view.php?id=931081">following LOIL</a> (Bath moodle access required).</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -479,8 +480,6 @@ Use <span class="math notranslate nohighlight">\(A\)</span> = <span class="math 
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="minimisation.html" title="previous page">Function minimisation</a>
-    <a class='right-next' id="next-link" href="newtons.html" title="next page">Newton’s method</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
