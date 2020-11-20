@@ -50,12 +50,12 @@
         - file: comp_chem_methods/gradient_descent
         - file: comp_chem_methods/newtons
     - file: comp_chem_methods/scipy_opt_minimize
-    - file: comp_chem_methods/vectors_and_matrices
-      sections:
-        - file: comp_chem_methods/vectors
-        - file: comp_chem_methods/vectors_in_python
-        - file: comp_chem_methods/matrices
-        - file: comp_chem_methods/matrices_in_python
+    #- file: comp_chem_methods/vectors_and_matrices
+    #  sections:
+    #    - file: comp_chem_methods/vectors
+    #    - file: comp_chem_methods/vectors_in_python
+    #    - file: comp_chem_methods/matrices
+    #    - file: comp_chem_methods/matrices_in_python
         
 #- part: Structured Programming
 #  chapters:
