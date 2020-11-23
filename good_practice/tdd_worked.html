@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercise &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Worked Examples &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -360,9 +360,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/good_practice/tdd_exercises.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/good_practice/tdd_worked.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -380,44 +380,27 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/good_practice/tdd_worked.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-1">
-   Problem 1
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-2">
-   Problem 2
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-3">
-   Problem 3
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-4">
-   Problem 4
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#problem-5">
-   Problem 5
-  </a>
- </li>
-</ul>
-
-        </nav>
         
     </div>
 </div>
@@ -426,21 +409,30 @@
         
               <div>
                 
-  <div class="section" id="exercise">
-<h1>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h1>
-<p>The idea for this exercise is to copy and paste the tests and the function definitions into your own Notebook.
-Once the function that your write satifies the test, only <code class="docutils literal notranslate"><span class="pre">'Test</span> <span class="pre">X</span> <span class="pre">for</span> <span class="pre">Problem</span> <span class="pre">Y</span> <span class="pre">Passed!'</span></code> will be printed when the cell is run.
-Unless otherwise stated, all values are in SI units.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <div class="section" id="worked-examples">
+<h1>Worked Examples<a class="headerlink" href="#worked-examples" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<div class="section" id="problem-1">
-<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a></h2>
-<p>The first function should produce the energy of a photon given a particular wavenumber. Note that the speed of light and Planck’s constant are imported from the <code class="docutils literal notranslate"><span class="pre">scipy.constants</span></code> library as <code class="docutils literal notranslate"><span class="pre">c</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code> respectively.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">c</span><span class="p">,</span> <span class="n">h</span>
 
 <span class="k">def</span> <span class="nf">energy</span><span class="p">(</span><span class="n">wavenumber</span><span class="p">):</span>
-    <span class="k">return</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the energy of a given photon. </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        wavenumber (float): Photon wavenumber (m^-1).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: </span>
+<span class="sd">        (float): Photon energy (J).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">wavenumber</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">energy</span><span class="p">(</span><span class="mf">5.03411665e24</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 1 Passed!&#39;</span><span class="p">)</span>
@@ -451,16 +443,33 @@ Unless otherwise stated, all values are in SI units.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="problem-2">
-<h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a></h2>
-<p>The second function should be able to determine the volume of a system (assuming the gas is ideal) given the number of moles of gas <span class="math notranslate nohighlight">\(n\)</span>, the temperature <span class="math notranslate nohighlight">\(T\)</span> and the pressure <span class="math notranslate nohighlight">\(p\)</span>. Again the ideal gas constant is imported for you as <code class="docutils literal notranslate"><span class="pre">R</span></code>.</p>
-<p>Remember,</p>
-<div class="math notranslate nohighlight">
-\[pV = nRT\]</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test 1 for Problem 1 Passed!
+Test 2 for Problem 1 Passed!
+Test 3 for Problem 1 Passed!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span>
 
 <span class="k">def</span> <span class="nf">ideal_gas_law</span><span class="p">(</span><span class="n">number_of_moles</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">pressure</span><span class="p">):</span>
-    <span class="k">return</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the volume of an ideal gas.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        number_of_moles (float): Number of moles (mol).</span>
+<span class="sd">        temperature (float): Temperature (K).</span>
+<span class="sd">        pressure (float): Pressure (Pa).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Volume (m^3).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The given temperature is unphysical (less than 0 K)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">number_of_moles</span> <span class="o">*</span> <span class="n">temperature</span> <span class="o">*</span> <span class="n">R</span> <span class="o">/</span> <span class="n">pressure</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">101325</span><span class="p">),</span> <span class="mf">0.82057367</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 2 Passed!&#39;</span><span class="p">)</span>
@@ -471,14 +480,31 @@ Unless otherwise stated, all values are in SI units.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="problem-3">
-<h2>Problem 3<a class="headerlink" href="#problem-3" title="Permalink to this headline">¶</a></h2>
-<p>This function should return the allowed values of the angular momentum quantum number <span class="math notranslate nohighlight">\(l\)</span>, given a particular principal quantum number <span class="math notranslate nohighlight">\(n\)</span>.</p>
-<p>Remember,</p>
-<div class="math notranslate nohighlight">
-\[ 0 \le l \le n - 1 \]</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">allowed_angular_momentum_quantum_numbers</span><span class="p">(</span><span class="n">principal_quantum_number</span><span class="p">):</span>
-    <span class="k">return</span> 
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test 1 for Problem 2 Passed!
+Test 2 for Problem 2 Passed!
+Test 3 for Problem 2 Passed!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">allowed_angular_momentum_quantum_numbers</span><span class="p">(</span><span class="n">principal_quantum_number</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the allowed angular momentum quantum numbers.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        principal_quantum_number (int): The principal quantum number, n. </span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (array_like): Allowed angular momentum quantum numbers, l.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">principal_quantum_number</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The principal quantum number must be greater than or equal to 1&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">principal_quantum_number</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The principal quantum number must be an integer&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">principal_quantum_number</span><span class="p">))</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_equal</span><span class="p">(</span><span class="n">allowed_angular_momentum_quantum_numbers</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 3 Passed!&#39;</span><span class="p">)</span>
@@ -491,14 +517,30 @@ Unless otherwise stated, all values are in SI units.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="problem-4">
-<h2>Problem 4<a class="headerlink" href="#problem-4" title="Permalink to this headline">¶</a></h2>
-<p>This function should return the rate constants <span class="math notranslate nohighlight">\(k\)</span> for a reaction with a given activation energy <span class="math notranslate nohighlight">\(E_a\)</span> (in joules) and pre-exponential factor <span class="math notranslate nohighlight">\(A\)</span>, and at a range of temperatures <span class="math notranslate nohighlight">\(T\)</span>.</p>
-<p>Remember,</p>
-<div class="math notranslate nohighlight">
-\[ k = A \exp{\frac{-E_a}{RT}} \]</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arrhenius_equation</span><span class="p">(</span><span class="n">pre_exponential_factor</span><span class="p">,</span> <span class="n">activation_energy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
-    <span class="k">return</span> 
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test 1 for Problem 3 Passed!
+Test 2 for Problem 3 Passed!
+Test 3 for Problem 3 Passed!
+Test 4 for Problem 3 Passed!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arrhenius_equation</span><span class="p">(</span><span class="n">pre_exponential_factor</span><span class="p">,</span> <span class="n">activation_energy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the rate constant(s) for a reaction.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        pre_exponential_factor (float): The pre-exponental factor, A.,</span>
+<span class="sd">        activation_energy (float): Activation energy (J).</span>
+<span class="sd">        temperature (float): Temperature (K), can be an array.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns: </span>
+<span class="sd">        (float): Rate constant.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pre_exponential_factor</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">activation_energy</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">temperature</span><span class="p">))</span>
     
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">arrhenius_equation</span><span class="p">(</span><span class="mf">23e10</span><span class="p">,</span> <span class="mf">24.131</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mf">227785637794.47137</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 4 Passed!&#39;</span><span class="p">)</span>
@@ -508,14 +550,28 @@ Unless otherwise stated, all values are in SI units.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="problem-5">
-<h2>Problem 5<a class="headerlink" href="#problem-5" title="Permalink to this headline">¶</a></h2>
-<p>Write a function to calculate the energy of a Morse potential (this potential is a good model of a chemical bond) at a given set of distances. The functional form of a Morse potential is,</p>
-<div class="math notranslate nohighlight">
-\[E(r) = D_e\{1-\exp{[-(r-r_e)]}\}^2 \]</div>
-<p>where <span class="math notranslate nohighlight">\(D_e\)</span> is the dissociation energy, <span class="math notranslate nohighlight">\(r\)</span> is the bond length, and <span class="math notranslate nohighlight">\(r_e\)</span> is the equilibrium bond length.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">morse</span><span class="p">(</span><span class="n">dissociation_energy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_e</span><span class="p">):</span>
-    <span class="k">return</span> 
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test 1 for Problem 4 Passed!
+Test 2 for Problem 4 Passed!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">morse</span><span class="p">(</span><span class="n">dissociation_energy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">r_e</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the potential energy of a Morse potential. </span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        dissociation_energy (float): D_e in the Morse potential function (J).</span>
+<span class="sd">        r (float): Distance between atoms to get energy for (Å), can be an array.</span>
+<span class="sd">        r_e (float): Equilibrium bond length (Å).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Potential energy (J).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dissociation_energy</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r_e</span><span class="p">)))</span> <span class="o">**</span> <span class="mi">2</span>
     
 <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">morse</span><span class="p">(</span><span class="mf">4.52</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="mf">0.74</span><span class="p">),</span> 
                                <span class="p">[</span><span class="mf">0.332564</span> <span class="p">,</span> <span class="mf">0.1854401</span><span class="p">,</span> <span class="mf">0.0855355</span><span class="p">,</span> <span class="mf">0.0261688</span><span class="p">,</span> 
@@ -526,7 +582,13 @@ Unless otherwise stated, all values are in SI units.</p>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 5 Passed!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/good_practice/tdd_worked.html">Worked Examples</a></p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test 1 for Problem 5 Passed!
+Test 2 for Problem 5 Passed!
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
