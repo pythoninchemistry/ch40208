@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with matrices in Python" href="matrices_in_python.html" />
+    <link rel="prev" title="Working with vectors in Python" href="vectors_in_python.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -256,7 +258,7 @@
   Computational Chemistry Methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="potential_energy_surfaces.html">
    Potential Energy Surfaces
@@ -290,6 +292,35 @@
   <a class="reference internal" href="scipy_opt_minimize.html">
    Minimization Libraries
   </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="vectors_and_matrices.html">
+   Working with vectors and matrices
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="vectors.html">
+     Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vectors_in_python.html">
+     Working with vectors in Python
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matrices_in_python.html">
+     Working with matrices in Python
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 
@@ -398,7 +429,7 @@
 <p>As an example consider the following figure:</p>
 <div class="myclass figure align-default" id="rotation-example-fig">
 <a class="reference internal image-reference" href="../_images/rotation_example.svg"><img alt="../_images/rotation_example.svg" src="../_images/rotation_example.svg" width="650px" /></a>
-<p class="caption"><span class="caption-text">An example of a linear transformation: rotation by 90° anticlockwise.</span><a class="headerlink" href="#rotation-example-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">An example of a linear transformation: rotation by 90° anticlockwise.</span><a class="headerlink" href="#rotation-example-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>This shows an initial basis with <span class="math notranslate nohighlight">\(\bvec{i}=\cvec{1}{0}\)</span> and <span class="math notranslate nohighlight">\(\bvec{j}=\cvec{0}{1}\)</span>, and a vector <span class="math notranslate nohighlight">\(\bvec{r}\)</span>:</p>
 <div class="amsmath math notranslate nohighlight">
@@ -456,7 +487,7 @@
 <p>The matrix <span class="math notranslate nohighlight">\(\bvec{N}\)</span> is called the <strong>inverse</strong> of the matrix <span class="math notranslate nohighlight">\(\bvec{M}\)</span>.</p>
 <div class="myclass figure align-default" id="rotation-example-inv-fig">
 <a class="reference internal image-reference" href="../_images/rotation_example_inv.svg"><img alt="../_images/rotation_example_inv.svg" src="../_images/rotation_example_inv.svg" width="650px" /></a>
-<p class="caption"><span class="caption-text">Rotating back by 90° clockwise is the <strong>inverse</strong> of our previous 90° anti-clockwise rotation, and is described by the <strong>inverse</strong> matrix operation.</span><a class="headerlink" href="#rotation-example-inv-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Rotating back by 90° clockwise is the <strong>inverse</strong> of our previous 90° anti-clockwise rotation, and is described by the <strong>inverse</strong> matrix operation.</span><a class="headerlink" href="#rotation-example-inv-fig" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="matrixmatrix-multiplication">
@@ -493,7 +524,7 @@
 <p>And we remember that the columns of a matrix describe the new basis functions, in this case <span class="math notranslate nohighlight">\(\bvec{i^{\prime\prime}}\)</span> and <span class="math notranslate nohighlight">\(\bvec{j^{\prime\prime}}\)</span>. The matrix that describes a 180° rotation (or two successive 90° rotations) is therefore <span class="math notranslate nohighlight">\(\begin{bmatrix}-1 &amp; 0\\ 0 &amp; -1\end{bmatrix}\)</span>, i.e. both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are inverted.</p>
 <div class="myclass figure align-default" id="rotation-example-twice-fig">
 <a class="reference internal image-reference" href="../_images/rotation_example_twice.svg"><img alt="../_images/rotation_example_twice.svg" src="../_images/rotation_example_twice.svg" width="650px" /></a>
-<p class="caption"><span class="caption-text">Rotating by 180° corresponds to rotating by 90° twice. We can calculate the corresponding matrix operation by considering what happens when we operate on our original basis <em>twice</em> with our 90°-rotation matrix.</span><a class="headerlink" href="#rotation-example-twice-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Rotating by 180° corresponds to rotating by 90° twice. We can calculate the corresponding matrix operation by considering what happens when we operate on our original basis <em>twice</em> with our 90°-rotation matrix.</span><a class="headerlink" href="#rotation-example-twice-fig" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
@@ -526,6 +557,8 @@
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="vectors_in_python.html" title="previous page">Working with vectors in Python</a>
+    <a class='right-next' id="next-link" href="matrices_in_python.html" title="next page">Working with matrices in Python</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

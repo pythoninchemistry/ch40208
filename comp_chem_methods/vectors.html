@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with vectors in Python" href="vectors_in_python.html" />
+    <link rel="prev" title="Working with vectors and matrices" href="vectors_and_matrices.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -256,7 +258,7 @@
   Computational Chemistry Methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="potential_energy_surfaces.html">
    Potential Energy Surfaces
@@ -290,6 +292,35 @@
   <a class="reference internal" href="scipy_opt_minimize.html">
    Minimization Libraries
   </a>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="vectors_and_matrices.html">
+   Working with vectors and matrices
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="vectors_in_python.html">
+     Working with vectors in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matrices.html">
+     Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="matrices_in_python.html">
+     Working with matrices in Python
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
  </li>
 </ul>
 
@@ -397,28 +428,28 @@
 <p>Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <strong>origin</strong>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><strong>vector</strong> quantities</span></a>, since they define both <strong>magnitude</strong> and <strong>distance</strong> (relative to the origin).</p>
 <div class="myclass figure align-default" id="position-vector-1-fig">
 <a class="reference internal image-reference" href="../_images/position_vectors_1.svg"><img alt="../_images/position_vectors_1.svg" src="../_images/position_vectors_1.svg" width="400px" /></a>
-<p class="caption"><span class="caption-text">Defining atomic positions requires knowing both distance and direction with respect to some reference <strong>origin</strong>.</span><a class="headerlink" href="#position-vector-1-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Defining atomic positions requires knowing both distance and direction with respect to some reference <strong>origin</strong>.</span><a class="headerlink" href="#position-vector-1-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>A common choice for describing atomic positions is to use Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions <a class="footnote-reference brackets" href="#footnote1" id="id1">1</a>; this will be familiar from the earlier exercises on calculating interatomic distances.</p>
 <p>In two dimensions, any position can be described by giving both the <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinate</span></a>.</p>
 <div class="myclass figure align-default" id="position-vector-2-fig">
 <a class="reference internal image-reference" href="../_images/position_vectors_2.svg"><img alt="../_images/position_vectors_2.svg" src="../_images/position_vectors_2.svg" width="400px" /></a>
-<p class="caption"><span class="caption-text">Describing positions using Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions.</span><a class="headerlink" href="#position-vector-2-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Describing positions using Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions.</span><a class="headerlink" href="#position-vector-2-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Using the language of vectors, this choice of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates defines a pair of <strong>basis vectors</strong>, which we will denote <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. <a class="footnote-reference brackets" href="#footnote2" id="id2">2</a></p>
 <div class="myclass figure align-default" id="position-vector-3-fig">
 <a class="reference internal image-reference" href="../_images/position_vectors_3.svg"><img alt="../_images/position_vectors_3.svg" src="../_images/position_vectors_3.svg" width="400px" /></a>
-<p class="caption"><span class="caption-text">In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <strong>linear combination</strong> of these basis vectors.</span><a class="headerlink" href="#position-vector-3-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <strong>linear combination</strong> of these basis vectors.</span><a class="headerlink" href="#position-vector-3-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>Any position vector <span class="math notranslate nohighlight">\(r = (x, y)\)</span> can be expressed as a <strong>linear combination</strong> of these basis vectors, i.e. <span class="math notranslate nohighlight">\(r = x \times \mathbf{i} + y \times \mathbf{j}\)</span>. This means one way to think about the usual notation <span class="math notranslate nohighlight">\((x, y)\)</span> is that the two numbers describe the coefficients of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> for a given linear combination.</p>
 <div class="myclass figure align-default" id="position-vector-4-fig">
 <a class="reference internal image-reference" href="../_images/position_vectors_4.svg"><img alt="../_images/position_vectors_4.svg" src="../_images/position_vectors_4.svg" width="400px" /></a>
-<p class="caption"><span class="caption-text">The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <a class="reference internal" href="#position-vector-2-fig"><span class="std std-ref">above</span></a> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.</span><a class="headerlink" href="#position-vector-4-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <a class="reference internal" href="#position-vector-2-fig"><span class="std std-ref">above</span></a> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.</span><a class="headerlink" href="#position-vector-4-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as <span class="math notranslate nohighlight">\((3, 4)\)</span> is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.</p>
 <div class="myclass figure align-default" id="position-vector-alternate-basis-fig">
 <a class="reference internal image-reference" href="../_images/position_vectors_alternate_basis.svg"><img alt="../_images/position_vectors_alternate_basis.svg" src="../_images/position_vectors_alternate_basis.svg" width="400px" /></a>
-<p class="caption"><span class="caption-text">The same three positions described using a different basis.</span><a class="headerlink" href="#position-vector-alternate-basis-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The same three positions described using a different basis.</span><a class="headerlink" href="#position-vector-alternate-basis-fig" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="vector-addition-subtraction-scaling-and-multiplication">
@@ -426,7 +457,7 @@
 <p>Vectors can be added together by adding the coefficients of each basis vector.</p>
 <div class="myclass figure align-default" id="vector-addition-fig">
 <a class="reference internal image-reference" href="../_images/vector_addition.svg"><img alt="../_images/vector_addition.svg" src="../_images/vector_addition.svg" width="400px" /></a>
-<p class="caption"><span class="caption-text">Vector addition.</span><a class="headerlink" href="#vector-addition-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Vector addition.</span><a class="headerlink" href="#vector-addition-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>For example, adding together the vectors <span class="math notranslate nohighlight">\(\mathbf{v}_1=(5,1)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2=(2,4)\)</span> gives us a new vector <span class="math notranslate nohighlight">\(\mathbf{v}_3=(7,6)\)</span>,
 which can be understood by writing <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span> as <span class="math notranslate nohighlight">\((5\mathbf{i}+1\mathbf{j})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> as <span class="math notranslate nohighlight">\((2\mathbf{i}+4\mathbf{j})\)</span>. Adding <span class="math notranslate nohighlight">\(\mathbf{v1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v2}\)</span> then gives <span class="math notranslate nohighlight">\(\left[(5\mathbf{i}+1\mathbf{j})+(2\mathbf{i}+4\mathbf{j})\right]\)</span> and common terms can be collected together to give <span class="math notranslate nohighlight">\(\left[(5+2)\mathbf{i}+(1+4)\mathbf{j}\right]=(7\mathbf{i}+6\mathbf{j})\)</span>.</p>
@@ -453,7 +484,7 @@ Again, we can understand this by expanding out the original vector in terms of t
 <p>The <strong>cross-product</strong> is also known as the “vector product”. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is denoted <span class="math notranslate nohighlight">\(\mathbf{a}\times\mathbf{b}\)</span> and is defined as a vector <strong>perpendicular</strong> to the plane containing <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> with a length given by the area of the <strong>parallelogram</strong> with <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> as sides.</p>
 <div class="myclass figure align-default" id="cross-product-fig">
 <a class="reference internal image-reference" href="../_images/cross_product.svg"><img alt="../_images/cross_product.svg" src="../_images/cross_product.svg" width="500px" /></a>
-<p class="caption"><span class="caption-text">The cross product of two vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is proportional to the area <span class="math notranslate nohighlight">\(A\)</span> of the parallelogram with sides <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</span><a class="headerlink" href="#cross-product-fig" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">The cross product of two vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is proportional to the area <span class="math notranslate nohighlight">\(A\)</span> of the parallelogram with sides <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</span><a class="headerlink" href="#cross-product-fig" title="Permalink to this image">¶</a></p>
 </div>
 <p>This can be computed as</p>
 <div class="math notranslate nohighlight">
@@ -500,6 +531,8 @@ Again, we can understand this by expanding out the original vector in terms of t
     
     <div class='prev-next-bottom'>
         
+    <a class='left-prev' id="prev-link" href="vectors_and_matrices.html" title="previous page">Working with vectors and matrices</a>
+    <a class='right-next' id="next-link" href="vectors_in_python.html" title="next page">Working with vectors in Python</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
