@@ -109,3 +109,5 @@ print('Test 1 for Problem 5 Passed!')
 np.testing.assert_almost_equal(morse(0.59, 5, 1.5), 0.5549050979213414)
 print('Test 2 for Problem 5 Passed!')
 ```
+
+[Worked Examples](https://pythoninchemistry.org/ch40208/good_practice/tdd_worked.html)
