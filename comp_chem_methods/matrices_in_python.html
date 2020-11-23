@@ -484,7 +484,7 @@ This is because:</p>
 First, you should write a function that will return a NumPy matrix when passed some angle, <span class="math notranslate nohighlight">\(\beta\)</span>, with the form,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{bmatrix}\cos\beta &amp; -\sin\beta \\ \sin\beta &amp; \cos\beta \end{bmatrix} \end{split}\]</div>
-<p>This is own rotation matrix.
+<p>This is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Rotation_matrix">rotation matrix</a>, a rotation matrix in a linear algebra tool that lets us rotate something in <a class="reference external" href="https://en.wikipedia.org/wiki/Euclidean_space">Euclidean space</a> such as the cartesian coordinate system that we use to describe the atomic positions..
 Remember that the NumPy <code class="docutils literal notranslate"><span class="pre">cos</span></code> and <code class="docutils literal notranslate"><span class="pre">sin</span></code> functions will expect the angle to be in radians!</p>
 <p>Then use the rotation matrix to obtain new coordinates for the water molecule, by performing the following matrix multiplication.</p>
 <div class="math notranslate nohighlight">
