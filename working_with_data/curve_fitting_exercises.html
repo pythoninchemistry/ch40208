@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Model fitting &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercises &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exercise: Monte Carlo" href="monte_carlo.html" />
-    <link rel="prev" title="File I/O" href="file_io.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -221,7 +219,7 @@
   Working with Data
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_arrays.html">
    NumPy
@@ -242,8 +240,8 @@
    File I/O
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="curve_fitting.html">
    Model fitting
   </a>
  </li>
@@ -362,7 +360,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/working_with_data/curve_fitting.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/working_with_data/curve_fitting_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -387,7 +385,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/working_with_data/curve_fitting.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/working_with_data/curve_fitting_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -404,30 +402,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-regression">
-   Linear regression
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#non-linear-regression">
-   Non-linear regression
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -435,18 +409,9 @@
         
               <div>
                 
-  <div class="section" id="model-fitting">
-<h1>Model fitting<a class="headerlink" href="#model-fitting" title="Permalink to this headline">¶</a></h1>
-<p>A lot of chemical analysis relies on our ability to fit a “line of best fit” to some data.
-For example, considering the determination of the activation energy, <span class="math notranslate nohighlight">\(E_a\)</span>, of some reaction from an Arrhenius relationship,</p>
-<div class="math notranslate nohighlight">
-\[ k(T) = A \exp{\frac{-E_a}{RT}}, \]</div>
-<p>where, <span class="math notranslate nohighlight">\(k(T)\)</span> is the rate constant at time <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(A\)</span> is the pre-exponential factor, <span class="math notranslate nohighlight">\(R\)</span> is the ideal gas constant and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.
-Typically when we are performing our analysis, we will rearrange the above equation to give a straight line,</p>
-<div class="math notranslate nohighlight">
-\[ \ln{k(T)} = \ln{A} - \frac{E_a}{RT}. \]</div>
-<p>Let’s looks at some experimental data for the decomposition of 2 moles of NO<sub>2</sub> to 2 moles of NO and one mole of O<sub>2</sub>.
-The data for this is available <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/working_with_data/arrhenius.txt">in this file</a>.</p>
+  <div class="section" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
+<p>The first exercise was to modify the first-order rate law code to account for a <em>y</em>-uncertainty of 5 %.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -455,189 +420,11 @@ The data for this is available <a class="reference external" href="https://raw.g
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;arrhenius.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;o--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature/K&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Rate constant/M$^{-1}$s$^{-1}$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/curve_fitting_3_0.png" src="../_images/curve_fitting_3_0.png" />
-</div>
-</div>
-<p>Alternatively, we plot this as a straight line.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="s1">&#39;o--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;1/Temperature/K&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ln(Rate constant/M$^{-1}$s$^{-1}$)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/curve_fitting_5_0.png" src="../_images/curve_fitting_5_0.png" />
-</div>
-</div>
-<p>Using Python, we can fit this data in either configuration, either by performing a <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_regression">linear regression</a> or by fitting a line of best fit.</p>
-<div class="section" id="linear-regression">
-<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
-<p>Linear regression is a relatively simple mathematical process, that is implemented in the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>If we investigate the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html">documentation</a> for the <code class="docutils literal notranslate"><span class="pre">linregress</span></code> function, we will see that we pass two arrays; <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.
-These corresponding exactly to the <em>x</em> and <em>y</em>-axes of the plot above.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=-13509.355973303444, intercept=15.161037389899018, rvalue=-0.998952302406746, pvalue=4.070235273533486e-05, stderr=357.31270179790863)
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can see that the object that is returned contains a couple of pieces of information.
-The two parts that we are most interested in are the <code class="docutils literal notranslate"><span class="pre">slope</span></code> and the <code class="docutils literal notranslate"><span class="pre">intercept</span></code>, which are attributes of the <code class="docutils literal notranslate"><span class="pre">result</span></code> object and can be obtained as follows.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">slope</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-13509.355973303444
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">intercept</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15.161037389899018
-</pre></div>
-</div>
-</div>
-</div>
-<p>Therefore, we can evaluate the activation energy and the pre-exponential factor as follows.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">activation_energy</span> <span class="o">=</span> <span class="o">-</span> <span class="n">R</span> <span class="o">*</span> <span class="n">result</span><span class="o">.</span><span class="n">slope</span>
-<span class="n">preexponential_factor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">intercept</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;A = </span><span class="si">{</span><span class="n">preexponential_factor</span><span class="si">}</span><span class="s2">; E_a = </span><span class="si">{</span><span class="n">activation_energy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A = 3840209.1525825486; E_a = 112323.03523328649
-</pre></div>
-</div>
-</div>
-</div>
-<p>Finally, we can plot our linear regression line through the data as shown below.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">660</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">590</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">result</span><span class="o">.</span><span class="n">intercept</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;1/Temperature/K&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ln(Rate constant/M$^{-1}$s$^{-1}$)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/curve_fitting_19_0.png" src="../_images/curve_fitting_19_0.png" />
-</div>
-</div>
-</div>
-<div class="section" id="non-linear-regression">
-<h2>Non-linear regression<a class="headerlink" href="#non-linear-regression" title="Permalink to this headline">¶</a></h2>
-<p>Of course, our equation cannot always be modified to offer a straight line formulation or we may not want to as the logarithmic scaling of the <em>y</em>-axis may skew our understanding of the intercept.
-Therefore, necessary to fit a non-linear relationship.
-This can also be achieved with Python by minimising the difference between our model (the equation with given parameters) and the data.
-The value that we will minimize is known as the <span class="math notranslate nohighlight">\(\chi^2\)</span>-value, which has the following definitions.</p>
-<div class="math notranslate nohighlight">
-\[ \chi^2 = \sum\big\{[y - f(x)] ^ 2\big\} \;\;\;\text{or}\;\;\; \chi^2 = \sum\Bigg\{\frac{[y - f(x)] ^ 2}{y_{\text{err}}^2}\Bigg\},\]</div>
-<p>depending on whether or not uncertainty in the data is known.</p>
-<p>Consider the following data, which describe the decomposition of hyodrgen peroxide in the presence of excess cerous ion Ce<sup>III</sup>,</p>
-<p>2H<sub>2</sub>O<sub>2</sub> + 2Ce<sup>III</sup> → 2H<sub>2</sub>O + Ce<sup>IV</sup> + O<sub>2</sub>.</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Time/s</p></th>
-<th class="head"><p>2</p></th>
-<th class="head"><p>4</p></th>
-<th class="head"><p>6</p></th>
-<th class="head"><p>8</p></th>
-<th class="head"><p>10</p></th>
-<th class="head"><p>12</p></th>
-<th class="head"><p>14</p></th>
-<th class="head"><p>16</p></th>
-<th class="head"><p>18</p></th>
-<th class="head"><p>20</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>[H<sub>2</sub>O<sub>2</sub>]/moldm<sup>-3</sup></p></td>
-<td><p>6.23</p></td>
-<td><p>4.84</p></td>
-<td><p>3.76</p></td>
-<td><p>3.20</p></td>
-<td><p>2.60</p></td>
-<td><p>2.16</p></td>
-<td><p>1.85</p></td>
-<td><p>1.49</p></td>
-<td><p>1.27</p></td>
-<td><p>1.01</p></td>
-</tr>
-</tbody>
-</table>
-<p>First, we will store these values as NumPy arrays.</p>
+<p>Let’s create a new array with the <em>y</em>-uncertainty (<code class="docutils literal notranslate"><span class="pre">c_err</span></code>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">6.23</span><span class="p">,</span> <span class="mf">4.84</span><span class="p">,</span> <span class="mf">3.76</span><span class="p">,</span> <span class="mf">3.20</span><span class="p">,</span> <span class="mf">2.60</span><span class="p">,</span> <span class="mf">2.16</span><span class="p">,</span> <span class="mf">1.85</span><span class="p">,</span> <span class="mf">1.49</span><span class="p">,</span> <span class="mf">1.27</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">])</span>
+<span class="n">c_err</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="mf">0.05</span>
 <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -645,7 +432,7 @@ The value that we will minimize is known as the <span class="math notranslate no
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_err</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time/s&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[H$_2$O$_2$]/M&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -653,11 +440,10 @@ The value that we will minimize is known as the <span class="math notranslate no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/curve_fitting_22_0.png" src="../_images/curve_fitting_22_0.png" />
+<img alt="../_images/curve_fitting_exercises_4_0.png" src="../_images/curve_fitting_exercises_4_0.png" />
 </div>
 </div>
-<p>This reaction has a first-order rate equation, this will be our “model” that we will compare to the data, where the <span class="math notranslate nohighlight">\([A]_0\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are the varying parameters.
-This function is defined below.</p>
+<p>Using the model from the example.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">first_order</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
@@ -677,10 +463,10 @@ This function is defined below.</p>
 </div>
 </div>
 </div>
-<p>We want to vary <code class="docutils literal notranslate"><span class="pre">a0</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> to minimise the <span class="math notranslate nohighlight">\(\chi^2\)</span>-value between this model and the data.</p>
+<p>But with a modified chi_squared.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chi_squared</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chi_squared</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine the chi-squared value for a first-order rate equation.</span>
 <span class="sd">    </span>
@@ -688,19 +474,19 @@ This function is defined below.</p>
 <span class="sd">        x (list): The variable parameters.</span>
 <span class="sd">        t (float): Time (s).</span>
 <span class="sd">        data (float): Experimental concentration data.</span>
-<span class="sd">    </span>
+<span class="sd">        error (float): Uncertainty in concentration data.</span>
 <span class="sd">    Returns:</span>
 <span class="sd">        (float): chi^2 value.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">a0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">k</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">data</span> <span class="o">-</span> <span class="n">first_order</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">data</span> <span class="o">-</span> <span class="n">first_order</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Just like the minimisation of a potential model.
-We can use the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code> to minimize this chi-squared function.</p>
+<p>Then we do the minimisation as before.
+But with the <code class="docutils literal notranslate"><span class="pre">c_err</span></code> as an <code class="docutils literal notranslate"><span class="pre">arg</span></code> and starting positions informed by the previous analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
@@ -710,29 +496,19 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">chi_squared</span><span class="p">,</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">chi_squared</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_err</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">x</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 0.13373044840242107
- hess_inv: array([[7.88767889e-01, 1.26315543e-02],
-       [1.26315543e-02, 3.02236037e-04]])
-      jac: array([1.45286322e-07, 2.03587115e-06])
-  message: &#39;Optimization terminated successfully.&#39;
-     nfev: 63
-      nit: 10
-     njev: 21
-   status: 0
-  success: True
-        x: array([7.42164414, 0.10308256])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7.08438449, 0.09737419])
 </pre></div>
 </div>
 </div>
@@ -750,22 +526,10 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/curve_fitting_31_0.png" src="../_images/curve_fitting_31_0.png" />
+<img alt="../_images/curve_fitting_exercises_13_0.png" src="../_images/curve_fitting_exercises_13_0.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[A]_0 = </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">; k = </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644140842236; k = 0.10308255574195259
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> offers a convenient wrapper around this methodology, and makes it easy to access the estimated parameter uncertainties.</p>
+<p>This can also be achieved with the use of the <code class="docutils literal notranslate"><span class="pre">sigma</span></code> flag in the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
@@ -775,7 +539,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">first_order</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">first_order</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">c_err</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -786,8 +550,6 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 </div>
-<p>We can ignore the above error, this is just warning that during the optimization an unphysical value was found.
-However, the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function is robust enough to ignore this and continue.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uncertainties</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pcov</span><span class="p">)</span>
@@ -797,19 +559,10 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.42164476326434 +/- 0.15838876657483184; k = 0.10308257141927114 +/- 0.00308836766268339
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.084387208704655 +/- 0.1711370710807563; k = 0.0973742248801292 +/- 0.0019530371570717492
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Modify the above first-order rate fitting using the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> method to consider a <em>y</em>-uncertainty of 5 %.</p></li>
-<li><p>By investigating the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">documentation for the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code></a>, determine how this uncertainty would be included in the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> method.</p></li>
-</ol>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/curve_fit_exercises.html">Worked Example</a></p>
 </div>
 </div>
 
@@ -841,8 +594,6 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="file_io.html" title="previous page">File I/O</a>
-    <a class='right-next' id="next-link" href="monte_carlo.html" title="next page">Exercise: Monte Carlo</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
