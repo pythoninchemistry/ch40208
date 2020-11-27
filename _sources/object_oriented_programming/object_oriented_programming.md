@@ -1,1 +1,0 @@
-# Objected Oriented Programming
