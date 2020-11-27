@@ -1,0 +1,769 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Driven Development Assessment &#8212; CH40208: Topics in Computational Chemistry</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/pic.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../welcome.html">
+   Welcome to CH40208
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Jupyter Notebooks
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
+   What is a Jupyter Notebook?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/how_to_access_the_jupyterhub_server.html">
+   How to access the JupyterHub server?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/getting_started_with_jupyter_notebooks.html">
+   Getting started with Jupyter Notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">
+   The Jupyter Notebook interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../notebooks_introduction/exercises.html">
+   Exercises
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Python
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/python_first_chemistry_later.html">
+   Python first, chemistry later
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">
+   Why we encourage typing out the code examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">
+   Using Python as a calculator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/getting_started_with_strings.html">
+   Getting started with strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/print_statements.html">
+   Print statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/types.html">
+   Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/variables.html">
+   Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/arithmetic.html">
+   Arithmetic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/lists.html">
+   Lists
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/loops.html">
+   Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../python_basics/logic_and_flow_control.html">
+   Logical Operations and Flow Control
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Good Practice
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="readable.html">
+   Writing readable code
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raising_errors.html">
+   Raising errors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testing.html">
+   Testing
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Working with Data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
+   NumPy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/plotting.html">
+   Plotting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/ideal_gas_law.html">
+   Investigation of the ideal gas law
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/file_io.html">
+   File I/O
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/curve_fitting.html">
+   Model fitting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../working_with_data/monte_carlo.html">
+   Exercise: Monte Carlo
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Computational Chemistry Methods
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">
+   Potential Energy Surfaces
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">
+   Geometry Optimisation
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../comp_chem_methods/minimisation.html">
+   Function minimisation
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/gradient_descent.html">
+     Gradient descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/newtons.html">
+     Newton’s method
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">
+   Minimization Libraries
+  </a>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">
+   Working with vectors and matrices
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/vectors.html">
+     Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">
+     Working with vectors in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/matrices.html">
+     Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">
+     Working with matrices in Python
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/good_practice/tdd_practice.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/good_practice/tdd_practice.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-1">
+   Problem 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-2">
+   Problem 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-3">
+   Problem 3
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-4">
+   Problem 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#problem-5">
+   Problem 5
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="test-driven-development-assessment">
+<h1>Test Driven Development Assessment<a class="headerlink" href="#test-driven-development-assessment" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-1">
+<h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this headline">¶</a></h2>
+<p>The ideal gas law relates the pressure (<span class="math notranslate nohighlight">\(p\)</span>), temperature (<span class="math notranslate nohighlight">\(T\)</span>), and number of moles of a gas (<span class="math notranslate nohighlight">\(n\)</span>) to the volume (<span class="math notranslate nohighlight">\(V\)</span>) that the gas occupies.
+The ideal gas law is as follows,</p>
+<div class="math notranslate nohighlight">
+\[
+pV = nRT.
+\]</div>
+<p>Write a function to determine, and return, the volume of an ideal gas.</p>
+<ul class="simple">
+<li><p>The ideal gas constant has been imported for you as <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
+<li><p>The function should raise an appropriate error if an unphysical temperature (when <span class="math notranslate nohighlight">\(T &lt; 0\text{ K}\)</span>) is given</p></li>
+<li><p>The function should raise another appropriate error if an unphysical number of moles of gas (when <span class="math notranslate nohighlight">\(n &lt; 0\text{ mol}\)</span>) is given</p></li>
+<li><p>Finally, the function should should raise an appropriate error if an unphysical pressure (when <span class="math notranslate nohighlight">\(p &lt; 0\text{ Pa}\)</span>) is given</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function for ideal_gas_law</span>
+<span class="k">def</span> <span class="nf">ideal_gas_law</span><span class="p">(</span><span class="n">number_of_moles</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">volume</span><span class="p">):</span>
+
+    <span class="k">return</span> 
+
+<span class="c1"># Tests correct equation</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.82057338</span><span class="p">),</span> <span class="mf">101325.0003308662</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tests correct equation</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mf">831.4459800000001</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tests for unphysical temperatures</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">ideal_gas_law</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 3 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tests for unphysical number of moles</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">ideal_gas_law</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 4 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tests for unphysical pressure</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">ideal_gas_law</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">101325</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 5 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="n">b79532fff6c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Tests correct equation</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.82057338</span><span class="p">),</span> <span class="mf">101325.0003308662</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 1 Passed!&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/numpy/testing/_private/utils.py</span> in <span class="ni">assert_almost_equal</span><span class="nt">(actual, desired, decimal, err_msg, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="k">except</span> <span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span>         <span class="k">pass</span>
+<span class="ne">--&gt; </span><span class="mi">594</span>     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">desired</span> <span class="o">-</span> <span class="n">actual</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="mf">10.0</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">decimal</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">595</span>         <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">_build_err_msg</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">596</span> 
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;float&#39; and &#39;NoneType&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-2">
+<h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this headline">¶</a></h2>
+<p>Selection rules describe the allowed transitions between one quantum state and another.
+The selection rule for vibrational spectroscopy is</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta v = \pm 1,
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta v\)</span> is the difference between the original and final vibrational energy levels.</p>
+<p>Write a function that when passed the initial and final vibrational energy levels will return a <strong>Boolean</strong> variable describing whether the transition is allowed or not.</p>
+<ul class="simple">
+<li><p>The vibrational energy levels are quantised, therefore values <strong>must</strong> be integers greater than or equal to 0, if they are not return the appripriate error.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function for vib_spec_transition</span>
+<span class="k">def</span> <span class="nf">vib_spec_transition</span><span class="p">(</span><span class="n">v_0</span><span class="p">,</span> <span class="n">v_1</span><span class="p">):</span>
+    
+    <span class="k">return</span> 
+
+<span class="c1"># Test +1 selection rule</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_equal</span><span class="p">(</span><span class="n">vib_spec_transition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test -1 selection rule</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_equal</span><span class="p">(</span><span class="n">vib_spec_transition</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test False selection rule (+ve)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_equal</span><span class="p">(</span><span class="n">vib_spec_transition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 3 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test False selection rule (-ve)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_equal</span><span class="p">(</span><span class="n">vib_spec_transition</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 4 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test negative quantum number v_1</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">vib_spec_transition</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 5 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test negative quantum number v_0</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">vib_spec_transition</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 6 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test negative quantum number v_0 and v_1</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">vib_spec_transition</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 7 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test non-integer v_0</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">vib_spec_transition</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 8 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test non-integer v_1</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">vib_spec_transition</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 9 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test non-integer v_0 and v_1</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">vib_spec_transition</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 10 for Problem 2 Passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-3">
+<h2>Problem 3<a class="headerlink" href="#problem-3" title="Permalink to this headline">¶</a></h2>
+<p>The potential energy (<span class="math notranslate nohighlight">\(V(r)\)</span>) between two charged particles, at a separation (<span class="math notranslate nohighlight">\(r\)</span>), can be modeled with the Coulomb potential, which has the following functional form,</p>
+<div class="math notranslate nohighlight">
+\[
+V(r) = \frac{q_iq_j}{4\pi\epsilon_0 r}
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\(q_i\)</span> and <span class="math notranslate nohighlight">\(q_j\)</span> are the charges on each of the particles (where Li<sup>+</sup> will have a charge of 1, while O<sup>2-</sup> will have a charge of -2), and <span class="math notranslate nohighlight">\(\epsilon_0\)</span> is the vacuum permittivity (the latter of these has been imported for you as <code class="docutils literal notranslate"><span class="pre">epsilon_0</span></code>.</p>
+<p>Using the above equation, create a function that will return the potential energy between two particles when given the separation and charges.</p>
+<ul class="simple">
+<li><p>This function should be capable of handling both signle values and lists/arrays of separations</p></li>
+<li><p>Note, only single values for each of the charges are expected</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function for coulomb</span>
+<span class="k">def</span> <span class="nf">coulomb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">q_i</span><span class="p">,</span> <span class="n">q_j</span><span class="p">):</span>
+    
+    <span class="k">return</span> 
+
+<span class="c1"># Test correct equation for single value r</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">coulomb</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mf">5.991701191578785e8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 3 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test correct equation for array/list of r</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">coulomb</span><span class="p">([</span><span class="mi">30000</span><span class="p">,</span> <span class="mi">400000</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">[</span><span class="mf">898755.1787368</span><span class="p">,</span>  <span class="mf">67406.6384053</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 3 Passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-4">
+<h2>Problem 4<a class="headerlink" href="#problem-4" title="Permalink to this headline">¶</a></h2>
+<p>Often in the analysis of experimental data, we aim to reduce the sum of the squared difference between the experimental data (<span class="math notranslate nohighlight">\(y_{\text{exp}}\)</span>) and some model (<span class="math notranslate nohighlight">\(y_{\text{model}}\)</span>). This <em>goodness-of-fit</em> parameter is known as the <span class="math notranslate nohighlight">\(\chi^2\)</span>-value and is found by the following equation,</p>
+<div class="math notranslate nohighlight">
+\[
+\chi^2 = \sum_{i}^{N}{\bigg(\frac{y_{\text{exp, i}} - y_{\text{model, i}}}{\text{d}y_{\text{exp, i}}}\bigg) ^ 2},
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\(N\)</span> is the number of data points, <span class="math notranslate nohighlight">\(\text{d}y_{\text{exp}}\)</span> are the experimental uncertainty in the measurement of <span class="math notranslate nohighlight">\(y_{\text{exp}}\)</span>, and <span class="math notranslate nohighlight">\(\sum_{i^{N}\)</span> indicates a summation over all data points.</p>
+<p>Write a single function that determines the <span class="math notranslate nohighlight">\(\chi^2\)</span> of a set of experimental data and the output from a model.</p>
+<ul class="simple">
+<li><p>This function <strong>should</strong> be able to cope with arrays of data, <em>not</em> single values.</p></li>
+<li><p>The function should also check that all the arrays of data are the same length and provide a string describing <em>why</em> the error has been raised.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function for chi_squared</span>
+<span class="k">def</span> <span class="nf">chi_squared</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">exp_uncertainty</span><span class="p">):</span>
+    
+    <span class="k">return</span> 
+
+<span class="c1"># Test chi-square for array of data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span>
+    <span class="n">chi_squared</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> 
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> 
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">])),</span> <span class="mi">25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test for when the exp has too few values</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">chi_squared</span><span class="p">,</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]),</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test for when the model has too few values</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">chi_squared</span><span class="p">,</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 3 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test for when the exp_uncertainty has too few values</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">chi_squared</span><span class="p">,</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]),</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]),</span> 
+                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 4 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-5">
+<h2>Problem 5<a class="headerlink" href="#problem-5" title="Permalink to this headline">¶</a></h2>
+<p>The rotational contribution, <span class="math notranslate nohighlight">\(q^R\)</span>, to the total partition coefficient is found with the following summation,</p>
+<div class="math notranslate nohighlight">
+\[
+q^R = \sum_{J=0}^{N}{(2J + 1) \exp{\bigg(\frac{-hcBJ(J+1)}{k T}\bigg)}}, 
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\(J\)</span> is the energy level, <span class="math notranslate nohighlight">\(h\)</span> is the Planck constant, <span class="math notranslate nohighlight">\(c\)</span> is the speed of light, <span class="math notranslate nohighlight">\(B\)</span> is the rotational constant for the molecule, <span class="math notranslate nohighlight">\(k\)</span> is the Boltzmann constant and <span class="math notranslate nohighlight">\(T\)</span> is the temperature. Above, <span class="math notranslate nohighlight">\(\sum_{J=0}^{N}\)</span> indicates the summation over values from <span class="math notranslate nohighlight">\(J=0\)</span> to <span class="math notranslate nohighlight">\(J=N\)</span>.</p>
+<p>Using the above equation, create a function that will return the rotational contribution to the total partition function from the first <span class="math notranslate nohighlight">\(N\)</span> energy levels.</p>
+<ul class="simple">
+<li><p>This function should also take <span class="math notranslate nohighlight">\(B\)</span> (in units of cm<sup>-1</sup>) and <span class="math notranslate nohighlight">\(T\)</span> (in units of K) as arguments</p></li>
+<li><p>An appropriate error should be returned for a non-integer <span class="math notranslate nohighlight">\(N\)</span> and unphysical (<span class="math notranslate nohighlight">\(B &lt; 0\)</span> and <span class="math notranslate nohighlight">\(T &lt; 0\)</span>) rotational constant and temperature</p></li>
+<li><p>The constants, <span class="math notranslate nohighlight">\(h\)</span>, <span class="math notranslate nohighlight">\(c\)</span>, and <span class="math notranslate nohighlight">\(k\)</span> have been imported for you as <code class="docutils literal notranslate"><span class="pre">h</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">k</span></code> respectively.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function for partition</span>
+<span class="k">def</span> <span class="nf">partition</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">rotational_constant</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
+    
+    <span class="k">return</span> 
+
+<span class="c1"># Test for correct implementation</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">partition</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mf">5.03379579</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test for correct implementation</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">partition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">13.6</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mf">1.42395629</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test for negative rotational constant</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 3 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test for negative temperature</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">-</span><span class="mi">123</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 4 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+
+<span class="c1"># Test for non-integer N</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_raises</span><span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">partition</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">123</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 5 for Problem 5 Passed!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./good_practice"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew R. McCluskey & Benjamin J. Morgan<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
