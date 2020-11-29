@@ -4,8 +4,4 @@
 
 The final year Computational Chemistry module at the University of Bath.
 
-Set up the conda environment with the following command.
-
-```
-conda env create -f environment.yml
-``` 
+[Final Course for 2019](https://github.com/pythoninchemistry/ch40208/tree/2019_final)

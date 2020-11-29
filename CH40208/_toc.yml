@@ -1,8 +1,4 @@
 - file: welcome
-# - part: Overview
-#  chapters:
-#    - file: overview/course_overview
-#    - file: overview/course_structure
 - part: Jupyter Notebooks
   chapters:
     - file: notebooks_introduction/what_is_a_jupyter_notebook
@@ -20,19 +16,17 @@
     - file: python_basics/types
     - file: python_basics/variables
     - file: python_basics/arithmetic
-#    - file: python_basics/collections
-#      sections:
     - file: python_basics/lists
     - file: python_basics/loops
     - file: python_basics/functions
     - file: python_basics/logic_and_flow_control
-#        - file: python_basics/tuples
-#        - file: python_basics/dictionaries
 - part: Good Practice
   chapters:
     - file: good_practice/readable
     - file: good_practice/raising_errors
     - file: good_practice/testing
+    # - file: good_practice/modularisation
+    # - file: good_practice/markdown
 - part: Working with Data
   chapters: 
     - file: working_with_data/numpy_arrays
@@ -56,42 +50,3 @@
         - file: comp_chem_methods/vectors_in_python
         - file: comp_chem_methods/matrices
         - file: comp_chem_methods/matrices_in_python
-        
-#- part: Structured Programming
-#  chapters:
-#    - file: structured_programming/functions
-#    - file: structured_programming/logical_operators
-#    - file: structured_programming/flow_control
-#    - file: structured_programming/loops
-#- part: Working with Data
-#  chapters:
-#    - file: working_with_data/numpy_arrays
-#    - file: working_with_data/vectorisation
-#    - file: working_with_data/plotting
-#    - file: working_with_data/file_io
-#    - file: working_with_data/pandas
-#- part: Good Practice
-#  chapters:
-#    - file: good_practice/modules
-#    - file: good_practice/debugging
-#    - file: good_practice/raising_errors
-#    - file: good_practice/testing
-#    - file: good_practice/markdown
-#- part: Object Oriented Programming
-#  chapters:
-#    - file: object_oriented_programming/classes
-#    - file: object_oriented_programming/attributes_methods
-#    - file: object_oriented_programming/private_public
-#    - file: object_oriented_programming/inheritance
-#- part: Computational Chemistry Methods
-#  chapters:
-#    - file: comp_chem_fundamentals/optimisation
-#    - file: comp_chem_fundamentals/model_fitting
-#    - file: comp_chem_fundamentals/linear_algebra
-#- part: Applied Computational Chemistry
-#  chapters:
-#    - file: applied_comp_chem/molecular_dynamics
-#    - file: applied_comp_chem/monte_carlo
-#    - file: applied_comp_chem/vibrational_analysis
-#    - file: applied_comp_chem/electronic_structure
-#    - file: applied_comp_chem/big_data

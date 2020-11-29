@@ -9,7 +9,7 @@ Therefore, we will use a stochastic method to more completely probe these uncert
 
 For this problem, we are going to look at the investigation of a mixture of organic species by IR spectroscopy. 
 We have been given [this data set](https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/working_with_data/mixture.csv), and are told it contains a mixture of toluene and benzyl alcohol. 
-> Use the `!head` command to investigate the experimental data file and plot the data using the [`plt.errorbar`](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.errorbar.html) function. 
+> [Use the `!head` command](https://pythoninchemistry.org/ch40208/working_with_data/file_io.html#csv-files) to investigate the experimental data file and plot the data using the [`plt.errorbar`](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.errorbar.html) function. 
 
 ## Our model
 
