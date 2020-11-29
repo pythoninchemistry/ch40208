@@ -18,3 +18,5 @@ sphinx:
           "bvec": ["\\mathbf{#1}", 1]
           "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2]
           "norm": ["\\left\\lVert #1\\right\\rVert", 1]
+          "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]
+    html_extra_path: ['assets']
