@@ -1,4 +1,4 @@
-# Pricipal rotation axes and principal moments of inertia
+# Principal rotation axes and principal moments of inertia
 
 The rotational energy levels of a molecule depend upon the molecule's moments of inertia, making these important molecular quantities for interpreting rotational spectra, or for calculating the rotational partition function:
 \begin{equation}
