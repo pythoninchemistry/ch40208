@@ -475,11 +475,11 @@ pV = nRT.
     <span class="k">return</span> 
 
 <span class="c1"># Tests correct equation</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.82057338</span><span class="p">),</span> <span class="mf">101325.0003308662</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.82057338</span><span class="p">),</span> <span class="mf">101325.03467270655</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 1 Passed!&#39;</span><span class="p">)</span>
 
 <span class="c1"># Tests correct equation</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mf">831.4459800000001</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="mf">831.4462618</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 1 Passed!&#39;</span><span class="p">)</span>
 
 <span class="c1"># Tests for unphysical temperatures</span>
@@ -499,10 +499,10 @@ pV = nRT.
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">5</span><span class="n">b79532fff6c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="n">d0c2511f2e1</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> 
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Tests correct equation</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.82057338</span><span class="p">),</span> <span class="mf">101325.0003308662</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">ideal_gas_law</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">0.82057338</span><span class="p">),</span> <span class="mf">101325.03467270655</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 1 Passed!&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> 
 
@@ -604,11 +604,11 @@ V(r) = \frac{q_iq_j}{4\pi\epsilon_0 r}
     <span class="k">return</span> 
 
 <span class="c1"># Test correct equation for single value r</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">coulomb</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mf">5.991701191578785e8</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">coulomb</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mf">599170119.4840782</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 3 Passed!&#39;</span><span class="p">)</span>
 
 <span class="c1"># Test correct equation for array/list of r</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">coulomb</span><span class="p">([</span><span class="mi">30000</span><span class="p">,</span> <span class="mi">400000</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">[</span><span class="mf">898755.1787368</span><span class="p">,</span>  <span class="mf">67406.6384053</span><span class="p">])</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">coulomb</span><span class="p">([</span><span class="mi">30000</span><span class="p">,</span> <span class="mi">400000</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">[</span><span class="mf">898755.1792261</span><span class="p">,</span> <span class="mf">67406.638442</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 3 Passed!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -689,11 +689,11 @@ q^R = \sum_{J=0}^{N}{(2J + 1) \exp{\bigg(\frac{-hcBJ(J+1)}{k T}\bigg)}},
     <span class="k">return</span> 
 
 <span class="c1"># Test for correct implementation</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">partition</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mf">5.03379579</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">partition</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">44.5</span><span class="p">,</span> <span class="mi">300</span><span class="p">),</span> <span class="mf">5.033797336459535</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 5 Passed!&#39;</span><span class="p">)</span>
 
 <span class="c1"># Test for correct implementation</span>
-<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">partition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">13.6</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mf">1.42395629</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_almost_equal</span><span class="p">(</span><span class="n">partition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">13.6</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mf">1.4239565672461714</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 2 for Problem 5 Passed!&#39;</span><span class="p">)</span>
 
 <span class="c1"># Test for negative rotational constant</span>

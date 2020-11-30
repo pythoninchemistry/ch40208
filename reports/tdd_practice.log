@@ -23,11 +23,11 @@ def ideal_gas_law(number_of_moles, temperature, volume):
     return 
 
 # Tests correct equation
-np.testing.assert_almost_equal(ideal_gas_law(100, 100, 0.82057338), 101325.0003308662)
+np.testing.assert_almost_equal(ideal_gas_law(100, 100, 0.82057338), 101325.03467270655)
 print('Test 1 for Problem 1 Passed!')
 
 # Tests correct equation
-np.testing.assert_almost_equal(ideal_gas_law(1, 500, 5), 831.4459800000001)
+np.testing.assert_almost_equal(ideal_gas_law(1, 500, 5), 831.4462618)
 print('Test 2 for Problem 1 Passed!')
 
 # Tests for unphysical temperatures
@@ -45,10 +45,10 @@ print('Test 5 for Problem 1 Passed!')
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m<ipython-input-2-5b79532fff6c>[0m in [0;36m<module>[0;34m[0m
+[0;32m<ipython-input-2-1d0c2511f2e1>[0m in [0;36m<module>[0;34m[0m
 [1;32m      5[0m [0;34m[0m[0m
 [1;32m      6[0m [0;31m# Tests correct equation[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 7[0;31m [0mnp[0m[0;34m.[0m[0mtesting[0m[0;34m.[0m[0massert_almost_equal[0m[0;34m([0m[0mideal_gas_law[0m[0;34m([0m[0;36m100[0m[0;34m,[0m [0;36m100[0m[0;34m,[0m [0;36m0.82057338[0m[0;34m)[0m[0;34m,[0m [0;36m101325.0003308662[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0mnp[0m[0;34m.[0m[0mtesting[0m[0;34m.[0m[0massert_almost_equal[0m[0;34m([0m[0mideal_gas_law[0m[0;34m([0m[0;36m100[0m[0;34m,[0m [0;36m100[0m[0;34m,[0m [0;36m0.82057338[0m[0;34m)[0m[0;34m,[0m [0;36m101325.03467270655[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      8[0m [0mprint[0m[0;34m([0m[0;34m'Test 1 for Problem 1 Passed!'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [1;32m      9[0m [0;34m[0m[0m
 
