@@ -1,15 +1,15 @@
 # Vectors
 
-Many problems in chemistry and physics involve working with **vector** quantities. A common deﬁnition of a vector in a physics context is a quantity with both **magnitude** and **direction**; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.
+Many problems in chemistry and physics involve working with <em>vector</em> quantities. A common deﬁnition of a vector in a physics context is a quantity with both <em>magnitude</em> and <em>direction</em>; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.
 
 ## Example 1: Atomic positions.
 
-Defining atomic positions requires three pieces of information: the location of some reference point in space, called the **origin**, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore [**vector** quantities](position-vector-1-fig), since they define both **magnitude** and **distance** (relative to the origin).
+Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore [<em>vector</em> quantities](position-vector-1-fig), since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).
 
 :::{figure,myclass} position-vector-1-fig
 <img src="figures/vectors_and_matrices/position_vectors_1.svg" width="400px" />
 
-Defining atomic positions requires knowing both distance and direction with respect to some reference **origin**.
+Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.
 :::
 
 A common choice for describing atomic positions is to use Cartesian coordinates, i.e. $(x, y)$ in two dimensions, or $(x, y, z)$ in three dimensions [^footnote1]; this will be familiar from the earlier exercises on calculating interatomic distances.
@@ -22,15 +22,15 @@ In two dimensions, any position can be described by giving both the [$x$ and $y$
 Describing positions using Cartesian coordinates, i.e. $(x, y)$ coordinates in two dimensions, or $(x, y, z)$ in three dimensions.
 :::
 
-Using the language of vectors, this choice of $x$ and $y$ coordinates defines a pair of **basis vectors**, which we will denote $\mathbf{i}$ and $\mathbf{j}$. [^footnote2]
+Using the language of vectors, this choice of $x$ and $y$ coordinates defines a pair of <em>basis vectors</em>, which we will denote $\mathbf{i}$ and $\mathbf{j}$. [^footnote2]
 
 :::{figure,myclass} position-vector-3-fig
 <img src="figures/vectors_and_matrices/position_vectors_3.svg" width="400px" />
 
-In two dimensions we have two implicit basis vectors $\mathbf{i}$ and $\mathbf{j}$. Any position can be expressed as a **linear combination** of these basis vectors.
+In two dimensions we have two implicit basis vectors $\mathbf{i}$ and $\mathbf{j}$. Any position can be expressed as a <em>linear combination</em> of these basis vectors.
 :::
 
-Any position vector $r = (x, y)$ can be expressed as a **linear combination** of these basis vectors, i.e. $r = x \times \mathbf{i} + y \times \mathbf{j}$. This means one way to think about the usual notation $(x, y)$ is that the two numbers describe the coefficients of $\mathbf{i}$ and $\mathbf{j}$ for a given linear combination.
+Any position vector $r = (x, y)$ can be expressed as a <em>linear combination</em> of these basis vectors, i.e. $r = x \times \mathbf{i} + y \times \mathbf{j}$. This means one way to think about the usual notation $(x, y)$ is that the two numbers describe the coefficients of $\mathbf{i}$ and $\mathbf{j}$ for a given linear combination.
 
 :::{figure,myclass} position-vector-4-fig
 <img src="figures/vectors_and_matrices/position_vectors_4.svg" width="400px" /> 
@@ -65,14 +65,14 @@ which can be understood by writing $\mathbf{v}_1$ as $(5\mathbf{i}+1\mathbf{j})$
 
 Subtracting one vector from another follows the same rules, but with the coefficients of each basis vector subtracted; e.g. $\mathbf{v}_1-\mathbf{v}_2=(3,-3)$.
 
-Scaling a vector involves multiplying by a **scalar** (hence the name). This changes the length of the vector, but not the direction, and involves multiplying each of the basis vector coefficients by the scalar value. i.e. $\mathbf{v}_\mathrm{1}=(2,3)$. $\mathbf{v}_1\times2=(4,6)$. 
+Scaling a vector involves multiplying by a <em>scalar</em> (hence the name). This changes the length of the vector, but not the direction, and involves multiplying each of the basis vector coefficients by the scalar value. i.e. $\mathbf{v}_\mathrm{1}=(2,3)$. $\mathbf{v}_1\times2=(4,6)$. 
 Again, we can understand this by expanding out the original vector in terms of the basis vectors, $\mathbf{i}$ and $\mathbf{j}$: $(2\mathbf{i}+3\mathbf{j})\times2=(4\mathbf{i}+6\mathbf{j})$.
 
 ### The dot-product and the cross-product
 
-We can also &ldquo;multiply&rdquo; two vectors together, although this is more complex. In fact there are **two** standard ways to deinfe &ldquo;multiplication&rdquo; of vectors.
+We can also &ldquo;multiply&rdquo; two vectors together, although this is more complex. In fact there are <em>two</em> standard ways to deinfe &ldquo;multiplication&rdquo; of vectors.
 
-The **dot product** is also known as the &ldquo;scalar product&rdquo;. This operation takes two vectors and returns a scalar quantity. The dot product of two vectors is denoted $\mathbf{a}\cdot\mathbf{b}$, and is defined as
+The <em>dot product</em> is also known as the &ldquo;scalar product&rdquo;. This operation takes two vectors and returns a scalar quantity. The dot product of two vectors is denoted $\mathbf{a}\cdot\mathbf{b}$, and is defined as
 
 $$ \mathbf{a}\cdot\mathbf{b} = \sum_ia_ib_i = a_1b_1 + a_2b_2 + \ldots + a_nb_n.$$
 
@@ -90,7 +90,7 @@ $$\mathbf{a}\cdot\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\math
 
 where $\left\lVert\mathbf{a}\right\rVert$ is the _length_ of vector $\mathbf{a}$, and $\theta$ is the angle between $\mathbf{a}$ and $\mathbf{b}$.
 
-The **cross-product** is also known as the &ldquo;vector product&rdquo;. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors $\mathbf{a}$ and $\mathbf{b}$ is denoted $\mathbf{a}\times\mathbf{b}$ and is defined as a vector **perpendicular** to the plane containing $\mathbf{a}$ and $\mathbf{b}$ with a length given by the area of the **parallelogram** with $\mathbf{a}$ and $\mathbf{b}$ as sides.
+The <em>cross-product</em> is also known as the &ldquo;vector product&rdquo;. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors $\mathbf{a}$ and $\mathbf{b}$ is denoted $\mathbf{a}\times\mathbf{b}$ and is defined as a vector <em>perpendicular</em> to the plane containing $\mathbf{a}$ and $\mathbf{b}$ with a length given by the area of the <em>parallelogram</em> with $\mathbf{a}$ and $\mathbf{b}$ as sides.
 
 :::{figure,myclass} cross-product-fig
 <img src="figures/vectors_and_matrices/cross_product.svg" width="500px" /> 
@@ -102,6 +102,6 @@ This can be computed as
 
 $$\mathbf{a}\times\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \sin\theta\,\mathbf{n},$$
 
-where $\mathbf{n}$ is the **unit vector** (a vector with length 1) perpendicular to the plane containing $\mathbf{a}$ and $\mathbf{b}$.
+where $\mathbf{n}$ is the <em>unit vector</em> (a vector with length 1) perpendicular to the plane containing $\mathbf{a}$ and $\mathbf{b}$.
 
 

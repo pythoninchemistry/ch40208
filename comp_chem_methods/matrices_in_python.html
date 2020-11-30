@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -47,7 +48,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -57,6 +58,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Eigenvalues and eigenvectors" href="eigenvalues_and_eigenvectors.html" />
     <link rel="prev" title="Matrices" href="matrices.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -317,6 +319,16 @@
      Working with matrices in Python
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="eigenvalues_and_eigenvectors.html">
+     Eigenvalues and eigenvectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="moments_of_inertia.html">
+     Pricipal rotation axes and principal moments of inertia
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -490,8 +502,8 @@
 <div class="section" id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>Download the following files and add them to the working directory of your JupyterHub: <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/comp_chem_methods/visualisation.py">visualisation.py</a> and <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/comp_chem_methods/water.txt">water.txt</a>.
-The first file is a single Python function a Python file (we will go into more detail of these next week), the second file contains the atomistic coordinates for a water molecule.
-Let’s read in the water molecule coordinates, and use the <code class="docutils literal notranslate"><span class="pre">visualisation.show()</span></code> function to have a look.</p>
+The first file is a text file containing a single Python function (we will explain how to package functions into your own modules later in the course). The second file contains the atomistic coordinates for a water molecule.
+Let us read in the water molecule coordinates, and use the <code class="docutils literal notranslate"><span class="pre">visualisation.show()</span></code> function to have a look.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visualisation</span>
@@ -559,6 +571,7 @@ Use the <code class="docutils literal notranslate"><span class="pre">visualisati
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="matrices.html" title="previous page">Matrices</a>
+    <a class='right-next' id="next-link" href="eigenvalues_and_eigenvectors.html" title="next page">Eigenvalues and eigenvectors</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
