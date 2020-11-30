@@ -1,6 +1,6 @@
 # Vectors
 
-Many problems in chemistry and physics involve working with <em>vector</em> quantities. A common deﬁnition of a vector in a physics context is a quantity with both <em>magnitude</em> and <em>direction</em>; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.
+Many problems in chemistry and physics involve working with <em>vector</em> quantities. A common definition of a vector in a physics context is a quantity with both <em>magnitude</em> and <em>direction</em>; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.
 
 ## Example 1: Atomic positions.
 
@@ -38,7 +38,7 @@ Any position vector $r = (x, y)$ can be expressed as a <em>linear combination</e
 The $(x, y)$ coordinates given [above](position-vector-2-fig) are the coefficients used to define each position in the basis $(\mathbf{i}, \mathbf{j})$.
 :::
 
-This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as $(3, 4)$ is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the _same_ positions would be described with _different_ vectors.
+This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as $(3, 4)$ is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.
 
 :::{figure,myclass} position-vector-alternate-basis-fig
 <img src="figures/vectors_and_matrices/position_vectors_alternate_basis.svg" width="400px" /> 
