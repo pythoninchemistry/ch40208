@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Working with matrices in Python &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercise &#8212; CH40208: Topics in Computational Chemistry</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,8 +58,6 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Eigenvalues and eigenvectors" href="eigenvalues_and_eigenvectors.html" />
-    <link rel="prev" title="Matrices" href="matrices.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -259,7 +257,7 @@
   Computational Chemistry Methods
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="potential_energy_surfaces.html">
    Potential Energy Surfaces
@@ -294,11 +292,11 @@
    Minimization Libraries
   </a>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="vectors_and_matrices.html">
    Working with vectors and matrices
   </a>
-  <ul class="current collapse-ul">
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="vectors.html">
      Vectors
@@ -314,8 +312,8 @@
      Matrices
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="matrices_in_python.html">
      Working with matrices in Python
     </a>
    </li>
@@ -373,7 +371,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/comp_chem_methods/matrices_in_python.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/comp_chem_methods/matrices_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -398,7 +396,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/comp_chem_methods/matrices_in_python.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/comp_chem_methods/matrices_exercises.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -415,20 +413,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -436,110 +420,81 @@
         
               <div>
                 
-  <div class="section" id="working-with-matrices-in-python">
-<h1>Working with matrices in Python<a class="headerlink" href="#working-with-matrices-in-python" title="Permalink to this headline">¶</a></h1>
-<p>Matrices can be described by multidimensional <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays, and we can perform matrix multiplication with the <code class="docutils literal notranslate"><span class="pre">numpy.matmul()</span></code> function. <a class="footnote-reference brackets" href="#footnote" id="id1">1</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
-              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-<span class="n">r_prime</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r_prime</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-4  3]
-</pre></div>
-</div>
-</div>
-</div>
-<p>The inverse of a matrix can be calculated (if it exists) using <code class="docutils literal notranslate"><span class="pre">numpy.linalg.inv()</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0.  1.]
- [-1. -0.]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">r_prime</span><span class="p">)</span> <span class="c1"># we should recover our original vector</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3., 4.])
-</pre></div>
-</div>
-</div>
-</div>
-<p>Matrix–matrix multiplication can also be performed using <code class="docutils literal notranslate"><span class="pre">numpy.matmul()</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">MM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="p">)</span> <span class="c1"># Two 90 degree rotations should be a 180 degree rotation.</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">MM</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-1  0]
- [ 0 -1]]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<p>Download the following files and add them to the working directory of your JupyterHub: <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/comp_chem_methods/visualisation.py">visualisation.py</a> and <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/comp_chem_methods/water.txt">water.txt</a>.
-The first file is a text file containing a single Python function (we will explain how to package functions into your own modules later in the course). The second file contains the atomistic coordinates for a water molecule.
-Let us read in the water molecule coordinates, and use the <code class="docutils literal notranslate"><span class="pre">visualisation.show()</span></code> function to have a look.</p>
+  <div class="section" id="exercise">
+<h1>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h1>
+<p>Lets plot the molecule first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visualisation</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;water.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;water.txt&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/matrices_in_python_8_0.png" src="../_images/matrices_in_python_8_0.png" />
+<img alt="../_images/matrices_exercises_2_0.png" src="../_images/matrices_exercises_2_0.png" />
 </div>
 </div>
-<p>You will notice that we do not pass the <em>z</em>-coordinates to the visualisation script.
-This is because:</p>
-<ol class="simple">
-<li><p>3D visualisation is a bit tricky and we want to focus on the understanding of the matrix operations.</p></li>
-<li><p>We are only going to focus on the rotation in the <em>xy</em>-plane (so the <em>z</em>-coordinate will never change).</p></li>
-</ol>
-<p>The exercise this week is to use matrices and vector to rotate this molecule in the <em>xy</em>-plane.
-First, you should write a function that will return a NumPy matrix when passed some angle, <span class="math notranslate nohighlight">\(\beta\)</span>, with the form,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{bmatrix}\cos\beta &amp; -\sin\beta \\ \sin\beta &amp; \cos\beta \end{bmatrix} \end{split}\]</div>
-<p>This is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Rotation_matrix">rotation matrix</a>, a rotation matrix in a linear algebra tool that lets us rotate something in <a class="reference external" href="https://en.wikipedia.org/wiki/Euclidean_space">Euclidean space</a> such as the cartesian coordinate system that we use to describe the atomic positions.
-Remember that the NumPy <code class="docutils literal notranslate"><span class="pre">cos</span></code> and <code class="docutils literal notranslate"><span class="pre">sin</span></code> functions will expect the angle to be in radians!</p>
-<p>Then use the rotation matrix to obtain new coordinates for the water molecule, by performing the following matrix multiplication.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split} \begin{bmatrix} x' \\ y' \end{bmatrix} = \begin{bmatrix}\cos\beta &amp; -\sin\beta \\ \sin\beta &amp; \cos\beta \end{bmatrix} \begin{bmatrix}x \\ y \end{bmatrix} \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are the current positions of the <em>x</em>- and <em>y</em>-coordinates respectively and <span class="math notranslate nohighlight">\(x'\)</span> and <span class="math notranslate nohighlight">\(y'\)</span> are the rotated coordinates.
-Use the <code class="docutils literal notranslate"><span class="pre">visualisation.show()</span></code> function to help check that the rotation has been successful.</p>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/comp_chem_methods/matrices_exercises.html">Worked Example</a></p>
-<hr class="docutils" />
-<dl class="footnote brackets">
-<dt class="label" id="footnote"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
-<dd><p>You can get the same results using <code class="docutils literal notranslate"><span class="pre">numpy.dot()</span></code>, but we encourage <code class="docutils literal notranslate"><span class="pre">numpy.matmul()</span></code> because it makes the final code easier to read and follow.</p>
-</dd>
-</dl>
+<p>Now we can create the function for the rotation matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rotation_matrix</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)],</span> 
+                     <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then perform the matrix multiplication.
+Note that to achieve this on the correct set of dimension we wuse array slicing and transposition.
+This is discussed in detail in LOIL 10.1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/matrices_exercises_7_0.png" src="../_images/matrices_exercises_7_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/matrices_exercises_9_0.png" src="../_images/matrices_exercises_9_0.png" />
+</div>
 </div>
 </div>
 
@@ -571,8 +526,6 @@ Use the <code class="docutils literal notranslate"><span class="pre">visualisati
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="matrices.html" title="previous page">Matrices</a>
-    <a class='right-next' id="next-link" href="eigenvalues_and_eigenvectors.html" title="next page">Eigenvalues and eigenvectors</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
