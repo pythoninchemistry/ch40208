@@ -25,8 +25,8 @@
     - file: good_practice/readable
     - file: good_practice/raising_errors
     - file: good_practice/testing
-    # - file: good_practice/modularisation
-    # - file: good_practice/markdown
+    - file: good_practice/modularisation
+    - file: good_practice/markdown
 - part: Working with Data
   chapters: 
     - file: working_with_data/numpy_arrays
