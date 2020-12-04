@@ -38,7 +38,7 @@ LaTeX is a common way to write mathematical equations and a lot of documentation
 Here, we will just so that to activate a LaTeX math environment in our Notebook we can write the following in a Markdown cell. 
 
 ```
-$$ e = mc^2
+$$ e = mc^2 $$
 ```
 
 Which will be rendered as 
