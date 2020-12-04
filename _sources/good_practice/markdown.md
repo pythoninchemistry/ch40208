@@ -14,16 +14,16 @@ Markdown is a simple [markup language](https://en.wikipedia.org/wiki/Markup_lang
 For example, if we want a heading we can use `#`, and the number of hash-symbols will control the heading size:
 
 ```
-# Heading 1
 ## Heading 2
 ### Heading 3
+#### Heading 4
 ```
 
 Will render as 
 
-# Heading 1
 ## Heading 2
 ### Heading 3
+#### Heading 4
 
 We can also add figures to our text, for example, this page is written in Markdown and to add the figure above, the following was written: 
 
