@@ -93,4 +93,4 @@ The algorithm for a typical MCMC sampling process is as follows:
 > Vary the step size between 1 and 0.001 to get the most normally distributed data you can. 
 > Using the statistical functions in NumPy, calculate the mean and standard deviation of this distribution. 
 
-[Worked Example](https://pythoninchemistry.org/ch40208/working_with_data/monte_carlo_exercises.html)
+[Worked Example](https://pythoninchemistry.org/ch40208/working_with_data/monte_carlo_example.html)
