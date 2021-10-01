@@ -8,36 +8,12 @@ When you first log on to the [JupyterHub server](./how_to_access_the_jupyterhub_
 
 This is the **Notebook Dashboard**, which allows you to access and manage your Jupyter Notebooks. The Dashboard allows you to create, open, rename, move, and delete Notebooks.
 
-If you have just logged onto the JupyterHub server for the first time, You should have two items already listed in your Dashboard:
+If you have just logged onto the JupyterHub server for the first time, You may have two items already listed in your Dashboard:
 - A folder named `courses`.
 - A Notebook named `Welcome.ipynb`.
+
+If you do not have these files, **don't worry** we won't be using these in the course. 
   
-The `.ipynb` file extension indicates that `Welcome.ipynb` is a Jupyter notebook.
-
-### The Welcome Notebook
-
-Clicking on `Welcome.ipynb` should open a new tab with the **Welcome Notebook** running inside it.
-
-![](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/welcome.png)
-
-There is not much to see or do in this Notebook, but if you can open it up then you know that you have connected properly to the Jupyterhub Server and are able to run Notebooks.
-
-The **Welcome Notebook** contains links to a set of other Notebooks; one for each course that will be using the Chemistry JupyterHub server for running Python. You will see a dedicated **CH40208 Notebook**:
-
-![](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/ch40208.png)
- 
-You can ignore this **CH40208 notebook** for the moment. Later in the course we will use the code in this notebook to copy any additional resources, such as prewritten notebooks or specialised Python modules, into your workspace.
-
-If you close the tab that contains the `Welcome.ipynb` notebook you might notice something unexpected:
-
-![](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/expected.png)
-
-The notebook icon next to `Welcome.ipynb` is now green, and on the right side you can see `Running`. We will explain what it means to have a Notebook "running" later. For the moment you can stop this Notebook running by selecting the checkbox to the left of the Notebook icon, and clicking `Shutdown` in the menubar above the list of files and folders.
-
-<p align="center">
-  <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/shutdown.png" width="25%" />
-</p>
-
 ## Creating a new Jupyter Notebook
 
 To create a new Notebook, click on `New` on the right-hand side of the screen, and then select `Python 3` from the drop-down menu:
@@ -47,6 +23,7 @@ To create a new Notebook, click on `New` on the right-hand side of the screen, a
 </p>
 
 This will open a brand new Notebook called `Untitled.ipynb`:
+The `.ipynb` file extension indicates that `Untitled.ipynb` is a Jupyter notebook.
 
 ![A freshly created Notebook](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/untitled.png)
 
