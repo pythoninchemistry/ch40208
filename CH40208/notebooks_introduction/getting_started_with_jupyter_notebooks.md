@@ -44,6 +44,17 @@ Or click directly on the Notebook name (currently &ldquo;Untitled&rdquo;) at the
 
 To rename your Notebook, type in a new name and click `Rename`. (Go on, try it).
 
+If you close the tab that contains your notebook you might notice something unexpected:
+
+![](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/unexpected.png)
+
+The notebook icon next to your notebook is now green, and on the right side you can see `Running`. We will explain what it means to have a Notebook "running" later. For the moment you can stop this Notebook running by selecting the checkbox to the left of the Notebook icon, and clicking `Shutdown` in the menubar above the list of files and folders.
+
+<p align="center">
+  <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/shutdown.png" width="25%" />
+</p>
+
+
 ## Duplicating a Notebook
 
 To duplicate your notebook, you can **make a copy** by selecting `File` -> `Make a Copy…`
