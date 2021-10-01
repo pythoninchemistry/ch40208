@@ -200,13 +200,6 @@
   <a class="reference internal nav-link" href="#first-time-logging-on-to-the-jupyterhub-server">
    First Time Logging On to the JupyterHub Server
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-welcome-notebook">
-     The Welcome Notebook
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#creating-a-new-jupyter-notebook">
@@ -241,27 +234,12 @@
 <p>When you first log on to the <a class="reference internal" href="how_to_access_the_jupyterhub_server.html"><span class="doc std std-doc">JupyterHub server</span></a> you should see a screen like this:</p>
 <p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/jupyter_hub.png" /></p>
 <p>This is the <strong>Notebook Dashboard</strong>, which allows you to access and manage your Jupyter Notebooks. The Dashboard allows you to create, open, rename, move, and delete Notebooks.</p>
-<p>If you have just logged onto the JupyterHub server for the first time, You should have two items already listed in your Dashboard:</p>
+<p>If you have just logged onto the JupyterHub server for the first time, You may have two items already listed in your Dashboard:</p>
 <ul class="simple">
 <li><p>A folder named <code class="docutils literal notranslate"><span class="pre">courses</span></code>.</p></li>
 <li><p>A Notebook named <code class="docutils literal notranslate"><span class="pre">Welcome.ipynb</span></code>.</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file extension indicates that <code class="docutils literal notranslate"><span class="pre">Welcome.ipynb</span></code> is a Jupyter notebook.</p>
-<div class="section" id="the-welcome-notebook">
-<h3>The Welcome Notebook<a class="headerlink" href="#the-welcome-notebook" title="Permalink to this headline">¶</a></h3>
-<p>Clicking on <code class="docutils literal notranslate"><span class="pre">Welcome.ipynb</span></code> should open a new tab with the <strong>Welcome Notebook</strong> running inside it.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/welcome.png" /></p>
-<p>There is not much to see or do in this Notebook, but if you can open it up then you know that you have connected properly to the Jupyterhub Server and are able to run Notebooks.</p>
-<p>The <strong>Welcome Notebook</strong> contains links to a set of other Notebooks; one for each course that will be using the Chemistry JupyterHub server for running Python. You will see a dedicated <strong>CH40208 Notebook</strong>:</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/ch40208.png" /></p>
-<p>You can ignore this <strong>CH40208 notebook</strong> for the moment. Later in the course we will use the code in this notebook to copy any additional resources, such as prewritten notebooks or specialised Python modules, into your workspace.</p>
-<p>If you close the tab that contains the <code class="docutils literal notranslate"><span class="pre">Welcome.ipynb</span></code> notebook you might notice something unexpected:</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/expected.png" /></p>
-<p>The notebook icon next to <code class="docutils literal notranslate"><span class="pre">Welcome.ipynb</span></code> is now green, and on the right side you can see <code class="docutils literal notranslate"><span class="pre">Running</span></code>. We will explain what it means to have a Notebook “running” later. For the moment you can stop this Notebook running by selecting the checkbox to the left of the Notebook icon, and clicking <code class="docutils literal notranslate"><span class="pre">Shutdown</span></code> in the menubar above the list of files and folders.</p>
-<p align="center">
-  <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/shutdown.png" width="25%" />
-</p>
-</div>
+<p>If you do not have these files, <strong>don’t worry</strong> we won’t be using these in the course.</p>
 </div>
 <div class="section" id="creating-a-new-jupyter-notebook">
 <h2>Creating a new Jupyter Notebook<a class="headerlink" href="#creating-a-new-jupyter-notebook" title="Permalink to this headline">¶</a></h2>
@@ -269,7 +247,8 @@
 <p align="center">
   <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/new.png" width="25%" />
 </p>
-<p>This will open a brand new Notebook called <code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code>:</p>
+<p>This will open a brand new Notebook called <code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code>:
+The <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file extension indicates that <code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code> is a Jupyter notebook.</p>
 <p><img alt="A freshly created Notebook" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/untitled.png" /></p>
 </div>
 <div class="section" id="renaming-a-notebook">
@@ -282,6 +261,12 @@
 <p>Or click directly on the Notebook name (currently “Untitled”) at the top of the screen. Either way opens a <code class="docutils literal notranslate"><span class="pre">Rename</span> <span class="pre">Notebook</span></code> popup:</p>
 <p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/popup.png" /></p>
 <p>To rename your Notebook, type in a new name and click <code class="docutils literal notranslate"><span class="pre">Rename</span></code>. (Go on, try it).</p>
+<p>If you close the tab that contains your notebook you might notice something unexpected:</p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/unexpected.png" /></p>
+<p>The notebook icon next to your notebook is now green, and on the right side you can see <code class="docutils literal notranslate"><span class="pre">Running</span></code>. We will explain what it means to have a Notebook “running” later. For the moment you can stop this Notebook running by selecting the checkbox to the left of the Notebook icon, and clicking <code class="docutils literal notranslate"><span class="pre">Shutdown</span></code> in the menubar above the list of files and folders.</p>
+<p align="center">
+  <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/notebooks_introduction/images/shutdown.png" width="25%" />
+</p>
 </div>
 <div class="section" id="duplicating-a-notebook">
 <h2>Duplicating a Notebook<a class="headerlink" href="#duplicating-a-notebook" title="Permalink to this headline">¶</a></h2>
