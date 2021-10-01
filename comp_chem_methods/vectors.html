@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vectors &#8212; CH40208: Topics in Computational Chemistry</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -35,21 +32,20 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/language_data.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
@@ -60,14 +56,14 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Working with vectors in Python" href="vectors_in_python.html" />
     <link rel="prev" title="Working with vectors and matrices" href="vectors_and_matrices.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -76,32 +72,36 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  <img src="../_static/pic.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/pic.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../welcome.html">
    Welcome to CH40208
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Jupyter Notebooks
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
    What is a Jupyter Notebook?
@@ -128,12 +128,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Python
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../python_basics/python_first_chemistry_later.html">
    Python first, chemistry later
@@ -195,12 +195,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Good Practice
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../good_practice/readable.html">
    Writing readable code
@@ -227,12 +227,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Working with Data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../working_with_data/numpy_arrays.html">
    NumPy
@@ -264,12 +264,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Computational Chemistry Methods
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="potential_energy_surfaces.html">
    Potential Energy Surfaces
@@ -280,11 +280,16 @@
    Geometry Optimisation
   </a>
  </li>
- <li class="toctree-l1 collapsible-parent">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="minimisation.html">
    Function minimisation
   </a>
-  <ul class="collapse-ul">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="gradient_descent.html">
      Gradient descent
@@ -296,19 +301,22 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="scipy_opt_minimize.html">
    Minimization Libraries
   </a>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="vectors_and_matrices.html">
    Working with vectors and matrices
   </a>
-  <ul class="current collapse-ul">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Vectors
@@ -340,11 +348,10 @@
     </a>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -360,21 +367,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -392,27 +399,27 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
-    </div>
-
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
         </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#example-1-atomic-positions">
    Example 1: Atomic positions.
@@ -432,8 +439,8 @@
  </li>
 </ul>
 
-        </nav>
-        
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -446,40 +453,40 @@
 <p>Many problems in chemistry and physics involve working with <em>vector</em> quantities. A common definition of a vector in a physics context is a quantity with both <em>magnitude</em> and <em>direction</em>; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.</p>
 <div class="section" id="example-1-atomic-positions">
 <h2>Example 1: Atomic positions.<a class="headerlink" href="#example-1-atomic-positions" title="Permalink to this headline">¶</a></h2>
-<p>Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><em>vector</em> quantities</span></a>, since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).</p>
-<div class="myclass figure align-default" id="position-vector-1-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_1.svg"><img alt="../_images/position_vectors_1.svg" src="../_images/position_vectors_1.svg" width="400px" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.</span><a class="headerlink" href="#position-vector-1-fig" title="Permalink to this image">¶</a></p>
-</div>
+<p>Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore <span class="xref myst"><em>vector</em> quantities</span>, since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).</p>
+<p>:::{figure,myclass} position-vector-1-fig
+<img src="figures/vectors_and_matrices/position_vectors_1.svg" width="400px" /></p>
+<p>Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.
+:::</p>
 <p>A common choice for describing atomic positions is to use Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions <a class="footnote-reference brackets" href="#footnote1" id="id1">1</a>; this will be familiar from the earlier exercises on calculating interatomic distances.</p>
-<p>In two dimensions, any position can be described by giving both the <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinate</span></a>.</p>
-<div class="myclass figure align-default" id="position-vector-2-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_2.svg"><img alt="../_images/position_vectors_2.svg" src="../_images/position_vectors_2.svg" width="400px" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Describing positions using Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions.</span><a class="headerlink" href="#position-vector-2-fig" title="Permalink to this image">¶</a></p>
-</div>
+<p>In two dimensions, any position can be described by giving both the <span class="xref myst"><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinate</span>.</p>
+<p>:::{figure,myclass} position-vector-2-fig
+<img src="figures/vectors_and_matrices/position_vectors_2.svg" width="400px" /></p>
+<p>Describing positions using Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions.
+:::</p>
 <p>Using the language of vectors, this choice of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates defines a pair of <em>basis vectors</em>, which we will denote <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. <a class="footnote-reference brackets" href="#footnote2" id="id2">2</a></p>
-<div class="myclass figure align-default" id="position-vector-3-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_3.svg"><img alt="../_images/position_vectors_3.svg" src="../_images/position_vectors_3.svg" width="400px" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <em>linear combination</em> of these basis vectors.</span><a class="headerlink" href="#position-vector-3-fig" title="Permalink to this image">¶</a></p>
-</div>
+<p>:::{figure,myclass} position-vector-3-fig
+<img src="figures/vectors_and_matrices/position_vectors_3.svg" width="400px" /></p>
+<p>In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <em>linear combination</em> of these basis vectors.
+:::</p>
 <p>Any position vector <span class="math notranslate nohighlight">\(r = (x, y)\)</span> can be expressed as a <em>linear combination</em> of these basis vectors, i.e. <span class="math notranslate nohighlight">\(r = x \times \mathbf{i} + y \times \mathbf{j}\)</span>. This means one way to think about the usual notation <span class="math notranslate nohighlight">\((x, y)\)</span> is that the two numbers describe the coefficients of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> for a given linear combination.</p>
-<div class="myclass figure align-default" id="position-vector-4-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_4.svg"><img alt="../_images/position_vectors_4.svg" src="../_images/position_vectors_4.svg" width="400px" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <a class="reference internal" href="#position-vector-2-fig"><span class="std std-ref">above</span></a> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.</span><a class="headerlink" href="#position-vector-4-fig" title="Permalink to this image">¶</a></p>
-</div>
+<p>:::{figure,myclass} position-vector-4-fig
+<img src="figures/vectors_and_matrices/position_vectors_4.svg" width="400px" /></p>
+<p>The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <span class="xref myst">above</span> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.
+:::</p>
 <p>This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as <span class="math notranslate nohighlight">\((3, 4)\)</span> is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.</p>
-<div class="myclass figure align-default" id="position-vector-alternate-basis-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_alternate_basis.svg"><img alt="../_images/position_vectors_alternate_basis.svg" src="../_images/position_vectors_alternate_basis.svg" width="400px" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The same three positions described using a different basis.</span><a class="headerlink" href="#position-vector-alternate-basis-fig" title="Permalink to this image">¶</a></p>
-</div>
+<p>:::{figure,myclass} position-vector-alternate-basis-fig
+<img src="figures/vectors_and_matrices/position_vectors_alternate_basis.svg" width="400px" /></p>
+<p>The same three positions described using a different basis.
+:::</p>
 </div>
 <div class="section" id="vector-addition-subtraction-scaling-and-multiplication">
 <h2>Vector addition, subtraction, scaling, and “multiplication”<a class="headerlink" href="#vector-addition-subtraction-scaling-and-multiplication" title="Permalink to this headline">¶</a></h2>
 <p>Vectors can be added together by adding the coefficients of each basis vector.</p>
-<div class="myclass figure align-default" id="vector-addition-fig">
-<a class="reference internal image-reference" href="../_images/vector_addition.svg"><img alt="../_images/vector_addition.svg" src="../_images/vector_addition.svg" width="400px" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Vector addition.</span><a class="headerlink" href="#vector-addition-fig" title="Permalink to this image">¶</a></p>
-</div>
+<p>:::{figure,myclass} vector-addition-fig
+<img src="figures/vectors_and_matrices/vector_addition.svg" width="400px" /></p>
+<p>Vector addition.
+:::</p>
 <p>For example, adding together the vectors <span class="math notranslate nohighlight">\(\mathbf{v}_1=(5,1)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2=(2,4)\)</span> gives us a new vector <span class="math notranslate nohighlight">\(\mathbf{v}_3=(7,6)\)</span>,
 which can be understood by writing <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span> as <span class="math notranslate nohighlight">\((5\mathbf{i}+1\mathbf{j})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> as <span class="math notranslate nohighlight">\((2\mathbf{i}+4\mathbf{j})\)</span>. Adding <span class="math notranslate nohighlight">\(\mathbf{v1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v2}\)</span> then gives <span class="math notranslate nohighlight">\(\left[(5\mathbf{i}+1\mathbf{j})+(2\mathbf{i}+4\mathbf{j})\right]\)</span> and common terms can be collected together to give <span class="math notranslate nohighlight">\(\left[(5+2)\mathbf{i}+(1+4)\mathbf{j}\right]=(7\mathbf{i}+6\mathbf{j})\)</span>.</p>
 <p>Subtracting one vector from another follows the same rules, but with the coefficients of each basis vector subtracted; e.g. <span class="math notranslate nohighlight">\(\mathbf{v}_1-\mathbf{v}_2=(3,-3)\)</span>.</p>
@@ -503,15 +510,15 @@ Again, we can understand this by expanding out the original vector in terms of t
 \[\mathbf{a}\cdot\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \cos\theta,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\left\lVert\mathbf{a}\right\rVert\)</span> is the <em>length</em> of vector <span class="math notranslate nohighlight">\(\mathbf{a}\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
 <p>The <em>cross-product</em> is also known as the “vector product”. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is denoted <span class="math notranslate nohighlight">\(\mathbf{a}\times\mathbf{b}\)</span> and is defined as a vector <em>perpendicular</em> to the plane containing <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> with a length given by the area of the <em>parallelogram</em> with <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> as sides.</p>
-<div class="myclass figure align-default" id="cross-product-fig">
-<a class="reference internal image-reference" href="../_images/cross_product.svg"><img alt="../_images/cross_product.svg" src="../_images/cross_product.svg" width="500px" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">The cross product of two vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is proportional to the area <span class="math notranslate nohighlight">\(A\)</span> of the parallelogram with sides <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</span><a class="headerlink" href="#cross-product-fig" title="Permalink to this image">¶</a></p>
-</div>
+<p>:::{figure,myclass} cross-product-fig
+<img src="figures/vectors_and_matrices/cross_product.svg" width="500px" /></p>
+<p>The cross product of two vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is proportional to the area <span class="math notranslate nohighlight">\(A\)</span> of the parallelogram with sides <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.
+:::</p>
 <p>This can be computed as</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{a}\times\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \sin\theta\,\mathbf{n},\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is the <em>unit vector</em> (a vector with length 1) perpendicular to the plane containing <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
-<hr class="docutils" />
+<hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="footnote1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>A good choice of coordinate system depends on the problem at hand, and Cartesian coordinates may not always be easiest to work with. For example, problems with spherical symmetry, such as describing atomic orbitals, will often be simpler when expressed in spherical coordinates <span class="math notranslate nohighlight">\((r, \phi, \theta)\)</span>.</p>
@@ -546,23 +553,43 @@ Again, we can understand this by expanding out the original vector in terms of t
 
               </div>
               
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="vectors_and_matrices.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Working with vectors and matrices</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="vectors_in_python.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Working with vectors in Python</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
         </div>
     </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="vectors_and_matrices.html" title="previous page">Working with vectors and matrices</a>
-    <a class='right-next' id="next-link" href="vectors_in_python.html" title="next page">Working with vectors in Python</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
           By Andrew R. McCluskey & Benjamin J. Morgan<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -571,11 +598,9 @@ Again, we can understand this by expanding out the original vector in terms of t
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
+  
   </body>
 </html>
