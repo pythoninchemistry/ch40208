@@ -56,5 +56,5 @@ Because Jupyter Notebooks are (interactive) webpages, they can display rich medi
 ```python
 from IPython.display import YouTubeVideo
 
-YouTubeVideo('oHg5SJYRHA0', width=800, height=300, autoplay=True)
+YouTubeVideo('dQw4w9WgXcQ', width=800, height=300, autoplay=True)
 ```
