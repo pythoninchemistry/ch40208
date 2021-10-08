@@ -22,7 +22,7 @@ orbital_occupancy[1] = 5
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_2006/558717481.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2178/558717481.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0morbital_occupancy[0m[0;34m[[0m[0;36m1[0m[0;34m][0m [0;34m=[0m [0;36m5[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mTypeError[0m: 'tuple' object does not support item assignment
