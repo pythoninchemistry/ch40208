@@ -13,4 +13,4 @@ parts:
   - file: python_basics/python_first_chemistry_later
   - file: python_basics/why_we_encourage_typing_out_the_code_examples
   - file: python_basics/using_Python_as_a_calculator
-  - file: python_basics/getting_started_with_string
+  - file: python_basics/getting_started_with_strings
