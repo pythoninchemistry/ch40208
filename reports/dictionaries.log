@@ -22,7 +22,7 @@ chlorine[1]
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mKeyError[0m                                  Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1937/3992794529.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/tmp/ipykernel_2071/3992794529.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0mchlorine[0m[0;34m[[0m[0;36m1[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;31mKeyError[0m: 1
