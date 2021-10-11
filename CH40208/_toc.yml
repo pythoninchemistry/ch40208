@@ -14,3 +14,7 @@ parts:
   - file: python_basics/why_we_encourage_typing_out_the_code_examples
   - file: python_basics/using_Python_as_a_calculator
   - file: python_basics/getting_started_with_strings
+  - file: python_basics/print_statements
+  - file: python_basics/types
+  - file: python_basics/variables
+  - file: python_basics/arithmetic
