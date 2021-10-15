@@ -18,3 +18,5 @@ parts:
   - file: python_basics/types
   - file: python_basics/variables
   - file: python_basics/arithmetic
+  - file: python_basics/lists
+  - file: python_basics/tuples
