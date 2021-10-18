@@ -20,3 +20,7 @@ parts:
   - file: python_basics/arithmetic
   - file: python_basics/lists
   - file: python_basics/tuples
+  - file: python_basics/loops
+- caption: Working with Data
+  chapters:
+  - file: working_with_data/numpy_arrays

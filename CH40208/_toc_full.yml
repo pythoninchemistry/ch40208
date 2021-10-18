@@ -19,6 +19,7 @@ parts:
   - file: python_basics/variables
   - file: python_basics/arithmetic
   - file: python_basics/lists
+  - file: python_basics/tuples
   - file: python_basics/loops
   - file: python_basics/functions
   - file: python_basics/logic_and_flow_control
