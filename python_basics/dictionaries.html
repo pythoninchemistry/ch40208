@@ -52,6 +52,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="NumPy" href="../working_with_data/numpy_arrays.html" />
+    <link rel="prev" title="Loops" href="loops.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -129,7 +131,7 @@
   Python
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="python_first_chemistry_later.html">
    Python first, chemistry later
@@ -183,6 +185,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="loops.html">
    Loops
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Dictionaries
   </a>
  </li>
 </ul>
@@ -287,7 +294,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercise">
-   Exercise:
+   Exercise
   </a>
  </li>
 </ul>
@@ -303,43 +310,44 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="dictionaries">
 <h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h1>
-<p>The last collection type we will look at is the dictionary or <code class="docutils literal notranslate"><span class="pre">dict</span></code>.
-This type consists of <code class="docutils literal notranslate"><span class="pre">keys</span></code> and <code class="docutils literal notranslate"><span class="pre">values</span></code>, which are analogous to the words and definitions in a traditional dictionary.
-Consider if we rewrite the <code class="docutils literal notranslate"><span class="pre">chlorine</span></code> list as a dictionary,</p>
+<p>Previously, collections of information known as <code class="docutils literal notranslate"><span class="pre">list</span></code> and <code class="docutils literal notranslate"><span class="pre">tuple</span></code> were introduced.
+Python has a final collection type that we will discuss here, the dictionary <code class="docutils literal notranslate"><span class="pre">dict</span></code>.
+This collection type consists of keys and values.
+These keys and values are analogous to the words and definitions of a traditional dictionary.
+Consider if we rewrite the chlorine variable as a dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;chemical symbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Cl&#39;</span><span class="p">,</span> <span class="s1">&#39;atomic number&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;average mass number&#39;</span><span class="p">:</span> <span class="mf">35.45</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;chemical symbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Cl&#39;</span><span class="p">,</span> <span class="s1">&#39;atomic number&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> <span class="s1">&#39;average mass number&#39;</span><span class="p">:</span> <span class="mf">35.45</span><span class="p">,</span> <span class="s1">&#39;x-ray scattering length&#39;</span><span class="p">:</span> <span class="mf">2.76</span><span class="o">+</span><span class="mf">0.05</span><span class="n">j</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j)}
 </pre></div>
 </div>
 </div>
 </div>
-<p>The meaning of each of the values is sudden a lot more clear than in the list object.
-We can print all of the keys, which is helping if you are passed a dictionary from another function and need to understand the contents,</p>
+<p>Here, we are able to use the keys of the dictionaries as labels for each datum.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;chemical symbol&#39;, &#39;atomic number&#39;, &#39;average mass number&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;chemical symbol&#39;, &#39;atomic number&#39;, &#39;average mass number&#39;, &#39;x-ray scattering length&#39;])
 </pre></div>
 </div>
 </div>
 </div>
-<p>It is possible to access one of the values by passing the relevant <code class="docutils literal notranslate"><span class="pre">key</span></code> as one would pass an index,</p>
+<p>It is possible to access a single one of the elements of a dictionary, by passing the relevant key in lieu of an index.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;atomic number&#39;</span><span class="p">]</span>
@@ -352,7 +360,7 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
 </div>
 </div>
 </div>
-<p>However, indexing does not work for dictionaries as the index is not a valid <code class="docutils literal notranslate"><span class="pre">key</span></code>,</p>
+<p>However, traditional indexing does not work for dictionaries, as the index is not a key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
@@ -362,7 +370,7 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1864</span><span class="o">/</span><span class="mf">3992794529.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2488</span><span class="o">/</span><span class="mf">3992794529.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">chlorine</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="ne">KeyError</span>: 1
@@ -370,7 +378,7 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
 </div>
 </div>
 </div>
-<p>We can also increase the information in a dictionary by adding new keys.</p>
+<p>We can add elements to a dictionary rather simply.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;number of isotopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
@@ -384,8 +392,13 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j), &#39;number of isotopes&#39;: 2}
+</pre></div>
 </div>
-<p>Finally, the dictionaries items need not be single variables, like floats and strings, they can also be collections,</p>
+</div>
+</div>
+<p>Finally, the items in a dictionary need not be single variables, like a <code class="docutils literal notranslate"><span class="pre">float</span></code> or an <code class="docutils literal notranslate"><span class="pre">int</span></code>. They can also other collections like a <code class="docutils literal notranslate"><span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">tuple</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;mass numbers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
@@ -399,10 +412,16 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j), &#39;number of isotopes&#39;: 2, &#39;mass numbers&#39;: (35, 37)}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="section" id="exercise">
-<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<p>Create a dictionary-type object (with the variable name <code class="docutils literal notranslate"><span class="pre">d_block</span></code>) where the <code class="docutils literal notranslate"><span class="pre">keys</span></code> are the names of the first row of transition metals, and the <code class="docutils literal notranslate"><span class="pre">values</span></code> are the numbers of valence electrons.</p>
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Create a dictionary where the keys are the names of the first-row of transition metals, and the values are int of the number of valence electrons.
+Test your dictionary by printing some of the values.</p>
 </div>
 </div>
 
@@ -435,6 +454,24 @@ We can print all of the keys, which is helping if you are passed a dictionary fr
 
 <div class='prev-next-bottom'>
     
+    <div id="prev">
+        <a class="left-prev" href="loops.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Loops</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../working_with_data/numpy_arrays.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">NumPy</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

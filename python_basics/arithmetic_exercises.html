@@ -187,6 +187,11 @@
    Loops
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dictionaries.html">
+   Dictionaries
+  </a>
+ </li>
 </ul>
 <p class="caption" role="heading">
  <span class="caption-text">
@@ -397,13 +402,13 @@ Write a Jupyter Notebook cell to achieve the following:</p></li>
 <span class="n">R</span> <span class="o">=</span> <span class="mf">8.314e-3</span> <span class="c1">#kJ/molK</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">298</span> <span class="c1">#K</span>
 
-<span class="n">K</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">dg_298</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dg_298</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.014384837712003e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3317426.4529509316
 </pre></div>
 </div>
 </div>
