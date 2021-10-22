@@ -21,6 +21,7 @@ parts:
   - file: python_basics/lists
   - file: python_basics/tuples
   - file: python_basics/loops
+  - file: python_basics/dictionaries
 - caption: Working with Data
   chapters:
   - file: working_with_data/numpy_arrays
