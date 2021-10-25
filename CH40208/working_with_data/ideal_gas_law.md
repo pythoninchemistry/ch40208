@@ -24,8 +24,6 @@ Carry out the following:
 - For each data point calculate the value of $n$, the number of moles of argon in the ballon, and store these values in a NumPy array.
 - Find the mean and standard error of this array (the standard error is the standard deviation divde by the [square root] of the sample size) and print these values in a string using the [f-strings](https://pythoninchemistry.org/ch40208/python_basics/variables.html#aside-f-strings) syntax.
 
-[Worked Examples](https://pythoninchemistry.org/ch40208/working_with_data/ideal_gas_law_exercises.html)
-
 ## Tip 
 
 The [ideal gas constant](https://en.wikipedia.org/wiki/Gas_constant) can be imported from the SciPy package and stored as the variable `R` with the following code:
