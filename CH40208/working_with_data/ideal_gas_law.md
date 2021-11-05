@@ -31,3 +31,5 @@ The [ideal gas constant](https://en.wikipedia.org/wiki/Gas_constant) can be impo
 ```
 from scipy.constants import R
 ```
+
+[Worked Example](https://pythoninchemistry.org/ch40208/working_with_data/ideal_gas_law_exercises.html)

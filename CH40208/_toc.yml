@@ -23,6 +23,7 @@ parts:
   - file: python_basics/dictionaries
   - file: python_basics/loops
   - file: python_basics/functions
+  - file: python_basics/logic_and_flow_control
 - caption: Working with Data
   chapters:
   - file: working_with_data/numpy_arrays
