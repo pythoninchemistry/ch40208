@@ -24,6 +24,11 @@ parts:
   - file: python_basics/loops
   - file: python_basics/functions
   - file: python_basics/logic_and_flow_control
+- caption: Good Practice
+  chapters:
+  - file: good_practice/readable
+  - file: good_practice/raising_errors
+  - file: good_practice/testing
 - caption: Working with Data
   chapters:
   - file: working_with_data/numpy_arrays
