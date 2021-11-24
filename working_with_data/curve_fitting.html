@@ -591,7 +591,7 @@ The value that we will minimize is known as the <span class="math notranslate no
 <div class="math notranslate nohighlight">
 \[ \chi^2 = \sum\big\{[y - f(x)] ^ 2\big\} \;\;\;\text{or}\;\;\; \chi^2 = \sum\Bigg\{\frac{[y - f(x)] ^ 2}{y_{\text{err}}^2}\Bigg\},\]</div>
 <p>depending on whether or not uncertainty in the data is known.</p>
-<p>Consider the following data, which describe the decomposition of hyodrgen peroxide in the presence of excess cerous ion Ce<sup>III</sup>,</p>
+<p>Consider the following data, which describe the decomposition of hydrogen peroxide in the presence of excess cerous ion Ce<sup>III</sup>,</p>
 <p>2H<sub>2</sub>O<sub>2</sub> + 2Ce<sup>III</sup> → 2H<sub>2</sub>O + Ce<sup>IV</sup> + O<sub>2</sub>.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -669,21 +669,21 @@ This function is defined below.</p>
 <p>We want to vary <code class="docutils literal notranslate"><span class="pre">a0</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> to minimise the <span class="math notranslate nohighlight">\(\chi^2\)</span>-value between this model and the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chi_squared</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chi_squared</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">conc</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine the chi-squared value for a first-order rate equation.</span>
 <span class="sd">    </span>
 <span class="sd">    Args:</span>
-<span class="sd">        x (list): The variable parameters.</span>
-<span class="sd">        t (float): Time (s).</span>
-<span class="sd">        data (float): Experimental concentration data.</span>
+<span class="sd">        parameters (list): The variable parameters of first_order (a0 and k).</span>
+<span class="sd">        t (float): The experimental time (s) data.</span>
+<span class="sd">        conc (float): The experimental concentration data which first_order aims to model.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
 <span class="sd">        (float): chi^2 value.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">a0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">data</span> <span class="o">-</span> <span class="n">first_order</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">a0</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">conc</span> <span class="o">-</span> <span class="n">first_order</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
