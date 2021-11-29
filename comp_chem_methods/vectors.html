@@ -448,7 +448,7 @@
 <h2>Example 1: Atomic positions.<a class="headerlink" href="#example-1-atomic-positions" title="Permalink to this headline">¶</a></h2>
 <p>Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore <span class="xref myst"><em>vector</em> quantities</span>, since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).</p>
 <p>:::{figure,myclass} position-vector-1-fig
-<img src="figures/vectors_and_matrices/position_vectors_1.svg" width="400px" /></p>
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_1.svg" width="400px" /></p>
 <p>Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.
 :::</p>
 <p>A common choice for describing atomic positions is to use Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions <a class="footnote-reference brackets" href="#footnote1" id="id1">1</a>; this will be familiar from the earlier exercises on calculating interatomic distances.</p>
@@ -459,12 +459,12 @@
 :::</p>
 <p>Using the language of vectors, this choice of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates defines a pair of <em>basis vectors</em>, which we will denote <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. <a class="footnote-reference brackets" href="#footnote2" id="id2">2</a></p>
 <p>:::{figure,myclass} position-vector-3-fig
-<img src="figures/vectors_and_matrices/position_vectors_3.svg" width="400px" /></p>
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_3.svg" width="400px" /></p>
 <p>In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <em>linear combination</em> of these basis vectors.
 :::</p>
 <p>Any position vector <span class="math notranslate nohighlight">\(r = (x, y)\)</span> can be expressed as a <em>linear combination</em> of these basis vectors, i.e. <span class="math notranslate nohighlight">\(r = x \times \mathbf{i} + y \times \mathbf{j}\)</span>. This means one way to think about the usual notation <span class="math notranslate nohighlight">\((x, y)\)</span> is that the two numbers describe the coefficients of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> for a given linear combination.</p>
 <p>:::{figure,myclass} position-vector-4-fig
-<img src="figures/vectors_and_matrices/position_vectors_4.svg" width="400px" /></p>
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_4.svg" width="400px" /></p>
 <p>The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <span class="xref myst">above</span> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.
 :::</p>
 <p>This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as <span class="math notranslate nohighlight">\((3, 4)\)</span> is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.</p>
@@ -477,7 +477,7 @@
 <h2>Vector addition, subtraction, scaling, and “multiplication”<a class="headerlink" href="#vector-addition-subtraction-scaling-and-multiplication" title="Permalink to this headline">¶</a></h2>
 <p>Vectors can be added together by adding the coefficients of each basis vector.</p>
 <p>:::{figure,myclass} vector-addition-fig
-<img src="figures/vectors_and_matrices/vector_addition.svg" width="400px" /></p>
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/vector_addition.svg" width="400px" /></p>
 <p>Vector addition.
 :::</p>
 <p>For example, adding together the vectors <span class="math notranslate nohighlight">\(\mathbf{v}_1=(5,1)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2=(2,4)\)</span> gives us a new vector <span class="math notranslate nohighlight">\(\mathbf{v}_3=(7,6)\)</span>,
