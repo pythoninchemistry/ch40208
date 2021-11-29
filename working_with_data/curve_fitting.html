@@ -310,6 +310,38 @@
    Minimization Libraries
   </a>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">
+   Working with vectors and matrices
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/vectors.html">
+     Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">
+     Working with vectors in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/matrices.html">
+     Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">
+     Working with matrices in Python
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -711,10 +743,10 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 0.13373044840241782
- hess_inv: array([[7.88770542e-01, 1.26315485e-02],
-       [1.26315485e-02, 3.02235136e-04]])
-      jac: array([1.58324838e-07, 2.03028321e-06])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 0.13373044840242107
+ hess_inv: array([[7.88767889e-01, 1.26315543e-02],
+       [1.26315543e-02, 3.02236037e-04]])
+      jac: array([1.45286322e-07, 2.03587115e-06])
   message: &#39;Optimization terminated successfully.&#39;
      nfev: 63
       nit: 10
@@ -749,7 +781,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644144148406; k = 0.10308255579543868
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644140842236; k = 0.10308255574195259
 </pre></div>
 </div>
 </div>
@@ -798,6 +830,7 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
 <li><p>Modify the above first-order rate fitting using the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> method to consider a <em>y</em>-uncertainty of 5 %.</p></li>
 <li><p>By investigating the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">documentation for the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code></a>, determine how this uncertainty would be included in the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> method.</p></li>
 </ol>
+<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/curve_fitting_exercises.html">Worked Examples</a></p>
 </div>
 </div>
 
