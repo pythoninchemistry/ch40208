@@ -7,7 +7,7 @@ Many problems in chemistry and physics involve working with <em>vector</em> quan
 Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore [<em>vector</em> quantities](position-vector-1-fig), since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).
 
 :::{figure,myclass} position-vector-1-fig
-<img src="figures/vectors_and_matrices/position_vectors_1.svg" width="400px" />
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_1.svg" width="400px" />
 
 Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.
 :::
@@ -25,7 +25,7 @@ Describing positions using Cartesian coordinates, i.e. $(x, y)$ coordinates in t
 Using the language of vectors, this choice of $x$ and $y$ coordinates defines a pair of <em>basis vectors</em>, which we will denote $\mathbf{i}$ and $\mathbf{j}$. [^footnote2]
 
 :::{figure,myclass} position-vector-3-fig
-<img src="figures/vectors_and_matrices/position_vectors_3.svg" width="400px" />
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_3.svg" width="400px" />
 
 In two dimensions we have two implicit basis vectors $\mathbf{i}$ and $\mathbf{j}$. Any position can be expressed as a <em>linear combination</em> of these basis vectors.
 :::
@@ -33,7 +33,7 @@ In two dimensions we have two implicit basis vectors $\mathbf{i}$ and $\mathbf{j
 Any position vector $r = (x, y)$ can be expressed as a <em>linear combination</em> of these basis vectors, i.e. $r = x \times \mathbf{i} + y \times \mathbf{j}$. This means one way to think about the usual notation $(x, y)$ is that the two numbers describe the coefficients of $\mathbf{i}$ and $\mathbf{j}$ for a given linear combination.
 
 :::{figure,myclass} position-vector-4-fig
-<img src="figures/vectors_and_matrices/position_vectors_4.svg" width="400px" /> 
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_4.svg" width="400px" /> 
 
 The $(x, y)$ coordinates given [above](position-vector-2-fig) are the coefficients used to define each position in the basis $(\mathbf{i}, \mathbf{j})$.
 :::
@@ -55,7 +55,7 @@ The same three positions described using a different basis.
 Vectors can be added together by adding the coefficients of each basis vector.
 
 :::{figure,myclass} vector-addition-fig
-<img src="figures/vectors_and_matrices/vector_addition.svg" width="400px" /> 
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/vector_addition.svg" width="400px" /> 
 
 Vector addition.
 :::
