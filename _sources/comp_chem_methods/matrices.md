@@ -16,10 +16,10 @@ As an example consider the following figure:
 An example of a linear transformation: rotation by 90&deg; anticlockwise.
 :::
 
-This shows an initial basis with $\bvec{i}=\cvec{1}{0}$ and $\bvec{j}=\cvec{0}{1}$, and a vector $\bvec{r}$:
-\begin{equation*}
-\bvec{r}=\cvec{3}{4}=3\bvec{i}+4\bvec{j}. 
-\end{equation*}
+This shows an initial basis with $\mathbf{i}=\begin{bmatrix}1\\0\end{bmatrix}$ and $\mathbf{j}=\begin{bmatrix}0\\1\end{bmatrix}$, and a vector $\mathbf{r}$:
+$$
+\mathbf{r}=\begin{bmatrix}3\\4\end{bmatrix}=3\mathbf{i}+4\mathbf{j}. 
+$$
 We now rotate our basis by 90&deg; anti-clockwise, which gives us a new vector $\bvec{r^\prime}$, which has elements $(3,4)$ in this new, rotated, basis;
 \begin{equation*}
 \bvec{r^\prime}=\cvec{3}{4}^\prime=3\bvec{i^\prime}+4\bvec{j^\prime},
