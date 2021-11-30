@@ -64,7 +64,7 @@ We now have a matrix that describes a 90&deg; anti-clockwise rotation. What if w
 \end{equation*}
 The matrix $\bvec{N}$ is called the **inverse** of the matrix $\bvec{M}$.
 
-```{figure} ./figures/vectors_and_matrices/rotation_example_inv.svg 
+```{figure} https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/rotation_example_inv.svg 
 ---
 widhth: 650px
 name: rotation-example-inv-fig
