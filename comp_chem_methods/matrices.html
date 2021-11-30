@@ -476,22 +476,28 @@
 \mathbf{j^\prime} = (-1\mathbf{i}+0\mathbf{j}) = \begin{bmatrix}-1\\0\end{bmatrix}.
 \end{split}\]</div>
 <p>We can now expand the vector <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span> in terms of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>:</p>
-<p>\begin{eqnarray*}
-\mathbf{r^\prime}&amp;=&amp;(3\mathbf{i^\prime}+4\mathbf{j^\prime})\
-&amp;=&amp;3(0\mathbf{i}+1\mathbf{j})+4(-1\mathbf{i}+0\mathbf{j})\
-&amp;=&amp;-4\mathbf{i}+3\mathbf{j}.
-\end{eqnarray*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{r^\prime}&amp;=&amp;(3\mathbf{i^\prime}+4\mathbf{j^\prime})\\
+               &amp;=&amp;3(0\mathbf{i}+1\mathbf{j})+4(-1\mathbf{i}+0\mathbf{j})\\
+               &amp;=&amp;-4\mathbf{i}+3\mathbf{j}.
+\end{aligned}
+\end{split}\]</div>
 <p>We can also write this as a single <strong>matrix</strong> equation, where we multiply each element of our original vector <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> by the corresponding <strong>column</strong> of our matrix,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \mathbf{r^\prime} = \begin{bmatrix}0 &amp; -1 \\ 1 &amp; 0\end{bmatrix}\mathbf{r}.
 \end{split}\]</div>
 <p>which looks like</p>
-<p>\begin{eqnarray*}
-\begin{bmatrix}0 &amp; -1 \ 1 &amp; 0\end{bmatrix}\begin{bmatrix}3\4\end{bmatrix} &amp; = &amp; 3\begin{bmatrix}0\1\end{bmatrix}+4\begin{bmatrix}-1\0\end{bmatrix} \
-&amp; = &amp; \begin{bmatrix}0\3\end{bmatrix} + \begin{bmatrix}-4\0\end{bmatrix} \
-&amp; = &amp; \begin{bmatrix}-4\3\end{bmatrix}.
-\end{eqnarray*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\begin{bmatrix}0 &amp; -1 \\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}3\\4\end{bmatrix} &amp; = &amp; 3\begin{bmatrix}0\\1\end{bmatrix}+4\begin{bmatrix}-1\\0\end{bmatrix} \\
+  &amp; = &amp; \begin{bmatrix}0\\3\end{bmatrix} + \begin{bmatrix}-4\\0\end{bmatrix} \\
+  &amp; = &amp; \begin{bmatrix}-4\\3\end{bmatrix}.
+\end{aligned}
+\end{split}\]</div>
 <p>If we denote our matrix as <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>, this can be written concisely as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -515,11 +521,14 @@
 <h2>Matrix–matrix multiplication<a class="headerlink" href="#matrixmatrix-multiplication" title="Permalink to this headline">¶</a></h2>
 <p>What happens if we perform two matrix operations, one after the other? For example we perform <strong>two</strong> successive 90° rotations—giving a 180° rotation?</p>
 <p>Mathematically this looks like</p>
-<p>\begin{eqnarray*}
-\mathbf{r^{\prime\prime}}&amp;=&amp;\mathbf{M},\mathbf{r^\prime} \{
-&amp; = &amp; \mathbf{M}\left(\mathbf{M},\mathbf{r}\right) \
-&amp; = &amp; \mathbf{M},\mathbf{M},\mathbf{r}.
-\end{eqnarray*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{r^{\prime\prime}}&amp;=&amp;\mathbf{M}\,\mathbf{r^\prime} \\{
+&amp; = &amp; \mathbf{M}\left(\mathbf{M}\,\mathbf{r}\right) \\
+&amp; = &amp; \mathbf{M}\,\mathbf{M}\,\mathbf{r}.
+\end{aligned}
+\end{split}\]</div>
 <p>We first operate on <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> with <span class="math notranslate nohighlight">\(M\)</span>, to get <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span>, and then operate on this vector again with <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. What is the result of this double operation, and can find a matrix that describes a general rotation by 180°?</p>
 <p>Written out, <span class="math notranslate nohighlight">\(\mathbf{M}\,\mathbf{M}\)</span> looks like</p>
 <div class="math notranslate nohighlight">
@@ -527,9 +536,12 @@
 \mathbf{M}\,\mathbf{M}= \begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}.
 \end{split}\]</div>
 <p>We can determine the corresponding matrix for a 180° rotation by considering what happens to the basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> when we operate on them twice with <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
-<p>\begin{eqnarray*}
-\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\mathbf{i} = \begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}1\0\end{bmatrix}
-\end{eqnarray*}</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\mathbf{i} = \begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}
+\end{aligned}
+\end{split}\]</div>
 <p>As we saw above, the first operation (working from right to left) converts <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> to <span class="math notranslate nohighlight">\(\mathbf{i^\prime}=\begin{bmatrix}0\\1\end{bmatrix}\)</span>. We now calculate the effect of the second operation</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}

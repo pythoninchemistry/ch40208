@@ -48,11 +48,13 @@ $$
 
 We can now expand the vector $\mathbf{r^\prime}$ in terms of $\mathbf{i}$ and $\mathbf{j}$:
 
-\begin{eqnarray*}
+$$
+\begin{aligned}
 \mathbf{r^\prime}&=&(3\mathbf{i^\prime}+4\mathbf{j^\prime})\\
                &=&3(0\mathbf{i}+1\mathbf{j})+4(-1\mathbf{i}+0\mathbf{j})\\
                &=&-4\mathbf{i}+3\mathbf{j}.
-\end{eqnarray*}
+\end{aligned}
+$$
 
 We can also write this as a single **matrix** equation, where we multiply each element of our original vector $\mathbf{r}$ by the corresponding **column** of our matrix,
 
@@ -62,11 +64,13 @@ $$
 
 which looks like
 
-\begin{eqnarray*}
+$$
+\begin{aligned}
 \begin{bmatrix}0 & -1 \\ 1 & 0\end{bmatrix}\begin{bmatrix}3\\4\end{bmatrix} & = & 3\begin{bmatrix}0\\1\end{bmatrix}+4\begin{bmatrix}-1\\0\end{bmatrix} \\
   & = & \begin{bmatrix}0\\3\end{bmatrix} + \begin{bmatrix}-4\\0\end{bmatrix} \\
   & = & \begin{bmatrix}-4\\3\end{bmatrix}.
-\end{eqnarray*}
+\end{aligned}
+$$
 
 If we denote our matrix as $\mathbf{M}$, this can be written concisely as
 
@@ -98,11 +102,13 @@ What happens if we perform two matrix operations, one after the other? For examp
 
 Mathematically this looks like
 
-\begin{eqnarray*}
+$$
+\begin{aligned}
 \mathbf{r^{\prime\prime}}&=&\mathbf{M}\,\mathbf{r^\prime} \\{
 & = & \mathbf{M}\left(\mathbf{M}\,\mathbf{r}\right) \\
 & = & \mathbf{M}\,\mathbf{M}\,\mathbf{r}.
-\end{eqnarray*}
+\end{aligned}
+$$
 
 We first operate on $\mathbf{r}$ with $M$, to get $\mathbf{r^\prime}$, and then operate on this vector again with $\mathbf{M}$. What is the result of this double operation, and can find a matrix that describes a general rotation by 180&deg;?
 
@@ -114,9 +120,11 @@ $$
 
 We can determine the corresponding matrix for a 180&deg; rotation by considering what happens to the basis vectors $\mathbf{i}$ and $\mathbf{j}$ when we operate on them twice with $\mathbf{M}$.
 
-\begin{eqnarray*}
+$$
+\begin{aligned}
 \begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\mathbf{i} = \begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}
-\end{eqnarray*}
+\end{aligned}
+$$
 
 As we saw above, the first operation (working from right to left) converts $\mathbf{i}$ to $\mathbf{i^\prime}=\begin{bmatrix}0\\1\end{bmatrix}$. We now calculate the effect of the second operation
 
