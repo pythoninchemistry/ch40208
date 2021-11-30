@@ -446,40 +446,40 @@
 <p>Many problems in chemistry and physics involve working with <em>vector</em> quantities. A common definition of a vector in a physics context is a quantity with both <em>magnitude</em> and <em>direction</em>; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.</p>
 <div class="section" id="example-1-atomic-positions">
 <h2>Example 1: Atomic positions.<a class="headerlink" href="#example-1-atomic-positions" title="Permalink to this headline">¶</a></h2>
-<p>Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore <span class="xref myst"><em>vector</em> quantities</span>, since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).</p>
-<p>:::{figure,myclass} position-vector-1-fig
-<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_1.svg" width="400px" /></p>
-<p>Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.
-:::</p>
+<p>Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><em>vector</em> quantities</span></a>, since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).</p>
+<div class="figure align-default" id="position-vector-1-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_1.svg"><img alt="../_images/position_vectors_1.svg" src="../_images/position_vectors_1.svg" width="400px" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.</span><a class="headerlink" href="#position-vector-1-fig" title="Permalink to this image">¶</a></p>
+</div>
 <p>A common choice for describing atomic positions is to use Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions <a class="footnote-reference brackets" href="#footnote1" id="id1">1</a>; this will be familiar from the earlier exercises on calculating interatomic distances.</p>
-<p>In two dimensions, any position can be described by giving both the <span class="xref myst"><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinate</span>.</p>
-<p>:::{figure,myclass} position-vector-2-fig
-<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_2.svg" width="400px" /></p>
-<p>Describing positions using Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions.
-:::</p>
+<p>In two dimensions, any position can be described by giving both the <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinate</span></a>.</p>
+<div class="figure align-default" id="position-vector-2-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_2.svg"><img alt="../_images/position_vectors_2.svg" src="../_images/position_vectors_2.svg" width="400px" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Describing positions using Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions.</span><a class="headerlink" href="#position-vector-2-fig" title="Permalink to this image">¶</a></p>
+</div>
 <p>Using the language of vectors, this choice of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates defines a pair of <em>basis vectors</em>, which we will denote <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. <a class="footnote-reference brackets" href="#footnote2" id="id2">2</a></p>
-<p>:::{figure,myclass} position-vector-3-fig
-<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_3.svg" width="400px" /></p>
-<p>In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <em>linear combination</em> of these basis vectors.
-:::</p>
+<div class="figure align-default" id="position-vector-3-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_3.svg"><img alt="../_images/position_vectors_3.svg" src="../_images/position_vectors_3.svg" width="400px" /></a>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <em>linear combination</em> of these basis vectors.</span><a class="headerlink" href="#position-vector-3-fig" title="Permalink to this image">¶</a></p>
+</div>
 <p>Any position vector <span class="math notranslate nohighlight">\(r = (x, y)\)</span> can be expressed as a <em>linear combination</em> of these basis vectors, i.e. <span class="math notranslate nohighlight">\(r = x \times \mathbf{i} + y \times \mathbf{j}\)</span>. This means one way to think about the usual notation <span class="math notranslate nohighlight">\((x, y)\)</span> is that the two numbers describe the coefficients of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> for a given linear combination.</p>
-<p>:::{figure,myclass} position-vector-4-fig
-<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_4.svg" width="400px" /></p>
-<p>The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <span class="xref myst">above</span> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.
-:::</p>
+<div class="figure align-default" id="position-vector-4-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_4.svg"><img alt="../_images/position_vectors_4.svg" src="../_images/position_vectors_4.svg" width="400px" /></a>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <a class="reference internal" href="#position-vector-2-fig"><span class="std std-ref">above</span></a> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.</span><a class="headerlink" href="#position-vector-4-fig" title="Permalink to this image">¶</a></p>
+</div>
 <p>This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as <span class="math notranslate nohighlight">\((3, 4)\)</span> is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.</p>
-<p>:::{figure,myclass} position-vector-alternate-basis-fig
-<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_alternate_basis.svg" width="400px" /></p>
-<p>The same three positions described using a different basis.
-:::</p>
+<div class="figure align-default" id="position-vector-alternate-basis-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_alternate_basis.svg"><img alt="../_images/position_vectors_alternate_basis.svg" src="../_images/position_vectors_alternate_basis.svg" width="400px" /></a>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The same three positions described using a different basis.</span><a class="headerlink" href="#position-vector-alternate-basis-fig" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="vector-addition-subtraction-scaling-and-multiplication">
 <h2>Vector addition, subtraction, scaling, and “multiplication”<a class="headerlink" href="#vector-addition-subtraction-scaling-and-multiplication" title="Permalink to this headline">¶</a></h2>
 <p>Vectors can be added together by adding the coefficients of each basis vector.</p>
-<p>:::{figure,myclass} vector-addition-fig
-<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/vector_addition.svg" width="400px" /></p>
-<p>Vector addition.
-:::</p>
+<div class="figure align-default" id="vector-addition-fig">
+<a class="reference internal image-reference" href="../_images/vector_addition.svg"><img alt="../_images/vector_addition.svg" src="../_images/vector_addition.svg" width="400px" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Vector addition.</span><a class="headerlink" href="#vector-addition-fig" title="Permalink to this image">¶</a></p>
+</div>
 <p>For example, adding together the vectors <span class="math notranslate nohighlight">\(\mathbf{v}_1=(5,1)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2=(2,4)\)</span> gives us a new vector <span class="math notranslate nohighlight">\(\mathbf{v}_3=(7,6)\)</span>,
 which can be understood by writing <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span> as <span class="math notranslate nohighlight">\((5\mathbf{i}+1\mathbf{j})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> as <span class="math notranslate nohighlight">\((2\mathbf{i}+4\mathbf{j})\)</span>. Adding <span class="math notranslate nohighlight">\(\mathbf{v1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v2}\)</span> then gives <span class="math notranslate nohighlight">\(\left[(5\mathbf{i}+1\mathbf{j})+(2\mathbf{i}+4\mathbf{j})\right]\)</span> and common terms can be collected together to give <span class="math notranslate nohighlight">\(\left[(5+2)\mathbf{i}+(1+4)\mathbf{j}\right]=(7\mathbf{i}+6\mathbf{j})\)</span>.</p>
 <p>Subtracting one vector from another follows the same rules, but with the coefficients of each basis vector subtracted; e.g. <span class="math notranslate nohighlight">\(\mathbf{v}_1-\mathbf{v}_2=(3,-3)\)</span>.</p>
@@ -503,10 +503,6 @@ Again, we can understand this by expanding out the original vector in terms of t
 \[\mathbf{a}\cdot\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \cos\theta,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\left\lVert\mathbf{a}\right\rVert\)</span> is the <em>length</em> of vector <span class="math notranslate nohighlight">\(\mathbf{a}\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
 <p>The <em>cross-product</em> is also known as the “vector product”. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is denoted <span class="math notranslate nohighlight">\(\mathbf{a}\times\mathbf{b}\)</span> and is defined as a vector <em>perpendicular</em> to the plane containing <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> with a length given by the area of the <em>parallelogram</em> with <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> as sides.</p>
-<p>:::{figure,myclass} cross-product-fig
-<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/cross_product.svg" width="500px" /></p>
-<p>The cross product of two vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is proportional to the area <span class="math notranslate nohighlight">\(A\)</span> of the parallelogram with sides <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.
-:::</p>
 <p>This can be computed as</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{a}\times\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \sin\theta\,\mathbf{n},\]</div>
