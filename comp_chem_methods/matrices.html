@@ -449,7 +449,7 @@
 <p>This means that a specific vector is only meaningful if the corresponding basis is defined. A suitable choice of basis vectors depends on the problem we are interested in solving, and there are many situations where it can be useful to change from one set of basis vectors to another: for example a molecular dynamics simulation might use atomic positions, velocities, and accelerations in Cartesian coordinates, corresponding to a Cartesian basis, and usually called the <strong>lab</strong> frame of reference. The dynamics of individual molecules, however, might be easier to describe within a <strong>molecular</strong> frame of reference, with basis vectors aligned with specific bonds or along rotational axes. In this case, modelling our system involves <strong>transforming</strong> between these two sets of basis vectors.</p>
 <p>As an example consider the following figure:</p>
 <p>:::{figure,myclass} rotation-example-fig
-<img src="figures/vectors_and_matrices/rotation_example.svg" width="650px" /></p>
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/rotation_example.svg" width="650px" /></p>
 <p>An example of a linear transformation: rotation by 90° anticlockwise.
 :::</p>
 <p>This shows an initial basis with <span class="math notranslate nohighlight">\(\bvec{i}=\cvec{1}{0}\)</span> and <span class="math notranslate nohighlight">\(\bvec{j}=\cvec{0}{1}\)</span>, and a vector <span class="math notranslate nohighlight">\(\bvec{r}\)</span>:
@@ -498,7 +498,7 @@ If we denote our matrix as <span class="math notranslate nohighlight">\(\bvec{M}
 \end{equation*}
 The matrix <span class="math notranslate nohighlight">\(\bvec{N}\)</span> is called the <strong>inverse</strong> of the matrix <span class="math notranslate nohighlight">\(\bvec{M}\)</span>.</p>
 <p>:::{figure,myclass} rotation-example-inv-fig
-<img src="figures/vectors_and_matrices/rotation_example_inv.svg" width="650px" /></p>
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/rotation_example_inv.svg" width="650px" /></p>
 <p>Rotating back by 90° clockwise is the <strong>inverse</strong> of our previous 90° anti-clockwise rotation, and is described by the <strong>inverse</strong> matrix operation.
 :::</p>
 </div>
@@ -530,7 +530,7 @@ Doing the same for <span class="math notranslate nohighlight">\(\bvec{j^\prime}\
 \end{equation*}
 And we remember that the columns of a matrix describe the new basis functions, in this case <span class="math notranslate nohighlight">\(\bvec{i^{\prime\prime}}\)</span> and <span class="math notranslate nohighlight">\(\bvec{j^{\prime\prime}}\)</span>. The matrix that describes a 180° rotation (or two successive 90° rotations) is therefore <span class="math notranslate nohighlight">\(\begin{bmatrix}-1 &amp; 0\\ 0 &amp; -1\end{bmatrix}\)</span>, i.e. both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are inverted.</p>
 <p>:::{figure,myclass} rotation-example-twice-fig
-<img src="figures/vectors_and_matrices/rotation_example_twice.svg" width="650px" /></p>
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/rotation_example_twice.svg" width="650px" /></p>
 <p>Rotating by 180° corresponds to rotating by 90° twice. We can calculate the corresponding matrix operation by considering what happens when we operate on our original basis <em>twice</em> with our 90°-rotation matrix.
 :::</p>
 </div>
