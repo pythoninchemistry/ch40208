@@ -11,7 +11,7 @@ This means that a specific vector is only meaningful if the corresponding basis 
 As an example consider the following figure:
 
 :::{figure,myclass} rotation-example-fig
-<img src="figures/vectors_and_matrices/rotation_example.svg" width="650px" /> 
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/rotation_example.svg" width="650px" /> 
 
 An example of a linear transformation: rotation by 90&deg; anticlockwise.
 :::
@@ -65,7 +65,7 @@ We now have a matrix that describes a 90&deg; anti-clockwise rotation. What if w
 The matrix $\bvec{N}$ is called the **inverse** of the matrix $\bvec{M}$.
 
 :::{figure,myclass} rotation-example-inv-fig
-<img src="figures/vectors_and_matrices/rotation_example_inv.svg" width="650px" /> 
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/rotation_example_inv.svg" width="650px" /> 
 
 Rotating back by 90&deg; clockwise is the **inverse** of our previous 90&deg; anti-clockwise rotation, and is described by the **inverse** matrix operation.
 :::
@@ -101,7 +101,7 @@ Doing the same for $\bvec{j^\prime}$ gives
 And we remember that the columns of a matrix describe the new basis functions, in this case $\bvec{i^{\prime\prime}}$ and $\bvec{j^{\prime\prime}}$. The matrix that describes a 180&deg; rotation (or two successive 90&deg; rotations) is therefore $\begin{bmatrix}-1 & 0\\ 0 & -1\end{bmatrix}$, i.e. both $x$ and $y$ are inverted.
 
 :::{figure,myclass} rotation-example-twice-fig
-<img src="figures/vectors_and_matrices/rotation_example_twice.svg" width="650px" /> 
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/rotation_example_twice.svg" width="650px" /> 
 
 Rotating by 180&deg; corresponds to rotating by 90&deg; twice. We can calculate the corresponding matrix operation by considering what happens when we operate on our original basis *twice* with our 90&deg;-rotation matrix.
 :::

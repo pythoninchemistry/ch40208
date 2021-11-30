@@ -17,7 +17,7 @@ A common choice for describing atomic positions is to use Cartesian coordinates,
 In two dimensions, any position can be described by giving both the [$x$ and $y$ coordinate](position-vector-1-fig).
 
 :::{figure,myclass} position-vector-2-fig
-<img src="figures/vectors_and_matrices/position_vectors_2.svg" width="400px" />
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_2.svg" width="400px" />
 
 Describing positions using Cartesian coordinates, i.e. $(x, y)$ coordinates in two dimensions, or $(x, y, z)$ in three dimensions.
 :::
@@ -41,7 +41,7 @@ The $(x, y)$ coordinates given [above](position-vector-2-fig) are the coefficien
 This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as $(3, 4)$ is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.
 
 :::{figure,myclass} position-vector-alternate-basis-fig
-<img src="figures/vectors_and_matrices/position_vectors_alternate_basis.svg" width="400px" /> 
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/position_vectors_alternate_basis.svg" width="400px" /> 
 
 The same three positions described using a different basis.
 :::
@@ -93,7 +93,7 @@ where $\left\lVert\mathbf{a}\right\rVert$ is the _length_ of vector $\mathbf{a}$
 The <em>cross-product</em> is also known as the &ldquo;vector product&rdquo;. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors $\mathbf{a}$ and $\mathbf{b}$ is denoted $\mathbf{a}\times\mathbf{b}$ and is defined as a vector <em>perpendicular</em> to the plane containing $\mathbf{a}$ and $\mathbf{b}$ with a length given by the area of the <em>parallelogram</em> with $\mathbf{a}$ and $\mathbf{b}$ as sides.
 
 :::{figure,myclass} cross-product-fig
-<img src="figures/vectors_and_matrices/cross_product.svg" width="500px" /> 
+<img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/comp_chem_methods/figures/vectors_and_matrices/cross_product.svg" width="500px" /> 
 
 The cross product of two vectors $\mathbf{a}$ and $\mathbf{b}$ is proportional to the area $A$ of the parallelogram with sides $\mathbf{a}$ and $\mathbf{b}$.
 :::
