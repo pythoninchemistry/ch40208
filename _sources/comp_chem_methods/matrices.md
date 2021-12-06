@@ -121,9 +121,9 @@ $$
 We can determine the corresponding matrix for a 180&deg; rotation by considering what happens to the basis vectors $\mathbf{i}$ and $\mathbf{j}$ when we operate on them twice with $\mathbf{M}$.
 
 $$
-\begin{aligned}
+\begin{split}
 \begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\mathbf{i} = \begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\begin{bmatrix}0 & -1\\ 1 & 0\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}
-\end{aligned}
+\end{split}
 $$
 
 As we saw above, the first operation (working from right to left) converts $\mathbf{i}$ to $\mathbf{i^\prime}=\begin{bmatrix}0\\1\end{bmatrix}$. We now calculate the effect of the second operation
