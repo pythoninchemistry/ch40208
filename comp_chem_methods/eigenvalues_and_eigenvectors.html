@@ -438,39 +438,31 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="eigenvalues-and-eigenvectors">
 <h1>Eigenvalues and eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h1>
-<p>We have seen that a matrix <span class="math notranslate nohighlight">\(\bvec{M}\)</span> operating on a vector <span class="math notranslate nohighlight">\(\bvec{v}\)</span> produces a new vector <span class="math notranslate nohighlight">\(\bvec{v^\prime}\)</span>:
+<p>We have seen that a matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> operating on a vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> produces a new vector <span class="math notranslate nohighlight">\(\mathbf{v^\prime}\)</span>:
 \begin{equation*}
-\bvec{v}^\prime = \bvec{M}\cdot\bvec{v}.
+\mathbf{v}^\prime = \mathbf{M}\cdot\mathbf{v}.
 \end{equation*}
-In general the matrix <span class="math notranslate nohighlight">\(\bvec{M}\)</span> can change both the magnitude and direction of the vectors <span class="math notranslate nohighlight">\(\bvec{v}\to\bvec{v^\prime}\)</span>.</p>
-<p>Consider the matrix <span class="math notranslate nohighlight">\(\bvec{M}=\tmatrix{2}{1}{1}{2}\)</span>. This gives the linear transformation shown below.</p>
-<p>:::{figure,myclass} matrix-transformation-fig
-<img src="figures/vectors_and_matrices/matrix_transformation.svg" width="650px" /></p>
-<p>The effect of the matrix <span class="math notranslate nohighlight">\(\bvec{M}=\begin{bmatrix}2&amp;1\\1&amp;2\end{bmatrix}\)</span> is to transform the basis vectors <span class="math notranslate nohighlight">\(\bvec{i}=\cvec{1}{0}\)</span> and <span class="math notranslate nohighlight">\(\bvec{j}=\cvec{0}{1}\)</span> (left) to <span class="math notranslate nohighlight">\(\bvec{i^\prime}=\cvec{2}{1}\)</span> and <span class="math notranslate nohighlight">\(\bvec{j^\prime}=\cvec{1}{2}\)</span> (right); i.e. the new unit vectors are the columns of <span class="math notranslate nohighlight">\(\bvec{M}\)</span>.
-:::</p>
+In general the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> can change both the magnitude and direction of the vectors <span class="math notranslate nohighlight">\(\mathbf{v}\to\mathbf{v^\prime}\)</span>.</p>
+<p>Consider the matrix <span class="math notranslate nohighlight">\(\mathbf{M}=\begin{bmatrix}2 &amp; 1 \\ 1 &amp; 2\end{bmatrix}\)</span>. This gives the linear transformation shown below.</p>
 <p>We can also visualise this transformation by considering the effect on a set of vectors with length <span class="math notranslate nohighlight">\(1\)</span> and different directions. Now we see that the effect of the matrix transformation is to transform a unit circle into an ellipse.</p>
-<p>:::{figure,myclass} matrix-transformation-unit-circle-fig
-<img src="figures/vectors_and_matrices/matrix_transformation_unit_circle.svg" width="650px" /></p>
-<p>The effect of the matrix <span class="math notranslate nohighlight">\(\bvec{M}\)</span> is to transform the unit circle (left) into an ellipse (right).
-:::</p>
-<p>The major and minor axes of this ellipse (given by the <em>longest</em> and <em>shortest</em> transformed vectors) lie along <span class="math notranslate nohighlight">\(\cvec{1}{1}\)</span> and <span class="math notranslate nohighlight">\(\cvec{-1}{1}\)</span>, respectively.</p>
-<p>If we compare these transformed vectors to the corresponding <em>original</em> vectors we see that the effect of <span class="math notranslate nohighlight">\(\bvec{M}\)</span> operating on these two vectors is only to <em>scale</em> them. Their directions have not changed. Mathematically, this can be expressed as
+<p>The major and minor axes of this ellipse (given by the <em>longest</em> and <em>shortest</em> transformed vectors) lie along <span class="math notranslate nohighlight">\(\begin{bmatrix}1 \\ 1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\begin{bmatrix}-1 \\ 1\end{bmatrix}\)</span>, respectively.</p>
+<p>If we compare these transformed vectors to the corresponding <em>original</em> vectors we see that the effect of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> operating on these two vectors is only to <em>scale</em> them. Their directions have not changed. Mathematically, this can be expressed as
 \begin{eqnarray*}
-\bvec{v^\prime}&amp;=&amp;\bvec{M}\cdot\bvec{v} \
-s\bvec{v}&amp;=&amp;\bvec{M}\cdot\bvec{v}.
+\mathbf{v^\prime}&amp;=&amp;\mathbf{M}\cdot\mathbf{v} \
+s\mathbf{v}&amp;=&amp;\mathbf{M}\cdot\mathbf{v}.
 \end{eqnarray*}
-i.e. operating on <span class="math notranslate nohighlight">\(\bvec{v}\)</span> by <span class="math notranslate nohighlight">\(\bvec{M}\)</span> gives the <em>same vector</em> <span class="math notranslate nohighlight">\(\bvec{v}\)</span> back, times a <em>scalar</em>, <span class="math notranslate nohighlight">\(s\)</span>. This only happens for these two “special” vectors, which we call the <em>eigenvectors</em> of the matrix <span class="math notranslate nohighlight">\(\bvec{M}\)</span>. The scalar values <span class="math notranslate nohighlight">\(s\)</span> are the <em>eigenvalues</em> of the matrix <span class="math notranslate nohighlight">\(\bvec{M}\)</span>.</p>
-<p>:::{figure,myclass} ellipse-major-minor-axes-transformation-fig
-<img src="figures/vectors_and_matrices/ellipse_major_minor_axes_transformation.svg" width="650px" /></p>
-<p>Left: The two vectors corresponding to the major and minor axes of the ellipse in the <span class="xref myst">previous figure</span>. Right: The same two vectors <em>before</em> the transformation. Both of these vectors have the same direction before and after the transformation by <span class="math notranslate nohighlight">\(\bvec{M}\)</span> and are <em>eigenvectors</em> of <span class="math notranslate nohighlight">\(\bvec{M}\)</span>.
-:::</p>
+i.e. operating on <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> by <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> gives the <em>same vector</em> <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> back, times a <em>scalar</em>, <span class="math notranslate nohighlight">\(s\)</span>. This only happens for these two “special” vectors, which we call the <em>eigenvectors</em> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. The scalar values <span class="math notranslate nohighlight">\(s\)</span> are the <em>eigenvalues</em> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
+<div class="figure align-default" id="ellipse-major-minor-axes-transformation-fig">
+<a class="reference internal image-reference" href="../_images/ellipse_major_minor_axes_transformation.svg"><img alt="../_images/ellipse_major_minor_axes_transformation.svg" src="../_images/ellipse_major_minor_axes_transformation.svg" width="650px" /></a>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Left: The two vectors corresponding to the major and minor axes of the ellipse in the <span class="xref myst">previous figure</span>. Right: The same two vectors <em>before</em> the transformation. Both of these vectors have the same direction before and after the transformation by <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> and are <em>eigenvectors</em> of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</span><a class="headerlink" href="#ellipse-major-minor-axes-transformation-fig" title="Permalink to this image">¶</a></p>
+</div>
 <p>We can calcuate the eigenvalues and eigenvectors of a matrix using <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.eig.html"><code class="docutils literal notranslate"><span class="pre">np.linalg.eig()</span></code></a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="p">))</span>
 <span class="go">(array([3., 1.]), array([[ 0.70710678, -0.70710678],</span>
 <span class="go">       [ 0.70710678,  0.70710678]]))</span>
 </pre></div>
 </div>
-<p>This returns two arrays. The first array contains the eigenvalues of <span class="math notranslate nohighlight">\(\bvec{M}\)</span>, and the second array contains the eigenvectors of <span class="math notranslate nohighlight">\(\bvec{M}\)</span>.</p>
+<p>This returns two arrays. The first array contains the eigenvalues of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>, and the second array contains the eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
 <span class="go">[3., 1]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
@@ -478,18 +470,18 @@ i.e. operating on <span class="math notranslate nohighlight">\(\bvec{v}\)</span>
 <span class="go"> [ 0.70710678  0.70710678]]</span>
 </pre></div>
 </div>
-<p>Note that the eigenvectors are returned as a matrix. Each of the <em>columns</em> of this matrix correspond to one of the eigenvectors. We can see that for the matrix <span class="math notranslate nohighlight">\(\bvec{M}=\tmatrix{2}{1}{1}{2}\)</span> we get one eigenvector <span class="math notranslate nohighlight">\(\cvec{0.70710678}{0.70710678}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(3\)</span>, and a second eigenvector <span class="math notranslate nohighlight">\(\cvec{-0.70710678}{\phantom{-}0.70710678}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Note that the eigenvectors are returned as a matrix. Each of the <em>columns</em> of this matrix correspond to one of the eigenvectors. We can see that for the matrix <span class="math notranslate nohighlight">\(\mathbf{M}=\begin{bmatrix}2 &amp; 1 \\ 1 &amp; 2\end{bmatrix}\)</span> we get one eigenvector <span class="math notranslate nohighlight">\(\begin{bmatrix}0.70710678 \\ 0.70710678 \end{bmatrix}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(3\)</span>, and a second eigenvector <span class="math notranslate nohighlight">\(\begin{bmatrix} -0.70710678 \\ \phantom{-}0.70710678\end{bmatrix}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <p>Calculating eigenvalues and eigenvectors has applications in a number of areas of chemistry. For example:</p>
 <ul class="simple">
 <li><p>Describing the rotational motions of molecules: finding principal axes of rotation and principal moments of inertia (eigenvectors and eigenvalues of the inertia matrix).</p></li>
 <li><p>Describing the vibrational motions of molecules: finding normal modes (eigenvectors and eigenvalues of the dynamical matrix).</p></li>
-<li><p>Solving the time-independent Schrödinger equation <span class="math notranslate nohighlight">\(\bvec{H}\Psi=E\Psi\)</span>, which is an eigenvalue equation: finding molecular orbitals and their corresponding energies (eigenvectors and eigenvalues of the Hamiltonian matrix).</p></li>
+<li><p>Solving the time-independent Schrödinger equation <span class="math notranslate nohighlight">\(\mathbf{H}\Psi=E\Psi\)</span>, which is an eigenvalue equation: finding molecular orbitals and their corresponding energies (eigenvectors and eigenvalues of the Hamiltonian matrix).</p></li>
 </ul>
 <div class="tip admonition">
 <p class="admonition-title">Key ideas</p>
 <ul class="simple">
 <li><p>A two-dimensional matrix transforms a unit circle into an ellipse.</p></li>
-<li><p>A vector that does not change direction under the operation <span class="math notranslate nohighlight">\(\bvec{M}\)</span> is an <em>eigenvector</em> of <span class="math notranslate nohighlight">\(\bvec{M}\)</span>. The scaling factor of this vector is the corresponding <em>eigenvalue</em>.</p></li>
+<li><p>A vector that does not change direction under the operation <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is an <em>eigenvector</em> of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. The scaling factor of this vector is the corresponding <em>eigenvalue</em>.</p></li>
 </ul>
 </div>
 </div>
