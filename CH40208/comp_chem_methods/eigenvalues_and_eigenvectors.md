@@ -1,8 +1,10 @@
 # Eigenvalues and eigenvectors
 We have seen that a matrix $\mathbf{M}$ operating on a vector $\mathbf{v}$ produces a new vector $\mathbf{v^\prime}$:
-\begin{equation*}
+
+$$
 \mathbf{v}^\prime = \mathbf{M}\cdot\mathbf{v}.
-\end{equation*}
+$$
+
 In general the matrix $\mathbf{M}$ can change both the magnitude and direction of the vectors $\mathbf{v}\to\mathbf{v^\prime}$.
 
 Consider the matrix $\mathbf{M}=\begin{bmatrix}2 & 1 \\ 1 & 2\end{bmatrix}$. This gives the linear transformation shown below. 
@@ -29,10 +31,14 @@ The effect of the matrix $\mathbf{M}$ is to transform the unit circle (left) int
 The major and minor axes of this ellipse (given by the <em>longest</em> and <em>shortest</em> transformed vectors) lie along $\begin{bmatrix}1 \\ 1\end{bmatrix}$ and $\begin{bmatrix}-1 \\ 1\end{bmatrix}$, respectively. 
 
 If we compare these transformed vectors to the corresponding <em>original</em> vectors we see that the effect of $\mathbf{M}$ operating on these two vectors is only to <em>scale</em> them. Their directions have not changed. Mathematically, this can be expressed as
-\begin{eqnarray*}
+
+$$
+\begin{aligned}
 \mathbf{v^\prime}&=&\mathbf{M}\cdot\mathbf{v} \\
 s\mathbf{v}&=&\mathbf{M}\cdot\mathbf{v}.
-\end{eqnarray*}
+\end{aligned}
+$$
+
 i.e. operating on $\mathbf{v}$ by $\mathbf{M}$ gives the <em>same vector</em> $\mathbf{v}$ back, times a <em>scalar</em>, $s$. This only happens for these two &ldquo;special&rdquo; vectors, which we call the <em>eigenvectors</em> of the matrix $\mathbf{M}$. The scalar values $s$ are the <em>eigenvalues</em> of the matrix $\mathbf{M}$.
 
 ```{figure} ./figures/vectors_and_matrices/ellipse_major_minor_axes_transformation.svg
