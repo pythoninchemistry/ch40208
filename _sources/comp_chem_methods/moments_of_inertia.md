@@ -114,13 +114,16 @@ $$
 And then the effect of the matrix $\mathbf{I}$ operating on $\mathbf{\omega}$:
 
 $$
+\begin{aligned}
 \mathbf{I}\cdot\mathbf{\omega} & = & c_1\mathbf{I}\cdot\mathbf{v}_1 + c_2\mathbf{I}\cdot\mathbf{v}_2 + c_3\mathbf{I}\cdot\mathbf{v}_3 \\
 & = & c_1\lambda_1\mathbf{v}_1 + c_2\lambda_1\mathbf{v}_2 + c_3\lambda_1\mathbf{v}_3.
+\end{aligned}
 $$
 
 which can be rewritten in matrix form as
 
 $$
+\begin{aligned}
 \mathbf{I}\cdot\mathbf{\omega} & = & 
 \begin{bmatrix} 
 \lambda_1 & 0 & 0 \\
@@ -136,6 +139,7 @@ $$
 \end{bmatrix}
 \cdot
 \mathbf{\omega}
+\end{aligned}
 $$
 
 This gives the simplified form that we wanted, <em>if</em> we use the eigenvectors of $\mathbf{I}$ as our basis vectors, i.e. as our coordinate system vectors. The eigenvectors of the inertia matrix are called the <em>principal rotation axes</em> of our molecule, and the corresponding eigenvalues are the <em>principal moments of inertia</em>.

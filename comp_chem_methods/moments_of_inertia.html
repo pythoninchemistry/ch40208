@@ -563,12 +563,15 @@ I_{xx} &amp; 0 &amp; 0 \\
 <p>And then the effect of the matrix <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> operating on <span class="math notranslate nohighlight">\(\mathbf{\omega}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+\begin{aligned}
 \mathbf{I}\cdot\mathbf{\omega} &amp; = &amp; c_1\mathbf{I}\cdot\mathbf{v}_1 + c_2\mathbf{I}\cdot\mathbf{v}_2 + c_3\mathbf{I}\cdot\mathbf{v}_3 \\
 &amp; = &amp; c_1\lambda_1\mathbf{v}_1 + c_2\lambda_1\mathbf{v}_2 + c_3\lambda_1\mathbf{v}_3.
+\end{aligned}
 \end{split}\]</div>
 <p>which can be rewritten in matrix form as</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
+\begin{aligned}
 \mathbf{I}\cdot\mathbf{\omega} &amp; = &amp; 
 \begin{bmatrix} 
 \lambda_1 &amp; 0 &amp; 0 \\
@@ -584,6 +587,7 @@ I_{xx} &amp; 0 &amp; 0 \\
 \end{bmatrix}
 \cdot
 \mathbf{\omega}
+\end{aligned}
 \end{split}\]</div>
 <p>This gives the simplified form that we wanted, <em>if</em> we use the eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> as our basis vectors, i.e. as our coordinate system vectors. The eigenvectors of the inertia matrix are called the <em>principal rotation axes</em> of our molecule, and the corresponding eigenvalues are the <em>principal moments of inertia</em>.</p>
 <p>For a molecule in an arbitrary orientation, we can therefore calculate the principal moments of inertia by finding the eigenvalues of the inertia matrix. The corresponding eigenvectors give us the principal rotation axes, which are often used to define a “natural” coordinate system for the molecule.</p>
