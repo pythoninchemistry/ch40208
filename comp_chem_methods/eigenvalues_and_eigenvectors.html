@@ -438,20 +438,24 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="eigenvalues-and-eigenvectors">
 <h1>Eigenvalues and eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h1>
-<p>We have seen that a matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> operating on a vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> produces a new vector <span class="math notranslate nohighlight">\(\mathbf{v^\prime}\)</span>:
-\begin{equation*}
+<p>We have seen that a matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> operating on a vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> produces a new vector <span class="math notranslate nohighlight">\(\mathbf{v^\prime}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
 \mathbf{v}^\prime = \mathbf{M}\cdot\mathbf{v}.
-\end{equation*}
-In general the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> can change both the magnitude and direction of the vectors <span class="math notranslate nohighlight">\(\mathbf{v}\to\mathbf{v^\prime}\)</span>.</p>
+\]</div>
+<p>In general the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> can change both the magnitude and direction of the vectors <span class="math notranslate nohighlight">\(\mathbf{v}\to\mathbf{v^\prime}\)</span>.</p>
 <p>Consider the matrix <span class="math notranslate nohighlight">\(\mathbf{M}=\begin{bmatrix}2 &amp; 1 \\ 1 &amp; 2\end{bmatrix}\)</span>. This gives the linear transformation shown below.</p>
 <p>We can also visualise this transformation by considering the effect on a set of vectors with length <span class="math notranslate nohighlight">\(1\)</span> and different directions. Now we see that the effect of the matrix transformation is to transform a unit circle into an ellipse.</p>
 <p>The major and minor axes of this ellipse (given by the <em>longest</em> and <em>shortest</em> transformed vectors) lie along <span class="math notranslate nohighlight">\(\begin{bmatrix}1 \\ 1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\begin{bmatrix}-1 \\ 1\end{bmatrix}\)</span>, respectively.</p>
-<p>If we compare these transformed vectors to the corresponding <em>original</em> vectors we see that the effect of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> operating on these two vectors is only to <em>scale</em> them. Their directions have not changed. Mathematically, this can be expressed as
-\begin{eqnarray*}
-\mathbf{v^\prime}&amp;=&amp;\mathbf{M}\cdot\mathbf{v} \
+<p>If we compare these transformed vectors to the corresponding <em>original</em> vectors we see that the effect of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> operating on these two vectors is only to <em>scale</em> them. Their directions have not changed. Mathematically, this can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{v^\prime}&amp;=&amp;\mathbf{M}\cdot\mathbf{v} \\
 s\mathbf{v}&amp;=&amp;\mathbf{M}\cdot\mathbf{v}.
-\end{eqnarray*}
-i.e. operating on <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> by <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> gives the <em>same vector</em> <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> back, times a <em>scalar</em>, <span class="math notranslate nohighlight">\(s\)</span>. This only happens for these two “special” vectors, which we call the <em>eigenvectors</em> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. The scalar values <span class="math notranslate nohighlight">\(s\)</span> are the <em>eigenvalues</em> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
+\end{aligned}
+\end{split}\]</div>
+<p>i.e. operating on <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> by <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> gives the <em>same vector</em> <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> back, times a <em>scalar</em>, <span class="math notranslate nohighlight">\(s\)</span>. This only happens for these two “special” vectors, which we call the <em>eigenvectors</em> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. The scalar values <span class="math notranslate nohighlight">\(s\)</span> are the <em>eigenvalues</em> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
 <div class="figure align-default" id="ellipse-major-minor-axes-transformation-fig">
 <a class="reference internal image-reference" href="../_images/ellipse_major_minor_axes_transformation.svg"><img alt="../_images/ellipse_major_minor_axes_transformation.svg" src="../_images/ellipse_major_minor_axes_transformation.svg" width="650px" /></a>
 <p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Left: The two vectors corresponding to the major and minor axes of the ellipse in the <span class="xref myst">previous figure</span>. Right: The same two vectors <em>before</em> the transformation. Both of these vectors have the same direction before and after the transformation by <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> and are <em>eigenvectors</em> of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</span><a class="headerlink" href="#ellipse-major-minor-axes-transformation-fig" title="Permalink to this image">¶</a></p>

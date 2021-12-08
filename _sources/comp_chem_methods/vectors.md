@@ -82,19 +82,21 @@ Again, we can understand this by expanding out the original vector in terms of t
 
 ### The dot-product and the cross-product
 
-We can also &ldquo;multiply&rdquo; two vectors together, although this is more complex. In fact there are <em>two</em> standard ways to deinfe &ldquo;multiplication&rdquo; of vectors.
+We can also "multiply" two vectors together, although this is more complex. In fact there are <em>two</em> standard ways to deinfe "multiplication:; of vectors.
 
-The <em>dot product</em> is also known as the &ldquo;scalar product&rdquo;. This operation takes two vectors and returns a scalar quantity. The dot product of two vectors is denoted $\mathbf{a}\cdot\mathbf{b}$, and is defined as
+The <em>dot product</em> is also known as the "scalar product". This operation takes two vectors and returns a scalar quantity. The dot product of two vectors is denoted $\mathbf{a}\cdot\mathbf{b}$, and is defined as
 
 $$ \mathbf{a}\cdot\mathbf{b} = \sum_ia_ib_i = a_1b_1 + a_2b_2 + \ldots + a_nb_n.$$
 
 For example, if $\mathbf{a}=(2,1)$ and $\mathbf{b}=(3,2)$ then $\mathbf{a}\cdot\mathbf{b}$ is given by
 
-$$\begin{eqnarray*}
+$$
+\begin{aligned}
 \mathbf{a}\cdot\mathbf{b} & = & (x_\mathrm{a} \times x_\mathrm{b})+ (y_\mathrm{a}\times y_\mathrm{b})\\
 & = & (2\times3 + 1\times2) \\
 & = & 8
-\end{eqnarray*}$$
+\end{aligned}
+$$
 
 An equivalent definition of the dot product is
 
