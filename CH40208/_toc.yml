@@ -29,6 +29,8 @@ parts:
   - file: good_practice/readable
   - file: good_practice/raising_errors
   - file: good_practice/testing
+  - file: good_practice/modularisation
+  - file: good_practice/markdown
 - caption: Working with Data
   chapters:
   - file: working_with_data/numpy_arrays
@@ -52,3 +54,6 @@ parts:
     - file: comp_chem_methods/vectors_in_python
     - file: comp_chem_methods/matrices
     - file: comp_chem_methods/matrices_in_python
+    - file: comp_chem_methods/eigenvalues_and_eigenvectors
+    - file: comp_chem_methods/moments_of_inertia
+
