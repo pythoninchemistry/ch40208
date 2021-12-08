@@ -98,9 +98,11 @@ and each component of $\mathbf{l}$ would be directly proportional to the corresp
 It turns out that such a coordinate system can be found, and it corresponds to choosing the <em>eigenvectors</em> of $\mathbf{I}$ as our basis vectors. Let us suppose that we have found the eigenvalues, $\lambda_i$, and eigenvectors, $\mathbf{v}_i$, of $\mathbf{I}$. This gives us three eigenvalue equations:
 
 $$
+\begin{aligned}
 \lambda_1 \mathbf{v}_1 & = & \mathbf{I}\cdot\mathbf{v}_1 \\
 \lambda_2 \mathbf{v}_2 & = & \mathbf{I}\cdot\mathbf{v}_2 \\
 \lambda_3 \mathbf{v}_3 & = & \mathbf{I}\cdot\mathbf{v}_3.
+\end{aligned}
 $$
 
 Let us now express our angular velocity vector $\mathbf{\omega}$ using these eigenvectors as a basis:
