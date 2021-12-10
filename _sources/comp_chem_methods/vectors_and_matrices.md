@@ -8,7 +8,7 @@ Working with vectors and matrices is common in computational chemistry, as well 
 Although it is not necessary to understand the material in this section, 
 if you are interested in a deeper introduction to vectors, matrics, and linear algebra, we recommend the [Essence of Linear Algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs) YouTube series by [3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw). 
 
-Another helpful resource that presents these concepts in a similar way is the [Land on Vector Spaces](https://github.com/engineersCode/EngComp4\_landlinear) series of Jupyter notebooks from [Lorena Barba's group](https://lorenabarba.com), which provides Jupyter-friendly tools for visualising vectors and matrix operations. 
+Another helpful resource that presents these concepts in a similar way is the [Land on Vector Spaces](https://github.com/engineersCode/EngComp4_landlinear) series of Jupyter notebooks from [Lorena Barba's group](https://lorenabarba.com), which provides Jupyter-friendly tools for visualising vectors and matrix operations. 
 
 If you want a more formal textbook, you might want to look at [Introduction to Linear Algebra](http://math.mit.edu/\~gs/linearalgebra/) by [Gilbert Strang](http://math.mit.edu/~gs/), or the associated [lecture videos](https://www.youtube.com/playlist?list=PL49CF3715CB9EF31D).
 
