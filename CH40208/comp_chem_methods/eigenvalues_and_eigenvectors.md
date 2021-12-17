@@ -14,6 +14,7 @@ Consider the matrix $\mathbf{M}=\begin{bmatrix}2 & 1 \\ 1 & 2\end{bmatrix}$. Thi
 ---
 width: 650px
 name: matrix-transformation-fig
+---
 
 The effect of the matrix $\mathbf{M}=\begin{bmatrix}2&1\\1&2\end{bmatrix}$ is to transform the basis vectors $\mathbf{i}=\begin{bmatrix}1 \\ 0\end{bmatrix}$ and $\mathbf{j}=\begin{bmatrix}0 \\ 1\end{bmatrix}$ (left) to $\mathbf{i^\prime}=\begin{bmatrix}2 \\ 1\end{bmatrix}$ and $\mathbf{j^\prime}=\begin{bmatrix}1 \\ 2\end{bamtrix}$ (right); i.e. the new unit vectors are the columns of $\mathbf{M}$.
 ```
@@ -24,6 +25,7 @@ We can also visualise this transformation by considering the effect on a set of 
 ---
 width: 650px
 name: matrix-transformation-unit-circle-fig
+---
 
 The effect of the matrix $\mathbf{M}$ is to transform the unit circle (left) into an ellipse (right).
 ```
