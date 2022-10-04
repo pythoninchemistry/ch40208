@@ -1,6 +1,9 @@
 format: jb-book
-root: welcome
+root: introduction/about_this_book
 parts:
+- caption: Introduction
+  chapters:
+  - file: introduction/course_outline
 - caption: Jupyter Notebooks
   chapters:
   - file: notebooks_introduction/what_is_a_jupyter_notebook
