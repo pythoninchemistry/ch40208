@@ -10,6 +10,6 @@ if you are interested in a deeper introduction to vectors, matrics, and linear a
 
 Another helpful resource that presents these concepts in a similar way is the [Land on Vector Spaces](https://github.com/engineersCode/EngComp4_landlinear) series of Jupyter notebooks from [Lorena Barba's group](https://lorenabarba.com), which provides Jupyter-friendly tools for visualising vectors and matrix operations. 
 
-If you want a more formal textbook, you might want to look at [Introduction to Linear Algebra](http://math.mit.edu/\~gs/linearalgebra/) by [Gilbert Strang](http://math.mit.edu/~gs/), or the associated [lecture videos](https://www.youtube.com/playlist?list=PL49CF3715CB9EF31D).
+If you want a more formal textbook, you might want to look at [Introduction to Linear Algebra](https://math.mit.edu/~gs/linearalgebra/) by [Gilbert Strang](https://math.mit.edu/~gs/), or the associated [lecture videos](https://www.youtube.com/playlist?list=PL49CF3715CB9EF31D).
 
 
