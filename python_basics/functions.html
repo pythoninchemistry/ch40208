@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Functions &#8212; CH40208: Topics in Computational Chemistry</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,40 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Logical Operations and Flow Control" href="logic_and_flow_control.html" />
@@ -63,7 +64,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,9 +87,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -92,14 +108,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../welcome.html">
-   Welcome to CH40208
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome to CH40208
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Jupyter Notebooks
  </span>
@@ -365,91 +382,164 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/functions.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/functions.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_basics/functions.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#defining-a-function">
    Defining a function
@@ -496,23 +586,85 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-a-function">
+   Defining a function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#function-arguments">
+   Function arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optional-arguments">
+     Optional arguments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#returning-values-from-functions">
+   Returning values from functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docstrings">
+   Docstrings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
 <p>By this point you have seen and used a number of <strong>functions</strong>, such as <code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, and <code class="docutils literal notranslate"><span class="pre">math.sqrt()</span></code>, and the general concept of <strong>functions</strong> was briefly introduced <a class="reference internal" href="print_statements.html#content-intro-to-functions"><span class="std std-ref">earlier</span></a>.</p>
 <p>In this section we will cover how functions work in some more detail, and explain how you can write your own functions. Packaging your code into self-contained functions can help you to organise your programs as they become more complex, and also provides a way to write a section of code once and then use it multiple times in some later calculation.</p>
 <p>To review the key points from the earlier <a class="reference internal" href="print_statements.html#content-intro-to-functions"><span class="std std-ref">introduction</span></a>: a <strong>function</strong> is a piece of reusable code that takes zero or more inputs, performs a specific computation, and <strong>returns</strong> an output.</p>
 <p>To use a function (known as <strong>calling</strong> the function) we type the function name, followed by a pair of brackets. Anything inside the brackets specifies the inputs to the function. These inputs are called <strong>arguments</strong>, and are said to be <strong>passed</strong> to the function:</p>
-<div class="section" id="defining-a-function">
-<h2>Defining a function<a class="headerlink" href="#defining-a-function" title="Permalink to this headline">¶</a></h2>
+<section id="defining-a-function">
+<h2>Defining a function<a class="headerlink" href="#defining-a-function" title="Permalink to this headline">#</a></h2>
 <p>To write your own <strong>function</strong> in Python you start with the function <strong>definition</strong>. This consists of a single line that starts with the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the function name, and a pair of brackets (these contain any <strong>arguments</strong>, which we will discuss in detail below), before finishing with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
 <p>Function names are <strong>variables</strong> and follow the same rules regarding allowed names as other <strong>variables</strong>. The convention is for <strong>functions</strong> to be written in <strong>snakecase</strong> where each word is written entirely in lowercase, with underscores between words, e.g. <code class="docutils literal notranslate"><span class="pre">sum()</span></code> or <code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code> or <code class="docutils literal notranslate"><span class="pre">distance_between_two_atoms()</span></code>.</p>
 <p>After the <strong>definition</strong> line comes the code that runs when you <strong>call</strong> the function. This code must be indented, in the same way as we saw previously for <strong>loops</strong>. The end of this indented <strong>block</strong> of code marks the end of the function.</p>
@@ -588,9 +740,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-arguments">
-<h2>Function arguments<a class="headerlink" href="#function-arguments" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="function-arguments">
+<h2>Function arguments<a class="headerlink" href="#function-arguments" title="Permalink to this headline">#</a></h2>
 <p>Functions can be given one or more <strong>arguments</strong>. These represent data that we <strong>pass</strong> into the function when we <strong>call</strong> it, that can then be used inside the function. One way this is useful is if you want to write a piece of code that will always perform the same computation on a range of different data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,7 +789,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2026</span><span class="o">/</span><span class="mf">2890983093.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_2012</span><span class="o">/</span><span class="mf">2890983093.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">greet</span><span class="p">()</span>
 
 <span class="ne">TypeError</span>: greet() missing 1 required positional argument: &#39;name&#39;
@@ -684,8 +836,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="optional-arguments">
-<h3>Optional arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">¶</a></h3>
+<section id="optional-arguments">
+<h3>Optional arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">#</a></h3>
 <p>Functions can be defined with <strong>optional</strong> arguments by giving these arguments <strong>default</strong> values in the the function definition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -823,10 +975,10 @@
 </div>
 </div>
 <p>In this last example, we pass two parameters, but the second parameter is assigned the <strong>keyword</strong> <code class="docutils literal notranslate"><span class="pre">topic</span></code>. When the <code class="docutils literal notranslate"><span class="pre">ch40208_greet_and_info()</span></code> function is called, the first parameter is assigned to the required <code class="docutils literal notranslate"><span class="pre">name</span></code> argument, and the second parameter is assigned to the <code class="docutils literal notranslate"><span class="pre">topic</span></code> argument, corresponding to the keywork. We do not provide a value for the <code class="docutils literal notranslate"><span class="pre">day</span></code> optional argument, so the function runs with <code class="docutils literal notranslate"><span class="pre">day</span></code> assigned to the default value of <code class="docutils literal notranslate"><span class="pre">&quot;Monday&quot;</span></code>.</p>
-</div>
-</div>
-<div class="section" id="returning-values-from-functions">
-<h2>Returning values from functions<a class="headerlink" href="#returning-values-from-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="returning-values-from-functions">
+<h2>Returning values from functions<a class="headerlink" href="#returning-values-from-functions" title="Permalink to this headline">#</a></h2>
 <p>A function can <strong>return</strong> some value, that we can then use again in our code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -899,9 +1051,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="docstrings">
-<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="docstrings">
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">#</a></h2>
 <p>Computer code is rarely used once, when it is written, and then left. More often code is used over weeks, or months, or years, possibly with pieces of code being used in multiple projects or by multiple users. Code that solves your specific problem might also be easier to <strong>adapt</strong> from pre-existing code (either your own or someone elses), than to write from scratch each time.</p>
 <p>While we might all think that it is obvious what our code does and how it works at the time we write it, there is no guarantee that someone else will think the same thing. Or that if you want to reuse or modify a piece of code in six months that it will make any sense.</p>
 <p>Having to figure out exactly what a piece of code does by reading the source code is, at best, time consuming; at worst it becomes impossible.</p>
@@ -1005,17 +1157,17 @@ reject non-numeric types.
 </div>
 </div>
 <p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/jupyter_docstring_example.png" /></p>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>1<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="exercises">
+<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h3>1<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>Write a function to calculate the distance between two atoms.
 Then rewrite to exercise in the loops section to utilise this function.
 Make sure to include a docstring describing the purpose of the function and outlining the arguments.</p>
-</div>
-<div class="section" id="id2">
-<h3>2<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3>2<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>Write a function that implements the second-order rate equation,</p>
 <div class="math notranslate nohighlight">
 \[ [A]_t = \frac{[A]_0}{[A]_0kt + 1}, \]</div>
@@ -1048,9 +1200,9 @@ Make sure to include a docstring describing the purpose of the function and outl
 </tbody>
 </table>
 <p><a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/functions_exercises.html">Worked Example</a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1074,9 +1226,11 @@ Make sure to include a docstring describing the purpose of the function and outl
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="loops.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1092,26 +1246,28 @@ Make sure to include a docstring describing the purpose of the function and outl
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Andrew R. McCluskey & Benjamin J. Morgan<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Andrew R. McCluskey & Benjamin J. Morgan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

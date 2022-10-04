@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Logical Operations and Flow Control &#8212; CH40208: Topics in Computational Chemistry</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,40 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Writing readable code" href="../good_practice/readable.html" />
@@ -63,7 +64,21 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -72,9 +87,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -92,14 +108,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../welcome.html">
-   Welcome to CH40208
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../welcome.html">
+                    Welcome to CH40208
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Jupyter Notebooks
  </span>
@@ -365,91 +382,164 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/python_basics/logic_and_flow_control.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/logic_and_flow_control.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/logic_and_flow_control.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/python_basics/logic_and_flow_control.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#boolean-variable-types">
    Boolean variable types
@@ -543,17 +633,126 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Logical Operations and Flow Control</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#boolean-variable-types">
+   Boolean variable types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#logical-operators">
+   Logical operators
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       ==
+      </span>
+      <span class="pre">
+       !=
+      </span>
+      <span class="pre">
+       =
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#and-and-or">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     and
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     or
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#if-statements">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     If
+    </span>
+   </code>
+   statements
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#if-else">
+     if … else
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continue-and-break">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     continue
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     break
+    </span>
+   </code>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fizzbuzz">
+     1. Fizzbuzz
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#energy-minimisation-convergence-testing">
+     2. Energy minimisation convergence testing
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="logical-operations-and-flow-control">
-<h1>Logical Operations and Flow Control<a class="headerlink" href="#logical-operations-and-flow-control" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="logical-operations-and-flow-control">
+<h1>Logical Operations and Flow Control<a class="headerlink" href="#logical-operations-and-flow-control" title="Permalink to this headline">#</a></h1>
 <p>All of the code examples so far perform the same set of operations, in the same order, even if we change the input data.</p>
 <p>There are a lot of problems where it is helpful to have the computer perform <strong>different</strong> operations depending on the specific values of the input data. For example, we might want to write code that has the option of converting from Celsius to Kelvin, or we might want to check our data after we have read it in for any unphysical values—for example, negative temperatures—and raise a warning or automatically exclude the offending data points.</p>
 <p>Python provides <strong>control statements</strong> that allow us to choose the order of execution of our code depending on the value of a <strong>logical expression</strong>.</p>
@@ -577,8 +776,8 @@
 </div></blockquote>
 <p>Now we have two possible actions. One that we do if the <strong>expression</strong> is <strong>true</strong>, and one that we do if the <strong>expression</strong> is <strong>false</strong>.</p>
 <p>Below we will see how to use <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to construct similar <strong>conditional</strong> statements in our code. But first we need to look in a bit more detail into how Python decides if something is <strong>true</strong> or <strong>false</strong>.</p>
-<div class="section" id="boolean-variable-types">
-<h2>Boolean variable types<a class="headerlink" href="#boolean-variable-types" title="Permalink to this headline">¶</a></h2>
+<section id="boolean-variable-types">
+<h2>Boolean variable types<a class="headerlink" href="#boolean-variable-types" title="Permalink to this headline">#</a></h2>
 <p>We have already met <a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/types.html">Boolean variable types</a>; these are variables that can be assigned to the special values <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -617,9 +816,9 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="logical-operators">
-<h2>Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="logical-operators">
+<h2>Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">#</a></h2>
 <p>Python provides a number of <strong>logical operators</strong> that can be used to compare two values, and return a <strong>boolean</strong> value of <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 <p>One example is the <strong>equals</strong> operator, which is written as <code class="docutils literal notranslate"><span class="pre">==</span></code>. This operator can be used to test whether two objects have the same value, e.g.</p>
 <div class="cell docutils container">
@@ -723,8 +922,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="id1">
-<h3><code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">!=</span> <span class="pre">=</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">!=</span> <span class="pre">=</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>A very common mistake when people are learning Python (and also when they have more experience) is mixing up the <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> operators, which can result in very hard-to-spot bugs. T</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> is a <strong>logical operator</strong> that <strong>compares</strong> two objects to see whether their values are equal.</p></li>
@@ -751,10 +950,10 @@
 <span class="c1"># (or more correctly, a is assigned to the value b has been assigned to)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="and-and-or">
-<h2><code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code><a class="headerlink" href="#and-and-or" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="and-and-or">
+<h2><code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code><a class="headerlink" href="#and-and-or" title="Permalink to this headline">#</a></h2>
 <p>Logical statements allow us to express statements like “today is Monday“ or “today is Friday” in code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -814,9 +1013,9 @@
 </div>
 <p>Two logical statements connected by <code class="docutils literal notranslate"><span class="pre">or</span></code> return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>either</strong> of the individual statements return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 <p>Two logical statements connected by <code class="docutils literal notranslate"><span class="pre">and</span></code> return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>both</strong> of the individual statements return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-</div>
-<div class="section" id="if-statements">
-<h2><code class="docutils literal notranslate"><span class="pre">If</span></code> statements<a class="headerlink" href="#if-statements" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="if-statements">
+<h2><code class="docutils literal notranslate"><span class="pre">If</span></code> statements<a class="headerlink" href="#if-statements" title="Permalink to this headline">#</a></h2>
 <p>Now that we can test whether certain conditions are <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, we can use these <strong>conditional statements</strong> to control the <strong>flow</strong> of our code.</p>
 <p>An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement allows us to specify a block of code that will run only if a specific condition is <strong>true</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">this_statement_is_true</span><span class="p">:</span>
@@ -842,8 +1041,8 @@
 </pre></div>
 </div>
 <p>Now, if either <code class="docutils literal notranslate"><span class="pre">today</span> <span class="pre">==</span> <span class="pre">&quot;Monday&quot;</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">today</span> <span class="pre">==</span> <span class="pre">&quot;Friday&quot;</span></code> are true then the <code class="docutils literal notranslate"><span class="pre">open_zoom()</span></code> function will be called.</p>
-<div class="section" id="if-else">
-<h3>if … else<a class="headerlink" href="#if-else" title="Permalink to this headline">¶</a></h3>
+<section id="if-else">
+<h3>if … else<a class="headerlink" href="#if-else" title="Permalink to this headline">#</a></h3>
 <p>Let us look at a different example: identifying elements based on their atomic symbol.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1027,10 +1226,10 @@ If <strong>neither</strong> A <strong>nor</strong> B are <strong>true</strong> d
         return False
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="continue-and-break">
-<h2><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#continue-and-break" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="continue-and-break">
+<h2><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#continue-and-break" title="Permalink to this headline">#</a></h2>
 <p>Python provides additional flow control statements for controlling the behaviour of <strong>loops</strong>. For example, if a certain condition is met we might want to jump straight to the next iteration of a loop without running the rest of the current code block, or we might want to quit the loop all together.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code> → jump straight to the next iteration of the loop.</p></li>
@@ -1086,22 +1285,22 @@ Loop exited
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="fizzbuzz">
-<h3>1. Fizzbuzz<a class="headerlink" href="#fizzbuzz" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<section id="fizzbuzz">
+<h3>1. Fizzbuzz<a class="headerlink" href="#fizzbuzz" title="Permalink to this headline">#</a></h3>
 <p>Write a piece of code that can play <a class="reference external" href="https://en.wikipedia.org/wiki/Fizz_buzz">fizzbuzz</a>. Your code should count from 1 to 100. Numbers that are divisible by 3 are replaced by “Fizz”; numbers that are divisible by 5 are replaced by “Buzz”; and numbers divisible by 3 <strong>and</strong> 5 are replaced by “Fizz Buzz”.</p>
 <p>To generate the numbers from 1 to 100 you can use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function with <strong>two</strong> numbers, to specify the start and end of your range, i.e. <code class="docutils literal notranslate"><span class="pre">range(1,101)</span></code>.</p>
-</div>
-<div class="section" id="energy-minimisation-convergence-testing">
-<h3>2. Energy minimisation convergence testing<a class="headerlink" href="#energy-minimisation-convergence-testing" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="energy-minimisation-convergence-testing">
+<h3>2. Energy minimisation convergence testing<a class="headerlink" href="#energy-minimisation-convergence-testing" title="Permalink to this headline">#</a></h3>
 <p>Revise your energy minimisation codes from earlier this week, such that they will automatically <code class="docutils literal notranslate"><span class="pre">break</span></code> out of the loop when the difference between the previous distance <span class="math notranslate nohighlight">\(r_{\text{old}}\)</span> and the new distance <span class="math notranslate nohighlight">\(r_{\text{new}}\)</span> is less than <span class="math notranslate nohighlight">\(0.02\)</span> Å.</p>
 <p>Get your code to report whether your minimisation has convereged, or whether you have reached the maxium number of iterations specified in your loop.</p>
 <p><a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/logic_and_flow_control_exercises.html">Worked Examples</a></p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1125,9 +1324,11 @@ Loop exited
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="functions.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1143,26 +1344,28 @@ Loop exited
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Andrew R. McCluskey & Benjamin J. Morgan<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Andrew R. McCluskey & Benjamin J. Morgan<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
