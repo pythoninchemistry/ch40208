@@ -27,3 +27,11 @@ Welcome to **CH40208 Topics in Computational Chemistry**.
 - [NumPy](../working_with_data/numpy_arrays.ipynb)
 - [Plotting](../working_with_data/plotting.md)
 - [File I/O](../working_with_data/file_io.md)
+
+## Week 3: Literate Programming
+- [Writing readable code](../good_practice/readable.ipynb)
+- [Markdown](../good_practice/markdown.md)
+
+## Week 4: Organising Your Code
+- [Functions](../python_basics/functions.ipynb)
+- [Modules](../good_practice/modularisation.ipynb)
