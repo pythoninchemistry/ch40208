@@ -74,7 +74,7 @@ If our function describes potential energy, then the gradient at a particular po
 
 $$F = -\frac{\mathrm{d}U}{\mathrm{d}x}$$ 
 
-We can therefore think of **gradient descent** as analogous to letting a ball roll &lqduo;downhill&rdquo; on our potential energy surface, until it reaches a minimum.
+We can therefore think of **gradient descent** as analogous to letting a ball roll &ldquo;downhill&rdquo; on our potential energy surface, until it reaches a minimum.
 
 In general then, we can perform a computational geometry optimisation with the following sequence of steps:
 
