@@ -2,7 +2,7 @@
 
 Welcome to **CH40208 Topics in Computational Chemistry**.
 
-## Weeks 1 & 2: Python & Jupyter bootcamp
+## Weeks 1 & 2: Python & Jupyter bootcamp 
 
 ### Introduction to Jupyter Notebooks
 - [What is a Jupyter Notebook](../notebooks_introduction/what_is_a_jupyter_notebook.md)
