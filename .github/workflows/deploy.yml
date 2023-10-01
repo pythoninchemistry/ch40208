@@ -1,10 +1,10 @@
 name: deploy-book
 
-# Only run this when the master branch changes
+# Only run this when the main branch changes
 on:
   push: 
     branches:
-      - master
+      - main
     paths:
       - CH40208/**
 
