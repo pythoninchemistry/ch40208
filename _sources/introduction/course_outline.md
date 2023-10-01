@@ -2,13 +2,13 @@
 
 Welcome to **CH40208 Topics in Computational Chemistry**.
 
-## Weeks 1 & 2: Python & Jupyter bootcamp
+## Weeks 1 & 2: Python & Jupyter bootcamp 
 
 ### Introduction to Jupyter Notebooks
 - [What is a Jupyter Notebook](../notebooks_introduction/what_is_a_jupyter_notebook.md)
 - [How to access the JupyterHub server](../notebooks_introduction/how_to_access_the_jupyterhub_server.md)
 - [Getting started with Jupyter Notebooks](../notebooks_introduction/getting_started_with_jupyter_notebooks.md)
-- [The Jupyter Notebook interface](../notebooks_introduction/the_notebook_interface.md)
+- [The Jupyter Notebook interface](../notebooks_introduction/the_notebook_interface.md) 
 
 ### Python 101
 - [Python first, chemistry later](../python_basics/python_first_chemistry_later.md)

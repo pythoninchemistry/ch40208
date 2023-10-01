@@ -1,49 +1,61 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Functions &#8212; CH40208: Topics in Computational Chemistry</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,63 +63,100 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/functions';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Logical Operations and Flow Control" href="logic_and_flow_control.html" />
-    <link rel="prev" title="Loops" href="loops.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/pic.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/pic.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,567 +165,182 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/course_outline.html">
-   CH40208 course outline
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Jupyter Notebooks
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
-   What is a Jupyter Notebook?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/how_to_access_the_jupyterhub_server.html">
-   How to access the JupyterHub server?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/getting_started_with_jupyter_notebooks.html">
-   Getting started with Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">
-   The Jupyter Notebook interface
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/exercises.html">
-   Exercises
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python_first_chemistry_later.html">
-   Python first, chemistry later
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">
-   Why we encourage typing out the code examples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="using_Python_as_a_calculator.html">
-   Using Python as a calculator
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="getting_started_with_strings.html">
-   Getting started with strings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="print_statements.html">
-   Print statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="types.html">
-   Types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="variables.html">
-   Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="arithmetic.html">
-   Arithmetic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lists.html">
-   Lists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tuples.html">
-   Tuples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="loops.html">
-   Loops
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="logic_and_flow_control.html">
-   Logical Operations and Flow Control
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Good Practice
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/readable.html">
-   Writing readable code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/raising_errors.html">
-   Raising errors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/testing.html">
-   Testing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/modularisation.html">
-   Modularisation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/markdown.html">
-   Markdown
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Working with Data
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
-   NumPy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/ideal_gas_law.html">
-   Investigation of the ideal gas law
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/file_io.html">
-   File I/O
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/curve_fitting.html">
-   Model fitting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/monte_carlo.html">
-   Exercise: Monte Carlo
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Computational Chemistry Methods
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">
-   Potential Energy Surfaces
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">
-   Geometry Optimisation
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../comp_chem_methods/minimisation.html">
-   Function minimisation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/gradient_descent.html">
-     Gradient descent
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/newtons.html">
-     Newton’s method
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">
-   Minimization Libraries
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">
-   Working with vectors and matrices
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/vectors.html">
-     Vectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">
-     Working with vectors in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/matrices.html">
-     Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">
-     Working with matrices in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/eigenvalues_and_eigenvectors.html">
-     Eigenvalues and eigenvectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/moments_of_inertia.html">
-     Principal rotation axes and principal moments of inertia
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
+        
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/python_basics/functions.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/python_basics/functions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/python_basics/functions.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-a-function">
-   Defining a function
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#function-arguments">
-   Function arguments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#optional-arguments">
-     Optional arguments
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returning-values-from-functions">
-   Returning values from functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#docstrings">
-   Docstrings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises:
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     2
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Functions</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-a-function">
-   Defining a function
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#function-arguments">
-   Function arguments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#optional-arguments">
-     Optional arguments
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returning-values-from-functions">
-   Returning values from functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#docstrings">
-   Docstrings
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises:
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     1
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     2
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-function">Defining a function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-arguments">Optional arguments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returning-values-from-functions">Returning values from functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h1>
 <p>By this point you have seen and used a number of <strong>functions</strong>, such as <code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, and <code class="docutils literal notranslate"><span class="pre">math.sqrt()</span></code>, and the general concept of <strong>functions</strong> was briefly introduced <a class="reference internal" href="print_statements.html#content-intro-to-functions"><span class="std std-ref">earlier</span></a>.</p>
 <p>In this section we will cover how functions work in some more detail, and explain how you can write your own functions. Packaging your code into self-contained functions can help you to organise your programs as they become more complex, and also provides a way to write a section of code once and then use it multiple times in some later calculation.</p>
 <p>To review the key points from the earlier <a class="reference internal" href="print_statements.html#content-intro-to-functions"><span class="std std-ref">introduction</span></a>: a <strong>function</strong> is a piece of reusable code that takes zero or more inputs, performs a specific computation, and <strong>returns</strong> an output.</p>
 <p>To use a function (known as <strong>calling</strong> the function) we type the function name, followed by a pair of brackets. Anything inside the brackets specifies the inputs to the function. These inputs are called <strong>arguments</strong>, and are said to be <strong>passed</strong> to the function:</p>
 <section id="defining-a-function">
-<h2>Defining a function<a class="headerlink" href="#defining-a-function" title="Permalink to this headline">#</a></h2>
+<h2>Defining a function<a class="headerlink" href="#defining-a-function" title="Permalink to this heading">#</a></h2>
 <p>To write your own <strong>function</strong> in Python you start with the function <strong>definition</strong>. This consists of a single line that starts with the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code>, followed by the function name, and a pair of brackets (these contain any <strong>arguments</strong>, which we will discuss in detail below), before finishing with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
 <p>Function names are <strong>variables</strong> and follow the same rules regarding allowed names as other <strong>variables</strong>. The convention is for <strong>functions</strong> to be written in <strong>snakecase</strong> where each word is written entirely in lowercase, with underscores between words, e.g. <code class="docutils literal notranslate"><span class="pre">sum()</span></code> or <code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code> or <code class="docutils literal notranslate"><span class="pre">distance_between_two_atoms()</span></code>.</p>
 <p>After the <strong>definition</strong> line comes the code that runs when you <strong>call</strong> the function. This code must be indented, in the same way as we saw previously for <strong>loops</strong>. The end of this indented <strong>block</strong> of code marks the end of the function.</p>
@@ -754,7 +418,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="function-arguments">
-<h2>Function arguments<a class="headerlink" href="#function-arguments" title="Permalink to this headline">#</a></h2>
+<h2>Function arguments<a class="headerlink" href="#function-arguments" title="Permalink to this heading">#</a></h2>
 <p>Functions can be given one or more <strong>arguments</strong>. These represent data that we <strong>pass</strong> into the function when we <strong>call</strong> it, that can then be used inside the function. One way this is useful is if you want to write a piece of code that will always perform the same computation on a range of different data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,7 +465,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_1961</span><span class="o">/</span><span class="mf">2890983093.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">greet</span><span class="p">()</span>
 
 <span class="ne">TypeError</span>: greet() missing 1 required positional argument: &#39;name&#39;
@@ -849,7 +513,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="optional-arguments">
-<h3>Optional arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this headline">#</a></h3>
+<h3>Optional arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this heading">#</a></h3>
 <p>Functions can be defined with <strong>optional</strong> arguments by giving these arguments <strong>default</strong> values in the the function definition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -990,7 +654,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="returning-values-from-functions">
-<h2>Returning values from functions<a class="headerlink" href="#returning-values-from-functions" title="Permalink to this headline">#</a></h2>
+<h2>Returning values from functions<a class="headerlink" href="#returning-values-from-functions" title="Permalink to this heading">#</a></h2>
 <p>A function can <strong>return</strong> some value, that we can then use again in our code.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1065,18 +729,18 @@ title="Print to PDF"
 </div>
 </section>
 <section id="docstrings">
-<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">#</a></h2>
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this heading">#</a></h2>
 <p>Computer code is rarely used once, when it is written, and then left. More often code is used over weeks, or months, or years, possibly with pieces of code being used in multiple projects or by multiple users. Code that solves your specific problem might also be easier to <strong>adapt</strong> from pre-existing code (either your own or someone elses), than to write from scratch each time.</p>
 <p>While we might all think that it is obvious what our code does and how it works at the time we write it, there is no guarantee that someone else will think the same thing. Or that if you want to reuse or modify a piece of code in six months that it will make any sense.</p>
 <p>Having to figure out exactly what a piece of code does by reading the source code is, at best, time consuming; at worst it becomes impossible.</p>
 <p>For these reasons, it is strongly recommended that you <strong>document</strong> your code, to give enough information to a future user of the code (most likely future-you) to be able to pick it up and use it correctly.</p>
 <p>Functions support a particular kind of inline documentation called a <strong>docstring</strong>. A <strong>docstring</strong> is a <strong>string</strong> that provides documentation about a function: usually a summary of what the function does, and information about any required or optional <strong>arguments</strong>, and any data <strong>returned</strong> by the function.</p>
 <p>A <strong>docstring</strong> is written as a <strong>multi-line string</strong>, which is defined in Python by a block of text that starts and ends with <strong>triple quotes</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">'''</span></code>.</p>
-<p>For example, here is a function <code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code> that calculates the kinetic energy of a particle. The function takes two required arguments <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> and returns the kinetic energy, calculated as <span class="math notranslate nohighlight">\(E_\mathrm{KE} = \frac{1}{2}mv^2\)</span>.</p>
+<p>For example, here is a function <code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code> that calculates the kinetic energy of a particle. The function takes two required arguments <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> and returns the kinetic energy, calculated as $E_\mathrm{KE} = \frac{1}{2}mv^2$.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kinetic_energy</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine the kinetic energy of a particle.</span>
 <span class="sd">    </span>
 <span class="sd">    Args: </span>
@@ -1093,7 +757,7 @@ title="Print to PDF"
 </div>
 </div>
 <p>In this example the <strong>docstring</strong> is:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine the kinetic energy of a particle.</span>
 <span class="sd">    </span>
 <span class="sd">    Args: </span>
@@ -1171,29 +835,28 @@ reject non-numeric types.
 <p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/jupyter_docstring_example.png" /></p>
 </section>
 <section id="exercises">
-<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <section id="id1">
-<h3>1<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3>1<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Write a function to calculate the distance between two atoms.
 Then rewrite to exercise in the loops section to utilise this function.
 Make sure to include a docstring describing the purpose of the function and outlining the arguments.</p>
 </section>
 <section id="id2">
-<h3>2<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<h3>2<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>Write a function that implements the second-order rate equation,</p>
-<div class="math notranslate nohighlight">
-\[ [A]_t = \frac{[A]_0}{[A]_0kt + 1}, \]</div>
-<p>where <span class="math notranslate nohighlight">\([A]_t\)</span> is the concentration at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\([A]_0\)</span> is the initial concentration and <span class="math notranslate nohighlight">\(k\)</span> is the rate constant (note this a rearrangement from the familiar way of writing this equation where <span class="math notranslate nohighlight">\([A]_t\)</span> is a reciprocal).</p>
-<p>Plot the data below, as <span class="math notranslate nohighlight">\([A]_t\)</span> (<span class="math notranslate nohighlight">\(y\)</span>-axis) against <span class="math notranslate nohighlight">\(t\)</span> (<span class="math notranslate nohighlight">\(x\)</span>-axis), with a scatter plot (where you use <code class="docutils literal notranslate"><span class="pre">'o'</span></code>) and make sure to label your axes.</p>
-<p>Using, either a loop or the NumPy array operations and the function that you have defined, test if the following values of <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\([A]_0\)</span> accurately model the reaction by plotting the model data as a line on top of your scatter plot.</p>
+<p>$$ [A]_t = \frac{[A]_0}{[A]_0kt + 1}, $$</p>
+<p>where $[A]_t$ is the concentration at time $t$, $[A]_0$ is the initial concentration and $k$ is the rate constant (note this a rearrangement from the familiar way of writing this equation where $[A]_t$ is a reciprocal).</p>
+<p>Plot the data below, as $[A]_t$ ($y$-axis) against $t$ ($x$-axis), with a scatter plot (where you use <code class="docutils literal notranslate"><span class="pre">'o'</span></code>) and make sure to label your axes.</p>
+<p>Using, either a loop or the NumPy array operations and the function that you have defined, test if the following values of $k$ and $[A]_0$ accurately model the reaction by plotting the model data as a line on top of your scatter plot.</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(k = 0.006\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.6\)</span> mol dm<sup>-3</sup></p></li>
-<li><p><span class="math notranslate nohighlight">\(k = 0.0006\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.4\)</span> mol dm<sup>-3</sup></p></li>
-<li><p><span class="math notranslate nohighlight">\(k = 0.6\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.2\)</span> mol dm<sup>-3</sup></p></li>
+<li><p>$k = 0.006$ mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and $[A]_0 = 0.6$ mol dm<sup>-3</sup></p></li>
+<li><p>$k = 0.0006$ mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and $[A]_0 = 0.4$ mol dm<sup>-3</sup></p></li>
+<li><p>$k = 0.6$ mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and $[A]_0 = 0.2$ mol dm<sup>-3</sup></p></li>
 </ul>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(t\)</span>/s</p></th>
+<tr class="row-odd"><th class="head"><p>$t$/s</p></th>
 <th class="head"><p>0</p></th>
 <th class="head"><p>600</p></th>
 <th class="head"><p>1200</p></th>
@@ -1202,7 +865,7 @@ Make sure to include a docstring describing the purpose of the function and outl
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\([A]_t\)</span> / mol dm<sup>-3</sup></p></td>
+<tr class="row-even"><td><p>$[A]_t$ / mol dm<sup>-3</sup></p></td>
 <td><p>0.400</p></td>
 <td><p>0.350</p></td>
 <td><p>0.311</p></td>
@@ -1228,7 +891,7 @@ Make sure to include a docstring describing the purpose of the function and outl
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./python_basics"
         },
         predefinedOutput: true
@@ -1236,50 +899,94 @@ Make sure to include a docstring describing the purpose of the function and outl
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="loops.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Loops</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="logic_and_flow_control.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Logical Operations and Flow Control</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-function">Defining a function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-arguments">Optional arguments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returning-values-from-functions">Returning values from functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Andrew R. McCluskey & Benjamin J. Morgan<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

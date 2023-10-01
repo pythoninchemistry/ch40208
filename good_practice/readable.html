@@ -1,49 +1,61 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Writing readable code &#8212; CH40208: Topics in Computational Chemistry</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,61 +63,100 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'good_practice/readable';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Raising errors" href="raising_errors.html" />
-    <link rel="prev" title="Logical Operations and Flow Control" href="../python_basics/logic_and_flow_control.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/pic.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/pic.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -114,527 +165,171 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/course_outline.html">
-   CH40208 course outline
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Jupyter Notebooks
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
-   What is a Jupyter Notebook?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/how_to_access_the_jupyterhub_server.html">
-   How to access the JupyterHub server?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/getting_started_with_jupyter_notebooks.html">
-   Getting started with Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">
-   The Jupyter Notebook interface
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/exercises.html">
-   Exercises
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/python_first_chemistry_later.html">
-   Python first, chemistry later
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">
-   Why we encourage typing out the code examples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">
-   Using Python as a calculator
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/getting_started_with_strings.html">
-   Getting started with strings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/print_statements.html">
-   Print statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/types.html">
-   Types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/variables.html">
-   Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/arithmetic.html">
-   Arithmetic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/lists.html">
-   Lists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/tuples.html">
-   Tuples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/loops.html">
-   Loops
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/functions.html">
-   Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/logic_and_flow_control.html">
-   Logical Operations and Flow Control
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Good Practice
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Writing readable code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="raising_errors.html">
-   Raising errors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testing.html">
-   Testing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="modularisation.html">
-   Modularisation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="markdown.html">
-   Markdown
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Working with Data
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
-   NumPy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/ideal_gas_law.html">
-   Investigation of the ideal gas law
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/file_io.html">
-   File I/O
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/curve_fitting.html">
-   Model fitting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/monte_carlo.html">
-   Exercise: Monte Carlo
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Computational Chemistry Methods
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">
-   Potential Energy Surfaces
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">
-   Geometry Optimisation
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../comp_chem_methods/minimisation.html">
-   Function minimisation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/gradient_descent.html">
-     Gradient descent
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/newtons.html">
-     Newton’s method
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">
-   Minimization Libraries
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">
-   Working with vectors and matrices
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/vectors.html">
-     Vectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">
-     Working with vectors in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/matrices.html">
-     Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">
-     Working with matrices in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/eigenvalues_and_eigenvectors.html">
-     Eigenvalues and eigenvectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/moments_of_inertia.html">
-     Principal rotation axes and principal moments of inertia
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
+        
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/good_practice/readable.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/good_practice/readable.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/good_practice/readable.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principles-of-readable-code">
-   Principles of readable code
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#thoughtful-naming">
-     Thoughtful naming
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comments-explain-the-why">
-     Comments explain the “why”
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#write-modular-code">
-     Write modular code
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Writing readable code</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#principles-of-readable-code">
-   Principles of readable code
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#thoughtful-naming">
-     Thoughtful naming
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comments-explain-the-why">
-     Comments explain the “why”
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#write-modular-code">
-     Write modular code
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Writing readable code</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles-of-readable-code">Principles of readable code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thoughtful-naming">Thoughtful naming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-explain-the-why">Comments explain the “why”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-modular-code">Write modular code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="writing-readable-code">
-<h1>Writing readable code<a class="headerlink" href="#writing-readable-code" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="writing-readable-code">
+<h1>Writing readable code<a class="headerlink" href="#writing-readable-code" title="Permalink to this heading">#</a></h1>
 <p>There are usually several ways to solve a particular programming problem, and the code you write may be very different from the code that someone else might write when faced with the same problem.</p>
 <p>While any code that solves the problem at hand might be said to be “correct”, <strong>style</strong> is also important. Here we focus on one of the most important aspects of coding style; that of writing code that is <strong>readable</strong>.</p>
 <p>Pieces of code are rarely used once and then thrown away. Even code that is written to solve a small problem <strong>right now</strong> can find itself being used months or years later, either by the original author or by other users. By making your code <strong>readable</strong> you make it easier for someone reading the code to understand and follow what it does, whether this is someone else, or you in six months time when you need to reanalyse that one last piece of data.</p>
@@ -642,13 +337,13 @@ title="Print to PDF"
 <p>Readability is a question of <strong>style</strong> and is therefore something of a personal preference. As you write more code, you will develop your own taste for whether code is “readable” or not. A good first test for whether code is readable is to review it after a short break from writing: can you follow what it does, or do you need to start making notes to keep track of the details? An even better test is to ask <strong>someone else</strong> to review your code (called “code review”) and to comment on whether they follow what it is doing.</p>
 <p>What makes one piece of code more or less readable than another is somewhat a matter of personal taste. But there are some basic principles to consider that can help your code to be more readable:</p>
 <section id="principles-of-readable-code">
-<h2>Principles of readable code<a class="headerlink" href="#principles-of-readable-code" title="Permalink to this headline">#</a></h2>
+<h2>Principles of readable code<a class="headerlink" href="#principles-of-readable-code" title="Permalink to this heading">#</a></h2>
 <section id="thoughtful-naming">
-<h3>Thoughtful naming<a class="headerlink" href="#thoughtful-naming" title="Permalink to this headline">#</a></h3>
+<h3>Thoughtful naming<a class="headerlink" href="#thoughtful-naming" title="Permalink to this heading">#</a></h3>
 <p>Your choices of function and variable names should help explain what they are doing. Naming a function <code class="docutils literal notranslate"><span class="pre">my_func()</span></code> is not particularly helpful when later reading the code. Calling a function <code class="docutils literal notranslate"><span class="pre">potential_energy()</span></code> gives the reader a better idea what this function is used for. Similarly, calling a variable <code class="docutils literal notranslate"><span class="pre">i</span></code> is less helpful than calling it <code class="docutils literal notranslate"><span class="pre">index</span></code>.</p>
 </section>
 <section id="comments-explain-the-why">
-<h3>Comments explain the “why”<a class="headerlink" href="#comments-explain-the-why" title="Permalink to this headline">#</a></h3>
+<h3>Comments explain the “why”<a class="headerlink" href="#comments-explain-the-why" title="Permalink to this heading">#</a></h3>
 <p>Comments in Python are denoted using the <code class="docutils literal notranslate"><span class="pre">#</span></code> character. The Python interpreter will ignore all the text the appears after this.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is a comment, with nothing else on this line.</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
@@ -672,7 +367,7 @@ title="Print to PDF"
 <p>Function <strong>docstrings</strong> are a particularly useful type of comment. They describe what functions do,  what required and optional arguments inputs they require (or which arguments are optional) and what they return. Docstrings should always be included.</p>
 </section>
 <section id="write-modular-code">
-<h3>Write modular code<a class="headerlink" href="#write-modular-code" title="Permalink to this headline">#</a></h3>
+<h3>Write modular code<a class="headerlink" href="#write-modular-code" title="Permalink to this heading">#</a></h3>
 <p>Books are divided into chapters, sections, paragraphs, and sentences to help the reader to mentally organise similar ideas together and to mark transitions. A book without paragraph breaks or chapters would be much more difficult to read.</p>
 <p>Similarly, well written code is divided into modular components: modules, classes, functions. Breaking your code up into smaller building blocks, instead of always keeping everything in one unstructured file makes it much easier to read and to edit. Writing modular code also makes it easier to build more complex programs comprising 100s or 1000s of lines of code.</p>
 <p>Each component should have one clearly defined role in the overall program. This allows you to write small clear blocks of code, each with a well-defined purpose, and then link these together to build your complete program. The structure of how you write your code should follow the structure of the problem you are trying to solve.</p>
@@ -710,7 +405,7 @@ This element is a liquid at standard temperature and pressure.
 </section>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <p>Rewrite the code above to be more readable and clear, remembering to have descriptive variable names and include relevant and informative comments.</p>
 </section>
 </section>
@@ -727,7 +422,7 @@ This element is a liquid at standard temperature and pressure.
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./good_practice"
         },
         predefinedOutput: true
@@ -735,50 +430,89 @@ This element is a liquid at standard temperature and pressure.
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../python_basics/logic_and_flow_control.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Logical Operations and Flow Control</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="raising_errors.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Raising errors</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principles-of-readable-code">Principles of readable code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#thoughtful-naming">Thoughtful naming</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-explain-the-why">Comments explain the “why”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-modular-code">Write modular code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Andrew R. McCluskey & Benjamin J. Morgan<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

@@ -1,49 +1,61 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Exercise: Monte Carlo &#8212; CH40208: Topics in Computational Chemistry</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,63 +63,100 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/monte_carlo';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Potential Energy Surfaces" href="../comp_chem_methods/potential_energy_surfaces.html" />
-    <link rel="prev" title="Model fitting" href="curve_fitting.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/pic.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/pic.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -116,484 +165,168 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/course_outline.html">
-   CH40208 course outline
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Jupyter Notebooks
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
-   What is a Jupyter Notebook?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/how_to_access_the_jupyterhub_server.html">
-   How to access the JupyterHub server?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/getting_started_with_jupyter_notebooks.html">
-   Getting started with Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">
-   The Jupyter Notebook interface
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/exercises.html">
-   Exercises
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/python_first_chemistry_later.html">
-   Python first, chemistry later
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">
-   Why we encourage typing out the code examples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">
-   Using Python as a calculator
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/getting_started_with_strings.html">
-   Getting started with strings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/print_statements.html">
-   Print statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/types.html">
-   Types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/variables.html">
-   Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/arithmetic.html">
-   Arithmetic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/lists.html">
-   Lists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/tuples.html">
-   Tuples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/loops.html">
-   Loops
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/functions.html">
-   Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/logic_and_flow_control.html">
-   Logical Operations and Flow Control
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Good Practice
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/readable.html">
-   Writing readable code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/raising_errors.html">
-   Raising errors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/testing.html">
-   Testing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/modularisation.html">
-   Modularisation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/markdown.html">
-   Markdown
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Working with Data
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_arrays.html">
-   NumPy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ideal_gas_law.html">
-   Investigation of the ideal gas law
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="file_io.html">
-   File I/O
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="curve_fitting.html">
-   Model fitting
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Exercise: Monte Carlo
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Computational Chemistry Methods
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">
-   Potential Energy Surfaces
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">
-   Geometry Optimisation
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../comp_chem_methods/minimisation.html">
-   Function minimisation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/gradient_descent.html">
-     Gradient descent
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/newtons.html">
-     Newton’s method
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">
-   Minimization Libraries
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">
-   Working with vectors and matrices
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/vectors.html">
-     Vectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">
-     Working with vectors in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/matrices.html">
-     Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">
-     Working with matrices in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/eigenvalues_and_eigenvectors.html">
-     Eigenvalues and eigenvectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../comp_chem_methods/moments_of_inertia.html">
-     Principal rotation axes and principal moments of inertia
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
+        
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/working_with_data/monte_carlo.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/working_with_data/monte_carlo.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#our-model">
-   Our model
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolation">
-   Interpolation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimisation">
-   Optimisation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling">
-   Sampling
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Exercise: Monte Carlo</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#our-model">
-   Our model
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#interpolation">
-   Interpolation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#optimisation">
-   Optimisation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling">
-   Sampling
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exercise: Monte Carlo</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-model">Our model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation">Interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimisation">Optimisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">Sampling</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-monte-carlo">
-<h1>Exercise: Monte Carlo<a class="headerlink" href="#exercise-monte-carlo" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="exercise-monte-carlo">
+<h1>Exercise: Monte Carlo<a class="headerlink" href="#exercise-monte-carlo" title="Permalink to this heading">#</a></h1>
 <p>Monte Carlo methods may be familiar from earlier years, where stochastic (random) processes are used to find, for example, the minimum energy position of some atom in space.
 Here we will look at using Monte Carlo to improve our model-fitting methods, in particular the quantification of the uncertainties on the model parameters.</p>
 <p>In the <a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/curve_fitting.html">model fitting</a> section, you were shown how the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function can get estimations of these inverse uncertainties (a fancy name for the parameter uncertainties in the model).
@@ -605,14 +338,13 @@ We have been given <a class="reference external" href="https://raw.githubusercon
 <div><p><a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/file_io.html#csv-files">Use the <code class="docutils literal notranslate"><span class="pre">!head</span></code> command</a> to investigate the experimental data file and plot the data using the <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.axes.Axes.errorbar.html"><code class="docutils literal notranslate"><span class="pre">plt.errorbar</span></code></a> function.</p>
 </div></blockquote>
 <section id="our-model">
-<h2>Our model<a class="headerlink" href="#our-model" title="Permalink to this headline">#</a></h2>
+<h2>Our model<a class="headerlink" href="#our-model" title="Permalink to this heading">#</a></h2>
 <p>This exercise aims to determine the relative concentration of toluene and benzyl alcohol that make up the mixture data that you have just plotted.
 To achieve this, we must define a model to describe this data.
-The transmittance data from the mixture (<span class="math notranslate nohighlight">\(T_{\text{mix}}\)</span>) is made up of transmittance data from toluene (<span class="math notranslate nohighlight">\(T_{\text{t}}\)</span>) and benzyl alcohol (<span class="math notranslate nohighlight">\(T_{\text{b}}\)</span>), and nothing else.
+The transmittance data from the mixture ($T_{\text{mix}}$) is made up of transmittance data from toluene ($T_{\text{t}}$) and benzyl alcohol ($T_{\text{b}}$), and nothing else.
 Since we are interested in the <strong>relative</strong> concentration, we can describe this as a fraction of the composition and since the transmittances are additive, we can define the following model.</p>
-<div class="math notranslate nohighlight">
-\[T_{\text{mix}} = cT_{\text{t}} + (1 - c)T_{\text{b}}, \]</div>
-<p>where <span class="math notranslate nohighlight">\(c\)</span> describes the composition of the mixture and is the single parameter in our model.</p>
+<p>$$T_{\text{mix}} = cT_{\text{t}} + (1 - c)T_{\text{b}}, $$</p>
+<p>where $c$ describes the composition of the mixture and is the single parameter in our model.</p>
 <blockquote>
 <div><p>Write a function for the above model, <code class="docutils literal notranslate"><span class="pre">c</span></code> should be the first argument as this is the variable parameter we are investigating. Other arguments should include the transmittance from the pure samples.</p>
 </div></blockquote>
@@ -623,7 +355,7 @@ Files for these spectra are available <a class="reference external" href="https:
 </div></blockquote>
 </section>
 <section id="interpolation">
-<h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h2>
+<h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this heading">#</a></h2>
 <p>You will have noticed that the <em>x</em>-axis on each of the three plots created so far do not cover the same range.
 However, to accurately use the model outline above, the transmittance values for all three IR spectra should be at the same wavenumbers.
 Therefore, we must interpolate the two pure datasets such that the wavenumber values are the same as for the mixture.</p>
@@ -640,7 +372,7 @@ It will return a new set of <em>y</em>-values.</p>
 </div></blockquote>
 </section>
 <section id="optimisation">
-<h2>Optimisation<a class="headerlink" href="#optimisation" title="Permalink to this headline">#</a></h2>
+<h2>Optimisation<a class="headerlink" href="#optimisation" title="Permalink to this heading">#</a></h2>
 <p>Now that we have the pure data read in and on the correct <em>x</em>-axis, we can test the model that we created earlier.</p>
 <blockquote>
 <div><p>Generate the model transmittance data that would arise from a 50:50 mixture of the two components.
@@ -652,35 +384,33 @@ Plot this data on top of the mixture data and see if it agrees visually.</p>
 </div></blockquote>
 </section>
 <section id="sampling">
-<h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">#</a></h2>
+<h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this heading">#</a></h2>
 <p>Having found the optimised value for the concentration, we can now use a modification of a Monte Carlo process to sample the uncertainty in this concentration parameter.
 This methodology is called Markov chain Monte Carlo (MCMC), it involves starting from some value and then changing the value by some small random amount with each iteration.
 The fact that the next parameter value depends on the previous one makes the sampling a Markov chain, while the use of random perturbations is Monte Carlo.</p>
 <p>In MCMC we start from an initial value, usually found by obtaining an optimised solution.
-This initial value is changed by some random amount (<span class="math notranslate nohighlight">\(\delta\)</span>), which is obtained based on some defined. step size (<span class="math notranslate nohighlight">\(s\)</span>) change with respect to the variable (<span class="math notranslate nohighlight">\(v\)</span>),</p>
-<div class="math notranslate nohighlight">
-\[ \delta = Nsv, \]</div>
-<p>where <span class="math notranslate nohighlight">\(N\)</span> is some random number, obtained from a normal distribution centred on 0 with a standard deviation of 1.
-In Python, <span class="math notranslate nohighlight">\(R\)</span> can be obtained with the function <code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code>.
+This initial value is changed by some random amount ($\delta$), which is obtained based on some defined. step size ($s$) change with respect to the variable ($v$),</p>
+<p>$$ \delta = Nsv, $$</p>
+<p>where $N$ is some random number, obtained from a normal distribution centred on 0 with a standard deviation of 1.
+In Python, $R$ can be obtained with the function <code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code>.
 We then determine if this random perturbation has improved the. agreement to the data or not.
-If it has, we accept this new value for our variable (<span class="math notranslate nohighlight">\(v + \delta\)</span>) and perform another perturbation.
-If this perturbation does not improve agreement with the data, the new value is not immediately rejected, rather it is only rejected if the probability of this transition (<span class="math notranslate nohighlight">\(p\)</span>) is less than some random number from 0 to 1 (this time we use <code class="docutils literal notranslate"><span class="pre">np.random.random()</span></code> to obtain such a number).
+If it has, we accept this new value for our variable ($v + \delta$) and perform another perturbation.
+If this perturbation does not improve agreement with the data, the new value is not immediately rejected, rather it is only rejected if the probability of this transition ($p$) is less than some random number from 0 to 1 (this time we use <code class="docutils literal notranslate"><span class="pre">np.random.random()</span></code> to obtain such a number).
 The probability is found by,</p>
-<div class="math notranslate nohighlight">
-\[p = \exp\Bigg(\frac{-\chi^2_{\text{new}} + \chi^2}{2}\Bigg), \]</div>
-<p>where <span class="math notranslate nohighlight">\(\chi^2\)</span> is the original goodness of fit and  <span class="math notranslate nohighlight">\(\chi^2_{\text{new}}\)</span> is the goodness of fit after the perturbation.
+<p>$$p = \exp\Bigg(\frac{-\chi^2_{\text{new}} + \chi^2}{2}\Bigg), $$</p>
+<p>where $\chi^2$ is the original goodness of fit and  $\chi^2_{\text{new}}$ is the goodness of fit after the perturbation.
 This means that it is possible for the agreement to get worse over time.
 However, the amount by which it can get worse is controlled by the probability.
 The result of this is that the values of our Markov chain that are accepted will describe the statistically feasible value for our parameter given the uncertainty in the experimental measurements.</p>
 <p>The algorithm for a typical MCMC sampling process is as follows:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Create an empty list for the accepted values</p></li>
-<li><p>Evaluate <span class="math notranslate nohighlight">\(\chi^2\)</span> for the initial guess, typically this initial guess will be the optimised solution.</p></li>
-<li><p>Perturb the parameter value (<span class="math notranslate nohighlight">\(v + \delta\)</span>)</p></li>
-<li><p>Calculate <span class="math notranslate nohighlight">\(\chi^2_{\text{new}}\)</span> for the perturbed value</p></li>
+<li><p>Evaluate $\chi^2$ for the initial guess, typically this initial guess will be the optimised solution.</p></li>
+<li><p>Perturb the parameter value ($v + \delta$)</p></li>
+<li><p>Calculate $\chi^2_{\text{new}}$ for the perturbed value</p></li>
 <li><p>Determine the probability of this transition</p></li>
-<li><p>Check that <span class="math notranslate nohighlight">\(p\geq R\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is a random number from 0 to 1, if the new <span class="math notranslate nohighlight">\(\chi^2\)</span> is less than the old one, then <span class="math notranslate nohighlight">\(p&gt;1\)</span> and therefore always accepted</p></li>
-<li><p>If true, updated the values of <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\chi^2\)</span>, and append <span class="math notranslate nohighlight">\(v\)</span> to the list of the accepted values</p></li>
+<li><p>Check that $p\geq R$, where $R$ is a random number from 0 to 1, if the new $\chi^2$ is less than the old one, then $p&gt;1$ and therefore always accepted</p></li>
+<li><p>If true, updated the values of $v$ and $\chi^2$, and append $v$ to the list of the accepted values</p></li>
 <li><p>Go to step 3 and repeat until the desired number of iterations have been achieved.</p></li>
 </ol>
 <blockquote>
@@ -705,7 +435,7 @@ Using the statistical functions in NumPy, calculate the mean and standard deviat
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./working_with_data"
         },
         predefinedOutput: true
@@ -713,50 +443,86 @@ Using the statistical functions in NumPy, calculate the mean and standard deviat
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="curve_fitting.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Model fitting</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../comp_chem_methods/potential_energy_surfaces.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Potential Energy Surfaces</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#our-model">Our model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpolation">Interpolation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimisation">Optimisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">Sampling</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Andrew R. McCluskey & Benjamin J. Morgan<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

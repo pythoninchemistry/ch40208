@@ -1,49 +1,61 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Principal rotation axes and principal moments of inertia &#8212; CH40208: Topics in Computational Chemistry</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -51,62 +63,100 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/moments_of_inertia';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Eigenvalues and eigenvectors" href="eigenvalues_and_eigenvectors.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/pic.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">CH40208: Topics in Computational Chemistry</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+    
+    
+    <img src="../_static/pic.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
@@ -115,627 +165,295 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../introduction/course_outline.html">
-   CH40208 course outline
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Jupyter Notebooks
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">
-   What is a Jupyter Notebook?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/how_to_access_the_jupyterhub_server.html">
-   How to access the JupyterHub server?
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/getting_started_with_jupyter_notebooks.html">
-   Getting started with Jupyter Notebooks
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">
-   The Jupyter Notebook interface
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../notebooks_introduction/exercises.html">
-   Exercises
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Python
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/python_first_chemistry_later.html">
-   Python first, chemistry later
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">
-   Why we encourage typing out the code examples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">
-   Using Python as a calculator
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/getting_started_with_strings.html">
-   Getting started with strings
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/print_statements.html">
-   Print statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/types.html">
-   Types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/variables.html">
-   Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/arithmetic.html">
-   Arithmetic
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/lists.html">
-   Lists
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/tuples.html">
-   Tuples
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/dictionaries.html">
-   Dictionaries
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/loops.html">
-   Loops
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/functions.html">
-   Functions
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../python_basics/logic_and_flow_control.html">
-   Logical Operations and Flow Control
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Good Practice
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/readable.html">
-   Writing readable code
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/raising_errors.html">
-   Raising errors
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/testing.html">
-   Testing
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/modularisation.html">
-   Modularisation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../good_practice/markdown.html">
-   Markdown
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Working with Data
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/numpy_arrays.html">
-   NumPy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/plotting.html">
-   Plotting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/ideal_gas_law.html">
-   Investigation of the ideal gas law
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/file_io.html">
-   File I/O
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/curve_fitting.html">
-   Model fitting
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../working_with_data/monte_carlo.html">
-   Exercise: Monte Carlo
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Computational Chemistry Methods
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="potential_energy_surfaces.html">
-   Potential Energy Surfaces
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="geometry_optimisation.html">
-   Geometry Optimisation
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="minimisation.html">
-   Function minimisation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="gradient_descent.html">
-     Gradient descent
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="newtons.html">
-     Newton’s method
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="scipy_opt_minimize.html">
-   Minimization Libraries
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="vectors_and_matrices.html">
-   Working with vectors and matrices
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="vectors.html">
-     Vectors
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="vectors_in_python.html">
-     Working with vectors in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="matrices.html">
-     Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="matrices_in_python.html">
-     Working with matrices in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="eigenvalues_and_eigenvectors.html">
-     Eigenvalues and eigenvectors
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Principal rotation axes and principal moments of inertia
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
+        
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/comp_chem_methods/moments_of_inertia.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/comp_chem_methods/moments_of_inertia.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rotating-molecules-onto-their-principal-rotation-axes">
-   Rotating molecules onto their principal rotation axes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#files-to-download">
-     Files to download
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#details">
-     Details
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Principal rotation axes and principal moments of inertia</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#rotating-molecules-onto-their-principal-rotation-axes">
-   Rotating molecules onto their principal rotation axes
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#files-to-download">
-     Files to download
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#details">
-     Details
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Principal rotation axes and principal moments of inertia</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-molecules-onto-their-principal-rotation-axes">Rotating molecules onto their principal rotation axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#files-to-download">Files to download</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
-  <section class="tex2jax_ignore mathjax_ignore" id="principal-rotation-axes-and-principal-moments-of-inertia">
-<h1>Principal rotation axes and principal moments of inertia<a class="headerlink" href="#principal-rotation-axes-and-principal-moments-of-inertia" title="Permalink to this headline">#</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="principal-rotation-axes-and-principal-moments-of-inertia">
+<h1>Principal rotation axes and principal moments of inertia<a class="headerlink" href="#principal-rotation-axes-and-principal-moments-of-inertia" title="Permalink to this heading">#</a></h1>
 <p>The rotational energy levels of a molecule depend upon the molecule’s moments of inertia, making these important molecular quantities for interpreting rotational spectra, or for calculating the rotational partition function:</p>
-<div class="math notranslate nohighlight">
-\[
+<p>$$
 q_\mathrm{rot} = \frac{\pi^{\frac{1}{2}}}{\sigma}\left(\frac{k_\mathrm{B}T}{hcA}\right)^\frac{1}{2}\left(\frac{k_\mathrm{B}T}{hcB}\right)^\frac{1}{2}\left(\frac{k_\mathrm{B}T}{hcC}\right)^\frac{1}{2},
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(C\)</span> and the <em>principal moments of inertia</em> of a non-linear molecule.</p>
-<p>Moments of inertia, described by <span class="math notranslate nohighlight">\(\mathbf{I}\)</span>, describe how a rigid body responds to angular acceleration, and are analogous to inertial mass for linear acceleration:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+$$</p>
+<p>where $A$, $B$, and $C$ and the <em>principal moments of inertia</em> of a non-linear molecule.</p>
+<p>Moments of inertia, described by $\mathbf{I}$, describe how a rigid body responds to angular acceleration, and are analogous to inertial mass for linear acceleration:</p>
+<p>$$
 \begin{aligned}
-\mathbf{F} = m\mathbf{a} &amp;&amp; \mathbf{\tau} = \mathbf{I}\mathbf{\alpha} \\
+\mathbf{F} = m\mathbf{a} &amp;&amp; \mathbf{\tau} = \mathbf{I}\mathbf{\alpha} \
 \mathbf{p} = m\mathbf{v} &amp;&amp; \mathbf{L}    = \mathbf{I}\mathbf{\omega}
 \end{aligned}
-\end{split}\]</div>
-<p>Where <span class="math notranslate nohighlight">\(\mathbf{\alpha}\)</span> is angular acceleration and <span class="math notranslate nohighlight">\(\mathbf{\tau}\)</span> is torque, and <span class="math notranslate nohighlight">\(\mathbf{\omega}\)</span> is angular velocity and <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> is angular momentum.</p>
-<p>If we focus on angular momentum, then for a one-dimensional problem, where rotation occurs around a single axis (e.g. for a diatomic molecule), <span class="math notranslate nohighlight">\(\mathbf{\omega}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> are scalars and <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is also a scalar:</p>
-<div class="math notranslate nohighlight">
-\[
+$$</p>
+<p>Where $\mathbf{\alpha}$ is angular acceleration and $\mathbf{\tau}$ is torque, and $\mathbf{\omega}$ is angular velocity and $\mathbf{L}$ is angular momentum.</p>
+<p>If we focus on angular momentum, then for a one-dimensional problem, where rotation occurs around a single axis (e.g. for a diatomic molecule), $\mathbf{\omega}$ and $\mathbf{L}$ are scalars and $\mathbf{I}$ is also a scalar:</p>
+<p>$$
 L = I\omega
-\]</div>
-<p>For a rigid diatomic molecule the moment of inertia, <span class="math notranslate nohighlight">\(I\)</span>, is given by</p>
-<div class="math notranslate nohighlight">
-\[
+$$</p>
+<p>For a rigid diatomic molecule the moment of inertia, $I$, is given by</p>
+<p>$$
 I = \sum_i m_i r_i^2
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(r_i\)</span> is the distance of each atom from the centre of mass. This is often written in terms of the <em>reduced mass</em> of the molecule, <span class="math notranslate nohighlight">\(\mu\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
+$$</p>
+<p>where $r_i$ is the distance of each atom from the centre of mass. This is often written in terms of the <em>reduced mass</em> of the molecule, $\mu$:</p>
+<p>$$
 I = \mu r^2
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(r\)</span> is the molecular bond length.</p>
-<p>In three dimensions, however, <span class="math notranslate nohighlight">\(\mathbf{\omega}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> are <em>vectors</em>, and are not required to have the same orientation. The quantity <span class="math notranslate nohighlight">\(\mathbf{I}\)</span>, which translates one vector into another vector, is therefore a <em>matrix</em>, called the <em>intertia matrix</em>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}L_x\\L_y\\L_z\end{bmatrix} = 
-\begin{bmatrix} 
-\phantom{-}I_{xx} &amp; -I_{xy} &amp; -I_{xz} \\
--I_{yx} &amp; \phantom{-}I_{yy} &amp; -I_{yz} \\
--I_{zx} &amp; -I_{zy} &amp; \phantom{-}I_{zz} 
+$$</p>
+<p>where $r$ is the molecular bond length.</p>
+<p>In three dimensions, however, $\mathbf{\omega}$, and $\mathbf{L}$ are <em>vectors</em>, and are not required to have the same orientation. The quantity $\mathbf{I}$, which translates one vector into another vector, is therefore a <em>matrix</em>, called the <em>intertia matrix</em>:</p>
+<p>$$
+\begin{bmatrix}L_x\L_y\L_z\end{bmatrix} =
+\begin{bmatrix}
+\phantom{-}I_{xx} &amp; -I_{xy} &amp; -I_{xz} \
+-I_{yx} &amp; \phantom{-}I_{yy} &amp; -I_{yz} \
+-I_{zx} &amp; -I_{zy} &amp; \phantom{-}I_{zz}
 \end{bmatrix}
 \cdot
-\begin{bmatrix}\omega_x\\\omega_y\\\omega_z\end{bmatrix}.
-\end{split}\]</div>
+\begin{bmatrix}\omega_x\omega_y\omega_z\end{bmatrix}.
+$$</p>
 <p>where the <em>diagonal</em> elements (called “moments of inertia”) are similar to the one-dimensional definition, e.g.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>$$
 \begin{aligned}
-I_{xx} = \sum_i m_i(y_i^2+z_i^2), \\
-I_{yy} = \sum_i m_i(x_i^2+z_i^2), \\
+I_{xx} = \sum_i m_i(y_i^2+z_i^2), \
+I_{yy} = \sum_i m_i(x_i^2+z_i^2), \
 I_{zz} = \sum_i m_i(x_i^2+y_i^2);
 \end{aligned}
-\end{split}\]</div>
+$$</p>
 <p>but the <em>off-diagonal</em> elements (called “products of inertia”) must also be included:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>$$
 \begin{aligned}
-I_{xy} = \sum_i m_ix_iy_i, \\
-I_{xz} = \sum_i m_ix_iz_i, \\
+I_{xy} = \sum_i m_ix_iy_i, \
+I_{xz} = \sum_i m_ix_iz_i, \
 I_{yz} = \sum_i m_iy_iz_i.
 \end{aligned}
-\end{split}\]</div>
-<p>In the case of a rotation molecule, the index <span class="math notranslate nohighlight">\(i\)</span> runs over the atoms in the molecule.</p>
-<p>Having non-zero off-diagonal elements in the intertia matrix makes working with angular motion in 3D more complicated than in 1D. It is often useful therefore to seek a simpler form for <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> that gives a more intuitive description of molecular rotational properties.</p>
-<p>Each of the elements of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> contains terms like
-<span class="math notranslate nohighlight">\(x_i^2\)</span>
-or <span class="math notranslate nohighlight">\(xy\)</span>, where <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> are distances of atoms along each direction from the centre of mass. The values of each element of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> therefore depend on the relative orientation of the <span class="math notranslate nohighlight">\(\left\{x,y,z\right\}\)</span> coordinate system and the molecule. Choosing a differently oriented coordinate system changes the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> coordinates of each atom, and changes the values of the elements of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span>. We might therefore ask: is there a choice of molecular orientation / coordinate orientation where the off-diagonal elements of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> are all zero?</p>
+$$</p>
+<p>In the case of a rotation molecule, the index $i$ runs over the atoms in the molecule.</p>
+<p>Having non-zero off-diagonal elements in the intertia matrix makes working with angular motion in 3D more complicated than in 1D. It is often useful therefore to seek a simpler form for $\mathbf{I}$ that gives a more intuitive description of molecular rotational properties.</p>
+<p>Each of the elements of $\mathbf{I}$ contains terms like
+$x_i^2$
+or $xy$, where $x$, $y$, and $z$ are distances of atoms along each direction from the centre of mass. The values of each element of $\mathbf{I}$ therefore depend on the relative orientation of the $\left{x,y,z\right}$ coordinate system and the molecule. Choosing a differently oriented coordinate system changes the $x$, $y$, and $z$ coordinates of each atom, and changes the values of the elements of $\mathbf{I}$. We might therefore ask: is there a choice of molecular orientation / coordinate orientation where the off-diagonal elements of $\mathbf{I}$ are all zero?</p>
 <p>If this were the case, our angular momentum equation would now be:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}L_x\\L_y\\L_z\end{bmatrix} = 
-\begin{bmatrix} 
-I_{xx} &amp; 0 &amp; 0 \\
-0 &amp; I_{yy} &amp; 0 \\
-0 &amp; 0 &amp; I_{zz} 
+<p>$$
+\begin{bmatrix}L_x\L_y\L_z\end{bmatrix} =
+\begin{bmatrix}
+I_{xx} &amp; 0 &amp; 0 \
+0 &amp; I_{yy} &amp; 0 \
+0 &amp; 0 &amp; I_{zz}
 \end{bmatrix}
 \cdot
-\begin{bmatrix}\omega_x\\\omega_y\\\omega_z\end{bmatrix}.
-\end{split}\]</div>
-<p>and each component of <span class="math notranslate nohighlight">\(\mathbf{l}\)</span> would be directly proportional to the corresponding component of <span class="math notranslate nohighlight">\(\mathbf{w}\)</span>. The “products of inertia” now do not appear, and we can describe the rotational properties of the molecule by specifying the three moments of inertia.</p>
-<p>It turns out that such a coordinate system can be found, and it corresponds to choosing the <em>eigenvectors</em> of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> as our basis vectors. Let us suppose that we have found the eigenvalues, <span class="math notranslate nohighlight">\(\lambda_i\)</span>, and eigenvectors, <span class="math notranslate nohighlight">\(\mathbf{v}_i\)</span>, of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span>. This gives us three eigenvalue equations:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+\begin{bmatrix}\omega_x\omega_y\omega_z\end{bmatrix}.
+$$</p>
+<p>and each component of $\mathbf{l}$ would be directly proportional to the corresponding component of $\mathbf{w}$. The “products of inertia” now do not appear, and we can describe the rotational properties of the molecule by specifying the three moments of inertia.</p>
+<p>It turns out that such a coordinate system can be found, and it corresponds to choosing the <em>eigenvectors</em> of $\mathbf{I}$ as our basis vectors. Let us suppose that we have found the eigenvalues, $\lambda_i$, and eigenvectors, $\mathbf{v}_i$, of $\mathbf{I}$. This gives us three eigenvalue equations:</p>
+<p>$$
 \begin{aligned}
-\lambda_1 \mathbf{v}_1 &amp; = &amp; \mathbf{I}\cdot\mathbf{v}_1 \\
-\lambda_2 \mathbf{v}_2 &amp; = &amp; \mathbf{I}\cdot\mathbf{v}_2 \\
+\lambda_1 \mathbf{v}_1 &amp; = &amp; \mathbf{I}\cdot\mathbf{v}_1 \
+\lambda_2 \mathbf{v}_2 &amp; = &amp; \mathbf{I}\cdot\mathbf{v}_2 \
 \lambda_3 \mathbf{v}_3 &amp; = &amp; \mathbf{I}\cdot\mathbf{v}_3.
 \end{aligned}
-\end{split}\]</div>
-<p>Let us now express our angular velocity vector <span class="math notranslate nohighlight">\(\mathbf{\omega}\)</span> using these eigenvectors as a basis:</p>
-<div class="math notranslate nohighlight">
-\[
+$$</p>
+<p>Let us now express our angular velocity vector $\mathbf{\omega}$ using these eigenvectors as a basis:</p>
+<p>$$
 \mathbf{\omega} = c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + c_3\mathbf{v}_3.
-\]</div>
-<p>And then the effect of the matrix <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> operating on <span class="math notranslate nohighlight">\(\mathbf{\omega}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+$$</p>
+<p>And then the effect of the matrix $\mathbf{I}$ operating on $\mathbf{\omega}$:</p>
+<p>$$
 \begin{aligned}
-\mathbf{I}\cdot\mathbf{\omega} &amp; = &amp; c_1\mathbf{I}\cdot\mathbf{v}_1 + c_2\mathbf{I}\cdot\mathbf{v}_2 + c_3\mathbf{I}\cdot\mathbf{v}_3 \\
+\mathbf{I}\cdot\mathbf{\omega} &amp; = &amp; c_1\mathbf{I}\cdot\mathbf{v}_1 + c_2\mathbf{I}\cdot\mathbf{v}_2 + c_3\mathbf{I}\cdot\mathbf{v}_3 \
 &amp; = &amp; c_1\lambda_1\mathbf{v}_1 + c_2\lambda_1\mathbf{v}_2 + c_3\lambda_1\mathbf{v}_3.
 \end{aligned}
-\end{split}\]</div>
+$$</p>
 <p>which can be rewritten in matrix form as</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<p>$$
 \begin{aligned}
-\mathbf{I}\cdot\mathbf{\omega} &amp; = &amp; 
-\begin{bmatrix} 
-\lambda_1 &amp; 0 &amp; 0 \\
-0 &amp; \lambda_2 &amp; 0 \\
+\mathbf{I}\cdot\mathbf{\omega} &amp; = &amp;
+\begin{bmatrix}
+\lambda_1 &amp; 0 &amp; 0 \
+0 &amp; \lambda_2 &amp; 0 \
 0 &amp; 0 &amp; \lambda_3
 \end{bmatrix}
 \cdot
-\begin{bmatrix}c_1\\c_2\\c_3\end{bmatrix} \\
-&amp; = &amp; \begin{bmatrix} 
-\lambda_1 &amp; 0 &amp; 0 \\
-0 &amp; \lambda_2 &amp; 0 \\
+\begin{bmatrix}c_1\c_2\c_3\end{bmatrix} \
+&amp; = &amp; \begin{bmatrix}
+\lambda_1 &amp; 0 &amp; 0 \
+0 &amp; \lambda_2 &amp; 0 \
 0 &amp; 0 &amp; \lambda_3
 \end{bmatrix}
 \cdot
 \mathbf{\omega}
 \end{aligned}
-\end{split}\]</div>
-<p>This gives the simplified form that we wanted, <em>if</em> we use the eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> as our basis vectors, i.e. as our coordinate system vectors. The eigenvectors of the inertia matrix are called the <em>principal rotation axes</em> of our molecule, and the corresponding eigenvalues are the <em>principal moments of inertia</em>.</p>
+$$</p>
+<p>This gives the simplified form that we wanted, <em>if</em> we use the eigenvectors of $\mathbf{I}$ as our basis vectors, i.e. as our coordinate system vectors. The eigenvectors of the inertia matrix are called the <em>principal rotation axes</em> of our molecule, and the corresponding eigenvalues are the <em>principal moments of inertia</em>.</p>
 <p>For a molecule in an arbitrary orientation, we can therefore calculate the principal moments of inertia by finding the eigenvalues of the inertia matrix. The corresponding eigenvectors give us the principal rotation axes, which are often used to define a “natural” coordinate system for the molecule.</p>
 <section id="rotating-molecules-onto-their-principal-rotation-axes">
-<h2>Rotating molecules onto their principal rotation axes<a class="headerlink" href="#rotating-molecules-onto-their-principal-rotation-axes" title="Permalink to this headline">#</a></h2>
+<h2>Rotating molecules onto their principal rotation axes<a class="headerlink" href="#rotating-molecules-onto-their-principal-rotation-axes" title="Permalink to this heading">#</a></h2>
 <p>If the principal rotation axes of a molecule define a natural coordinate system for that molecule, are we able to rotate an arbitrarily oriented molecule onto this coordinate system? The answer is yes, and it builds on our understanding of <em>rotation matrices</em> and <em>eigenvectors</em>.</p>
-<p>For a given molecular rotation, the basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> point along <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> respectively. But we would like to rotate our molecule so that <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> point along the principal rotation axes of the molecule. This is equivalent to <em>transforming</em> our coordinate system so that <span class="math notranslate nohighlight">\(\mathbf{i}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> are aligned with the eigenvectors of the inertia matrix <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> (for the original coordinate system). Remember that a matrix transformation maps the original basis vectors onto the columns of the matrix. To map <span class="math notranslate nohighlight">\(\mathbf{i}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{v}_3\)</span> we would operate on the vector coordinates of the atoms in the molecule with a matrix composed of <span class="math notranslate nohighlight">\(\mathbf{k}\)</span> onto <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{v}_3\)</span> as columns. This would rotate our basis vectors to align with the molecular principal axes. However, we want to do the <em>inverse</em> of this operation, and rotate the principal axes of the molecule to align with our coordinate system. Our rotation matrix is therefore the <em>inverse</em> matrix</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}\phantom{0}\\\mathbf{v}_1&amp;\mathbf{v}_2&amp;\mathbf{v}_3\\\phantom{0}\end{bmatrix}^{-1}.
-\end{split}\]</div>
+<p>For a given molecular rotation, the basis vectors $\mathbf{i}$, $\mathbf{j}$, and $\mathbf{k}$ point along $x$, $y$, and $z$ respectively. But we would like to rotate our molecule so that $x$, $y$, and $z$ point along the principal rotation axes of the molecule. This is equivalent to <em>transforming</em> our coordinate system so that $\mathbf{i}$, $\mathbf{j}$, and $\mathbf{k}$ are aligned with the eigenvectors of the inertia matrix $\mathbf{I}$ (for the original coordinate system). Remember that a matrix transformation maps the original basis vectors onto the columns of the matrix. To map $\mathbf{i}$, $\mathbf{j}$, and $\mathbf{k}$ onto $\mathbf{v}_1$, $\mathbf{v}_2$, and $\mathbf{v}_3$ we would operate on the vector coordinates of the atoms in the molecule with a matrix composed of $\mathbf{k}$ onto $\mathbf{v}_1$, $\mathbf{v}_2$, and $\mathbf{v}_3$ as columns. This would rotate our basis vectors to align with the molecular principal axes. However, we want to do the <em>inverse</em> of this operation, and rotate the principal axes of the molecule to align with our coordinate system. Our rotation matrix is therefore the <em>inverse</em> matrix</p>
+<p>$$
+\begin{bmatrix}\phantom{0}\mathbf{v}_1&amp;\mathbf{v}_2&amp;\mathbf{v}_3\phantom{0}\end{bmatrix}^{-1}.
+$$</p>
 </section>
 <section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">#</a></h2>
-<p>The following exercise is to calculate principal moments of inertia and principal rotation axes of a series of molecules, and then to rotate these molecules so that the principal axes are aligned with <span class="math notranslate nohighlight">\(\left\{x, y, z\right\}\)</span>.</p>
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
+<p>The following exercise is to calculate principal moments of inertia and principal rotation axes of a series of molecules, and then to rotate these molecules so that the principal axes are aligned with $\left{x, y, z\right}$.</p>
 <p>The coordinates of each molecule can be downloaded using the links below, along with a <code class="docutils literal notranslate"><span class="pre">visualisation2.py</span></code> module that contains some code for visualising your molecules and their orientations.</p>
 <section id="files-to-download">
-<h3>Files to download<a class="headerlink" href="#files-to-download" title="Permalink to this headline">#</a></h3>
+<h3>Files to download<a class="headerlink" href="#files-to-download" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a href="../data/rigid_rotor.dat" download><code class="docutils literal notranslate"><span class="pre">rigid_rotor.dat</span></code></a></p></li>
 <li><p><a href="../data/water.dat" download><code class="docutils literal notranslate"><span class="pre">water.dat</span></code></a></p></li>
@@ -747,13 +465,13 @@ I_{xx} &amp; 0 &amp; 0 \\
 </ul>
 </section>
 <section id="details">
-<h3>Details<a class="headerlink" href="#details" title="Permalink to this headline">#</a></h3>
+<h3>Details<a class="headerlink" href="#details" title="Permalink to this heading">#</a></h3>
 <p>In terms of planning your code, you want to be able to perform the following sequence of steps:</p>
-<ol class="simple">
-<li><p>Each file contains data in the format <span class="math notranslate nohighlight">\(\left\{x, y, z, m\right\}\)</span> for each atom, where <span class="math notranslate nohighlight">\(m\)</span> is the atomic mass of that atom. You will first want to read this in, and extract the atomic coordinates and masses.</p></li>
-<li><p>Construct the inertia matrix <span class="math notranslate nohighlight">\(\mathbf{I}\)</span>.</p></li>
-<li><p>Calculate the eigenvalues and eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{I}\)</span>.</p></li>
-<li><p>Operate on your atomic coordinates to generate new coordinates, with the molecular principal axes aligned with <span class="math notranslate nohighlight">\(\left\{x, y, z\right\}\)</span>.</p></li>
+<ol class="arabic simple">
+<li><p>Each file contains data in the format $\left{x, y, z, m\right}$ for each atom, where $m$ is the atomic mass of that atom. You will first want to read this in, and extract the atomic coordinates and masses.</p></li>
+<li><p>Construct the inertia matrix $\mathbf{I}$.</p></li>
+<li><p>Calculate the eigenvalues and eigenvectors of $\mathbf{I}$.</p></li>
+<li><p>Operate on your atomic coordinates to generate new coordinates, with the molecular principal axes aligned with $\left{x, y, z\right}$.</p></li>
 <li><p>Use the <code class="docutils literal notranslate"><span class="pre">visualisation.show()</span></code> function to look at your rotated molecules. Do these look how you would expect from what you know about molecular symmetry?</p></li>
 </ol>
 </section>
@@ -772,7 +490,7 @@ I_{xx} &amp; 0 &amp; 0 \\
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./comp_chem_methods"
         },
         predefinedOutput: true
@@ -780,43 +498,88 @@ I_{xx} &amp; 0 &amp; 0 \\
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="eigenvalues_and_eigenvectors.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Eigenvalues and eigenvectors</p>
-        </div>
-    </a>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rotating-molecules-onto-their-principal-rotation-axes">Rotating molecules onto their principal rotation axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#files-to-download">Files to download</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details">Details</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Andrew R. McCluskey & Benjamin J. Morgan<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
