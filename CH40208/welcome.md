@@ -1,8 +1,8 @@
 # Welcome to CH40208
 
-Welcome to the course book for the module Topics in Computational Chemistry (CH40208). 
+Welcome to the 2023 course book for the module Topics in Computational Chemistry (CH40208). 
 
-## Course Organisers
+## Course Instructors
 
 - [Benjamin J. Morgan](mailto:b.j.morgan@bath.ac.uk)
-- [Fiona Dickinson](mailto:f.dickinson@bath.ac.uk)
+- [Iva Manasi](mailto:im554@bath.ac.uk)
