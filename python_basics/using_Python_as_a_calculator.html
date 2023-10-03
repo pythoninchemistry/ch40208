@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/using_Python_as_a_calculator';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Getting started with strings" href="getting_started_with_strings.html" />
+    <link rel="prev" title="Why we encourage typing out the code examples" href="why_we_encourage_typing_out_the_code_examples.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,7 +167,31 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course outline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python first, chemistry later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dictionaries.html">Dictionaries</a></li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -312,7 +338,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-2-2">Calculating 2+2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-arithmetic">Simple arithmetic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integers-and-floats">Integers and Floats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-functions">Mathematical functions</a></li>
 </ul>
             </nav>
         </div>
@@ -328,17 +354,16 @@ document.write(`
 <h1>Using Python as a calculator<a class="headerlink" href="#using-python-as-a-calculator" title="Permalink to this heading">#</a></h1>
 <section id="calculating-2-2">
 <h2>Calculating 2+2<a class="headerlink" href="#calculating-2-2" title="Permalink to this heading">#</a></h2>
-<p>One of the simplest uses of Python is as a simple calculator.</p>
-<p>This also introduces us to the idea of working with numbers which is a key part of using Python for scientific applications.</p>
+<p>One of the simplest uses of Python is as a calculator.</p>
 <p>Open a new Notebook and enter into a <strong>code cell</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>If you run this cell you should get something that looks like the screenshot below.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/two_plus_two.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/two_plus_two.png" /></p>
 <p>The cell has run (indicated by the number 1 to the left of the cell), and the “code” has produced a result, which is printed below the cell.
 Beneath that you get a new, empty cell for your next piece of code.</p>
-<p>Within this course book cells that have been run are rendered as follows:</p>
+<p>Within this course book, cells that have been run are rendered as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
@@ -378,6 +403,49 @@ Beneath that you get a new, empty cell for your next piece of code.</p>
 </div>
 </div>
 <p>And still get the same result.</p>
+<p>There are three core <em>types</em> of number in Python: Integers (whole numbers), real numbers, and complex numbers.
+The different <em>types</em> of number correspond to the different ways that Python can represent numeric information.</p>
+<ul class="simple">
+<li><p>Integers: A number without a decimal point: e.g., 1, 2, 100, 2<sup>100</sup>.</p></li>
+<li><p>Floats: A number with a decimal point. e.g., 3.14159, 12.0107, 8.3144.</p></li>
+<li><p>Complex: A number with a real and imaginary component. Python uses the symbol <code class="docutils literal notranslate"><span class="pre">j</span></code> to denote the imaginary component of a complex number. e.g., (1 + 3j), (-1 + 0j).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># The value &quot;1&quot; represented as an integer.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1"># The value &quot;1&quot; represented as a float.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="mf">0.0</span><span class="n">j</span><span class="p">)</span> <span class="c1"># The value &quot;1&quot; represented as a complex number.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complex
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="simple-arithmetic">
 <h2>Simple arithmetic<a class="headerlink" href="#simple-arithmetic" title="Permalink to this heading">#</a></h2>
@@ -385,106 +453,216 @@ Beneath that you get a new, empty cell for your next piece of code.</p>
 <ul class="simple">
 <li><p>subtraction:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <br>
 <ul class="simple">
 <li><p>multiplication:</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <br>
 <ul class="simple">
 <li><p>powers (e.g. 4<sup>2</sup>)</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <br>
 <ul class="simple">
 <li><p>division</p></li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
-</section>
-<section id="integers-and-floats">
-<h2>Integers and Floats<a class="headerlink" href="#integers-and-floats" title="Permalink to this heading">#</a></h2>
-<p>Notice that the last example gives <code class="docutils literal notranslate"><span class="pre">3.0</span></code> and not <code class="docutils literal notranslate"><span class="pre">3</span></code> as the result. Python distinguishes between <strong>integers</strong> (also called <strong>ints</strong>) and <strong>floating point numbers</strong> (also called <strong>floats</strong>):</p>
-<ul class="simple">
-<li><p>Integers: A number <strong>without</strong> a decimal point: e.g. 1, 2, 100, 2<sup>100</sup>.</p></li>
-<li><p>Floats: A number <strong>with</strong> a decimal point. e.g. 3.14159, 12.0107, 8.3144 (you might recognise these).</p></li>
-</ul>
+<p>In each of these examples you have combined two numbers using an <strong>operator</strong> (<code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>) to give a single <strong>expression</strong>. When you run the cell containing this expression, the expression is evaluated and the result is returned as your output.</p>
+<p>Notice that the last example gives <code class="docutils literal notranslate"><span class="pre">3.0</span></code> and not <code class="docutils literal notranslate"><span class="pre">3</span></code> as the result, even though <code class="docutils literal notranslate"><span class="pre">6</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code> are both integers.
+The division operator (<code class="docutils literal notranslate"><span class="pre">/</span></code>) always returns a float, even when one of both of the numbers being operated on are integers.</p>
 <p>Arithmetic also works with <strong>floats</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">2.0</span> <span class="o">+</span> <span class="mf">2.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">2.0</span> <span class="o">+</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 <br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">*</span> <span class="mf">2.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">*</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 <br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">**</span> <span class="mf">2.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">**</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 <br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">6.0</span> <span class="o">/</span> <span class="mf">2.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">6.0</span> <span class="o">/</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 <br>
 <p>And with mixtures of <strong>integers</strong> and <strong>floats</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mf">2.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 <br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mf">2.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 <br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">**</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mf">2.0</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
 <br>
-<p>Notice how these last examples always output a <strong>float</strong>.</p>
 <p><strong>floats</strong> can also be written without any numbers after the decimal point, e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">42.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">42.</span>
 </pre></div>
 </div>
 <p>is the same as <code class="docutils literal notranslate"><span class="pre">42.0</span></code>.</p>
-<p>You can do integer division (also called <strong>floor division</strong> ) using <code class="docutils literal notranslate"><span class="pre">//</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">//</span> <span class="mi">2</span>
+<p>You can do <strong>integer division</strong> (also called <strong>floor division</strong> ) using the operator <code class="docutils literal notranslate"><span class="pre">//</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">//</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <br>
 <p>Integer division rounds down:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <br>
 <p>You can calculate the <strong>remainder</strong> of integer division using the <code class="docutils literal notranslate"><span class="pre">%</span></code> symbol (called the <strong>modulo</strong> operator).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span> <span class="o">%</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span> <span class="o">%</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>Brackets can be used to specify the order of operations in more complicated expressions, according to the usual mathematical rules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <br>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<br>
-<p>We will return to mathematical expressions in Python in more detail later in the course.</p>
+<br></section>
+<section id="mathematical-functions">
+<h2>Mathematical functions<a class="headerlink" href="#mathematical-functions" title="Permalink to this heading">#</a></h2>
+<p>In addition to the basic algebraic operators above, Python provides many common mathematical functions and the constants $\pi$ and $\mathrm{e}$ in the <code class="docutils literal notranslate"><span class="pre">math</span></code> library. This is a built-in <em>module</em> that is part of the standard Python installation, but it must be imported before use:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To use functions or constants from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, we prefix their names with <code class="docutils literal notranslate"><span class="pre">math.</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7071067811865475
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7071067811865476
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the last two examples, we have used a <strong>function call</strong>,
+which looks like the name of the function followed by a pair of parenthesis, which usually (but not always)
+then contain one or more <strong>arguments</strong> that the function operates on.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">generic_function</span><span class="p">(</span><span class="n">argument1</span><span class="p">,</span> <span class="n">argument2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the trigonometic functions in <code class="docutils literal notranslate"><span class="pre">math</span></code> use radians rather than degrees.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">math</span></code> module can also be used to calculate exponentials and logarithms.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># e^2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.38905609893065
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">7.38905609893065</span><span class="p">)</span> <span class="c1"># natural log of e^2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">math.log</span></code> computes the <em>natural logarithm</em> (base $\mathrm{e}$) of the argument. If you want to calculate a base 10 logarithm you can use <code class="docutils literal notranslate"><span class="pre">math.log10</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python also provides a couple of useful built-in functions: <code class="docutils literal notranslate"><span class="pre">abs</span></code> and <code class="docutils literal notranslate"><span class="pre">round</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># returns the absolute value of the argument.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">round</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># rounds down to the nearest integer.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -518,6 +696,24 @@ Beneath that you get a new, empty cell for your next piece of code.</p>
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="why_we_encourage_typing_out_the_code_examples.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Why we encourage typing out the code examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="getting_started_with_strings.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Getting started with strings</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -535,7 +731,7 @@ Beneath that you get a new, empty cell for your next piece of code.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-2-2">Calculating 2+2</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-arithmetic">Simple arithmetic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integers-and-floats">Integers and Floats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-functions">Mathematical functions</a></li>
 </ul>
   </nav></div>
 

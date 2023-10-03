@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/print_statements';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Types" href="types.html" />
+    <link rel="prev" title="Getting started with strings" href="getting_started_with_strings.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,7 +167,31 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course outline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python first, chemistry later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dictionaries.html">Dictionaries</a></li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -329,10 +355,10 @@ document.write(`
 <section id="displaying-data">
 <h2>Displaying data<a class="headerlink" href="#displaying-data" title="Permalink to this heading">#</a></h2>
 <p>Until now, we have been using the built-in functionality of the Jupyter Notebook to display data on the screen.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/hello_world.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/hello_world.png" /></p>
 <p><strong>Code blocks</strong> are not limited to single lines of code—this would make working in Jupyter Notebooks extremely tedious when writing more complicated programs.</p>
 <p>But what happens if we run a cell that contains more than one statement?</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/first_second_third.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/first_second_third.png" /></p>
 <p>Only the output from the <strong>last</strong> statement is displayed as the cell output. The first two statements have been executed when we run the cell, but no output is displayed.</p>
 <p>The default setting for Jupyter Notebooks is to only display the output from the final statement in any code cell. While it is possible to <a class="reference external" href="https://stackoverflow.com/questions/36786722/how-to-display-full-output-in-jupyter-not-only-last-result">change this setting</a> so that all the output is displayed, the usual way to control what is displayed is to use the <code class="docutils literal notranslate"><span class="pre">print</span></code> <strong>function</strong>.</p>
 </section>
@@ -345,28 +371,28 @@ document.write(`
 </div>
 <p>Here, we are calling the <code class="docutils literal notranslate"><span class="pre">print</span></code> function with one argument; the <strong>string</strong> <code class="docutils literal notranslate"><span class="pre">&quot;Hello</span> <span class="pre">World!</span></code>.</p>
 <p>If we run this in a <strong>code cell</strong>, the string is printed:</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/print_hello_world.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/print_hello_world.png" /></p>
 <p>Returning to our previous example, the following set of print statements displays all three strings:</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/print_first_second_third.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/print_first_second_third.png" /></p>
 <p>You might have spotted that these examples using <code class="docutils literal notranslate"><span class="pre">print</span></code> do not give an <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[</span> <span class="pre">]:</span></code> output under the code cell.</p>
 <p>Remember that a <strong>function</strong> is a piece of code that returns an output. So what is the output returned by <code class="docutils literal notranslate"><span class="pre">print</span></code>? 🤔</p>
 <p>Somewhat confusingly, <code class="docutils literal notranslate"><span class="pre">print</span></code> returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. <code class="docutils literal notranslate"><span class="pre">None</span></code> is a <strong>null object</strong> that represents no data.</p>
 <p>Remember that when you run a code cell, whatever data is produced by the final statement in that cell is displayed as the <strong>cell output</strong> after <code class="docutils literal notranslate"><span class="pre">Out</span> <span class="pre">[</span> <span class="pre">]:</span></code>.</p>
 <p>But calling <code class="docutils literal notranslate"><span class="pre">print</span></code> returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. The examples above produce <strong>no data</strong>, and so there is nothing to display as the <strong>cell output</strong>.</p>
 <p align="center">
-    <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/function_action.png" width="50%" />
+    <img src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/function_action.png" width="50%" />
 </p>
 <p>If zero <strong>arguments</strong> are passed to an <strong>function</strong>, the <strong>function</strong> is still <strong>called</strong> by writing the function name followed by a pair of brackets. e.g.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/empty_print.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/empty_print.png" /></p>
 <p><strong>Calling</strong> <code class="docutils literal notranslate"><span class="pre">print</span></code> with no arguments prints a blank line (and returns <code class="docutils literal notranslate"><span class="pre">None</span></code>, so no cell output is displayed).</p>
 <p>Writing a function name <strong>without</strong> the following brackets is still valid Python. But instead of <strong>calling</strong> the function, and performing whatever computation you expected, you are simply referring to the data that represents that function. e.g.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/output_print.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/output_print.png" /></p>
 <p>Now the cell output shows a string representation of the data produced by the final statement; in this case this is the <code class="docutils literal notranslate"><span class="pre">print</span></code> function itself.</p>
 </section>
 <section id="slightly-more-complex-print-statements">
 <h2>Slightly more complex print statements<a class="headerlink" href="#slightly-more-complex-print-statements" title="Permalink to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">print</span></code> function can also be passed more than one argument. <code class="docutils literal notranslate"><span class="pre">print</span></code> will try to convert each argument to a string and then <strong>concatenate</strong> these into a single output, e.g.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/complex_print.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/complex_print.png" /></p>
 </section>
 </section>
 
@@ -400,6 +426,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="getting_started_with_strings.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Getting started with strings</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="types.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Types</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

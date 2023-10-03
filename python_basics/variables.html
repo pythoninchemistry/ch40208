@@ -66,6 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/variables';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Arithmetic" href="arithmetic.html" />
+    <link rel="prev" title="Types" href="types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,7 +167,31 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course outline</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python first, chemistry later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dictionaries.html">Dictionaries</a></li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -348,7 +374,7 @@ document.write(`
 </div>
 <p>This creates a variable named <code class="docutils literal notranslate"><span class="pre">days_in_october</span></code> and assigns it the integer value <code class="docutils literal notranslate"><span class="pre">31</span></code>.</p>
 <p align="center">
-     <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/days_in_october.png" width="32%" alt="The assignment of the value 31 to the variable named days_in_october."/>
+     <img src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/days_in_october.png" width="32%" alt="The assignment of the value 31 to the variable named days_in_october."/>
  </p>
 <p>The left-hand side of the assignment expression is the <strong>variable name</strong>.</p>
 <ul class="simple">
@@ -419,7 +445,7 @@ document.write(`
 <li><p>In the third line we print <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p></li>
 </ul>
 <p align="center">
-     <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/a_and_b.png" width="30%" alt="The assignment of 3 to the variable a and the assigment of this to b."/>
+     <img src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/a_and_b.png" width="30%" alt="The assignment of 3 to the variable a and the assigment of this to b."/>
  </p>
 <p>Because <code class="docutils literal notranslate"><span class="pre">b</span></code> is assigned to the <strong>value</strong> stored in <code class="docutils literal notranslate"><span class="pre">a</span></code>, and not to <code class="docutils literal notranslate"><span class="pre">a</span></code> itself, if we <strong>reassign</strong> <code class="docutils literal notranslate"><span class="pre">a</span></code>, the value stored in <code class="docutils literal notranslate"><span class="pre">b</span></code> does not change.</p>
 <div class="cell docutils container">
@@ -440,7 +466,7 @@ b = 3
 </div>
 </div>
 <p align="center">
-     <img src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/a_and_b_switch.png" width="50%" alt="The assignment of 3 to the variable a and the assigment of this to b, followed by the reassignment of a as 2."/>
+     <img src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/a_and_b_switch.png" width="50%" alt="The assignment of 3 to the variable a and the assigment of this to b, followed by the reassignment of a as 2."/>
  </p>
 </section>
 </section>
@@ -516,6 +542,24 @@ b = 3
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="types.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Types</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="arithmetic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Arithmetic</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
