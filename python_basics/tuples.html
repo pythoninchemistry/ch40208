@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Dictionaries" href="dictionaries.html" />
-    <link rel="prev" title="Lists" href="lists.html" />
+    <link rel="prev" title="Loops" href="loops.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,10 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tuples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dictionaries.html">Dictionaries</a></li>
 </ul>
@@ -340,7 +341,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tuples">
 <h1>Tuples<a class="headerlink" href="#tuples" title="Permalink to this heading">#</a></h1>
-<p>The <strong>immutable</strong> cousin of the list is a <strong>tuple</strong>, a tuple acts in many ways the same as a tuple (such as indexing). However, the elements of a tuple cannot change once the object is defined. Let’s look at how a tuple is defined.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is similar to a <code class="docutils literal notranslate"><span class="pre">list</span></code> and can be used as an ordered collection of other objects.
+A <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is defined much in the same way as a <code class="docutils literal notranslate"><span class="pre">list</span></code>, but with parentheses instead of square brackets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;helium&#39;</span><span class="p">,</span> <span class="s1">&#39;neon&#39;</span><span class="p">,</span> <span class="s1">&#39;argon&#39;</span><span class="p">,</span> <span class="s1">&#39;krypton&#39;</span><span class="p">,</span> <span class="s1">&#39;xenon&#39;</span><span class="p">,</span> <span class="s1">&#39;radon&#39;</span><span class="p">)</span>
@@ -361,7 +363,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Like with lists, we can use the index notation to identify particular elements in the tuple.</p>
+<p>As with lists, we can use the index notation to identify particular elements in the tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -386,7 +388,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Above it was mentioned that a tuple is an immutable type, that once created it’s objects cannot be altered. We can see this in action if we try and change the value of one of the elements in the tuple.</p>
+<p>The main difference between a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and a <code class="docutils literal notranslate"><span class="pre">list</span></code> is that <code class="docutils literal notranslate"><span class="pre">lists</span></code> are <strong>mutable</strong>: they can be changed after they have been created, either by changing individual elements or deleting or adding elements to change the size of the <code class="docutils literal notranslate"><span class="pre">list</span></code>. A <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, in contrast, is <strong>immutable</strong>: once it has been created it cannot be altered.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Helium&#39;</span>
@@ -404,7 +406,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>However, it is still possible to concatenate tuples, like lists, but the item that is being concatentated must be a tuple, hence the brackets and trailing comma.</p>
+<p>It is still possible to concatenate tuples, like lists, but the item that is being concatentated must be a tuple, hence the brackets and trailing comma.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;oganesson&#39;</span><span class="p">,)</span>
@@ -417,7 +419,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The immutability of a tuple does not mean that the whole variable cannot be overwritten.</p>
+<p>The immutability of a tuple does not mean that the whole variable cannot be reassigned.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span> <span class="o">=</span> <span class="s1">&#39;inert&#39;</span>
@@ -438,6 +440,33 @@ document.write(`
 </div>
 </div>
 <p>Additionally, like lists, tuple items can also consist of data of different types.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0, &#39;a&#39;, 2.3)
+</pre></div>
+</div>
+</div>
+</div>
+<p>You might be thinking, why have a less capable version of a <code class="docutils literal notranslate"><span class="pre">lists</span></code>, when you could just use <code class="docutils literal notranslate"><span class="pre">lists</span></code> everywhere and never have to worry about which is which? Tuples are computationally more efficient than lists: they use less memory and can be operated on faster, and are often used as the return type from functions that return more than one value. For complex code, there is also a benefit to limiting the number of possible bugs. And, if you do have a bug, you would ideally like the Python interpreter to tell you, rather than have your code run and do something unexpected; for example, your data analysis appears to run fine, but because you have a bug the number you end up quoting in the subsequent research article is incorrect! In general, unless you know that you are going to want to do something with your data that you can only do with a <code class="docutils literal notranslate"><span class="pre">list</span></code>, it can be a good idea to use a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> instead.</p>
+<p>If you do a collection of objects stored as a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and you want to convert this to a <code class="docutils literal notranslate"><span class="pre">list</span></code> you can use</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;a&#39;, 2.3]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -471,12 +500,12 @@ document.write(`
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="lists.html"
+       href="loops.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Lists</p>
+        <p class="prev-next-title">Loops</p>
       </div>
     </a>
     <a class="right-next"

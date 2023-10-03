@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lists" href="lists.html" />
-    <link rel="prev" title="Types" href="types.html" />
+    <link rel="prev" title="Variables" href="variables.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -186,10 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dictionaries.html">Dictionaries</a></li>
 </ul>
@@ -341,8 +342,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-variables-in-mathematical-expressions">Using variables in mathematical expressions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-quadratic-formula">Example: the quadratic formula</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-of-operations">Order of operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-math-module">The <code class="docutils literal notranslate"><span class="pre">math</span></code> module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -389,7 +394,6 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 </div>
 </div>
 </div>
-<p>(we will explain the use of <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code> and <code class="docutils literal notranslate"><span class="pre">math.sqrt</span></code> for calculating square roots below.)</p>
 <p>This works, but the Python is complicated, making it easy to mistype something without realising it. It is also difficult to <strong>understand</strong> what this code is doing if you (or someone else) is reading it. And if we want to solve <strong>another</strong> quadratic equation, then we need to retype the full equation with the new set of parameters (again, hoping we type everything correctly).</p>
 <p>Using variables we can rewrite this calculation as:</p>
 <div class="cell docutils container">
@@ -455,69 +459,18 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 <li><p><strong>S</strong>ubtraction <code class="docutils literal notranslate"><span class="pre">-</span></code></p></li>
 </ul>
 </section>
-<section id="the-math-module">
-<h2>The <code class="docutils literal notranslate"><span class="pre">math</span></code> module<a class="headerlink" href="#the-math-module" title="Permalink to this heading">#</a></h2>
-<p>Python provides access to more advanced mathematical functions using the <code class="docutils literal notranslate"><span class="pre">math</span></code> module. We will discuss modules in detail later. Here we will simply note that the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code> command allows us to then use various functions  within the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, using <strong>dot syntax</strong>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.0
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">2.0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.38905609893065
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">7.38905609893065</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="exercises">
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
-<ul>
-<li><p>Without using a computer or a calculator, and following the BODMAS order of operations, calculate the following:</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(24 \div (10 + 2)\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(5 + 16 \div 2 \times 3\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\([32 \div (6 + 2)]^2\)</span></p></li>
-</ol>
-</li>
-<li><p>Write Jupyter cells for each of the following chemical calculations:</p>
+<section id="id1">
+<h3>1.<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Without using a computer or a calculator, and following the BODMAS order of operations, calculate the following:
+1. <span class="math notranslate nohighlight">\(24 \div (10 + 2)\)</span>
+2. <span class="math notranslate nohighlight">\(5 + 16 \div 2 \times 3\)</span>
+3. <span class="math notranslate nohighlight">\([32 \div (6 + 2)]^2\)</span></p>
+</section>
+<section id="id2">
+<h3>2.<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p>Write Jupyter cells for each of the following chemical calculations:</p>
 <ol class="arabic">
 <li><p>Calculate the energy, in Joules, of radiation with a particular wavenumber,</p>
 <p><span class="math notranslate nohighlight">\(E = hc\bar{\nu}\)</span>,</p>
@@ -532,8 +485,10 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 <p>where <span class="math notranslate nohighlight">\(r\)</span> is the interatomic distance, and <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are interaction specific constants, for the Argon-Argon interaction these are <span class="math notranslate nohighlight">\(1.36\times10^{-134}\)</span> Jm<sup>12</sup> and <span class="math notranslate nohighlight">\(9.27\times10^{-78}\)</span> Jm<sup>6</sup> respectively.</p>
 </li>
 </ol>
-</li>
-<li><p>The stardard Gibbs free energy for a reaction at a particular temperature is related to the equilibrium constant at that temperature via,</p>
+</section>
+<section id="id3">
+<h3>3.<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>The stardard Gibbs free energy for a reaction at a particular temperature is related to the equilibrium constant at that temperature via,</p>
 <p><span class="math notranslate nohighlight">\(\Delta G = -RT\ln{K}\)</span></p>
 <p>For the reaction:</p>
 <p>PCl<sub>3</sub> (g) + Cl<sub>2</sub> (g) → PCl<sub>5</sub> (g)</p>
@@ -552,9 +507,7 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 <p><span class="math notranslate nohighlight">\( \Delta G = \Delta H - T \Delta S \)</span>.</p>
 </li>
 </ul>
-</li>
-</ul>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/arithmetic_exercises.html">Worked Example</a></p>
+</section>
 </section>
 </section>
 
@@ -589,12 +542,12 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="types.html"
+       href="variables.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Types</p>
+        <p class="prev-next-title">Variables</p>
       </div>
     </a>
     <a class="right-next"
@@ -624,8 +577,12 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-variables-in-mathematical-expressions">Using variables in mathematical expressions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-quadratic-formula">Example: the quadratic formula</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-of-operations">Order of operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-math-module">The <code class="docutils literal notranslate"><span class="pre">math</span></code> module</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
