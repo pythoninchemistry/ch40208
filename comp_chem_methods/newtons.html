@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/newtons';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -346,15 +348,17 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="newton-s-method">
+  <section class="tex2jax_ignore mathjax_ignore" id="newton-s-method">
 <h1>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this heading">#</a></h1>
 <p>A potentially more efficient method for minimisation is the potential energy function is Newton’s method (developed by Isaac Newton).
 This method uses both the first and second derivatives of the potential energy, the latter is found from the following equation,</p>
-<p>$$ E’’(r_{ij}) = 156\frac{A}{r_{ij}^{14}} - 42\frac{B}{r_{ij}^8}, $$</p>
+<div class="math notranslate nohighlight">
+\[ E''(r_{ij}) = 156\frac{A}{r_{ij}^{14}} - 42\frac{B}{r_{ij}^8}, \]</div>
 <p>where again, the parameters are given previously.</p>
 <p>The second derivative of a function describes the curvature of the function and can offer a more direct root to the minimum energy solution.
 The algorithm for Newton’s method is identical to the gradient descent method, but the update formula is changed to,</p>
-<p>$$ r_{\text{new}} = r_{\text{old}} - \frac{E’(r_{ij})}{E’’(r_{ij})},$$</p>
+<div class="math notranslate nohighlight">
+\[ r_{\text{new}} = r_{\text{old}} - \frac{E'(r_{ij})}{E''(r_{ij})},\]</div>
 <p>where the parameters are introduced previously.
 As can be seen, this method has the benefit that there is no need to determine a hyperparameter.
 Additionally, under certain circumstances, it can be more efficient than the gradient descent method.</p>
@@ -363,7 +367,7 @@ Additionally, under certain circumstances, it can be more efficient than the gra
 <section id="exercise">
 <h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <p>Implement Newton’s method algorithm for the same system as previously.
-Investigate how the algorithm performs against the gradient descent method for starting points of $3.2$ Å, $4.4$ Å, and $6.0$ Å (consider the cause of the result for Newton’s method starting at $6.0$ Å).</p>
+Investigate how the algorithm performs against the gradient descent method for starting points of <span class="math notranslate nohighlight">\(3.2\)</span> Å, <span class="math notranslate nohighlight">\(4.4\)</span> Å, and <span class="math notranslate nohighlight">\(6.0\)</span> Å (consider the cause of the result for Newton’s method starting at <span class="math notranslate nohighlight">\(6.0\)</span> Å).</p>
 <!-- [Worked Example](https://pythoninchemistry.org/ch40208/comp_chem_methods/newtons_exercises.html) --></section>
 </section>
 

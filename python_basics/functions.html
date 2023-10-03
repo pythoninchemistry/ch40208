@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/functions';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
@@ -357,7 +359,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="functions">
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h1>
 <p>By this point you have seen and used a number of <strong>functions</strong>, such as <code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, and <code class="docutils literal notranslate"><span class="pre">math.sqrt()</span></code>, and the general concept of <strong>functions</strong> was briefly introduced <a class="reference internal" href="print_statements.html#content-intro-to-functions"><span class="std std-ref">earlier</span></a>.</p>
 <p>In this section we will cover how functions work in some more detail, and explain how you can write your own functions. Packaging your code into self-contained functions can help you to organise your programs as they become more complex, and also provides a way to write a section of code once and then use it multiple times in some later calculation.</p>
@@ -760,7 +762,7 @@ document.write(`
 <p>For these reasons, it is strongly recommended that you <strong>document</strong> your code, to give enough information to a future user of the code (most likely future-you) to be able to pick it up and use it correctly.</p>
 <p>Functions support a particular kind of inline documentation called a <strong>docstring</strong>. A <strong>docstring</strong> is a <strong>string</strong> that provides documentation about a function: usually a summary of what the function does, and information about any required or optional <strong>arguments</strong>, and any data <strong>returned</strong> by the function.</p>
 <p>A <strong>docstring</strong> is written as a <strong>multi-line string</strong>, which is defined in Python by a block of text that starts and ends with <strong>triple quotes</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">'''</span></code>.</p>
-<p>For example, here is a function <code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code> that calculates the kinetic energy of a particle. The function takes two required arguments <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> and returns the kinetic energy, calculated as $E_\mathrm{KE} = \frac{1}{2}mv^2$.</p>
+<p>For example, here is a function <code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code> that calculates the kinetic energy of a particle. The function takes two required arguments <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> and returns the kinetic energy, calculated as <span class="math notranslate nohighlight">\(E_\mathrm{KE} = \frac{1}{2}mv^2\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kinetic_energy</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
@@ -869,18 +871,19 @@ Make sure to include a docstring describing the purpose of the function and outl
 <section id="id2">
 <h3>2<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>Write a function that implements the second-order rate equation,</p>
-<p>$$ [A]_t = \frac{[A]_0}{[A]_0kt + 1}, $$</p>
-<p>where $[A]_t$ is the concentration at time $t$, $[A]_0$ is the initial concentration and $k$ is the rate constant (note this a rearrangement from the familiar way of writing this equation where $[A]_t$ is a reciprocal).</p>
-<p>Plot the data below, as $[A]_t$ ($y$-axis) against $t$ ($x$-axis), with a scatter plot (where you use <code class="docutils literal notranslate"><span class="pre">'o'</span></code>) and make sure to label your axes.</p>
-<p>Using, either a loop or the NumPy array operations and the function that you have defined, test if the following values of $k$ and $[A]_0$ accurately model the reaction by plotting the model data as a line on top of your scatter plot.</p>
+<div class="math notranslate nohighlight">
+\[ [A]_t = \frac{[A]_0}{[A]_0kt + 1}, \]</div>
+<p>where <span class="math notranslate nohighlight">\([A]_t\)</span> is the concentration at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\([A]_0\)</span> is the initial concentration and <span class="math notranslate nohighlight">\(k\)</span> is the rate constant (note this a rearrangement from the familiar way of writing this equation where <span class="math notranslate nohighlight">\([A]_t\)</span> is a reciprocal).</p>
+<p>Plot the data below, as <span class="math notranslate nohighlight">\([A]_t\)</span> (<span class="math notranslate nohighlight">\(y\)</span>-axis) against <span class="math notranslate nohighlight">\(t\)</span> (<span class="math notranslate nohighlight">\(x\)</span>-axis), with a scatter plot (where you use <code class="docutils literal notranslate"><span class="pre">'o'</span></code>) and make sure to label your axes.</p>
+<p>Using, either a loop or the NumPy array operations and the function that you have defined, test if the following values of <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\([A]_0\)</span> accurately model the reaction by plotting the model data as a line on top of your scatter plot.</p>
 <ul class="simple">
-<li><p>$k = 0.006$ mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and $[A]_0 = 0.6$ mol dm<sup>-3</sup></p></li>
-<li><p>$k = 0.0006$ mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and $[A]_0 = 0.4$ mol dm<sup>-3</sup></p></li>
-<li><p>$k = 0.6$ mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and $[A]_0 = 0.2$ mol dm<sup>-3</sup></p></li>
+<li><p><span class="math notranslate nohighlight">\(k = 0.006\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.6\)</span> mol dm<sup>-3</sup></p></li>
+<li><p><span class="math notranslate nohighlight">\(k = 0.0006\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.4\)</span> mol dm<sup>-3</sup></p></li>
+<li><p><span class="math notranslate nohighlight">\(k = 0.6\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.2\)</span> mol dm<sup>-3</sup></p></li>
 </ul>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>$t$/s</p></th>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(t\)</span>/s</p></th>
 <th class="head"><p>0</p></th>
 <th class="head"><p>600</p></th>
 <th class="head"><p>1200</p></th>
@@ -889,7 +892,7 @@ Make sure to include a docstring describing the purpose of the function and outl
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>$[A]_t$ / mol dm<sup>-3</sup></p></td>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\([A]_t\)</span> / mol dm<sup>-3</sup></p></td>
 <td><p>0.400</p></td>
 <td><p>0.350</p></td>
 <td><p>0.311</p></td>

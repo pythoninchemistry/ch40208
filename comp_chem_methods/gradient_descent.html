@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/gradient_descent';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -346,12 +348,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="gradient-descent">
+  <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent">
 <h1>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this heading">#</a></h1>
 <p>The first algorithm that we will investigate considers only the gradient of the function and changes the reaction parameter based on this.
 Therefore we must define two functions, one for the energy of the potential energy surface (the Lennard-Jones potential outlined earlier) and another for the gradient of the potential energy surface (this is the first derivative of the Lennard-Jones potential).
 The function for the gradient of the potential energy surface is given below.</p>
-<p>$$ E’(r_{ij}) = -12\frac{A}{r_{ij}^{13}} + 6\frac{B}{r_{ij}^7}, $$</p>
+<div class="math notranslate nohighlight">
+\[ E'(r_{ij}) = -12\frac{A}{r_{ij}^{13}} + 6\frac{B}{r_{ij}^7}, \]</div>
 <p>where the parameters are the same as outlined <span class="xref myst">previously</span>.</p>
 <p>Considering the shape of the potential energy surface,</p>
 <div class="cell docutils container">
@@ -374,27 +377,28 @@ The function for the gradient of the potential energy surface is given below.</p
 <img alt="../_images/99ec86db15e4c53e95b6679f2d6529a111286666bf0c9c20fbf280c01c0ab1eb.png" src="../_images/99ec86db15e4c53e95b6679f2d6529a111286666bf0c9c20fbf280c01c0ab1eb.png" />
 </div>
 </div>
-<p>When the gradient is positive, where $r_{ij} &gt; 4.1$ Å, then we want to reduce the value of $r_{ij}$, such that we go downhill towards the minimum.
-Where the gradient is negative, $r_{ij} &lt; 4.1$ Å, the value of $r_{ij}$ needs to increase to move towards the minimum.
+<p>When the gradient is positive, where <span class="math notranslate nohighlight">\(r_{ij} &gt; 4.1\)</span> Å, then we want to reduce the value of <span class="math notranslate nohighlight">\(r_{ij}\)</span>, such that we go downhill towards the minimum.
+Where the gradient is negative, <span class="math notranslate nohighlight">\(r_{ij} &lt; 4.1\)</span> Å, the value of <span class="math notranslate nohighlight">\(r_{ij}\)</span> needs to increase to move towards the minimum.
 This gives rise to the following algorithm,</p>
 <ol class="arabic">
 <li><p>An initial guess of the minimum energy distance is made</p></li>
 <li><p>The first derivative of the energy at that distance is calculated</p></li>
 <li><p>The distance is updated based on the following relationship,</p>
-<p>$$ r_{\text{new}} = r_{\text{old}} - \alpha E’(r_{\text{old}}), $$</p>
-<p>where, $E’(r)$ is the first derivative of the energy, $r_{\text{old}}$ is the original distance, and $\alpha$ is a hyperparameter.</p>
+<div class="math notranslate nohighlight">
+\[ r_{\text{new}} = r_{\text{old}} - \alpha E'(r_{\text{old}}), \]</div>
+<p>where, <span class="math notranslate nohighlight">\(E'(r)\)</span> is the first derivative of the energy, <span class="math notranslate nohighlight">\(r_{\text{old}}\)</span> is the original distance, and <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter.</p>
 </li>
 <li><p>Go to step 2.</p></li>
 </ol>
-<p>The hyperparameter, $\alpha$, is a variable that we need to find for our given optimisation, which scales the magnitude of the change in $r$.
-The figure below shows the gradient descent method in action, where $\alpha = 2.0$.</p>
+<p>The hyperparameter, <span class="math notranslate nohighlight">\(\alpha\)</span>, is a variable that we need to find for our given optimisation, which scales the magnitude of the change in <span class="math notranslate nohighlight">\(r\)</span>.
+The figure below shows the gradient descent method in action, where <span class="math notranslate nohighlight">\(\alpha = 2.0\)</span>.</p>
 <p><img alt="" src="../_images/grad.gif" /></p>
 <section id="exercise">
 <h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <p>Implement a gradient descent algorithm by writing a function for the first derivative of the energy.
 Using a loop, iterate the algorithm at least 30 times.
-Test different starting points, values of $\alpha$, and numbers of iterations, by printing the distance $r_{ij}$ for each iteration of the loop watch for the value converging.
-Use $A$ = $1\times 10^{5}$ eV Å<sup>12</sup>, $B$ = $40$ eV Å<sup>6</sup>.</p>
+Test different starting points, values of <span class="math notranslate nohighlight">\(\alpha\)</span>, and numbers of iterations, by printing the distance <span class="math notranslate nohighlight">\(r_{ij}\)</span> for each iteration of the loop watch for the value converging.
+Use <span class="math notranslate nohighlight">\(A\)</span> = <span class="math notranslate nohighlight">\(1\times 10^{5}\)</span> eV Å<sup>12</sup>, <span class="math notranslate nohighlight">\(B\)</span> = <span class="math notranslate nohighlight">\(40\)</span> eV Å<sup>6</sup>.</p>
 <!-- [Worked Examples](https://pythoninchemistry.org/ch40208/comp_chem_methods/gradient_descent_exercises.html) --></section>
 </section>
 

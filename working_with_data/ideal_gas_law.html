@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/ideal_gas_law';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -346,7 +348,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="investigation-of-the-ideal-gas-law">
+  <section class="tex2jax_ignore mathjax_ignore" id="investigation-of-the-ideal-gas-law">
 <h1>Investigation of the ideal gas law<a class="headerlink" href="#investigation-of-the-ideal-gas-law" title="Permalink to this heading">#</a></h1>
 <p>A large balloon is filled with argon gas, the temperature is then varied and the volume and pressure are measured.
 The results of this are shown in the table below.</p>
@@ -381,14 +383,15 @@ The results of this are shown in the table below.</p>
 </tbody>
 </table>
 <p>We will assume that the argon gas will follow the ideal gas law, which states,</p>
-<p>$$ pV = nRT, $$</p>
-<p>where, $p$ is the pressure, $V$ is the volume, $n$ is the number of moles of gas, $R$ is the <a class="reference external" href="https://en.wikipedia.org/wiki/Gas_constant">ideal gas constant</a>, and $T$ is the temperature.
+<div class="math notranslate nohighlight">
+\[ pV = nRT, \]</div>
+<p>where, <span class="math notranslate nohighlight">\(p\)</span> is the pressure, <span class="math notranslate nohighlight">\(V\)</span> is the volume, <span class="math notranslate nohighlight">\(n\)</span> is the number of moles of gas, <span class="math notranslate nohighlight">\(R\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Gas_constant">ideal gas constant</a>, and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.
 Carry out the following:</p>
 <ul class="simple">
-<li><p>Plot the relationship between $p$ and $T$.</p></li>
-<li><p>Plot the relationship between $V$ and $T$.</p></li>
-<li><p>Plot the relationship between $pV$ and $T$.</p></li>
-<li><p>For each data point calculate the value of $n$, the number of moles of argon in the ballon, and store these values in a NumPy array.</p></li>
+<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(V\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>Plot the relationship between <span class="math notranslate nohighlight">\(pV\)</span> and <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+<li><p>For each data point calculate the value of <span class="math notranslate nohighlight">\(n\)</span>, the number of moles of argon in the ballon, and store these values in a NumPy array.</p></li>
 <li><p>Find the mean and standard error of this array (the standard error is the standard deviation divde by the [square root] of the sample size) and print these values in a string using the <a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/variables.html#aside-f-strings">f-strings</a> syntax.</p></li>
 </ul>
 <section id="tip">

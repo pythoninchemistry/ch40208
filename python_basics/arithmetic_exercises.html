@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/arithmetic_exercises';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
@@ -336,12 +338,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="exercises">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
 <h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
 <p>We will skip the simple BODMAS exercises and look first at the chemical calculations.</p>
 <p>Calculate the energy, in Joules, of radiation with a particular wavenumber,</p>
-<p>$$ E = hc\bar{\nu}, $$</p>
-<p>where, $c$ is the speed of light, $h$ is Planck’s constant, and $\bar{\nu}$ is $1700$ cm<sup>-1</sup>.</p>
+<div class="math notranslate nohighlight">
+\[ E = hc\bar{\nu}, \]</div>
+<p>where, <span class="math notranslate nohighlight">\(c\)</span> is the speed of light, <span class="math notranslate nohighlight">\(h\)</span> is Planck’s constant, and <span class="math notranslate nohighlight">\(\bar{\nu}\)</span> is <span class="math notranslate nohighlight">\(1700\)</span> cm<sup>-1</sup>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="mf">3e10</span> <span class="c1">#cm/s</span>
@@ -359,8 +362,9 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Evaluate the $\text{pH}$ when the concentration of hydronium ions is $1.524\times 10^{-5}$ M,</p>
-<p>$$ \text{pH} = -\log_{10}[\text{H}_3\text{O}^+] $$</p>
+<p>Evaluate the <span class="math notranslate nohighlight">\(\text{pH}\)</span> when the concentration of hydronium ions is <span class="math notranslate nohighlight">\(1.524\times 10^{-5}\)</span> M,</p>
+<div class="math notranslate nohighlight">
+\[ \text{pH} = -\log_{10}[\text{H}_3\text{O}^+] \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log10</span>
@@ -378,9 +382,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Find the potential energy, in Joules, between two atoms at a distance of $2$ Å, modelled with the Lennard-Jones potential model,</p>
-<p>$$ E = \frac{A}{r^{12}} - \frac{B}{r^6},$$</p>
-<p>where $r$ is the interatomic distances and $A$ and $B$ are interaction specific constants for the Argon-Argon interaction these are $1.36 \times 10^{-134}$ Jm<sup>12</sup> and $9.27 \times 10^{-78}$ Jm<sup>6</sup> respectively.</p>
+<p>Find the potential energy, in Joules, between two atoms at a distance of <span class="math notranslate nohighlight">\(2\)</span> Å, modelled with the Lennard-Jones potential model,</p>
+<div class="math notranslate nohighlight">
+\[ E = \frac{A}{r^{12}} - \frac{B}{r^6},\]</div>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the interatomic distances and <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are interaction specific constants for the Argon-Argon interaction these are <span class="math notranslate nohighlight">\(1.36 \times 10^{-134}\)</span> Jm<sup>12</sup> and <span class="math notranslate nohighlight">\(9.27 \times 10^{-78}\)</span> Jm<sup>6</sup> respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="mf">2e-10</span>
@@ -400,19 +405,21 @@ document.write(`
 </div>
 <p>The next question is a longer form question.</p>
 <p>The standard Gibbs free energy for a reaction at a particular temperature is related to the equilibrium constant at that temperature via,</p>
-<p>$$ \Delta G = -RT\ln{K}. $$</p>
+<div class="math notranslate nohighlight">
+\[ \Delta G = -RT\ln{K}. \]</div>
 <p>For the reaction:</p>
 <p>PCl<sub>3</sub> (g) + Cl<sub>2</sub> (g) → PCl<sub>5</sub> (g)</p>
-<p>The standard free energies of formation $\Delta G_f^\circ$ for each reactant and product are given below,</p>
+<p>The standard free energies of formation <span class="math notranslate nohighlight">\(\Delta G_f^\circ\)</span> for each reactant and product are given below,</p>
 <ul class="simple">
-<li><p>PCl<sub>3</sub>: $-267.8$ kJmol<sup>-1</sup></p></li>
-<li><p>PCl<sub>5</sub>: $-305.0$ kJmol<sup>-1</sup></p></li>
-<li><p>Cl<sub>2</sub>: $0$ kJmol<sup>-1</sup>
+<li><p>PCl<sub>3</sub>: <span class="math notranslate nohighlight">\(-267.8\)</span> kJmol<sup>-1</sup></p></li>
+<li><p>PCl<sub>5</sub>: <span class="math notranslate nohighlight">\(-305.0\)</span> kJmol<sup>-1</sup></p></li>
+<li><p>Cl<sub>2</sub>: <span class="math notranslate nohighlight">\(0\)</span> kJmol<sup>-1</sup>
 Write a Jupyter Notebook cell to achieve the following:</p></li>
-<li><p>Using Hess’s law, find the equilibrium constant $K$, for the above reaction.</p></li>
-<li><p>Then assuming that $\Delta H$ and $\Delta S$ are independent of temperature between $298$ K and $350$ K, calculate $\Delta H^\circ$ (e.g. at $298$ K), given that $\Delta G_r = -20.2$ kJmol<sup>-1</sup> at $350$ K. The following relation will help,</p></li>
+<li><p>Using Hess’s law, find the equilibrium constant <span class="math notranslate nohighlight">\(K\)</span>, for the above reaction.</p></li>
+<li><p>Then assuming that <span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span> are independent of temperature between <span class="math notranslate nohighlight">\(298\)</span> K and <span class="math notranslate nohighlight">\(350\)</span> K, calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> (e.g. at <span class="math notranslate nohighlight">\(298\)</span> K), given that <span class="math notranslate nohighlight">\(\Delta G_r = -20.2\)</span> kJmol<sup>-1</sup> at <span class="math notranslate nohighlight">\(350\)</span> K. The following relation will help,</p></li>
 </ul>
-<p>$$ \Delta G = \Delta H - T\Delta S $$</p>
+<div class="math notranslate nohighlight">
+\[ \Delta G = \Delta H - T\Delta S \]</div>
 <p>The first step is to use Hess’s law to find the free energy change for the reaction, this is the difference between the sum of the free energies of formation for the products and the reactants.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -450,12 +457,18 @@ Write a Jupyter Notebook cell to achieve the following:</p></li>
 </div>
 </div>
 <p>We can then use simultaneous equations to rearrange the second equation.</p>
-<p>$$ \Delta G_1 = \Delta H - T_1\Delta S $$</p>
-<p>$$ \Delta G_2 = \Delta H - T_2\Delta S $$</p>
-<p>$$ \Delta G_1 - \Delta G_2 = T_2\Delta S - T_1\Delta S $$</p>
-<p>$$ \Delta S = \frac{\Delta G_1 - \Delta G_2}{T_2 - T_1}$$</p>
-<p>$$ \frac{\Delta H - \Delta G_1}{T_1} = \frac{\Delta G_1 - \Delta G_2}{T_2 - T_1}$$</p>
-<p>$$ \Delta H = \frac{T_1(\Delta G_1 - \Delta G_2)}{T_2 - T_1} + \Delta G_1$$</p>
+<div class="math notranslate nohighlight">
+\[ \Delta G_1 = \Delta H - T_1\Delta S \]</div>
+<div class="math notranslate nohighlight">
+\[ \Delta G_2 = \Delta H - T_2\Delta S \]</div>
+<div class="math notranslate nohighlight">
+\[ \Delta G_1 - \Delta G_2 = T_2\Delta S - T_1\Delta S \]</div>
+<div class="math notranslate nohighlight">
+\[ \Delta S = \frac{\Delta G_1 - \Delta G_2}{T_2 - T_1}\]</div>
+<div class="math notranslate nohighlight">
+\[ \frac{\Delta H - \Delta G_1}{T_1} = \frac{\Delta G_1 - \Delta G_2}{T_2 - T_1}\]</div>
+<div class="math notranslate nohighlight">
+\[ \Delta H = \frac{T_1(\Delta G_1 - \Delta G_2)}{T_2 - T_1} + \Delta G_1\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dg_350</span> <span class="o">=</span> <span class="o">-</span><span class="mf">20.2</span> <span class="c1">#kJ/mol</span>

@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/matrices_in_python';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -346,7 +348,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="working-with-matrices-in-python">
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-matrices-in-python">
 <h1>Working with matrices in Python<a class="headerlink" href="#working-with-matrices-in-python" title="Permalink to this heading">#</a></h1>
 <p>Matrices can be described by multidimensional <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays, and we can perform matrix multiplication with the <code class="docutils literal notranslate"><span class="pre">numpy.matmul()</span></code> function. <a class="footnote-reference brackets" href="#footnote" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
 <div class="cell docutils container">
@@ -433,13 +435,15 @@ This is because:</p>
 <li><p>We are only going to focus on the rotation in the <em>xy</em>-plane (so the <em>z</em>-coordinate will never change).</p></li>
 </ol>
 <p>The exercise this week is to use matrices and vector to rotate this molecule in the <em>xy</em>-plane.
-First, you should write a function that will return a NumPy matrix when passed some angle, $\beta$, with the form,</p>
-<p>$$ \begin{bmatrix}\cos\beta &amp; -\sin\beta \ \sin\beta &amp; \cos\beta \end{bmatrix} $$</p>
+First, you should write a function that will return a NumPy matrix when passed some angle, <span class="math notranslate nohighlight">\(\beta\)</span>, with the form,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix}\cos\beta &amp; -\sin\beta \\ \sin\beta &amp; \cos\beta \end{bmatrix} \end{split}\]</div>
 <p>This is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Rotation_matrix">rotation matrix</a>, a rotation matrix in a linear algebra tool that lets us rotate something in <a class="reference external" href="https://en.wikipedia.org/wiki/Euclidean_space">Euclidean space</a> such as the cartesian coordinate system that we use to describe the atomic positions.
 Remember that the NumPy <code class="docutils literal notranslate"><span class="pre">cos</span></code> and <code class="docutils literal notranslate"><span class="pre">sin</span></code> functions will expect the angle to be in radians!</p>
 <p>Then use the rotation matrix to obtain new coordinates for the water molecule, by performing the following matrix multiplication.</p>
-<p>$$ \begin{bmatrix} x’ \ y’ \end{bmatrix} = \begin{bmatrix}\cos\beta &amp; -\sin\beta \ \sin\beta &amp; \cos\beta \end{bmatrix} \begin{bmatrix}x \ y \end{bmatrix} $$</p>
-<p>where $x$ and $y$ are the current positions of the <em>x</em>- and <em>y</em>-coordinates respectively and $x’$ and $y’$ are the rotated coordinates.
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} x' \\ y' \end{bmatrix} = \begin{bmatrix}\cos\beta &amp; -\sin\beta \\ \sin\beta &amp; \cos\beta \end{bmatrix} \begin{bmatrix}x \\ y \end{bmatrix} \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are the current positions of the <em>x</em>- and <em>y</em>-coordinates respectively and <span class="math notranslate nohighlight">\(x'\)</span> and <span class="math notranslate nohighlight">\(y'\)</span> are the rotated coordinates.
 Use the <code class="docutils literal notranslate"><span class="pre">visualisation.show()</span></code> function to help check that the rotation has been successful.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="footnote" role="note">

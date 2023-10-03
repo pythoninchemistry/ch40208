@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/vectors_in_python';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -346,7 +348,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="working-with-vectors-in-python">
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-vectors-in-python">
 <h1>Working with vectors in Python<a class="headerlink" href="#working-with-vectors-in-python" title="Permalink to this heading">#</a></h1>
 <p>Working with vectors in Python is made simple by using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays.</p>
 <div class="cell docutils container">
@@ -421,8 +423,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>This is not the same as $\mathbf{a}\cdot\mathbf{b}$ (dot product) <strong>or</strong> $\mathbf{a}\times\mathbf{b}$ (cross product).
-Instead we can use the <code class="docutils literal notranslate"><span class="pre">numpy.dot()</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.cross()</span></code> functions to compute the dot product and cross product of $\mathbf{a}$ and $\mathbf{b}$ respectively:</p>
+<p>This is not the same as <span class="math notranslate nohighlight">\(\mathbf{a}\cdot\mathbf{b}\)</span> (dot product) <strong>or</strong> <span class="math notranslate nohighlight">\(\mathbf{a}\times\mathbf{b}\)</span> (cross product).
+Instead we can use the <code class="docutils literal notranslate"><span class="pre">numpy.dot()</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.cross()</span></code> functions to compute the dot product and cross product of <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> respectively:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dot product</span>
@@ -492,7 +494,8 @@ Instead we can use the <code class="docutils literal notranslate"><span class="p
 <section id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <p>You previously wrote some code to calculate the interatomic distances (and angles) between pairs of atoms in two molecules, using the expression</p>
-<p>$$r_{ij} = \sqrt{(x_i-x_j)^2 + (y_i-y_j)^2 + (z_i-z_j)^2}$$</p>
+<div class="math notranslate nohighlight">
+\[r_{ij} = \sqrt{(x_i-x_j)^2 + (y_i-y_j)^2 + (z_i-z_j)^2}\]</div>
 <p>Starting from your previous code, or from scratch, write a new version of this code that solves the same problem using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays and <code class="docutils literal notranslate"><span class="pre">np.dot()</span></code>.</p>
 </section>
 </section>

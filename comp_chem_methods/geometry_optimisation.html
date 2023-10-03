@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/geometry_optimisation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -352,17 +354,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="geometry-optimisation">
+  <section class="tex2jax_ignore mathjax_ignore" id="geometry-optimisation">
 <h1>Geometry Optimisation<a class="headerlink" href="#geometry-optimisation" title="Permalink to this heading">#</a></h1>
 <section id="stationary-points">
 <h2>Stationary points<a class="headerlink" href="#stationary-points" title="Permalink to this heading">#</a></h2>
 <p>Chemists are often interested in finding <strong>stationary points</strong> on <a class="reference internal" href="potential_energy_surfaces.html"><span class="doc std std-doc">potential energy surfaces</span></a>.</p>
 <p><strong>Stationary points</strong> are points where the <strong>gradient</strong> of the <strong>potential energy surface</strong> is zero.</p>
 <p>i.e. in one dimension</p>
-<p>$$\frac{\mathrm{d}E}{\mathrm{d}x}=0.$$</p>
+<div class="math notranslate nohighlight">
+\[\frac{\mathrm{d}E}{\mathrm{d}x}=0.\]</div>
 <p>In higher dimensions we require all the <strong>partial derivatives</strong> to be zero:</p>
-<p>$$\left(\frac{\partial E}{\partial \alpha}\right)=0,$$</p>
-<p>where $\alpha$ runs over all degrees of freedom.</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\partial E}{\partial \alpha}\right)=0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> runs over all degrees of freedom.</p>
 <p>Stationary points can be <strong>minima</strong>, <strong>saddle points</strong>, or <strong>maxima</strong>.</p>
 <p><img alt="" src="../_images/stationary_points.png" /></p>
 </section>
@@ -392,12 +396,15 @@ document.write(`
 <p>We have already noted that <strong>minima</strong>, <strong>saddle points</strong>, and <strong>maxima</strong> are all <strong>stationary points</strong> with gradients of zero.</p>
 <p>We can distinguish between these three types of <strong>stationary points</strong> by considering <strong>second derivatives</strong> (i.e. <strong>curvature</strong>).</p>
 <p>Moving away from a <strong>minimum</strong>, the energy <strong>increases</strong> in all directions. A <strong>minimum</strong> therefore is characterised by <strong>positive curvature</strong>. e.g. for a two-dimensional potential energy surface:</p>
-<p>$$\left(\frac{\partial^2 E}{\partial x^2}\right)&gt;0, \left(\frac{\partial^2 E}{\partial y^2}\right)&gt;.0$$</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\partial^2 E}{\partial x^2}\right)&gt;0, \left(\frac{\partial^2 E}{\partial y^2}\right)&gt;.0\]</div>
 <p>Moving away from a <strong>maximum</strong>, the energy <strong>decreases</strong> in all directions. A <strong>maximum</strong> is therefore characterised by <strong>negative curvature</strong>. e.g.  for a 2D PES:</p>
-<p>$$\left(\frac{\partial^2 E}{\partial x^2}\right)&lt;0, \left(\frac{\partial^2 E}{\partial y^2}\right)&lt;0.$$</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\partial^2 E}{\partial x^2}\right)&lt;0, \left(\frac{\partial^2 E}{\partial y^2}\right)&lt;0.\]</div>
 <p>At a <strong>saddle point</strong>, the energy <strong>decreases</strong> in one or more directions, but <strong>increases</strong> in the others. e.g. for a 2D potential-energy surface:</p>
-<p>$$\left(\frac{\partial^2 E}{\partial x_\parallel^2}\right)&gt;0, \left(\frac{\partial^2 E}{\partial x_\perp^2}\right)&lt;0.$$</p>
-<p>where $x_\parallel$ and $x_\perp$ are vectors <strong>parallel</strong> and <strong>perpendicular</strong> to the reaction coordinate, respectively.</p>
+<div class="math notranslate nohighlight">
+\[\left(\frac{\partial^2 E}{\partial x_\parallel^2}\right)&gt;0, \left(\frac{\partial^2 E}{\partial x_\perp^2}\right)&lt;0.\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_\parallel\)</span> and <span class="math notranslate nohighlight">\(x_\perp\)</span> are vectors <strong>parallel</strong> and <strong>perpendicular</strong> to the reaction coordinate, respectively.</p>
 </section>
 <section id="id1">
 <h2>Geometry optimisation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
@@ -406,22 +413,24 @@ document.write(`
 <section id="gradients-as-forces">
 <h3>gradients as forces<a class="headerlink" href="#gradients-as-forces" title="Permalink to this heading">#</a></h3>
 <p>The <strong>gradient</strong> of a function is the <strong>first derivative</strong> with respect to position. e.g.</p>
-<p>$$g = \frac{\mathrm{d}f}{dx}$$</p>
+<div class="math notranslate nohighlight">
+\[g = \frac{\mathrm{d}f}{dx}\]</div>
 <p>If our function describes potential energy, then the gradient at a particular point is equal to <strong>minus</strong> the force on the system.</p>
-<p>$$F = -\frac{\mathrm{d}U}{\mathrm{d}x}$$</p>
+<div class="math notranslate nohighlight">
+\[F = -\frac{\mathrm{d}U}{\mathrm{d}x}\]</div>
 <p>We can therefore think of <strong>gradient descent</strong> as analogous to letting a ball roll “downhill” on our potential energy surface, until it reaches a minimum.</p>
 <p>In general then, we can perform a computational geometry optimisation with the following sequence of steps:</p>
 <ol class="arabic simple">
-<li><p>Starting with some approximate guess $r_0$:</p></li>
-<li><p>Calculate the force at $r_0$.</p></li>
+<li><p>Starting with some approximate guess <span class="math notranslate nohighlight">\(r_0\)</span>:</p></li>
+<li><p>Calculate the force at <span class="math notranslate nohighlight">\(r_0\)</span>.</p></li>
 </ol>
 <ul class="simple">
-<li><p>For a potential-energy surface with one dimension, $F = -\frac{\mathrm{d}U}{\mathrm{d}r}$.</p></li>
-<li><p>For a potential-energy surface with more than one dimension, the force is a <strong>vector</strong>. Each component of this vector is calculated from the partial derivative of the energy with respect to each degree of freedom, i.e. $\vec{F}_\alpha = -\left(\frac{\partial E}{\partial \alpha}\right)$.</p></li>
+<li><p>For a potential-energy surface with one dimension, <span class="math notranslate nohighlight">\(F = -\frac{\mathrm{d}U}{\mathrm{d}r}\)</span>.</p></li>
+<li><p>For a potential-energy surface with more than one dimension, the force is a <strong>vector</strong>. Each component of this vector is calculated from the partial derivative of the energy with respect to each degree of freedom, i.e. <span class="math notranslate nohighlight">\(\vec{F}_\alpha = -\left(\frac{\partial E}{\partial \alpha}\right)\)</span>.</p></li>
 </ul>
 <ol class="arabic simple" start="3">
 <li><p>Move some distance “downhill”.</p></li>
-<li><p>If we are not close to a minimum, go back to step 2 and calculate the force at our new position $r_1$.</p></li>
+<li><p>If we are not close to a minimum, go back to step 2 and calculate the force at our new position <span class="math notranslate nohighlight">\(r_1\)</span>.</p></li>
 <li><p>Repeat until converged.</p></li>
 </ol>
 <p>There are a number of different optimisation algorithms that use this general approach, but differ in specifics such as how to decide how far to move each jump. Different algorithms can perform better for different optimisation problems, depending on the specific profile of the potential energy surface you are working with. Ideally you want an algorithm that finds the minimum in as few iterations as possible (i.e. it is <strong>fast</strong>) without getting stuck or in some cases failing to find the minimum (i.e. it is <strong>reliable</strong>).</p>

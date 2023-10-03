@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/logic_and_flow_control';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
@@ -361,7 +363,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="logical-operations-and-flow-control">
+  <section class="tex2jax_ignore mathjax_ignore" id="logical-operations-and-flow-control">
 <h1>Logical Operations and Flow Control<a class="headerlink" href="#logical-operations-and-flow-control" title="Permalink to this heading">#</a></h1>
 <p>All of the code examples so far perform the same set of operations, in the same order, even if we change the input data.</p>
 <p>There are a lot of problems where it is helpful to have the computer perform <strong>different</strong> operations depending on the specific values of the input data. For example, we might want to write code that has the option of converting from Celsius to Kelvin, or we might want to check our data after we have read it in for any unphysical values—for example, negative temperatures—and raise a warning or automatically exclude the offending data points.</p>
@@ -481,27 +483,27 @@ document.write(`
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Equals</p></td>
-<td><p>$=$</p></td>
+<td><p><span class="math notranslate nohighlight">\(=\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Less than</p></td>
-<td><p>$&lt;$</p></td>
+<td><p><span class="math notranslate nohighlight">\(&lt;\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Less than or equal</p></td>
-<td><p>$\leq$</p></td>
+<td><p><span class="math notranslate nohighlight">\(\leq\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Greater than</p></td>
-<td><p>$&gt;$</p></td>
+<td><p><span class="math notranslate nohighlight">\(&gt;\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Greater than or equal</p></td>
-<td><p>$\geq$</p></td>
+<td><p><span class="math notranslate nohighlight">\(\geq\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Not equal</p></td>
-<td><p>$\neq$</p></td>
+<td><p><span class="math notranslate nohighlight">\(\neq\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
 </tr>
 </tbody>
@@ -905,7 +907,7 @@ Loop exited
 </section>
 <section id="energy-minimisation-convergence-testing">
 <h3>2. Energy minimisation convergence testing<a class="headerlink" href="#energy-minimisation-convergence-testing" title="Permalink to this heading">#</a></h3>
-<p>Revise your energy minimisation codes from earlier this week, such that they will automatically <code class="docutils literal notranslate"><span class="pre">break</span></code> out of the loop when the difference between the previous distance $r_{\text{old}}$ and the new distance $r_{\text{new}}$ is less than $0.02$ Å.</p>
+<p>Revise your energy minimisation codes from earlier this week, such that they will automatically <code class="docutils literal notranslate"><span class="pre">break</span></code> out of the loop when the difference between the previous distance <span class="math notranslate nohighlight">\(r_{\text{old}}\)</span> and the new distance <span class="math notranslate nohighlight">\(r_{\text{new}}\)</span> is less than <span class="math notranslate nohighlight">\(0.02\)</span> Å.</p>
 <p>Get your code to report whether your minimisation has convereged, or whether you have reached the maxium number of iterations specified in your loop.</p>
 <p><a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/logic_and_flow_control_exercises.html">Worked Examples</a></p>
 </section>

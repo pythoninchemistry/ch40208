@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'good_practice/tdd_practice';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -350,7 +352,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="test-driven-development-assessment">
+  <section class="tex2jax_ignore mathjax_ignore" id="test-driven-development-assessment">
 <h1>Test Driven Development Assessment<a class="headerlink" href="#test-driven-development-assessment" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -361,17 +363,18 @@ document.write(`
 </div>
 <section id="problem-1">
 <h2>Problem 1<a class="headerlink" href="#problem-1" title="Permalink to this heading">#</a></h2>
-<p>The ideal gas law relates the pressure ($p$), temperature ($T$), and number of moles of a gas ($n$) to the volume ($V$) that the gas occupies.
+<p>The ideal gas law relates the pressure (<span class="math notranslate nohighlight">\(p\)</span>), temperature (<span class="math notranslate nohighlight">\(T\)</span>), and number of moles of a gas (<span class="math notranslate nohighlight">\(n\)</span>) to the volume (<span class="math notranslate nohighlight">\(V\)</span>) that the gas occupies.
 The ideal gas law is as follows,</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 pV = nRT.
-$$</p>
+\]</div>
 <p>Write a function to determine, and return, the pressure of an ideal gas.</p>
 <ul class="simple">
 <li><p>The ideal gas constant has been imported for you as <code class="docutils literal notranslate"><span class="pre">R</span></code></p></li>
-<li><p>The function should raise an appropriate error if an unphysical temperature (when $T &lt; 0\text{ K}$) is given</p></li>
-<li><p>The function should raise another appropriate error if an unphysical number of moles of gas (when $n &lt; 0\text{ mol}$) is given</p></li>
-<li><p>Finally, the function should should raise an appropriate error if an unphysical pressure (when $p &lt; 0\text{ Pa}$) is given</p></li>
+<li><p>The function should raise an appropriate error if an unphysical temperature (when <span class="math notranslate nohighlight">\(T &lt; 0\text{ K}\)</span>) is given</p></li>
+<li><p>The function should raise another appropriate error if an unphysical number of moles of gas (when <span class="math notranslate nohighlight">\(n &lt; 0\text{ mol}\)</span>) is given</p></li>
+<li><p>Finally, the function should should raise an appropriate error if an unphysical pressure (when <span class="math notranslate nohighlight">\(p &lt; 0\text{ Pa}\)</span>) is given</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -434,10 +437,11 @@ $$</p>
 <h2>Problem 2<a class="headerlink" href="#problem-2" title="Permalink to this heading">#</a></h2>
 <p>Selection rules describe the allowed transitions between one quantum state and another.
 The selection rule for vibrational spectroscopy is</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 \Delta v = \pm 1,
-$$</p>
-<p>where $\Delta v$ is the difference between the original and final vibrational energy levels.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta v\)</span> is the difference between the original and final vibrational energy levels.</p>
 <p>Write a function that when passed the initial and final vibrational energy levels will return a <strong>Boolean</strong> variable describing whether the transition is allowed or not.</p>
 <ul class="simple">
 <li><p>The vibrational energy levels are quantised, therefore values <strong>must</strong> be integers greater than or equal to 0, if they are not return the appripriate error.</p></li>
@@ -495,11 +499,12 @@ $$</p>
 </section>
 <section id="problem-3">
 <h2>Problem 3<a class="headerlink" href="#problem-3" title="Permalink to this heading">#</a></h2>
-<p>The potential energy ($V(r)$) between two charged particles, at a separation ($r$), can be modeled with the Coulomb potential, which has the following functional form,</p>
-<p>$$
+<p>The potential energy (<span class="math notranslate nohighlight">\(V(r)\)</span>) between two charged particles, at a separation (<span class="math notranslate nohighlight">\(r\)</span>), can be modeled with the Coulomb potential, which has the following functional form,</p>
+<div class="math notranslate nohighlight">
+\[
 V(r) = \frac{q_iq_j}{4\pi\epsilon_0 r}
-$$</p>
-<p>where, $q_i$ and $q_j$ are the charges on each of the particles (where Li<sup>+</sup> will have a charge of 1, while O<sup>2-</sup> will have a charge of -2), and $\epsilon_0$ is the vacuum permittivity (the latter of these has been imported for you as <code class="docutils literal notranslate"><span class="pre">epsilon_0</span></code>.</p>
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\(q_i\)</span> and <span class="math notranslate nohighlight">\(q_j\)</span> are the charges on each of the particles (where Li<sup>+</sup> will have a charge of 1, while O<sup>2-</sup> will have a charge of -2), and <span class="math notranslate nohighlight">\(\epsilon_0\)</span> is the vacuum permittivity (the latter of these has been imported for you as <code class="docutils literal notranslate"><span class="pre">epsilon_0</span></code>.</p>
 <p>Using the above equation, create a function that will return the potential energy between two particles when given the separation and charges.</p>
 <ul class="simple">
 <li><p>This function should be capable of handling both signle values and lists/arrays of separations</p></li>
@@ -526,12 +531,13 @@ $$</p>
 </section>
 <section id="problem-4">
 <h2>Problem 4<a class="headerlink" href="#problem-4" title="Permalink to this heading">#</a></h2>
-<p>Often in the analysis of experimental data, we aim to reduce the sum of the squared difference between the experimental data ($y_{\text{exp}}$) and some model ($y_{\text{model}}$). This <em>goodness-of-fit</em> parameter is known as the $\chi^2$-value and is found by the following equation,</p>
-<p>$$
+<p>Often in the analysis of experimental data, we aim to reduce the sum of the squared difference between the experimental data (<span class="math notranslate nohighlight">\(y_{\text{exp}}\)</span>) and some model (<span class="math notranslate nohighlight">\(y_{\text{model}}\)</span>). This <em>goodness-of-fit</em> parameter is known as the <span class="math notranslate nohighlight">\(\chi^2\)</span>-value and is found by the following equation,</p>
+<div class="math notranslate nohighlight">
+\[
 \chi^2 = \sum_{i}^{N}{\bigg(\frac{y_{\text{exp, i}} - y_{\text{model, i}}}{\text{d}y_{\text{exp, i}}}\bigg) ^ 2},
-$$</p>
-<p>where, $N$ is the number of data points, $\text{d}y_{\text{exp}}$ are the experimental uncertainty in the measurement of $y_{\text{exp}}$, and $\sum_{i^{N}$ indicates a summation over all data points.</p>
-<p>Write a single function that determines the $\chi^2$ of a set of experimental data and the output from a model.</p>
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\(N\)</span> is the number of data points, <span class="math notranslate nohighlight">\(\text{d}y_{\text{exp}}\)</span> are the experimental uncertainty in the measurement of <span class="math notranslate nohighlight">\(y_{\text{exp}}\)</span>, and <span class="math notranslate nohighlight">\(\sum_{i^{N}\)</span> indicates a summation over all data points.</p>
+<p>Write a single function that determines the <span class="math notranslate nohighlight">\(\chi^2\)</span> of a set of experimental data and the output from a model.</p>
 <ul class="simple">
 <li><p>This function <strong>should</strong> be able to cope with arrays of data, <em>not</em> single values.</p></li>
 <li><p>The function should also check that all the arrays of data are the same length and provide a string describing <em>why</em> the error has been raised.</p></li>
@@ -577,16 +583,17 @@ $$</p>
 </section>
 <section id="problem-5">
 <h2>Problem 5<a class="headerlink" href="#problem-5" title="Permalink to this heading">#</a></h2>
-<p>The rotational contribution, $q^R$, to the total partition coefficient is found with the following summation,</p>
-<p>$$
-q^R = \sum_{J=0}^{N}{(2J + 1) \exp{\bigg(\frac{-hcBJ(J+1)}{k T}\bigg)}},
-$$</p>
-<p>where, $J$ is the energy level, $h$ is the Planck constant, $c$ is the speed of light, $B$ is the rotational constant for the molecule, $k$ is the Boltzmann constant and $T$ is the temperature. Above, $\sum_{J=0}^{N}$ indicates the summation over values from $J=0$ to $J=N$.</p>
-<p>Using the above equation, create a function that will return the rotational contribution to the total partition function from the first $N$ energy levels.</p>
+<p>The rotational contribution, <span class="math notranslate nohighlight">\(q^R\)</span>, to the total partition coefficient is found with the following summation,</p>
+<div class="math notranslate nohighlight">
+\[
+q^R = \sum_{J=0}^{N}{(2J + 1) \exp{\bigg(\frac{-hcBJ(J+1)}{k T}\bigg)}}, 
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\(J\)</span> is the energy level, <span class="math notranslate nohighlight">\(h\)</span> is the Planck constant, <span class="math notranslate nohighlight">\(c\)</span> is the speed of light, <span class="math notranslate nohighlight">\(B\)</span> is the rotational constant for the molecule, <span class="math notranslate nohighlight">\(k\)</span> is the Boltzmann constant and <span class="math notranslate nohighlight">\(T\)</span> is the temperature. Above, <span class="math notranslate nohighlight">\(\sum_{J=0}^{N}\)</span> indicates the summation over values from <span class="math notranslate nohighlight">\(J=0\)</span> to <span class="math notranslate nohighlight">\(J=N\)</span>.</p>
+<p>Using the above equation, create a function that will return the rotational contribution to the total partition function from the first <span class="math notranslate nohighlight">\(N\)</span> energy levels.</p>
 <ul class="simple">
-<li><p>This function should also take $B$ (in units of cm<sup>-1</sup>) and $T$ (in units of K) as arguments</p></li>
-<li><p>An appropriate error should be returned for a non-integer $N$ and unphysical ($B &lt; 0$ and $T &lt; 0$) rotational constant and temperature</p></li>
-<li><p>The constants, $h$, $c$, and $k$ have been imported for you as <code class="docutils literal notranslate"><span class="pre">h</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">k</span></code> respectively.</p></li>
+<li><p>This function should also take <span class="math notranslate nohighlight">\(B\)</span> (in units of cm<sup>-1</sup>) and <span class="math notranslate nohighlight">\(T\)</span> (in units of K) as arguments</p></li>
+<li><p>An appropriate error should be returned for a non-integer <span class="math notranslate nohighlight">\(N\)</span> and unphysical (<span class="math notranslate nohighlight">\(B &lt; 0\)</span> and <span class="math notranslate nohighlight">\(T &lt; 0\)</span>) rotational constant and temperature</p></li>
+<li><p>The constants, <span class="math notranslate nohighlight">\(h\)</span>, <span class="math notranslate nohighlight">\(c\)</span>, and <span class="math notranslate nohighlight">\(k\)</span> have been imported for you as <code class="docutils literal notranslate"><span class="pre">h</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, and <code class="docutils literal notranslate"><span class="pre">k</span></code> respectively.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

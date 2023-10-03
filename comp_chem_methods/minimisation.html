@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/minimisation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -336,7 +338,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="function-minimisation">
+  <section class="tex2jax_ignore mathjax_ignore" id="function-minimisation">
 <h1>Function minimisation<a class="headerlink" href="#function-minimisation" title="Permalink to this heading">#</a></h1>
 <p>The potential energy surface describes the energy as a function of the atomic configuration in space.
 In computational chemistry, frequently the aim is to study the minimum energy atomic configuration.
@@ -344,8 +346,9 @@ Therefore, we must be able to find the minimum of a given potential energy surfa
 <p>In this section, we will consider the simple case of a potential energy surface of two atoms interacting in space, in particular argon atoms.
 This is typically modelled with a Lennard-Jones potential, which aims to describe the long-range attractive London dispersion forces between the two atoms and the short-range repulsive Pauli exclusion principle (that two atoms cannot occupy the same space).
 The functional form of the Lennard-Jones potential is as follows,</p>
-<p>$$ E(r_{ij}) = \frac{A}{r_{ij}^{12}} - \frac{B}{r_{ij}^6}, $$</p>
-<p>where $E(r_{ij})$ is the potential energy, $r_{ij}$ is the distance between atoms $i$ and $j$, and $A$ and $B$ are interaction specific constants.
+<div class="math notranslate nohighlight">
+\[ E(r_{ij}) = \frac{A}{r_{ij}^{12}} - \frac{B}{r_{ij}^6}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(E(r_{ij})\)</span> is the potential energy, <span class="math notranslate nohighlight">\(r_{ij}\)</span> is the distance between atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, and <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are interaction specific constants.
 The first part of the above equation describes the repulsive interaction, while the second describes the attractive (remember that a negative energy contribution describes an attraction).
 We can plot a typical Lennard-Jones potential as shown below.</p>
 <div class="cell docutils container">

@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/curve_fitting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -348,14 +350,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="model-fitting">
+  <section class="tex2jax_ignore mathjax_ignore" id="model-fitting">
 <h1>Model fitting<a class="headerlink" href="#model-fitting" title="Permalink to this heading">#</a></h1>
 <p>A lot of chemical analysis relies on our ability to fit a “line of best fit” to some data.
-For example, considering the determination of the activation energy, $E_a$, of some reaction from an Arrhenius relationship,</p>
-<p>$$ k(T) = A \exp{\frac{-E_a}{RT}}, $$</p>
-<p>where, $k(T)$ is the rate constant at time $T$, $A$ is the pre-exponential factor, $R$ is the ideal gas constant and $T$ is the temperature.
+For example, considering the determination of the activation energy, <span class="math notranslate nohighlight">\(E_a\)</span>, of some reaction from an Arrhenius relationship,</p>
+<div class="math notranslate nohighlight">
+\[ k(T) = A \exp{\frac{-E_a}{RT}}, \]</div>
+<p>where, <span class="math notranslate nohighlight">\(k(T)\)</span> is the rate constant at time <span class="math notranslate nohighlight">\(T\)</span>, <span class="math notranslate nohighlight">\(A\)</span> is the pre-exponential factor, <span class="math notranslate nohighlight">\(R\)</span> is the ideal gas constant and <span class="math notranslate nohighlight">\(T\)</span> is the temperature.
 Typically when we are performing our analysis, we will rearrange the above equation to give a straight line,</p>
-<p>$$ \ln{k(T)} = \ln{A} - \frac{E_a}{RT}. $$</p>
+<div class="math notranslate nohighlight">
+\[ \ln{k(T)} = \ln{A} - \frac{E_a}{RT}. \]</div>
 <p>Let’s looks at some experimental data for the decomposition of 2 moles of NO<sub>2</sub> to 2 moles of NO and one mole of O<sub>2</sub>.
 The data for this is available <a class="reference external" href="https://raw.githubusercontent.com/pythoninchemistry/ch40208/master/CH40208/working_with_data/arrhenius.txt">in this file</a>.</p>
 <div class="cell docutils container">
@@ -509,8 +513,9 @@ The two parts that we are most interested in are the <code class="docutils liter
 <p>Of course, our equation cannot always be modified to offer a straight line formulation or we may not want to as the logarithmic scaling of the <em>y</em>-axis may skew our understanding of the intercept.
 Therefore, necessary to fit a non-linear relationship.
 This can also be achieved with Python by minimising the difference between our model (the equation with given parameters) and the data.
-The value that we will minimize is known as the $\chi^2$-value, which has the following definitions.</p>
-<p>$$ \chi^2 = \sum\big{[y - f(x)] ^ 2\big} ;;;\text{or};;; \chi^2 = \sum\Bigg{\frac{[y - f(x)] ^ 2}{y_{\text{err}}^2}\Bigg},$$</p>
+The value that we will minimize is known as the <span class="math notranslate nohighlight">\(\chi^2\)</span>-value, which has the following definitions.</p>
+<div class="math notranslate nohighlight">
+\[ \chi^2 = \sum\big\{[y - f(x)] ^ 2\big\} \;\;\;\text{or}\;\;\; \chi^2 = \sum\Bigg\{\frac{[y - f(x)] ^ 2}{y_{\text{err}}^2}\Bigg\},\]</div>
 <p>depending on whether or not uncertainty in the data is known.</p>
 <p>Consider the following data, which describe the decomposition of hydrogen peroxide in the presence of excess cerous ion Ce<sup>III</sup>,</p>
 <p>2H<sub>2</sub>O<sub>2</sub> + 2Ce<sup>III</sup> → 2H<sub>2</sub>O + Ce<sup>IV</sup> + O<sub>2</sub>.</p>
@@ -566,7 +571,7 @@ The value that we will minimize is known as the $\chi^2$-value, which has the fo
 <img alt="../_images/8830b1af17a253446370aa5c30516c54aa269f62b2d27d90395d647e1fdbe642.png" src="../_images/8830b1af17a253446370aa5c30516c54aa269f62b2d27d90395d647e1fdbe642.png" />
 </div>
 </div>
-<p>This reaction has a first-order rate equation, this will be our “model” that we will compare to the data, where the $[A]_0$ and $k$ are the varying parameters.
+<p>This reaction has a first-order rate equation, this will be our “model” that we will compare to the data, where the <span class="math notranslate nohighlight">\([A]_0\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are the varying parameters.
 This function is defined below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -587,7 +592,7 @@ This function is defined below.</p>
 </div>
 </div>
 </div>
-<p>We want to vary <code class="docutils literal notranslate"><span class="pre">a0</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> to minimise the $\chi^2$-value between this model and the data.</p>
+<p>We want to vary <code class="docutils literal notranslate"><span class="pre">a0</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> to minimise the <span class="math notranslate nohighlight">\(\chi^2\)</span>-value between this model and the data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chi_squared</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">conc</span><span class="p">):</span>
@@ -635,10 +640,10 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: 0.13373044840241516
+      fun: 0.13373044840241233
         x: [ 7.422e+00  1.031e-01]
       nit: 10
-      jac: [ 1.565e-07  2.073e-06]
+      jac: [ 1.471e-07  2.036e-06]
  hess_inv: [[ 7.888e-01  1.263e-02]
             [ 1.263e-02  3.022e-04]]
      nfev: 63
@@ -670,7 +675,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644146261205; k = 0.10308255582982144
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644149462027; k = 0.10308255587972329
 </pre></div>
 </div>
 </div>
@@ -690,7 +695,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2350/2319394663.py:13: RuntimeWarning: overflow encountered in exp
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2687/2319394663.py:13: RuntimeWarning: overflow encountered in exp
   return a0 * np.exp(-k * t)
 </pre></div>
 </div>
@@ -707,7 +712,7 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644764833303 +/- 0.15838876648067846; k = 0.1030825714527866 +/- 0.00308836764322863
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.42164476326434 +/- 0.1583887665748318; k = 0.10308257141927114 +/- 0.0030883676626833898
 </pre></div>
 </div>
 </div>

@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/lists';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -184,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
@@ -362,7 +364,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="lists">
+  <section class="tex2jax_ignore mathjax_ignore" id="lists">
 <h1>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h1>
 <p>Up until now we have dealt with individual pieces of data, such <strong>integer</strong> or <strong>floating point</strong> data types to store numerical data, or <strong>strings</strong> to represent textual data.</p>
 <p>Often we want to work with <strong>collections</strong> of data, such as a time-series of concentrations from an experiment, or a set of yields obtained from different experimental protocols, or the list of students enrolled in <strong>CH40208 Topics in Computational Chemistry</strong>.</p>
@@ -963,9 +965,10 @@ document.write(`
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>Create a new list called <code class="docutils literal notranslate"><span class="pre">halogens</span></code> and populate it with the names of the halogen elements, in order of increasing atomic number. Using this list, determine what using a negative number following the second colon (e.g. <code class="docutils literal notranslate"><span class="pre">[::-1]</span></code>) will result in.</p></li>
-<li><p>The distance ($r$) between two atoms ($i$ and $j$) can be found with the following equation,</p>
-<p>$$ r = \sqrt{(x_i - x_j)^2 + (y_i - y_j)^2 + (z_i - z_j)^2}, $$</p>
-<p>where, $x_i$ and $x_j$ are the <em>x</em>-coordinates for the atoms $i$ and $j$ respectively, while $y_i$ and $y_j$ are the <em>y</em>-coordinates and $z_i$ and $z_j$ are the <em>z</em>-coordinates.
+<li><p>The distance (<span class="math notranslate nohighlight">\(r\)</span>) between two atoms (<span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>) can be found with the following equation,</p>
+<div class="math notranslate nohighlight">
+\[ r = \sqrt{(x_i - x_j)^2 + (y_i - y_j)^2 + (z_i - z_j)^2}, \]</div>
+<p>where, <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_j\)</span> are the <em>x</em>-coordinates for the atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> respectively, while <span class="math notranslate nohighlight">\(y_i\)</span> and <span class="math notranslate nohighlight">\(y_j\)</span> are the <em>y</em>-coordinates and <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span> are the <em>z</em>-coordinates.
 Below, (as lists) are given the atomic coordinates to two triatomic molecules, where for each atom the list is <code class="docutils literal notranslate"><span class="pre">atom</span> <span class="pre">=</span> <span class="pre">[x_position,</span> <span class="pre">y_position,</span> <span class="pre">z_position]</span></code>.
 For each molecule, calculate the intramolecular distances between all thre atoms.<br />
 Having calculated all of the intramolecular distances, comment on the shape of each of the molecules.</p>

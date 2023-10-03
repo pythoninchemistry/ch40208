@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/variable_types';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
@@ -346,7 +348,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="variable-types-and-assignment">
+  <section class="tex2jax_ignore mathjax_ignore" id="variable-types-and-assignment">
 <h1>Variable Types and Assignment<a class="headerlink" href="#variable-types-and-assignment" title="Permalink to this heading">#</a></h1>
 <p>Last week, we looked at some simple operations and objects.
 Here, we will see how we can package these objects into <em>variables</em>, enabling their reuse in other parts of the code.
@@ -368,8 +370,8 @@ Different operations will be possible depending on the type of the variable invo
 Common variable types that are present in Python include:</p>
 <ul class="simple">
 <li><p><em>integers</em> (<code class="docutils literal notranslate"><span class="pre">int</span></code>): whole numbers (1, 0, 2, -3, etc.). There is no decimal point and they can be positive, negative, or zero.</p></li>
-<li><p><em>floats</em> (<code class="docutils literal notranslate"><span class="pre">float</span></code>): all real numbers (1.0, 3.14, 0.0, -6.4), any value that can be described with a decimal point. This includes numbers in scientific notation, which are written <code class="docutils literal notranslate"><span class="pre">6.02e23</span></code>, where the <code class="docutils literal notranslate"><span class="pre">eXX</span></code> takes the place of the $\times 10^{\text{XX}}$.</p></li>
-<li><p><em>complex</em> (<code class="docutils literal notranslate"><span class="pre">complex</span></code>): complex numbers, which should be familiar from mathematics, such as $1 + 2i$. However, in Python, a <code class="docutils literal notranslate"><span class="pre">j</span></code> is used instead of the $i$ so $1+2i$ becomes <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2j</span></code>.</p></li>
+<li><p><em>floats</em> (<code class="docutils literal notranslate"><span class="pre">float</span></code>): all real numbers (1.0, 3.14, 0.0, -6.4), any value that can be described with a decimal point. This includes numbers in scientific notation, which are written <code class="docutils literal notranslate"><span class="pre">6.02e23</span></code>, where the <code class="docutils literal notranslate"><span class="pre">eXX</span></code> takes the place of the <span class="math notranslate nohighlight">\(\times 10^{\text{XX}}\)</span>.</p></li>
+<li><p><em>complex</em> (<code class="docutils literal notranslate"><span class="pre">complex</span></code>): complex numbers, which should be familiar from mathematics, such as <span class="math notranslate nohighlight">\(1 + 2i\)</span>. However, in Python, a <code class="docutils literal notranslate"><span class="pre">j</span></code> is used instead of the <span class="math notranslate nohighlight">\(i\)</span> so <span class="math notranslate nohighlight">\(1+2i\)</span> becomes <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2j</span></code>.</p></li>
 <li><p><em>string</em> (<code class="docutils literal notranslate"><span class="pre">str</span></code>): textual information, such as a word or a sentence. These are written between single or double inverted commas, <code class="docutils literal notranslate"><span class="pre">'like</span> <span class="pre">this'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;this&quot;</span></code>. <code class="docutils literal notranslate"><span class="pre">str</span></code>-type objects are contained within either double or single quotes. However, you <strong>cannot</strong> use a mixture of the two, e.g. <code class="docutils literal notranslate"><span class="pre">my_string</span> <span class="pre">=</span> <span class="pre">'Hello</span> <span class="pre">World!&quot;</span></code> will return an error.</p></li>
 <li><p><em>boolean</em> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>): a <em>logical</em> variable type, named for <a class="reference external" href="https://en.wikipedia.org/wiki/George_Boole">George Boole</a> who defined an algebraic logic system in the 19th century. These may hold one of two values, <code class="docutils literal notranslate"><span class="pre">True</span></code> or `false.</p></li>
 </ul>

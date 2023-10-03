@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/potential_energy_surfaces';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -340,7 +342,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-collinear-case">Non-collinear case</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-energy-surfaces-for-n-3">Potential energy surfaces for $N&gt;3$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-energy-surfaces-for-n-3">Potential energy surfaces for <span class="math notranslate nohighlight">\(N&gt;3\)</span></a></li>
 </ul>
             </nav>
         </div>
@@ -352,24 +354,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="potential-energy-surfaces">
+  <section class="tex2jax_ignore mathjax_ignore" id="potential-energy-surfaces">
 <h1>Potential Energy Surfaces<a class="headerlink" href="#potential-energy-surfaces" title="Permalink to this heading">#</a></h1>
 <p>A common concept in theoretical and computational chemistry is that of a <strong>potential energy surface</strong>.</p>
 <p>The potential energy surface for a molecular describes the relationship between the <strong>molecular geometry</strong>, i.e. the relative positions of the component atoms, and the <strong>molecular energy</strong>.</p>
 <section id="potential-energy-surface-for-a-diatomic-molecule">
 <h2>Potential energy surface for a diatomic molecule<a class="headerlink" href="#potential-energy-surface-for-a-diatomic-molecule" title="Permalink to this heading">#</a></h2>
-<p>In general, the potential energy surface for a system of atoms is a complex multidimensional function. For a system containing $N$ atoms the relative positions of these atoms is described by $(3N-6)$ <strong>degrees of freedom</strong> (this becomes $(3N-5)$ in the case of a linear molecule). This makes it difficult to visualise full potential energy surfaces in all but the simplest cases, and instead we often consider only those degrees of freedom that are chemically important—for example, how the energy of a system varies as we move along the <strong>reaction coordinate</strong>.</p>
+<p>In general, the potential energy surface for a system of atoms is a complex multidimensional function. For a system containing <span class="math notranslate nohighlight">\(N\)</span> atoms the relative positions of these atoms is described by <span class="math notranslate nohighlight">\((3N-6)\)</span> <strong>degrees of freedom</strong> (this becomes <span class="math notranslate nohighlight">\((3N-5)\)</span> in the case of a linear molecule). This makes it difficult to visualise full potential energy surfaces in all but the simplest cases, and instead we often consider only those degrees of freedom that are chemically important—for example, how the energy of a system varies as we move along the <strong>reaction coordinate</strong>.</p>
 <p>Here, we will start with an example potential energy surface for a pair of atoms.</p>
 <p><img alt="" src="../_images/diatomic_molecule.png" /></p>
-<p>For a pair of atoms $A$ and $B$, we have only one degree of freedom: the interatomic separation $r_\mathrm{AB}$.</p>
+<p>For a pair of atoms <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, we have only one degree of freedom: the interatomic separation <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span>.</p>
 <p>If these atoms form a diatomic molecule, then we might expect a potential energy surface that looks something like the figure below:</p>
 <p><img alt="" src="../_images/diatomic_potential_energy_surface.png" /></p>
-<p>Here the $x$ axis is our degree of freedom; the interatomic separation $r_{AB}$, and the $y$ axis is the energy of our molecule.</p>
-<p>This potential energy surface has a single minimum energy at $r_\mathrm{eq}$, which is the equilibrium separation of the two atoms $A$ and $B$.</p>
-<p>If we move $A$ and $B$ closer together then the energy continually increases, due to the increasing repulsion between our two atoms. This repulsive interaction at short distances is due to <strong>Pauli repulsion</strong> , and is due to the <strong>Pauli exclusion principle</strong>.</p>
-<p>If we move $A$ and $B$ further apart then the energy again increases, but only up to a point. At sufficiently large interatomic separations the energy plateaus. This corresponds to “breaking” the bond between atoms $A$ and $B$.</p>
-<p>The difference in potential energy between the minimum energy at the equilibrium distance $r_\mathrm{eq}$ and the plateau at large interatomic separations is given by $-D_\mathrm{e}$ which is the depth of the potential energy well for the bond $A$—$B$.</p>
-<p>Note 1: this is slightly larger than the <strong>bond dissociation energy</strong> $D_0$ because we are not accounting for vibrational <strong>zero-point energy</strong> here.</p>
+<p>Here the <span class="math notranslate nohighlight">\(x\)</span> axis is our degree of freedom; the interatomic separation <span class="math notranslate nohighlight">\(r_{AB}\)</span>, and the <span class="math notranslate nohighlight">\(y\)</span> axis is the energy of our molecule.</p>
+<p>This potential energy surface has a single minimum energy at <span class="math notranslate nohighlight">\(r_\mathrm{eq}\)</span>, which is the equilibrium separation of the two atoms <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>If we move <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> closer together then the energy continually increases, due to the increasing repulsion between our two atoms. This repulsive interaction at short distances is due to <strong>Pauli repulsion</strong> , and is due to the <strong>Pauli exclusion principle</strong>.</p>
+<p>If we move <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> further apart then the energy again increases, but only up to a point. At sufficiently large interatomic separations the energy plateaus. This corresponds to “breaking” the bond between atoms <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>The difference in potential energy between the minimum energy at the equilibrium distance <span class="math notranslate nohighlight">\(r_\mathrm{eq}\)</span> and the plateau at large interatomic separations is given by <span class="math notranslate nohighlight">\(-D_\mathrm{e}\)</span> which is the depth of the potential energy well for the bond <span class="math notranslate nohighlight">\(A\)</span>—<span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>Note 1: this is slightly larger than the <strong>bond dissociation energy</strong> <span class="math notranslate nohighlight">\(D_0\)</span> because we are not accounting for vibrational <strong>zero-point energy</strong> here.</p>
 <p>Note 2: Here we make use of the <strong>Born–Oppenheimer approximation</strong> and assume that the motions of atomic nuclei and electrons can be considered separately. Providing the <strong>Born–Oppenheimer approximation</strong> is valid, the energy of a system of atoms can be expressed as a function of the positions of the atomic nuclei.</p>
 </section>
 <section id="potential-energy-surface-for-a-system-of-3-atoms">
@@ -378,34 +380,34 @@ document.write(`
 <h3>Collinear case<a class="headerlink" href="#collinear-case" title="Permalink to this heading">#</a></h3>
 <p>For a system of three atoms we can have two cases. If the atoms are collinear then we have two degrees of freedom.</p>
 <p><img alt="" src="../_images/3-body_collinear.png" /></p>
-<p>In the example above, the relative positions of the atoms A, B, and C are given by the interatomic distances $r_\mathrm{AB}$ and $r_\mathrm{BC}$.</p>
+<p>In the example above, the relative positions of the atoms A, B, and C are given by the interatomic distances <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span> and <span class="math notranslate nohighlight">\(r_\mathrm{BC}\)</span>.</p>
 <p>The figure below shows the potential energy surface for a reaction A + BC → AB + C via a collinear transition state.</p>
 <p><img alt="" src="../_images/3-body_collinear_PES.png" /></p>
-<p>In our initial configuration, B and C are bonded, so $r_\mathrm{BC}$ is small; while A and B are well separated, so $r_\mathrm{AB}$ is large.</p>
-<p>In the final configuration, A and B are bonded, so $r_\mathrm{AB}$ is small; while B and C are well separated, so $r_\mathrm{BC}$ is large.</p>
+<p>In our initial configuration, B and C are bonded, so <span class="math notranslate nohighlight">\(r_\mathrm{BC}\)</span> is small; while A and B are well separated, so <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span> is large.</p>
+<p>In the final configuration, A and B are bonded, so <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span> is small; while B and C are well separated, so <span class="math notranslate nohighlight">\(r_\mathrm{BC}\)</span> is large.</p>
 <p>Note that the two-dimensional potential energy surface for this reaction allows us to specify the <strong>minimum energy pathway</strong> from the initial configuration (A + BC) to the final configuration (AB + C) (shown in green above). This minimum energy pathway represents the <strong>reaction coordinate</strong> for this reaction. The maximum energy point along this pathway is the <strong>transition state</strong> along our <strong>reaction coordinate</strong>.</p>
 </section>
 <section id="non-collinear-case">
 <h3>Non-collinear case<a class="headerlink" href="#non-collinear-case" title="Permalink to this heading">#</a></h3>
 <p>For a non-collinear 3-atom system things are more complicated: we now have <strong>three</strong> degrees of freedom, making the potential energy surface <strong>four dimensional</strong> (3 geometric degrees of freedom, plus the energy).</p>
-<p>Note that the degrees of freedom we choose to describe our system need not be interatomic distances. Below we show two examples of parameter sets that describe the same three atom system. In the first example the atomic geometry is described by three interatomic distances, $r_\mathrm{AB}$, $r_\mathrm{BC}$, and $r_\mathrm{AC}$. In the second example we instead describe the atomic geometry as a function of two interatomic distances $r_\mathrm{AB}$ and $r_\mathrm{BC}$ and a three-body angle $\theta_\mathrm{ABC}$.</p>
+<p>Note that the degrees of freedom we choose to describe our system need not be interatomic distances. Below we show two examples of parameter sets that describe the same three atom system. In the first example the atomic geometry is described by three interatomic distances, <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span>, <span class="math notranslate nohighlight">\(r_\mathrm{BC}\)</span>, and <span class="math notranslate nohighlight">\(r_\mathrm{AC}\)</span>. In the second example we instead describe the atomic geometry as a function of two interatomic distances <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span> and <span class="math notranslate nohighlight">\(r_\mathrm{BC}\)</span> and a three-body angle <span class="math notranslate nohighlight">\(\theta_\mathrm{ABC}\)</span>.</p>
 <p><img alt="" src="../_images/3-body_non-collinear.png" /></p>
 <p>As this example shows, we often have some flexibility in our choice of <strong>coordinate system</strong> used to describe our potential energy surface: the only requirement being that the coordinate system we choose defines an <strong>orthogonal basis</strong> (i.e. each degree of freedom can be varied independently of the others).</p>
 </section>
 </section>
 <section id="potential-energy-surfaces-for-n-3">
-<h2>Potential energy surfaces for $N&gt;3$<a class="headerlink" href="#potential-energy-surfaces-for-n-3" title="Permalink to this heading">#</a></h2>
-<p>For systems of atoms with $N&gt;3$ the number of degrees of freedom quickly becomes too large to allow us to describe the full potential energy surface graphically.</p>
+<h2>Potential energy surfaces for <span class="math notranslate nohighlight">\(N&gt;3\)</span><a class="headerlink" href="#potential-energy-surfaces-for-n-3" title="Permalink to this heading">#</a></h2>
+<p>For systems of atoms with <span class="math notranslate nohighlight">\(N&gt;3\)</span> the number of degrees of freedom quickly becomes too large to allow us to describe the full potential energy surface graphically.</p>
 <p>In many cases, however, we can focus on a relevant subset of the full set of degrees of freedom; for example considering the potential energy profile along a <strong>reaction coordinate</strong>, or focussing on one particularly important degree of freedom.</p>
-<p>As an example, consider the potential energy of dichloroethane, C<sub>2</sub>2H<sub>4</sub>Cl<sub>2</sub> as a function of the Cl—C—C—Cl torsion angle $\theta$.</p>
+<p>As an example, consider the potential energy of dichloroethane, C<sub>2</sub>2H<sub>4</sub>Cl<sub>2</sub> as a function of the Cl—C—C—Cl torsion angle <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <p><img alt="" src="../_images/C2H4Cl2_PES_intro.png" /></p>
 <p>Because we are considering only one degree of freedom, we can plot this potential energy surface in two dimensions.</p>
 <p>Despite projecting a single degree of freedom out of the full 12-dimensional potential energy surface, this gives us a lot of chemically relevant information about the molecule:</p>
 <p><img alt="" src="../_images/C2H4Cl2_PES.png" /></p>
 <ul class="simple">
-<li><p><strong>1</strong> is the lowest energy configuration, when $\theta = 180^\circ$, corresponding to the two C–Cl bond having opposite orientations, i.e. an <strong>anti-staggered</strong> conformation. This is the lowest energy point on the potential energy surface, called the <strong>global minimum</strong>.</p></li>
+<li><p><strong>1</strong> is the lowest energy configuration, when <span class="math notranslate nohighlight">\(\theta = 180^\circ\)</span>, corresponding to the two C–Cl bond having opposite orientations, i.e. an <strong>anti-staggered</strong> conformation. This is the lowest energy point on the potential energy surface, called the <strong>global minimum</strong>.</p></li>
 <li><p><strong>2</strong> is a <strong>local maximum</strong> on the potential energy surface. This corresponds to an <strong>eclipsed</strong> conformation, and gives us the energy required to bring each C–Cl bond coplanar with a C–H bond.</p></li>
-<li><p><strong>3</strong> is a <strong>local minimum</strong>. Increasing or decreasing $\theta$ causes the energy to increase, yet the energy is higher than at the <strong>global minimum</strong>. This corresponds to a <strong>staggered</strong> conformation where the angle between the two C–Cl bonds in $\pm 60^\circ$. Note that there are two of these local minima that are equivalent by symmetry.</p></li>
+<li><p><strong>3</strong> is a <strong>local minimum</strong>. Increasing or decreasing <span class="math notranslate nohighlight">\(\theta\)</span> causes the energy to increase, yet the energy is higher than at the <strong>global minimum</strong>. This corresponds to a <strong>staggered</strong> conformation where the angle between the two C–Cl bonds in <span class="math notranslate nohighlight">\(\pm 60^\circ\)</span>. Note that there are two of these local minima that are equivalent by symmetry.</p></li>
 <li><p><strong>4</strong> is the <strong>global maximum</strong>, i.e. the highest energy position on this potential energy surface. This corresponds to the <strong>eclipsed</strong> conformation with both C–Cl bonds coplanar.</p></li>
 </ul>
 <p><img alt="" src="../_images/C2H4Cl2_conformers.png" /></p>
@@ -463,7 +465,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#non-collinear-case">Non-collinear case</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-energy-surfaces-for-n-3">Potential energy surfaces for $N&gt;3$</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-energy-surfaces-for-n-3">Potential energy surfaces for <span class="math notranslate nohighlight">\(N&gt;3\)</span></a></li>
 </ul>
   </nav></div>
 

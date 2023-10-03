@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/scipy_opt_minimize';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -349,7 +351,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="minimization-libraries">
+  <section class="tex2jax_ignore mathjax_ignore" id="minimization-libraries">
 <h1>Minimization Libraries<a class="headerlink" href="#minimization-libraries" title="Permalink to this heading">#</a></h1>
 <p>More than once in this course, we have discussed the fact that the power of the Python programming language comes from the vast ecosystem of libraries that we can utilise.
 Previously, you have worked to write your own minimization algorithms in Python, using loops and functions.
@@ -423,7 +425,7 @@ The <code class="docutils literal notranslate"><span class="pre">minimization</s
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: -0.003999999054062213
+      fun: -0.003999999054071188
         x: [ 4.135e+00]
       nit: 8
       jac: [-5.648e-06]
@@ -452,11 +454,12 @@ The value we are interested in is the minimum energy difference, which is the <c
 <section id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
 <p>Write a function to model the following potential energy function,</p>
-<p>$$ E = \frac{1}{2} {A_1[1 + \cos{(\phi)}] + A_2[1 + \cos{(2\phi)}] + A_3[1 + \cos{(3\phi)}]}, $$</p>
-<p>this function describes the potential energy of the Cl-C-C-Cl dihedral angle in a molecule of 1, 2-dichloroethane, where $A_1 = 55.229$ kJ/mol, $A_2 = 3.3472$ kJ/mol, $A_3 = -58.576$ kJ/mol and $\phi$ is the dihedral angle.</p>
+<div class="math notranslate nohighlight">
+\[ E = \frac{1}{2} \{A_1[1 + \cos{(\phi)}] + A_2[1 + \cos{(2\phi)}] + A_3[1 + \cos{(3\phi)}]\}, \]</div>
+<p>this function describes the potential energy of the Cl-C-C-Cl dihedral angle in a molecule of 1, 2-dichloroethane, where <span class="math notranslate nohighlight">\(A_1 = 55.229\)</span> kJ/mol, <span class="math notranslate nohighlight">\(A_2 = 3.3472\)</span> kJ/mol, <span class="math notranslate nohighlight">\(A_3 = -58.576\)</span> kJ/mol and <span class="math notranslate nohighlight">\(\phi\)</span> is the dihedral angle.</p>
 <ol class="arabic simple">
-<li><p>Plot this function between $-\pi$ and $\pi$, remember to label your axes.</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">minimize</span></code> test different initial values of <code class="docutils literal notranslate"><span class="pre">x0</span></code> for $\phi$. Consider why the result is so dependent on the starting position for this function (it may help to plot your result on the function).</p></li>
+<li><p>Plot this function between <span class="math notranslate nohighlight">\(-\pi\)</span> and <span class="math notranslate nohighlight">\(\pi\)</span>, remember to label your axes.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">minimize</span></code> test different initial values of <code class="docutils literal notranslate"><span class="pre">x0</span></code> for <span class="math notranslate nohighlight">\(\phi\)</span>. Consider why the result is so dependent on the starting position for this function (it may help to plot your result on the function).</p></li>
 </ol>
 <section id="tip">
 <h3>Tip<a class="headerlink" href="#tip" title="Permalink to this heading">#</a></h3>

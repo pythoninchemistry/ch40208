@@ -63,11 +63,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/arithmetic';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lists" href="lists.html" />
-    <link rel="prev" title="Variables" href="variables.html" />
+    <link rel="prev" title="Types" href="types.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
@@ -352,7 +354,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="arithmetic">
+  <section class="tex2jax_ignore mathjax_ignore" id="arithmetic">
 <h1>Arithmetic<a class="headerlink" href="#arithmetic" title="Permalink to this heading">#</a></h1>
 <section id="using-variables-in-mathematical-expressions">
 <h2>Using variables in mathematical expressions<a class="headerlink" href="#using-variables-in-mathematical-expressions" title="Permalink to this heading">#</a></h2>
@@ -362,16 +364,18 @@ document.write(`
 <section id="example-the-quadratic-formula">
 <h2>Example: the quadratic formula<a class="headerlink" href="#example-the-quadratic-formula" title="Permalink to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_formula">quadratic formula</a> is an expression for solving a quadratic equation of the form</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[
 ax^2+bx+c = 0
-$$</p>
-<p>where $x$ is the unknown value we want to find, and $a$, $b$, and $c$ are fixed parameters.</p>
-<p>The formula to find the solutions $x$ is:</p>
-<p>$$
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> is the unknown value we want to find, and <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> are fixed parameters.</p>
+<p>The formula to find the solutions <span class="math notranslate nohighlight">\(x\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
 x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
-$$</p>
-<p>Consider the example, $a=1.0$, $b=2.0$, $c=-3.0$:</p>
-<p>Using “Python as a calculator” we can find one of the solutions $x$ using</p>
+\]</div>
+<p>Consider the example, <span class="math notranslate nohighlight">\(a=1.0\)</span>, <span class="math notranslate nohighlight">\(b=2.0\)</span>, <span class="math notranslate nohighlight">\(c=-3.0\)</span>:</p>
+<p>Using “Python as a calculator” we can find one of the solutions <span class="math notranslate nohighlight">\(x\)</span> using</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -405,7 +409,7 @@ $$</p>
 </div>
 </div>
 </div>
-<p>This makes the calculation much more readable, and less prone to accidental errors when being typed. It is also clearer how we might adapt this to solve <strong>another</strong> quadratic equation with different parameters $a$, $b$, and $c$—by editing the variables <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p>
+<p>This makes the calculation much more readable, and less prone to accidental errors when being typed. It is also clearer how we might adapt this to solve <strong>another</strong> quadratic equation with different parameters <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span>—by editing the variables <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p>
 </section>
 <section id="order-of-operations">
 <h2>Order of operations<a class="headerlink" href="#order-of-operations" title="Permalink to this heading">#</a></h2>
@@ -419,23 +423,23 @@ $$</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Addition</p></td>
-<td><p>$a + b$</p></td>
+<td><p><span class="math notranslate nohighlight">\(a + b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Subtraction</p></td>
-<td><p>$a - b$</p></td>
+<td><p><span class="math notranslate nohighlight">\(a - b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">-</span> <span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Multiplication</p></td>
-<td><p>$a \times b$</p></td>
+<td><p><span class="math notranslate nohighlight">\(a \times b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">*</span> <span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>Division</p></td>
-<td><p>$a \div b$</p></td>
+<td><p><span class="math notranslate nohighlight">\(a \div b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">/</span> <span class="pre">b</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>Exponent</p></td>
-<td><p>$a^b$</p></td>
+<td><p><span class="math notranslate nohighlight">\(a^b\)</span></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">**</span> <span class="pre">b</span></code></p></td>
 </tr>
 </tbody>
@@ -508,44 +512,44 @@ $$</p>
 <ul>
 <li><p>Without using a computer or a calculator, and following the BODMAS order of operations, calculate the following:</p>
 <ol class="arabic simple">
-<li><p>$24 \div (10 + 2)$</p></li>
-<li><p>$5 + 16 \div 2 \times 3$</p></li>
-<li><p>$[32 \div (6 + 2)]^2$</p></li>
+<li><p><span class="math notranslate nohighlight">\(24 \div (10 + 2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(5 + 16 \div 2 \times 3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\([32 \div (6 + 2)]^2\)</span></p></li>
 </ol>
 </li>
 <li><p>Write Jupyter cells for each of the following chemical calculations:</p>
 <ol class="arabic">
 <li><p>Calculate the energy, in Joules, of radiation with a particular wavenumber,</p>
-<p>$E = hc\bar{\nu}$,</p>
-<p>where $c$ is the <a class="reference external" href="https://en.wikipedia.org/wiki/Speed_of_light">speed of light</a>, $h$ is <a class="reference external" href="https://en.wikipedia.org/wiki/Planck_constant">Planck’s constant</a>, and $\bar{\nu}$ is $1700$ cm<sup>-1</sup>.</p>
+<p><span class="math notranslate nohighlight">\(E = hc\bar{\nu}\)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Speed_of_light">speed of light</a>, <span class="math notranslate nohighlight">\(h\)</span> is <a class="reference external" href="https://en.wikipedia.org/wiki/Planck_constant">Planck’s constant</a>, and <span class="math notranslate nohighlight">\(\bar{\nu}\)</span> is <span class="math notranslate nohighlight">\(1700\)</span> cm<sup>-1</sup>.</p>
 </li>
-<li><p>Evaluate the $\text{pH}$ when the concentration of hydroium ions is $1.524\times10^{-5}$ M,</p>
-<p>$\text{pH} = -\log_{10}{[\text{H}_3\text{O}^+]}$.</p>
-<p>You may need to check the $\log_{10}$ function in the <a class="reference external" href="https://docs.python.org/3/library/math.html">math module documentation</a>.</p>
+<li><p>Evaluate the <span class="math notranslate nohighlight">\(\text{pH}\)</span> when the concentration of hydroium ions is <span class="math notranslate nohighlight">\(1.524\times10^{-5}\)</span> M,</p>
+<p><span class="math notranslate nohighlight">\(\text{pH} = -\log_{10}{[\text{H}_3\text{O}^+]}\)</span>.</p>
+<p>You may need to check the <span class="math notranslate nohighlight">\(\log_{10}\)</span> function in the <a class="reference external" href="https://docs.python.org/3/library/math.html">math module documentation</a>.</p>
 </li>
-<li><p>Find the potential energy, in Joules, between two atoms at a distance of $2$ Å, modelled with the Lennard-Jones potential model,</p>
-<p>$E = \frac{A}{r^{12}} - \frac{B}{r^6} $,</p>
-<p>where $r$ is the interatomic distance, and $A$ and $B$ are interaction specific constants, for the Argon-Argon interaction these are $1.36\times10^{-134}$ Jm<sup>12</sup> and $9.27\times10^{-78}$ Jm<sup>6</sup> respectively.</p>
+<li><p>Find the potential energy, in Joules, between two atoms at a distance of <span class="math notranslate nohighlight">\(2\)</span> Å, modelled with the Lennard-Jones potential model,</p>
+<p><span class="math notranslate nohighlight">\(E = \frac{A}{r^{12}} - \frac{B}{r^6} \)</span>,</p>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the interatomic distance, and <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are interaction specific constants, for the Argon-Argon interaction these are <span class="math notranslate nohighlight">\(1.36\times10^{-134}\)</span> Jm<sup>12</sup> and <span class="math notranslate nohighlight">\(9.27\times10^{-78}\)</span> Jm<sup>6</sup> respectively.</p>
 </li>
 </ol>
 </li>
 <li><p>The stardard Gibbs free energy for a reaction at a particular temperature is related to the equilibrium constant at that temperature via,</p>
-<p>$\Delta G = -RT\ln{K}$</p>
+<p><span class="math notranslate nohighlight">\(\Delta G = -RT\ln{K}\)</span></p>
 <p>For the reaction:</p>
 <p>PCl<sub>3</sub> (g) + Cl<sub>2</sub> (g) → PCl<sub>5</sub> (g)</p>
-<p>The standard free energies of formation, $\Delta G^\circ_{\text{f}}$ for each reactant are given below,</p>
+<p>The standard free energies of formation, <span class="math notranslate nohighlight">\(\Delta G^\circ_{\text{f}}\)</span> for each reactant are given below,</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>PCl<sub>3</sub>: $-267.8$ kJmol<sup>-1</sup></p></li>
-<li><p>PCl<sub>5</sub>: $-305.0$ kJmol<sup>-1</sup></p></li>
-<li><p>Cl<sub>2</sub>: $0$ kJmol<sup>-1</sup></p></li>
+<li><p>PCl<sub>3</sub>: <span class="math notranslate nohighlight">\(-267.8\)</span> kJmol<sup>-1</sup></p></li>
+<li><p>PCl<sub>5</sub>: <span class="math notranslate nohighlight">\(-305.0\)</span> kJmol<sup>-1</sup></p></li>
+<li><p>Cl<sub>2</sub>: <span class="math notranslate nohighlight">\(0\)</span> kJmol<sup>-1</sup></p></li>
 </ul>
 </div></blockquote>
 <p>Write a Jupyter Notebook cell to achieve the following:</p>
 <ul>
-<li><p>Using <a class="reference external" href="https://en.wikipedia.org/wiki/Hess%27s_law">Hess’s law</a>, find the equilibrium constant, $K_p$, for the above reaction.</p></li>
-<li><p>Then, assuming that $\Delta H$ and $\Delta S$ are independent of temperature between 298 K and 350 K, calculate $\Delta H^\circ$ (e.g. at 298 K), given that $\Delta G_{\text{f}}$ is $-20.2$ kJmol<sup>-1</sup> at 350 K. The following relation may help,</p>
-<p>$ \Delta G = \Delta H - T \Delta S $.</p>
+<li><p>Using <a class="reference external" href="https://en.wikipedia.org/wiki/Hess%27s_law">Hess’s law</a>, find the equilibrium constant, <span class="math notranslate nohighlight">\(K_p\)</span>, for the above reaction.</p></li>
+<li><p>Then, assuming that <span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span> are independent of temperature between 298 K and 350 K, calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> (e.g. at 298 K), given that <span class="math notranslate nohighlight">\(\Delta G_{\text{f}}\)</span> is <span class="math notranslate nohighlight">\(-20.2\)</span> kJmol<sup>-1</sup> at 350 K. The following relation may help,</p>
+<p><span class="math notranslate nohighlight">\( \Delta G = \Delta H - T \Delta S \)</span>.</p>
 </li>
 </ul>
 </li>
@@ -585,12 +589,12 @@ $$</p>
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="variables.html"
+       href="types.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Variables</p>
+        <p class="prev-next-title">Types</p>
       </div>
     </a>
     <a class="right-next"

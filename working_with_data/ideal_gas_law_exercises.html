@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/ideal_gas_law_exercises';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -336,7 +338,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="exercises">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
 <h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h1>
 <p>First, we must create NumPy arrays to storage each of the three columns of data in the table.</p>
 <div class="cell docutils container">
@@ -355,7 +357,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now we plot, $p$ against $T$.</p>
+<p>Now we plot, <span class="math notranslate nohighlight">\(p\)</span> against <span class="math notranslate nohighlight">\(T\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -376,7 +378,7 @@ document.write(`
 <img alt="../_images/3f12c3c312a2f0d19dd5d583aacce5447cf9abe1e7e7f4ee90d25c730f25b99a.png" src="../_images/3f12c3c312a2f0d19dd5d583aacce5447cf9abe1e7e7f4ee90d25c730f25b99a.png" />
 </div>
 </div>
-<p>Then $V$ against $T$</p>
+<p>Then <span class="math notranslate nohighlight">\(V\)</span> against <span class="math notranslate nohighlight">\(T\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
@@ -390,7 +392,7 @@ document.write(`
 <img alt="../_images/e2683b9bdfeca7bf9556da3adf3612d53215ab6818c1d0961a08aa5b6ec3100d.png" src="../_images/e2683b9bdfeca7bf9556da3adf3612d53215ab6818c1d0961a08aa5b6ec3100d.png" />
 </div>
 </div>
-<p>Finally, $pV$ against $T$.</p>
+<p>Finally, <span class="math notranslate nohighlight">\(pV\)</span> against <span class="math notranslate nohighlight">\(T\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">p</span> <span class="o">*</span> <span class="n">V</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
@@ -404,9 +406,10 @@ document.write(`
 <img alt="../_images/53d3b3a02e3796681cd0cfa1747a3cf014a0a119e88ac2f36e71fdb8e30d8aa4.png" src="../_images/53d3b3a02e3796681cd0cfa1747a3cf014a0a119e88ac2f36e71fdb8e30d8aa4.png" />
 </div>
 </div>
-<p>There is a clear linear relationship between $pV$ and $T$, the ideal gas relation.</p>
-<p>We can now calculate $n$ for each data point by rearranging the ideal gas law to read,</p>
-<p>$$ n = \frac{pV}{RT} $$</p>
+<p>There is a clear linear relationship between <span class="math notranslate nohighlight">\(pV\)</span> and <span class="math notranslate nohighlight">\(T\)</span>, the ideal gas relation.</p>
+<p>We can now calculate <span class="math notranslate nohighlight">\(n\)</span> for each data point by rearranging the ideal gas law to read,</p>
+<div class="math notranslate nohighlight">
+\[ n = \frac{pV}{RT} \]</div>
 <p>and we can use NumPy array to perform this mathematics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -434,7 +437,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>We can then find the mean $n$ and standard error as follows,</p>
+<p>We can then find the mean <span class="math notranslate nohighlight">\(n\)</span> and standard error as follows,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>

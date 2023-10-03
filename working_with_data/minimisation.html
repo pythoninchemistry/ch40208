@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/minimisation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -347,7 +349,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="minimisation">
+  <section class="tex2jax_ignore mathjax_ignore" id="minimisation">
 <h1>Minimisation<a class="headerlink" href="#minimisation" title="Permalink to this heading">#</a></h1>
 <p>An important component of computational chemistry is the study of atoms and molecules and their energy under different circumstances.
 There are a couple of different methods that can be used to calculate the energy of an atom or molecule:</p>
@@ -361,11 +363,11 @@ There are a couple of different methods that can be used to calculate the energy
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">Lennard-Jones potential</a> is a force field that describes the interation between two atoms.
 The aim of this potential is to describe the both the long-ranged attraction of two atoms due to the London dispersion force and the repulsion at short-range of the Pauli exclusion principle (the two atoms cannot sit on top of each other).
 The functional form of the Lennard-Jones potential is,
-$$ E(r_{ij}) = \frac{A}{r_{ij}^{12}} - \frac{B}{r_{ij}^6}, $$
-where $E(r_{ij})$ is the potential energy, $r_{ij}$ is the distance between atoms $i$ and $j$, and $A$ and $B$ are interaction specific constants.
+$<span class="math notranslate nohighlight">\( E(r_{ij}) = \frac{A}{r_{ij}^{12}} - \frac{B}{r_{ij}^6}, \)</span><span class="math notranslate nohighlight">\(
+where \)</span>E(r_{ij})<span class="math notranslate nohighlight">\( is the potential energy, \)</span>r_{ij}<span class="math notranslate nohighlight">\( is the distance between atoms \)</span>i<span class="math notranslate nohighlight">\( and \)</span>j<span class="math notranslate nohighlight">\(, and \)</span>A<span class="math notranslate nohighlight">\( and \)</span>B$ are interaction specific constants.
 These constants at the parameters that are determined from comparison with experimental methods.
 The first part of the above equation represents the Pauli exclusion principle, while the second part respresents the weaker dispersion forces (remember that negative energy indicates attraction).</p>
-<p>Below, is plotted the energy of the Lennard-Jones potential model, where the values of the interaction specific parameters are $1\times 10^{5}$ eVÅ<sup>12</sup> and $40$ eVÅ<sup>6</sup> for $A$ and $B$ respectively.</p>
+<p>Below, is plotted the energy of the Lennard-Jones potential model, where the values of the interaction specific parameters are <span class="math notranslate nohighlight">\(1\times 10^{5}\)</span> eVÅ<sup>12</sup> and <span class="math notranslate nohighlight">\(40\)</span> eVÅ<sup>6</sup> for <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -391,8 +393,8 @@ The Newton-Raphson method works as follows:</p>
 <li><p>Select an initial guess for the minimum distance between the two atoms</p></li>
 <li><p>Calculate the first and second derivatives of the energy at this distance</p></li>
 <li><p>Update the distance between the atoms with the following relationship,
-$$ r_{\text{new}} = r_{\text{old}} = \frac{E’}{E’’}, $$
-where $E’$ is the first derivative of the energy, $E’’$ is the second derivative, and $r_{\text{old}}$ is the previous distance.</p></li>
+$<span class="math notranslate nohighlight">\( r_{\text{new}} = r_{\text{old}} = \frac{E'}{E''}, \)</span><span class="math notranslate nohighlight">\(
+ where \)</span>E’<span class="math notranslate nohighlight">\( is the first derivative of the energy, \)</span>E’’<span class="math notranslate nohighlight">\( is the second derivative, and \)</span>r_{\text{old}}$ is the previous distance.</p></li>
 <li><p>Go to step 2.
 By repeating this process multiple times, it should be possible to find the minimum of the potential energy, which is the minimum energy distance.</p></li>
 </ol>
@@ -408,14 +410,16 @@ In order to achieve this, you should do the following:</p>
 <li><p>Implement the above algorithm, such that it will perform at least 10 iterations</p></li>
 <li><p>Plot the function, and the minimum energy distance that is found in 10 iterations (the <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.axvline.html"><code class="docutils literal notranslate"><span class="pre">plt.axvline()</span></code></a> function will be useful for this visualisation).</p></li>
 </ul>
-<p>Determine the minimum energy distance for each of the following sets of $A$ and $B$:</p>
+<p>Determine the minimum energy distance for each of the following sets of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>:</p>
 <ul class="simple">
-<li><p>$A$ = $1\times 10^{5}$ eVÅ<sup>12</sup>, $B$ = $40$ eVÅ<sup>6</sup></p></li>
-<li><p>$A$ = $4\times 10^{5}$ eVÅ<sup>12</sup>, $B$ = $1$ eVÅ<sup>6</sup></p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = <span class="math notranslate nohighlight">\(1\times 10^{5}\)</span> eVÅ<sup>12</sup>, <span class="math notranslate nohighlight">\(B\)</span> = <span class="math notranslate nohighlight">\(40\)</span> eVÅ<sup>6</sup></p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = <span class="math notranslate nohighlight">\(4\times 10^{5}\)</span> eVÅ<sup>12</sup>, <span class="math notranslate nohighlight">\(B\)</span> = <span class="math notranslate nohighlight">\(1\)</span> eVÅ<sup>6</sup></p></li>
 </ul>
 <p>The first and second derivatives of the Lennard-Jones potential are given below:</p>
-<p>$$ E’ = -12\frac{A}{r^{13}} + 6\frac{B}{r^7} $$</p>
-<p>$$ E’’ = 156\frac{A}{r^{14}} - 42\frac{B}{r^8} $$</p>
+<div class="math notranslate nohighlight">
+\[ E' = -12\frac{A}{r^{13}} + 6\frac{B}{r^7} \]</div>
+<div class="math notranslate nohighlight">
+\[ E'' = 156\frac{A}{r^{14}} - 42\frac{B}{r^8} \]</div>
 </section>
 </section>
 

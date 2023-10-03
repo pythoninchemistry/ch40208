@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/using_Python_as_a_calculator';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -184,8 +186,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
@@ -350,7 +352,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="using-python-as-a-calculator">
+  <section class="tex2jax_ignore mathjax_ignore" id="using-python-as-a-calculator">
 <h1>Using Python as a calculator<a class="headerlink" href="#using-python-as-a-calculator" title="Permalink to this heading">#</a></h1>
 <section id="calculating-2-2">
 <h2>Calculating 2+2<a class="headerlink" href="#calculating-2-2" title="Permalink to this heading">#</a></h2>
@@ -548,7 +550,7 @@ The division operator (<code class="docutils literal notranslate"><span class="p
 <br></section>
 <section id="mathematical-functions">
 <h2>Mathematical functions<a class="headerlink" href="#mathematical-functions" title="Permalink to this heading">#</a></h2>
-<p>In addition to the basic algebraic operators above, Python provides many common mathematical functions and the constants $\pi$ and $\mathrm{e}$ in the <code class="docutils literal notranslate"><span class="pre">math</span></code> library. This is a built-in <em>module</em> that is part of the standard Python installation, but it must be imported before use:</p>
+<p>In addition to the basic algebraic operators above, Python provides many common mathematical functions and the constants <span class="math notranslate nohighlight">\(\pi\)</span> and <span class="math notranslate nohighlight">\(\mathrm{e}\)</span> in the <code class="docutils literal notranslate"><span class="pre">math</span></code> library. This is a built-in <em>module</em> that is part of the standard Python installation, but it must be imported before use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -625,7 +627,7 @@ then contain one or more <strong>arguments</strong> that the function operates o
 </div>
 </div>
 </div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">math.log</span></code> computes the <em>natural logarithm</em> (base $\mathrm{e}$) of the argument. If you want to calculate a base 10 logarithm you can use <code class="docutils literal notranslate"><span class="pre">math.log10</span></code>:</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">math.log</span></code> computes the <em>natural logarithm</em> (base <span class="math notranslate nohighlight">\(\mathrm{e}\)</span>) of the argument. If you want to calculate a base 10 logarithm you can use <code class="docutils literal notranslate"><span class="pre">math.log10</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>

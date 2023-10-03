@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/monte_carlo_example';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -349,7 +351,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="exercise-monte-carlo">
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise-monte-carlo">
 <h1>Exercise: Monte Carlo<a class="headerlink" href="#exercise-monte-carlo" title="Permalink to this heading">#</a></h1>
 <p>Monte Carlo methods may be familiar from earlier years, where stochastic (random) processes are used to find, for example, the minimum energy position of some atom in space.
 Here we will look at using Monte Carlo to improve our model fitting methods, in particular the quantification of the uncertainties on the model parameters.</p>
@@ -382,10 +384,11 @@ We have been given <a class="reference external" href="https://pythoninchemistry
 <h2>Our model<a class="headerlink" href="#our-model" title="Permalink to this heading">#</a></h2>
 <p>The aim of this exercise is to determine the relative concentration of toluene and benzyl alcohol that make up the mixture data that you have just plotted.
 In order to achieve this, it is necessary that we define a model to describe this data.
-The transmittance data from the mixture ($T_{\text{mix}}$) is made up of transmittance data from toluene ($T_{\text{t}}$) and benzyl alcohol ($T_{\text{b}}$), and nothing else.
+The transmittance data from the mixture (<span class="math notranslate nohighlight">\(T_{\text{mix}}\)</span>) is made up of transmittance data from toluene (<span class="math notranslate nohighlight">\(T_{\text{t}}\)</span>) and benzyl alcohol (<span class="math notranslate nohighlight">\(T_{\text{b}}\)</span>), and nothing else.
 Since we are interested in the <strong>relative</strong> concentration, we can describe this as fraction of the composition and sicne the transmittances are additive, we can define the following model.</p>
-<p>$$T_{\text{mix}} = cT_{\text{t}} + (1 - c)T_{\text{b}}, $$</p>
-<p>where $c$ describes the composition of the mixture and is the single parameter in our model.</p>
+<div class="math notranslate nohighlight">
+\[T_{\text{mix}} = cT_{\text{t}} + (1 - c)T_{\text{b}}, \]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> describes the composition of the mixture and is the single parameter in our model.</p>
 <blockquote>
 <div><p>Write a function for the above model, <code class="docutils literal notranslate"><span class="pre">c</span></code> should be the first argument as this is the variable parameter we are investigating. Other arguments should include the transmittance from the pure samples.</p>
 </div></blockquote>
@@ -598,28 +601,30 @@ Plot this data on top of the mixture data and see if it agrees visually.</p>
 This methodology is called Markov chain Monte Carlo (MCMC), it involves starting from some value and then changing the value by some small random amount with each iteration.
 The fact that the next parameter value depends on the previous one makes the sampling a Markov chain, while the use of random pertubations is Monte Carlo.</p>
 <p>In MCMC we start from an initial value, usually found by obtaining an optimised solution.
-This initial value is changed by some random amount ($\delta$), which is obtained based on some defined. step size ($s$) change with respect to the variable ($v$),</p>
-<p>$$ \delta = Nsv, $$</p>
-<p>where $N$ is some random number, obtained from a normal distribution centred on 0 with a standard deviation of 1.
-In Python, $R$ can be obtained with the function <code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code>.
+This initial value is changed by some random amount (<span class="math notranslate nohighlight">\(\delta\)</span>), which is obtained based on some defined. step size (<span class="math notranslate nohighlight">\(s\)</span>) change with respect to the variable (<span class="math notranslate nohighlight">\(v\)</span>),</p>
+<div class="math notranslate nohighlight">
+\[ \delta = Nsv, \]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is some random number, obtained from a normal distribution centred on 0 with a standard deviation of 1.
+In Python, <span class="math notranslate nohighlight">\(R\)</span> can be obtained with the function <code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code>.
 We then determine if this random perturbation has improved the. agreement to the data or not.
-If it has, we accept this new value for our variable ($v + \delta$) and perform anouther perturbation.
-If this perturbation does not improve agreement with the data, the new value is not immediately rejects, rather it is only rejected if the probability of this transition ($p$) is less than some random number from 0 to 1 (this time we use <code class="docutils literal notranslate"><span class="pre">np.random.random()</span></code> to obtain such a number).
+If it has, we accept this new value for our variable (<span class="math notranslate nohighlight">\(v + \delta\)</span>) and perform anouther perturbation.
+If this perturbation does not improve agreement with the data, the new value is not immediately rejects, rather it is only rejected if the probability of this transition (<span class="math notranslate nohighlight">\(p\)</span>) is less than some random number from 0 to 1 (this time we use <code class="docutils literal notranslate"><span class="pre">np.random.random()</span></code> to obtain such a number).
 The probability is found by,</p>
-<p>$$p = \exp\Bigg(\frac{-\chi^2_{\text{new}} + \chi^2}{2}\Bigg), $$</p>
-<p>where $\chi^2$ is the original goodness of fit and  $\chi^2_{\text{new}}$ is the goodness of fit after the pertubation.
+<div class="math notranslate nohighlight">
+\[p = \exp\Bigg(\frac{-\chi^2_{\text{new}} + \chi^2}{2}\Bigg), \]</div>
+<p>where <span class="math notranslate nohighlight">\(\chi^2\)</span> is the original goodness of fit and  <span class="math notranslate nohighlight">\(\chi^2_{\text{new}}\)</span> is the goodness of fit after the pertubation.
 This means that it is possible for the agrement to get worse overtime.
 However, the amount by which is can get worse is controled by the probability.
 The result of this is that the values of our Markov chain that are accepted will describe the statistically feasible value for our parameter given the uncertainty in the experimental measurements.</p>
 <p>The algorithm for a typical MCMC sampling process is as follows:</p>
 <ol class="arabic simple">
 <li><p>Create an empty list for the accepted values</p></li>
-<li><p>Evaluate $\chi^2$ for the initial guess, typically this initial guess will be the optimised solution.</p></li>
-<li><p>Perturb the parameter value ($v + \delta$)</p></li>
-<li><p>Calculate $\chi^2_{\text{new}}$ for the perturbed value</p></li>
+<li><p>Evaluate <span class="math notranslate nohighlight">\(\chi^2\)</span> for the initial guess, typically this initial guess will be the optimised solution.</p></li>
+<li><p>Perturb the parameter value (<span class="math notranslate nohighlight">\(v + \delta\)</span>)</p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\(\chi^2_{\text{new}}\)</span> for the perturbed value</p></li>
 <li><p>Determine the probability of this transition</p></li>
-<li><p>Check that $p\geq R$, where $R$ is a random number from 0 to 1, if the new $\chi^2$ is less than the old one, then $p&gt;1$ and therefore always accepted</p></li>
-<li><p>If true, updated the values of $v$ and $\chi^2$, and append $v$ to the accepted values list</p></li>
+<li><p>Check that <span class="math notranslate nohighlight">\(p\geq R\)</span>, where <span class="math notranslate nohighlight">\(R\)</span> is a random number from 0 to 1, if the new <span class="math notranslate nohighlight">\(\chi^2\)</span> is less than the old one, then <span class="math notranslate nohighlight">\(p&gt;1\)</span> and therefore always accepted</p></li>
+<li><p>If true, updated the values of <span class="math notranslate nohighlight">\(v\)</span> and <span class="math notranslate nohighlight">\(\chi^2\)</span>, and append <span class="math notranslate nohighlight">\(v\)</span> to the accepted values list</p></li>
 <li><p>Go to step 3 and repeat until the desired number of iterations have been achieved.</p></li>
 </ol>
 <blockquote>
@@ -675,7 +680,7 @@ Using the statistical function in NumPy, calculate the mean and standard deviati
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7ccfa426e12308b94c29d2571edef88e603c7fc1277febcce7dc198ddfc0e2f6.png" src="../_images/7ccfa426e12308b94c29d2571edef88e603c7fc1277febcce7dc198ddfc0e2f6.png" />
+<img alt="../_images/cf56edf7b9d5e51692c7d1ec9545632a232c6b0b26c6f449ff6f7d8ac216ad48.png" src="../_images/cf56edf7b9d5e51692c7d1ec9545632a232c6b0b26c6f449ff6f7d8ac216ad48.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -685,7 +690,7 @@ Using the statistical function in NumPy, calculate the mean and standard deviati
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.322140888925853, 0.0027533614566694824)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.3224117519187867, 0.0029423363791490223)
 </pre></div>
 </div>
 </div>

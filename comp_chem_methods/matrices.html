@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/matrices';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -182,8 +184,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
@@ -348,14 +350,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="matrices">
+  <section class="tex2jax_ignore mathjax_ignore" id="matrices">
 <h1>Matrices<a class="headerlink" href="#matrices" title="Permalink to this heading">#</a></h1>
 <section id="matrices-as-linear-transformations">
 <h2>Matrices as linear transformations<a class="headerlink" href="#matrices-as-linear-transformations" title="Permalink to this heading">#</a></h2>
 <p>We saw previously that the elements of a vector can be thought of as the coefficients in a linear combination of basis vectors, i.e.</p>
-<p>$$
-\begin{bmatrix}a\b\end{bmatrix}=(a, b)=a\times\mathbf{i}+b\times\mathbf{j}
-$$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}a\\b\end{bmatrix}=(a, b)=a\times\mathbf{i}+b\times\mathbf{j}
+\end{split}\]</div>
 <p>This means that a specific vector is only meaningful if the corresponding basis is defined. A suitable choice of basis vectors depends on the problem we are interested in solving, and there are many situations where it can be useful to change from one set of basis vectors to another: for example a molecular dynamics simulation might use atomic positions, velocities, and accelerations in Cartesian coordinates, corresponding to a Cartesian basis, and usually called the <strong>lab</strong> frame of reference. The dynamics of individual molecules, however, might be easier to describe within a <strong>molecular</strong> frame of reference, with basis vectors aligned with specific bonds or along rotational axes. In this case, modelling our system involves <strong>transforming</strong> between these two sets of basis vectors.</p>
 <p>As an example consider the following figure:</p>
 <figure class="align-default" id="rotation-example-fig">
@@ -364,55 +367,64 @@ $$</p>
 <p><span class="caption-text">An example of a linear transformation: rotation by 90° anticlockwise.</span><a class="headerlink" href="#rotation-example-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This shows an initial basis with $\mathbf{i}=\begin{bmatrix}1\0\end{bmatrix}$ and $\mathbf{j}=\begin{bmatrix}0\1\end{bmatrix}$, and a vector $\mathbf{r}$:</p>
-<p>$$
-\mathbf{r}=\begin{bmatrix}3\4\end{bmatrix}=3\mathbf{i}+4\mathbf{j}.
-$$</p>
-<p>We now rotate our basis by 90° anti-clockwise, which gives us a new vector $\mathbf{r^\prime}$, which has elements $(3,4)$ in this new, rotated, basis;</p>
-<p>$$
-\mathbf{r^\prime}=\begin{bmatrix}3\4\end{bmatrix}^\prime=3\mathbf{i^\prime}+4\mathbf{j^\prime},
-$$</p>
+<p>This shows an initial basis with <span class="math notranslate nohighlight">\(\mathbf{i}=\begin{bmatrix}1\\0\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}=\begin{bmatrix}0\\1\end{bmatrix}\)</span>, and a vector <span class="math notranslate nohighlight">\(\mathbf{r}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{r}=\begin{bmatrix}3\\4\end{bmatrix}=3\mathbf{i}+4\mathbf{j}. 
+\end{split}\]</div>
+<p>We now rotate our basis by 90° anti-clockwise, which gives us a new vector <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span>, which has elements <span class="math notranslate nohighlight">\((3,4)\)</span> in this new, rotated, basis;</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{r^\prime}=\begin{bmatrix}3\\4\end{bmatrix}^\prime=3\mathbf{i^\prime}+4\mathbf{j^\prime},
+\end{split}\]</div>
 <p>where a prime symbol indicates we are in the new basis.</p>
-<p>What is the vector $\mathbf{r^\prime}$ in the <strong>old</strong> basis? We can see from the figure above that this should be $(-4,3)$, but can we calculate this?</p>
-<p>We start by expressing the <strong>new</strong> basis vectors, $\mathbf{i^\prime}$ and $\mathbf{j^\prime}$, in terms of the <strong>old</strong> basis vectors, $\mathbf{i}$ and $\mathbf{j}$:</p>
-<p>$$
-\mathbf{i^\prime} = (0\mathbf{i}+1\mathbf{j}) = \begin{bmatrix}0\1\end{bmatrix};
-$$</p>
-<p>$$
-\mathbf{j^\prime} = (-1\mathbf{i}+0\mathbf{j}) = \begin{bmatrix}-1\0\end{bmatrix}.
-$$</p>
-<p>We can now expand the vector $\mathbf{r^\prime}$ in terms of $\mathbf{i}$ and $\mathbf{j}$:</p>
-<p>$$
+<p>What is the vector <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span> in the <strong>old</strong> basis? We can see from the figure above that this should be <span class="math notranslate nohighlight">\((-4,3)\)</span>, but can we calculate this?</p>
+<p>We start by expressing the <strong>new</strong> basis vectors, <span class="math notranslate nohighlight">\(\mathbf{i^\prime}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j^\prime}\)</span>, in terms of the <strong>old</strong> basis vectors, <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{i^\prime} = (0\mathbf{i}+1\mathbf{j}) = \begin{bmatrix}0\\1\end{bmatrix};
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{j^\prime} = (-1\mathbf{i}+0\mathbf{j}) = \begin{bmatrix}-1\\0\end{bmatrix}.
+\end{split}\]</div>
+<p>We can now expand the vector <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span> in terms of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\mathbf{r^\prime}&amp;=&amp;(3\mathbf{i^\prime}+4\mathbf{j^\prime})\
-&amp;=&amp;3(0\mathbf{i}+1\mathbf{j})+4(-1\mathbf{i}+0\mathbf{j})\
-&amp;=&amp;-4\mathbf{i}+3\mathbf{j}.
+\mathbf{r^\prime}&amp;=&amp;(3\mathbf{i^\prime}+4\mathbf{j^\prime})\\
+               &amp;=&amp;3(0\mathbf{i}+1\mathbf{j})+4(-1\mathbf{i}+0\mathbf{j})\\
+               &amp;=&amp;-4\mathbf{i}+3\mathbf{j}.
 \end{aligned}
-$$</p>
-<p>We can also write this as a single <strong>matrix</strong> equation, where we multiply each element of our original vector $\mathbf{r}$ by the corresponding <strong>column</strong> of our matrix,</p>
-<p>$$
-\mathbf{r^\prime} = \begin{bmatrix}0 &amp; -1 \ 1 &amp; 0\end{bmatrix}\mathbf{r}.
-$$</p>
+\end{split}\]</div>
+<p>We can also write this as a single <strong>matrix</strong> equation, where we multiply each element of our original vector <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> by the corresponding <strong>column</strong> of our matrix,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{r^\prime} = \begin{bmatrix}0 &amp; -1 \\ 1 &amp; 0\end{bmatrix}\mathbf{r}.
+\end{split}\]</div>
 <p>which looks like</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\begin{bmatrix}0 &amp; -1 \ 1 &amp; 0\end{bmatrix}\begin{bmatrix}3\4\end{bmatrix} &amp; = &amp; 3\begin{bmatrix}0\1\end{bmatrix}+4\begin{bmatrix}-1\0\end{bmatrix} \
-&amp; = &amp; \begin{bmatrix}0\3\end{bmatrix} + \begin{bmatrix}-4\0\end{bmatrix} \
-&amp; = &amp; \begin{bmatrix}-4\3\end{bmatrix}.
+\begin{bmatrix}0 &amp; -1 \\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}3\\4\end{bmatrix} &amp; = &amp; 3\begin{bmatrix}0\\1\end{bmatrix}+4\begin{bmatrix}-1\\0\end{bmatrix} \\
+  &amp; = &amp; \begin{bmatrix}0\\3\end{bmatrix} + \begin{bmatrix}-4\\0\end{bmatrix} \\
+  &amp; = &amp; \begin{bmatrix}-4\\3\end{bmatrix}.
 \end{aligned}
-$$</p>
-<p>If we denote our matrix as $\mathbf{M}$, this can be written concisely as</p>
-<p>$$
-\mathbf{r^\prime} = \mathbf{M},\mathbf{r}.
-$$</p>
+\end{split}\]</div>
+<p>If we denote our matrix as <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>, this can be written concisely as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{r^\prime} = \mathbf{M}\,\mathbf{r}.
+\]</div>
 </section>
 <section id="inverse-matrix-operations">
 <h2>Inverse matrix operations<a class="headerlink" href="#inverse-matrix-operations" title="Permalink to this heading">#</a></h2>
-<p>We now have a matrix that describes a 90° anti-clockwise rotation. What if we want to <strong>invert</strong> this rotation, and rotate by 90° in a clockwise direction? If we follow the same procedure as above, we end up with a matrix $\mathbf{N}=\begin{bmatrix}0 &amp; 1\ -1 &amp; 0\end{bmatrix}$, where</p>
-<p>$$
-\mathbf{r} = \mathbf{N},\mathbf{r^\prime}.
-$$</p>
-<p>The matrix $\mathbf{N}$ is called the <strong>inverse</strong> of the matrix $\mathbf{M}$.</p>
+<p>We now have a matrix that describes a 90° anti-clockwise rotation. What if we want to <strong>invert</strong> this rotation, and rotate by 90° in a clockwise direction? If we follow the same procedure as above, we end up with a matrix <span class="math notranslate nohighlight">\(\mathbf{N}=\begin{bmatrix}0 &amp; 1\\ -1 &amp; 0\end{bmatrix}\)</span>, where</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{r} = \mathbf{N}\,\mathbf{r^\prime}.
+\]</div>
+<p>The matrix <span class="math notranslate nohighlight">\(\mathbf{N}\)</span> is called the <strong>inverse</strong> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
 <figure class="align-default" id="rotation-example-inv-fig">
 <a class="reference internal image-reference" href="../_images/rotation_example_inv.svg"><img alt="../_images/rotation_example_inv.svg" src="../_images/rotation_example_inv.svg" width="650px" /></a>
 <figcaption>
@@ -424,33 +436,38 @@ $$</p>
 <h2>Matrix–matrix multiplication<a class="headerlink" href="#matrixmatrix-multiplication" title="Permalink to this heading">#</a></h2>
 <p>What happens if we perform two matrix operations, one after the other? For example we perform <strong>two</strong> successive 90° rotations—giving a 180° rotation?</p>
 <p>Mathematically this looks like</p>
-<p>$$
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\mathbf{r^{\prime\prime}}&amp;=&amp;\mathbf{M},\mathbf{r^\prime} \
-&amp; = &amp; \mathbf{M}\left(\mathbf{M},\mathbf{r}\right) \
-&amp; = &amp; \mathbf{M},\mathbf{M},\mathbf{r}.
+\mathbf{r^{\prime\prime}}&amp;=&amp;\mathbf{M}\,\mathbf{r^\prime} \\
+&amp; = &amp; \mathbf{M}\left(\mathbf{M}\,\mathbf{r}\right) \\
+&amp; = &amp; \mathbf{M}\,\mathbf{M}\,\mathbf{r}.
 \end{aligned}
-$$</p>
-<p>We first operate on $\mathbf{r}$ with $M$, to get $\mathbf{r^\prime}$, and then operate on this vector again with $\mathbf{M}$. What is the result of this double operation, and can find a matrix that describes a general rotation by 180°?</p>
-<p>Written out, $\mathbf{M},\mathbf{M}$ looks like</p>
-<p>$$
-\mathbf{M},\mathbf{M}= \begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}.
-$$</p>
-<p>We can determine the corresponding matrix for a 180° rotation by considering what happens to the basis vectors $\mathbf{i}$ and $\mathbf{j}$ when we operate on them twice with $\mathbf{M}$.</p>
-<p>$$
+\end{split}\]</div>
+<p>We first operate on <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> with <span class="math notranslate nohighlight">\(M\)</span>, to get <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span>, and then operate on this vector again with <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. What is the result of this double operation, and can find a matrix that describes a general rotation by 180°?</p>
+<p>Written out, <span class="math notranslate nohighlight">\(\mathbf{M}\,\mathbf{M}\)</span> looks like</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{M}\,\mathbf{M}= \begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}.
+\end{split}\]</div>
+<p>We can determine the corresponding matrix for a 180° rotation by considering what happens to the basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> when we operate on them twice with <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \begin{aligned}
-\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\mathbf{i} = \begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}1\0\end{bmatrix}
+\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\mathbf{i} = \begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}
 \end{aligned}
-$$</p>
-<p>As we saw above, the first operation (working from right to left) converts $\mathbf{i}$ to $\mathbf{i^\prime}=\begin{bmatrix}0\1\end{bmatrix}$. We now calculate the effect of the second operation</p>
-<p>$$
-\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0\1\end{bmatrix} = 0\begin{bmatrix}0\1\end{bmatrix} + 1\begin{bmatrix}-1\0\end{bmatrix} = \begin{bmatrix}-1\0\end{bmatrix}.
-$$</p>
-<p>Doing the same for $\mathbf{j^\prime}$ gives</p>
-<p>$$
-\begin{bmatrix}0 &amp; -1\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}-1\0\end{bmatrix} = -1\begin{bmatrix}0\1\end{bmatrix} + 0\begin{bmatrix}-1\0\end{bmatrix} = \begin{bmatrix}0-1\end{bmatrix}.
-$$</p>
-<p>And we remember that the columns of a matrix describe the new basis functions, in this case $\mathbf{i^{\prime\prime}}$ and $\mathbf{j^{\prime\prime}}$. The matrix that describes a 180° rotation (or two successive 90° rotations) is therefore $\begin{bmatrix}-1 &amp; 0\ 0 &amp; -1\end{bmatrix}$, i.e. both $x$ and $y$ are inverted.</p>
+\end{split}\]</div>
+<p>As we saw above, the first operation (working from right to left) converts <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> to <span class="math notranslate nohighlight">\(\mathbf{i^\prime}=\begin{bmatrix}0\\1\end{bmatrix}\)</span>. We now calculate the effect of the second operation</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0\\1\end{bmatrix} = 0\begin{bmatrix}0\\1\end{bmatrix} + 1\begin{bmatrix}-1\\0\end{bmatrix} = \begin{bmatrix}-1\\0\end{bmatrix}.
+\end{split}\]</div>
+<p>Doing the same for <span class="math notranslate nohighlight">\(\mathbf{j^\prime}\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}-1\\0\end{bmatrix} = -1\begin{bmatrix}0\\1\end{bmatrix} + 0\begin{bmatrix}-1\\0\end{bmatrix} = \begin{bmatrix}0\\-1\end{bmatrix}.
+\end{split}\]</div>
+<p>And we remember that the columns of a matrix describe the new basis functions, in this case <span class="math notranslate nohighlight">\(\mathbf{i^{\prime\prime}}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j^{\prime\prime}}\)</span>. The matrix that describes a 180° rotation (or two successive 90° rotations) is therefore <span class="math notranslate nohighlight">\(\begin{bmatrix}-1 &amp; 0\\ 0 &amp; -1\end{bmatrix}\)</span>, i.e. both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are inverted.</p>
 <figure class="align-default" id="rotation-example-twice-fig">
 <a class="reference internal image-reference" href="../_images/rotation_example_twice.svg"><img alt="../_images/rotation_example_twice.svg" src="../_images/rotation_example_twice.svg" width="650px" /></a>
 <figcaption>
