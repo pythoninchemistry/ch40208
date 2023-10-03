@@ -16,13 +16,13 @@ parts:
     - file: python_basics/using_Python_as_a_calculator
     - file: python_basics/getting_started_with_strings
     - file: python_basics/print_statements
-    - file: python_basics/variables
     - file: python_basics/types
+    - file: python_basics/variables
     - file: python_basics/arithmetic
     - file: python_basics/lists
+    - file: python_basics/loops
     - file: python_basics/tuples
     - file: python_basics/dictionaries
-#  - file: python_basics/loops
 #  - file: python_basics/functions
 #  - file: python_basics/logic_and_flow_control
 #- caption: Good Practice
