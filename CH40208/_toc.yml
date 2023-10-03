@@ -1,29 +1,27 @@
 format: jb-book
 root: introduction/about_this_book
-#parts:
-#- caption: Introduction
-#  chapters:
-#  - file: introduction/course_outline
-#- caption: Jupyter Notebooks
-#  chapters:
-#  - file: notebooks_introduction/what_is_a_jupyter_notebook
-#  - file: notebooks_introduction/how_to_access_the_jupyterhub_server
-#  - file: notebooks_introduction/getting_started_with_jupyter_notebooks
-#  - file: notebooks_introduction/the_notebook_interface
-#   - file: notebooks_introduction/exercises
-#- caption: Python
-#  chapters:
-#  - file: python_basics/python_first_chemistry_later
-#  - file: python_basics/why_we_encourage_typing_out_the_code_examples
-#  - file: python_basics/using_Python_as_a_calculator
-#  - file: python_basics/getting_started_with_strings
-#  - file: python_basics/print_statements
-#  - file: python_basics/types
-#  - file: python_basics/variables
-#  - file: python_basics/arithmetic
-#  - file: python_basics/lists
-#  - file: python_basics/tuples
-#  - file: python_basics/dictionaries
+parts:
+  - caption: Introduction
+    chapters:
+      - file: introduction/course_outline
+  - caption: Jupyter Notebooks
+    chapters:
+    - file: notebooks_introduction/what_is_a_jupyter_notebook
+    - file: notebooks_introduction/using_noteable
+    - file: notebooks_introduction/the_notebook_interface
+  - caption: Python
+    chapters:
+    - file: python_basics/python_first_chemistry_later
+    - file: python_basics/why_we_encourage_typing_out_the_code_examples
+    - file: python_basics/using_Python_as_a_calculator
+    - file: python_basics/getting_started_with_strings
+    - file: python_basics/print_statements
+    - file: python_basics/types
+    - file: python_basics/variables
+    - file: python_basics/arithmetic
+    - file: python_basics/lists
+    - file: python_basics/tuples
+    - file: python_basics/dictionaries
 #  - file: python_basics/loops
 #  - file: python_basics/functions
 #  - file: python_basics/logic_and_flow_control

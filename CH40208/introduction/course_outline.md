@@ -2,12 +2,11 @@
 
 Welcome to **CH40208 Topics in Computational Chemistry**.
 
-## Weeks 1 & 2: Python & Jupyter bootcamp 
+## Week 1
 
 ### Introduction to Jupyter Notebooks
 - [What is a Jupyter Notebook](../notebooks_introduction/what_is_a_jupyter_notebook.md)
-- [How to access the JupyterHub server](../notebooks_introduction/how_to_access_the_jupyterhub_server.md)
-- [Getting started with Jupyter Notebooks](../notebooks_introduction/getting_started_with_jupyter_notebooks.md)
+- [Using Noteable](../notebooks_introduction/using_noteable.md)
 - [The Jupyter Notebook interface](../notebooks_introduction/the_notebook_interface.md) 
 
 ### Python 101
@@ -23,15 +22,3 @@ Welcome to **CH40208 Topics in Computational Chemistry**.
 - [Tuples](../python_basics/tuples.ipynb)
 - [Dictionaries](../python_basics/dictionaries.ipynb)
 
-### Working with Data
-- [NumPy](../working_with_data/numpy_arrays.ipynb)
-- [Plotting](../working_with_data/plotting.md)
-- [File I/O](../working_with_data/file_io.md)
-
-## Week 3: Literate Programming
-- [Writing readable code](../good_practice/readable.ipynb)
-- [Markdown](../good_practice/markdown.md)
-
-## Week 4: Organising Your Code
-- [Functions](../python_basics/functions.ipynb)
-- [Modules](../good_practice/modularisation.ipynb)
