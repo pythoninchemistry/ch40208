@@ -23,14 +23,14 @@ parts:
     - file: python_basics/loops
     - file: python_basics/tuples
     - file: python_basics/dictionaries
-#  - file: python_basics/functions
-#  - file: python_basics/logic_and_flow_control
-#- caption: Good Practice
-#  chapters:
-#  - file: good_practice/readable
+    - file: python_basics/functions
+    - file: python_basics/comparisons_and_flow_control
+#  - caption: Good Practice
+#    chapters:
+#    - file: good_practice/readable
 #  - file: good_practice/raising_errors
 #  - file: good_practice/testing
-#  - file: good_practice/modularisation
+#    - file: good_practice/modularisation
 #  - file: good_practice/markdown
 #- caption: Working with Data
 #  chapters:
