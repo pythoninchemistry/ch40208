@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Logical Operations and Flow Control &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Comparisons and Flow Control &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -65,9 +65,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/logic_and_flow_control';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/comparisons_and_flow_control';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Functions" href="functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python first, chemistry later</a></li>
 <li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
@@ -191,6 +192,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparisons and Flow Control</a></li>
 </ul>
 
     </div>
@@ -245,7 +248,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/python_basics/logic_and_flow_control.ipynb" target="_blank"
+      <li><a href="../_sources/python_basics/comparisons_and_flow_control.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -327,7 +330,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Logical Operations and Flow Control</h1>
+    <h1>Comparisons and Flow Control</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -343,14 +346,14 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-and-or"><code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements"><code class="docutils literal notranslate"><span class="pre">If</span></code> statements</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements"><code class="docutils literal notranslate"><span class="pre">if</span></code> statements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">if … else</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-and-break"><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fizzbuzz">1. Fizzbuzz</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-minimisation-convergence-testing">2. Energy minimisation convergence testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-liquid-or-gas">2. Solid, liquid, or gas?</a></li>
 </ul>
 </li>
 </ul>
@@ -364,28 +367,28 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="logical-operations-and-flow-control">
-<h1>Logical Operations and Flow Control<a class="headerlink" href="#logical-operations-and-flow-control" title="Permalink to this heading">#</a></h1>
-<p>All of the code examples so far perform the same set of operations, in the same order, even if we change the input data.</p>
-<p>There are a lot of problems where it is helpful to have the computer perform <strong>different</strong> operations depending on the specific values of the input data. For example, we might want to write code that has the option of converting from Celsius to Kelvin, or we might want to check our data after we have read it in for any unphysical values—for example, negative temperatures—and raise a warning or automatically exclude the offending data points.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="comparisons-and-flow-control">
+<h1>Comparisons and Flow Control<a class="headerlink" href="#comparisons-and-flow-control" title="Permalink to this heading">#</a></h1>
+<p>In all of the examples so far, the code always performs the same set of operations, in the same order.</p>
+<p>There are a lot of problems where it is helpful to have the computer perform <strong>different</strong> operations depending on differences in some input data, or differences in a result calculated somewhere else in the code. For example, we might want to write code that works with temperature data, but that has the option of converting from Celsius to Kelvin, or we might want to check our data after we have read it in for any unphysical values—for example, negative temperatures—and raise a warning or automatically exclude the offending data points.</p>
 <p>Python provides <strong>control statements</strong> that allow us to choose the order of execution of our code depending on the value of a <strong>logical expression</strong>.</p>
 <p>One of the most useful <strong>control statements</strong> is the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, which allows us to run a particular piece of code <strong>if</strong> an <strong>expression</strong> is <strong>true</strong>.</p>
 <p>A non-programming example might be:</p>
 <blockquote>
-<div><p>If today is Monday or Friday then I will log on to the CH40208 LOIL at 10:15 am.</p>
+<div><p>If today is Tuesday then I will go to CH40208.</p>
 </div></blockquote>
 <p>Here our <strong>expression</strong> we consider is:</p>
 <blockquote>
-<div><p>today is Monday or Friday</p>
+<div><p>today is Tuesday</p>
 </div></blockquote>
 <p>If this <strong>expression</strong> is <strong>true</strong> then we perform an action.</p>
 <blockquote>
-<div><p>I will log on to the CH40208 LOIL at 10:15 am.</p>
+<div><p>I will go to CH40208.</p>
 </div></blockquote>
-<p>If this <strong>expression</strong> is <strong>false</strong> (and it is <strong>not</strong> Monday or Friday) we can skip the action and move onto the next thing in our day.</p>
+<p>If this <strong>expression</strong> is <strong>false</strong> (and it is <strong>not</strong> Tuesday) we can skip the action and move onto the next thing in our day.</p>
 <p>We could make this explicit by defining what we will do if the <strong>expression</strong> is <strong>false</strong>:</p>
 <blockquote>
-<div><p>If today is Monday of Friday then I will log on to the CH40208 LOIL at 10:15 am. Otherwise, I will read my notes.</p>
+<div><p>If today is Tuesday then I will go to CH40208. Otherwise, I will work on last week’s exercise.</p>
 </div></blockquote>
 <p>Now we have two possible actions. One that we do if the <strong>expression</strong> is <strong>true</strong>, and one that we do if the <strong>expression</strong> is <strong>false</strong>.</p>
 <p>Below we will see how to use <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to construct similar <strong>conditional</strong> statements in our code. But first we need to look in a bit more detail into how Python decides if something is <strong>true</strong> or <strong>false</strong>.</p>
@@ -418,8 +421,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today_is_Friday</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">today_is_Friday</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today_is_Tuesday</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">today_is_Tuesday</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -535,9 +538,60 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Python also provides logical operators for testing whether a sequence contains a particular element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="s1">&#39;banana&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;f&#39;</span> <span class="ow">in</span> <span class="s1">&#39;jelly&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">halogens</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;Cl&#39;</span><span class="p">,</span> <span class="s1">&#39;Br&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;At&#39;</span><span class="p">,</span> <span class="s1">&#39;Ts&#39;</span><span class="p">]</span>
+<span class="s1">&#39;Mg&#39;</span> <span class="ow">in</span> <span class="n">halogens</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively, you can use <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> to test whether a sequence <strong>does not</strong> contain a given element:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Mg&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">halogens</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
 <section id="id1">
 <h3><code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">!=</span> <span class="pre">=</span></code><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
-<p>A very common mistake when people are learning Python (and also when they have more experience) is mixing up the <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> operators, which can result in very hard-to-spot bugs. T</p>
+<p>A very common mistake when people are learning Python (and also when they have more experience) is mixing up the <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> operators, which can result in hard-to-spot bugs.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> is a <strong>logical operator</strong> that <strong>compares</strong> two objects to see whether their values are equal.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> is the <strong>assignment</strong> operator, that is used to assign a variable to a value.</p></li>
@@ -628,7 +682,7 @@ document.write(`
 <p>Two logical statements connected by <code class="docutils literal notranslate"><span class="pre">and</span></code> return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>both</strong> of the individual statements return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </section>
 <section id="if-statements">
-<h2><code class="docutils literal notranslate"><span class="pre">If</span></code> statements<a class="headerlink" href="#if-statements" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">if</span></code> statements<a class="headerlink" href="#if-statements" title="Permalink to this heading">#</a></h2>
 <p>Now that we can test whether certain conditions are <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, we can use these <strong>conditional statements</strong> to control the <strong>flow</strong> of our code.</p>
 <p>An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement allows us to specify a block of code that will run only if a specific condition is <strong>true</strong>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">this_statement_is_true</span><span class="p">:</span>
@@ -906,11 +960,14 @@ Loop exited
 <p>Write a piece of code that can play <a class="reference external" href="https://en.wikipedia.org/wiki/Fizz_buzz">fizzbuzz</a>. Your code should count from 1 to 100. Numbers that are divisible by 3 are replaced by “Fizz”; numbers that are divisible by 5 are replaced by “Buzz”; and numbers divisible by 3 <strong>and</strong> 5 are replaced by “Fizz Buzz”.</p>
 <p>To generate the numbers from 1 to 100 you can use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function with <strong>two</strong> numbers, to specify the start and end of your range, i.e. <code class="docutils literal notranslate"><span class="pre">range(1,101)</span></code>.</p>
 </section>
-<section id="energy-minimisation-convergence-testing">
-<h3>2. Energy minimisation convergence testing<a class="headerlink" href="#energy-minimisation-convergence-testing" title="Permalink to this heading">#</a></h3>
-<p>Revise your energy minimisation codes from earlier this week, such that they will automatically <code class="docutils literal notranslate"><span class="pre">break</span></code> out of the loop when the difference between the previous distance <span class="math notranslate nohighlight">\(r_{\text{old}}\)</span> and the new distance <span class="math notranslate nohighlight">\(r_{\text{new}}\)</span> is less than <span class="math notranslate nohighlight">\(0.02\)</span> Å.</p>
-<p>Get your code to report whether your minimisation has convereged, or whether you have reached the maxium number of iterations specified in your loop.</p>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/logic_and_flow_control_exercises.html">Worked Examples</a></p>
+<section id="solid-liquid-or-gas">
+<h3>2. Solid, liquid, or gas?<a class="headerlink" href="#solid-liquid-or-gas" title="Permalink to this heading">#</a></h3>
+<p>Given the following data on the standard melting and boiling points of various metals, determine their state (solid, liquid or gas) at <span class="math notranslate nohighlight">\(500\,^\circ\mathrm{C}\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="s1">&#39;Hg&#39;</span><span class="p">,</span> <span class="s1">&#39;Ti&#39;</span><span class="p">,</span> <span class="s1">&#39;Pb&#39;</span><span class="p">]</span> <span class="c1"># Standard phase change temperatures for each metal, in K.</span>
+<span class="n">melting_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1811</span><span class="p">,</span> <span class="mi">933</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">1941</span><span class="p">,</span> <span class="mi">601</span><span class="p">]</span>
+<span class="n">boiling_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3134</span><span class="p">,</span> <span class="mi">2743</span><span class="p">,</span> <span class="mi">630</span><span class="p">,</span> <span class="mi">3560</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
@@ -945,6 +1002,15 @@ Loop exited
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Functions</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -966,14 +1032,14 @@ Loop exited
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-and-or"><code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements"><code class="docutils literal notranslate"><span class="pre">If</span></code> statements</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements"><code class="docutils literal notranslate"><span class="pre">if</span></code> statements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">if … else</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-and-break"><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fizzbuzz">1. Fizzbuzz</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-minimisation-convergence-testing">2. Energy minimisation convergence testing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-liquid-or-gas">2. Solid, liquid, or gas?</a></li>
 </ul>
 </li>
 </ul>

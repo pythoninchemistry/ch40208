@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/functions';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comparisons and Flow Control" href="comparisons_and_flow_control.html" />
+    <link rel="prev" title="Dictionaries" href="dictionaries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -178,7 +180,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python first, chemistry later</a></li>
 <li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
@@ -191,6 +193,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dictionaries.html">Dictionaries</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
 </ul>
 
     </div>
@@ -339,10 +343,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-function">Defining a function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-arguments">Optional arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-optional-and-default-arguments">Keyword, Optional, and Default arguments</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returning-values-from-functions">Returning values from functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
@@ -363,7 +368,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h1>
 <p>By this point you have seen and used a number of <strong>functions</strong>, such as <code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, and <code class="docutils literal notranslate"><span class="pre">math.sqrt()</span></code>, and the general concept of <strong>functions</strong> was briefly introduced <a class="reference internal" href="print_statements.html#content-intro-to-functions"><span class="std std-ref">earlier</span></a>.</p>
-<p>In this section we will cover how functions work in some more detail, and explain how you can write your own functions. Packaging your code into self-contained functions can help you to organise your programs as they become more complex, and also provides a way to write a section of code once and then use it multiple times in some later calculation.</p>
+<p>In this section we will cover how functions work in some more detail, and explain how you can write your own functions.</p>
+<p>Packaging your code into self-contained functions can help you to organise your programs as they become more complex, and also provides a way to write a section of code once and then use it multiple times in some later calculation.</p>
 <p>To review the key points from the earlier <a class="reference internal" href="print_statements.html#content-intro-to-functions"><span class="std std-ref">introduction</span></a>: a <strong>function</strong> is a piece of reusable code that takes zero or more inputs, performs a specific computation, and <strong>returns</strong> an output.</p>
 <p>To use a function (known as <strong>calling</strong> the function) we type the function name, followed by a pair of brackets. Anything inside the brackets specifies the inputs to the function. These inputs are called <strong>arguments</strong>, and are said to be <strong>passed</strong> to the function:</p>
 <section id="defining-a-function">
@@ -510,7 +516,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">13</span><span class="o">-</span><span class="mi">9</span><span class="n">b362522ff63</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;Drew&quot;</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: greet() takes 1 positional argument but 2 were given
@@ -539,18 +545,104 @@ document.write(`
 </div>
 </div>
 </div>
-<section id="optional-arguments">
-<h3>Optional arguments<a class="headerlink" href="#optional-arguments" title="Permalink to this heading">#</a></h3>
-<p>Functions can be defined with <strong>optional</strong> arguments by giving these arguments <strong>default</strong> values in the the function definition.</p>
+<p>Here is a more practical example, where we use a function to return the roots of the quadratic equation <span class="math notranslate nohighlight">\(ax^2+bx+c\)</span>, where <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, and <span class="math notranslate nohighlight">\(c\)</span> are each passed to the function as ordered arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ch40208_greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Monday&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, and welcome to the </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> LOIL.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">quadratic_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, -5.0)
 </pre></div>
 </div>
 </div>
 </div>
-<p>In this case we have one <strong>required</strong> argument, and one <strong>optional</strong> argument. If we call the function and pass one value, this has the argument variable <code class="docutils literal notranslate"><span class="pre">name</span></code> assigned to it, while the argument variable <code class="docutils literal notranslate"><span class="pre">day</span></code> is assigned to the default value of <code class="docutils literal notranslate"><span class="pre">&quot;Monday&quot;</span></code>.</p>
+<section id="keyword-optional-and-default-arguments">
+<h3>Keyword, Optional, and Default arguments<a class="headerlink" href="#keyword-optional-and-default-arguments" title="Permalink to this heading">#</a></h3>
+<p>In the examples above, we have assigned values to the arguments of a function based on the order of these arguments in the function call.</p>
+<p>For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>calls the <code class="docutils literal notranslate"><span class="pre">quadratic_roots</span></code> function and assigns <code class="docutils literal notranslate"><span class="pre">a=1</span></code>, <code class="docutils literal notranslate"><span class="pre">b=3</span></code>, <code class="docutils literal notranslate"><span class="pre">c=-10</span></code>, because the arguments appear in this order in the function definition above.</p>
+<p>We can also assign values to function arguments explicitly using <strong>keyword arguments</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, -5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can mix positional and keyword arguments in a function call, but the positional arguments must come first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, -5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">17</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                                 <span class="o">^</span>
+<span class="ne">SyntaxError</span>: positional argument follows keyword argument
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly, calling a function using a keyword argument that is not included in the function definition also raises an error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">f</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">f</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: quadratic_roots() got an unexpected keyword argument &#39;f&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Functions can also be defined with <strong>optional</strong> arguments by giving these arguments <strong>default</strong> values in the the function definition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ch40208_greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, and welcome to the </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> lesson.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case we have one <strong>required</strong> argument, and one <strong>optional</strong> argument. If we call the function and pass one value, this has the argument variable <code class="docutils literal notranslate"><span class="pre">name</span></code> assigned to it, while the argument variable <code class="docutils literal notranslate"><span class="pre">day</span></code> is assigned to the default value of <code class="docutils literal notranslate"><span class="pre">&quot;Tuesday&quot;</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet</span><span class="p">(</span><span class="s2">&quot;Ben&quot;</span><span class="p">)</span>
@@ -558,12 +650,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Ben, and welcome to the Monday LOIL.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Ben, and welcome to the Tuesday lesson.
 </pre></div>
 </div>
 </div>
 </div>
-<p>What if it is not Monday though? Then we can call this function with two input parameters and specify the day:</p>
+<p>What if it is not Tuesday though? Then we can call this function with two input parameters and specify the day:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet</span><span class="p">(</span><span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">)</span>
@@ -571,7 +663,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Ben, and welcome to the Friday LOIL.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Ben, and welcome to the Friday lesson.
 </pre></div>
 </div>
 </div>
@@ -584,38 +676,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Friday, and welcome to the Ben LOIL.
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>Optional arguments</strong> are also called <strong>keyword arguments</strong>, because they can be set by specifying <strong>keywords</strong> in the function call statement:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet</span><span class="p">(</span><span class="s2">&quot;Drew&quot;</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Friday&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Drew, and welcome to the Friday LOIL.
-</pre></div>
-</div>
-</div>
-</div>
-<p>Calling a function with a keyword argument that is not included in the function definition raises an error.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet</span><span class="p">(</span><span class="s2">&quot;Lucy&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;functions&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="mi">219</span><span class="n">ece4fff36</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ch40208_greet</span><span class="p">(</span><span class="s2">&quot;Lucy&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;functions&quot;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: ch40208_greet() got an unexpected keyword argument &#39;topic&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Friday, and welcome to the Ben lesson.
 </pre></div>
 </div>
 </div>
@@ -623,8 +684,8 @@ document.write(`
 <p>While <strong>required arguments</strong> must be passed in the same order as the argument list in the function definition, <strong>optional arguments</strong> passed <strong>with keywords</strong> can appear in any order (although they must appear <strong>after</strong> all the required arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ch40208_greet_and_info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;Topics in Computational Chemistry&quot;</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Welcome to the </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> LOIL on </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ch40208_greet_and_info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;Topics in Computational Chemistry&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Welcome to the </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> lesson on </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -636,7 +697,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Monday LOIL on Topics in Computational Chemistry.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Tuesday lesson on Topics in Computational Chemistry.
 </pre></div>
 </div>
 </div>
@@ -648,7 +709,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Friday LOIL on Topics in Computational Chemistry.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Friday lesson on Topics in Computational Chemistry.
 </pre></div>
 </div>
 </div>
@@ -660,7 +721,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Friday LOIL on functions.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Friday lesson on functions.
 </pre></div>
 </div>
 </div>
@@ -672,7 +733,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Monday LOIL on functions (again).
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Tuesday lesson on functions (again).
 </pre></div>
 </div>
 </div>
@@ -746,10 +807,139 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Jacob, and welcome to the Monday LOIL.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Jacob, and welcome to the Tuesday lesson.
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NoneType
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Permalink to this heading">#</a></h2>
+<p>The term <strong>scope</strong> refers to where a variable is <strong>visible</strong> in a Python program. Variables can be visible in one part of a program, but not in another part.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;a&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are only defined <strong>inside</strong> the function <code class="docutils literal notranslate"><span class="pre">add</span></code>. If we try to refer to either of these variable names <strong>outside</strong> the function, the we get a <code class="docutils literal notranslate"><span class="pre">NameError</span></code> saying that these names have not been defined.</p>
+<p>To describe this behaviour in terms of <strong>scope</strong>, we would say that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are defined in the <strong>local scope</strong> of the function <code class="docutils literal notranslate"><span class="pre">add</span></code>. Outside this scope, these variables are not defined. One consequence of this is we can write modular code where the same variable names get reused in different functions, while each function remains self-contained.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+6
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we define variables <strong>outside</strong> of functions then they are defined in <strong>global scope</strong>. Variables defined in global scope are also visible in the local scope of any functions defined further down in the same piece of code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">add_to_x</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add_to_x</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we define two variables in global scope: <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. We then define another variable <code class="docutils literal notranslate"><span class="pre">y</span></code> in the local scope of the function <code class="docutils literal notranslate"><span class="pre">add_to_x</span></code>, which is set to the value <code class="docutils literal notranslate"><span class="pre">5</span></code> when we call the function. Because <code class="docutils literal notranslate"><span class="pre">x</span></code> is not defined in the local scope of the function, the Python interpreter looks to see if there is a variable <code class="docutils literal notranslate"><span class="pre">x</span></code> defined in the <strong>outer</strong> scope. If there is, it assumes we are referring to that variable.</p>
+<p>We can make things a bit clearer by adding some <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;outside the function: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">add_to_x</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;inside the function: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add_to_x</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;outside the function: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>outside the function: x = 1, y = 3
+inside the function: x = 1, y = 5
+6
+outside the function: x = 1, y = 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice how when we return outside the function, we are back in the global scope, and the name <code class="docutils literal notranslate"><span class="pre">y</span></code> now refers to the value <code class="docutils literal notranslate"><span class="pre">3</span></code> defined in the first line of the code.</p>
+<p>Mixing global and local scope can get quite confusing. In fact, it is usually good practice to only refer to local variables inside functions, unless it is very clear from the code what they refer to. One of the benefits of dividing code up into functions is that it makes your code modular, and individual functions can be reused across different bits of code. If the behaviour of a function depends on the value of a global variable, however, it can become very difficult to correctly reason about the behaviour of that function, giving a prime opportunity for hard-to-squash bugs in your code.</p>
+<p>An example of where you might want to use a global variable inside a function might be to have a global variable for a physical constant, such as the Boltzmann constant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_boltz</span> <span class="o">=</span> <span class="mf">1.380649e-23</span> <span class="c1"># Boltzmann constant in J K^-1</span>
+
+<span class="k">def</span> <span class="nf">boltzmann_factor</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">energy</span><span class="o">/</span><span class="p">(</span><span class="n">k_boltz</span> <span class="o">*</span> <span class="n">temperature</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python also has a set of built-in functions and variables that are always available, like <code class="docutils literal notranslate"><span class="pre">print()</span></code> and <code class="docutils literal notranslate"><span class="pre">len()</span></code>. These live in <strong>built-in scope</strong>. The Python interpreter checks built-in scope after it has checked local scope and global scope. This means that if you define a new variable with the same name as a built-in function you might get unexpected behaviour and a particularly hard-to-spot bug.</p>
+<p>Local scope does not only apply to functions; it also applied to list comprehensions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># refers to x in global scope</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7, 8, 9]
+3
 </pre></div>
 </div>
 </div>
@@ -807,19 +997,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    Determine the kinetic energy of a particle.
-    
-    Args: 
-        mass (float): Particle mass (kg)
-        velocity (float): Particle velocity (m/s)
-    
-    Returns:
-        (float): Particle kinetic energy (J)
-    
-</pre></div>
-</div>
-</div>
 </div>
 <p>We can do the same thing for functions that are part of the standard library or that we have <strong>imported</strong> from external modules:</p>
 <div class="cell docutils container">
@@ -828,25 +1005,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Return the sum of a &#39;start&#39; value (default: 0) plus an iterable of numbers
-
-When the iterable is empty, return the start value.
-This function is intended specifically for use with numeric values and may
-reject non-numeric types.
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Return the square root of x.
 </pre></div>
 </div>
 </div>
@@ -859,50 +1022,23 @@ reject non-numeric types.
 </div>
 </div>
 </div>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/python_basics/images/jupyter_docstring_example.png" /></p>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/jupyter_docstring_example.png" /></p>
 </section>
 <section id="exercises">
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <section id="id1">
 <h3>1<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Write a function to calculate the distance between two atoms.
-Then rewrite to exercise in the loops section to utilise this function.
+Then rewrite the exercise in the loops section to utilise this function.
 Make sure to include a docstring describing the purpose of the function and outlining the arguments.</p>
 </section>
 <section id="id2">
 <h3>2<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
-<p>Write a function that implements the second-order rate equation,</p>
+<p>The Einstein model for the heat capacity of a crystal is</p>
 <div class="math notranslate nohighlight">
-\[ [A]_t = \frac{[A]_0}{[A]_0kt + 1}, \]</div>
-<p>where <span class="math notranslate nohighlight">\([A]_t\)</span> is the concentration at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\([A]_0\)</span> is the initial concentration and <span class="math notranslate nohighlight">\(k\)</span> is the rate constant (note this a rearrangement from the familiar way of writing this equation where <span class="math notranslate nohighlight">\([A]_t\)</span> is a reciprocal).</p>
-<p>Plot the data below, as <span class="math notranslate nohighlight">\([A]_t\)</span> (<span class="math notranslate nohighlight">\(y\)</span>-axis) against <span class="math notranslate nohighlight">\(t\)</span> (<span class="math notranslate nohighlight">\(x\)</span>-axis), with a scatter plot (where you use <code class="docutils literal notranslate"><span class="pre">'o'</span></code>) and make sure to label your axes.</p>
-<p>Using, either a loop or the NumPy array operations and the function that you have defined, test if the following values of <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\([A]_0\)</span> accurately model the reaction by plotting the model data as a line on top of your scatter plot.</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(k = 0.006\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.6\)</span> mol dm<sup>-3</sup></p></li>
-<li><p><span class="math notranslate nohighlight">\(k = 0.0006\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.4\)</span> mol dm<sup>-3</sup></p></li>
-<li><p><span class="math notranslate nohighlight">\(k = 0.6\)</span> mol<sup>-1</sup> dm<sup>3</sup> s<sup>-1</sup> and <span class="math notranslate nohighlight">\([A]_0 = 0.2\)</span> mol dm<sup>-3</sup></p></li>
-</ul>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(t\)</span>/s</p></th>
-<th class="head"><p>0</p></th>
-<th class="head"><p>600</p></th>
-<th class="head"><p>1200</p></th>
-<th class="head"><p>1800</p></th>
-<th class="head"><p>2400</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><span class="math notranslate nohighlight">\([A]_t\)</span> / mol dm<sup>-3</sup></p></td>
-<td><p>0.400</p></td>
-<td><p>0.350</p></td>
-<td><p>0.311</p></td>
-<td><p>0.279</p></td>
-<td><p>0.254</p></td>
-</tr>
-</tbody>
-</table>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/functions_exercises.html">Worked Example</a></p>
+\[C_{V,m} = 3R\left(\frac{\Theta_E}{T}\right)^2\frac{\exp\left(\frac{\Theta_\mathrm{E}}{T}\right)}{\left[\exp\left(\frac{\Theta_\mathrm{E}}{T}\right)-1\right]^2}\]</div>
+<p>where the <em>Einstein temperature</em>, <span class="math notranslate nohighlight">\(\Theta_\mathrm{E}\)</span> is a constant for a given material.</p>
+<p>Write a function to calculate <span class="math notranslate nohighlight">\(C_\mathrm{V,m}\)</span> at 300 K for (a) sodium (</p>
 </section>
 </section>
 </section>
@@ -937,6 +1073,24 @@ Make sure to include a docstring describing the purpose of the function and outl
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="dictionaries.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Dictionaries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="comparisons_and_flow_control.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Comparisons and Flow Control</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -954,10 +1108,11 @@ Make sure to include a docstring describing the purpose of the function and outl
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-function">Defining a function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-arguments">Function arguments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-arguments">Optional arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-optional-and-default-arguments">Keyword, Optional, and Default arguments</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returning-values-from-functions">Returning values from functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
