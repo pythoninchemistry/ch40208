@@ -22,3 +22,8 @@ Welcome to **CH40208 Topics in Computational Chemistry**.
 - [Tuples](../python_basics/tuples.ipynb)
 - [Dictionaries](../python_basics/dictionaries.ipynb)
 
+## Week 2
+
+### More Python
+- [Functions](../python_basics/functions.ipynb)
+- [Comparisons and flow control](../python_basics/comparisons_and_flow_control.ipynb) 
