@@ -22,7 +22,7 @@ Welcome to **CH40208 Topics in Computational Chemistry**.
 - [Tuples](../python_basics/tuples.ipynb)
 - [Dictionaries](../python_basics/dictionaries.ipynb)
 
-## Week 2
+## Week 2
 
 ### More Python
 - [Functions](../python_basics/functions.ipynb)
