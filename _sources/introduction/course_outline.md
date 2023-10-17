@@ -27,3 +27,9 @@ Welcome to **CH40208 Topics in Computational Chemistry**.
 ### More Python
 - [Functions](../python_basics/functions.ipynb)
 - [Comparisons and flow control](../python_basics/comparisons_and_flow_control.ipynb) 
+
+## Week 3
+
+### Working with Data
+- [Numpy](../working_with_data/numpy_arrays.ipynb)
+- [Plotting](../working_with_data/plotting.ipynb)

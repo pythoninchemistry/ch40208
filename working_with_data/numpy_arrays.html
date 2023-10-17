@@ -63,9 +63,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/numpy_arrays';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plotting" href="plotting.html" />
+    <link rel="prev" title="Comparisons and Flow Control" href="../python_basics/comparisons_and_flow_control.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,6 +195,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NumPy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting</a></li>
 </ul>
 
     </div>
@@ -337,7 +346,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages">Importing packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-numpy-arrays">Arithmetic with NumPy arrays</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions">NumPy functions</a></li>
@@ -355,12 +363,79 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numpy">
 <h1>NumPy<a class="headerlink" href="#numpy" title="Permalink to this heading">#</a></h1>
-<p>One of the most powerful packages in the Python ecosystem is <a class="reference external" href="https://numpy.org">NumPy</a>.
-In order to use the NumPy package, we must <code class="docutils literal notranslate"><span class="pre">import</span></code> it.</p>
-<section id="importing-packages">
-<h2>Importing packages<a class="headerlink" href="#importing-packages" title="Permalink to this heading">#</a></h2>
-<p>The importing of packages is what makes the Python programming language so powerful and attractive, allowing the use of powerful algorithms and methods developed by (better) programmers to be easily accessed by anyone.
-To import the NumPy package we use the following.</p>
+<p>In the section on <a class="reference internal" href="../python_basics/lists.html#content-lists"><span class="std std-ref">lists</span></a> you learned how <code class="docutils literal notranslate"><span class="pre">list</span></code> collection types can be used to store multiple individual objects, such as individual numerical values that together correspond to an experimental data set.</p>
+<p>While <code class="docutils literal notranslate"><span class="pre">lists</span></code> are convenient for storing and working with relatively small amounts of data, they are not ideal for working with large numerical data sets. Creating large <code class="docutils literal notranslate"><span class="pre">lists</span></code> and iterating over them—for example, to perform some statistical analysis on our dataset—is relatively slow, and can require writing non-trivial amounts of “boilerplate” code, which can make writing code for data analysis cumbersome and prone to bugs.</p>
+<p>For example, imagine we have recorded a set of experimental measurements and we want to compute the mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, and standard error, <span class="math notranslate nohighlight">\(\delta \bar{x}\)</span>, which are given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} = \frac{1}{N}\sum_i x_i
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sigma_N = \sqrt{\frac{1}{N}\sum_i\left(x_i - \bar{x}\right)^2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta \bar{x} = \frac{\sigma_{N-1}}{\sqrt{N}}
+\]</div>
+<p>Using lists this might look like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calcualte the mean of a dataset.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        data (list(float)): The numerical data.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">std_dev</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the standard deviation of a dataset.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        data (list(float)): The numerical data.</span>
+<span class="sd">        ddof (int): to adjust for bias in limited samples</span>
+<span class="sd">                    relative to the population estimate of variance.</span>
+<span class="sd">                    Default is 0.</span>
+<span class="sd">                    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x_mean</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">([(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="n">ddof</span><span class="p">))</span>
+
+<span class="n">x_bar</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">std_dev</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mean = </span><span class="si">{</span><span class="n">x_bar</span><span class="si">}</span><span class="s1"> ± </span><span class="si">{</span><span class="n">delta_x_bar</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean = 1.00024 ± 0.0010171528891961034
+</pre></div>
+</div>
+</div>
+</div>
+<p>Performing numerical analyses of this type on large datasets is a very common computational workflow. To do this efficiently using compact code we can use the <a class="reference external" href="https://numpy.org">NumPy</a> package, which provides a large number of numerical computing tools that are fast and efficient.</p>
+<p>NumPy is not part of the Python standard library, which means that it must be imported before use.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The ability to import libraries is one of the things that makes the Python programming language so powerful and attractive, allowing the use of algorithms and methods development by (probably better) programmers to be easily accessed.
+Using <code class="docutils literal notranslate"><span class="pre">as</span></code> in the import command lets us assign the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> module to a different (shorter) variable name.</p>
+</div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -368,101 +443,213 @@ To import the NumPy package we use the following.</p>
 </div>
 </div>
 </div>
-<p>This allows us to access all elements of the NumPy package, using the <strong>dot syntax</strong> that you have seen previously for the <code class="docutils literal notranslate"><span class="pre">math</span></code> module.
-Therefore, we can access the <code class="docutils literal notranslate"><span class="pre">log</span></code> function in NumPy by calling,</p>
+<p>We can now reimplement our analysis above using the following, much more compact, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> code:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">7.38905609893065</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword in the import statement simply lets us create a shortcut.
-So, instead of writing <code class="docutils literal notranslate"><span class="pre">numpy.log</span></code> we can write just <code class="docutils literal notranslate"><span class="pre">np.log</span></code> (a lot of programming is about saving keystrokes).
-<code class="docutils literal notranslate"><span class="pre">np</span></code> is the standard abbreviation for NumPy.</p>
-<p>The above method imports <strong>all</strong> of the NumPy package, however, this may not be necessary.
-For example, if you <strong>only</strong> want to use the <code class="docutils literal notranslate"><span class="pre">pi</span></code> object from the NumPy package, it is possible import only this.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mean = </span><span class="si">{</span><span class="n">x_bar</span><span class="si">}</span><span class="s1"> ± </span><span class="si">{</span><span class="n">delta_x_bar</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mean = 1.00024 ± 0.0010171528891961034
 </pre></div>
 </div>
 </div>
 </div>
-<p>The above code, tells the kernel to import the <code class="docutils literal notranslate"><span class="pre">pi</span></code> object <strong>from</strong> the NumPy package.
-Note that with this import method, the dot syntax is no longer required.</p>
-</section>
+<p>The numpy version is also significantly faster if we have large datasets to process.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="c1"># generate 10,000 random numbers between 0 and 1.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> command is not Python, but is a so-called “magic” command build into the Jupyter Notebook application. Jupyter Notebooks provide several “magic” commands that are always prefixed by one or more percent signs <code class="docutils literal notranslate"><span class="pre">%</span></code>. The <code class="docutils literal notranslate"><span class="pre">%%timeit</span></code> command here runs the cell it is entered in multiple times and then reports the mean time the cell took to run, ± the standard deviation.</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+
+<span class="n">x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>69.8 µs ± 1.2 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
+
+<span class="n">x_bar</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">std_dev</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.91 ms ± 44.8 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+</pre></div>
+</div>
+</div>
+</div>
 <section id="numpy-arrays">
 <h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Permalink to this heading">#</a></h2>
-<p>One of the most useful tools in the NumPy package is the array.
-This stores a series of numerical data of the same type, similar to a <a class="reference internal" href="../python_basics/lists.html"><span class="doc std std-doc">list</span></a> but capable of performing highly optimised for mathematical operations.
-We can initialise a NumPy array with the following.</p>
+<p>NumPy provides its own data type, called the numpy array. We create a NumPy array similarly to how we create a <code class="docutils literal notranslate"><span class="pre">list</span></code>, using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">112</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">116</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">118</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">124</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This can then be indexed in the same way as a <code class="docutils literal notranslate"><span class="pre">list</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[112 114 115 116 117 118 119 120 122 124]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">isotopic_abundances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0097</span><span class="p">,</span> <span class="mf">0.0066</span><span class="p">,</span> <span class="mf">0.0034</span><span class="p">,</span> <span class="mf">0.1454</span><span class="p">,</span> <span class="mf">0.0768</span><span class="p">,</span> <span class="mf">0.2422</span><span class="p">,</span> <span class="mf">0.0859</span><span class="p">,</span> <span class="mf">0.3258</span><span class="p">,</span> <span class="mf">0.0463</span><span class="p">,</span> <span class="mf">0.0579</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">isotopic_abundances</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.0097 0.0066 0.0034 0.1454 0.0768 0.2422 0.0859 0.3258 0.0463 0.0579]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Above, we have defined two NumPy arrays, the first are the mass numbers for the stable isotopes of tin and the second are the abundances of each isotope.
-The efficiency of the NumPy array comes from the fact that all of the items in the array <strong>must</strong> be of the same type.
-We can see the type by investigating the <code class="docutils literal notranslate"><span class="pre">dtype</span></code> object of the array.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mass_numbers</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.9972, 0.9986, 1.0009])
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">isotopic_abundances</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.0009, 0.9986, 0.9972, 1.0019, 1.0026])
 </pre></div>
 </div>
 </div>
 </div>
-<p>The mass numbers are integers while the isotopic abundences are floating point numbers (the 64 refers the number of bits of computer memory that the number occupies).</p>
+<p>NumPy arrays can only contain data of the same type, in contrast to <code class="docutils literal notranslate"><span class="pre">lists</span></code>, which can contain data of different types. Trying to create a NumPy array that contains data of different types will either cause an error, or your data will be converted to a single consistent type (which probably is not what you wanted to happen).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="mf">43.0</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;yellow&#39;, 43.0, False]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="mf">43.0</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;yellow&#39; &#39;43.0&#39; &#39;False&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>NumPy arrays can be created from <code class="docutils literal notranslate"><span class="pre">lists</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">]</span>
+<span class="n">data_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data_array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.0026, 1.0019, 0.9972, 0.9986, 1.0009])
+</pre></div>
+</div>
+</div>
+</div>
+<p>NumPy arrays can also have more than one dimension, which makes them useful for representing multidimensional datasets, or mathematical objects like matrices.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1. ,  2. ,  0. ],
+       [ 1. ,  3. ,  4. ],
+       [-2. ,  0.5,  1. ]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Individual elements, or slices, of a N-dimensional NumPy array can be referenced using the same syntax as for nested lists. For example, <code class="docutils literal notranslate"><span class="pre">A[1]</span></code> gives the second “row” of this matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># second row</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 3., 4.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>which we can then also slice:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># second row, third element</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>NumPy also allows a more compact N-dimensional index notation, using comma-separated values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># second row, third column</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># last row, everything from the second column to the end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.5, 1. ])
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="arithmetic-with-numpy-arrays">
 <h2>Arithmetic with NumPy arrays<a class="headerlink" href="#arithmetic-with-numpy-arrays" title="Permalink to this heading">#</a></h2>
@@ -526,7 +713,7 @@ As the former can operate on NumPy array when the latter cannot.</p>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">log</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
 
@@ -537,39 +724,37 @@ As the former can operate on NumPy array when the latter cannot.</p>
 </div>
 <p>The function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module will result in an error.</p>
 <p>Alongside these mathematical operations, the NumPy library also enables statistical operations on the NumPy arrays.
-For example, sum, mean and standard deviations are easy to find.</p>
+For example, sum, mean and standard deviations are easy to find. These functions can be used using the <code class="docutils literal notranslate"><span class="pre">np.function_name()</span></code> syntax, or used as <strong>methods</strong> of a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array (using dot syntax).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">112</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">116</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">118</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">124</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1177
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>117.7
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1177
+117.7
+3.4942810419312296
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mass_numbers</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mass_numbers</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mass_numbers</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.4942810419312296
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1177
+117.7
+3.4942810419312296
 </pre></div>
 </div>
 </div>
@@ -578,10 +763,20 @@ For example, sum, mean and standard deviations are easy to find.</p>
 <section id="exercises">
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Using the <code class="docutils literal notranslate"><span class="pre">mass_numbers</span></code> and <code class="docutils literal notranslate"><span class="pre">isotopic_abundances</span></code> arrays above, evaluate the average mass number for tin.</p></li>
+<li><p>The percentage abundances of the natural isotopes of tin are:</br>
+112: 0.0097,</br>
+114: 0.0066,</br>
+115: 0.0034,</br>
+116: 0.1454,</br>
+117: 0.0768,</br>
+118: 0.2422,</br>
+119: 0.0859,</br>
+120: 0.3258,</br>
+122: 0.0463,</br>
+124: 0.0579</br>
+Calculate the average (mean) mass of naturally occurring tin.</p></li>
 <li><p>Rewrite or modify your code from the <strong>Loops</strong> Exercise to calculate the distances between each pair of atoms, using <strong>numpy arrays</strong> to store the atom positions, and <strong>vector arithmetic</strong> to calculate the vectors between pairs of atoms.</p></li>
 </ol>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/numpy_arrays_exercises.html">Worked Example</a></p>
 </section>
 </section>
 
@@ -615,6 +810,24 @@ For example, sum, mean and standard deviations are easy to find.</p>
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../python_basics/comparisons_and_flow_control.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Comparisons and Flow Control</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="plotting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plotting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -630,7 +843,6 @@ For example, sum, mean and standard deviations are easy to find.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-packages">Importing packages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-numpy-arrays">Arithmetic with NumPy arrays</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions">NumPy functions</a></li>
