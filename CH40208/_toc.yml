@@ -29,17 +29,17 @@ parts:
     chapters:
       - file: working_with_data/numpy_arrays
       - file: working_with_data/plotting
-#  - file: working_with_data/file_io
+      - file: working_with_data/file_io
 #  - file: working_with_data/ideal_gas_law
 #  - file: working_with_data/curve_fitting
 #  - file: working_with_data/monte_carlo
-#  - caption: Good Practice
-#    chapters:
-#    - file: good_practice/readable
+  - caption: Good Practice
+    chapters:
+      - file: good_practice/readable
 #  - file: good_practice/raising_errors
 #  - file: good_practice/testing
 #    - file: good_practice/modularisation
-#  - file: good_practice/markdown
+#      - file: good_practice/markdown
 #- caption: Computational Chemistry Methods
 #  chapters:
 #  - file: comp_chem_methods/potential_energy_surfaces
