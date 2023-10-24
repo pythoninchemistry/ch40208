@@ -33,3 +33,11 @@ Welcome to **CH40208 Topics in Computational Chemistry**.
 ### Working with Data
 - [Numpy](../working_with_data/numpy_arrays.ipynb)
 - [Plotting](../working_with_data/plotting.ipynb)
+
+## Week 4
+
+### Working with Data
+- [File IO](../working_with_data/file_io.ipynb)
+
+### Good Practice
+- [Readable Python](../good_practice/readable.ipynb)
