@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Gradient descent &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Literate Programming with Jupyter Notebooks &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -63,9 +63,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/gradient_descent';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks_introduction/Literate programming with Jupyter Notebooks';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -173,9 +171,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the_notebook_interface.html">The Jupyter Notebook interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
 <ul class="nav bd-sidenav">
@@ -257,7 +255,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/comp_chem_methods/gradient_descent.ipynb" target="_blank"
+      <li><a href="../_sources/notebooks_introduction/Literate programming with Jupyter Notebooks.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -326,9 +324,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -339,19 +335,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Gradient descent</h1>
+    <h1>Literate Programming with Jupyter Notebooks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -361,58 +349,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent">
-<h1>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this heading">#</a></h1>
-<p>The first algorithm that we will investigate considers only the gradient of the function and changes the reaction parameter based on this.
-Therefore we must define two functions, one for the energy of the potential energy surface (the Lennard-Jones potential outlined earlier) and another for the gradient of the potential energy surface (this is the first derivative of the Lennard-Jones potential).
-The function for the gradient of the potential energy surface is given below.</p>
-<div class="math notranslate nohighlight">
-\[ E'(r_{ij}) = -12\frac{A}{r_{ij}^{13}} + 6\frac{B}{r_{ij}^7}, \]</div>
-<p>where the parameters are the same as outlined <span class="xref myst">previously</span>.</p>
-<p>Considering the shape of the potential energy surface,</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">A</span> <span class="o">=</span> <span class="mf">1e5</span>
-<span class="n">B</span> <span class="o">=</span> <span class="mi">40</span>
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">12</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$r_</span><span class="si">{ij}</span><span class="s1">$/Å&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$E$/eV&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/99ec86db15e4c53e95b6679f2d6529a111286666bf0c9c20fbf280c01c0ab1eb.png" src="../_images/99ec86db15e4c53e95b6679f2d6529a111286666bf0c9c20fbf280c01c0ab1eb.png" />
-</div>
-</div>
-<p>When the gradient is positive, where <span class="math notranslate nohighlight">\(r_{ij} &gt; 4.1\)</span> Å, then we want to reduce the value of <span class="math notranslate nohighlight">\(r_{ij}\)</span>, such that we go downhill towards the minimum.
-Where the gradient is negative, <span class="math notranslate nohighlight">\(r_{ij} &lt; 4.1\)</span> Å, the value of <span class="math notranslate nohighlight">\(r_{ij}\)</span> needs to increase to move towards the minimum.
-This gives rise to the following algorithm,</p>
-<ol class="arabic">
-<li><p>An initial guess of the minimum energy distance is made</p></li>
-<li><p>The first derivative of the energy at that distance is calculated</p></li>
-<li><p>The distance is updated based on the following relationship,</p>
-<div class="math notranslate nohighlight">
-\[ r_{\text{new}} = r_{\text{old}} - \alpha E'(r_{\text{old}}), \]</div>
-<p>where, <span class="math notranslate nohighlight">\(E'(r)\)</span> is the first derivative of the energy, <span class="math notranslate nohighlight">\(r_{\text{old}}\)</span> is the original distance, and <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter.</p>
-</li>
-<li><p>Go to step 2.</p></li>
-</ol>
-<p>The hyperparameter, <span class="math notranslate nohighlight">\(\alpha\)</span>, is a variable that we need to find for our given optimisation, which scales the magnitude of the change in <span class="math notranslate nohighlight">\(r\)</span>.
-The figure below shows the gradient descent method in action, where <span class="math notranslate nohighlight">\(\alpha = 2.0\)</span>.</p>
-<p><img alt="" src="../_images/grad.gif" /></p>
-<section id="exercise">
-<h2>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
-<p>Implement a gradient descent algorithm by writing a function for the first derivative of the energy.
-Using a loop, iterate the algorithm at least 30 times.
-Test different starting points, values of <span class="math notranslate nohighlight">\(\alpha\)</span>, and numbers of iterations, by printing the distance <span class="math notranslate nohighlight">\(r_{ij}\)</span> for each iteration of the loop watch for the value converging.
-Use <span class="math notranslate nohighlight">\(A\)</span> = <span class="math notranslate nohighlight">\(1\times 10^{5}\)</span> eV Å<sup>12</sup>, <span class="math notranslate nohighlight">\(B\)</span> = <span class="math notranslate nohighlight">\(40\)</span> eV Å<sup>6</sup>.</p>
-<!-- [Worked Examples](https://pythoninchemistry.org/ch40208/comp_chem_methods/gradient_descent_exercises.html) --></section>
+  <section class="tex2jax_ignore mathjax_ignore" id="literate-programming-with-jupyter-notebooks">
+<h1>Literate Programming with Jupyter Notebooks<a class="headerlink" href="#literate-programming-with-jupyter-notebooks" title="Permalink to this heading">#</a></h1>
+<p>In traditional programming, the programmer writes text files that contain “source code”, that is then compiled or interpreted in order to be run. This code needs to be written in a way that it makes sense to the computer, but not necessarily so that it makes a lot of sense to another human (or the same human in the future).</p>
+<p>Jupyter Notebooks are an example of <strong>Literate Programming</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Literate_programming">Wikipedia</a>, where executable computer code is embedded into a rich document that also describes the programmer’s intent and thinking alongside the code. The order of the code follows the programmer’s logic, and the code is interspersed with natural language (writing), images, intermediate results, etc.</p>
+<p>This makes literate programming documents (such as Jupyter Notebooks) very useful for situations where being able to communicate what a piece of computer code <strong>does</strong> is as important as the code itself: for example, digital “lab books”, interactive data analysis, annotated code examples.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -428,7 +369,7 @@ Use <span class="math notranslate nohighlight">\(A\)</span> = <span class="math 
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./notebooks_introduction"
         },
         predefinedOutput: true
     }
@@ -451,20 +392,6 @@ Use <span class="math notranslate nohighlight">\(A\)</span> = <span class="math 
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

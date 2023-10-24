@@ -6,7 +6,7 @@ This was introduced [when you were first shown the Notebook interface](https://p
 We have made a lot of use of the Jupyter Notebook *Cells*, where we write our Python code. 
 However, in the dropdown menu (identified in the figure below), we can change the type of our cell. 
 
-![](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/good_practice/code_cell.png)
+![](https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/good_practice/code_cell.png)
 
 If we change this to *Markdown*, we can write plain text in our cell, and when it is *Run* the text is rendered clearly. 
 
@@ -28,7 +28,7 @@ Will render as
 We can also add figures to our text, for example, this page is written in Markdown and to add the figure above, the following was written: 
 
 ```
-![The cell type dropdown identified on a Notebook with the current selection as Code](https://github.com/pythoninchemistry/ch40208/raw/master/CH40208/good_practice/code_cell.png)
+![The cell type dropdown identified on a Notebook with the current selection as Code](https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/good_practice/code_cell.png)
 ```
 
 Where between the normal brackets is an image hosted online and the square brackets is a textual description of the figure. 
