@@ -40,16 +40,16 @@ parts:
 #  - file: good_practice/testing
 #    - file: good_practice/modularisation
 #      - file: good_practice/markdown
-#- caption: Computational Chemistry Methods
-#  chapters:
-#  - file: comp_chem_methods/potential_energy_surfaces
-#  - file: comp_chem_methods/geometry_optimisation
-#  - file: comp_chem_methods/minimisation
-#    sections:
-#    - file: comp_chem_methods/gradient_descent
-#    - file: comp_chem_methods/newtons
-#  - file: comp_chem_methods/scipy_opt_minimize
-#  - file: comp_chem_methods/vectors_and_matrices
+  - caption: Computational Chemistry Methods
+    chapters:
+      - file: comp_chem_methods/potential_energy_surfaces
+      - file: comp_chem_methods/geometry_optimisation
+      - file: comp_chem_methods/minimisation
+        sections:
+        - file: comp_chem_methods/gradient_descent
+        - file: comp_chem_methods/newtons
+        - file: comp_chem_methods/scipy_opt_minimize
+##  - file: comp_chem_methods/vectors_and_matrices
 #    sections:
 #    - file: comp_chem_methods/vectors
 #    - file: comp_chem_methods/vectors_in_python
