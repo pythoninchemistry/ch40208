@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -147,13 +147,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../_static/pic.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/pic.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
   
   
 </a></div>
@@ -203,6 +204,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">Potential Energy Surfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">Geometry Optimisation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/minimisation.html">Function minimisation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/gradient_descent.html">Gradient descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/newtons.html">Newton’s method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">Minimisation Libraries</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -653,10 +665,10 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: 0.13373044840241233
+      fun: 0.13373044840241516
         x: [ 7.422e+00  1.031e-01]
       nit: 10
-      jac: [ 1.471e-07  2.036e-06]
+      jac: [ 1.565e-07  2.073e-06]
  hess_inv: [[ 7.888e-01  1.263e-02]
             [ 1.263e-02  3.022e-04]]
      nfev: 63
@@ -688,7 +700,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644149462027; k = 0.10308255587972329
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644146261205; k = 0.10308255582982144
 </pre></div>
 </div>
 </div>
@@ -708,7 +720,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2480/2319394663.py:13: RuntimeWarning: overflow encountered in exp
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2364/2319394663.py:13: RuntimeWarning: overflow encountered in exp
   return a0 * np.exp(-k * t)
 </pre></div>
 </div>
@@ -725,7 +737,7 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.42164476326434 +/- 0.1583887665748318; k = 0.10308257141927114 +/- 0.0030883676626833898
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644764833303 +/- 0.15838876648067846; k = 0.1030825714527866 +/- 0.00308836764322863
 </pre></div>
 </div>
 </div>
@@ -836,8 +848,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

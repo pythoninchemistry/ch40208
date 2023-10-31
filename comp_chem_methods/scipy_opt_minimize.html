@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Minimization Libraries &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Minimisation Libraries &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -68,6 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/scipy_opt_minimize';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Newton’s method" href="newtons.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -147,13 +148,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../_static/pic.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/pic.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
   
   
 </a></div>
@@ -203,6 +205,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="potential_energy_surfaces.html">Potential Energy Surfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry_optimisation.html">Geometry Optimisation</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="minimisation.html">Function minimisation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newtons.html">Newton’s method</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Minimisation Libraries</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -339,7 +352,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Minimization Libraries</h1>
+    <h1>Minimisation Libraries</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -364,13 +377,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="minimization-libraries">
-<h1>Minimization Libraries<a class="headerlink" href="#minimization-libraries" title="Permalink to this heading">#</a></h1>
-<p>More than once in this course, we have discussed the fact that the power of the Python programming language comes from the vast ecosystem of libraries that we can utilise.
-Previously, you have worked to write your own minimization algorithms in Python, using loops and functions.
-However, potentially unsurprisingly, there is a library that we can use to help us with minimisation algorithms, which has built-in much more powerful algorithms than those you have used.
-The library is called <code class="docutils literal notranslate"><span class="pre">scipy</span></code> (pronounced Sigh-Pie), the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library has a huge variety of scientific computing utilities (including the <code class="docutils literal notranslate"><span class="pre">constants</span></code> module that you encountered <a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/ideal_gas_law.html#tip">previously</a>), but in this section, we will focus on the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> method.</p>
-<p>This method is within the <code class="docutils literal notranslate"><span class="pre">optimize</span></code> module of the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library, so to access this, we must import the following.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="minimisation-libraries">
+<h1>Minimisation Libraries<a class="headerlink" href="#minimisation-libraries" title="Permalink to this heading">#</a></h1>
+<p>Part of the power of the Python programming language comes from the vast ecosystem of pre-existing libraries that are available to use.
+Previously, you have written your own minimisation algorithms in Python, using loops and functions.
+Numerical function minimisation is a very common scientific problem, and, perhaps unsurprisingly, there is a library that we can use to do this.
+The library is called <code class="docutils literal notranslate"><span class="pre">scipy</span></code> (pronounced Sigh-Pie), and includes an enormous number of common scientific computing utilities. In this section, we will focus on the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> method (note the American spelling).</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">minimize</span></code> method is located within the <code class="docutils literal notranslate"><span class="pre">optimize</span></code> module of the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> library, so to access this, we must import it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
@@ -378,20 +391,22 @@ The library is called <code class="docutils literal notranslate"><span class="pr
 </div>
 </div>
 </div>
-<p>Let us first investigate the documentation of the minimize function, this is available <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html">online</a> or it can be printed in the Jupyter Notebook with the following command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">minimize</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+<p>Let us first investigate the documentation of the minimize function, this is available <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html">online</a> or it can be printed in the Jupyter Notebook using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">minimize</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We will not reproduce the documentation directly in this course text as it is very long, but we suggest that you study it.
-It is okay if you don’t understand everything discussed, we will here go through some practical application.</p>
-<p>From the documentation, we will see that the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> function has two required arguments:</p>
+<p>or</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>minimize?
+</pre></div>
+</div>
+<p>Because this documentation is long we will not reproduce it fully here, but it is useful to know where to look when figuring out how a new function or method behaves.</p>
+<p>From the documentation, we can see that the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> function takes two required arguments:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">fun</span></code>: this is the function that we will minimize</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x0</span></code>: this is our initial guess of the parameter used in the minimisation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fun</span></code>: this is the function that we will minimize.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x0</span></code>: this is our initial guess of the parameter used in the minimisation.</p></li>
 </ul>
-<p>The only optional argument we will look at from the documentation is the <code class="docutils literal notranslate"><span class="pre">args</span></code>, which are the invariant parameters in our model that should be passed to our function.
-We will overlook the other optional arguments for now, but the interested reader may want to investigate these further.</p>
-<p>We want to minimize the potential energy from the Lennard-Jones potential, this means writing a function for this, this is the <code class="docutils literal notranslate"><span class="pre">fun</span></code> discussed above.</p>
+<p>The only optional argument we will look at from the documentation is <code class="docutils literal notranslate"><span class="pre">args</span></code>, which are the invariant (unchanging) parameters in our model that should be passed to our function. For example, in the case of our Lennard-Jones potential, the precise shape of the function depends on the invariant parameters <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, so if we want to ue <code class="docutils literal notranslate"><span class="pre">minimize</span></code> to find the minimum of our function, we need to specify the relevant values of <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>To minimize the potential energy from the Lennard-Jones potential, we write a function for this, this is the <code class="docutils literal notranslate"><span class="pre">fun</span></code> discussed above. The parameter we are minimising with respect to (in this case, the interatomic separation, <span class="math notranslate nohighlight">\(r\)</span>) needs to be the first argument in our function, followed by any additional parameters that we are not varying as part of our minimisation (here <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lennard_jones</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
@@ -438,7 +453,7 @@ The <code class="docutils literal notranslate"><span class="pre">minimization</s
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: -0.003999999054071188
+      fun: -0.003999999054062213
         x: [ 4.135e+00]
       nit: 8
       jac: [-5.648e-06]
@@ -511,6 +526,15 @@ The value we are interested in is the minimum energy difference, which is the <c
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="newtons.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Newton’s method</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -577,8 +601,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -6,7 +6,7 @@ Chemists are often interested in finding **stationary points** on [potential ene
 
 **Stationary points** are points where the **gradient** of the **potential energy surface** is zero.
 
-i.e. in one dimension
+i.e., in one dimension
 
 $$\frac{\mathrm{d}E}{\mathrm{d}x}=0.$$
 

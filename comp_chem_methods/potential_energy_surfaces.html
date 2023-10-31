@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/potential_energy_surfaces';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geometry Optimisation" href="geometry_optimisation.html" />
+    <link rel="prev" title="Writing readable code" href="../good_practice/readable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -147,13 +149,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="../_static/pic.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/pic.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/pic.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
   
   
 </a></div>
@@ -203,6 +206,17 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Potential Energy Surfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry_optimisation.html">Geometry Optimisation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="minimisation.html">Function minimisation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newtons.html">Newton’s method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scipy_opt_minimize.html">Minimisation Libraries</a></li>
+</ul>
+</li>
 </ul>
 
     </div>
@@ -375,27 +389,33 @@ document.write(`
 <h2>Potential energy surface for a diatomic molecule<a class="headerlink" href="#potential-energy-surface-for-a-diatomic-molecule" title="Permalink to this heading">#</a></h2>
 <p>In general, the potential energy surface for a system of atoms is a complex multidimensional function. For a system containing <span class="math notranslate nohighlight">\(N\)</span> atoms the relative positions of these atoms is described by <span class="math notranslate nohighlight">\((3N-6)\)</span> <strong>degrees of freedom</strong> (this becomes <span class="math notranslate nohighlight">\((3N-5)\)</span> in the case of a linear molecule). This makes it difficult to visualise full potential energy surfaces in all but the simplest cases, and instead we often consider only those degrees of freedom that are chemically important—for example, how the energy of a system varies as we move along the <strong>reaction coordinate</strong>.</p>
 <p>Here, we will start with an example potential energy surface for a pair of atoms.</p>
-<p><img alt="" src="../_images/diatomic_molecule.png" /></p>
+<a class="reference internal image-reference" href="../_images/diatomic_molecule.png"><img alt="../_images/diatomic_molecule.png" class="align-center" src="../_images/diatomic_molecule.png" style="width: 250px;" /></a>
 <p>For a pair of atoms <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, we have only one degree of freedom: the interatomic separation <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span>.</p>
 <p>If these atoms form a diatomic molecule, then we might expect a potential energy surface that looks something like the figure below:</p>
-<p><img alt="" src="../_images/diatomic_potential_energy_surface.png" /></p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Here, we are making use of the <strong>Born–Oppenheimer approximation</strong> by assuming that the motions of atomic nuclei and electrons can be considered separately. Providing the <strong>Born–Oppenheimer approximation</strong> is valid, the energy of a system of atoms can be expressed as a function of the positions of the atomic nuclei.</p>
+</aside>
+<a class="reference internal image-reference" href="../_images/diatomic_potential_energy_surface.png"><img alt="../_images/diatomic_potential_energy_surface.png" class="align-center" src="../_images/diatomic_potential_energy_surface.png" style="width: 400px;" /></a>
 <p>Here the <span class="math notranslate nohighlight">\(x\)</span> axis is our degree of freedom; the interatomic separation <span class="math notranslate nohighlight">\(r_{AB}\)</span>, and the <span class="math notranslate nohighlight">\(y\)</span> axis is the energy of our molecule.</p>
 <p>This potential energy surface has a single minimum energy at <span class="math notranslate nohighlight">\(r_\mathrm{eq}\)</span>, which is the equilibrium separation of the two atoms <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <p>If we move <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> closer together then the energy continually increases, due to the increasing repulsion between our two atoms. This repulsive interaction at short distances is due to <strong>Pauli repulsion</strong> , and is due to the <strong>Pauli exclusion principle</strong>.</p>
 <p>If we move <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> further apart then the energy again increases, but only up to a point. At sufficiently large interatomic separations the energy plateaus. This corresponds to “breaking” the bond between atoms <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The depth of the potential energy well, <span class="math notranslate nohighlight">\(D_\mathrm{e}\)</span> is slightly larger than the <strong>bond dissociation energy</strong>, <span class="math notranslate nohighlight">\(D_0\)</span>, because it does not accounting for vibrational zero-point energy.</p>
+</aside>
 <p>The difference in potential energy between the minimum energy at the equilibrium distance <span class="math notranslate nohighlight">\(r_\mathrm{eq}\)</span> and the plateau at large interatomic separations is given by <span class="math notranslate nohighlight">\(-D_\mathrm{e}\)</span> which is the depth of the potential energy well for the bond <span class="math notranslate nohighlight">\(A\)</span>—<span class="math notranslate nohighlight">\(B\)</span>.</p>
-<p>Note 1: this is slightly larger than the <strong>bond dissociation energy</strong> <span class="math notranslate nohighlight">\(D_0\)</span> because we are not accounting for vibrational <strong>zero-point energy</strong> here.</p>
-<p>Note 2: Here we make use of the <strong>Born–Oppenheimer approximation</strong> and assume that the motions of atomic nuclei and electrons can be considered separately. Providing the <strong>Born–Oppenheimer approximation</strong> is valid, the energy of a system of atoms can be expressed as a function of the positions of the atomic nuclei.</p>
 </section>
 <section id="potential-energy-surface-for-a-system-of-3-atoms">
 <h2>Potential energy surface for a system of 3 atoms.<a class="headerlink" href="#potential-energy-surface-for-a-system-of-3-atoms" title="Permalink to this heading">#</a></h2>
 <section id="collinear-case">
 <h3>Collinear case<a class="headerlink" href="#collinear-case" title="Permalink to this heading">#</a></h3>
 <p>For a system of three atoms we can have two cases. If the atoms are collinear then we have two degrees of freedom.</p>
-<p><img alt="" src="../_images/3-body_collinear.png" /></p>
+<a class="reference internal image-reference" href="../_images/3-body_collinear.png"><img alt="../_images/3-body_collinear.png" class="align-center" src="../_images/3-body_collinear.png" style="width: 400px;" /></a>
 <p>In the example above, the relative positions of the atoms A, B, and C are given by the interatomic distances <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span> and <span class="math notranslate nohighlight">\(r_\mathrm{BC}\)</span>.</p>
 <p>The figure below shows the potential energy surface for a reaction A + BC → AB + C via a collinear transition state.</p>
-<p><img alt="" src="../_images/3-body_collinear_PES.png" /></p>
+<a class="reference internal image-reference" href="../_images/3-body_collinear_PES.png"><img alt="../_images/3-body_collinear_PES.png" class="align-center" src="../_images/3-body_collinear_PES.png" style="width: 700px;" /></a>
 <p>In our initial configuration, B and C are bonded, so <span class="math notranslate nohighlight">\(r_\mathrm{BC}\)</span> is small; while A and B are well separated, so <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span> is large.</p>
 <p>In the final configuration, A and B are bonded, so <span class="math notranslate nohighlight">\(r_\mathrm{AB}\)</span> is small; while B and C are well separated, so <span class="math notranslate nohighlight">\(r_\mathrm{BC}\)</span> is large.</p>
 <p>Note that the two-dimensional potential energy surface for this reaction allows us to specify the <strong>minimum energy pathway</strong> from the initial configuration (A + BC) to the final configuration (AB + C) (shown in green above). This minimum energy pathway represents the <strong>reaction coordinate</strong> for this reaction. The maximum energy point along this pathway is the <strong>transition state</strong> along our <strong>reaction coordinate</strong>.</p>
@@ -413,17 +433,17 @@ document.write(`
 <p>For systems of atoms with <span class="math notranslate nohighlight">\(N&gt;3\)</span> the number of degrees of freedom quickly becomes too large to allow us to describe the full potential energy surface graphically.</p>
 <p>In many cases, however, we can focus on a relevant subset of the full set of degrees of freedom; for example considering the potential energy profile along a <strong>reaction coordinate</strong>, or focussing on one particularly important degree of freedom.</p>
 <p>As an example, consider the potential energy of dichloroethane, C<sub>2</sub>2H<sub>4</sub>Cl<sub>2</sub> as a function of the Cl—C—C—Cl torsion angle <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
-<p><img alt="" src="../_images/C2H4Cl2_PES_intro.png" /></p>
+<a class="reference internal image-reference" href="../_images/C2H4Cl2_PES_intro.png"><img alt="../_images/C2H4Cl2_PES_intro.png" class="align-center" src="../_images/C2H4Cl2_PES_intro.png" style="width: 600px;" /></a>
 <p>Because we are considering only one degree of freedom, we can plot this potential energy surface in two dimensions.</p>
 <p>Despite projecting a single degree of freedom out of the full 12-dimensional potential energy surface, this gives us a lot of chemically relevant information about the molecule:</p>
-<p><img alt="" src="../_images/C2H4Cl2_PES.png" /></p>
+<a class="reference internal image-reference" href="../_images/C2H4Cl2_PES.png"><img alt="../_images/C2H4Cl2_PES.png" class="align-center" src="../_images/C2H4Cl2_PES.png" style="width: 350px;" /></a>
 <ul class="simple">
 <li><p><strong>1</strong> is the lowest energy configuration, when <span class="math notranslate nohighlight">\(\theta = 180^\circ\)</span>, corresponding to the two C–Cl bond having opposite orientations, i.e. an <strong>anti-staggered</strong> conformation. This is the lowest energy point on the potential energy surface, called the <strong>global minimum</strong>.</p></li>
 <li><p><strong>2</strong> is a <strong>local maximum</strong> on the potential energy surface. This corresponds to an <strong>eclipsed</strong> conformation, and gives us the energy required to bring each C–Cl bond coplanar with a C–H bond.</p></li>
 <li><p><strong>3</strong> is a <strong>local minimum</strong>. Increasing or decreasing <span class="math notranslate nohighlight">\(\theta\)</span> causes the energy to increase, yet the energy is higher than at the <strong>global minimum</strong>. This corresponds to a <strong>staggered</strong> conformation where the angle between the two C–Cl bonds in <span class="math notranslate nohighlight">\(\pm 60^\circ\)</span>. Note that there are two of these local minima that are equivalent by symmetry.</p></li>
 <li><p><strong>4</strong> is the <strong>global maximum</strong>, i.e. the highest energy position on this potential energy surface. This corresponds to the <strong>eclipsed</strong> conformation with both C–Cl bonds coplanar.</p></li>
 </ul>
-<p><img alt="" src="../_images/C2H4Cl2_conformers.png" /></p>
+<a class="reference internal image-reference" href="../_images/C2H4Cl2_conformers.png"><img alt="../_images/C2H4Cl2_conformers.png" class="align-center" src="../_images/C2H4Cl2_conformers.png" style="width: 600px;" /></a>
 </section>
 </section>
 
@@ -457,6 +477,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../good_practice/readable.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Writing readable code</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="geometry_optimisation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Geometry Optimisation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -526,8 +564,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>
