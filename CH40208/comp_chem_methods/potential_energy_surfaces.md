@@ -10,13 +10,22 @@ In general, the potential energy surface for a system of atoms is a complex mult
 
 Here, we will start with an example potential energy surface for a pair of atoms. 
 
-![](figures/diatomic_molecule.png)
+```{image} figures/diatomic_molecule.png
+:width: 250px
+:align: center
+```
 
 For a pair of atoms $A$ and $B$, we have only one degree of freedom: the interatomic separation $r_\mathrm{AB}$.
 
 If these atoms form a diatomic molecule, then we might expect a potential energy surface that looks something like the figure below:
+```{margin}
+Here, we are making use of the **Born–Oppenheimer approximation** by assuming that the motions of atomic nuclei and electrons can be considered separately. Providing the **Born–Oppenheimer approximation** is valid, the energy of a system of atoms can be expressed as a function of the positions of the atomic nuclei.
+```
 
-![](figures/diatomic_potential_energy_surface.png)
+```{image} figures/diatomic_potential_energy_surface.png
+:width: 400px
+:align: center
+```
 
 Here the $x$ axis is our degree of freedom; the interatomic separation $r_{AB}$, and the $y$ axis is the energy of our molecule.
 
@@ -26,11 +35,11 @@ If we move $A$ and $B$ closer together then the energy continually increases, du
 
 If we move $A$ and $B$ further apart then the energy again increases, but only up to a point. At sufficiently large interatomic separations the energy plateaus. This corresponds to "breaking" the bond between atoms $A$ and $B$.
 
+```{margin}
+The depth of the potential energy well, $D_\mathrm{e}$ is slightly larger than the **bond dissociation energy**, $D_0$, because it does not accounting for vibrational zero-point energy.
+```
 The difference in potential energy between the minimum energy at the equilibrium distance $r_\mathrm{eq}$ and the plateau at large interatomic separations is given by $-D_\mathrm{e}$ which is the depth of the potential energy well for the bond $A$—$B$.
 
-Note 1: this is slightly larger than the **bond dissociation energy** $D_0$ because we are not accounting for vibrational **zero-point energy** here.
-
-Note 2: Here we make use of the **Born–Oppenheimer approximation** and assume that the motions of atomic nuclei and electrons can be considered separately. Providing the **Born–Oppenheimer approximation** is valid, the energy of a system of atoms can be expressed as a function of the positions of the atomic nuclei.
 
 ## Potential energy surface for a system of 3 atoms.
 
@@ -38,13 +47,19 @@ Note 2: Here we make use of the **Born–Oppenheimer approximation** and assume 
 
 For a system of three atoms we can have two cases. If the atoms are collinear then we have two degrees of freedom.
 
-![](figures/3-body_collinear.png)
+```{image} figures/3-body_collinear.png
+:width: 400px
+:align: center
+```
 
 In the example above, the relative positions of the atoms A, B, and C are given by the interatomic distances $r_\mathrm{AB}$ and $r_\mathrm{BC}$.
 
 The figure below shows the potential energy surface for a reaction A + BC → AB + C via a collinear transition state.
 
-![](figures/3-body_collinear_PES.png)
+```{image} figures/3-body_collinear_PES.png
+:width: 700px
+:align: center
+```
 
 In our initial configuration, B and C are bonded, so $r_\mathrm{BC}$ is small; while A and B are well separated, so $r_\mathrm{AB}$ is large.
 
@@ -71,17 +86,26 @@ In many cases, however, we can focus on a relevant subset of the full set of deg
 
 As an example, consider the potential energy of dichloroethane, C<sub>2</sub>2H<sub>4</sub>Cl<sub>2</sub> as a function of the Cl&mdash;C&mdash;C&mdash;Cl torsion angle $\theta$.
 
-![](figures/C2H4Cl2_PES_intro.png)
+```{image} figures/C2H4Cl2_PES_intro.png
+:width: 600px
+:align: center
+```
 
 Because we are considering only one degree of freedom, we can plot this potential energy surface in two dimensions.
 
 Despite projecting a single degree of freedom out of the full 12-dimensional potential energy surface, this gives us a lot of chemically relevant information about the molecule:
 
-![](figures/C2H4Cl2_PES.png)
+```{image} figures/C2H4Cl2_PES.png
+:width: 350px
+:align: center
+```
 
 - **1** is the lowest energy configuration, when $\theta = 180^\circ$, corresponding to the two C–Cl bond having opposite orientations, i.e. an **anti-staggered** conformation. This is the lowest energy point on the potential energy surface, called the **global minimum**.
 - **2** is a **local maximum** on the potential energy surface. This corresponds to an **eclipsed** conformation, and gives us the energy required to bring each C–Cl bond coplanar with a C–H bond.
 - **3** is a **local minimum**. Increasing or decreasing $\theta$ causes the energy to increase, yet the energy is higher than at the **global minimum**. This corresponds to a **staggered** conformation where the angle between the two C–Cl bonds in $\pm 60^\circ$. Note that there are two of these local minima that are equivalent by symmetry.
 - **4** is the **global maximum**, i.e. the highest energy position on this potential energy surface. This corresponds to the **eclipsed** conformation with both C–Cl bonds coplanar.
 
-![](figures/C2H4Cl2_conformers.png)
+```{image} figures/C2H4Cl2_conformers.png
+:width: 600px
+:align: center
+```
