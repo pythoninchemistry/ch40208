@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/curve_fitting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Writing readable code" href="../good_practice/readable.html" />
+    <link rel="prev" title="File input and output" href="file_io.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -196,10 +198,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="numpy_arrays.html">NumPy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Plotting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_io.html">File input and output</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Model fitting</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
 <ul class="nav bd-sidenav">
@@ -363,7 +366,6 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-linear-regression">Non-linear regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
             </nav>
         </div>
@@ -377,7 +379,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="model-fitting">
 <h1>Model fitting<a class="headerlink" href="#model-fitting" title="Permalink to this heading">#</a></h1>
-<p>A lot of chemical analysis relies on our ability to fit a “line of best fit” to some data.
+<p>Often, when working with experimental data, we wish to describe our many data points  chemical analysis relies on our ability to fit a “line of best fit” to some data.
 For example, considering the determination of the activation energy, <span class="math notranslate nohighlight">\(E_a\)</span>, of some reaction from an Arrhenius relationship,</p>
 <div class="math notranslate nohighlight">
 \[ k(T) = A \exp{\frac{-E_a}{RT}}, \]</div>
@@ -412,7 +414,7 @@ The data for this is available <a class="reference external" href="https://raw.g
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/bb57a94e7d74200602ca5a11fb3c1edaebfbfa152b54ca20509e270a0c0dc1a7.png" src="../_images/bb57a94e7d74200602ca5a11fb3c1edaebfbfa152b54ca20509e270a0c0dc1a7.png" />
+<img alt="../_images/6621d1544962ac94623a2546347ba5408a0c2943e7cf6cb4f8058bfa7c3d3af5.png" src="../_images/6621d1544962ac94623a2546347ba5408a0c2943e7cf6cb4f8058bfa7c3d3af5.png" />
 </div>
 </div>
 <p>Alternatively, we plot this as a straight line.</p>
@@ -426,7 +428,7 @@ The data for this is available <a class="reference external" href="https://raw.g
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a1ac8385fa5b0c0f95285d2c066fcc70802837440fad8d41fe1376cdebaf0a06.png" src="../_images/a1ac8385fa5b0c0f95285d2c066fcc70802837440fad8d41fe1376cdebaf0a06.png" />
+<img alt="../_images/7251826ba9c60304d1d4aaa99441a6092d3877146a09b62e1d8ada76f764f2d7.png" src="../_images/7251826ba9c60304d1d4aaa99441a6092d3877146a09b62e1d8ada76f764f2d7.png" />
 </div>
 </div>
 <p>Using Python, we can fit this data in either configuration, either by performing a <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_regression">linear regression</a> or by fitting a line of best fit.</p>
@@ -529,7 +531,7 @@ The two parts that we are most interested in are the <code class="docutils liter
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fee8cc158db456acae63afb3db3996ee6df641b9b07bc86ea56ac7d7454d043a.png" src="../_images/fee8cc158db456acae63afb3db3996ee6df641b9b07bc86ea56ac7d7454d043a.png" />
+<img alt="../_images/ca8c693a80060eaabd5e82b33d7bd7d6db2bee965515bc5ae6020b29688ee4a2.png" src="../_images/ca8c693a80060eaabd5e82b33d7bd7d6db2bee965515bc5ae6020b29688ee4a2.png" />
 </div>
 </div>
 </section>
@@ -593,7 +595,7 @@ The value that we will minimize is known as the <span class="math notranslate no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8830b1af17a253446370aa5c30516c54aa269f62b2d27d90395d647e1fdbe642.png" src="../_images/8830b1af17a253446370aa5c30516c54aa269f62b2d27d90395d647e1fdbe642.png" />
+<img alt="../_images/e2a8684b8938a19f1fe05698d17cab14b8b3a7ee08b4997a80797cc26b6be865.png" src="../_images/e2a8684b8938a19f1fe05698d17cab14b8b3a7ee08b4997a80797cc26b6be865.png" />
 </div>
 </div>
 <p>This reaction has a first-order rate equation, this will be our “model” that we will compare to the data, where the <span class="math notranslate nohighlight">\([A]_0\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are the varying parameters.
@@ -690,7 +692,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e59d3cc8bf202cbd6e57c4c78cca7b4a65d97a2b6cfe2e07dcedb199334c54e9.png" src="../_images/e59d3cc8bf202cbd6e57c4c78cca7b4a65d97a2b6cfe2e07dcedb199334c54e9.png" />
+<img alt="../_images/5148fbc6a2b873812fcc1fff61558949ea78c39d893f8bc7c0cabcc7049aead6.png" src="../_images/5148fbc6a2b873812fcc1fff61558949ea78c39d893f8bc7c0cabcc7049aead6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -720,7 +722,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2364/2319394663.py:13: RuntimeWarning: overflow encountered in exp
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2353/2319394663.py:13: RuntimeWarning: overflow encountered in exp
   return a0 * np.exp(-k * t)
 </pre></div>
 </div>
@@ -742,14 +744,6 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
 </div>
 </div>
 </div>
-</section>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Modify the above first-order rate fitting using the <code class="docutils literal notranslate"><span class="pre">minimize</span></code> method to consider a <em>y</em>-uncertainty of 5 %.</p></li>
-<li><p>By investigating the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">documentation for the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code></a>, determine how this uncertainty would be included in the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> method.</p></li>
-</ol>
-<p><a class="reference external" href="https://pythoninchemistry.org/ch40208/working_with_data/curve_fitting_exercises.html">Worked Examples</a></p>
 </section>
 </section>
 
@@ -783,6 +777,24 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="file_io.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">File input and output</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../good_practice/readable.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Writing readable code</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -800,7 +812,6 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#non-linear-regression">Non-linear regression</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
   </nav></div>
 
