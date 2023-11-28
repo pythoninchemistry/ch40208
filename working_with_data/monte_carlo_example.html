@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -140,6 +140,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../introduction/about_this_book.html">
@@ -214,6 +215,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/gradient_descent.html">Gradient descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/newtons.html">Newton’s method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">Minimisation Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">Working with vectors and matrices</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">Working with matrices in Python</a></li>
 </ul>
 </li>
 </ul>
@@ -322,6 +330,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -331,6 +340,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -403,7 +413,7 @@ We have been given <a class="reference external" href="https://pythoninchemistry
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/dbc14a77c838afd402ba0dbee9180dfd6d028897ab436323df1a745c4e5ebe00.png" src="../_images/dbc14a77c838afd402ba0dbee9180dfd6d028897ab436323df1a745c4e5ebe00.png" />
+<img alt="../_images/d02363b499211042bd80ed2c0b9cf0672a3250fc736a705e27359e70aa1a1f7b.png" src="../_images/d02363b499211042bd80ed2c0b9cf0672a3250fc736a705e27359e70aa1a1f7b.png" />
 </div>
 </div>
 <section id="our-model">
@@ -453,7 +463,7 @@ Files for these spectra are available <a class="reference external" href="https:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/93a77dc7069bb066cad4a2455a79a641c941bc0783bdf4c8fb768cdf2482b88e.png" src="../_images/93a77dc7069bb066cad4a2455a79a641c941bc0783bdf4c8fb768cdf2482b88e.png" />
+<img alt="../_images/28860e8c61bd8b451a6f950b3a2f3c261d09434d2eb1a4fd17668f93c88bda4a.png" src="../_images/28860e8c61bd8b451a6f950b3a2f3c261d09434d2eb1a4fd17668f93c88bda4a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -467,7 +477,7 @@ Files for these spectra are available <a class="reference external" href="https:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a7ef8d37c310a4944fb7210006f4bf1e320c83d60a30ff1f8444231cbc146433.png" src="../_images/a7ef8d37c310a4944fb7210006f4bf1e320c83d60a30ff1f8444231cbc146433.png" />
+<img alt="../_images/7b7aed5c762757b83505e204b34dec7802885a9b53b790ac20f7aacc95d181d7.png" src="../_images/7b7aed5c762757b83505e204b34dec7802885a9b53b790ac20f7aacc95d181d7.png" />
 </div>
 </div>
 </section>
@@ -532,7 +542,7 @@ While the <code class="docutils literal notranslate"><span class="pre">np.zeros<
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/fc3a806b729f2056fd51e0bcd73c281e0da811ac8e56030206e86364b5090a9a.png" src="../_images/fc3a806b729f2056fd51e0bcd73c281e0da811ac8e56030206e86364b5090a9a.png" />
+<img alt="../_images/08216cc372dba4ebc2c9d1274ae8d72ade5aaa689b559cb299c6064eb5a12af0.png" src="../_images/08216cc372dba4ebc2c9d1274ae8d72ade5aaa689b559cb299c6064eb5a12af0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -546,7 +556,7 @@ While the <code class="docutils literal notranslate"><span class="pre">np.zeros<
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4ccdcf997b7d74e151b83975f2a308b7994739483cb01252e7962f0504459ff3.png" src="../_images/4ccdcf997b7d74e151b83975f2a308b7994739483cb01252e7962f0504459ff3.png" />
+<img alt="../_images/c9e1f23255848244f6b60bf6566275d2ca41192b0b2b00208ab1125d02be8306.png" src="../_images/c9e1f23255848244f6b60bf6566275d2ca41192b0b2b00208ab1125d02be8306.png" />
 </div>
 </div>
 </section>
@@ -568,7 +578,7 @@ Plot this data on top of the mixture data and see if it agrees visually.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/53b1240a8af51b0b37489d7fb26682d0767f36b5b65d977d866131939644eb62.png" src="../_images/53b1240a8af51b0b37489d7fb26682d0767f36b5b65d977d866131939644eb62.png" />
+<img alt="../_images/a1a8e089fec3629d33d71600b6ef82bf196b3ba3fba2f2366f7c00e937359200.png" src="../_images/a1a8e089fec3629d33d71600b6ef82bf196b3ba3fba2f2366f7c00e937359200.png" />
 </div>
 </div>
 <p>Now that our model is working, we can use the methodology introduced previously to minimise the difference between our model and the data.</p>
@@ -706,7 +716,7 @@ Using the statistical function in NumPy, calculate the mean and standard deviati
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e04ce2c69e820e0f5c5c0cd418191ba7509629a7878eb2a52df06d524bd843db.png" src="../_images/e04ce2c69e820e0f5c5c0cd418191ba7509629a7878eb2a52df06d524bd843db.png" />
+<img alt="../_images/4e4b88ec3e3cca4772099bc0f38aa56b2385321095655e4268d8bed1bcfde49a.png" src="../_images/4e4b88ec3e3cca4772099bc0f38aa56b2385321095655e4268d8bed1bcfde49a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -716,7 +726,7 @@ Using the statistical function in NumPy, calculate the mean and standard deviati
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.3223892130479467, 0.002838913390915412)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.3228752554355996, 0.0027358004828767703)
 </pre></div>
 </div>
 </div>
@@ -752,7 +762,7 @@ Using the statistical function in NumPy, calculate the mean and standard deviati
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -794,6 +804,7 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -820,8 +831,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

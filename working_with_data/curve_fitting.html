@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -142,6 +142,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../introduction/about_this_book.html">
@@ -216,6 +217,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/gradient_descent.html">Gradient descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/newtons.html">Newton’s method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">Minimisation Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">Working with vectors and matrices</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">Working with matrices in Python</a></li>
 </ul>
 </li>
 </ul>
@@ -324,6 +332,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -333,6 +342,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -414,7 +424,7 @@ The data for this is available <a class="reference external" href="https://raw.g
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6621d1544962ac94623a2546347ba5408a0c2943e7cf6cb4f8058bfa7c3d3af5.png" src="../_images/6621d1544962ac94623a2546347ba5408a0c2943e7cf6cb4f8058bfa7c3d3af5.png" />
+<img alt="../_images/3495092268dbfbeb94d068d8530840e31cbb189b6ba7b2070795746b33692c13.png" src="../_images/3495092268dbfbeb94d068d8530840e31cbb189b6ba7b2070795746b33692c13.png" />
 </div>
 </div>
 <p>Alternatively, we plot this as a straight line.</p>
@@ -428,7 +438,7 @@ The data for this is available <a class="reference external" href="https://raw.g
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/7251826ba9c60304d1d4aaa99441a6092d3877146a09b62e1d8ada76f764f2d7.png" src="../_images/7251826ba9c60304d1d4aaa99441a6092d3877146a09b62e1d8ada76f764f2d7.png" />
+<img alt="../_images/0d0ddabe18db7c2583d4701b597bd17983314260c6b48c0d95b6bb1945b68560.png" src="../_images/0d0ddabe18db7c2583d4701b597bd17983314260c6b48c0d95b6bb1945b68560.png" />
 </div>
 </div>
 <p>Using Python, we can fit this data in either configuration, either by performing a <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_regression">linear regression</a> or by fitting a line of best fit.</p>
@@ -531,7 +541,7 @@ The two parts that we are most interested in are the <code class="docutils liter
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ca8c693a80060eaabd5e82b33d7bd7d6db2bee965515bc5ae6020b29688ee4a2.png" src="../_images/ca8c693a80060eaabd5e82b33d7bd7d6db2bee965515bc5ae6020b29688ee4a2.png" />
+<img alt="../_images/27c1cf74734d03a08bcd996dd42cb2aa4eae228ef3b993c93c1a727eabbb790f.png" src="../_images/27c1cf74734d03a08bcd996dd42cb2aa4eae228ef3b993c93c1a727eabbb790f.png" />
 </div>
 </div>
 </section>
@@ -595,7 +605,7 @@ The value that we will minimize is known as the <span class="math notranslate no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/e2a8684b8938a19f1fe05698d17cab14b8b3a7ee08b4997a80797cc26b6be865.png" src="../_images/e2a8684b8938a19f1fe05698d17cab14b8b3a7ee08b4997a80797cc26b6be865.png" />
+<img alt="../_images/5d50b8fc7b1816c8ba2f05844872b326ca3e43f3a22cb807528c0a6739722c11.png" src="../_images/5d50b8fc7b1816c8ba2f05844872b326ca3e43f3a22cb807528c0a6739722c11.png" />
 </div>
 </div>
 <p>This reaction has a first-order rate equation, this will be our “model” that we will compare to the data, where the <span class="math notranslate nohighlight">\([A]_0\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are the varying parameters.
@@ -667,10 +677,10 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
   success: True
    status: 0
-      fun: 0.13373044840241516
+      fun: 0.13373044840241233
         x: [ 7.422e+00  1.031e-01]
       nit: 10
-      jac: [ 1.565e-07  2.073e-06]
+      jac: [ 1.471e-07  2.036e-06]
  hess_inv: [[ 7.888e-01  1.263e-02]
             [ 1.263e-02  3.022e-04]]
      nfev: 63
@@ -692,7 +702,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/5148fbc6a2b873812fcc1fff61558949ea78c39d893f8bc7c0cabcc7049aead6.png" src="../_images/5148fbc6a2b873812fcc1fff61558949ea78c39d893f8bc7c0cabcc7049aead6.png" />
+<img alt="../_images/5dd6130618d563c25bff57f976a40f95657f352ccb55146732980e3e0e8009f8.png" src="../_images/5dd6130618d563c25bff57f976a40f95657f352ccb55146732980e3e0e8009f8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -702,7 +712,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644146261205; k = 0.10308255582982144
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644149462027; k = 0.10308255587972329
 </pre></div>
 </div>
 </div>
@@ -722,7 +732,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2353/2319394663.py:13: RuntimeWarning: overflow encountered in exp
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2558/2319394663.py:13: RuntimeWarning: overflow encountered in exp
   return a0 * np.exp(-k * t)
 </pre></div>
 </div>
@@ -739,7 +749,7 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644764833303 +/- 0.15838876648067846; k = 0.1030825714527866 +/- 0.00308836764322863
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.42164476326434 +/- 0.1583887665748318; k = 0.10308257141927114 +/- 0.0030883676626833898
 </pre></div>
 </div>
 </div>
@@ -775,7 +785,7 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="file_io.html"
@@ -833,6 +843,7 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -859,8 +870,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

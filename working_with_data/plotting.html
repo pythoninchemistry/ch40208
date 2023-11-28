@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -140,6 +140,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../introduction/about_this_book.html">
@@ -214,6 +215,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/gradient_descent.html">Gradient descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/newtons.html">Newton’s method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">Minimisation Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">Working with vectors and matrices</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">Working with matrices in Python</a></li>
 </ul>
 </li>
 </ul>
@@ -322,6 +330,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -331,6 +340,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -386,7 +396,7 @@ Let’s see an example,</p>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Values in the array: [-5.   -3.75 -2.5  -1.25  0.    1.25  2.5   3.75  5.  ]
 </pre></div>
 </div>
-<img alt="../_images/01e5481baaa7e2b07abcbedf3855e49d676c4d9de1a898cee15960bab0d20d5a.png" src="../_images/01e5481baaa7e2b07abcbedf3855e49d676c4d9de1a898cee15960bab0d20d5a.png" />
+<img alt="../_images/b025e72da014e0d487f70a5a6014a7a15e9b51ddc9faf85443fb2cc5f62bc89e.png" src="../_images/b025e72da014e0d487f70a5a6014a7a15e9b51ddc9faf85443fb2cc5f62bc89e.png" />
 </div>
 </div>
 <p>In the cell above we do the following:</p>
@@ -455,7 +465,7 @@ As in much of the Python programming language, if you want to do something with 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ad63d54831053e97b9d3fa4629b51cd99c61ab7a2e6498c244dc342cae2c163b.png" src="../_images/ad63d54831053e97b9d3fa4629b51cd99c61ab7a2e6498c244dc342cae2c163b.png" />
+<img alt="../_images/96e4ff76b25f5853f8848454c75edf6df3b78ff59336a91b2f13c7e48a9583a5.png" src="../_images/96e4ff76b25f5853f8848454c75edf6df3b78ff59336a91b2f13c7e48a9583a5.png" />
 </div>
 </div>
 <p>Note, that the <code class="docutils literal notranslate"><span class="pre">'o'</span></code> in the <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> function resulted in a scatter plot, with no line joining the points.
@@ -472,7 +482,7 @@ Additionally, strings given to the <code class="docutils literal notranslate"><s
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/310184ac4115abad1f6076c6eb6831e942105bfa49212c3fa024a3674159cc85.png" src="../_images/310184ac4115abad1f6076c6eb6831e942105bfa49212c3fa024a3674159cc85.png" />
+<img alt="../_images/4bff28c7f7a7fc4ffb7685fe80073fcfacda8f99ec65c6e31e97e61318f30dcc.png" src="../_images/4bff28c7f7a7fc4ffb7685fe80073fcfacda8f99ec65c6e31e97e61318f30dcc.png" />
 </div>
 </div>
 <p>Above, the <code class="docutils literal notranslate"><span class="pre">plt.errorbar()</span></code> function is used instead of the <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> function, be aware that the <code class="docutils literal notranslate"><span class="pre">'o'</span></code> argument will only work for this function if preceded by <code class="docutils literal notranslate"><span class="pre">marker=</span></code>.
@@ -507,7 +517,7 @@ Additionally, we can produce a logarithmic <em>y</em>-axis (particularly useful 
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="numpy_arrays.html"
@@ -550,6 +560,7 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -576,8 +587,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/matrices';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with matrices in Python" href="matrices_in_python.html" />
+    <link rel="prev" title="Working with vectors in Python" href="vectors_in_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -140,6 +142,7 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../introduction/about_this_book.html">
@@ -207,13 +210,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="potential_energy_surfaces.html">Potential Energy Surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geometry_optimisation.html">Geometry Optimisation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="minimisation.html">Function minimisation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="newtons.html">Newton’s method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scipy_opt_minimize.html">Minimisation Libraries</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="vectors_and_matrices.html">Working with vectors and matrices</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices_in_python.html">Working with matrices in Python</a></li>
 </ul>
 </li>
 </ul>
@@ -322,6 +332,7 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -331,6 +342,7 @@ document.write(`
   </button>
 `);
 </script>
+
 
 <script>
 document.write(`
@@ -390,7 +402,7 @@ document.write(`
 <figure class="align-default" id="rotation-example-fig">
 <a class="reference internal image-reference" href="../_images/rotation_example.svg"><img alt="../_images/rotation_example.svg" src="../_images/rotation_example.svg" width="650px" /></a>
 <figcaption>
-<p><span class="caption-text">An example of a linear transformation: rotation by 90° anticlockwise.</span><a class="headerlink" href="#rotation-example-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">An example of a linear transformation: rotation by 90° anticlockwise.</span><a class="headerlink" href="#rotation-example-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>This shows an initial basis with <span class="math notranslate nohighlight">\(\mathbf{i}=\begin{bmatrix}1\\0\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}=\begin{bmatrix}0\\1\end{bmatrix}\)</span>, and a vector <span class="math notranslate nohighlight">\(\mathbf{r}\)</span>:</p>
@@ -454,7 +466,7 @@ document.write(`
 <figure class="align-default" id="rotation-example-inv-fig">
 <a class="reference internal image-reference" href="../_images/rotation_example_inv.svg"><img alt="../_images/rotation_example_inv.svg" src="../_images/rotation_example_inv.svg" width="650px" /></a>
 <figcaption>
-<p><span class="caption-text">Rotating back by 90° clockwise is the <strong>inverse</strong> of our previous 90° anti-clockwise rotation, and is described by the <strong>inverse</strong> matrix operation.</span><a class="headerlink" href="#rotation-example-inv-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Rotating back by 90° clockwise is the <strong>inverse</strong> of our previous 90° anti-clockwise rotation, and is described by the <strong>inverse</strong> matrix operation.</span><a class="headerlink" href="#rotation-example-inv-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -497,7 +509,7 @@ document.write(`
 <figure class="align-default" id="rotation-example-twice-fig">
 <a class="reference internal image-reference" href="../_images/rotation_example_twice.svg"><img alt="../_images/rotation_example_twice.svg" src="../_images/rotation_example_twice.svg" width="650px" /></a>
 <figcaption>
-<p><span class="caption-text">Rotating by 180° corresponds to rotating by 90° twice. We can calculate the corresponding matrix operation by considering what happens when we operate on our original basis <em>twice</em> with our 90°-rotation matrix.</span><a class="headerlink" href="#rotation-example-twice-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Rotating by 180° corresponds to rotating by 90° twice. We can calculate the corresponding matrix operation by considering what happens when we operate on our original basis <em>twice</em> with our 90°-rotation matrix.</span><a class="headerlink" href="#rotation-example-twice-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -531,8 +543,26 @@ document.write(`
               
               
                 <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                  
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="vectors_in_python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Working with vectors in Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="matrices_in_python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Working with matrices in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -572,6 +602,7 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -598,8 +629,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
   <footer class="bd-footer">
   </footer>
