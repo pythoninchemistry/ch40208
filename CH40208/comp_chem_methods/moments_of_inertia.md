@@ -164,13 +164,13 @@ The coordinates of each molecule can be downloaded using the links below, along 
 
 ### Files to download
 
-- <a href="../data/rigid_rotor.dat" download>`rigid_rotor.dat`</a>
-- <a href="../data/water.dat" download>`water.dat`</a>
-- <a href="../data/ethane.dat" download>`ethane.dat`</a>
-- <a href="../data/ammonia.dat" download>`ammonia.dat`</a>
-- <a href="../data/chloromethane.dat" download>`chloromethane.dat`</a>
-- <a href="../data/methane.dat" download>`methane.dat`</a>
-- <a href="../data/visualisation2.py" download>`visualisation2.py`</a>
+- <a href="../data/rigid_rotor.dat">`rigid_rotor.dat`</a>
+- <a href="../data/water.dat">`water.dat`</a>
+- <a href="../data/ethane.dat">`ethane.dat`</a>
+- <a href="../data/ammonia.dat">`ammonia.dat`</a>
+- <a href="../data/chloromethane.dat">`chloromethane.dat`</a>
+- <a href="../data/methane.dat">`methane.dat`</a>
+- <a href="../data/visualisation2.py">`visualisation2.py`</a>
 
 ### Details
 
