@@ -99,9 +99,9 @@ It turns out that such a coordinate system can be found, and it corresponds to c
 
 $$
 \begin{aligned}
-\lambda_1 \mathbf{v}_1 & = & \mathbf{I}\cdot\mathbf{v}_1 \\
-\lambda_2 \mathbf{v}_2 & = & \mathbf{I}\cdot\mathbf{v}_2 \\
-\lambda_3 \mathbf{v}_3 & = & \mathbf{I}\cdot\mathbf{v}_3.
+\lambda_1 \mathbf{v}_1 & = \mathbf{I}\cdot\mathbf{v}_1 \\
+\lambda_2 \mathbf{v}_2 & = \mathbf{I}\cdot\mathbf{v}_2 \\
+\lambda_3 \mathbf{v}_3 & = \mathbf{I}\cdot\mathbf{v}_3.
 \end{aligned}
 $$
 
@@ -115,8 +115,8 @@ And then the effect of the matrix $\mathbf{I}$ operating on $\mathbf{\omega}$:
 
 $$
 \begin{aligned}
-\mathbf{I}\cdot\mathbf{\omega} & = & c_1\mathbf{I}\cdot\mathbf{v}_1 + c_2\mathbf{I}\cdot\mathbf{v}_2 + c_3\mathbf{I}\cdot\mathbf{v}_3 \\
-& = & c_1\lambda_1\mathbf{v}_1 + c_2\lambda_1\mathbf{v}_2 + c_3\lambda_1\mathbf{v}_3.
+\mathbf{I}\cdot\mathbf{\omega} & = c_1\mathbf{I}\cdot\mathbf{v}_1 + c_2\mathbf{I}\cdot\mathbf{v}_2 + c_3\mathbf{I}\cdot\mathbf{v}_3 \\
+& = c_1\lambda_1\mathbf{v}_1 + c_2\lambda_1\mathbf{v}_2 + c_3\lambda_1\mathbf{v}_3.
 \end{aligned}
 $$
 
