@@ -39,7 +39,7 @@ $$
 
 where $r$ is the molecular bond length.
 
-In three dimensions, however, $\mathbf{\omega}$, and $\mathbf{L}$ are <em>vectors</em>, and are not required to have the same orientation. The quantity $\mathbf{I}$, which translates one vector into another vector, is therefore a <em>matrix</em>, called the <em>intertia matrix</em>:
+In three dimensions, however, $\mathbf{\omega}$, and $\mathbf{L}$ are <em>vectors</em>, and are not required to have the same orientation. The quantity $\mathbf{I}$, which translates one vector into another vector, is therefore a <em>matrix</em>, called the <em>inertia matrix</em>:
 
 $$
 \begin{bmatrix}L_x\\L_y\\L_z\end{bmatrix} = 
