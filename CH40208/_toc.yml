@@ -55,6 +55,6 @@ parts:
         - file: comp_chem_methods/vectors_in_python
         - file: comp_chem_methods/matrices
         - file: comp_chem_methods/matrices_in_python
-#    - file: comp_chem_methods/eigenvalues_and_eigenvectors
-#    - file: comp_chem_methods/moments_of_inertia
+        - file: comp_chem_methods/eigenvalues_and_eigenvectors
+        - file: comp_chem_methods/moments_of_inertia
 #
