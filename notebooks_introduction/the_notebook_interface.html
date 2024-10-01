@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>The Jupyter Notebook interface &#8212; CH40208: Topics in Computational Chemistry</title>
   
@@ -15,54 +14,50 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks_introduction/the_notebook_interface';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -77,28 +72,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -120,12 +110,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -141,6 +139,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../introduction/about_this_book.html">
@@ -159,7 +159,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -211,13 +222,13 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">Potential Energy Surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">Geometry Optimisation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/minimisation.html">Function minimisation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/minimisation.html">Function minimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/gradient_descent.html">Gradient descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/newtons.html">Newton’s method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">Minimisation Libraries</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">Working with vectors and matrices</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors.html">Vectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">Working with vectors in Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices.html">Matrices</a></li>
@@ -225,7 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -241,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -250,14 +261,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -335,10 +346,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -346,14 +357,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -397,12 +408,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-jupyter-notebook-interface">
-<h1>The Jupyter Notebook interface<a class="headerlink" href="#the-jupyter-notebook-interface" title="Permalink to this heading">#</a></h1>
+<h1>The Jupyter Notebook interface<a class="headerlink" href="#the-jupyter-notebook-interface" title="Link to this heading">#</a></h1>
 <section id="interface-elements">
-<h2>Interface elements<a class="headerlink" href="#interface-elements" title="Permalink to this heading">#</a></h2>
+<h2>Interface elements<a class="headerlink" href="#interface-elements" title="Link to this heading">#</a></h2>
 <p>There are a few sections of the Notebook interface that will be useful to know your way around:</p>
 <p><img alt="" src="../_images/notebook_interface.png" /></p>
 <ol class="arabic simple">
@@ -438,11 +449,11 @@ This contains buttons for the most common actions for working with Notebooks. Ho
 </ol>
 </section>
 <section id="cells">
-<h2>Cells<a class="headerlink" href="#cells" title="Permalink to this heading">#</a></h2>
+<h2>Cells<a class="headerlink" href="#cells" title="Link to this heading">#</a></h2>
 <p>The body of the notebook is made up of <strong>input cells</strong>. When you open a new notebook it will contain only one empty cell; this is the grey box with <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span>&#160; <span class="pre">]:</span></code> to the left.
 There are three types of input cells where you can add content to a notebook.</p>
 <section id="code-cells">
-<h3>Code cells<a class="headerlink" href="#code-cells" title="Permalink to this heading">#</a></h3>
+<h3>Code cells<a class="headerlink" href="#code-cells" title="Link to this heading">#</a></h3>
 <p><strong>Code cells</strong> are the default cell type in a notebook.
 A <strong>code cell</strong> can accept code, that can then be executed (run).
 When the code in a code cell is run, the notebook displays any output generated by that code directly below the corresponding cell.</p>
@@ -451,7 +462,7 @@ When the code in a code cell is run, the notebook displays any output generated 
 This cell has then been run, which executes (runs) the code in the cell: in this instance we add 4 and 3, and print the result.</p>
 </section>
 <section id="markdown-cells">
-<h3>Markdown cells<a class="headerlink" href="#markdown-cells" title="Permalink to this heading">#</a></h3>
+<h3>Markdown cells<a class="headerlink" href="#markdown-cells" title="Link to this heading">#</a></h3>
 <p>A <strong>markdown cell</strong> contains text formatted using <a class="reference external" href="https://www.markdownguide.org/basic-syntax/">Markdown</a>, which is a lightweight markup language that can be used for writing formatte text.
 When a <strong>markdown cell</strong> is run, the markdown is converted into HTML, with the formatted text then shown <em>in place</em> of the cell.
 <strong>Markdown cells</strong> can be used to include formatted text, mathetmatical equations, images, tables, and more types of rich media.</p>
@@ -461,25 +472,25 @@ This figure shows a markdown cell being edited, with raw markdown entered.</p>
 This figure shows the same cell after it has been run, with the markdown converted to formatted text.</p>
 </section>
 <section id="raw-cells">
-<h3>Raw cells<a class="headerlink" href="#raw-cells" title="Permalink to this heading">#</a></h3>
+<h3>Raw cells<a class="headerlink" href="#raw-cells" title="Link to this heading">#</a></h3>
 <p>Input entered into <strong>Raw cells</strong> is not converted when the cell is run. These cells are usually used to provide additional information for converting Jupyter Notebooks to a different format (e.g., a PDF document). You almost certainly will not need to use <strong>Raw cells</strong> during this course, but might be curious about this third cell type.</p>
 </section>
 <section id="switching-cell-type">
-<h3>Switching cell type.<a class="headerlink" href="#switching-cell-type" title="Permalink to this heading">#</a></h3>
+<h3>Switching cell type.<a class="headerlink" href="#switching-cell-type" title="Link to this heading">#</a></h3>
 <p>Cells can be switched between <strong>code</strong> and <strong>markdown</strong> using the <strong>Cell</strong> → <strong>Cell Type</strong>  menu options:</p>
 <p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/cell_switch.png" /></p>
 <p>You can also switch between cell types in <strong>commmand mode</strong> (see below) using the keyboard shortcuts <code class="docutils literal notranslate"><span class="pre">Y</span></code> for <strong>code</strong>, <code class="docutils literal notranslate"><span class="pre">M</span></code> for <strong>markdown</strong>, and <code class="docutils literal notranslate"><span class="pre">R</span></code> for <strong>raw</strong>.</p>
 </section>
 <section id="active-cells">
-<h3>Active cells<a class="headerlink" href="#active-cells" title="Permalink to this heading">#</a></h3>
+<h3>Active cells<a class="headerlink" href="#active-cells" title="Link to this heading">#</a></h3>
 <p>A cell is marked as <strong>active</strong> if it is highlighted. The colour of the highlight depends on whether you are in <strong>command mode</strong> or <strong>edit mode</strong></p>
 <section id="command-mode">
-<h4>Command mode<a class="headerlink" href="#command-mode" title="Permalink to this heading">#</a></h4>
+<h4>Command mode<a class="headerlink" href="#command-mode" title="Link to this heading">#</a></h4>
 <p><strong>Command mode</strong> is indicated by a blue highlight. When you are in command mode you can use <strong>keyboard shortcuts</strong> to cut, paste, and move cells, etc. You can see all the <strong>keyboard shortcuts</strong> under <code class="docutils literal notranslate"><span class="pre">Help</span></code> → <code class="docutils literal notranslate"><span class="pre">Keyboard</span> <span class="pre">Shortcuts</span></code>.</p>
 <p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/command_mode.png" /></p>
 </section>
 <section id="edit-mode">
-<h4>Edit mode<a class="headerlink" href="#edit-mode" title="Permalink to this heading">#</a></h4>
+<h4>Edit mode<a class="headerlink" href="#edit-mode" title="Link to this heading">#</a></h4>
 <p>If you are in <strong>command mode</strong> then pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code> or clicking in the input text area of a cell will switch you to <strong>edit mode</strong>. <strong>Edit mode</strong> is indicated by a green highlight, and a pencil icon in the top right of the Notebook window.</p>
 <p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/edit_mode.png" /></p>
 <p>Typing now inserts text into the currently active cell:</p>
@@ -489,7 +500,7 @@ This figure shows the same cell after it has been run, with the markdown convert
 </section>
 </section>
 <section id="running-cells">
-<h2>Running cells<a class="headerlink" href="#running-cells" title="Permalink to this heading">#</a></h2>
+<h2>Running cells<a class="headerlink" href="#running-cells" title="Link to this heading">#</a></h2>
 <p>Each cell can consist of more than one line of input, which is not processed until the cell is executed, or “run”.
 You can run the currently active cell from the menu bar by clicking <strong>Cell</strong> → <strong>Run Cells</strong>, or by clicking on the &amp;lqduo;play&amp;”; icon button in the menu bar.
 You can also run the currently selected cell using keyboard shortcuts:</p>
@@ -529,7 +540,7 @@ You can also run the currently selected cell using keyboard shortcuts:</p>
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -558,6 +569,7 @@ You can also run the currently selected cell using keyboard shortcuts:</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -603,7 +615,7 @@ By Andrew R. McCluskey & Benjamin J. Morgan
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -627,8 +639,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

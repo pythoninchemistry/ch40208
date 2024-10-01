@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Lists &#8212; CH40208: Topics in Computational Chemistry</title>
   
@@ -15,54 +14,50 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/lists';</script>
@@ -79,28 +74,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,12 +112,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -143,6 +141,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../introduction/about_this_book.html">
@@ -161,7 +161,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -213,13 +224,13 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">Potential Energy Surfaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">Geometry Optimisation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/minimisation.html">Function minimisation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/minimisation.html">Function minimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/gradient_descent.html">Gradient descent</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/newtons.html">Newton’s method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">Minimisation Libraries</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">Working with vectors and matrices</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors.html">Vectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">Working with vectors in Python</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices.html">Matrices</a></li>
@@ -227,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 
     </div>
@@ -243,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -252,14 +263,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -337,10 +348,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -348,14 +359,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -386,11 +397,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-slices">List slices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-lists">Working with nested lists</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summing-over-lists-using-sum-or-join">Summing over lists using <code class="docutils literal notranslate"><span class="pre">sum()</span></code> (or <code class="docutils literal notranslate"><span class="pre">.join()</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecule-1">Molecule 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecule-2">Molecule 2</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
 </ul>
             </nav>
         </div>
@@ -400,15 +407,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lists">
-<span id="content-lists"></span><h1>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">#</a></h1>
+<span id="content-lists"></span><h1>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h1>
 <p>Up until now we have dealt with individual pieces of data, such <strong>integer</strong> or <strong>floating point</strong> data types to store numerical data, or <strong>strings</strong> to represent textual data.</p>
 <p>Often we want to work with <strong>collections</strong> of data, such as a time-series of concentrations from an experiment, or a set of yields obtained from different experimental protocols, or the list of students enrolled in <strong>CH40208 Topics in Computational Chemistry</strong>.</p>
 <p>A <strong>list</strong> is an <strong>ordered</strong> collection of values. The values that make up a <strong>list</strong> are called <strong>elements</strong> or <strong>items</strong>, so we might talk of a list that contains 4 <strong>items</strong>, or the 2nd <strong>element</strong> in a list.</p>
 <section id="creating-lists">
-<h2>Creating lists<a class="headerlink" href="#creating-lists" title="Permalink to this heading">#</a></h2>
+<h2>Creating lists<a class="headerlink" href="#creating-lists" title="Link to this heading">#</a></h2>
 <p>A list in Python is written as a sequence of values separated by commas and enclosed by square brackets.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,7 +543,7 @@ document.write(`
 <p>This last example would be described as a <strong>nested</strong> list (a list inside another list).</p>
 </section>
 <section id="list-indexing">
-<h2>List indexing<a class="headerlink" href="#list-indexing" title="Permalink to this heading">#</a></h2>
+<h2>List indexing<a class="headerlink" href="#list-indexing" title="Link to this heading">#</a></h2>
 <p>Individual elements of a list can be referred to by using <strong>list indexing</strong>. For example, the first item in our <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list can be accessed using</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -638,7 +645,7 @@ document.write(`
 <p>Using positive and negative indexing to refer to individual elements of the <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list.</p>
 </section>
 <section id="modifying-lists">
-<h2>Modifying lists<a class="headerlink" href="#modifying-lists" title="Permalink to this heading">#</a></h2>
+<h2>Modifying lists<a class="headerlink" href="#modifying-lists" title="Link to this heading">#</a></h2>
 <p>An important feature of <strong>lists</strong> is that they are <strong>mutable</strong>—values in the list can be changed; new elements can be added; existing elements can be deleted.</p>
 <p>You might have noticed that the first of our noble gases is <code class="docutils literal notranslate"><span class="pre">&quot;helium&quot;</span></code>, which is missing a capital letter. We can fix that by assigning a new value to <code class="docutils literal notranslate"><span class="pre">nobel_gases[0]</span></code></p>
 <div class="cell docutils container">
@@ -655,7 +662,7 @@ document.write(`
 </div>
 </div>
 <section id="adding-elements-to-lists">
-<h3>Adding elements to lists<a class="headerlink" href="#adding-elements-to-lists" title="Permalink to this heading">#</a></h3>
+<h3>Adding elements to lists<a class="headerlink" href="#adding-elements-to-lists" title="Link to this heading">#</a></h3>
 <p>Lists have a number of special functions (called <strong>methods</strong>) that we can use to add elements to a pre-existing list.</p>
 <p>A <strong>method</strong> is somewhat similar to a <strong>function</strong>, except it is associated with a particular object. Using a method lets us implicitly refer to the associated object.</p>
 <p>Calling a method of a list implicitly refers to that list. For example, to append another nobel gas string to our <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list we can use the <code class="docutils literal notranslate"><span class="pre">append()</span></code> method:</p>
@@ -736,7 +743,7 @@ document.write(`
 </div>
 </section>
 <section id="deleting-elements-from-lists">
-<h3>Deleting elements from lists<a class="headerlink" href="#deleting-elements-from-lists" title="Permalink to this heading">#</a></h3>
+<h3>Deleting elements from lists<a class="headerlink" href="#deleting-elements-from-lists" title="Link to this heading">#</a></h3>
 <p>Lists also have methods for deleting or removing elements. These include <code class="docutils literal notranslate"><span class="pre">remove()</span></code> which removes the first matching object in a list.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -755,7 +762,7 @@ document.write(`
 </section>
 </section>
 <section id="list-slices">
-<h2>List slices<a class="headerlink" href="#list-slices" title="Permalink to this heading">#</a></h2>
+<h2>List slices<a class="headerlink" href="#list-slices" title="Link to this heading">#</a></h2>
 <p>By referring to a single list index, we can access a single item of a list. Python also allows us to use <strong>slice notation</strong> to access a <strong>range</strong> of items from a list, e.g.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -832,7 +839,7 @@ document.write(`
 <p>In the second line here we select elements 1 and 2 from the original <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code> list, using <strong>slice notation</strong>, which gives us <code class="docutils literal notranslate"><span class="pre">['Neon',</span> <span class="pre">'Argon']</span></code>. We then <em>assign</em> this value to the variable name <code class="docutils literal notranslate"><span class="pre">nobel_gases</span></code>, which overwrites the original list.</p>
 </section>
 <section id="working-with-nested-lists">
-<h2>Working with nested lists<a class="headerlink" href="#working-with-nested-lists" title="Permalink to this heading">#</a></h2>
+<h2>Working with nested lists<a class="headerlink" href="#working-with-nested-lists" title="Link to this heading">#</a></h2>
 <p>We saw above that a list can contain one or more other lists, giving a <strong>nested list</strong>. How then do these work with indexing?</p>
 <p>Consider the following nested list:</p>
 <div class="cell docutils container">
@@ -923,7 +930,7 @@ document.write(`
 </div>
 </section>
 <section id="summing-over-lists-using-sum-or-join">
-<h2>Summing over lists using <code class="docutils literal notranslate"><span class="pre">sum()</span></code> (or <code class="docutils literal notranslate"><span class="pre">.join()</span></code>)<a class="headerlink" href="#summing-over-lists-using-sum-or-join" title="Permalink to this heading">#</a></h2>
+<h2>Summing over lists using <code class="docutils literal notranslate"><span class="pre">sum()</span></code> (or <code class="docutils literal notranslate"><span class="pre">.join()</span></code>)<a class="headerlink" href="#summing-over-lists-using-sum-or-join" title="Link to this heading">#</a></h2>
 <p>Python provides a <code class="docutils literal notranslate"><span class="pre">sum()</span></code> function that can be used to “sum” or add-together all the elements of a list.</p>
 <p>e.g.</p>
 <div class="cell docutils container">
@@ -1000,7 +1007,7 @@ document.write(`
 </div>
 </section>
 <section id="exercises">
-<h2>Exercises:<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<h2>Exercises:<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>Create a new list called <code class="docutils literal notranslate"><span class="pre">halogens</span></code> and populate it with the names of the halogen elements, in order of increasing atomic number. Using this list, determine what using a negative number following the second colon (e.g. <code class="docutils literal notranslate"><span class="pre">[::-1]</span></code>) will result in.</p></li>
 <li><p>The distance (<span class="math notranslate nohighlight">\(r\)</span>) between two atoms (<span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>) can be found with the following equation,</p>
@@ -1010,24 +1017,20 @@ document.write(`
 Below, (as lists) are given the atomic coordinates to two triatomic molecules, where for each atom the list is <code class="docutils literal notranslate"><span class="pre">atom</span> <span class="pre">=</span> <span class="pre">[x_position,</span> <span class="pre">y_position,</span> <span class="pre">z_position]</span></code>.
 For each molecule, calculate the intramolecular distances between all thre atoms.<br />
 Having calculated all of the intramolecular distances, comment on the shape of each of the molecules.</p>
-</li>
-</ul>
-<section id="molecule-1">
-<h3>Molecule 1<a class="headerlink" href="#molecule-1" title="Permalink to this heading">#</a></h3>
+<h3 class="rubric" id="molecule-1">Molecule 1</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">atom_1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">]</span>
 <span class="n">atom_2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">]</span>
 <span class="n">atom_3</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
-<section id="molecule-2">
-<h3>Molecule 2<a class="headerlink" href="#molecule-2" title="Permalink to this heading">#</a></h3>
+<h3 class="rubric" id="molecule-2">Molecule 2</h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">atom_1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
 <span class="n">atom_2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">]</span>
 <span class="n">atom_3</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">]</span>
 </pre></div>
 </div>
-</section>
+</li>
+</ul>
 </section>
 </section>
 
@@ -1058,7 +1061,7 @@ Having calculated all of the intramolecular distances, comment on the shape of e
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1088,6 +1091,7 @@ Having calculated all of the intramolecular distances, comment on the shape of e
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -1104,11 +1108,7 @@ Having calculated all of the intramolecular distances, comment on the shape of e
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-slices">List slices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-lists">Working with nested lists</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summing-over-lists-using-sum-or-join">Summing over lists using <code class="docutils literal notranslate"><span class="pre">sum()</span></code> (or <code class="docutils literal notranslate"><span class="pre">.join()</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecule-1">Molecule 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecule-2">Molecule 2</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
 </ul>
   </nav></div>
 
@@ -1133,7 +1133,7 @@ By Andrew R. McCluskey & Benjamin J. Morgan
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1157,8 +1157,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
