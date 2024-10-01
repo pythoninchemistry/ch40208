@@ -492,6 +492,13 @@ Be: 4
 <section id="enumerating-items">
 <h1>Enumerating Items<a class="headerlink" href="#enumerating-items" title="Link to this heading">#</a></h1>
 <p>Somethimes, you might need an index along with key-value pairs. You can combine <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> with <code class="docutils literal notranslate"><span class="pre">items()</span></code>:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In modern versions of Python (3.7+), dictionaries maintain insertion order. For example, in the example here, we can guarantee that the second key-value pair in <code class="docutils literal notranslate"><span class="pre">element_data.items()</span></code> is <code class="docutils literal notranslate"><span class="pre">('He':</span> <span class="pre">2)</span></code>. In previous versions of Python, however, dictionaries were unordered, and there was no guarantee that the order of key-value pairs when created would be maintained.</p>
+</div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">atomic_number</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">element_data</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
@@ -508,13 +515,6 @@ Be: 4
 </div>
 </div>
 </div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In modern versions of Python (3.7+), dictionaries maintain insertion order. For example, in the example here, we can guarantee that the second key-value pair in <code class="docutils literal notranslate"><span class="pre">element_data.items()</span></code> is <code class="docutils literal notranslate"><span class="pre">('He':</span> <span class="pre">2)</span></code>. In previous versions of Python, however, dictionaries were unordered, and there was no guarantee that the order of key-value pairs when created would be maintained.</p>
-</div>
-</aside>
 </section>
 <section id="example-chemical-element-properties">
 <h1>Example: Chemical Element Properties<a class="headerlink" href="#example-chemical-element-properties" title="Link to this heading">#</a></h1>
