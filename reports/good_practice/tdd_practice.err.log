@@ -1,17 +1,20 @@
 Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/nbclient/client.py", line 1314, in execute
+  File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
-  File "/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
     return future.result()
-  File "/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+  File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+  File "/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -51,13 +54,13 @@ Cell [0;32mIn[2], line 7[0m
 [1;32m      8[0m [38;5;28mprint[39m([38;5;124m'[39m[38;5;124mTest 1 for Problem 1 Passed![39m[38;5;124m'[39m)
 [1;32m     10[0m [38;5;66;03m# Tests correct equation[39;00m
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/contextlib.py:79[0m, in [0;36mContextDecorator.__call__.<locals>.inner[0;34m(*args, **kwds)[0m
-[1;32m     76[0m [38;5;129m@wraps[39m(func)
-[1;32m     77[0m [38;5;28;01mdef[39;00m [38;5;21minner[39m([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwds):
-[1;32m     78[0m     [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_recreate_cm():
-[0;32m---> 79[0m         [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
+File [0;32m/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/contextlib.py:81[0m, in [0;36mContextDecorator.__call__.<locals>.inner[0;34m(*args, **kwds)[0m
+[1;32m     78[0m [38;5;129m@wraps[39m(func)
+[1;32m     79[0m [38;5;28;01mdef[39;00m [38;5;21minner[39m([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwds):
+[1;32m     80[0m     [38;5;28;01mwith[39;00m [38;5;28mself[39m[38;5;241m.[39m_recreate_cm():
+[0;32m---> 81[0m         [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.10.15/x64/lib/python3.10/site-packages/numpy/testing/_private/utils.py:592[0m, in [0;36massert_almost_equal[0;34m(actual, desired, decimal, err_msg, verbose)[0m
+File [0;32m/opt/hostedtoolcache/Python/3.12.6/x64/lib/python3.12/site-packages/numpy/testing/_private/utils.py:592[0m, in [0;36massert_almost_equal[0;34m(actual, desired, decimal, err_msg, verbose)[0m
 [1;32m    590[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mNotImplementedError[39;00m, [38;5;167;01mTypeError[39;00m):
 [1;32m    591[0m     [38;5;28;01mpass[39;00m
 [0;32m--> 592[0m [38;5;28;01mif[39;00m [38;5;28mabs[39m([43mdesired[49m[43m [49m[38;5;241;43m-[39;49m[43m [49m[43mactual[49m) [38;5;241m>[39m[38;5;241m=[39m np[38;5;241m.[39mfloat64([38;5;241m1.5[39m [38;5;241m*[39m [38;5;241m10.0[39m[38;5;241m*[39m[38;5;241m*[39m([38;5;241m-[39mdecimal)):
