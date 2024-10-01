@@ -385,10 +385,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-versus-lists-in-python-why-do-both-exist">Tuples versus Lists in Python: Why do both exist?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-differences">Key Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-tuples">Introduction to Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-tuple">Defining a Tuple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-tuple-elements">Accessing Tuple elements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-are-immutable">Tuples are Immutable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple-properties">Tuple Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-vs-lists-when-to-use-each">Tuples vs Lists: When to Use Each</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-both-exist">Why Both Exist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-differences">Key Differences:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-tuples">Advantages of Tuples:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-choose-tuples">When to Choose Tuples</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-choose-lists">When to Choose Lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>
@@ -404,8 +412,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tuples">
 <h1>Tuples<a class="headerlink" href="#tuples" title="Link to this heading">#</a></h1>
-<p>A <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is similar to a <code class="docutils literal notranslate"><span class="pre">list</span></code> and can be used as an ordered collection of other objects.
-A <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is defined much in the same way as a <code class="docutils literal notranslate"><span class="pre">list</span></code>, but with parentheses instead of square brackets.</p>
+<section id="introduction-to-tuples">
+<h2>Introduction to Tuples<a class="headerlink" href="#introduction-to-tuples" title="Link to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is an ordered collection of objects, similar to a <code class="docutils literal notranslate"><span class="pre">list</span></code>.
+However, tuples have some distinct characteristics that make them useful in specific scenarios.</p>
+</section>
+<section id="defining-a-tuple">
+<h2>Defining a Tuple<a class="headerlink" href="#defining-a-tuple" title="Link to this heading">#</a></h2>
+<p>Tuples are defined using parentheses (round brackets) <code class="docutils literal notranslate"><span class="pre">()</span></code> instead of the square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code> used for lists.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;helium&#39;</span><span class="p">,</span> <span class="s1">&#39;neon&#39;</span><span class="p">,</span> <span class="s1">&#39;argon&#39;</span><span class="p">,</span> <span class="s1">&#39;krypton&#39;</span><span class="p">,</span> <span class="s1">&#39;xenon&#39;</span><span class="p">,</span> <span class="s1">&#39;radon&#39;</span><span class="p">)</span>
@@ -413,7 +427,7 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 </div>
 </div>
 </div>
-<p>Above is a tuple of noble gases, where the tuple is defined using round brackets.</p>
+<p>We can check <code class="docutils literal notranslate"><span class="pre">noble_gases</span></code> is a tuple, using the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">)</span>
@@ -426,7 +440,10 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 </div>
 </div>
 </div>
-<p>As with lists, we can use the index notation to identify particular elements in the tuple.</p>
+</section>
+<section id="accessing-tuple-elements">
+<h2>Accessing Tuple elements<a class="headerlink" href="#accessing-tuple-elements" title="Link to this heading">#</a></h2>
+<p>Like lists, we can use the index notation to access particular elements in a tuple.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -451,7 +468,10 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 </div>
 </div>
 </div>
-<p>The main difference between a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and a <code class="docutils literal notranslate"><span class="pre">list</span></code> is that <code class="docutils literal notranslate"><span class="pre">lists</span></code> are <strong>mutable</strong>: they can be changed after they have been created, either by changing individual elements or deleting or adding elements to change the size of the <code class="docutils literal notranslate"><span class="pre">list</span></code>. A <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, in contrast, is <strong>immutable</strong>: once it has been created it cannot be altered.</p>
+</section>
+<section id="tuples-are-immutable">
+<h2>Tuples are Immutable<a class="headerlink" href="#tuples-are-immutable" title="Link to this heading">#</a></h2>
+<p>The main difference between a tuple and a list is that tuples are <strong>immutable</strong>: once created, they cannot be altered.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Helium&#39;</span>
@@ -469,40 +489,27 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 </div>
 </div>
 </div>
-<p>It is still possible to concatenate tuples, like lists, but the item that is being concatentated must be a tuple, hence the brackets and trailing comma.</p>
+<p>However, you can still concatenate tuples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;oganesson&#39;</span><span class="p">,)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_noble_gases</span> <span class="o">=</span> <span class="n">noble_gases</span> <span class="o">+</span> <span class="p">(</span><span class="s1">&#39;oganesson&#39;</span><span class="p">,)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_noble_gases</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;helium&#39;, &#39;neon&#39;, &#39;argon&#39;, &#39;krypton&#39;, &#39;xenon&#39;, &#39;radon&#39;, &#39;oganesson&#39;)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;helium&#39;, &#39;neon&#39;, &#39;argon&#39;, &#39;krypton&#39;, &#39;xenon&#39;, &#39;radon&#39;, &#39;oganesson&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<p>The immutability of a tuple does not mean that the whole variable cannot be reassigned.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noble_gases</span> <span class="o">=</span> <span class="s1">&#39;inert&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">noble_gases</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>inert
-</pre></div>
-</div>
-</div>
-</div>
-<p>Additionally, like lists, tuple items can also consist of data of different types.</p>
+<p>Note the trailing comma in <code class="docutils literal notranslate"><span class="pre">('oganesson',)</span></code> — this is necessary for Python to recognise this as a tuple with one element.</p>
+</section>
+<section id="tuple-properties">
+<h2>Tuple Properties<a class="headerlink" href="#tuple-properties" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Heterogeneous Data</strong>: Tuples can contain items of different data types.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">)</span>
@@ -516,24 +523,31 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 </div>
 </div>
 </div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Conversion</strong>: You can convert a tuple to a list and vice versa:</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;a&#39;, 2.3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, &#39;a&#39;, 2.3]
 </pre></div>
 </div>
 </div>
 </div>
-<p>If you do have a collection of objects stored as a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and you want to convert this to a <code class="docutils literal notranslate"><span class="pre">list</span></code> you can use</p>
-<section id="tuples-versus-lists-in-python-why-do-both-exist">
-<h2>Tuples versus Lists in Python: Why do both exist?<a class="headerlink" href="#tuples-versus-lists-in-python-why-do-both-exist" title="Link to this heading">#</a></h2>
-<p>You might wonder why Python has both tuples and lists when lists seem more versatile. Let’s explore the reasons and when to use each.</p>
+</section>
+<section id="tuples-vs-lists-when-to-use-each">
+<h2>Tuples vs Lists: When to Use Each<a class="headerlink" href="#tuples-vs-lists-when-to-use-each" title="Link to this heading">#</a></h2>
+<section id="why-both-exist">
+<h3>Why Both Exist<a class="headerlink" href="#why-both-exist" title="Link to this heading">#</a></h3>
+<p>Python provides both tuples and lists to cater to different programming needs and scenarios.</p>
+</section>
 <section id="key-differences">
-<h3>Key Differences<a class="headerlink" href="#key-differences" title="Link to this heading">#</a></h3>
+<h3>Key Differences:<a class="headerlink" href="#key-differences" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Mutability:</p>
 <ul class="simple">
@@ -553,7 +567,14 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 </ul>
 </li>
 </ol>
-<p>The fact that tuples are immutable (cannot be changed after creation) might seem like a negative feature. After all, it makes tuples more limited than lists. But this limitation also prevents certain types of bugs. Because a list can be changed after creation, there is no guarantee that the contents of a list when it is first created and when it is used later in your code are the same. For a tuple, however, this is guaranteed. Furthermore, if you do try to change the contents of a tuple, the Python interpreter will issue an error, while for a list you code will happily run, but now with possible incorrect data. In general, unless you know that you are going to want to do something with your data that you can only do with a list, it is often a good idea to use a tuple instead.</p>
+</section>
+<section id="advantages-of-tuples">
+<h3>Advantages of Tuples:<a class="headerlink" href="#advantages-of-tuples" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Data Integrity</strong>: Immutability prevents accidental modifications.</p></li>
+<li><p><strong>Debugging</strong>: If you try to change a tuple, Python will raise an error, helping catch bugs early.</p></li>
+<li><p><strong>Guaranteed Consistency</strong>: The contents of a tuple remain the same throughout your code.</p></li>
+</ol>
 </section>
 <section id="when-to-choose-tuples">
 <h3>When to Choose Tuples<a class="headerlink" href="#when-to-choose-tuples" title="Link to this heading">#</a></h3>
@@ -571,6 +592,10 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 <li><p>When you’ll frequently modify individual elements.</p></li>
 <li><p>When you need list-specific methods (e.g., <code class="docutils literal notranslate"><span class="pre">sort()</span></code>, <code class="docutils literal notranslate"><span class="pre">append()</span></code>).</p></li>
 </ul>
+</section>
+<section id="conclusion">
+<h3>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h3>
+<p>In general, unless you know that you are going to want to do something with your data that you can only do with a list, it is often a good idea to use a tuple instead. This practice can lead to more efficient and less error-prone code. However, if you’re unsure or need the flexibility, starting with a list is often a safe choice. As you gain experience, you’ll develop an intuition for when each is most appropriate.</p>
 </section>
 </section>
 </section>
@@ -639,10 +664,18 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-versus-lists-in-python-why-do-both-exist">Tuples versus Lists in Python: Why do both exist?</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-differences">Key Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-tuples">Introduction to Tuples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-tuple">Defining a Tuple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-tuple-elements">Accessing Tuple elements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-are-immutable">Tuples are Immutable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuple-properties">Tuple Properties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-vs-lists-when-to-use-each">Tuples vs Lists: When to Use Each</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-both-exist">Why Both Exist</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-differences">Key Differences:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-tuples">Advantages of Tuples:</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-choose-tuples">When to Choose Tuples</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-choose-lists">When to Choose Lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </li>
 </ul>
