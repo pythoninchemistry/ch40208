@@ -362,7 +362,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -378,6 +380,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-versus-lists-in-python-why-do-both-exist">Tuples versus Lists in Python: Why do both exist?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-differences">Key Differences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-choose-tuples">When to Choose Tuples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-choose-lists">When to Choose Lists</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -501,8 +516,6 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 </div>
 </div>
 </div>
-<p>You might be thinking, why have a less capable version of a <code class="docutils literal notranslate"><span class="pre">lists</span></code>, when you could just use <code class="docutils literal notranslate"><span class="pre">lists</span></code> everywhere and never have to worry about which is which? Tuples are computationally more efficient than lists: they use less memory and can be operated on faster, and are often used as the return type from functions that return more than one value. For complex code, there is also a benefit to limiting the number of possible bugs. And, if you do have a bug, you would ideally like the Python interpreter to tell you, rather than have your code run and do something unexpected; for example, your data analysis appears to run fine, but because you have a bug the number you end up quoting in the subsequent research article is incorrect! In general, unless you know that you are going to want to do something with your data that you can only do with a <code class="docutils literal notranslate"><span class="pre">list</span></code>, it can be a good idea to use a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> instead.</p>
-<p>If you do a collection of objects stored as a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and you want to convert this to a <code class="docutils literal notranslate"><span class="pre">list</span></code> you can use</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">)</span>
@@ -515,6 +528,51 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
 </div>
 </div>
 </div>
+<p>If you do have a collection of objects stored as a <code class="docutils literal notranslate"><span class="pre">tuple</span></code> and you want to convert this to a <code class="docutils literal notranslate"><span class="pre">list</span></code> you can use</p>
+<section id="tuples-versus-lists-in-python-why-do-both-exist">
+<h2>Tuples versus Lists in Python: Why do both exist?<a class="headerlink" href="#tuples-versus-lists-in-python-why-do-both-exist" title="Link to this heading">#</a></h2>
+<p>You might wonder why Python has both tuples and lists when lists seem more versatile. Let’s explore the reasons and when to use each.</p>
+<section id="key-differences">
+<h3>Key Differences<a class="headerlink" href="#key-differences" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Mutability:</p>
+<ul class="simple">
+<li><p>Lists are mutable (can be changed after creation).</p></li>
+<li><p>Tuples are immutable (cannot be changed after creation).</p></li>
+</ul>
+</li>
+<li><p>Syntax:</p>
+<ul class="simple">
+<li><p>Lists use square brackets: <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>.</p></li>
+<li><p>Tuples use round brackets: <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Performance:</p>
+<ul class="simple">
+<li><p>Tuples are generally more memory efficient and faster to process.</p></li>
+</ul>
+</li>
+</ol>
+<p>The fact that tuples are immutable (cannot be changed after creation) might seem like a negative feature. After all, it makes tuples more limited than lists. But this limitation also prevents certain types of bugs. Because a list can be changed after creation, there is no guarantee that the contents of a list when it is first created and when it is used later in your code are the same. For a tuple, however, this is guaranteed. Furthermore, if you do try to change the contents of a tuple, the Python interpreter will issue an error, while for a list you code will happily run, but now with possible incorrect data. In general, unless you know that you are going to want to do something with your data that you can only do with a list, it is often a good idea to use a tuple instead.</p>
+</section>
+<section id="when-to-choose-tuples">
+<h3>When to Choose Tuples<a class="headerlink" href="#when-to-choose-tuples" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Representing fixed collections of data (e.g., RGB color values).</p></li>
+<li><p>Returning multiple values from a function.</p></li>
+<li><p>When you want to ensure data doesn’t change accidentally.</p></li>
+<li><p>As dictionary keys (when needed).</p></li>
+</ul>
+</section>
+<section id="when-to-choose-lists">
+<h3>When to Choose Lists<a class="headerlink" href="#when-to-choose-lists" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>When you need a collection that will change size.</p></li>
+<li><p>When you’ll frequently modify individual elements.</p></li>
+<li><p>When you need list-specific methods (e.g., <code class="docutils literal notranslate"><span class="pre">sort()</span></code>, <code class="docutils literal notranslate"><span class="pre">append()</span></code>).</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -571,6 +629,26 @@ A <code class="docutils literal notranslate"><span class="pre">tuple</span></cod
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples-versus-lists-in-python-why-do-both-exist">Tuples versus Lists in Python: Why do both exist?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-differences">Key Differences</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-choose-tuples">When to Choose Tuples</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-choose-lists">When to Choose Lists</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
