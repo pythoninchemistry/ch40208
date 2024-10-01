@@ -1,4 +1,4 @@
-# Python first, chemistry later
+# Python first, computational chemistry later
 
 One of the goals of this course is for you to explore concepts and techniques used in computational chemistry research by writing your own Python code to solve various problems.
 
