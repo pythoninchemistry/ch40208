@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - CH40208/**
+  workflow_dispatch:
 
 # Define permissions at the top level
 permissions:
