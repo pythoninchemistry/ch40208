@@ -23,8 +23,8 @@ parts:
       - file: python_basics/loops
       - file: python_basics/tuples
       - file: python_basics/dictionaries
-#        sections:
-#        - file: python_basics/iterating_over_dictionaries
+        sections:
+        - file: python_basics/iterating_over_dictionaries
       - file: python_basics/functions
       - file: python_basics/comparisons_and_flow_control
   - caption: Working with Data
