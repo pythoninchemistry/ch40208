@@ -23,6 +23,8 @@ parts:
       - file: python_basics/loops
       - file: python_basics/tuples
       - file: python_basics/dictionaries
+        sections:
+        - file: python_basics/iterating_over_dictionaries
       - file: python_basics/functions
       - file: python_basics/comparisons_and_flow_control
   - caption: Working with Data
@@ -38,8 +40,8 @@ parts:
       - file: good_practice/readable
 #  - file: good_practice/raising_errors
 #  - file: good_practice/testing
-#    - file: good_practice/modularisation
-#      - file: good_practice/markdown
+      - file: good_practice/modularisation
+      - file: good_practice/markdown
   - caption: Computational Chemistry Methods
     chapters:
       - file: comp_chem_methods/potential_energy_surfaces
