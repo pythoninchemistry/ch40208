@@ -13,6 +13,9 @@ parse:
     - dollarmath
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
 
+execute:
+  execute_notebooks: force
+
 sphinx:
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
