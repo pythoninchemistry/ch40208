@@ -7,42 +7,38 @@ on:
       - main
     paths:
       - CH40208/**
+    workflow_dispatch:
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
+    # Set permissions to ensure deployment to GitHub pages is allowed
     permissions:
+      contents: write
       pages: write
       id-token: write
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     # Install dependencies
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: '3.12'
 
     - name: Install dependencies
       run: |
-        pip install -r CH40208/requirements.txt
+        pip install -r requirements.txt
 
     # Build the book
     - name: Build the book
       run: |
         jupyter-book build CH40208/
 
-    # Upload the book's HTML as an artifact
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
-      with:
-        path: "CH40208/_build/html"
-
     # Push the book's HTML to github-pages
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v2
-      # with:
-      #   github_token: ${{ secrets.GITHUB_TOKEN }}
-      #   publish_dir: CH40208/_build/html
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.9.3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: CH40208/_build/html
