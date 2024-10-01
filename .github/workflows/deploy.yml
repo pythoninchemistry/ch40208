@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - CH40208/**
-    workflow_dispatch:
+  workflow_dispatch:
 
 # This job installs dependencies, build the book, and pushes it to `gh-pages`
 jobs:
