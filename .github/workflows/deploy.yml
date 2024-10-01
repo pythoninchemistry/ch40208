@@ -8,13 +8,19 @@ on:
     paths:
       - CH40208/**
 
-# This job installs dependencies, build the book, and pushes it to `gh-pages`
+# Define permissions at the top level
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# This job installs dependencies, builds the book, and pushes it to `gh-pages`
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
     - uses: actions/checkout@v3
 
@@ -39,10 +45,11 @@ jobs:
       with:
         path: "CH40208/_build/html"
 
+    # Configure Pages
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+
     # Push the book's HTML to github-pages
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
-      # with:
-      #   github_token: ${{ secrets.GITHUB_TOKEN }}
-      #   publish_dir: CH40208/_build/html
