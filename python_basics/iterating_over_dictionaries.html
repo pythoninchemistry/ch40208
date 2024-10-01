@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Working with vectors in Python &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Iterating over Dictionaries &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -58,13 +58,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/vectors_in_python';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/iterating_over_dictionaries';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Matrices" href="matrices.html" />
-    <link rel="prev" title="Vectors" href="vectors.html" />
+    <link rel="next" title="Functions" href="functions.html" />
+    <link rel="prev" title="Dictionaries" href="dictionaries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,24 +191,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python first, computational chemistry later</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/variables.html">Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python first, computational chemistry later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="dictionaries.html">Dictionaries</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Iterating over Dictionaries</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
 <ul class="nav bd-sidenav">
@@ -226,22 +224,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="potential_energy_surfaces.html">Potential Energy Surfaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="geometry_optimisation.html">Geometry Optimisation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="minimisation.html">Function minimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="gradient_descent.html">Gradient descent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="newtons.html">Newton’s method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scipy_opt_minimize.html">Minimisation Libraries</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../comp_chem_methods/potential_energy_surfaces.html">Potential Energy Surfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">Geometry Optimisation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/minimisation.html">Function minimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/gradient_descent.html">Gradient descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/newtons.html">Newton’s method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/scipy_opt_minimize.html">Minimisation Libraries</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="vectors_and_matrices.html">Working with vectors and matrices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Working with vectors in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="matrices_in_python.html">Working with matrices in Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
 </ul>
 </details></li>
 </ul>
@@ -298,7 +296,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/vectors_in_python.ipynb" target="_blank"
+      <li><a href="../_sources/python_basics/iterating_over_dictionaries.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -382,7 +380,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Working with vectors in Python</h1>
+    <h1>Iterating over Dictionaries</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -392,7 +390,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keyvalue-pairs">2. Looping over Key–Value Pairs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-chemical-element-properties">Example: Chemical Element Properties</a></li>
 </ul>
             </nav>
         </div>
@@ -404,155 +403,144 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="working-with-vectors-in-python">
-<h1>Working with vectors in Python<a class="headerlink" href="#working-with-vectors-in-python" title="Link to this heading">#</a></h1>
-<p>Working with vectors in Python is made simple by using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="iterating-over-dictionaries">
+<h1>Iterating over Dictionaries<a class="headerlink" href="#iterating-over-dictionaries" title="Link to this heading">#</a></h1>
+<p>Dictionaries in Python provide several ways to iterate over their contents.</p>
+<p>## 1. Looping Over Keys</p>
+<p>The simplest way to iterate over a dictionary is to loop over its keys:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">element_data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
 
-<span class="c1"># define two 2D vectors using numpy arrays</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">element_data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H
+He
+Li
+Be
 </pre></div>
 </div>
 </div>
 </div>
+<p>This method gives you access to the keys, but not directly to the values.</p>
+<section id="looping-over-keyvalue-pairs">
+<h2>2. Looping over Key–Value Pairs<a class="headerlink" href="#looping-over-keyvalue-pairs" title="Link to this heading">#</a></h2>
+<p>To access both keys and values during iteration, use the <code class="docutils literal notranslate"><span class="pre">items()</span></code> method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key_value_pair</span> <span class="ow">in</span> <span class="n">element_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key_value_pair</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 4]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;H&#39;, 1)
+(&#39;He&#39;, 2)
+(&#39;Li&#39;, 3)
+(&#39;Be&#39;, 4)
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can also use <strong>unpacking</strong> to assign the keys and values to separate variables. (This is equivalent to looping over two lists in parallel).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector addition</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">element</span><span class="p">,</span> <span class="n">atomic_number</span> <span class="ow">in</span> <span class="n">element_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">atomic_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7 5]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H: 1
+He: 2
+Li: 3
+Be: 4
 </pre></div>
 </div>
 </div>
 </div>
+<p>## 3. Looping over Values</p>
+<p>If you only need the values, use the <code class="docutils literal notranslate"><span class="pre">values()</span></code> method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector subtraction</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">atomic_number</span> <span class="ow">in</span> <span class="n">element_data</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">atomic_number</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 3 -3]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
 </pre></div>
 </div>
 </div>
 </div>
-<p>Remember that multiplication of <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays involves element-wise multiplication and returns a new array.</p>
+<ol class="arabic simple" start="4">
+<li><p>Enumerating Items</p></li>
+</ol>
+<p>Somethimes, you might need an index along with key-value pairs. You can combine <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> with <code class="docutils literal notranslate"><span class="pre">items()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># vector multiplication?</span>
-<span class="n">e</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">atomic_number</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">element_data</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">element</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">atomic_number</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10  4]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0: H - 1
+1: He - 2
+2: Li - 3
+3: Be - 4
 </pre></div>
 </div>
 </div>
 </div>
-<p>This is not the same as <span class="math notranslate nohighlight">\(\mathbf{a}\cdot\mathbf{b}\)</span> (dot product) <strong>or</strong> <span class="math notranslate nohighlight">\(\mathbf{a}\times\mathbf{b}\)</span> (cross product).
-Instead we can use the <code class="docutils literal notranslate"><span class="pre">numpy.dot()</span></code> and <code class="docutils literal notranslate"><span class="pre">numpy.cross()</span></code> functions to compute the dot product and cross product of <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> respectively:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In modern versions of Python (3.7+), dictionaries maintain insertion order. For example, in the example here, we can guarantee that the second key-value pair in <code class="docutils literal notranslate"><span class="pre">element_data.items()</span></code> is <code class="docutils literal notranslate"><span class="pre">('He':</span> <span class="pre">2)</span></code>. In previous versions of Python, however, dictionaries were unordered, and there was no guarantee that the order of key-value pairs when created would be maintained.</p>
+</div>
+</aside>
+</section>
+<section id="example-chemical-element-properties">
+<h2>Example: Chemical Element Properties<a class="headerlink" href="#example-chemical-element-properties" title="Link to this heading">#</a></h2>
+<p>This example uses a more complex dictionary, where each value is itself a dictionary of element properties.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dot product</span>
-<span class="n">dot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dot</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">elements</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;H&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Hydrogen&#39;</span><span class="p">,</span> <span class="s1">&#39;atomic_number&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="s1">&#39;He&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Helium&#39;</span><span class="p">,</span> <span class="s1">&#39;atomic_number&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
+    <span class="s1">&#39;Li&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Lithium&#39;</span><span class="p">,</span> <span class="s1">&#39;atomic_number&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+    <span class="s1">&#39;Be&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Beryllium&#39;</span><span class="p">,</span> <span class="s1">&#39;atomic_number&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;period&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Printing all element names and their periods</span>
+<span class="k">for</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">properties</span> <span class="ow">in</span> <span class="n">elements</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> (Symbol: </span><span class="si">{</span><span class="n">symbol</span><span class="si">}</span><span class="s2">) is in period </span><span class="si">{</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;period&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Finding elements in the first group</span>
+<span class="n">group_1_elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">properties</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">properties</span> <span class="ow">in</span> <span class="n">elements</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">properties</span><span class="p">[</span><span class="s1">&#39;group&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elements in group 1:&quot;</span><span class="p">,</span> <span class="n">group_1_elements</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hydrogen (Symbol: H) is in period 1
+Helium (Symbol: He) is in period 1
+Lithium (Symbol: Li) is in period 2
+Beryllium (Symbol: Be) is in period 2
+Elements in group 1: [&#39;Hydrogen&#39;, &#39;Lithium&#39;]
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cross product</span>
-<span class="n">cross</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cross</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18
-</pre></div>
-</div>
-</div>
-</div>
-<p>You might have noticed that the dot product is equal to the <strong>sum</strong> of <code class="docutils literal notranslate"><span class="pre">a*b</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10  4]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14
-</pre></div>
-</div>
-</div>
-</div>
-<p>Which should make sense from the definition of the cross product.</p>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
-<p>You previously wrote some code to calculate the interatomic distances (and angles) between pairs of atoms in two molecules, using the expression</p>
-<div class="math notranslate nohighlight">
-\[r_{ij} = \sqrt{(x_i-x_j)^2 + (y_i-y_j)^2 + (z_i-z_j)^2}\]</div>
-<p>Starting from your previous code, or from scratch, write a new version of this code that solves the same problem using <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays and <code class="docutils literal notranslate"><span class="pre">np.dot()</span></code>.</p>
 </section>
 </section>
 
@@ -569,7 +557,7 @@ Instead we can use the <code class="docutils literal notranslate"><span class="p
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./python_basics"
         },
         predefinedOutput: true
     }
@@ -587,20 +575,20 @@ Instead we can use the <code class="docutils literal notranslate"><span class="p
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="vectors.html"
+       href="dictionaries.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Vectors</p>
+        <p class="prev-next-title">Dictionaries</p>
       </div>
     </a>
     <a class="right-next"
-       href="matrices.html"
+       href="functions.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Matrices</p>
+        <p class="prev-next-title">Functions</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -620,7 +608,8 @@ Instead we can use the <code class="docutils literal notranslate"><span class="p
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keyvalue-pairs">2. Looping over Key–Value Pairs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-chemical-element-properties">Example: Chemical Element Properties</a></li>
 </ul>
   </nav></div>
 
