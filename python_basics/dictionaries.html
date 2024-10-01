@@ -392,14 +392,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary-elements">Accessing Dictionary Elements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-values">Accessing Values</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-keyvalue-pairs">Adding New Key–Value Pairs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-keyvalue-pairs">Removing Key–Value Pairs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-existing-values">Modifying Existing Values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-values">Dictionary Values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-values-safely">Getting Values Safely</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-keyvalue-pairs">Removing Key–Value Pairs</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-values-safely">Getting Values Safely</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-dictionaries">When to Use Dictionaries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-vs-lists-key-differences">Dictionaries vs. Lists: Key Differences</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
@@ -496,6 +494,25 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="removing-keyvalue-pairs">
+<h3>Removing Key–Value Pairs<a class="headerlink" href="#removing-keyvalue-pairs" title="Link to this heading">#</a></h3>
+<p>We can remove key–value pairs from a dictionary using the <code class="docutils literal notranslate"><span class="pre">pop()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">removed_value</span> <span class="o">=</span> <span class="n">chlorine</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;number of isotopes&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed value: </span><span class="si">{</span><span class="n">removed_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>  <span class="c1"># The &#39;number of isotopes&#39; key-value pair is now removed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed value: 2
+{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 18, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j), &#39;mass numbers&#39;: (35, 37)}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="modifying-existing-values">
 <h2>Modifying Existing Values<a class="headerlink" href="#modifying-existing-values" title="Link to this heading">#</a></h2>
@@ -515,7 +532,7 @@ document.write(`
 </section>
 <section id="dictionary-values">
 <h2>Dictionary Values<a class="headerlink" href="#dictionary-values" title="Link to this heading">#</a></h2>
-<p>Dictionary values can be of any tupe, including other collections like lists or tuples:</p>
+<p>Dictionary values can be of any type, including other collections like lists or tuples:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;mass numbers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
@@ -560,7 +577,7 @@ False
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;colour&#39;</span><span class="p">]</span>
 
 <span class="ne">KeyError</span>: &#39;colour&#39;
@@ -593,25 +610,6 @@ False
 </div>
 </div>
 </div>
-<section id="removing-keyvalue-pairs">
-<h3>Removing Key–Value Pairs<a class="headerlink" href="#removing-keyvalue-pairs" title="Link to this heading">#</a></h3>
-<p>We can remove key–value pairs from a dictionary using the <code class="docutils literal notranslate"><span class="pre">pop()</span></code> method:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">removed_value</span> <span class="o">=</span> <span class="n">chlorine</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;number of isotopes&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed value: </span><span class="si">{</span><span class="n">removed_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>  <span class="c1"># The &#39;number of isotopes&#39; key-value pair is now removed</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed value: 2
-{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 18, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j), &#39;mass numbers&#39;: (35, 37)}
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 </section>
 <section id="when-to-use-dictionaries">
 <h2>When to Use Dictionaries<a class="headerlink" href="#when-to-use-dictionaries" title="Link to this heading">#</a></h2>
@@ -704,14 +702,12 @@ False
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary-elements">Accessing Dictionary Elements</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-values">Accessing Values</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-keyvalue-pairs">Adding New Key–Value Pairs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-keyvalue-pairs">Removing Key–Value Pairs</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-existing-values">Modifying Existing Values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-values">Dictionary Values</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-values-safely">Getting Values Safely</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-keyvalue-pairs">Removing Key–Value Pairs</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-values-safely">Getting Values Safely</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-dictionaries">When to Use Dictionaries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-vs-lists-key-differences">Dictionaries vs. Lists: Key Differences</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
