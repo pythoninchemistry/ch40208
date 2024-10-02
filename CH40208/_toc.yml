@@ -20,6 +20,8 @@ parts:
       - file: python_basics/print_statements
       - file: python_basics/types
       - file: python_basics/variables
+        sections:
+        - file: python_basics/variable_naming_conventions
       - file: python_basics/arithmetic
       - file: python_basics/lists
       - file: python_basics/loops
