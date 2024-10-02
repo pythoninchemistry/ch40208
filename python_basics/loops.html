@@ -58,6 +58,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/loops';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -201,7 +203,10 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Loops</a></li>
@@ -365,7 +370,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehensions">List comprehensions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-loops">Nested loops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-two-lists-in-parallel">Looping over two lists in parallel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-loop-control-statements">Simple Loop Control Statements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-break">Using <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-continue">Using <code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hints-for-exercise-4">Hints for Exercise 4:</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -894,7 +908,7 @@ In the outer loop again: iteration 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zip at 0x7f88ad71db40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;zip at 0x7fac84a1a080&gt;
 </pre></div>
 </div>
 </div>
@@ -962,9 +976,151 @@ The atomic mass of Radon is 54
 </div>
 </div>
 </section>
-<section id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
-<p>Rewrite or modify your code from the <strong>Lists</strong> exercise 2 to calculate the distances between each pair of atoms, using a <strong>nested loop</strong>.</p>
+<section id="while-loops">
+<h2><code class="docutils literal notranslate"><span class="pre">while</span></code> loops<a class="headerlink" href="#while-loops" title="Link to this heading">#</a></h2>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, Python also provides <code class="docutils literal notranslate"><span class="pre">while</span></code> loops for situations where you want to repeat a block of code as long as a condition is true.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">concentration</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">equilibrium_constant</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">concentration</span> <span class="o">&gt;</span> <span class="n">equilibrium_constant</span><span class="p">:</span>
+    <span class="n">concentration</span> <span class="o">*=</span> <span class="mf">0.9</span>  <span class="c1"># Decrease by 10% each iteration</span>
+    <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iteration </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">: Concentration = </span><span class="si">{</span><span class="n">concentration</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Equilibrium reached after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iteration 1: Concentration = 0.9000
+Iteration 2: Concentration = 0.8100
+Iteration 3: Concentration = 0.7290
+Iteration 4: Concentration = 0.6561
+Iteration 5: Concentration = 0.5905
+Iteration 6: Concentration = 0.5314
+Iteration 7: Concentration = 0.4783
+Iteration 8: Concentration = 0.4305
+Iteration 9: Concentration = 0.3874
+Iteration 10: Concentration = 0.3487
+Iteration 11: Concentration = 0.3138
+Iteration 12: Concentration = 0.2824
+Iteration 13: Concentration = 0.2542
+Iteration 14: Concentration = 0.2288
+Iteration 15: Concentration = 0.2059
+Iteration 16: Concentration = 0.1853
+Iteration 17: Concentration = 0.1668
+Iteration 18: Concentration = 0.1501
+Iteration 19: Concentration = 0.1351
+Iteration 20: Concentration = 0.1216
+Iteration 21: Concentration = 0.1094
+Iteration 22: Concentration = 0.0985
+Equilibrium reached after 22 iterations
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simple-loop-control-statements">
+<h2>Simple Loop Control Statements<a class="headerlink" href="#simple-loop-control-statements" title="Link to this heading">#</a></h2>
+<p>Python provides <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> statements for additional control in loops. Here are some simple examples to demonstrate their use:</p>
+<section id="using-break">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#using-break" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement allows you to exit a loop prematurely. Here’s a simple example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print numbers until we reach 5</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="k">break</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loop ended&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+Loop ended
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the loop prints numbers from 1 to 9, but we use <code class="docutils literal notranslate"><span class="pre">break</span></code> to exit the loop when we reach 5.</p>
+</section>
+<section id="using-continue">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">continue</span></code><a class="headerlink" href="#using-continue" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement allows you to skip the rest of the current iteration and move to the next one. Here’s a simple example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print odd numbers only</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loop ended&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+3
+5
+7
+9
+Loop ended
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we use <code class="docutils literal notranslate"><span class="pre">continue</span></code> to skip even numbers, effectively printing only odd numbers.</p>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Modify the chemical reaction simulation (while loop example) to stop if the reaction has not reached equilibrium after 100 iterations. Use a <code class="docutils literal notranslate"><span class="pre">break</span></code> statement to exit the loop in this case.</p></li>
+<li><p>Write a loop that calculates the factorial of a number. Then, use a list comprehension to create a list of factorials for numbers from 1 to 10.</p></li>
+<li><p>Given a list of atomic masses and a list of stoichiometric coefficients, write a loop (or list comprehension) that calculates the molecular mass of a compound.</p></li>
+<li><p>Rewrite or modify your code from the <strong>Lists</strong> exercise 2 to calculate the distances between each pair of atoms, using a <strong>nested loop</strong>.</p></li>
+</ol>
+<section id="hints-for-exercise-4">
+<h3>Hints for Exercise 4:<a class="headerlink" href="#hints-for-exercise-4" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p>Recall that in the Lists exercise 2, you were given the coordinates of three atoms for two different molecules.</p></li>
+<li><p>To calculate distances between all pairs of atoms, you’ll need two loops:</p>
+<ul class="simple">
+<li><p>An outer loop to iterate over each atom.</p></li>
+<li><p>An inner loop to iterate over all other atoms to pair with the current atom from the outer loop.</p></li>
+</ul>
+</li>
+<li><p>Remember the distance formula:
+<span class="math notranslate nohighlight">\(r_{12} = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}\)</span></p></li>
+<li><p>You can use list indexing to access the <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> coordinates of each atom. For example, if <code class="docutils literal notranslate"><span class="pre">atom1</span> <span class="pre">=</span> <span class="pre">[0.1,</span> <span class="pre">0.5,</span> <span class="pre">3.2]</span></code>, then:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">atom1[0]</span></code> is the <span class="math notranslate nohighlight">\(x\)</span>-coordinate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atom1[1]</span></code> is the <span class="math notranslate nohighlight">\(y\)</span>-coordinate</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atom1[2]</span></code> is the <span class="math notranslate nohighlight">\(z\)</span>-coordinate</p></li>
+</ul>
+</li>
+<li><p>You might find it helpful to store all three atoms in a single list, like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">molecule</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom_1</span><span class="p">,</span> <span class="n">atom_2</span><span class="p">,</span> <span class="n">atom_3</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This makes it easier to loop over the atoms.</p>
+</li>
+<li><p>Consider using <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> in your outer loop to keep track of which atoms you are calculating the distance between.</p></li>
+<li><p>Print out which atoms you’re calculating the distance between along with the result, to make your output clear and readable.</p></li>
+<li><p>To avoid calculating the distance of an atom with itself or calculating the same pair twice, start the inner loop from the index after the current atom in the outer loop.</p></li>
+</ol>
+</section>
 </section>
 </section>
 
@@ -1038,7 +1194,16 @@ The atomic mass of Radon is 54
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehensions">List comprehensions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-loops">Nested loops</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-two-lists-in-parallel">Looping over two lists in parallel</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-loop-control-statements">Simple Loop Control Statements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-break">Using <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-continue">Using <code class="docutils literal notranslate"><span class="pre">continue</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hints-for-exercise-4">Hints for Exercise 4:</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

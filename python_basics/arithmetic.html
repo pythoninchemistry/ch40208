@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lists" href="lists.html" />
-    <link rel="prev" title="Variables" href="variables.html" />
+    <link rel="prev" title="Naming Conventions for Variables" href="variable_naming_conventions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -203,7 +203,10 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Arithmetic</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
@@ -368,6 +371,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.</a></li>
 </ul>
 </li>
 </ul>
@@ -486,10 +490,12 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="id1">
 <h3>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Without using a computer or a calculator, and following the BODMAS order of operations, calculate the following:
-1. <span class="math notranslate nohighlight">\(24 \div (10 + 2)\)</span>
-2. <span class="math notranslate nohighlight">\(5 + 16 \div 2 \times 3\)</span>
-3. <span class="math notranslate nohighlight">\([32 \div (6 + 2)]^2\)</span></p>
+<p>Without using a computer or a calculator, and following the BODMAS order of operations, calculate the following:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(24\,/\,(10 + 2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(5 + 16\,/\, 2 \times 3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\([32 \,/\, (6 + 2)]^2\)</span></p></li>
+</ol>
 </section>
 <section id="id2">
 <h3>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
@@ -516,20 +522,29 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 <p>For the reaction:</p>
 <p>PCl<sub>3</sub> (g) + Cl<sub>2</sub> (g) → PCl<sub>5</sub> (g)</p>
 <p>The standard free energies of formation, <span class="math notranslate nohighlight">\(\Delta G^\circ_{\text{f}}\)</span> for each reactant are given below,</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li><p>PCl<sub>3</sub>: <span class="math notranslate nohighlight">\(-267.8\)</span> kJmol<sup>-1</sup></p></li>
 <li><p>PCl<sub>5</sub>: <span class="math notranslate nohighlight">\(-305.0\)</span> kJmol<sup>-1</sup></p></li>
 <li><p>Cl<sub>2</sub>: <span class="math notranslate nohighlight">\(0\)</span> kJmol<sup>-1</sup></p></li>
 </ul>
-</div></blockquote>
 <p>Write a Jupyter Notebook cell to achieve the following:</p>
-<ul>
+<ol class="arabic simple">
 <li><p>Using <a class="reference external" href="https://en.wikipedia.org/wiki/Hess%27s_law">Hess’s law</a>, find the equilibrium constant, <span class="math notranslate nohighlight">\(K_p\)</span>, for the above reaction.</p></li>
-<li><p>Then, assuming that <span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span> are independent of temperature between 298 K and 350 K, calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> (e.g. at 298 K), given that <span class="math notranslate nohighlight">\(\Delta G_{\text{f}}\)</span> is <span class="math notranslate nohighlight">\(-20.2\)</span> kJmol<sup>-1</sup> at 350 K. The following relation may help,</p>
-<p><span class="math notranslate nohighlight">\( \Delta G = \Delta H - T \Delta S \)</span>.</p>
-</li>
+<li><p>Then, assuming that <span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span> are independent of temperature between 298 K and 350 K, calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> (e.g., at 298 K), given that <span class="math notranslate nohighlight">\(\Delta G_{\text{f}}\)</span> is −20.2 kJ mol<sup>−1</sup> at 350 K. The following relation may help: <span class="math notranslate nohighlight">\( \Delta G = \Delta H - T \Delta S\)</span>.</p></li>
+</ol>
+</section>
+<section id="id4">
+<h3>4.<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>The ideal gas law is given by <span class="math notranslate nohighlight">\(PV = nRT\)</span>, where <span class="math notranslate nohighlight">\(P\)</span> is pressure, <span class="math notranslate nohighlight">\(V\)</span> is volume, <span class="math notranslate nohighlight">\(n\)</span> is the number of moles, <span class="math notranslate nohighlight">\(R\)</span> is the gas constant, and <span class="math notranslate nohighlight">\(T\)</span> is temperature.</p>
+<p>Given:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R\)</span> = 0.08206 L atm K<sup>−1</sup> mol<sup>−1</sup></p></li>
+<li><p><span class="math notranslate nohighlight">\(n\)</span> = 2.5 mol</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> = 300 K</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\)</span> = 10.0 L</p></li>
 </ul>
+<p>Calculate the pressure <span class="math notranslate nohighlight">\(P\)</span> in atm. Then, convert this pressure to kPa (1 atm = 101.325 kPa).</p>
+<p>Write out all steps of the calculation, using variables for each quantity.</p>
 </section>
 </section>
 </section>
@@ -565,12 +580,12 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="variables.html"
+       href="variable_naming_conventions.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Variables</p>
+        <p class="prev-next-title">Naming Conventions for Variables</p>
       </div>
     </a>
     <a class="right-next"
@@ -605,6 +620,7 @@ x = \frac{-b\pm \sqrt{b^2-4ac}}{2a}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.</a></li>
 </ul>
 </li>
 </ul>

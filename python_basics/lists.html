@@ -203,7 +203,10 @@
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variables.html">Variables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
@@ -371,7 +374,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-slices">List slices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-lists">Working with nested lists</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summing-over-lists-using-sum-or-join">Summing over lists using <code class="docutils literal notranslate"><span class="pre">sum()</span></code> (or <code class="docutils literal notranslate"><span class="pre">.join()</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -981,30 +988,42 @@ document.write(`
 </div>
 </section>
 <section id="exercises">
-<h2>Exercises:<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>Create a new list called <code class="docutils literal notranslate"><span class="pre">halogens</span></code> and populate it with the names of the halogen elements, in order of increasing atomic number. Using this list, determine what using a negative number following the second colon (e.g. <code class="docutils literal notranslate"><span class="pre">[::-1]</span></code>) will result in.</p></li>
-<li><p>The distance (<span class="math notranslate nohighlight">\(r\)</span>) between two atoms (<span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>) can be found with the following equation,</p>
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Create a list of the chemical symbols for the first 10 elements in the periodic table. Use list slicing to extract:</br>
+a) The first three elements. </br>
+b) The last three elements. </br>
+c) Every second element. </br>
+d) Determine what using a negative number following the second colon (e.g. <code class="docutils literal notranslate"><span class="pre">[::-1]</span></code>) gives.</p>
+</section>
+<section id="id2">
+<h3>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>The distance (<span class="math notranslate nohighlight">\(r\)</span>) between two atoms (<span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>) can be found with the following equation,</p>
 <div class="math notranslate nohighlight">
 \[ r = \sqrt{(x_i - x_j)^2 + (y_i - y_j)^2 + (z_i - z_j)^2}, \]</div>
-<p>where, <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_j\)</span> are the <em>x</em>-coordinates for the atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> respectively, while <span class="math notranslate nohighlight">\(y_i\)</span> and <span class="math notranslate nohighlight">\(y_j\)</span> are the <em>y</em>-coordinates and <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span> are the <em>z</em>-coordinates.
-Below, (as lists) are given the atomic coordinates to two triatomic molecules, where for each atom the list is <code class="docutils literal notranslate"><span class="pre">atom</span> <span class="pre">=</span> <span class="pre">[x_position,</span> <span class="pre">y_position,</span> <span class="pre">z_position]</span></code>.
-For each molecule, calculate the intramolecular distances between all thre atoms.<br />
+<p>where <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_j\)</span> are the <em>x</em>-coordinates for the atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> respectively, <span class="math notranslate nohighlight">\(y_i\)</span> and <span class="math notranslate nohighlight">\(y_j\)</span> are the <em>y</em>-coordinates, and <span class="math notranslate nohighlight">\(z_i\)</span> and <span class="math notranslate nohighlight">\(z_j\)</span> are the <em>z</em>-coordinates.</p>
+<p>Below, the atomic coordinates of two triatomic molecules are given. The coordinate for each atom is given as a list: <code class="docutils literal notranslate"><span class="pre">atom_n</span> <span class="pre">=</span> <span class="pre">[x_position,</span> <span class="pre">y_position,</span> <span class="pre">z_position]</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>### Molecule 1
+
+```
+atom_1 = [0.1, 0.5, 3.2]
+atom_2 = [0.4, 0.5, 2.3]
+atom_3 = [-0.3, 0.3, 1.7]
+```
+
+### Molecule 2
+
+```
+atom_1 = [-0.1, 0.5, 1.5]
+atom_2 = [0.2, 0.5, 2.6]
+atom_3 = [0.5, 0.5, 3.7]
+```
+</pre></div>
+</div>
+<p>For each molecule, calculate the intramolecular distances between all three atoms.<br />
 Having calculated all of the intramolecular distances, comment on the shape of each of the molecules.</p>
-<h3 class="rubric" id="molecule-1">Molecule 1</h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">atom_1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">]</span>
-<span class="n">atom_2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">]</span>
-<span class="n">atom_3</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">]</span>
-</pre></div>
-</div>
-<h3 class="rubric" id="molecule-2">Molecule 2</h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">atom_1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span>
-<span class="n">atom_2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">]</span>
-<span class="n">atom_3</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.7</span><span class="p">]</span>
-</pre></div>
-</div>
-</li>
-</ul>
+</section>
 </section>
 </section>
 
@@ -1082,7 +1101,11 @@ Having calculated all of the intramolecular distances, comment on the shape of e
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-slices">List slices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-nested-lists">Working with nested lists</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summing-over-lists-using-sum-or-join">Summing over lists using <code class="docutils literal notranslate"><span class="pre">sum()</span></code> (or <code class="docutils literal notranslate"><span class="pre">.join()</span></code>)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
