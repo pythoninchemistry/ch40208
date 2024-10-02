@@ -12,7 +12,7 @@ Python offers several collection types, including lists and tuples. The dictiona
 
 Dictionaries are defined using curly braces `{}`, with key–value pairs separated by colons `:`.
 
-```{code-cell} python
+```{code-cell} python3
 chlorine = {
     'chemical symbol': 'Cl', 
     'atomic number': 17, 
@@ -29,7 +29,7 @@ print(chlorine)
 
 You can get all keys in a dictionary using the `keys()` method:
 
-```{code-cell} python
+```{code-cell} python3
 print(chlorine.keys())
 ```
 
@@ -37,7 +37,7 @@ print(chlorine.keys())
 
 To access a single element, you can use the corresponding key as an index:
 
-```{code-cell} python
+```{code-cell} python3
 chlorine['atomic number']
 ```
 
@@ -47,7 +47,7 @@ Dictionaries are mutable (you can change them after they have been created), all
 
 ### Adding New Key–Value Pairs
 
-```{code-cell} python
+```{code-cell} python3
 chlorine['number of isotopes'] = 2
 
 print(chlorine)
@@ -57,7 +57,7 @@ print(chlorine)
 
 You can remove key–value pairs from a dictionary using the `pop()` method:
 
-```{code-cell} python
+```{code-cell} python3
 removed_value = chlorine.pop('number of isotopes')
 print(f"Removed value: {removed_value}")
 print(chlorine)  # The 'number of isotopes' key-value pair is now removed
