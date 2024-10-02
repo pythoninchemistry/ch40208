@@ -207,9 +207,6 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Iterating over Dictionaries</a></li>
 
 
-
-
-
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
@@ -395,11 +392,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Iterating over Dictionaries</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keys">Looping Over Keys</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keyvalue-pairs">Looping over Key–Value Pairs</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-values">Looping over Values</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerating-items">Enumerating Items</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Iterating over Dictionaries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keys">Looping Over Keys</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keyvalue-pairs">Looping over Key–Value Pairs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-values">Looping over Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerating-items">Enumerating Items</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-chemical-element-properties">Example: Chemical Element Properties</a></li>
 </ul>
 
@@ -416,9 +417,8 @@ document.write(`
   <section id="iterating-over-dictionaries">
 <h1>Iterating over Dictionaries<a class="headerlink" href="#iterating-over-dictionaries" title="Link to this heading">#</a></h1>
 <p>Dictionaries in Python provide several ways to iterate over their contents.</p>
-</section>
 <section id="looping-over-keys">
-<h1>Looping Over Keys<a class="headerlink" href="#looping-over-keys" title="Link to this heading">#</a></h1>
+<h2>Looping Over Keys<a class="headerlink" href="#looping-over-keys" title="Link to this heading">#</a></h2>
 <p>The simplest way to iterate over a dictionary is to loop over its keys:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -439,6 +439,7 @@ Be
 </div>
 </div>
 <p>This method gives you access to the keys, but not directly to the values.</p>
+</section>
 </section>
 <section id="looping-over-keyvalue-pairs">
 <h1>Looping over Key–Value Pairs<a class="headerlink" href="#looping-over-keyvalue-pairs" title="Link to this heading">#</a></h1>
@@ -476,9 +477,8 @@ Be: 4
 </div>
 </div>
 </div>
-</section>
 <section id="looping-over-values">
-<h1>Looping over Values<a class="headerlink" href="#looping-over-values" title="Link to this heading">#</a></h1>
+<h2>Looping over Values<a class="headerlink" href="#looping-over-values" title="Link to this heading">#</a></h2>
 <p>If you only need the values, use the <code class="docutils literal notranslate"><span class="pre">values()</span></code> method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -498,7 +498,7 @@ Be: 4
 </div>
 </section>
 <section id="enumerating-items">
-<h1>Enumerating Items<a class="headerlink" href="#enumerating-items" title="Link to this heading">#</a></h1>
+<h2>Enumerating Items<a class="headerlink" href="#enumerating-items" title="Link to this heading">#</a></h2>
 <p>Somethimes, you might need an index along with key-value pairs. You can combine <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> with <code class="docutils literal notranslate"><span class="pre">items()</span></code>:</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -523,6 +523,7 @@ Be: 4
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="example-chemical-element-properties">
 <h1>Example: Chemical Element Properties<a class="headerlink" href="#example-chemical-element-properties" title="Link to this heading">#</a></h1>
@@ -622,11 +623,15 @@ Elements in group 1: [&#39;Hydrogen&#39;, &#39;Lithium&#39;]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Iterating over Dictionaries</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keys">Looping Over Keys</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keyvalue-pairs">Looping over Key–Value Pairs</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-values">Looping over Values</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerating-items">Enumerating Items</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Iterating over Dictionaries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keys">Looping Over Keys</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-keyvalue-pairs">Looping over Key–Value Pairs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-over-values">Looping over Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerating-items">Enumerating Items</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-chemical-element-properties">Example: Chemical Element Properties</a></li>
 </ul>
 
