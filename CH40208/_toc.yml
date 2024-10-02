@@ -4,6 +4,8 @@ parts:
   - caption: Introduction
     chapters:
       - file: introduction/course_outline
+        sections:
+        - file: course_contents/week_1
   - caption: Jupyter Notebooks
     chapters:
       - file: notebooks_introduction/what_is_a_jupyter_notebook
