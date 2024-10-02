@@ -2,7 +2,7 @@
 
 ## Course Approach
 
-One of the goals of this course is for you to explore concepts and techniques used in computational chemistry research by writing your own Python code to solve various problems. To acheive this, we will follow a structured approach:
+One of the goals of this course is for you to explore concepts and techniques used in computational chemistry research by writing your own Python code to solve various problems. To achieve this, we will follow a structured approach:
 
 1. **Weeks 1–2**: Python Fundamentals
   - Arithmetic operations
