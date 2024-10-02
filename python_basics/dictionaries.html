@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction to Dictionaries &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Dictionaries &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -203,10 +203,13 @@
 <li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
 <li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Dictionaries</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Dictionaries</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
 
 
 
+</ul>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
 </ul>
@@ -296,7 +299,7 @@
       
       
       
-      <li><a href="../_sources/python_basics/dictionaries.md" target="_blank"
+      <li><a href="../_sources/python_basics/dictionaries.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -306,7 +309,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -380,7 +383,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction to Dictionaries</h1>
+    <h1>Dictionaries</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -390,20 +393,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to Dictionaries</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-dictionary">Defining a Dictionary</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary-elements">Accessing Dictionary Elements</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-keys">Accessing Keys</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-values">Accessing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-dictionaries">Introduction to Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-dictionary">Defining a Dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary-elements">Accessing Dictionary Elements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-keys">Accessing Keys</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-values">Accessing Values</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-dictionaries">Modifying Dictionaries</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-keyvalue-pairs">Adding New Key–Value Pairs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-key-value-pairs">Removing Key-Value Pairs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-dictionaries">Modifying Dictionaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-keyvalue-pairs">Adding New Key–Value Pairs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-keyvalue-pairs">Removing Key–Value Pairs</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-existing-values">Modifying Existing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-values">Dictionary Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-values-safely">Getting Values Safely</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-dictionaries">When to Use Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-vs-lists-key-differences">Dictionaries vs. Lists: Key Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -414,38 +422,220 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p># Dictionaries</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="dictionaries">
+<h1>Dictionaries<a class="headerlink" href="#dictionaries" title="Link to this heading">#</a></h1>
 <section id="introduction-to-dictionaries">
-<h1>Introduction to Dictionaries<a class="headerlink" href="#introduction-to-dictionaries" title="Link to this heading">#</a></h1>
+<h2>Introduction to Dictionaries<a class="headerlink" href="#introduction-to-dictionaries" title="Link to this heading">#</a></h2>
 <p>Python offers several collection types, including lists and tuples. The dictionary (<code class="docutils literal notranslate"><span class="pre">dict</span></code>) is another powerful collection type that consists of key-value pairs. This structure is analogous to a traditional dictionary, where words (keys) have corresponding definitions (values).</p>
 <p align="center">
      <img src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/python_dictionary_entry.png" width="35%" alt="A dictionary entry for the word Python."/>
- </p>
-</section>
+ </p></section>
 <section id="defining-a-dictionary">
-<h1>Defining a Dictionary<a class="headerlink" href="#defining-a-dictionary" title="Link to this heading">#</a></h1>
+<h2>Defining a Dictionary<a class="headerlink" href="#defining-a-dictionary" title="Link to this heading">#</a></h2>
 <p>Dictionaries are defined using curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code>, with key–value pairs separated by colons <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;chemical symbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Cl&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;atomic number&#39;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span> 
+    <span class="s1">&#39;average mass number&#39;</span><span class="p">:</span> <span class="mf">35.45</span><span class="p">,</span> 
+    <span class="s1">&#39;x-ray scattering length&#39;</span><span class="p">:</span> <span class="mf">2.76</span><span class="o">+</span><span class="mf">0.05</span><span class="n">j</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j)}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we are able to use the keys of the dictionaries as labels for each datum.</p>
 </section>
 <section id="accessing-dictionary-elements">
-<h1>Accessing Dictionary Elements<a class="headerlink" href="#accessing-dictionary-elements" title="Link to this heading">#</a></h1>
+<h2>Accessing Dictionary Elements<a class="headerlink" href="#accessing-dictionary-elements" title="Link to this heading">#</a></h2>
 <section id="accessing-keys">
-<h2>Accessing Keys<a class="headerlink" href="#accessing-keys" title="Link to this heading">#</a></h2>
+<h3>Accessing Keys<a class="headerlink" href="#accessing-keys" title="Link to this heading">#</a></h3>
 <p>You can get all keys in a dictionary using the <code class="docutils literal notranslate"><span class="pre">keys()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;chemical symbol&#39;, &#39;atomic number&#39;, &#39;average mass number&#39;, &#39;x-ray scattering length&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is possible to access a single one of the elements of a dictionary, by passing the relevant key in lieu of an index.</p>
 </section>
 <section id="accessing-values">
-<h2>Accessing Values<a class="headerlink" href="#accessing-values" title="Link to this heading">#</a></h2>
+<h3>Accessing Values<a class="headerlink" href="#accessing-values" title="Link to this heading">#</a></h3>
 <p>To access a single element, you can use the corresponding key as an index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;atomic number&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="modifying-dictionaries">
-<h1>Modifying Dictionaries<a class="headerlink" href="#modifying-dictionaries" title="Link to this heading">#</a></h1>
+<h2>Modifying Dictionaries<a class="headerlink" href="#modifying-dictionaries" title="Link to this heading">#</a></h2>
 <p>Dictionaries are mutable (you can change them after they have been created), allowing you to add or modify key–value pairs.</p>
 <section id="adding-new-keyvalue-pairs">
-<h2>Adding New Key–Value Pairs<a class="headerlink" href="#adding-new-keyvalue-pairs" title="Link to this heading">#</a></h2>
+<h3>Adding New Key–Value Pairs<a class="headerlink" href="#adding-new-keyvalue-pairs" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;number of isotopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j), &#39;number of isotopes&#39;: 2}
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="removing-key-value-pairs">
-<h2>Removing Key-Value Pairs<a class="headerlink" href="#removing-key-value-pairs" title="Link to this heading">#</a></h2>
-<p>You can remove key–value pairs from a dictionary using the <code class="docutils literal notranslate"><span class="pre">pop()</span></code> method:</p>
+<section id="removing-keyvalue-pairs">
+<h3>Removing Key–Value Pairs<a class="headerlink" href="#removing-keyvalue-pairs" title="Link to this heading">#</a></h3>
+<p>We can remove key–value pairs from a dictionary using the <code class="docutils literal notranslate"><span class="pre">pop()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">removed_value</span> <span class="o">=</span> <span class="n">chlorine</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;number of isotopes&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Removed value: </span><span class="si">{</span><span class="n">removed_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>  <span class="c1"># The &#39;number of isotopes&#39; key-value pair is now removed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed value: 2
+{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 17, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j)}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modifying-existing-values">
+<h2>Modifying Existing Values<a class="headerlink" href="#modifying-existing-values" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;atomic number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span>  <span class="c1"># This would be incorrect, but demonstrates modification</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;atomic number&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionary-values">
+<h2>Dictionary Values<a class="headerlink" href="#dictionary-values" title="Link to this heading">#</a></h2>
+<p>Dictionary values can be of any type, including other collections like lists or tuples:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;mass numbers&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">37</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;chemical symbol&#39;: &#39;Cl&#39;, &#39;atomic number&#39;: 18, &#39;average mass number&#39;: 35.45, &#39;x-ray scattering length&#39;: (2.76+0.05j), &#39;mass numbers&#39;: (35, 37)}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Additional Dictionary Operations</span>
+
+<span class="c1">### Checking for Key Existence</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;atomic number&#39;</span> <span class="ow">in</span> <span class="n">chlorine</span><span class="p">)</span>  <span class="c1"># Output: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;melting point&#39;</span> <span class="ow">in</span> <span class="n">chlorine</span><span class="p">)</span>  <span class="c1"># Output: False</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="getting-values-safely">
+<h2>Getting Values Safely<a class="headerlink" href="#getting-values-safely" title="Link to this heading">#</a></h2>
+<p>A dictionary can only be indexed using its existing keys, and if we try to access a dictionary value with an invalid key, we get a <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;colour&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">chlorine</span><span class="p">[</span><span class="s1">&#39;colour&#39;</span><span class="p">]</span>
+
+<span class="ne">KeyError</span>: &#39;colour&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We might have code where we do not know in advance whether a dictionary will have a particular key–value pair, but do not want our code to break if this pair is absent. We can achieve this using the <code class="docutils literal notranslate"><span class="pre">get()</span></code> method, which returns the appropriate value or <code class="docutils literal notranslate"><span class="pre">None</span></code> is our dictionary does not have the key provided.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;atomic number&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">chlorine</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;melting point&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="when-to-use-dictionaries">
+<h2>When to Use Dictionaries<a class="headerlink" href="#when-to-use-dictionaries" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>When you need a logical association between a key:value pair.</p></li>
+<li><p>When you need fast lookup for your data, based on a custom key.</p></li>
+<li><p>When your data is being constantly modified. Remember, dictionaries are mutable.</p></li>
+</ol>
+</section>
+<section id="dictionaries-vs-lists-key-differences">
+<h2>Dictionaries vs. Lists: Key Differences<a class="headerlink" href="#dictionaries-vs-lists-key-differences" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Accessing Elements</strong>: List elements are accessed by index (integer-based). Dictionary elements are accessed by keys (which can be of various immutable types, not just integers).</p></li>
+<li><p><strong>Purpose</strong>: Lists are best for collections of similar items where order matters and you need integer-based indexing. Dictionaries are ideal for key-value associations and when you need fast lookup based on a unique key.</p></li>
+</ol>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<p>Create a dictionary where the keys are the names of the first-row of transition metals, and the values are integers of the number of valence electrons.
+Test your dictionary by printing some of the values.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>
@@ -515,20 +705,25 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction to Dictionaries</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-dictionary">Defining a Dictionary</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary-elements">Accessing Dictionary Elements</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-keys">Accessing Keys</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-values">Accessing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-dictionaries">Introduction to Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-a-dictionary">Defining a Dictionary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary-elements">Accessing Dictionary Elements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-keys">Accessing Keys</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-values">Accessing Values</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-dictionaries">Modifying Dictionaries</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-keyvalue-pairs">Adding New Key–Value Pairs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-key-value-pairs">Removing Key-Value Pairs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-dictionaries">Modifying Dictionaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-new-keyvalue-pairs">Adding New Key–Value Pairs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-keyvalue-pairs">Removing Key–Value Pairs</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-existing-values">Modifying Existing Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-values">Dictionary Values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-values-safely">Getting Values Safely</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-use-dictionaries">When to Use Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries-vs-lists-key-differences">Dictionaries vs. Lists: Key Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
