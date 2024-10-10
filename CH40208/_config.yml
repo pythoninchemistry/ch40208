@@ -11,6 +11,7 @@ parse:
   myst_enable_extensions:
     - amsmath
     - dollarmath
+    - attrs_inline
   myst_dmath_double_inline: true  # Allow display math ($$) within an inline context
 
 sphinx:
