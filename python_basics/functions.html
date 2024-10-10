@@ -424,6 +424,13 @@ The percent dissociation is: 1.33%
 </div>
 </div>
 </div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this example we use the approximate relation that <span class="math notranslate nohighlight">\(\mathrm{pH} \approxeq -\log_{10}[\mathrm{H^+}\)</span>. This approximation is removed in Exercise 1.</p>
+</div>
+</aside>
 <p>This is how you might work through this calculation if you were doing it by hand. We can see that the full calculation is comprised of three steps:</p>
 <ol class="arabic simple">
 <li><p>Use the <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span> value and concentration to calculate the hydrogen ion concentration</p></li>
@@ -549,11 +556,13 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 </div>
 </div>
 </div>
-<div class="highlight-margin notranslate"><div class="highlight"><pre><span></span>```note
-Note that the `quadratic_roots()`{l=python} function returns both roots to the quadratic equation. These are separated by a comma in the return statement, and are returned as a length-2 tuple.
-```
-</pre></div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code docutils literal highlight highlight-python"><span class="n">quadratic_roots</span><span class="p">()</span></code> function returns both roots to the quadratic equation. These are separated by a comma in the return statement, and are returned as a length-2 tuple.</p>
 </div>
+</aside>
 <p>For the case where <span class="math notranslate nohighlight">\(a=1\)</span>, <span class="math notranslate nohighlight">\(b=3\)</span>, and <span class="math notranslate nohighlight">\(c=-10\)</span>, we could use our function as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -956,7 +965,7 @@ outside the function: x = 1, y = 3
 <p>where <span class="math notranslate nohighlight">\(a_\mathrm{H}^+\)</span> is the <em>activity</em> of hydrogen ions, which is related to the concentration <span class="math notranslate nohighlight">\([\mathrm{H}^+]\)</span> by the <em>activity coefficient</em>, <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[a_\mathrm{H}^+ = \gamma_\mathrm{H}^+[\mathrm{H}^+].\]</div>
-<p>Write an updated version of the <code class="code docutils literal highlight highlight-python"><span class="n">calculate_pH</span><span class="p">()</span></code> function from the earlier example so that it calculates pH correctly. Your function should take two arguments: the concentration of hydrogen ions and their activity coefficient. Check that for <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span> you get the same answer as before. Now rewrite your function so that the activity coefficient is an <em>optional</em> argument, with a default value of <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span>. Check that if you call this function in your code as <code class="docutils literal notranslate"><span class="pre">calculate_pH(h_plus)</span></code>{ you still get the same result.</p>
+<p>Write an updated version of the <code class="code docutils literal highlight highlight-python"><span class="n">calculate_pH</span><span class="p">()</span></code> function from the earlier example so that it calculates pH correctly. Your function should take two arguments: the concentration of hydrogen ions and their activity coefficient. Check that for <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span> you get the same answer as before. Now rewrite your function so that the activity coefficient is an <em>optional</em> argument, with a default value of <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span>. Check that if you call this function in your code as <code class="code docutils literal highlight highlight-python"><span class="n">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span></code> you still get the same result.</p>
 </section>
 <section id="id2">
 <h3>2<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
