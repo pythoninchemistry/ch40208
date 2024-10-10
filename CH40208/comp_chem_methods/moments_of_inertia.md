@@ -39,7 +39,7 @@ $$
 
 where $r$ is the molecular bond length.
 
-In three dimensions, however, $\mathbf{\omega}$, and $\mathbf{L}$ are <em>vectors</em>, and are not required to have the same orientation. The quantity $\mathbf{I}$, which translates one vector into another vector, is therefore a <em>matrix</em>, called the <em>intertia matrix</em>:
+In three dimensions, however, $\mathbf{\omega}$, and $\mathbf{L}$ are <em>vectors</em>, and are not required to have the same orientation. The quantity $\mathbf{I}$, which translates one vector into another vector, is therefore a <em>matrix</em>, called the <em>inertia matrix</em>:
 
 $$
 \begin{bmatrix}L_x\\L_y\\L_z\end{bmatrix} = 
@@ -99,9 +99,9 @@ It turns out that such a coordinate system can be found, and it corresponds to c
 
 $$
 \begin{aligned}
-\lambda_1 \mathbf{v}_1 & = & \mathbf{I}\cdot\mathbf{v}_1 \\
-\lambda_2 \mathbf{v}_2 & = & \mathbf{I}\cdot\mathbf{v}_2 \\
-\lambda_3 \mathbf{v}_3 & = & \mathbf{I}\cdot\mathbf{v}_3.
+\lambda_1 \mathbf{v}_1 & = \mathbf{I}\cdot\mathbf{v}_1 \\
+\lambda_2 \mathbf{v}_2 & = \mathbf{I}\cdot\mathbf{v}_2 \\
+\lambda_3 \mathbf{v}_3 & = \mathbf{I}\cdot\mathbf{v}_3.
 \end{aligned}
 $$
 
@@ -115,8 +115,8 @@ And then the effect of the matrix $\mathbf{I}$ operating on $\mathbf{\omega}$:
 
 $$
 \begin{aligned}
-\mathbf{I}\cdot\mathbf{\omega} & = & c_1\mathbf{I}\cdot\mathbf{v}_1 + c_2\mathbf{I}\cdot\mathbf{v}_2 + c_3\mathbf{I}\cdot\mathbf{v}_3 \\
-& = & c_1\lambda_1\mathbf{v}_1 + c_2\lambda_1\mathbf{v}_2 + c_3\lambda_1\mathbf{v}_3.
+\mathbf{I}\cdot\mathbf{\omega} & = c_1\mathbf{I}\cdot\mathbf{v}_1 + c_2\mathbf{I}\cdot\mathbf{v}_2 + c_3\mathbf{I}\cdot\mathbf{v}_3 \\
+& = c_1\lambda_1\mathbf{v}_1 + c_2\lambda_1\mathbf{v}_2 + c_3\lambda_1\mathbf{v}_3.
 \end{aligned}
 $$
 
@@ -164,13 +164,13 @@ The coordinates of each molecule can be downloaded using the links below, along 
 
 ### Files to download
 
-- <a href="../data/rigid_rotor.dat" download>`rigid_rotor.dat`</a>
-- <a href="../data/water.dat" download>`water.dat`</a>
-- <a href="../data/ethane.dat" download>`ethane.dat`</a>
-- <a href="../data/ammonia.dat" download>`ammonia.dat`</a>
-- <a href="../data/chloromethane.dat" download>`chloromethane.dat`</a>
-- <a href="../data/methane.dat" download>`methane.dat`</a>
-- <a href="../data/visualisation2.py" download>`visualisation2.py`</a>
+- <a href="../data/rigid_rotor.dat">`rigid_rotor.dat`</a>
+- <a href="../data/water.dat">`water.dat`</a>
+- <a href="../data/ethane.dat">`ethane.dat`</a>
+- <a href="../data/ammonia.dat">`ammonia.dat`</a>
+- <a href="../data/chloromethane.dat">`chloromethane.dat`</a>
+- <a href="../data/methane.dat">`methane.dat`</a>
+- <a href="../data/visualisation2.py">`visualisation2.py`</a>
 
 ### Details
 
