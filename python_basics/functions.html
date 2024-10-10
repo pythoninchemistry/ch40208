@@ -395,6 +395,13 @@ document.write(`
 <section id="using-functions-to-structure-your-code">
 <h2>Using Functions to Structure Your Code<a class="headerlink" href="#using-functions-to-structure-your-code" title="Link to this heading">#</a></h2>
 <p>Below is an example piece of code for calculating the pH and percent dissociation of a weak acid solution given its concentration and dissociation constant (<span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span>).</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this example we use the approximate relation that <span class="math notranslate nohighlight">\(\mathrm{pH} \approx -\log_{10}[\mathrm{H^+}\)</span>. This approximation is removed in Exercise 1.</p>
+</div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -424,13 +431,6 @@ The percent dissociation is: 1.33%
 </div>
 </div>
 </div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In this example we use the approximate relation that <span class="math notranslate nohighlight">\(\mathrm{pH} \approxeq -\log_{10}[\mathrm{H^+}\)</span>. This approximation is removed in Exercise 1.</p>
-</div>
-</aside>
 <p>This is how you might work through this calculation if you were doing it by hand. We can see that the full calculation is comprised of three steps:</p>
 <ol class="arabic simple">
 <li><p>Use the <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span> value and concentration to calculate the hydrogen ion concentration</p></li>
@@ -543,6 +543,13 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 <div class="math notranslate nohighlight">
 \[ax^2 + bx + c = 0\]</div>
 <p>using the <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_formula">quadratic formula</a>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code docutils literal highlight highlight-python"><span class="n">quadratic_roots</span><span class="p">()</span></code> function returns both roots to the quadratic equation. These are separated by a comma in the return statement, and are returned as a length-2 tuple.</p>
+</div>
+</aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -556,13 +563,6 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 </div>
 </div>
 </div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The <code class="code docutils literal highlight highlight-python"><span class="n">quadratic_roots</span><span class="p">()</span></code> function returns both roots to the quadratic equation. These are separated by a comma in the return statement, and are returned as a length-2 tuple.</p>
-</div>
-</aside>
 <p>For the case where <span class="math notranslate nohighlight">\(a=1\)</span>, <span class="math notranslate nohighlight">\(b=3\)</span>, and <span class="math notranslate nohighlight">\(c=-10\)</span>, we could use our function as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
