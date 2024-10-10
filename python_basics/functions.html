@@ -500,13 +500,13 @@ The percent dissociation is: 1.33%
 </div>
 <p>Let’s break this down:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">def</span></code>: This keyword tells Python that you’re defining a function.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">function_name</span></code>: This is the name you give to your function. It is good practice to choose a descriptive name that indicates what the function does.</p></li>
+<li><p><code class="code docutils literal highlight highlight-python"><span class="k">def</span></code>: This keyword tells Python that you’re defining a function.</p></li>
+<li><p><code class="code docutils literal highlight highlight-python"><span class="n">function_name</span></code>: This is the name you give to your function. It is good practice to choose a descriptive name that indicates what the function does.</p></li>
 <li><p>(parameter1, parameter2, …): These are the input parameters (or arguments) that the function accepts. Functions can have zero or more input parameters.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> The colon marks the end of the function header.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;Docstring&quot;&quot;&quot;</span></code>: An optional (but recommended) string that describes what the function does. This helps other programmers (including your future self) understand the purpose of the function.</p></li>
+<li><p><code class="code docutils literal highlight highlight-python"><span class="sd">&quot;&quot;&quot;Docstring&quot;&quot;&quot;</span></code>: An optional (but recommended) string that describes what the function does. This helps other programmers (including your future self) understand the purpose of the function.</p></li>
 <li><p>Function body: This is where you write the code that performs the desired operation.</p></li>
-<li><p>return: This keyword is used to specify the value that the function should return when it is called. If omitted, the function will return None by default.</p></li>
+<li><p><code class="code docutils literal highlight highlight-python"><span class="k">return</span></code>: This keyword is used to specify the value that the function should return when it is called. If omitted, the function will return None by default.</p></li>
 </ol>
 <p>Now, let’s examine one of the specific functions from our weak acid calculation example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
@@ -527,7 +527,7 @@ It performs a calculation and immediately returns the result.</p>
 <li><p>The functions are reusable - they can be called multiple times with different input values.</p></li>
 </ul>
 <p>By structuring our code this way, we’ve made it more modular, easier to understand, and simpler to maintain.
-For example, if we wanted to change how we calculate the hydrogen ion concentration, we only need to update the <code class="docutils literal notranslate"><span class="pre">calculate_h_plus()</span></code> function, without touching the rest of the code.</p>
+For example, if we wanted to change how we calculate the hydrogen ion concentration, we only need to update the <code class="code docutils literal highlight highlight-python"><span class="n">calculate_h_plus</span><span class="p">()</span></code> function, without touching the rest of the code.</p>
 </section>
 <section id="keyword-optional-and-default-arguments">
 <h2>Keyword, Optional, and Default arguments<a class="headerlink" href="#keyword-optional-and-default-arguments" title="Link to this heading">#</a></h2>
@@ -548,7 +548,7 @@ using the <a class="reference external" href="https://en.wikipedia.org/wiki/Quad
 </div>
 </div>
 <div class="highlight-margin notranslate"><div class="highlight"><pre><span></span>```note
-Note that the `quadratic_roots()` function returns both roots to the quadratic equation. These are separated by a comma in the return statement, and are returned as a length-2 tuple.
+Note that the `quadratic_roots()`{l=python} function returns both roots to the quadratic equation. These are separated by a comma in the return statement, and are returned as a length-2 tuple.
 ```
 </pre></div>
 </div>
