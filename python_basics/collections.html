@@ -184,6 +184,7 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
 </ul>
 </details></li>
 </ul>
@@ -214,6 +215,8 @@
 
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
 </ul>
 
     </div>
@@ -268,7 +271,7 @@
       
       
       
-      <li><a href="../_sources/python_basics/collections.ipynb" target="_blank"
+      <li><a href="../_sources/python_basics/collections.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -278,7 +281,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -366,14 +369,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="collections">
 <h1>Collections<a class="headerlink" href="#collections" title="Link to this heading">#</a></h1>
-<p>In this section thus far, we have been looking at the use of variable types that exist <em>individually</em>, e.g. one float or a single string, but Python can go beyond individual items and natively has objects that can hold <em>collections</em> of variables.
-In this section, we will look in detail at three different types of collections in Python, namely:</p>
+<p>Up until now we have dealt with individual pieces of data, such <strong>integer</strong> or <strong>floating point</strong> data types to store numerical data, or <strong>strings</strong> to represent textual data.</p>
+<p>Often we want to work with <strong>collections</strong> of data, such as a time-series of concentrations from an experiment, or a set of yields obtained from different experimental protocols, or the list of students enrolled in <strong>CH40208 Topics in Computational Chemistry</strong>.</p>
+<p>Python includes a number of built-in <strong>container</strong> datatypes, that can be used to store multiple pieces of data in a structured way.</p>
+<p>Three commonly used data structures in Python are:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="lists.html"><span class="doc std std-doc">Lists</span></a></p></li>
-<li><p><a class="reference internal" href="tuples.html"><span class="doc std std-doc">Tuples</span></a></p></li>
-<li><p><a class="reference internal" href="dictionaries.html"><span class="doc std std-doc">Dictionaries</span></a></p></li>
+<li><p><strong>lists</strong> — which are used to store an <strong>ordered sequence</strong> of data that is <strong>changeable</strong>.</p></li>
+<li><p><strong>tuples</strong> — which are used to store an <strong>ordered sequence</strong> of data that is <strong>unchangeable</strong>.</p></li>
+<li><p><strong>dictionaries</strong> — which are used to store <strong>unordered</strong> data as <strong>key–value pairs</strong> (the data in dictionaries can be changed).</p></li>
 </ul>
-<p>Similar to the individual object types, different operations can be performed on each of these collection types.</p>
+<p><strong>Lists</strong> and <strong>tuples</strong> can be used in lots of the same places, but they differ in one very important way:</p>
+<ul class="simple">
+<li><p><strong>lists</strong> are <strong>mutable</strong>—the data stored in them can be altered, new data can be added to the list, and existing data can be removed from the list.</p></li>
+<li><p><strong>tuples</strong> are <strong>immutable</strong>—once a tuple has been created, the data stored cannot be changed, new data cannot be added, and existing data cannot be removed.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
