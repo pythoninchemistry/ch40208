@@ -372,9 +372,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
 </ul>
 </li>
 </ul>
@@ -399,7 +400,7 @@ document.write(`
 <p class="sidebar-title"></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this example we use the approximate relation that <span class="math notranslate nohighlight">\(\mathrm{pH} \approx -\log_{10}[\mathrm{H^+}\)</span>. This approximation is removed in Exercise 1.</p>
+<p>In this example we use the approximation that <span class="math notranslate nohighlight">\(\mathrm{pH} = -\log_{10}(a_\mathrm{H^+}) \approx -\log_{10}[\mathrm{H^+}]\)</span>.</p>
 </div>
 </aside>
 <div class="cell docutils container">
@@ -431,7 +432,59 @@ The percent dissociation is: 1.33%
 </div>
 </div>
 </div>
-<p>This is how you might work through this calculation if you were doing it by hand. We can see that the full calculation is comprised of three steps:</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Derivation of the formula for the equilibrium concentration of hydrogen ions</p>
+<p>In this code example, we calculate the concentration of hydrogen ions using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h_plus</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>The dissociation of a weak acid, <span class="math notranslate nohighlight">\(\mathrm{HA}\)</span>, can be expressed as the equilibrium reaction</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{HA} \rightleftharpoons \mathrm{H}^+ + \mathrm{A}^-\]</div>
+<p>with the position of equilibrium given by the acid dissociation constant, <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span>, as</p>
+<div class="math notranslate nohighlight">
+\[K_\mathrm{a} = \frac{[\mathrm{H}^+][\mathrm{A}^-]}{[\mathrm{HA}]}.\]</div>
+<p>If we start with an initial concentration of <span class="math notranslate nohighlight">\(\mathrm{HA}\)</span> equal to <span class="math notranslate nohighlight">\(C\)</span>, at equilibrium this concentration has decreased by some amount <span class="math notranslate nohighlight">\(x\)</span>, giving an equilibrium concentration</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{HA}] = C-x.\]</div>
+<p>The total amount of material in our system is fixed, and every mole of <span class="math notranslate nohighlight">\(\mathrm{HA}\)</span> that dissociates produces exactly one mole of both <span class="math notranslate nohighlight">\(\mathrm{H}^+\)</span> ions (and exactly one mole of <span class="math notranslate nohighlight">\(\mathrm{A}^-\)</span> ions). So</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{HA}] + [\mathrm{H}^+] = C\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{H}^+] = [\mathrm{A}^-]\]</div>
+<p>under all conditions (even if we are not at equilibrium).</p>
+<p>Since, at equilibrium, <span class="math notranslate nohighlight">\([\mathrm{HA}] = C-x\)</span>, the equilibrium concentrations of <span class="math notranslate nohighlight">\(\mathrm{H}^+\)</span> and <span class="math notranslate nohighlight">\(\mathrm{A}^-\)</span> are given by</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{H}^+] = [\mathrm{A}^-] = x\]</div>
+<p>And we can express <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span> in terms of <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(x\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[K_\mathrm{a} = \frac{x^2}{C-x}\]</div>
+<p>This can be rearranged as</p>
+<div class="math notranslate nohighlight">
+\[x^2 + K_\mathrm{a}x - K_\mathrm{a}C = 0.\]</div>
+<p>This is the standard form of a quadratic equation, and the roots (values of <span class="math notranslate nohighlight">\(x\)</span> that satisfy this equation) are given by the <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_formula">quadratic formula</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]</div>
+<p>with coefficients <span class="math notranslate nohighlight">\(a=1\)</span>, <span class="math notranslate nohighlight">\(b=K_\mathrm{a}\)</span>, and <span class="math notranslate nohighlight">\(c=-K_\mathrm{a}C\)</span>.</p>
+<p>i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+x = \frac{-K_\mathrm{a} \pm \sqrt{K_\mathrm{a}^2 + 4 K_\mathrm{a}C}}{2}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(K_a\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are both positive, <span class="math notranslate nohighlight">\(\sqrt{K_\mathrm{a}^2 + 4 K_\mathrm{a}C}\)</span> is greater than <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span>, and we will get one positive and one negative root. Only the positive root has physical meaning for our problem (<span class="math notranslate nohighlight">\(x\)</span> cannot be less than zero), giving us the following expression for the concentration of hydrogen ions:</p>
+<div class="math notranslate nohighlight">
+\[
+x = \frac{-K_\mathrm{a} + \sqrt{K_\mathrm{a}^2 + 4 K_\mathrm{a}C}}{2}
+\]</div>
+<p>which we implement as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h_plus</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<p>We can see that the full calculation is comprised of three steps:</p>
 <ol class="arabic simple">
 <li><p>Use the <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span> value and concentration to calculate the hydrogen ion concentration</p></li>
 <li><p>Use the hydrogen ion concentration from Step 1. to calculate the pH.</p></li>
@@ -539,10 +592,11 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 </section>
 <section id="keyword-optional-and-default-arguments">
 <h2>Keyword, Optional, and Default arguments<a class="headerlink" href="#keyword-optional-and-default-arguments" title="Link to this heading">#</a></h2>
-<p>Let us look at another example: a function that calculates the roots of a quadratic equation</p>
+<p>The example above uses the <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_formula">quadratic formula</a> to calculate the equilibrium concentration of hydrogen ions from the initial concentration of acid and the acid dissociation constant.</p>
+<p>Solving quadratic equations is useful for many more applications than just this example. And, so, we might decide that we would like to write a generic <code class="docutils literal notranslate"><span class="pre">quadratic_roots</span></code> function that can find the roots for any general quadratic equation</p>
 <div class="math notranslate nohighlight">
 \[ax^2 + bx + c = 0\]</div>
-<p>using the <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_formula">quadratic formula</a>.</p>
+<p>and then reuse this function across several problems.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition note">
@@ -957,8 +1011,8 @@ outside the function: x = 1, y = 3
 </section>
 <section id="exercises">
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>1<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
 <p>The correct definition of pH is</p>
 <div class="math notranslate nohighlight">
 \[\mathrm{pH} = -\log_{10}(a_\mathrm{H}^+),\]</div>
@@ -967,14 +1021,18 @@ outside the function: x = 1, y = 3
 \[a_\mathrm{H}^+ = \gamma_\mathrm{H}^+[\mathrm{H}^+].\]</div>
 <p>Write an updated version of the <code class="code docutils literal highlight highlight-python"><span class="n">calculate_pH</span><span class="p">()</span></code> function from the earlier example so that it calculates pH correctly. Your function should take two arguments: the concentration of hydrogen ions and their activity coefficient. Check that for <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span> you get the same answer as before. Now rewrite your function so that the activity coefficient is an <em>optional</em> argument, with a default value of <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span>. Check that if you call this function in your code as <code class="code docutils literal highlight highlight-python"><span class="n">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span></code> you still get the same result.</p>
 </section>
-<section id="id2">
-<h3>2<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
+<p>Rewrite your <code class="docutils literal notranslate"><span class="pre">calculate_h_plus()</span></code> function to call the generic <code class="docutils literal notranslate"><span class="pre">quadratic_roots()</span></code> function. You will need to pass in appropriate values for the arguments <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>. Remember that the <code class="docutils literal notranslate"><span class="pre">quadratic_roots()</span></code> function returns <em>both</em> roots: you want the positive root.</p>
+</section>
+<section id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
 <p>Write a function to calculate the distance between two atoms.
 Then rewrite the exercise in the loops section to utilise this function.
 Make sure to include a docstring describing the purpose of the function and outlining the arguments.</p>
 </section>
-<section id="id3">
-<h3>3<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
 <p>The Einstein model for the heat capacity of a crystal is</p>
 <div class="math notranslate nohighlight">
 \[C_{V,m} = 3R\left(\frac{\Theta_E}{T}\right)^2\frac{\exp\left(\frac{\Theta_\mathrm{E}}{T}\right)}{\left[\exp\left(\frac{\Theta_\mathrm{E}}{T}\right)-1\right]^2}\]</div>
@@ -1053,9 +1111,10 @@ Make sure to include a docstring describing the purpose of the function and outl
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
 </ul>
 </li>
 </ul>
