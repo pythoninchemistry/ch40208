@@ -61,6 +61,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/file_io';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Synoptic exercises" href="synoptic_exercises.html" />
+    <link rel="prev" title="Matplotlib" href="plotting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +124,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -217,6 +217,16 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_numpy_functions.html">More NumPy functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Matplotlib</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">File input and output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="synoptic_exercises.html">Synoptic exercises</a></li>
 </ul>
 
     </div>
@@ -371,7 +381,6 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-files-using-numpy">Reading and writing files using <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-files"><code class="docutils literal notranslate"><span class="pre">.csv</span></code> files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
 </ul>
             </nav>
         </div>
@@ -655,15 +664,6 @@ Using <code class="docutils literal notranslate"><span class="pre">numpy</span><
 </div>
 </div>
 </section>
-<section id="exercise">
-<h2>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>Investigate the <a href="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/working_with_data/toluene_ir.csv" download>IR spectra</a> data for toulene. You can create a plain text file in your Jupyter directory by selecting <strong>New &gt; Text File</strong> from the file browser window.</p></li>
-</ol>
-<a class="reference internal image-reference" href="../_images/new_text_file.png"><img alt="../_images/new_text_file.png" class="align-center" src="../_images/new_text_file.png" style="width: 200px;" /></a>
-<br/>
-2. Read in the data with the `np.loadtxt()` function. 
-3. Plot the data and correctly label the axis, following the information given in the file header (the part at the top of the file that is marked as comments).</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -696,6 +696,24 @@ Using <code class="docutils literal notranslate"><span class="pre">numpy</span><
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="plotting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Matplotlib</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="synoptic_exercises.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synoptic exercises</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -718,7 +736,6 @@ Using <code class="docutils literal notranslate"><span class="pre">numpy</span><
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-files-using-numpy">Reading and writing files using <code class="docutils literal notranslate"><span class="pre">numpy</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-files"><code class="docutils literal notranslate"><span class="pre">.csv</span></code> files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
 </ul>
   </nav></div>
 

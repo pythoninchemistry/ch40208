@@ -63,6 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/numpy_arrays';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="More NumPy functions" href="more_numpy_functions.html" />
+    <link rel="prev" title="Comparisons and Flow Control" href="../python_basics/comparisons_and_flow_control.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -219,6 +219,16 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">NumPy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_numpy_functions.html">More NumPy functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_io.html">File input and output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="synoptic_exercises.html">Synoptic exercises</a></li>
 </ul>
 
     </div>
@@ -368,9 +378,20 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-numpy-arrays">Arithmetic with NumPy arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions">NumPy functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-arithmetic">Vector Arithmetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-numpy-functions">More <code class="docutils literal notranslate"><span class="pre">numpy</span></code> Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-mean-np-std-np-sum"><code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hints-for-exercise-2">Hints for Exercise 2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -384,9 +405,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numpy">
 <h1>NumPy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h1>
-<p>In the section on <a class="reference internal" href="../python_basics/lists.html#content-lists"><span class="std std-ref">lists</span></a> you learned how <code class="docutils literal notranslate"><span class="pre">list</span></code> collection types can be used to store multiple individual objects, such as individual numerical values that together correspond to an experimental data set.</p>
-<p>While <code class="docutils literal notranslate"><span class="pre">lists</span></code> are convenient for storing and working with relatively small amounts of data, they are not ideal for working with large numerical data sets. Creating large <code class="docutils literal notranslate"><span class="pre">lists</span></code> and iterating over them—for example, to perform some statistical analysis on our dataset—is relatively slow, and can require writing non-trivial amounts of “boilerplate” code, which can make writing code for data analysis cumbersome and prone to bugs.</p>
-<p>For example, imagine we have recorded a set of experimental measurements and we want to compute the mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, and standard error, <span class="math notranslate nohighlight">\(\delta \bar{x}\)</span>, which are given by:</p>
+<p>NumPy (Numerical Python) is a fundamental package for scientific computing in Python. NumPy provides support for large, multi-dimensional arrays and matrices, along with a vast collection of high-level mathematical functions to operate on these arrays efficiently.</p>
+<p>Using NumPy makes working with numerical data much easier and quicker than performing the same operations using only with the Python standard library (e.g., storing and manipulating data using lists).</p>
+<p>As an example of how NumPy can make data analysis much simpler, let us consider the following example data analysis problem:</p>
+<p>Imagine we have performed a series of experimental measurements and want to report our results as (mean ± standard error).</p>
+<p>For data <span class="math notranslate nohighlight">\(x\)</span>, the mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>, and standard error, <span class="math notranslate nohighlight">\(\delta \bar{x}\)</span>, are given by:</p>
 <div class="math notranslate nohighlight">
 \[
 \bar{x} = \frac{1}{N}\sum_i x_i
@@ -399,12 +422,10 @@ document.write(`
 \[
 \delta \bar{x} = \frac{\sigma_{N-1}}{\sqrt{N}}
 \]</div>
-<p>Using lists this might look like:</p>
+<p>If we are only using the Python standard library, we might store our data as a list, and then write two functions <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">std_dev()</span></code> to calculate the mean and standard deviation, respectively. For example,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the mean of a dataset.</span>
@@ -434,6 +455,8 @@ document.write(`
     <span class="n">x_mean</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">([(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">-</span><span class="n">ddof</span><span class="p">))</span>
 
+<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">]</span>
+
 <span class="n">x_bar</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">std_dev</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 
@@ -447,27 +470,12 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Performing numerical analyses of this type on large datasets is a very common computational workflow. To do this efficiently using compact code we can use the <a class="reference external" href="https://numpy.org">NumPy</a> package, which provides a large number of numerical computing tools that are fast and efficient.</p>
-<p>NumPy is not part of the Python standard library, which means that it must be imported before use.</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The ability to import libraries is one of the things that makes the Python programming language so powerful and attractive, allowing the use of algorithms and methods development by (probably better) programmers to be easily accessed.
-Using <code class="docutils literal notranslate"><span class="pre">as</span></code> in the import command lets us assign the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> module to a different (shorter) variable name.</p>
-</div>
-</aside>
+<p>Alternatively, the same calculation using NumPy looks like</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can now reimplement our analysis above using the following, much more compact, <code class="docutils literal notranslate"><span class="pre">numpy</span></code> code:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">])</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">])</span>
 
 <span class="n">x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -482,7 +490,7 @@ Using <code class="docutils literal notranslate"><span class="pre">as</span></co
 </div>
 </div>
 </div>
-<p>The numpy version is also significantly faster if we have large datasets to process.</p>
+<p>Now our code is much shorter, which makes it is quicker to write and easier read. We have avoided having to write our own <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">std_dev()</span></code> functions, which means less opportunity for bugs. And, if we are working with large datasets, the NumPy version runs significantly faster.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span> <span class="c1"># generate 10,000 random numbers between 0 and 1.</span>
@@ -501,13 +509,13 @@ Using <code class="docutils literal notranslate"><span class="pre">as</span></co
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 
-<span class="n">x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="n">x_bar</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">std_dev</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.8 μs ± 98.4 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.77 ms ± 10.8 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 </pre></div>
 </div>
 </div>
@@ -516,20 +524,66 @@ Using <code class="docutils literal notranslate"><span class="pre">as</span></co
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>it
 
-<span class="n">x_bar</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">std_dev</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="n">x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.83 ms ± 8.41 μs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.8 μs ± 72.9 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let us return to our NumPy code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">])</span>
+
+<span class="n">x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">delta_x_bar</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mean = </span><span class="si">{</span><span class="n">x_bar</span><span class="si">}</span><span class="s1"> ± </span><span class="si">{</span><span class="n">delta_x_bar</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>NumPy is not part of the Python standard library, which means it must be imported before use.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">import</span></code> statement in the code above is slightly different to those we have encountered before. Rather than just writing <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span></code> we have <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code>. The <code class="docutils literal notranslate"><span class="pre">as</span></code> keyword allows us to assign <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and all of its functions to the variable name <code class="docutils literal notranslate"><span class="pre">np</span></code>.</p>
+<p>These two pieces of code are equivalent:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.00024
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.00024
 </pre></div>
 </div>
 </div>
 </div>
 <section id="numpy-arrays">
 <h2>NumPy Arrays<a class="headerlink" href="#numpy-arrays" title="Link to this heading">#</a></h2>
-<p>NumPy provides its own data type, called the numpy array. We create a NumPy array similarly to how we create a <code class="docutils literal notranslate"><span class="pre">list</span></code>, using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function:</p>
+<p>NumPy provides its own data type, called the NumPy <strong>array</strong>. We create a NumPy array similarly to how we create a <code class="docutils literal notranslate"><span class="pre">list</span></code>, using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">])</span>
@@ -562,7 +616,8 @@ Using <code class="docutils literal notranslate"><span class="pre">as</span></co
 </div>
 </div>
 </div>
-<p>NumPy arrays can only contain data of the same type, in contrast to <code class="docutils literal notranslate"><span class="pre">lists</span></code>, which can contain data of different types. Trying to create a NumPy array that contains data of different types will either cause an error, or your data will be converted to a single consistent type (which probably is not what you wanted to happen).</p>
+<p>NumPy arrays can only contain data of the same type, in contrast to <code class="docutils literal notranslate"><span class="pre">lists</span></code>, which can contain data of different types.</p>
+<p>Trying to create a NumPy array that contains data of different types will either cause an error, or your data will be converted to a single consistent type (which probably is not what you wanted to happen).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="mf">43.0</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
@@ -592,8 +647,8 @@ Using <code class="docutils literal notranslate"><span class="pre">as</span></co
 <p>NumPy arrays can be created from <code class="docutils literal notranslate"><span class="pre">lists</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">]</span>
-<span class="n">data_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0026</span><span class="p">,</span> <span class="mf">1.0019</span><span class="p">,</span> <span class="mf">0.9972</span><span class="p">,</span> <span class="mf">0.9986</span><span class="p">,</span> <span class="mf">1.0009</span><span class="p">]</span> <span class="c1"># this is a list</span>
+<span class="n">data_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># create a NumPy array from our list</span>
 <span class="n">data_array</span>
 </pre></div>
 </div>
@@ -620,7 +675,7 @@ Using <code class="docutils literal notranslate"><span class="pre">as</span></co
 </div>
 </div>
 </div>
-<p>Individual elements, or slices, of a N-dimensional NumPy array can be referenced using the same syntax as for nested lists. For example, <code class="docutils literal notranslate"><span class="pre">A[1]</span></code> gives the second “row” of this matrix:</p>
+<p>Individual elements, or slices, of a N-dimensional NumPy array can be referenced using the same syntax as for nested lists. For example, <code class="docutils literal notranslate"><span class="pre">A[1]</span></code> gives the second “row” of this two-dimensional array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># second row</span>
@@ -672,133 +727,432 @@ Using <code class="docutils literal notranslate"><span class="pre">as</span></co
 </div>
 </div>
 </section>
-<section id="arithmetic-with-numpy-arrays">
-<h2>Arithmetic with NumPy arrays<a class="headerlink" href="#arithmetic-with-numpy-arrays" title="Link to this heading">#</a></h2>
+<section id="vector-arithmetic">
+<h2>Vector Arithmetic<a class="headerlink" href="#vector-arithmetic" title="Link to this heading">#</a></h2>
 <p>The fact that NumPy arrays are all of a same type means that it is possible to perform arthmetic on them.
 For example, all of the items in an array can be multipled by a single value.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span> <span class="o">*</span> <span class="mf">10.0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_of_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">68</span><span class="p">]</span>
+
+<span class="n">array_of_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">list_of_numbers</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">array_of_numbers</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 2., 3.])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1  9 17 22 45 68]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Or two NumPy arrays can operator on each other.</p>
+<p>If we <code class="docutils literal notranslate"><span class="pre">print</span></code> a NumPy array, it looks much list a list. NumPy arrays, however, allow us to perform <strong>vector arithmetic</strong> where we perform the same operation on every element of an array, or on every pair of elements from two arrays.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_of_numbers</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([10., 10., 10.])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1,  9, 17, 22, 45, 68])
 </pre></div>
 </div>
 </div>
 </div>
-<p>These operations on every element of a NumPy array are called <strong>vector operations</strong>.</p>
-<p>Using NumPy arrays for value-wise operations such as those shown where are <strong>very</strong> efficient and run much faster than explicitly looping over elements in a list.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_of_numbers</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  2,  18,  34,  44,  90, 136])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_of_numbers</span> <span class="o">+</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([11, 19, 27, 32, 55, 78])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using the standard mathematical operators such as <code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">+</span></code> allows us to operate simultaneously on all elements of the array. If we run <code class="docutils literal notranslate"><span class="pre">array_of_numbers</span> <span class="pre">*</span> <span class="pre">2</span></code>, we multiply every element of array_of_numbers by 2.</p>
+<p>We can also add, subtract, divide and multiply arrays together. Each of these operations is carried out element-wise:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="n">array_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;We can add arrays together: </span><span class="si">{</span><span class="n">array_1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">array_2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Take them away from one another: </span><span class="si">{</span><span class="n">array_1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">array_2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Multiply them together: </span><span class="si">{</span><span class="n">array_1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">array_2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Divide one by the other: </span><span class="si">{</span><span class="n">array_1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">array_2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We can add arrays together: [4 6 9]
+Take them away from one another: [-2  4  5]
+Multiply them together: [ 3  5 14]
+Divide one by the other: [0.33333333 5.         3.5       ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_3</span> <span class="o">=</span> <span class="n">array_1</span> <span class="o">+</span> <span class="n">array_2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">array_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">array_3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 5 7]
+[3 1 2]
+-------
+[4 6 9]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, the first element of <code class="docutils literal notranslate"><span class="pre">array_3</span></code> is the sum of the first element of <code class="docutils literal notranslate"><span class="pre">array_1</span></code> and the first element of <code class="docutils literal notranslate"><span class="pre">array_2</span></code>. The second element of <code class="docutils literal notranslate"><span class="pre">array_3</span></code> is the sum of the second element of <code class="docutils literal notranslate"><span class="pre">array_1</span></code> and the second element of <code class="docutils literal notranslate"><span class="pre">array_2</span></code>. And the third element of <code class="docutils literal notranslate"><span class="pre">array_3</span></code> is the sum of the third element of <code class="docutils literal notranslate"><span class="pre">array_1</span></code> and the third element of <code class="docutils literal notranslate"><span class="pre">array_3</span></code>.</p>
+<p>This is precisely how <strong>vector addition</strong> works, hence the term <strong>vector arithmetic</strong>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+a_1 \\
+a_2 \\
+\vdots \\
+a_N
+\end{bmatrix}
++
+\begin{bmatrix}
+b_1 \\
+b_2 \\
+\vdots \\
+b_N
+\end{bmatrix}
+=
+\begin{bmatrix}
+a_1 + b_1 \\
+a_2 + b_2 \\
+\vdots \\
+a_N + b_N
+\end{bmatrix}.
+\end{split}\]</div>
+<p>Note how much simpler elementwise arithmetic is using NumPy arrays than with lists:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">array_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="n">array_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">array_1</span> <span class="o">+</span> <span class="n">array_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4, 6, 9])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">list_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="p">[</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list_1</span><span class="p">,</span> <span class="n">list_2</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[4, 6, 9]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="numpy-functions">
-<h2>NumPy functions<a class="headerlink" href="#numpy-functions" title="Link to this heading">#</a></h2>
-<p>In addition to the power of the NumPy array (on which some of Python’s most impressive libraries are built), the NumPy library also enables access to a broad range of useful functions.
-For example, the <code class="docutils literal notranslate"><span class="pre">np.log</span></code> function that was introduced at the start, differs from the <code class="docutils literal notranslate"><span class="pre">math.log</span></code> function introduced earlier
-As the former can operate on NumPy array when the latter cannot.</p>
+<section id="more-numpy-functions">
+<h2>More <code class="docutils literal notranslate"><span class="pre">numpy</span></code> Functions<a class="headerlink" href="#more-numpy-functions" title="Link to this heading">#</a></h2>
+<p>Aside from the array function, numpy also provides us with many more useful functions that are well worth being aware of.</p>
+<p>Previously, we learnt about the <code class="docutils literal notranslate"><span class="pre">math</span></code> library, which gives us access to various mathematical functions that go beyond the simple operators available as part of the Python standard library, such as <code class="docutils literal notranslate"><span class="pre">+</span></code> or <code class="docutils literal notranslate"><span class="pre">/</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.06</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">,</span> <span class="mf">45.44</span><span class="p">,</span> <span class="mf">150.6</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 
-<span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.05826891, 1.33500107, 2.7080502 , 3.81639277, 5.01462732])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6931471805599453
 </pre></div>
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">math</span></code> functions are designed for <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code> objects; they do not work with data structures such as a <code class="docutils literal notranslate"><span class="pre">list</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-<span class="n">log</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">log</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
 
-<span class="ne">TypeError</span>: only length-1 arrays can be converted to Python scalars
+<span class="ne">TypeError</span>: must be real number, not list
 </pre></div>
 </div>
 </div>
 </div>
-<p>The function from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module will result in an error.</p>
-<p>Alongside these mathematical operations, the NumPy library also enables statistical operations on the NumPy arrays.
-For example, sum, mean and standard deviations are easy to find. These functions can be used using the <code class="docutils literal notranslate"><span class="pre">np.function_name()</span></code> syntax, or used as <strong>methods</strong> of a <code class="docutils literal notranslate"><span class="pre">numpy</span></code> array (using dot syntax).</p>
+<p>So, if we want to calculate the natural logarithm of every value in a list, we have to use a loop:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mass_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">112</span><span class="p">,</span> <span class="mi">114</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="mi">116</span><span class="p">,</span> <span class="mi">117</span><span class="p">,</span> <span class="mi">118</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">122</span><span class="p">,</span> <span class="mi">124</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_numbers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="n">log_numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">mass_numbers</span><span class="p">))</span>
+<span class="n">log_numbers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>or a list comprehension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+
+<span class="n">log_numbers</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using NumPy we can calculate these logarithms as a single vector operation using the NumPy natural logarithm function, <code class="docutils literal notranslate"><span class="pre">np.log()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">numbers_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To give another concrete example, let us say we want to take the exponential of a single number. We can do this with the <code class="docutils literal notranslate"><span class="pre">math</span></code> library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we want to calculate the exponentials of multiple numbers, we have to write a loop (or a list comprehension), <strong>or</strong> we can use the NumPy version of the <code class="docutils literal notranslate"><span class="pre">exp()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>You may have noticed that in this example we passed a **list** into `np.exp()`. This is completely fine. NumPy functions take **array-like** objects as argument, i.e., lists or tuples, as well as NumPy arrays. The only requirement is that a list or tuple contains data of a single type. Note that `np.exp()` returns an array, irrespective of the type of the input data.
+</pre></div>
+</div>
+<p>NumPy has an enormous number of useful functions and methods. Some that are particularly helpful to know about are:</p>
+<section id="np-mean-np-std-np-sum">
+<h3><code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code><a class="headerlink" href="#np-mean-np-std-np-sum" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">200</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">156</span><span class="p">])</span>
+
+<span class="n">mean_of_example</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">example_array</span><span class="p">)</span>
+<span class="n">sum_of_example</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">example_array</span><span class="p">)</span>
+<span class="n">std_dev_of_example</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">example_array</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The mean = </span><span class="si">{</span><span class="n">mean_of_example</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The sum = </span><span class="si">{</span><span class="n">sum_of_example</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The standard deviation = </span><span class="si">{</span><span class="n">std_dev_of_example</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1177
-117.7
-3.4942810419312296
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean = 192.66666666666666
+The sum = 1156
+The standard deviation = 19.913702708325125
 </pre></div>
 </div>
+</div>
+</div>
+<p>These operations can also be written as <strong>methods</strong> of arrays:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can think of <strong>methods</strong> as functions that belong to specific variables. Calling the method for a particular object is equivalent to calling a function with that object as the first argument. So <code class="docutils literal notranslate"><span class="pre">my_array.mean()</span></code> is analogous to <code class="docutils literal notranslate"><span class="pre">np.mean(my_array)</span></code>.</p>
+<p>Like standard functions, methods can take zero or more arguments. For example, in our earlier calculation of standard error we passed the optional argument <code class="docutils literal notranslate"><span class="pre">ddof=1</span></code> to <code class="docutils literal notranslate"><span class="pre">np.std()</span></code> to account for us wanting <span class="math notranslate nohighlight">\(\sigma_{N-1}\)</span> instead of <span class="math notranslate nohighlight">\(\sigma_N\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">std_error</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Using conventional functions, we would write this as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">std_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mass_numbers</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mass_numbers</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mass_numbers</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">200</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">198</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">201</span><span class="p">,</span> <span class="mi">156</span><span class="p">])</span>
+
+<span class="n">mean_of_example</span> <span class="o">=</span> <span class="n">example_array</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">sum_of_example</span> <span class="o">=</span> <span class="n">example_array</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">std_dev_of_example</span> <span class="o">=</span> <span class="n">example_array</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The mean = </span><span class="si">{</span><span class="n">mean_of_example</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The sum = </span><span class="si">{</span><span class="n">sum_of_example</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The standard deviation = </span><span class="si">{</span><span class="n">std_dev_of_example</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1177
-117.7
-3.4942810419312296
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean = 192.66666666666666
+The sum = 1156
+The standard deviation = 19.913702708325125
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="exercises">
 <h2>Exercises:<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p>The percentage abundances of the natural isotopes of tin are:</br>
-112: 0.0097,</br>
-114: 0.0066,</br>
-115: 0.0034,</br>
-116: 0.1454,</br>
-117: 0.0768,</br>
-118: 0.2422,</br>
-119: 0.0859,</br>
-120: 0.3258,</br>
-122: 0.0463,</br>
-124: 0.0579</br>
-Calculate the average (mean) mass of naturally occurring tin.</p></li>
-<li><p>Rewrite or modify your code from the <strong>Loops</strong> Exercise to calculate the distances between each pair of atoms, using <strong>numpy arrays</strong> to store the atom positions, and <strong>vector arithmetic</strong> to calculate the vectors between pairs of atoms.</p></li>
-</ol>
+<section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
+<p>The percentage abundances of the natural isotopes of tin are:</p>
+<table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Mass</th>
+      <th>% Abundance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>112</td>
+      <td>0.0097</td>
+    </tr>
+    <tr>
+      <td>114</td>
+      <td>0.0066</td>
+    </tr>
+    <tr>
+      <td>115</td>
+      <td>0.0034</td>
+    </tr>
+    <tr>
+      <td>116</td>
+      <td>0.1454</td>
+    </tr>
+    <tr>
+      <td>117</td>
+      <td>0.0768</td>
+    </tr>
+    <tr>
+      <td>118</td>
+      <td>0.2422</td>
+    </tr>
+    <tr>
+      <td>119</td>
+      <td>0.0859</td>
+    </tr>
+    <tr>
+      <td>120</td>
+      <td>0.3258</td>
+    </tr>
+    <tr>
+      <td>122</td>
+      <td>0.0463</td>
+    </tr>
+    <tr>
+      <td>124</td>
+      <td>0.0579</td>
+    </tr>
+  </tbody>
+</table>
+<p>Create two numpy arrays to store the mass and abundance data. Then use vector arithmetic to calculate the average (mean) mass of naturally occurring tin.</p>
 </section>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
+<p>Rewrite or modify your code from the <strong>Loops</strong> Exercise to calculate the distances between each pair of atoms, using <strong>numpy arrays</strong> to store the atom positions, and <strong>vector arithmetic</strong> to calculate the vectors between pairs of atoms.</p>
+<section id="hints-for-exercise-2">
+<h4>Hints for Exercise 2<a class="headerlink" href="#hints-for-exercise-2" title="Link to this heading">#</a></h4>
+<p>If you are representing atom positions by vectors, <span class="math notranslate nohighlight">\(r_i\)</span> and <span class="math notranslate nohighlight">\(r_j\)</span> then the position of one atom relative to the other is given by <span class="math notranslate nohighlight">\(r_{ij} = r_j - r_i\)</span> (or, by <span class="math notranslate nohighlight">\(r_{ji} = r_i - r_j\)</span>, depending on which relative position we want).</p>
+<p>The <em>distance</em> between atoms <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> is then the <em>magnitude</em> of this vector: <span class="math notranslate nohighlight">\(d_{ij} = |r_{ij}| = |r_{ji}|\)</span>.</p>
+<p>We can calculate this distance using Pythagoras’s theorem:</p>
+<div class="math notranslate nohighlight">
+\[d_{ij} = \sqrt{(r_{j}^x - r_i^x)^2 + (r_{j}^y - r_i^y)^2 + (r_{j}^z - r_i^z)^2}\]</div>
+<p>If we were storing our atom positions in length-3 lists, we might code this as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">r_j</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">r_i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">r_j</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">r_i</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">r_j</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">r_i</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or (using a list comprehension)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">distance</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">sum</span><span class="p">([(</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">r_i</span><span class="p">,</span> <span class="n">r_j</span><span class="p">)]))</span>
+</pre></div>
+</div>
+<p>(check that you understand why and how these two lines of code perform the same calculation).</p>
+<p>But, remember that NumPy arrays allow us to perform operations on whole arrays or on pairs of arrays, without having to explicitly specify which elements we are operating on.</p>
+</section>
+</section>
+<section id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
+<p>NumPy provides a range of useful functions for common algebraic operations, including an entire submodule for <strong>linear algebra</strong> (working with vectors and matrices).</p>
+<p>The length of a vector can be computed directly using <code class="docutils literal notranslate"><span class="pre">np.linalg.norm()</span></code>.</p>
+<p>i.e., these two calculations are equivalent</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rewrite your code to calculate distances between pairs of atoms using <code class="docutils literal notranslate"><span class="pre">np.linalg.norm()</span></code>.</p>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -831,6 +1185,24 @@ Calculate the average (mean) mass of naturally occurring tin.</p></li>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../python_basics/comparisons_and_flow_control.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Comparisons and Flow Control</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="more_numpy_functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">More NumPy functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -848,9 +1220,20 @@ Calculate the average (mean) mass of naturally occurring tin.</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-arrays">NumPy Arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-with-numpy-arrays">Arithmetic with NumPy arrays</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-functions">NumPy functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-arithmetic">Vector Arithmetic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-numpy-functions">More <code class="docutils literal notranslate"><span class="pre">numpy</span></code> Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-mean-np-std-np-sum"><code class="docutils literal notranslate"><span class="pre">np.mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.std()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hints-for-exercise-2">Hints for Exercise 2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
