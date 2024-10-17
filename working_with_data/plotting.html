@@ -384,7 +384,15 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-more-than-one-dataset">Plotting More Than One Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-formatting-with-latex">String Formatting with LaTeX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-formatting-with-latex">String Formatting with LaTeX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Matplotlib</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#principles-of-data-visualisation">Principles of Data Visualisation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picking-colours">Picking Colours</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -786,25 +794,31 @@ dm<span class="math notranslate nohighlight">\(^{-3}\)</span> that require subsc
 <p>The get superscripts, we use an underscore <code class="docutils literal notranslate"><span class="pre">_</span></code> in the same manner; e.g.,</p>
 <p>which gives <span class="math notranslate nohighlight">\(x_i\)</span>.</p>
 <p>Note that we can leave out the curly brackets if we are only subscripting or superscipting a single character.</p>
-<p>In this example, we have also prefixed</p>
+<p>In this example, we have also added a <code class="docutils literal notranslate"><span class="pre">r</span></code> prefix to each string, which tells Python to treat this as a “raw” string, and ignore any backslashes within the string (which otherwise can be interpreted as having special meaning in Python, and then are not passed to matplotlib correctly).</p>
 <p>The syntax for using LaTeX in <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is exactly the same in Markdown. In other words, you can write subscripts, superscripts and more general mathematical expressions in Markdown cells using the same <code class="docutils literal notranslate"><span class="pre">$</span></code> notation (this is how all of the mathematics has been typeset in this course book!).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Additional Resources</span>
-
-<span class="o">-</span> <span class="p">[</span><span class="n">Matplotlib</span> <span class="k">for</span> <span class="n">beginners</span> <span class="n">cheatsheet</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">cheatsheets</span><span class="o">/</span><span class="n">_images</span><span class="o">/</span><span class="n">handout</span><span class="o">-</span><span class="n">beginner</span><span class="o">.</span><span class="n">png</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-    <span class="o">-</span> <span class="p">[</span><span class="n">Matplotlib</span> <span class="k">for</span> <span class="n">beginners</span> <span class="n">cheatsheet</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">cheatsheets</span><span class="o">/</span><span class="n">_images</span><span class="o">/</span><span class="n">handout</span><span class="o">-</span><span class="n">beginner</span><span class="o">.</span><span class="n">png</span><span class="p">)</span>
-                      <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax. Perhaps you forgot a comma?
-</pre></div>
-</div>
-</div>
-</div>
+<section id="additional-resources">
+<h3>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h4>Matplotlib<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://matplotlib.org/cheatsheets/_images/handout-beginner.png">Matplotlib for beginners cheatsheet</a></p></li>
+</ul>
+</section>
+<section id="principles-of-data-visualisation">
+<h4>Principles of Data Visualisation<a class="headerlink" href="#principles-of-data-visualisation" title="Link to this heading">#</a></h4>
+<p>This course does not cover the principles of creating plots that are clear and visually attractive, but these areuseful to know about if you are intending to share your plots (showing these to colleagues, including these in reports, generating figures for scientific papers, etc.)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://clauswilke.com/dataviz/introduction.html">Fundamentals of Data Visualization</a></p></li>
+</ul>
+</section>
+<section id="picking-colours">
+<h4>Picking Colours<a class="headerlink" href="#picking-colours" title="Link to this heading">#</a></h4>
+<p>Selecting colours that are complementary, visually distinct, and form a visually appealing set is a skill that needs practice to develop. Online tools can take some of the trial and error out of this, by generating colour palettes (sets of complementary colours) according to built-in rules:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://coolors.co">Coolors.co</a></p></li>
+</ul>
+</section>
+</section>
 </section>
 </section>
 
@@ -878,7 +892,15 @@ dm<span class="math notranslate nohighlight">\(^{-3}\)</span> that require subsc
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-more-than-one-dataset">Plotting More Than One Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-formatting-with-latex">String Formatting with LaTeX</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-formatting-with-latex">String Formatting with LaTeX</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Matplotlib</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#principles-of-data-visualisation">Principles of Data Visualisation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picking-colours">Picking Colours</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
