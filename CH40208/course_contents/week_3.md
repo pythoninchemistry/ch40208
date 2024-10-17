@@ -1,4 +1,4 @@
-# Week 2
+# Week 3
 
 ## Working with Data
 - [NumPy](../working_with_data/numpy.ipynb)
