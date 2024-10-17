@@ -187,6 +187,7 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 2</a></li>
 </ul>
 </details></li>
 </ul>
@@ -382,6 +383,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-colours">Setting Colours</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-more-than-one-dataset">Plotting More Than One Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-formatting-with-latex">String Formatting with LaTeX</a></li>
 </ul>
             </nav>
@@ -602,19 +604,18 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/e05c55197d2bbbb1d15de5c4169f61745edec06dede8abf79be0ec3c47ca1f0c.png"><img alt="../_images/e05c55197d2bbbb1d15de5c4169f61745edec06dede8abf79be0ec3c47ca1f0c.png" src="../_images/e05c55197d2bbbb1d15de5c4169f61745edec06dede8abf79be0ec3c47ca1f0c.png" style="width: 862px; height: 828px;" /></a>
 </div>
 </div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <h3 class="rubric" id="hex-color-strings">Hex Color Strings</h3>
 <p>Hex strings represent RGB colors in a compact format: ‘#RRGGBB’.
 Each pair (RR, GG, BB) is a two-digit <a class="reference external" href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> (base 16) number (00 to FF), which correspond to the range 0 to 255 in base 10. For each component, the value defines the proportion of that base colour (red, gree, or blue) in the overall colour.</p>
 <p>Examples:</p>
-<p>‘#FF0000’ is red (255, 0, 0)
-‘#00FF00’ is green (0, 255, 0)
-‘#0000FF’ is blue (0, 0, 255)</p>
+<ul class="simple">
+<li><p>‘#FF0000’ is red (255, 0, 0)</p></li>
+<li><p>‘#00FF00’ is green (0, 255, 0)</p></li>
+<li><p>‘#0000FF’ is blue (0, 0, 255)</p></li>
+</ul>
 </div>
-</aside>
 <p>You can also specify your own colours using a tuple of (red, green, blue) values, or by giving the same information as a <a class="reference external" href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> string:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -638,7 +639,10 @@ Each pair (RR, GG, BB) is a two-digit <a class="reference external" href="https:
 <a class="reference internal image-reference" href="../_images/1f2e0ec1826e8607c2b09c3b8d70f7e6e8bafacab34ae37ecd4e48b524f83c2e.png"><img alt="../_images/1f2e0ec1826e8607c2b09c3b8d70f7e6e8bafacab34ae37ecd4e48b524f83c2e.png" src="../_images/1f2e0ec1826e8607c2b09c3b8d70f7e6e8bafacab34ae37ecd4e48b524f83c2e.png" style="width: 552px; height: 413px;" /></a>
 </div>
 </div>
-<p>## Plotting More Than One Dataset</p>
+</section>
+</section>
+<section id="plotting-more-than-one-dataset">
+<h2>Plotting More Than One Dataset<a class="headerlink" href="#plotting-more-than-one-dataset" title="Link to this heading">#</a></h2>
 <p>For the next example, we will start by plotting</p>
 <div class="math notranslate nohighlight">
 \[f(x) = \sin x\]</div>
@@ -700,7 +704,6 @@ Each pair (RR, GG, BB) is a two-digit <a class="reference external" href="https:
 <a class="reference internal image-reference" href="../_images/0b49cfa5a8d2689cb6573a9ecc1446186f4e26fb9ce9af378fd8aed077694a3f.png"><img alt="../_images/0b49cfa5a8d2689cb6573a9ecc1446186f4e26fb9ce9af378fd8aed077694a3f.png" src="../_images/0b49cfa5a8d2689cb6573a9ecc1446186f4e26fb9ce9af378fd8aed077694a3f.png" style="width: 588px; height: 432px;" /></a>
 </div>
 </div>
-</section>
 </section>
 <section id="string-formatting-with-latex">
 <h2>String Formatting with LaTeX<a class="headerlink" href="#string-formatting-with-latex" title="Link to this heading">#</a></h2>
@@ -767,8 +770,8 @@ dm<span class="math notranslate nohighlight">\(^{-3}\)</span> that require subsc
 <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y = 2x$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$T^{-1}$ / $\mathrm</span><span class="si">{K}</span><span class="s1">^{-1}$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$\ln T$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$T^{-1}$ / $\mathrm</span><span class="si">{K}</span><span class="s1">^{-1}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\ln T$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -776,16 +779,6 @@ dm<span class="math notranslate nohighlight">\(^{-3}\)</span> that require subsc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-&lt;&gt;:5: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:6: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-/tmp/ipykernel_2610/1731868592.py:5: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-  plt.xlabel(&#39;$T^{-1}$ / $\mathrm{K}^{-1}$&#39;)
-/tmp/ipykernel_2610/1731868592.py:6: SyntaxWarning: invalid escape sequence &#39;\l&#39;
-  plt.ylabel(&#39;$\ln T$&#39;)
-</pre></div>
-</div>
 <a class="reference internal image-reference" href="../_images/24dff99836f66c50aa2ec68de109496d90e94d38613bb423dbe4a8e3692b19a6.png"><img alt="../_images/24dff99836f66c50aa2ec68de109496d90e94d38613bb423dbe4a8e3692b19a6.png" src="../_images/24dff99836f66c50aa2ec68de109496d90e94d38613bb423dbe4a8e3692b19a6.png" style="width: 576px; height: 434px;" /></a>
 </div>
 </div>
@@ -793,6 +786,7 @@ dm<span class="math notranslate nohighlight">\(^{-3}\)</span> that require subsc
 <p>The get superscripts, we use an underscore <code class="docutils literal notranslate"><span class="pre">_</span></code> in the same manner; e.g.,</p>
 <p>which gives <span class="math notranslate nohighlight">\(x_i\)</span>.</p>
 <p>Note that we can leave out the curly brackets if we are only subscripting or superscipting a single character.</p>
+<p>In this example, we have also prefixed</p>
 <p>The syntax for using LaTeX in <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> is exactly the same in Markdown. In other words, you can write subscripts, superscripts and more general mathematical expressions in Markdown cells using the same <code class="docutils literal notranslate"><span class="pre">$</span></code> notation (this is how all of the mathematics has been typeset in this course book!).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -883,6 +877,7 @@ dm<span class="math notranslate nohighlight">\(^{-3}\)</span> that require subsc
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-colours">Setting Colours</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-more-than-one-dataset">Plotting More Than One Dataset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-formatting-with-latex">String Formatting with LaTeX</a></li>
 </ul>
   </nav></div>
