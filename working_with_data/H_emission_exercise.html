@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>1. &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -61,9 +61,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/vectors_exercises';</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/H_emission_exercise';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Synoptic exercises" href="synoptic_exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -114,8 +117,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -209,15 +210,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../working_with_data/more_numpy_functions.html">More NumPy functions</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="more_numpy_functions.html">More NumPy functions</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">1.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_io.html">File input and output</a></li>
+<li class="toctree-l1"><a class="reference internal" href="synoptic_exercises.html">Synoptic exercises</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1.</a></li>
 
 </ul>
 
@@ -273,7 +274,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/vectors_exercises.ipynb" target="_blank"
+      <li><a href="../_sources/working_with_data/H_emission_exercise.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -336,7 +337,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -347,11 +350,21 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise</h1>
+    <h1>1.</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -361,46 +374,39 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise">
-<h1>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h1>
-<p>Considering the atoms in the previous exercises.
-We can use a vector approach as follows.
-This is discussed in detail in LOIL 10.1.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atom_1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">]</span>
-<span class="n">atom_2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">]</span>
-<span class="n">atom_3</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+  <p>The electronic states of atomic hydrogen have energies</p>
+<div class="math notranslate nohighlight">
+\[E_n = -\frac{1}{n}R_\mathrm{H}hc\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the principal quantum number for each energy level, <span class="math notranslate nohighlight">\(R_\mathrm{H}\)</span> is the Rydberg constant, <span class="math notranslate nohighlight">\(h\)</span> is Planck’s constant, and <span class="math notranslate nohighlight">\(c\)</span> is the speed of light.</p>
+<section id="id1">
+<h1>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>Write a function to calculate the energy of the <span class="math notranslate nohighlight">\(n\)</span><sup>th</sup> electronic energy level of hydrogen, and calculate the energies for <span class="math notranslate nohighlight">\(n\)</span>=1, 2, 3, 4, 5.</p>
+<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>You can access a large number of physical constants using the `constants` sub-module of `scipy`.
 
-<span class="n">atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">atom_1</span><span class="p">,</span> <span class="n">atom_2</span><span class="p">,</span> <span class="n">atom_3</span><span class="p">])</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a_i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">atoms</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">a_j</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]):</span>
-        <span class="n">vector</span> <span class="o">=</span> <span class="n">a_i</span> <span class="o">-</span> <span class="n">a_j</span>
-        <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">vector</span><span class="p">,</span> <span class="n">vector</span><span class="p">)))</span>
-        
-<span class="nb">print</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+Values for the Rydberg constant, Planck&#39;s constant, and the speed of light can be imported using
+```python
+from scipy.constants import Rydberg, h, c
+```
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[np.float64(0.9486832980505141), np.float64(1.5652475842498532), np.float64(0.9433981132056602)]
+</section>
+<section id="id2">
+<h1>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p>The emission spectrum of atomic hydrogen is described by Rydberg’s formula, which relates the energy difference between atomic levels to the wavelength of absorbed or emitted photons:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\lambda} = R_\mathrm{H}\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)
+\]</div>
+<p>(a) Write a function that takes two arguments, <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span>, and returns the corresponding emission wavelength.</p>
+<p>The Lyman, Balmer, and Paschen series correspond to spectral lines for transitions with <span class="math notranslate nohighlight">\(n_1\)</span> = 1, <span class="math notranslate nohighlight">\(n_1\)</span> = 2, and <span class="math notranslate nohighlight">\(n_1\)</span> = 3, respectively.</p>
+<center><img src='https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/working_with_data/images/H_emission.png' width='50%' /></center><p>(b) Use your function to calculate the wavelengths of the first lines in the Lyman, Balmer, and Paschen series.</p>
+<p>(c) Next, use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to print the wavelenghts (in nanometers) of the first 10 lines of the Balmer series.</p>
+<p>(d) Add one additional loop so that your code prints the wavelengths of the first 10 lines in the Lyman, Balmer, and Paschen series.</p>
+<p>(e) Add some logic to your code so that, rather than printing each wavelength to the screen, the calculated wavelengths are stored in three corresponding lists called <code class="docutils literal notranslate"><span class="pre">lyman</span></code>, <code class="docutils literal notranslate"><span class="pre">balmer</span></code>, and <code class="docutils literal notranslate"><span class="pre">paschen</span></code>, respectively.</p>
+<p>(f) Plot your calculated wavelengths as vertical lines at their corresponding wavelengths using <code class="docutils literal notranslate"><span class="pre">plt.vlines()</span></code>(<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.vlines.html">docs</a>)). Colour lines from the Lyman series pink, from the Balmer series blue, and from the Paschen series green. Give your plot suitable axes labels and a legend.</p>
+<p>(g) Export your image to a file using <code class="docutils literal notranslate"><span class="pre">plt.savefig('H_emission.pdf',</span> <span class="pre">bbox_inches='tight')</span></code>.</p>
+<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>To save a file to an image, you must call `plt.savefig()` *before* `plt.show()`. `plt.show()` clears the most recent image, so if you call `plt.savefig()` second, you will only create a blank image.
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 
@@ -417,7 +423,7 @@ This is discussed in detail in LOIL 10.1.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./working_with_data"
         },
         predefinedOutput: true
     }
@@ -434,12 +440,39 @@ This is discussed in detail in LOIL 10.1.</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="synoptic_exercises.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Synoptic exercises</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
