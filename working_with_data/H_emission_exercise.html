@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Modelling the Hydrogen Emission Spectrum &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -218,8 +218,7 @@
 <li class="toctree-l1"><a class="reference internal" href="plotting.html">Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="file_io.html">File input and output</a></li>
 <li class="toctree-l1"><a class="reference internal" href="synoptic_exercises.html">Synoptic exercises</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">1.</a></li>
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelling the Hydrogen Emission Spectrum</a></li>
 </ul>
 
     </div>
@@ -350,7 +349,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1.</h1>
+    <h1>Modelling the Hydrogen Emission Spectrum</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -360,10 +359,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -374,24 +372,26 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>The electronic states of atomic hydrogen have energies</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="modelling-the-hydrogen-emission-spectrum">
+<h1>Modelling the Hydrogen Emission Spectrum<a class="headerlink" href="#modelling-the-hydrogen-emission-spectrum" title="Link to this heading">#</a></h1>
+<p>The electronic states of atomic hydrogen have energies</p>
 <div class="math notranslate nohighlight">
 \[E_n = -\frac{1}{n}R_\mathrm{H}hc\]</div>
 <p>where <span class="math notranslate nohighlight">\(n\)</span> is the principal quantum number for each energy level, <span class="math notranslate nohighlight">\(R_\mathrm{H}\)</span> is the Rydberg constant, <span class="math notranslate nohighlight">\(h\)</span> is Planck’s constant, and <span class="math notranslate nohighlight">\(c\)</span> is the speed of light.</p>
 <section id="id1">
-<h1>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h2>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Write a function to calculate the energy of the <span class="math notranslate nohighlight">\(n\)</span><sup>th</sup> electronic energy level of hydrogen, and calculate the energies for <span class="math notranslate nohighlight">\(n\)</span>=1, 2, 3, 4, 5.</p>
-<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>You can access a large number of physical constants using the `constants` sub-module of `scipy`.
-
-Values for the Rydberg constant, Planck&#39;s constant, and the speed of light can be imported using
-```python
-from scipy.constants import Rydberg, h, c
-```
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can access a large number of physical constants using the <code class="docutils literal notranslate"><span class="pre">constants</span></code> sub-module of <code class="docutils literal notranslate"><span class="pre">scipy</span></code>.</p>
+<p>Values for the Rydberg constant, Planck’s constant, and the speed of light can be imported using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">Rydberg</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span>
 </pre></div>
+</div>
 </div>
 </section>
 <section id="id2">
-<h1>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<h2>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>The emission spectrum of atomic hydrogen is described by Rydberg’s formula, which relates the energy difference between atomic levels to the wavelength of absorbed or emitted photons:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -405,9 +405,11 @@ from scipy.constants import Rydberg, h, c
 <p>(e) Add some logic to your code so that, rather than printing each wavelength to the screen, the calculated wavelengths are stored in three corresponding lists called <code class="docutils literal notranslate"><span class="pre">lyman</span></code>, <code class="docutils literal notranslate"><span class="pre">balmer</span></code>, and <code class="docutils literal notranslate"><span class="pre">paschen</span></code>, respectively.</p>
 <p>(f) Plot your calculated wavelengths as vertical lines at their corresponding wavelengths using <code class="docutils literal notranslate"><span class="pre">plt.vlines()</span></code>(<a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.vlines.html">docs</a>)). Colour lines from the Lyman series pink, from the Balmer series blue, and from the Paschen series green. Give your plot suitable axes labels and a legend.</p>
 <p>(g) Export your image to a file using <code class="docutils literal notranslate"><span class="pre">plt.savefig('H_emission.pdf',</span> <span class="pre">bbox_inches='tight')</span></code>.</p>
-<div class="highlight-note notranslate"><div class="highlight"><pre><span></span>To save a file to an image, you must call `plt.savefig()` *before* `plt.show()`. `plt.show()` clears the most recent image, so if you call `plt.savefig()` second, you will only create a blank image.
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To save a file to an image, you must call <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> <em>before</em> <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code>. <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> clears the most recent image, so if you call <code class="docutils literal notranslate"><span class="pre">plt.savefig()</span></code> second, you will only create a blank image.</p>
 </div>
+<center><img src='https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/working_with_data/images/H_emission_calculated.png' width='85%' /></center></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -466,10 +468,9 @@ from scipy.constants import Rydberg, h, c
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
