@@ -56,7 +56,7 @@ parts:
 #      - file: good_practice/markdown
   - caption: Computational Chemistry Methods
     chapters:
-      - file: comp_chem_methods/geometry_optimisation_new.md
+      - file: comp_chem_methods/geometry_optimisation.md
         sections:
         - file: comp_chem_methods/analytical_solution_for_a_harmonic_potential.md
         - file: comp_chem_methods/grid_search_method.ipynb
