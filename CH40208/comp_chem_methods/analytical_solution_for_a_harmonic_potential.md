@@ -18,7 +18,7 @@ This analytical solution if possible because we have a simple mathematical funct
 
 1. Write a Python function to calculate the potential energy surface for a diatomic molecule with a harmonic bond potential,
 
-$$U(r) = \frac{k}{2}(r-r_0)$$
+$$U(r) = \frac{k}{2}(r-r_0)^2$$
 
 where $k$ is the bond force constant and $r_0$ is the equilibrium bond length.
 
