@@ -178,6 +178,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
 </ul>
 </details></li>
 </ul>
@@ -229,6 +230,8 @@
 <li class="toctree-l2"><a class="reference internal" href="grid_search_method.html">Grid Search Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent_method.html">Gradient Descent Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
 </ul>
 </details></li>
 </ul>
@@ -404,21 +407,8 @@
 \[U(r) = \frac{k}{2}(r-r_0)\]</div>
 <p>where <span class="math notranslate nohighlight">\(k\)</span> is the bond force constant and <span class="math notranslate nohighlight">\(r_0\)</span> is the equilibrium bond length.</p>
 <p>Your function should take three arguments as input; <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(r_0\)</span>; and return the potential energy for the input value of <span class="math notranslate nohighlight">\(r\)</span>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Your instinct is probably to work in SI units, in which case your harmonic potential function will return energies in joules. Because you are calculating the potential energy of a single H<sub>2</sub> molecule, working in joules will give very small numbers: for example, doubling the bond length gives a potential energy increase of only 1.57 × 10<sup>−18</sup> J. Working with such small numbers can cause problems for some numerical optimisation methods, because any change in bond-length gives a change in potential energy that is very small, and can be considered so close to zero that the optimisation algorithm decides that convergence has been reached, and stops prematurely.</p>
-<p>You can make your code much more numerically robust by working in more suitable energy units, such as electronvolts (eV). In these units, the same doubling of the H<sub>2</sub> bond length gives an energy increase of approximately 9.8 eV, which is much easier for numerical algorithms to work with.</p>
-<p>The conversion factor from joules to electronvolts is available as part of the <code class="docutils literal notranslate"><span class="pre">scipy.constants</span></code> module:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">physical_constants</span>
-
-<span class="n">joules_to_ev</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">physical_constants</span><span class="p">[</span><span class="s1">&#39;electron volt&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="n">energy_in_eV</span> <span class="o">=</span> <span class="n">energy_in_joules</span> <span class="o">*</span> <span class="n">joules_to_eV</span>
-</pre></div>
-</div>
-</div>
 <ol class="arabic simple" start="2">
-<li><p>Plot this function for H<sub>2</sub> (<span class="math notranslate nohighlight">\(r_0\)</span> = 0.74 Å, <span class="math notranslate nohighlight">\(k\)</span> = 575 N m<sup>−1</sup>) for <span class="math notranslate nohighlight">\(0.38\leq r \leq 1.1\)</span>.</p></li>
+<li><p>Plot this function for H<sub>2</sub> (<span class="math notranslate nohighlight">\(r_0\)</span> = 0.74 Å, <span class="math notranslate nohighlight">\(k\)</span> = 36.0 eV Å<sup>−2</sup>) for <span class="math notranslate nohighlight">\(0.38\leq r \leq 1.1\)</span>.</p></li>
 <li><p>Use your function to calculate the potential energy at <span class="math notranslate nohighlight">\(r=r_0\)</span>. Add a point to your plot at <span class="math notranslate nohighlight">\((U(r_0), r_0)\)</span> and confirm visually that this is the minimum of the potential energy surface.</p></li>
 </ol>
 </section>

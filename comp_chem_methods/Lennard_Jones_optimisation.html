@@ -66,6 +66,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/Lennard_Jones_optimisation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Minimisation with scipy.optimize.minimize" href="scipy_optimize_minimize.html" />
+    <link rel="prev" title="The Newton-Raphson Method" href="newton_raphson_method.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -178,6 +178,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
 </ul>
 </details></li>
 </ul>
@@ -223,12 +224,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="geometry_optimisation_new.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="geometry_optimisation_new.html">Geometry Optimisation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grid_search_method.html">Grid Search Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent_method.html">Gradient Descent Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
 </ul>
 </details></li>
 </ul>
@@ -374,7 +377,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.</a></li>
 </ul>
             </nav>
         </div>
@@ -410,15 +412,6 @@
 \[U^{\prime\prime} = 156\frac{A}{r^{14}} - 42\frac{B}{r^8}\]</div>
 <p>Investigate how the Newton-Raphson method performs with starting points of <span class="math notranslate nohighlight">\(r\)</span> = 3.2 Å, <span class="math notranslate nohighlight">\(r\)</span> = 4.4 Å, and <span class="math notranslate nohighlight">\(r\)</span> = 6.0 Å.</p>
 </section>
-<section id="id4">
-<h2>4.<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">scipy</span></code> contains multiple functions for mathematical optimisation, including <code class="docutils literal notranslate"><span class="pre">scipy.optimise.minimize()</span></code>, which can be used to find minima for arbitrary functions.</p>
-<p>To use <code class="docutils literal notranslate"><span class="pre">minimize</span></code> we first import it</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-</pre></div>
-</div>
-<p>We can then use this function by</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -451,6 +444,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="newton_raphson_method.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">The Newton-Raphson Method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="scipy_optimize_minimize.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -471,7 +482,6 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4.</a></li>
 </ul>
   </nav></div>
 
