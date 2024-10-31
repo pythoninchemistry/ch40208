@@ -53,8 +53,14 @@ parts:
 #  - file: good_practice/testing
 #      - file: good_practice/modularisation
 #      - file: good_practice/markdown
-#  - caption: Computational Chemistry Methods
-#    chapters:
+  - caption: Computational Chemistry Methods
+    chapters:
+      - file: comp_chem_methods/geometry_optimisation_new.md
+        sections:
+        - file: comp_chem_methods/analytical_solution_for_a_harmonic_potential.md
+        - file: comp_chem_methods/grid_search_method.ipynb
+        - file: comp_chem_methods/gradient_descent_method.ipynb
+        - file: comp_chem_methods/newton_raphson_method.ipynb
 #      - file: comp_chem_methods/potential_energy_surfaces
 #      - file: comp_chem_methods/geometry_optimisation
 #      - file: comp_chem_methods/minimisation
