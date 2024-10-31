@@ -9,6 +9,7 @@ parts:
         - file: course_contents/week_2
         - file: course_contents/week_3
         - file: course_contents/week_4
+        - file: course_contents/week_5
   - caption: Jupyter Notebooks
     chapters:
       - file: notebooks_introduction/what_is_a_jupyter_notebook
@@ -61,6 +62,8 @@ parts:
         - file: comp_chem_methods/grid_search_method.ipynb
         - file: comp_chem_methods/gradient_descent_method.ipynb
         - file: comp_chem_methods/newton_raphson_method.ipynb
+        - file: comp_chem_methods/Lennard_Jones_optimisation.ipynb 
+        - file: comp_chem_methods/scipy_optimize_minimize.ipynb 
 #      - file: comp_chem_methods/potential_energy_surfaces
 #      - file: comp_chem_methods/geometry_optimisation
 #      - file: comp_chem_methods/minimisation
