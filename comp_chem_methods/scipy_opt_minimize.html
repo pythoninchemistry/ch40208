@@ -222,6 +222,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="geometry_optimisation_new.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newton_raphson_method.html">The Newton-Raphson Method</a></li>
+</ul>
+</details></li>
+</ul>
 
     </div>
 </nav></div>
@@ -408,6 +418,14 @@ The library is called <code class="docutils literal notranslate"><span class="pr
 <p>To minimize the potential energy from the Lennard-Jones potential, we write a function for this, this is the <code class="docutils literal notranslate"><span class="pre">fun</span></code> discussed above. The parameter we are minimising with respect to (in this case, the interatomic separation, <span class="math notranslate nohighlight">\(r\)</span>) needs to be the first argument in our function, followed by any additional parameters that we are not varying as part of our minimisation (here <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">harmonic_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lennard_jones</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Lennard-Jones potential energy.</span>
@@ -432,6 +450,63 @@ The library is called <code class="docutils literal notranslate"><span class="pr
 <p>Above, this is mapped out, were <code class="docutils literal notranslate"><span class="pre">r</span></code> is our <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">A,</span> <span class="pre">B</span></code> are the <code class="docutils literal notranslate"><span class="pre">*args</span></code> (note the <code class="docutils literal notranslate"><span class="pre">*</span></code> means this can be any number of <code class="docutils literal notranslate"><span class="pre">args</span></code>).
 The <code class="docutils literal notranslate"><span class="pre">args</span></code> are not varied during the minimisation process.
 The <code class="docutils literal notranslate"><span class="pre">minimization</span></code> function works as follows.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">574</span>
+<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.74</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">harmonic_potential</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">))</span>
+
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
+  success: True
+   status: 0
+      fun: 2.342973618343429e-16
+        x: [ 7.400e-01]
+      nit: 1
+      jac: [ 4.795e-06]
+ hess_inv: [[1]]
+     nfev: 6
+     njev: 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>minimize<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span><span class="o">*</span><span class="mf">1e-10</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">harmonic_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/fbc98c28bdac61cca76fff976f8f5704cce644d51ce6dd23e0ffba2dd9f203bc.png"><img alt="../_images/fbc98c28bdac61cca76fff976f8f5704cce644d51ce6dd23e0ffba2dd9f203bc.png" src="../_images/fbc98c28bdac61cca76fff976f8f5704cce644d51ce6dd23e0ffba2dd9f203bc.png" style="width: 547px; height: 446px;" /></a>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="mf">1e5</span>
