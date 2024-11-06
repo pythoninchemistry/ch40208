@@ -45,6 +45,13 @@ parts:
       - file: working_with_data/synoptic_exercises
         sections:
         - file: working_with_data/H_emission_exercise
+      - file: model_fitting/model_fitting.md
+        sections:
+        - file: model_fitting/statistical_models.md
+        - file: model_fitting/empirical_and_theoretical_models.md
+        - file: model_fitting/model_complexity.md
+        - file: model_fitting/finding_the_best_fit.md
+        - file: model_fitting/exercises.ipynb
 ##  - file: working_with_data/ideal_gas_law
 #      - file: working_with_data/curve_fitting
 #  - file: working_with_data/monte_carlo
@@ -65,15 +72,6 @@ parts:
         - file: geometry_optimisation/newton_raphson_method.ipynb
         - file: geometry_optimisation/Lennard_Jones_optimisation.ipynb 
         - file: geometry_optimisation/scipy_optimize_minimize.ipynb 
-  - caption: Model Fitting
-    chapters:
-      - file: model_fitting/model_fitting.md
-        sections:
-        - file: model_fitting/statistical_models.md
-        - file: model_fitting/empirical_and_theoretical_models.md
-        - file: model_fitting/model_complexity.md
-        - file: model_fitting/finding_the_best_fit.md
-        - file: model_fitting/exercises.ipynb
 #  - caption: Solutions to Exercises
 #    chapters:
 #        - file: solutions/week_5_solutions.ipynb 
