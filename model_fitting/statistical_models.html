@@ -410,12 +410,17 @@
                   
   <section id="statistical-models-turing-data-into-understanding">
 <h1>Statistical Models: Turing Data into Understanding<a class="headerlink" href="#statistical-models-turing-data-into-understanding" title="Link to this heading">#</a></h1>
-<p>Statistical models provide a formal way to represent relationships between variables. When working with experimental or computational data, we typically have:</p>
-<ul class="simple">
-<li><p>A set of independent variables (<span class="math notranslate nohighlight">\(x\)</span>)</p></li>
-<li><p>A set of dependent variables (<span class="math notranslate nohighlight">\(y\)</span>)</p></li>
-<li><p>A proposed relationship between them: <span class="math notranslate nohighlight">\(y = f(x)\)</span></p></li>
-</ul>
+<p>Statistical models provide a formal way to represent relationships between variables. When working with experimental or computational data, we typically have a set of independent variables, <span class="math notranslate nohighlight">\(x\)</span>, and a set of dependent variables, <span class="math notranslate nohighlight">\(y\)</span>. Our goal is to describe the general relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with some mathematical function, <span class="math notranslate nohighlight">\(y = f(x)\)</span>.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/xy_data.png"><img alt="../_images/xy_data.png" src="../_images/xy_data.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">What is a reasonable description of the relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> for this dataset?</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Model fitting involves two distinct steps. First, we must choose the functional form of our model — that is, decide on the general mathematical structure that we think describes our data. We might choose a linear relationship (<span class="math notranslate nohighlight">\(y = mx + c\)</span>), a polynomial (<span class="math notranslate nohighlight">\(y = ax^2 + bx + c\)</span>), or an exponential decay (<span class="math notranslate nohighlight">\(y = Ae^{-kx}\)</span>). Each of these functions represents an entire family of possible models with the same basic mathematical structure.</p>
+<p>Once we have chosen a functional form, the second step is to find the specific parameters that make our model best match our data. Consider a linear model: while we’ve decided our data should follow a straight line (<span class="math notranslate nohighlight">\(y = mx + c\)</span>), we still need to determine which straight line best fits our observations. There are infinitely many possible combinations of slope (<span class="math notranslate nohighlight">\(m\)</span>) and intercept (<span class="math notranslate nohighlight">\(c\)</span>), and each one gives us a different straight line. Our job is to find the values that give us the “best” fit to our data.</p>
+<p>Statistical models provide a formal way to represent relationships between variables. When working with experimental or computational data, we typically have a set of independent variables, <span class="math notranslate nohighlight">\(x\)</span>, and a set of dependent variables, <span class="math notranslate nohighlight">\(y\)</span>.
+Our goal is to describe the general relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with some mathematical function, <span class="math notranslate nohighlight">\(y = f(x)\)</span>. This relationship is our ``model’’.</p>
 </section>
 <section id="choosing-a-model">
 <h1>Choosing a Model<a class="headerlink" href="#choosing-a-model" title="Link to this heading">#</a></h1>
