@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Statistical Models: Turing Data into Understanding &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Statistical Models: Turning Data into Understanding &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -66,7 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'model_fitting/statistical_models';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Model fitting" href="curve_fitting.html" />
+    <link rel="next" title="Empirical and Theoretical Models" href="empirical_and_theoretical_models.html" />
     <link rel="prev" title="Model Fitting" href="model_fitting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -246,9 +246,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Fitting</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="model_fitting.html">Model Fitting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Statistical Models: Turing Data into Understanding</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="curve_fitting.html">Model fitting</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exercises.html">Exercises</a></li>
 </ul>
 </details></li>
 </ul>
@@ -368,9 +370,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -381,24 +381,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Statistical Models: Turing Data into Understanding</h1>
+    <h1>Statistical Models: Turning Data into Understanding</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistical Models: Turing Data into Understanding</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-model">Choosing a Model</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-simplicity-occam-s-razor">The Principle of Simplicity (Occam’s Razor)</a></li>
-</ul>
-</li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -408,43 +395,29 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="statistical-models-turing-data-into-understanding">
-<h1>Statistical Models: Turing Data into Understanding<a class="headerlink" href="#statistical-models-turing-data-into-understanding" title="Link to this heading">#</a></h1>
+  <section id="statistical-models-turning-data-into-understanding">
+<h1>Statistical Models: Turning Data into Understanding<a class="headerlink" href="#statistical-models-turning-data-into-understanding" title="Link to this heading">#</a></h1>
 <p>Statistical models provide a formal way to represent relationships between variables. When working with experimental or computational data, we typically have a set of independent variables, <span class="math notranslate nohighlight">\(x\)</span>, and a set of dependent variables, <span class="math notranslate nohighlight">\(y\)</span>. Our goal is to describe the general relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with some mathematical function, <span class="math notranslate nohighlight">\(y = f(x)\)</span>.</p>
 <figure class="align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/xy_data.png"><img alt="../_images/xy_data.png" src="../_images/xy_data.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/xy_data.png"><img alt="../_images/xy_data.png" src="../_images/xy_data.png" style="width: 200px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">What is a reasonable description of the relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> for this dataset?</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Model fitting involves two distinct steps. First, we must choose the functional form of our model — that is, decide on the general mathematical structure that we think describes our data. We might choose a linear relationship (<span class="math notranslate nohighlight">\(y = mx + c\)</span>), a polynomial (<span class="math notranslate nohighlight">\(y = ax^2 + bx + c\)</span>), or an exponential decay (<span class="math notranslate nohighlight">\(y = Ae^{-kx}\)</span>). Each of these functions represents an entire family of possible models with the same basic mathematical structure.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/model_choice.png"><img alt="../_images/model_choice.png" src="../_images/model_choice.png" style="width: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Which functional form best describes our data?</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Once we have chosen a functional form, the second step is to find the specific parameters that make our model best match our data. Consider a linear model: while we’ve decided our data should follow a straight line (<span class="math notranslate nohighlight">\(y = mx + c\)</span>), we still need to determine which straight line best fits our observations. There are infinitely many possible combinations of slope (<span class="math notranslate nohighlight">\(m\)</span>) and intercept (<span class="math notranslate nohighlight">\(c\)</span>), and each one gives us a different straight line. Our job is to find the values that give us the “best” fit to our data.</p>
-<p>Statistical models provide a formal way to represent relationships between variables. When working with experimental or computational data, we typically have a set of independent variables, <span class="math notranslate nohighlight">\(x\)</span>, and a set of dependent variables, <span class="math notranslate nohighlight">\(y\)</span>.
-Our goal is to describe the general relationship between <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> with some mathematical function, <span class="math notranslate nohighlight">\(y = f(x)\)</span>. This relationship is our ``model’’.</p>
-</section>
-<section id="choosing-a-model">
-<h1>Choosing a Model<a class="headerlink" href="#choosing-a-model" title="Link to this heading">#</a></h1>
-<p>When selecting a model, you have two main approaches:</p>
-<ol class="arabic simple">
-<li><p>Empirical Models: Based on direct observation of the data</p></li>
-</ol>
-<ul class="simple">
-<li><p>Look at the data and choose a function that seems to fit the pattern</p></li>
-<li><p>No underlying theoretical justification needed</p></li>
-<li><p>Example: Fitting a polynomial of appropriate degree</p></li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>Theoretical Models: Based on underlying physical principles</p></li>
-</ol>
-<ul class="simple">
-<li><p>Derived from chemical/physical theory</p></li>
-<li><p>Parameters have physical meaning</p></li>
-<li><p>Example: Arrhenius equation for reaction rates</p></li>
-</ul>
-<section id="the-principle-of-simplicity-occam-s-razor">
-<h2>The Principle of Simplicity (Occam’s Razor)<a class="headerlink" href="#the-principle-of-simplicity-occam-s-razor" title="Link to this heading">#</a></h2>
-<p>In general, it is preferable to prefer simpler models over more complex models, unless there is good reason to use a more complex one. This helps avoid overfitting.</p>
-</section>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/parameter_choice.png"><img alt="../_images/parameter_choice.png" src="../_images/parameter_choice.png" style="width: 200px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">These linear models all approximately describe our data. Which one is “best”?</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 
     <script type="text/x-thebe-config">
@@ -487,11 +460,11 @@ Our goal is to describe the general relationship between <span class="math notra
       </div>
     </a>
     <a class="right-next"
-       href="curve_fitting.html"
+       href="empirical_and_theoretical_models.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model fitting</p>
+        <p class="prev-next-title">Empirical and Theoretical Models</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -501,27 +474,6 @@ Our goal is to describe the general relationship between <span class="math notra
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistical Models: Turing Data into Understanding</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-model">Choosing a Model</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-simplicity-occam-s-razor">The Principle of Simplicity (Occam’s Razor)</a></li>
-</ul>
-</li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>
