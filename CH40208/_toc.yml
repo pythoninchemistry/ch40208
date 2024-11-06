@@ -70,8 +70,10 @@ parts:
       - file: model_fitting/model_fitting.md
         sections:
         - file: model_fitting/statistical_models.md
-        - file: model_fitting/curve_fitting.ipynb
-
+        - file: model_fitting/empirical_and_theoretical_models.md
+        - file: model_fitting/model_complexity.md
+        - file: model_fitting/finding_the_best_fit.md
+        - file: model_fitting/exercises.ipynb
 #  - caption: Solutions to Exercises
 #    chapters:
 #        - file: solutions/week_5_solutions.ipynb 
