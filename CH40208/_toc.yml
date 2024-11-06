@@ -43,7 +43,8 @@ parts:
       - file: working_with_data/plotting
       - file: working_with_data/file_io
       - file: working_with_data/synoptic_exercises
-      - file: working_with_data/H_emission_exercise
+        sections:
+        - file: working_with_data/H_emission_exercise
 ##  - file: working_with_data/ideal_gas_law
 #      - file: working_with_data/curve_fitting
 #  - file: working_with_data/monte_carlo
@@ -56,15 +57,21 @@ parts:
       - file: good_practice/markdown
   - caption: Computational Chemistry Methods
     chapters:
-      - file: comp_chem_methods/geometry_optimisation.md
+      - file: geometry_optimisation/geometry_optimisation.md
         sections:
-        - file: comp_chem_methods/analytical_solution_for_a_harmonic_potential.md
-        - file: comp_chem_methods/grid_search_method.ipynb
-        - file: comp_chem_methods/gradient_descent_method.ipynb
-        - file: comp_chem_methods/newton_raphson_method.ipynb
-        - file: comp_chem_methods/Lennard_Jones_optimisation.ipynb 
-        - file: comp_chem_methods/scipy_optimize_minimize.ipynb 
-      - file: comp_chem_methods/model_fitting.md
+        - file: geometry_optimisation/analytical_solution_for_a_harmonic_potential.md
+        - file: geometry_optimisation/grid_search_method.ipynb
+        - file: geometry_optimisation/gradient_descent_method.ipynb
+        - file: geometry_optimisation/newton_raphson_method.ipynb
+        - file: geometry_optimisation/Lennard_Jones_optimisation.ipynb 
+        - file: geometry_optimisation/scipy_optimize_minimize.ipynb 
+  - caption: Model Fitting
+    chapters:
+      - file: model_fitting/model_fitting.md
+        sections:
+        - file: model_fitting/statistical_models.md
+        - file: model_fitting/curve_fitting.ipynb
+
 #  - caption: Solutions to Exercises
 #    chapters:
 #        - file: solutions/week_5_solutions.ipynb 
