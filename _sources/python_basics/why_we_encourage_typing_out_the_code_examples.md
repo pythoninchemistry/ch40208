@@ -1,4 +1,4 @@
-# Why we encourage typing out the code examples
+# Why We Encourage Typing Out the Code Examples
 
 We strongly encourage you to type these examples in to a Notebook of your own as you read through this material.
 

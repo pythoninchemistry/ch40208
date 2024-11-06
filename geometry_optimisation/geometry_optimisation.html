@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Gradient Descent Method &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Geometry Optimisation &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -63,11 +63,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/gradient_descent_method';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'geometry_optimisation/geometry_optimisation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The Newton-Raphson Method" href="newton_raphson_method.html" />
-    <link rel="prev" title="Grid Search Method" href="grid_search_method.html" />
+    <link rel="next" title="Analytical Solution for a Harmonic Potential" href="analytical_solution_for_a_harmonic_potential.html" />
+    <link rel="prev" title="Markdown" href="../good_practice/markdown.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -191,7 +191,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
@@ -220,18 +220,35 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="geometry_optimisation.html">Geometry Optimisation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Geometry Optimisation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grid_search_method.html">Grid Search Method</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gradient_descent_method.html">Gradient Descent Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="newton_raphson_method.html">The Newton-Raphson Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Fitting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turing Data into Understanding</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/curve_fitting.html">Model fitting</a></li>
 </ul>
 </details></li>
 </ul>
@@ -288,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/gradient_descent_method.ipynb" target="_blank"
+      <li><a href="../_sources/geometry_optimisation/geometry_optimisation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +315,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -364,7 +381,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Gradient Descent Method</h1>
+    <h1>Geometry Optimisation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -374,10 +391,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">Algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rescaling-the-step-size">Rescaling the Step Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-energy-surfaces">Potential Energy Surfaces</a></li>
 </ul>
             </nav>
         </div>
@@ -389,53 +403,40 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="gradient-descent-method">
-<h1>Gradient Descent Method<a class="headerlink" href="#gradient-descent-method" title="Link to this heading">#</a></h1>
-<p>A more efficient approach is to use information about the slope of the potential energy surface to guide our search.</p>
-<p>The <strong>gradient descent method</strong> (also called the <strong>steepest descent method</strong>) works by analogy to releasing a ball on a hill and letting it roll to the bottom. At any point on our potential energy surface, the <strong>gradient</strong> tells us which direction is “uphill” and how steep the surface is at this point. With this information, we can step in the opposite direction (i.e., downhill), then recalculate the gradient at our new position, and repeat until we reach a point where the gradient is <span class="math notranslate nohighlight">\(\sim0\)</span>.</p>
-<p>The simplest implementation of this method is to move a fixed distance every step.</p>
-<section id="algorithm">
-<h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="geometry-optimisation">
+<h1>Geometry Optimisation<a class="headerlink" href="#geometry-optimisation" title="Link to this heading">#</a></h1>
+<p>A common problem in computational chemistry is predicting the equilibrium geometry of a molecule or crystal structure.</p>
+<p>In this context, we normally assume that the equilibrium geometry is a single set of atomic positions that <strong>minimises</strong> the total energy of our molecular or crystal. So, how do we find the set of atomic positions that corresponds to a minimum of the total energy?</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When considering molecular geometries, we need to be careful about how we treat different types of molecular motion:</p>
 <ol class="arabic simple">
-<li><p>Start at an initial guess position <span class="math notranslate nohighlight">\(r_0\)</span></p></li>
-<li><p>Calculate the gradient <span class="math notranslate nohighlight">\(U^\prime = \frac{dU}{dr}\)</span> at this point</p></li>
-<li><p>Move in the direction opposite to the gradient (i.e., downhill), by some amount <span class="math notranslate nohighlight">\(\Delta r\)</span>.</p></li>
-<li><p>Repeat until the gradient is close to zero.</p></li>
+<li><p><strong>Translation and rotation</strong>: These motions change the position and orientation of a molecule in space, but do not affect the relative positions of atoms within the molecule. By using internal coordinates (e.g., bond lengths, angles, and dihedral angles) instead of Cartesian coordinates, we can describe molecular geometries independently of their position and orientation in space.</p></li>
+<li><p><strong>Vibration</strong>: In reality, atoms in molecules are constantly in motion, even at absolute zero (due to zero-point energy). We often either:</p>
+<ul class="simple">
+<li><p>Ignore vibrational motion entirely, seeking the geometry that minimises potential energy</p></li>
+<li><p>Treat vibrations as harmonic oscillations around equilibrium positions</p></li>
+</ul>
+</li>
 </ol>
-</section>
-<section id="exercise">
-<h2>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
-<p>Write a function to calculate the first derivative of a harmonic potential:</p>
-<div class="math notranslate nohighlight">
-\[U^\prime = 2k(r - r_0)\]</div>
-<p>Using this function, write code to perform a gradient descent search, to find the minimum of your harmonic potential energy surface. Use <span class="math notranslate nohighlight">\(r=1.0\)</span> Å as your starting position, and a step size <span class="math notranslate nohighlight">\(\Delta r=0.1\)</span> Å.</p>
-<p><em>Note</em>: You should not need to run for more than 10 steps.</p>
-<p>What happens using this algorithm when you get close to the minimum? What happens if you decrease the step size to <span class="math notranslate nohighlight">\(\Delta r=0.01\)</span> Å?</p>
-</section>
-<section id="rescaling-the-step-size">
-<h2>Rescaling the Step Size<a class="headerlink" href="#rescaling-the-step-size" title="Link to this heading">#</a></h2>
-<p>Using a fixed step-size makes our method very sensitive to the choice of step-size. Large step sizes will overshoot the minimum and then oscillate back and forth. Small step sizes will get closer to the minimum, but at the cost of needing to perform many more calculations.</p>
-<p>A common approach designed to address this problem is to rescale the step size for each iteration, based on how far we think we are from the minimum. A simple model is that we can expect the gradient to be steep if we are a long way from the minimum, but shallow if we are already close to the minimum, so we make our step-size proportional to the (negative) local gradient.</p>
-<div class="math notranslate nohighlight">
-\[\Delta r_i = -\alpha U^\prime(r_i)\]</div>
-<p>or</p>
-<div class="math notranslate nohighlight">
-\[\Delta r_i = \alpha F(r_i)\]</div>
-<p>where <span class="math notranslate nohighlight">\(F(r_i)\)</span> is the <strong>force</strong> (i.e., the negative gradient of the energy) at <span class="math notranslate nohighlight">\(r_i\)</span>.</p>
-</section>
-<section id="id1">
-<h2>Exercise:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>It is worth noting that real molecular vibrations are anharmonic, which means that the average positions of atoms during vibration may not exactly coincide with their equilibrium positions. This leads to subtle differences between observed average bond lengths and calculated equilibrium bond lengths.</p>
+</div>
+<section id="potential-energy-surfaces">
+<h2>Potential Energy Surfaces<a class="headerlink" href="#potential-energy-surfaces" title="Link to this heading">#</a></h2>
+<p>Let us start with the simplest possible case: that of a diatomic molecule. For a diatomic molecule, the geometry is completely described by a single parameter: the distance between the two atoms, which we will call <span class="math notranslate nohighlight">\(r\)</span>. The energy of the molecule as a function of this distance is called the potential energy surface (PES).</p>
+<p>In this simple case, our potential energy surface is just a one-dimensional function <span class="math notranslate nohighlight">\(U(r)\)</span> that gives us the potential energy for any given internuclear separation <span class="math notranslate nohighlight">\(r\)</span>. The equilibrium geometry corresponds to the value of <span class="math notranslate nohighlight">\(r\)</span> where <span class="math notranslate nohighlight">\(U(r)\)</span> reaches its minimum.</p>
+<p>This concept of a potential energy surface generalises to more complex systems: for any molecular or crystal system, we can define a function <span class="math notranslate nohighlight">\(U(\left\{r\right\})\)</span> that gives us the potential energy for any set of atomic positions <span class="math notranslate nohighlight">\(\left\{r\right\}\)</span>. Our challenge then becomes:
+Given the ability to calculate <span class="math notranslate nohighlight">\(U(\left\{r\right\})\)</span> for any set of atomic positions <span class="math notranslate nohighlight">\(\left\{r\right\}\)</span>, how can we algorithmically find the set of positions that minimises <span class="math notranslate nohighlight">\(U(\left\{r\right\})\)</span>?
+This is fundamentally a mathematical optimisation problem. However, it has several characteristics that make it particularly challenging:</p>
 <ol class="arabic simple">
-<li><p>Write a new version of your steepest descent code that rescales the step to be proportional to the local force, with <span class="math notranslate nohighlight">\(\alpha = 0.001\)</span>. You should write this as a loop that iteratively updates the current position, i.e.</p></li>
+<li><p>The function <span class="math notranslate nohighlight">\(U(\{r\})\)</span> is typically not known analytically — we can only evaluate it at specified points.</p></li>
+<li><p>For all but the simplest systems, we are dealing with many dimensions (<span class="math notranslate nohighlight">\(3N-6\)</span> internal coordinates for a molecule with <span class="math notranslate nohighlight">\(N\)</span> atoms).</p></li>
+<li><p>The potential energy surface often has multiple local minima, making it crucial to distinguish between local and global minimum energy structures.</p></li>
 </ol>
-<div class="math notranslate nohighlight">
-\[r_{i+1} = r_i + \alpha F(r_i).\]</div>
-<p>By combining a suitable <code class="docutils literal notranslate"><span class="pre">if</span></code> statement with <code class="docutils literal notranslate"><span class="pre">break</span></code>, have your code stop and report the predicted equilibrium bond-length when <span class="math notranslate nohighlight">\(U &lt; \left|0.001\right|\)</span>.</p>
-<ol class="arabic simple" start="2">
-<li><p>How does changing <span class="math notranslate nohighlight">\(\alpha\)</span> affect your rate of convergence? Experiment with larger and smaller values of <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
-</ol>
-<p><em>Note</em>: You might want to set a maximum number of iterations, e.g., 30.</p>
+<p>For now we will only worry about point 1., and will return to points 2. and 3. later.</p>
 </section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -451,7 +452,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./geometry_optimisation"
         },
         predefinedOutput: true
     }
@@ -469,20 +470,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="grid_search_method.html"
+       href="../good_practice/markdown.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Grid Search Method</p>
+        <p class="prev-next-title">Markdown</p>
       </div>
     </a>
     <a class="right-next"
-       href="newton_raphson_method.html"
+       href="analytical_solution_for_a_harmonic_potential.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Newton-Raphson Method</p>
+        <p class="prev-next-title">Analytical Solution for a Harmonic Potential</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -503,10 +504,7 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">Algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rescaling-the-step-size">Rescaling the Step Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#potential-energy-surfaces">Potential Energy Surfaces</a></li>
 </ul>
   </nav></div>
 

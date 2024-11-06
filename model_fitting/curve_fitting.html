@@ -63,9 +63,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/curve_fitting';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'model_fitting/curve_fitting';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Statistical Models: Turing Data into Understanding" href="statistical_models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +117,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -191,7 +190,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
@@ -214,24 +213,41 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="more_numpy_functions.html">More NumPy functions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/more_numpy_functions.html">More NumPy functions</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="plotting.html">Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="file_io.html">File input and output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="synoptic_exercises.html">Synoptic exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../comp_chem_methods/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/grid_search_method.html">Grid Search Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/gradient_descent_method.html">Gradient Descent Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/newton_raphson_method.html">The Newton-Raphson Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../comp_chem_methods/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Fitting</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="model_fitting.html">Model Fitting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="statistical_models.html">Statistical Models: Turing Data into Understanding</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Model fitting</a></li>
 </ul>
 </details></li>
 </ul>
@@ -288,7 +304,7 @@
       
       
       
-      <li><a href="../_sources/working_with_data/curve_fitting.ipynb" target="_blank"
+      <li><a href="../_sources/model_fitting/curve_fitting.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -413,6 +429,48 @@ The data for this is available <a class="reference external" href="https://raw.g
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">T</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;arrhenius.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1397,</span> in <span class="ni">loadtxt</span><span class="nt">(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1394</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">delimiter</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1395</span>     <span class="n">delimiter</span> <span class="o">=</span> <span class="n">delimiter</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1397</span> <span class="n">arr</span> <span class="o">=</span> <span class="n">_read</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="n">delimiter</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1398</span>             <span class="n">converters</span><span class="o">=</span><span class="n">converters</span><span class="p">,</span> <span class="n">skiplines</span><span class="o">=</span><span class="n">skiprows</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="n">usecols</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1399</span>             <span class="n">unpack</span><span class="o">=</span><span class="n">unpack</span><span class="p">,</span> <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1400</span>             <span class="n">max_rows</span><span class="o">=</span><span class="n">max_rows</span><span class="p">,</span> <span class="n">quote</span><span class="o">=</span><span class="n">quotechar</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1402</span> <span class="k">return</span> <span class="n">arr</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1012,</span> in <span class="ni">_read</span><span class="nt">(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1010</span>     <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1011</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1012</span>     <span class="n">fh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">lib</span><span class="o">.</span><span class="n">_datasource</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span>     <span class="k">if</span> <span class="n">encoding</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>         <span class="n">encoding</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span> <span class="s1">&#39;encoding&#39;</span><span class="p">,</span> <span class="s1">&#39;latin1&#39;</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_datasource.py:192,</span> in <span class="ni">open</span><span class="nt">(path, mode, destpath, encoding, newline)</span>
+<span class="g g-Whitespace">    </span><span class="mi">155</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span><span class="sd"> Open `path` with `mode` and return the file object.</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">191</span> <span class="n">ds</span> <span class="o">=</span> <span class="n">DataSource</span><span class="p">(</span><span class="n">destpath</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">192</span> <span class="k">return</span> <span class="n">ds</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="n">newline</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_datasource.py:529,</span> in <span class="ni">DataSource.open</span><span class="nt">(self, path, mode, encoding, newline)</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span>     <span class="k">return</span> <span class="n">_file_openers</span><span class="p">[</span><span class="n">ext</span><span class="p">](</span><span class="n">found</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span>                               <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="n">newline</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">529</span>     <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2"> not found.&quot;</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: arrhenius.txt not found.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -424,7 +482,7 @@ The data for this is available <a class="reference external" href="https://raw.g
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/67d178e792c96a21022a11526176a61bdbd81600ab67894f7b8645c9100d7e52.png" src="../_images/67d178e792c96a21022a11526176a61bdbd81600ab67894f7b8645c9100d7e52.png" />
+<img alt="../_images/c6419d42a94a84a2dca51375537e84e016865ecd8db9215bccac85cab611cba7.png" src="../_images/c6419d42a94a84a2dca51375537e84e016865ecd8db9215bccac85cab611cba7.png" />
 </div>
 </div>
 <p>Alternatively, we plot this as a straight line.</p>
@@ -438,7 +496,7 @@ The data for this is available <a class="reference external" href="https://raw.g
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/11b7d5657f61dc800e313e96637c22972b37f6e0f076c9d0a862ff8a143d8451.png" src="../_images/11b7d5657f61dc800e313e96637c22972b37f6e0f076c9d0a862ff8a143d8451.png" />
+<img alt="../_images/fc22beaaf109aa783b9528c1dec95772132701a8f193777ce7413bad3b07a2d9.png" src="../_images/fc22beaaf109aa783b9528c1dec95772132701a8f193777ce7413bad3b07a2d9.png" />
 </div>
 </div>
 <p>Using Python, we can fit this data in either configuration, either by performing a <a class="reference external" href="https://en.wikipedia.org/wiki/Linear_regression">linear regression</a> or by fitting a line of best fit.</p>
@@ -468,7 +526,7 @@ These corresponding exactly to the <em>x</em> and <em>y</em>-axes of the plot ab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=np.float64(-13509.355973303444), intercept=np.float64(15.161037389899018), rvalue=np.float64(-0.998952302406746), pvalue=np.float64(4.070235273533486e-05), stderr=np.float64(357.31270179790863), intercept_stderr=np.float64(0.5715179164952109))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=-13509.355973303444, intercept=15.161037389899018, rvalue=-0.998952302406746, pvalue=4.070235273533486e-05, stderr=357.31270179790863, intercept_stderr=0.5715179164952109)
 </pre></div>
 </div>
 </div>
@@ -541,7 +599,7 @@ The two parts that we are most interested in are the <code class="docutils liter
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c47af9b584f53a89c2ce4f8ba7ac4ca0bd6522d2a6fffd7839fadf08c7e5b9b2.png" src="../_images/c47af9b584f53a89c2ce4f8ba7ac4ca0bd6522d2a6fffd7839fadf08c7e5b9b2.png" />
+<img alt="../_images/c808092e53f8047463b41a285b586572344ddeb9da367f5e416247c43f0c4838.png" src="../_images/c808092e53f8047463b41a285b586572344ddeb9da367f5e416247c43f0c4838.png" />
 </div>
 </div>
 </section>
@@ -606,7 +664,7 @@ The value that we will minimize is known as the <span class="math notranslate no
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ed13012e08345eb919474d6a9b7848bf7145e86297466a973d70b18b12fd7ec9.png" src="../_images/ed13012e08345eb919474d6a9b7848bf7145e86297466a973d70b18b12fd7ec9.png" />
+<img alt="../_images/f664fd5807ad4fd9221fb165d157ea423d3f268d995beaeee89a193698888344.png" src="../_images/f664fd5807ad4fd9221fb165d157ea423d3f268d995beaeee89a193698888344.png" />
 </div>
 </div>
 <p>This reaction has a first-order rate equation, this will be our “model” that we will compare to the data, where the <span class="math notranslate nohighlight">\([A]_0\)</span> and <span class="math notranslate nohighlight">\(k\)</span> are the varying parameters.
@@ -675,17 +733,17 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
-  success: True
-   status: 0
-      fun: 0.13373044840241233
-        x: [ 7.422e+00  1.031e-01]
-      nit: 10
-      jac: [ 1.471e-07  2.036e-06]
- hess_inv: [[ 7.888e-01  1.263e-02]
-            [ 1.263e-02  3.022e-04]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 0.13373044840241782
+ hess_inv: array([[7.88770542e-01, 1.26315485e-02],
+       [1.26315485e-02, 3.02235136e-04]])
+      jac: array([1.58324838e-07, 2.03028321e-06])
+  message: &#39;Optimization terminated successfully.&#39;
      nfev: 63
+      nit: 10
      njev: 21
+   status: 0
+  success: True
+        x: array([7.42164414, 0.10308256])
 </pre></div>
 </div>
 </div>
@@ -703,7 +761,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2a9a7d5f7a12ed45d6e810c2f4ad13fa6ea94b5b0b03bfe71d2c21cc4676ee7c.png" src="../_images/2a9a7d5f7a12ed45d6e810c2f4ad13fa6ea94b5b0b03bfe71d2c21cc4676ee7c.png" />
+<img alt="../_images/bf8a4b9136befdb323284ee7b5f9531341fec64569e3e0cc0a97fe1f933e1677.png" src="../_images/bf8a4b9136befdb323284ee7b5f9531341fec64569e3e0cc0a97fe1f933e1677.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -713,7 +771,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644149462027; k = 0.10308255587972329
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.421644144148406; k = 0.10308255579543868
 </pre></div>
 </div>
 </div>
@@ -733,7 +791,7 @@ We can use the <code class="docutils literal notranslate"><span class="pre">scip
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2318/2319394663.py:13: RuntimeWarning: overflow encountered in exp
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_30479/2319394663.py:13: RuntimeWarning: overflow encountered in exp
   return a0 * np.exp(-k * t)
 </pre></div>
 </div>
@@ -750,7 +808,7 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.42164476326434 +/- 0.1583887665748318; k = 0.10308257141927114 +/- 0.0030883676626833898
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.42164476326434 +/- 0.15838876657483184; k = 0.10308257141927114 +/- 0.00308836766268339
 </pre></div>
 </div>
 </div>
@@ -771,7 +829,7 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
         },
         kernelOptions: {
             name: "python3",
-            path: "./working_with_data"
+            path: "./model_fitting"
         },
         predefinedOutput: true
     }
@@ -788,6 +846,15 @@ However, the <code class="docutils literal notranslate"><span class="pre">curve_
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="statistical_models.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Statistical Models: Turing Data into Understanding</p>
+      </div>
+    </a>
 </div>
                 </footer>
               

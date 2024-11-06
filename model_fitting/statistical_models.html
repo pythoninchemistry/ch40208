@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Minimisation with scipy.optimize.minimize &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Statistical Models: Turing Data into Understanding &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -63,10 +63,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/scipy_optimize_minimize';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'model_fitting/statistical_models';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Exercise: Geometry Optimisation of a Lennard-Jones Potential" href="Lennard_Jones_optimisation.html" />
+    <link rel="next" title="Model fitting" href="curve_fitting.html" />
+    <link rel="prev" title="Model Fitting" href="model_fitting.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -190,7 +191,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
@@ -219,18 +220,35 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Fitting</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="geometry_optimisation.html">Geometry Optimisation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
-<li class="toctree-l2"><a class="reference internal" href="grid_search_method.html">Grid Search Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gradient_descent_method.html">Gradient Descent Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="newton_raphson_method.html">The Newton-Raphson Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="model_fitting.html">Model Fitting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Statistical Models: Turing Data into Understanding</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="curve_fitting.html">Model fitting</a></li>
 </ul>
 </details></li>
 </ul>
@@ -287,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/scipy_optimize_minimize.ipynb" target="_blank"
+      <li><a href="../_sources/model_fitting/statistical_models.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -297,7 +315,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -363,7 +381,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Minimisation with scipy.optimize.minimize</h1>
+    <h1>Statistical Models: Turing Data into Understanding</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -373,12 +391,13 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistical Models: Turing Data into Understanding</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-model">Choosing a Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-simplicity-occam-s-razor">The Principle of Simplicity (Occam’s Razor)</a></li>
 </ul>
 </li>
 </ul>
+
             </nav>
         </div>
     </div>
@@ -389,123 +408,37 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="minimisation-with-scipy-optimize-minimize">
-<h1>Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code><a class="headerlink" href="#minimisation-with-scipy-optimize-minimize" title="Link to this heading">#</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> is a powerful tool for numerical optimization that finds the minimum of any scalar function (a function that returns a single numerical value).</p>
-<p>The following code demonstrates how <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> can be used to find the minimum of a harmonic potential.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-
-<span class="k">def</span> <span class="nf">harmonic_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the energy in eV for a harmonic potential U(r) = k/2 * (r - r0)^2</span>
-<span class="sd">    </span>
-<span class="sd">    Parameters:</span>
-<span class="sd">        r (float): Distance parameter to optimize</span>
-<span class="sd">        k (float): Spring constant in eV/Å²</span>
-<span class="sd">        r0 (float): Equilibrium distance in Å</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        float: Potential energy in eV</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-
-<span class="c1"># initial guess and parameters</span>
-<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># starting guess for r</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mf">36.0</span> <span class="c1"># spring constant</span>
-<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.74</span> <span class="c1"># equilibrium distance</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">harmonic_potential</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">))</span>
-
-<span class="n">result</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: Optimization terminated successfully.
-  success: True
-   status: 0
-      fun: 1.2580072611001788e-17
-        x: [ 7.400e-01]
-      nit: 1
-      jac: [ 2.983e-07]
- hess_inv: [[1]]
-     nfev: 6
-     njev: 3
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let us break this down step by step:</p>
-<p>First, we import the <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> function from <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-</pre></div>
-</div>
-<p>Next, we define a function for our harmonic potential:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">harmonic_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the energy in eV for a harmonic potential U(r) = k/2 * (r - r0)^2</span>
-<span class="sd">    </span>
-<span class="sd">    Parameters:</span>
-<span class="sd">        r (float): Distance parameter to optimize</span>
-<span class="sd">        k (float): Spring constant in eV/Å²</span>
-<span class="sd">        r0 (float): Equilibrium distance in Å</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        float: Potential energy in eV</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
-</pre></div>
-</div>
-<p>Note that we have ordered the three arguments to this function so that the parameter we want to minimise with respect to, <code class="docutils literal notranslate"><span class="pre">r</span></code>, is the first parameter. The second and third parameters, <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">r0</span></code> will be fixed for a given potential energy surface.</p>
-<p>Then, we define variables to store our initial guess for the equilibrium bond length and for the parameters that define our harmonic potential.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initial guess and parameters</span>
-<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># starting guess for r</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mf">36.0</span> <span class="c1"># spring constant</span>
-<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.74</span> <span class="c1"># equilibrium distance</span>
-</pre></div>
-</div>
-<p>Now we call the <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> function:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">harmonic_potential</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">))</span>
-</pre></div>
-</div>
-<p>We pass in three arguments.</p>
+  <section id="statistical-models-turing-data-into-understanding">
+<h1>Statistical Models: Turing Data into Understanding<a class="headerlink" href="#statistical-models-turing-data-into-understanding" title="Link to this heading">#</a></h1>
+<p>Statistical models provide a formal way to represent relationships between variables. When working with experimental or computational data, we typically have:</p>
 <ul class="simple">
-<li><p>The <strong>first</strong> argument is the name of the function that we want to minimise. In this case our function is called <code class="docutils literal notranslate"><span class="pre">harmonic_potential</span></code></p></li>
-<li><p>The <strong>second</strong> argument is our starting guess for the parameter we are minimising with respect to, so in this example, we pass our guess for our equilibrium bond length of 1 Å.</p></li>
-<li><p>The <strong>third</strong> argument is a <strong>tuple</strong> of parameters that will also get passed to the function we are minimising, that are fixed during the minimisation. In this case, we need to define the shape of our harmonic potential energy surface by providing values for <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">r0</span></code>. Because our <code class="docutils literal notranslate"><span class="pre">harmonic_potential()</span></code> function takes two additional parameters, the tuple we pass to <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> needs to contain two parameters. The order of these parameters also needs to match the order of the corresponding arguments in the function being minimised; so our tuple is structured as <code class="docutils literal notranslate"><span class="pre">(k,</span> <span class="pre">r0)</span></code>.</p></li>
-</ul>
-<p><code class="docutils literal notranslate"><span class="pre">minimize()</span></code> returns an <code class="docutils literal notranslate"><span class="pre">OptimizeResult</span></code> object that contains lots of information about the optimisation, such as whether it was deemed to have successfully found a minimum, how many iterations it took, and the estimated minimum value.</p>
-<p>We can access the estimated minimum value directly using</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.74])
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here, we are optimisation a one-dimensional function (the energy varies with bond-length), and we get back a one-dimensional solution array. If we were minimising a function over more dimensions (e.g., the energy of a linear triatomic molecule, which then depends on two bond lengths) then the solution array would contain the minimisation solution for each dimension.</p>
-<section id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> to perform a geometry optimisation for your Lennard-Jones potential, again with starting values of <span class="math notranslate nohighlight">\(r\)</span> = 3.2 Å, <span class="math notranslate nohighlight">\(r\)</span> = 4.4 Å, and <span class="math notranslate nohighlight">\(r\)</span> = 6.0 Å.</p>
-</section>
-<section id="id2">
-<h3>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>The potential energy associated with changes in the Cl-C-C-Cl dihedral angle, <span class="math notranslate nohighlight">\(\theta\)</span> in 1,2-dichloroethane can be modelled as</p>
-<div class="math notranslate nohighlight">
-\[U = \frac{1}{2}\left\{A_1\left[1+\cos\theta\right] + A_2\left[1+\cos2\theta\right] A_3\left[1+\cos3\theta\right]\right\}\]</div>
-<p>with <span class="math notranslate nohighlight">\(A_1\)</span> = 55.229 kJ mol<sup>−1</sup>, <span class="math notranslate nohighlight">\(A_2\)</span> = 3.3.472 kJ mol<sup>−1</sup>, and <span class="math notranslate nohighlight">\(A_3\)</span> = -58.576 kJ mol<sup>−1</sup>.</p>
-<ul class="simple">
-<li><p>Plot this function for <span class="math notranslate nohighlight">\(-\pi \leq \theta \leq \pi\)</span>.</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> test the optimisation behaviour for different initial guesses of <span class="math notranslate nohighlight">\(\theta\)</span>. In what ways does the minimisation result depend on the choice of initial guess?</p></li>
+<li><p>A set of independent variables (<span class="math notranslate nohighlight">\(x\)</span>)</p></li>
+<li><p>A set of dependent variables (<span class="math notranslate nohighlight">\(y\)</span>)</p></li>
+<li><p>A proposed relationship between them: <span class="math notranslate nohighlight">\(y = f(x)\)</span></p></li>
 </ul>
 </section>
+<section id="choosing-a-model">
+<h1>Choosing a Model<a class="headerlink" href="#choosing-a-model" title="Link to this heading">#</a></h1>
+<p>When selecting a model, you have two main approaches:</p>
+<ol class="arabic simple">
+<li><p>Empirical Models: Based on direct observation of the data</p></li>
+</ol>
+<ul class="simple">
+<li><p>Look at the data and choose a function that seems to fit the pattern</p></li>
+<li><p>No underlying theoretical justification needed</p></li>
+<li><p>Example: Fitting a polynomial of appropriate degree</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Theoretical Models: Based on underlying physical principles</p></li>
+</ol>
+<ul class="simple">
+<li><p>Derived from chemical/physical theory</p></li>
+<li><p>Parameters have physical meaning</p></li>
+<li><p>Example: Arrhenius equation for reaction rates</p></li>
+</ul>
+<section id="the-principle-of-simplicity-occam-s-razor">
+<h2>The Principle of Simplicity (Occam’s Razor)<a class="headerlink" href="#the-principle-of-simplicity-occam-s-razor" title="Link to this heading">#</a></h2>
+<p>In general, it is preferable to prefer simpler models over more complex models, unless there is good reason to use a more complex one. This helps avoid overfitting.</p>
 </section>
 </section>
 
@@ -522,7 +455,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./model_fitting"
         },
         predefinedOutput: true
     }
@@ -540,13 +473,22 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Lennard_Jones_optimisation.html"
+       href="model_fitting.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercise: Geometry Optimisation of a Lennard-Jones Potential</p>
+        <p class="prev-next-title">Model Fitting</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="curve_fitting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Model fitting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -565,12 +507,13 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Statistical Models: Turing Data into Understanding</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-a-model">Choosing a Model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-principle-of-simplicity-occam-s-razor">The Principle of Simplicity (Occam’s Razor)</a></li>
 </ul>
 </li>
 </ul>
+
   </nav></div>
 
 </div></div>

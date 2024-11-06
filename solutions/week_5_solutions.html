@@ -1,0 +1,1090 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Geometry Optimisation &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'solutions/week_5_solutions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/pic.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <img src="../_static/pic.png" class="logo__image only-dark pst-js-only" alt="CH40208: Topics in Computational Chemistry - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/more_numpy_functions.html">More NumPy functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Fitting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turing Data into Understanding</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/curve_fitting.html">Model fitting</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/solutions/week_5_solutions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Geometry Optimisation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution-for-a-harmonic-potential">Analytical Solution for a Harmonic Potential</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-search-method">Grid Search Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-method">Gradient Descent Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rescaling-the-step-size">Rescaling the Step Size</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-newton-raphson-method">The Newton-Raphson Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="geometry-optimisation">
+<h1>Geometry Optimisation<a class="headerlink" href="#geometry-optimisation" title="Link to this heading">#</a></h1>
+<section id="analytical-solution-for-a-harmonic-potential">
+<h2>Analytical Solution for a Harmonic Potential<a class="headerlink" href="#analytical-solution-for-a-harmonic-potential" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h3>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Write a Python function to calculate the potential energy surface for a diatomic molecule with a harmonic bond potential,</p>
+<div class="math notranslate nohighlight">
+\[U(r) = \frac{k}{r}\left(r- r_0\right)^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the bond force constant and <span class="math notranslate nohighlight">\(r_0\)</span> is the equilibrium bond length.</p>
+<p>Your function should take three arguments as input; <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(r_0\)</span>; and return the potential energy for the input value of <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">harmonic_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the potential energy for a diatomic molecule with harmonic bond potential.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Bond length</span>
+<span class="sd">        k (float): Force constant</span>
+<span class="sd">        r0 (float): Equilibrium bond length</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Potential energy U(r)</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">k</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>Plot this function for H<sub>2</sub> (<span class="math notranslate nohighlight">\(r_0\)</span> = 0.74 Å, <span class="math notranslate nohighlight">\(k\)</span> = 36.0 eV Å<sup>−2</sup>) for 0.38 <span class="math notranslate nohighlight">\(\leq r \leq\)</span> 1.1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters for H2 molecule</span>
+<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.74</span>  <span class="c1"># Equilibrium bond length in Angstroms</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">36.0</span>   <span class="c1"># Force constant in eV/A^2</span>
+
+<span class="c1"># Create array of r values</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.38</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Calculate potential energies</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">harmonic_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+
+<span class="c1"># Create the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$r$ / Å&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$U$ / eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/22a8301f3ee3b8213c75f723a2737d2658d6f8b4d0408ed273d2befeca6806f1.png"><img alt="../_images/22a8301f3ee3b8213c75f723a2737d2658d6f8b4d0408ed273d2befeca6806f1.png" src="../_images/22a8301f3ee3b8213c75f723a2737d2658d6f8b4d0408ed273d2befeca6806f1.png" style="width: 567px; height: 435px;" /></a>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>3.<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>Use your function to calculate the potential energy at <span class="math notranslate nohighlight">\(r = r_0\)</span>. Add a point to your plot at <span class="math notranslate nohighlight">\(\left(U(r_0), r_0\right)\)</span> and confirm visually that this is the minimum of the potential energy surface.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate U at the equilibrium distance, r0</span>
+<span class="n">U_min</span> <span class="o">=</span> <span class="n">harmonic_potential</span><span class="p">(</span><span class="n">r0</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+
+<span class="c1"># Create the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r0</span><span class="p">,</span> <span class="n">U_min</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$r$ / Å&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$U$ / eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/5f790bcd7274f159972f2c022a881b8a57d86f18c4ef95f08626db176388c8e3.png"><img alt="../_images/5f790bcd7274f159972f2c022a881b8a57d86f18c4ef95f08626db176388c8e3.png" src="../_images/5f790bcd7274f159972f2c022a881b8a57d86f18c4ef95f08626db176388c8e3.png" style="width: 567px; height: 435px;" /></a>
+</div>
+</div>
+</section>
+</section>
+<section id="grid-search-method">
+<h2>Grid Search Method<a class="headerlink" href="#grid-search-method" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>1.<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>Write code to perform a grid search to find the minimum of your harmonic potential. Use numpy’s <code class="docutils literal notranslate"><span class="pre">linspace()</span></code> function to create your grid in the range 0.38<span class="math notranslate nohighlight">\(\leq r \leq\)</span>1.1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create our grid</span>
+<span class="n">r_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.38</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Calculate U at every grid point</span>
+<span class="n">U_at_grid_points</span> <span class="o">=</span> <span class="n">harmonic_potential</span><span class="p">(</span><span class="n">r_grid</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+
+<span class="c1"># Find the grid point with the minimum value of U</span>
+<span class="n">min_U_location</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">U_at_grid_points</span><span class="p">)</span>
+
+<span class="c1"># Print the value of r at the minimum energy grid point</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r_grid</span><span class="p">[</span><span class="n">min_U_location</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7363636363636363
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Because this grid only has 100 evenly spaced points between <span class="math notranslate nohighlight">\(r=0.38\)</span> Å and <span class="math notranslate nohighlight">\(r=1.1\)</span> Å, we do not find the exact minimum, but only the grid point closest to the minimum. We would get closer to the true minimum if we had a finer grid spacing, but this would then require more calculations of our potential energy. For the harmonic potential we are modelling here, calculating U is very fast, but this could be a slow and expensive calculation if we were using accurate computational methods to calculate the energy of a molecule.</p>
+</div>
+</section>
+</section>
+<section id="gradient-descent-method">
+<h2>Gradient Descent Method<a class="headerlink" href="#gradient-descent-method" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>1.<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>Write a function to calculate the first derivative of a harmonic potential:</p>
+<div class="math notranslate nohighlight">
+\[U^\prime = 2k\left(r-r_0\right)\]</div>
+<p>Using this function, write code to perform a gradient descent search, to find the minimum of your harmonic potential energy surface. Use <span class="math notranslate nohighlight">\(r\)</span> = 1.0 Å as your starting position, and a step size <span class="math notranslate nohighlight">\(\Delta r\)</span> = 0.1 Å.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">harmonic_potential_gradient</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the gradient of the potential energy potential energy</span>
+<span class="sd">    for a diatomic molecule with harmonic bond potential.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Bond length</span>
+<span class="sd">        k (float): Force constant</span>
+<span class="sd">        r0 (float): Equilibrium bond length</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Potential energy gradient dU(r)/dr</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">r</span><span class="o">-</span><span class="n">r0</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># initial guess</span>
+<span class="n">delta_r</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># step size</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span> <span class="c1"># loop for 10 steps</span>
+    <span class="c1"># calculate the gradient</span>
+    <span class="n">dUdr</span> <span class="o">=</span> <span class="n">harmonic_potential_gradient</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+    <span class="c1"># move in the direction *opposite* to the gradient, i.e., downhill.</span>
+    <span class="k">if</span> <span class="n">dUdr</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># gradient is +ve</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">delta_r</span> <span class="c1"># so move in a -ve direction</span>
+    <span class="k">elif</span> <span class="n">dUdr</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># gradient is -ve</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">delta_r</span> <span class="c1"># so move in a +ve direction</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;step number: </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> --&gt; r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step number: 1 --&gt; r = 0.9
+step number: 2 --&gt; r = 0.8
+step number: 3 --&gt; r = 0.7000000000000001
+step number: 4 --&gt; r = 0.8
+step number: 5 --&gt; r = 0.7000000000000001
+step number: 6 --&gt; r = 0.8
+step number: 7 --&gt; r = 0.7000000000000001
+step number: 8 --&gt; r = 0.8
+step number: 9 --&gt; r = 0.7000000000000001
+step number: 10 --&gt; r = 0.8
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This code does not test to see if we are close to the minimum, so our calculation gets close to the minimum and then jumps back and forth between <span class="math notranslate nohighlight">\(r\)</span> = 0.8 Å and <span class="math notranslate nohighlight">\(r\)</span> = 0.7 Å.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An alternative way to always move in the opposite direction to the potential energy gradient is to use the <em>sign</em> of <code class="docutils literal notranslate"><span class="pre">dUdr</span></code>. We can calculate this using <code class="docutils literal notranslate"><span class="pre">np.sign()</span></code>, which returns <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> for input values less than zero, <code class="docutils literal notranslate"><span class="pre">1.0</span></code> for input values greater than zero, and <code class="docutils literal notranslate"><span class="pre">0.0</span></code> if our input is exactly zero.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># move in the direction *opposite* to the gradient, i.e., downhill</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">dUdr</span><span class="p">)</span> <span class="o">*</span> <span class="n">delta_r</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="rescaling-the-step-size">
+<h3>Rescaling the Step Size<a class="headerlink" href="#rescaling-the-step-size" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h4>1.<a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<p>Write a new version of your steepest descent code that rescales the step to be proportional to the local force, with <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.001.
+You should write this as a loop that iteratively updates the current position, i.e.</p>
+<div class="math notranslate nohighlight">
+\[r_{i+1} = r_i + \alpha F(r_i)\]</div>
+<p>By combining a suitable <code class="docutils literal notranslate"><span class="pre">if</span></code> statement with <code class="docutils literal notranslate"><span class="pre">break</span></code>, have your code stop and report the predicted equilibrium bond length when <span class="math notranslate nohighlight">\(U^\prime \le \left|0.001\right|\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># initial guess</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># step size scaling factor</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1"># maximum number of iterations</span>
+<span class="n">convergence_threshold</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+    <span class="n">dUdr</span> <span class="o">=</span> <span class="n">harmonic_potential_gradient</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dUdr</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">convergence_threshold</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;minimisation converged at r=</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1"> Å in </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> steps&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;dUdr = </span><span class="si">{</span><span class="n">dUdr</span><span class="si">}</span><span class="s1"> eV Å^-1&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># move in the direction opposite to the gradient, i.e., downhill</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">dUdr</span> <span class="c1"># over-write r with the new value</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;step </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">: r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1"> Å, dU/dr = </span><span class="si">{</span><span class="n">dUdr</span><span class="si">}</span><span class="s1"> eV Å^-1&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>step 0: r = 0.8128 Å, dU/dr = 18.72 eV Å^-1
+step 1: r = 0.760384 Å, dU/dr = 5.241599999999998 eV Å^-1
+step 2: r = 0.74570752 Å, dU/dr = 1.467647999999997 eV Å^-1
+step 3: r = 0.7415981056 Å, dU/dr = 0.41094143999999755 eV Å^-1
+step 4: r = 0.740447469568 Å, dU/dr = 0.11506360319999676 eV Å^-1
+step 5: r = 0.74012529147904 Å, dU/dr = 0.03221780889600101 eV Å^-1
+step 6: r = 0.7400350816141312 Å, dU/dr = 0.00902098649088412 eV Å^-1
+step 7: r = 0.7400098228519567 Å, dU/dr = 0.0025258762174491523 eV Å^-1
+minimisation converged at r=0.7400098228519567 Å in 8 steps
+dUdr = 0.0007072453408838442 eV Å^-1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h4>2.<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
+<p>How does changing the <span class="math notranslate nohighlight">\(\alpha\)</span> affect your rate of convergence? Experiment with larger and smaller values of <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>First, let us wrap our minimisation code in a function for easy reuse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="n">r_init</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform gradient descent minimisation for a harmonic potential.</span>
+
+<span class="sd">    Returns a dictionary of</span>
+<span class="sd">        {</span>
+<span class="sd">         &#39;r0&#39;: Predicted equilibrium bond length in Å (float),</span>
+<span class="sd">         &#39;niter&#39;: number of iterations performed (int),</span>
+<span class="sd">         &#39;conv&#39;: whether convergence was reached (bool).</span>
+<span class="sd">        }</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r_init (float): Initial guess for the equilibrium bond length in Å.</span>
+<span class="sd">        k (float): Force constant.</span>
+<span class="sd">        r0 (float): Equilibrium bond length in Å.</span>
+<span class="sd">        alpha (optional: float): Step-size scaling factor. Default is 0.01.</span>
+<span class="sd">        conv (optional: float): Convergence threshold in eV Å^-1. Default is 0.001.</span>
+<span class="sd">        max_iter (optional: int): Maximum number of iterations. Default is 30.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (dict(str: float, </span>
+<span class="sd">              str: int, </span>
+<span class="sd">              str: bool))</span>
+<span class="sd">                            </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">r_init</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">dUdr</span> <span class="o">=</span> <span class="n">harmonic_potential_gradient</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dUdr</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">conv</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;r0&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span>
+                    <span class="s1">&#39;niter&#39;</span><span class="p">:</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;conv&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">dUdr</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;r0&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span>
+            <span class="s1">&#39;niter&#39;</span><span class="p">:</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;conv&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
+            
+</pre></div>
+</div>
+</div>
+</div>
+<p>Running with the default arguments should give us the same result as before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradient_descent</span><span class="p">(</span><span class="n">r_init</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="n">r0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;r0&#39;: 0.7400098228519567, &#39;niter&#39;: 9, &#39;conv&#39;: True}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Running with <span class="math notranslate nohighlight">\(\alpha\)</span> = 0.001, we take much smaller steps and do not reach convergence in 30 steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradient_descent</span><span class="p">(</span><span class="n">r_init</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="n">r0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;r0&#39;: 0.7676320199982004, &#39;niter&#39;: 30, &#39;conv&#39;: False}
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we increase the maximum number of steps, then we do reach convergence (eventually):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradient_descent</span><span class="p">(</span><span class="n">r_init</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="n">r0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;r0&#39;: 0.7400135302620781, &#39;niter&#39;: 133, &#39;conv&#39;: True}
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we increase <span class="math notranslate nohighlight">\(\alpha\)</span> too much, we get <em>divergence</em> and never converge.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gradient_descent</span><span class="p">(</span><span class="n">r_init</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="n">r0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.028</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;r0&#39;: 1.1585858916145688, &#39;niter&#39;: 30, &#39;conv&#39;: False}
+</pre></div>
+</div>
+</div>
+</div>
+<p>To see why this happens, let us modify our function to also return the r values for each iteration:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="n">r_init</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform gradient descent minimisation for a harmonic potential.</span>
+
+<span class="sd">    Returns a dictionary of</span>
+<span class="sd">        {</span>
+<span class="sd">         &#39;r0&#39;: Predicted equilibrium bond length in Å (float),</span>
+<span class="sd">         &#39;niter&#39;: number of iterations performed (int),</span>
+<span class="sd">         &#39;conv&#39;: whether convergence was reached (bool),</span>
+<span class="sd">         &#39;r_values&#39;: sequence of r values for each step of the minimisation (np.ndarray).</span>
+<span class="sd">        }</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r_init (float): Initial guess for the equilibrium bond length in Å.</span>
+<span class="sd">        k (float): Force constant.</span>
+<span class="sd">        r0 (float): Equilibrium bond length in Å.</span>
+<span class="sd">        alpha (optional: float): Step-size scaling factor. Default is 0.01.</span>
+<span class="sd">        conv (optional: float): Convergence threshold in eV Å^-1. Default is 0.001.</span>
+<span class="sd">        max_iter (optional: int): Maximum number of iterations. Default is 30.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (dict(str: float, </span>
+<span class="sd">              str: int, </span>
+<span class="sd">              str: bool,</span>
+<span class="sd">              str: np.ndarray))</span>
+<span class="sd">                            </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">r_init</span>
+    <span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">dUdr</span> <span class="o">=</span> <span class="n">harmonic_potential_gradient</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dUdr</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">conv</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;r0&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span>
+                    <span class="s1">&#39;niter&#39;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span>
+                    <span class="s1">&#39;conv&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;r_values&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r_values</span><span class="p">)}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">dUdr</span>
+            <span class="n">r_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;r0&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span>
+            <span class="s1">&#39;niter&#39;</span><span class="p">:</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;conv&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;r_values&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r_values</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">gradient_descent</span><span class="p">(</span><span class="n">r_init</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="n">r0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.0283</span><span class="p">)</span>
+
+<span class="n">r_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.38</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">harmonic_potential</span><span class="p">(</span><span class="n">r_range</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+
+<span class="n">r_values_to_plot</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;r_values&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]</span> <span class="c1"># just plot the first 10 iterations</span>
+<span class="n">U_values_to_plot</span> <span class="o">=</span> <span class="n">harmonic_potential</span><span class="p">(</span><span class="n">r_values_to_plot</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span> <span class="c1"># calculate the corresponding U values.</span>
+
+<span class="c1"># Create the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_grid</span><span class="p">,</span> <span class="n">U</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values_to_plot</span><span class="p">,</span> <span class="n">U_values_to_plot</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values_to_plot</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">U_values_to_plot</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Initial guess&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$r$ / Å&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$U$ / eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../_images/32974de347acbaf1b6b606af88d6356ee6cdeb9c3e01ab337b3dad26027c5338.png"><img alt="../_images/32974de347acbaf1b6b606af88d6356ee6cdeb9c3e01ab337b3dad26027c5338.png" src="../_images/32974de347acbaf1b6b606af88d6356ee6cdeb9c3e01ab337b3dad26027c5338.png" style="width: 567px; height: 435px;" /></a>
+</div>
+</div>
+<p>Now, our <span class="math notranslate nohighlight">\(\alpha\)</span> value is large enough that we overshoot the minimum and end up <strong>higher</strong> up the potential than we started. On the next move we overshoot the minimum again and end up even higher, again, up the potential. With each step we move <strong>further</strong> from the minimum. Eventually, we reach the maximum number of iterations, or the value of <span class="math notranslate nohighlight">\(r\)</span> becomes so large that Python raises an error and our code stops.</p>
+</section>
+</section>
+</section>
+<section id="the-newton-raphson-method">
+<h2>The Newton-Raphson Method<a class="headerlink" href="#the-newton-raphson-method" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3>1.<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>Write a function to calculate the second derivative of a harmonic potential</p>
+<div class="math notranslate nohighlight">
+\[U^{\prime\prime} = 2k\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">harmomic_potential_second_derivative</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the second derivative of a harmonic potential.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        k (float): Force constant</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">k</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id9">
+<h3>2.<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>Show that the Newton-Raphson method finds the optimal bond length for your harmonic potential in one step, irrespective of your starting point.</p>
+<p>First, let us write a minimisation routine that uses the Newton-Raphson method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">newton_raphson</span><span class="p">(</span><span class="n">r_init</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">conv</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform Newton-Raphson minimisation for a harmonic potential.</span>
+
+<span class="sd">    Returns a dictionary of</span>
+<span class="sd">        {</span>
+<span class="sd">         &#39;r0&#39;: Predicted equilibrium bond length in Å (float),</span>
+<span class="sd">         &#39;niter&#39;: number of iterations performed (int),</span>
+<span class="sd">         &#39;conv&#39;: whether convergence was reached (bool),</span>
+<span class="sd">         &#39;r_values&#39;: sequence of r values for each step of the minimisation (np.ndarray).</span>
+<span class="sd">        }</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r_init (float): Initial guess for the equilibrium bond length in Å.</span>
+<span class="sd">        k (float): Force constant.</span>
+<span class="sd">        r0 (float): Equilibrium bond length in Å.</span>
+<span class="sd">        alpha (optional: float): Step-size scaling factor. Default is 0.01.</span>
+<span class="sd">        conv (optional: float): Convergence threshold in eV Å^-1. Default is 0.001.</span>
+<span class="sd">        max_iter (optional: int): Maximum number of iterations. Default is 30.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (dict(str: float, </span>
+<span class="sd">              str: int, </span>
+<span class="sd">              str: bool,</span>
+<span class="sd">              str: np.ndarray))</span>
+<span class="sd">                            </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">r_init</span>
+    <span class="n">r_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">dUdr</span> <span class="o">=</span> <span class="n">harmonic_potential_gradient</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">dUdr</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">conv</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;r0&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span>
+                    <span class="s1">&#39;niter&#39;</span><span class="p">:</span> <span class="n">i</span><span class="p">,</span>
+                    <span class="s1">&#39;conv&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="s1">&#39;r_values&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r_values</span><span class="p">)}</span>
+        <span class="n">d2Udr2</span> <span class="o">=</span> <span class="n">harmomic_potential_second_derivative</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="n">dUdr</span> <span class="o">/</span> <span class="n">d2Udr2</span>
+        <span class="n">r_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;r0&#39;</span><span class="p">:</span> <span class="n">r</span><span class="p">,</span>
+            <span class="s1">&#39;niter&#39;</span><span class="p">:</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;conv&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;r_values&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">r_values</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can call our function with different starting values of <span class="math notranslate nohighlight">\(r\)</span>. In all cases, we converge on the exact minimum in 1 step.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton_raphson</span><span class="p">(</span><span class="n">r_init</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="n">r0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;r0&#39;: 0.74, &#39;niter&#39;: 1, &#39;conv&#39;: True, &#39;r_values&#39;: array([1.  , 0.74])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton_raphson</span><span class="p">(</span><span class="n">r_init</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="n">r0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;r0&#39;: 0.74, &#39;niter&#39;: 1, &#39;conv&#39;: True, &#39;r_values&#39;: array([2.  , 0.74])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton_raphson</span><span class="p">(</span><span class="n">r_init</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="o">=</span><span class="n">r0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;r0&#39;: 0.74, &#39;niter&#39;: 1, &#39;conv&#39;: True, &#39;r_values&#39;: array([0.5 , 0.74])}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./solutions"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution-for-a-harmonic-potential">Analytical Solution for a Harmonic Potential</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid-search-method">Grid Search Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-method">Gradient Descent Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rescaling-the-step-size">Rescaling the Step Size</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-newton-raphson-method">The Newton-Raphson Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

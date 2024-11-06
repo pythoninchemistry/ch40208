@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Newton-Raphson Method &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Analytical Solution for a Harmonic Potential &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -63,11 +63,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/newton_raphson_method';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'geometry_optimisation/analytical_solution_for_a_harmonic_potential';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exercise: Geometry Optimisation of a Lennard-Jones Potential" href="Lennard_Jones_optimisation.html" />
-    <link rel="prev" title="Gradient Descent Method" href="gradient_descent_method.html" />
+    <link rel="next" title="Grid Search Method" href="grid_search_method.html" />
+    <link rel="prev" title="Geometry Optimisation" href="geometry_optimisation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -191,7 +191,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why we encourage typing out the code examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
@@ -220,18 +220,35 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="geometry_optimisation.html">Geometry Optimisation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Analytical Solution for a Harmonic Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="grid_search_method.html">Grid Search Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent_method.html">Gradient Descent Method</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newton_raphson_method.html">The Newton-Raphson Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Model Fitting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turing Data into Understanding</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/curve_fitting.html">Model fitting</a></li>
 </ul>
 </details></li>
 </ul>
@@ -288,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/newton_raphson_method.ipynb" target="_blank"
+      <li><a href="../_sources/geometry_optimisation/analytical_solution_for_a_harmonic_potential.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -298,7 +315,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -364,7 +381,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The Newton-Raphson Method</h1>
+    <h1>Analytical Solution for a Harmonic Potential</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -386,51 +403,30 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="the-newton-raphson-method">
-<h1>The Newton-Raphson Method<a class="headerlink" href="#the-newton-raphson-method" title="Link to this heading">#</a></h1>
-<p>An alternative method for finding the minimum of a function is the Newton-Raphson Method (also called Newton’s Method).</p>
-<p>The central idea here is that if we zoom in on any function, then we can approximate the local shape of that function as quadratic, i.e.</p>
+  <section id="analytical-solution-for-a-harmonic-potential">
+<h1>Analytical Solution for a Harmonic Potential<a class="headerlink" href="#analytical-solution-for-a-harmonic-potential" title="Link to this heading">#</a></h1>
+<p>To simplify things, we will approximate our diatomic molecule potential energy surface with a harmonic potential of the form</p>
 <div class="math notranslate nohighlight">
-\[f(x) \approx ax^2 + bx + c\]</div>
-<p>over some small range of <span class="math notranslate nohighlight">\(x\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(f(x)\)</span> has a minimum, then at that point</p>
+\[U(r) = \frac{k}{2}(r-r_0)^2\]</div>
+<p>In this case, we can find the minimum analytically by finding the value of <span class="math notranslate nohighlight">\(r\)</span> at which the derivative of <span class="math notranslate nohighlight">\(U\)</span> is equal to zero, i.e.</p>
 <div class="math notranslate nohighlight">
-\[f^{\prime\prime}(x) = 0\]</div>
-<p>and, if we know the coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, then we can directly calculate the value of <span class="math notranslate nohighlight">\(x\)</span> that minimises our function.</p>
+\[\frac{\mathrm{d}U}{\mathrm{d}r} = 0\]</div>
 <div class="math notranslate nohighlight">
-\[f^{\prime\prime}(x) = 2ax + b = 0\]</div>
-<div class="math notranslate nohighlight">
-\[x = \frac{-b}{2a}\]</div>
-<p>To find the value of the coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, we use the property that any function can be expanded as a <strong>Taylor series</strong>
-(see, e.g., Chapter 6 in <a class="reference external" href="https://bath.primo.exlibrisgroup.com/permalink/44BAT_INST/iac705/alma991004175199902761">Foundations of Science Mathematics</a>).</p>
-<p>If we are at some point <span class="math notranslate nohighlight">\(x_0\)</span>, then we can approximate our function locally as a polynomial in <span class="math notranslate nohighlight">\((x-x_0)\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[f(x) = f(x_0) + f^\prime(x_0)(x-x_0) + \frac{1}{2}f^{\prime\prime}(x_0)(x-x_0)^2 + \ldots\]</div>
-<p>And, if we remain close to <span class="math notranslate nohighlight">\(x_0\)</span>, where the higher order terms in <span class="math notranslate nohighlight">\((x-x_0)\)</span> are small, we have the approximation that</p>
-<div class="math notranslate nohighlight">
-\[f(x) \approx f(x_0) + f^\prime(x_0)(x-x_0) + \frac{1}{2}f^{\prime\prime}(x_0)(x-x_0)^2\]</div>
-<p>i.e., we approximate <span class="math notranslate nohighlight">\(f(x)\)</span> as quadratic.</p>
-<p>Differentiating this approximate expression with respect to <span class="math notranslate nohighlight">\(x\)</span>gives:</p>
-<div class="math notranslate nohighlight">
-\[f^\prime(x) = f^\prime + f^{\prime\prime}(x - x_0) = 0\]</div>
-<p>and setting this to zero allows us to solve for <span class="math notranslate nohighlight">\(x\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[x = x_0 - \frac{f^\prime(x_0)}{f^{\prime\prime}(x_0)}\]</div>
-<p>In the context of finding the minimum of a potential energy surface, this looks like:</p>
-<ol class="arabic simple">
-<li><p>Starting at an initial guess, <span class="math notranslate nohighlight">\(r_n\)</span>, calculate the first and second derivatives of <span class="math notranslate nohighlight">\(U(r_n)\)</span> at that point.</p></li>
-<li><p>Use the Newton-Raphson equation <span class="math notranslate nohighlight">\(r_{n+1} = r_n - U^\prime(r_n) / U^{\prime\prime}(r_n)\)</span> to predict the position of the minimum.</p></li>
-</ol>
-<p>In reality, our potential energy surface is never exactly quadratic (except for the special case of a harmonic potential), so step 2. only gives us an approximate <strong>guess</strong> for the minimum position. We then repeat steps 1. and 2. as an iterative process, until we (hopefully) converge on the energy minimum.</p>
+\[\frac{\mathrm{d}U}{\mathrm{d}r} = k(r-r_0) = 0\]</div>
+<p>Therefore, at the minimum, <span class="math notranslate nohighlight">\(r = r_0\)</span>.</p>
+<p>This analytical solution if possible because we have a simple mathematical function for <span class="math notranslate nohighlight">\(U(r)\)</span>. However, for real molecular systems, we typically do not have an analytical form for <span class="math notranslate nohighlight">\(U(r)\)</span>.</p>
 <section id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Write a function to calculate the second derivative of a harmonic potential:</p></li>
+<li><p>Write a Python function to calculate the potential energy surface for a diatomic molecule with a harmonic bond potential,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[U^{\prime\prime} = 2k\]</div>
+\[U(r) = \frac{k}{2}(r-r_0)^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the bond force constant and <span class="math notranslate nohighlight">\(r_0\)</span> is the equilibrium bond length.</p>
+<p>Your function should take three arguments as input; <span class="math notranslate nohighlight">\(r\)</span>, <span class="math notranslate nohighlight">\(k\)</span>, and <span class="math notranslate nohighlight">\(r_0\)</span>; and return the potential energy for the input value of <span class="math notranslate nohighlight">\(r\)</span>.</p>
 <ol class="arabic simple" start="2">
-<li><p>Show that the Newton-Raphson method finds the optimal bond length for your harmonic potential in one step, irrespective of your starting point.</p></li>
+<li><p>Plot this function for H<sub>2</sub> (<span class="math notranslate nohighlight">\(r_0\)</span> = 0.74 Å, <span class="math notranslate nohighlight">\(k\)</span> = 36.0 eV Å<sup>−2</sup>) for <span class="math notranslate nohighlight">\(0.38\leq r \leq 1.1\)</span>.</p></li>
+<li><p>Use your function to calculate the potential energy at <span class="math notranslate nohighlight">\(r=r_0\)</span>. Add a point to your plot at <span class="math notranslate nohighlight">\((U(r_0), r_0)\)</span> and confirm visually that this is the minimum of the potential energy surface.</p></li>
 </ol>
 </section>
 </section>
@@ -448,7 +444,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./geometry_optimisation"
         },
         predefinedOutput: true
     }
@@ -466,20 +462,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="gradient_descent_method.html"
+       href="geometry_optimisation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Gradient Descent Method</p>
+        <p class="prev-next-title">Geometry Optimisation</p>
       </div>
     </a>
     <a class="right-next"
-       href="Lennard_Jones_optimisation.html"
+       href="grid_search_method.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercise: Geometry Optimisation of a Lennard-Jones Potential</p>
+        <p class="prev-next-title">Grid Search Method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
