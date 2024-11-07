@@ -92,3 +92,6 @@ parts:
 #        - file: comp_chem_methods/eigenvalues_and_eigenvectors
 #        - file: comp_chem_methods/moments_of_inertia
 #
+  - caption: Example Coursework Notebooks
+    chapters:
+      - file: example_coursework_notebooks/ir_spectra.ipynb
