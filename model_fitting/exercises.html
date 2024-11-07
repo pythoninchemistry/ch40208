@@ -428,7 +428,7 @@
 <div class="math notranslate nohighlight">
 \[y = mx + c\]</div>
 <p>Plotting experimental data as <span class="math notranslate nohighlight">\(\ln K\)</span> against <span class="math notranslate nohighlight">\(1/T\)</span> should, therefore, give an approximate straight line (as long as the enthalpy and entropy of reaction are approximately constant over the temperature range of interest). By fitting a straight line to these data, we can obtain “best fit” values for the slope and intercept, which correspond to <span class="math notranslate nohighlight">\(\Delta H/R\)</span> and to <span class="math notranslate nohighlight">\(\Delta S/R\)</span> in our model. By fitting to data we can, therefore, estimate <span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span> for a given reaction.</p>
-<p><strong>(a)</strong> The table below gives experimentally measured equilibrium constants at different temperatures for the reaction</p>
+<p><strong>(a)</strong> The data file <a class="reference download internal" download="" href="../_downloads/f88d61356dd729ae72457dd56ec6fe80/exercise_1.dat"><span class="xref download myst">exercise_1.dat</span></a> gives the following experimentally measured equilibrium constants at different temperatures for the reaction</p>
 <div class="math notranslate nohighlight">
 \[2\mathrm{NO}_2 \rightleftharpoons 2\mathrm{N}_2\mathrm{O}_4\]</div>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -465,7 +465,7 @@
 </tbody>
 </table>
 </div>
-<p>Create two NumPy arrays to store these data.</p>
+<p>Read these data from the file <a class="reference download internal" download="" href="../_downloads/f88d61356dd729ae72457dd56ec6fe80/exercise_1.dat"><span class="xref download myst">exercise_1.dat</span></a> into two numpy arrays.</p>
 <p><strong>(b)</strong> Convert your raw data into <span class="math notranslate nohighlight">\(1/T\)</span> (in inverse Kelvin) and <span class="math notranslate nohighlight">\(\ln K\)</span>.</p>
 <p>Plot these transformed data and confirm that they approximately show a linear relationship.</p>
 <p><strong>(c)</strong> Write a function called <code class="docutils literal notranslate"><span class="pre">linear_model()</span></code> with arguments <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(m\)</span>, and <span class="math notranslate nohighlight">\(c\)</span>, that returns the corresponding <span class="math notranslate nohighlight">\(y\)</span> value for the function</p>
@@ -488,7 +488,7 @@
 </section>
 <section id="non-linear-fitting-of-kinetic-data">
 <h2>2. Non-linear fitting of kinetic data<a class="headerlink" href="#non-linear-fitting-of-kinetic-data" title="Link to this heading">#</a></h2>
-<p>The data below describe the decomposition of hydrogen peroxide in the presence of excess Ce<sup>III</sup>.</p>
+<p>The data in <a class="reference download internal" download="" href="../_downloads/f01fbc4803a6b8f14a3cb84eb6358dcd/exercise_2.dat"><span class="xref download myst">exercise_2.dat</span></a> describe the decomposition of hydrogen peroxide in the presence of excess Ce<sup>III</sup>.</p>
 <div class="math notranslate nohighlight">
 \[2\mathrm{H}_2\mathrm{O}_2 + 2\mathrm{Ce}^\mathrm{III} \longrightarrow 2\mathrm{H}_2\mathrm{O} + \mathrm{Ce}^\mathrm{III} + \mathrm{O}_2\]</div>
 <div class="pst-scrollable-table-container"><table class="table">
@@ -531,7 +531,7 @@
 </tbody>
 </table>
 </div>
-<p><strong>(a)</strong> Store these data in numpy arrays, and plot time versus the concentration of H<sub>2</sub>O<sub>2</sub>.</p>
+<p><strong>(a)</strong> Read these data to numpy arrays, and plot time versus the concentration of H<sub>2</sub>O<sub>2</sub>.</p>
 <p><strong>(b)</strong> This reaction has a first-order rate equation, which will be our “model” for fitting the data:</p>
 <div class="math notranslate nohighlight">
 \[[\mathrm{A}](t) = [\mathrm{A}]_0\exp(-kt)\]</div>
