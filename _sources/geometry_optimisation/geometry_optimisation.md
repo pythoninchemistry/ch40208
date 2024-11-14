@@ -1,4 +1,5 @@
-# Geometry Optimisation
+(sec:geometry-optimisation)=
+# Geometry Optimisation 
 
 A common problem in computational chemistry is predicting the equilibrium geometry of a molecule or crystal structure.
 
