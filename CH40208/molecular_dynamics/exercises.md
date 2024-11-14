@@ -30,15 +30,15 @@ where $m$ is the effective mass of our molecule.
 - Force constant $k = 575$ N/m
 - Equilibrium bond length $r_0 = 0.74$ Å
 
-Plot the potential energy function for bond lengths in the range $0.38$ &angstrom;Å ≤ $r$ ≤ $1.1$ &angstrom;.
+Plot the potential energy function for bond lengths in the range $0.38$ &#8491; ≤ $r$ ≤ $1.1$ &#8491;.
 
 **(b)** Write a function to calculate the force acting on your system as a function of $r$.
-Plot this force function for $0.38$ &angstrom; ≤ $r$ ≤ $1.1$ &angstrom;.
+Plot this force function for $0.38$ &#8491; ≤ $r$ ≤ $1.1$ &#8491;.
 
 ### Exercise 2: Euler Integration
 
 **(a)** Write code to perform 50,000 steps of molecular dynamics simulation using Euler integration:
-- Initial position $r(t=0) = 1.0$ &angstrom;
+- Initial position $r(t=0) = 1.0$ &#8491;
 - Initial velocity $v(t=0) = 0.0$
 - Mass $m = 0.5$
 - Timestep $\Delta t = 1 \times 10^{-5}$
