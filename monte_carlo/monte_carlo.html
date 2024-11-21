@@ -1,0 +1,960 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Monte Carlo Simulation in Computational Chemistry &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'monte_carlo/monte_carlo';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Determination of the HCl bond length by IR spectroscopy" href="../example_coursework_notebooks/ir_spectra.html" />
+    <link rel="prev" title="Exercises" href="../molecular_dynamics/exercises.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <img src="../_static/CH40208_image.png" class="logo__image only-dark pst-js-only" alt="CH40208: Topics in Computational Chemistry - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/more_numpy_functions.html">More NumPy functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Monte Carlo Simulation in Computational Chemistry</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/monte_carlo/monte_carlo.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Monte Carlo Simulation in Computational Chemistry</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-monte-carlo-integration-calculating">Exercise 1: Monte Carlo Integration - Calculating π</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-task">Implementation Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-questions">Analysis Questions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-mechanics-and-the-boltzmann-distribution">Statistical Mechanics and the Boltzmann Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-metropolis-algorithm">The Metropolis Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-monte-carlo-simulation-of-the-1d-ising-model">Exercise 2: Monte Carlo Simulation of the 1D Ising Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-system-energy">Part 1: System Energy</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-periodic-boundary-conditions">Understanding Periodic Boundary Conditions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-single-monte-carlo-step">Part 2: Single Monte Carlo Step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-magnetization">Part 3: Magnetization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-full-simulation">Part 4: Full Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-temperature-dependence">Part 5: Temperature Dependence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Analysis Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-challenges">Extra Challenges</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="monte-carlo-simulation-in-computational-chemistry">
+<h1>Monte Carlo Simulation in Computational Chemistry<a class="headerlink" href="#monte-carlo-simulation-in-computational-chemistry" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In molecular dynamics, we model chemical systems by numerically integrating equations of motion to generate trajectories through time. Starting with atomic positions and velocities at time <span class="math notranslate nohighlight">\(t\)</span>, we calculate the forces, update positions and velocities, and repeat this process to simulate molecular motion. However, there are several situations where this approach becomes problematic:</p>
+<ol class="arabic simple">
+<li><p>We might not be able to calculate the forces <span class="math notranslate nohighlight">\(F(r)\)</span> required for MD. This could be because force evaluation is computationally expensive, or because the forces are not well-defined for our system.</p></li>
+<li><p>The timescale of important transitions might be much longer than we can practically simulate. For example, protein folding or chemical reactions with high activation barriers can take milliseconds or longer, while MD timesteps are typically femtoseconds.</p></li>
+<li><p>Our system might have a discrete, rather than continuous, configuration space. Consider a lattice model where molecules occupy specific sites, or magnetic systems where spins point only up or down.</p></li>
+</ol>
+<p>Monte Carlo simulation offers an alternative approach. Rather than following the detailed dynamics of molecular motion, Monte Carlo methods use random sampling to explore configuration space and calculate equilibrium properties. This can overcome many of the limitations of molecular dynamics, at the cost of losing information about true dynamical behavior.</p>
+</section>
+<section id="exercise-1-monte-carlo-integration-calculating">
+<h2>Exercise 1: Monte Carlo Integration - Calculating π<a class="headerlink" href="#exercise-1-monte-carlo-integration-calculating" title="Link to this heading">#</a></h2>
+<p>To understand the principles of Monte Carlo methods, let’s consider a simple but illuminating problem: calculating the area of a circle and thus the value of π. Analytically, we can find a circle’s area by imagining it divided into infinitesimally thin concentric rings. The area of each ring is its circumference (2πr) multiplied by its thickness (dr):</p>
+<p><span class="math notranslate nohighlight">\(A_{circle} = \int_0^R 2\pi r\,dr = \pi R^2\)</span></p>
+<p>But what if we couldn’t perform this integration analytically? This is often the case in molecular systems, where we need to integrate over complex, high-dimensional configuration spaces. Monte Carlo methods provide a powerful alternative approach.</p>
+<p>Consider a unit circle (<span class="math notranslate nohighlight">\(R=1\)</span>) inscribed in a 2×2 square. The ratio of their areas is:</p>
+<p><span class="math notranslate nohighlight">\(\frac{A_{circle}}{A_{square}} = \frac{\pi R^2}{(2R)^2} = \frac{\pi}{4}\)</span></p>
+<p>We can estimate this ratio - and thus π - using random sampling. This demonstrates a key principle of Monte Carlo integration: we can approximate integrals by randomly sampling the integration space and counting the fraction of samples that meet certain criteria.</p>
+<section id="implementation-task">
+<h3>Implementation Task<a class="headerlink" href="#implementation-task" title="Link to this heading">#</a></h3>
+<p>Your task is to implement the Monte Carlo estimation of π using random sampling. The mathematical approach is:</p>
+<ol class="arabic simple">
+<li><p>The ratio of points inside the circle to total points estimates <span class="math notranslate nohighlight">\(A_{circle}/A_{square}\)</span></p></li>
+<li><p>We know <span class="math notranslate nohighlight">\(A_{circle}/A_{square} = \pi/4\)</span></p></li>
+<li><p>Therefore π = 4 × (points inside circle)/(total points)</p></li>
+</ol>
+<p>You’ll need these Python tools:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For random number generation and array operations</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">uniform</span>
+
+<span class="c1"># Generate N points at once - returns array of shape (N,2)</span>
+<span class="n">points</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1"># points[:,0] gives x coordinates</span>
+<span class="c1"># points[:,1] gives y coordinates</span>
+
+<span class="c1"># Calculate r^2 for all points at once</span>
+<span class="n">r_squared</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">points</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># For plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<p>Complete this Python function that implements the method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">estimate_pi</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Estimate π using Monte Carlo sampling.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    N : int</span>
+<span class="sd">        Number of random points to generate</span>
+<span class="sd">        </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        Estimate of π</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Generate N random points in square</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    
+    <span class="c1"># Your code here:</span>
+    <span class="c1"># 1. Calculate r² for all points: points[:,0]**2 + points[:,1]**2</span>
+    <span class="c1"># 2. Count how many points have r² ≤ 1 (inside circle)</span>
+    <span class="c1"># 3. Calculate π as 4 × (points inside)/(total points)</span>
+    
+    <span class="k">return</span> <span class="n">pi_estimate</span>
+</pre></div>
+</div>
+<p>For visualization, use this provided function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_monte_carlo</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a plot showing Monte Carlo estimation of π.</span>
+<span class="sd">    </span>
+<span class="sd">    Creates a square plot with a unit circle and plots N random points,</span>
+<span class="sd">    colored according to whether they fall inside or outside the circle.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        N (int): Number of random points to generate</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Estimate of π from this sampling</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Set up the plot with circle</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+    <span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;scaled&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Generate N random points</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+    
+    <span class="c1"># Count points inside circle and plot all points</span>
+    <span class="n">n_inside</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">points</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">n_inside</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate and display π estimate</span>
+    <span class="n">pi_estimate</span> <span class="o">=</span> <span class="mf">4.0</span> <span class="o">*</span> <span class="n">n_inside</span> <span class="o">/</span> <span class="n">N</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\pi \approx $&quot;</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pi_estimate</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> samples&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">pi_estimate</span>
+</pre></div>
+</div>
+<p>After implementing the function:</p>
+<ol class="arabic">
+<li><p>Test your estimation with different numbers of points:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">50000</span><span class="p">]:</span>
+    <span class="n">pi_est</span> <span class="o">=</span> <span class="n">estimate_pi</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;N = </span><span class="si">{</span><span class="n">N</span><span class="si">:</span><span class="s2">6d</span><span class="si">}</span><span class="s2">: π ≈ </span><span class="si">{</span><span class="n">pi_est</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, error = </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">pi_est</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Visualize the sampling for each N using <code class="docutils literal notranslate"><span class="pre">plot_monte_carlo(N)</span></code></p></li>
+<li><p>Record your results in this table:</p></li>
+</ol>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>N</p></th>
+<th class="head"><p>π estimate</p></th>
+<th class="head"><p>Absolute Error</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>50</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>500</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>5000</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>50000</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="analysis-questions">
+<h4>Analysis Questions<a class="headerlink" href="#analysis-questions" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>How does the accuracy improve with N?</p></li>
+<li><p>Why do you get different results each time you run the code?</p></li>
+<li><p>What N would you need for 2 decimal place accuracy?</p></li>
+<li><p>How does this generalize to other integration problems?</p></li>
+</ol>
+<p>This example illustrates key features of Monte Carlo methods:</p>
+<ul class="simple">
+<li><p>Statistical errors decrease with increased sampling</p></li>
+<li><p>Results are inherently probabilistic</p></li>
+<li><p>The method can handle integrals that are difficult analytically</p></li>
+<li><p>The approach generalizes to higher dimensions</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="statistical-mechanics-and-the-boltzmann-distribution">
+<h2>Statistical Mechanics and the Boltzmann Distribution<a class="headerlink" href="#statistical-mechanics-and-the-boltzmann-distribution" title="Link to this heading">#</a></h2>
+<p>In molecular systems, not all configurations are equally probable. At thermal equilibrium, the probability of finding a system in state i with energy <span class="math notranslate nohighlight">\(E_i\)</span> follows the Boltzmann distribution:</p>
+<div class="math notranslate nohighlight">
+\[P_i = \frac{\exp(-E_i/kT)}{\sum_i \exp(-E_i/kT)} = \frac{\exp(-E_i/kT)}{Z}\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k\)</span> is Boltzmann’s constant</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> is temperature</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z\)</span> is the partition function</p></li>
+</ul>
+<p>This presents two practical challenges:</p>
+<ol class="arabic simple">
+<li><p>We need to preferentially sample low-energy states</p></li>
+<li><p>We cannot calculate Z directly as it requires summing over all possible states</p></li>
+</ol>
+</section>
+<section id="the-metropolis-algorithm">
+<h2>The Metropolis Algorithm<a class="headerlink" href="#the-metropolis-algorithm" title="Link to this heading">#</a></h2>
+<p>The Metropolis algorithm provides an elegant solution to these sampling problems. Rather than trying to calculate absolute probabilities, it works with probability ratios:</p>
+<p>Starting from a configuration i:</p>
+<ol class="arabic simple">
+<li><p>Propose a random move to configuration j</p></li>
+<li><p>Calculate the energy change ΔEij = Ej - Ei</p></li>
+<li><p>Accept the move with probability:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[A(i \rightarrow j) = \min(1, \exp(-\Delta E_{ij}/kT))\]</div>
+<p>This acceptance criterion ensures:</p>
+<ul class="simple">
+<li><p>Moves that lower energy (ΔE &lt; 0) are always accepted</p></li>
+<li><p>Moves that raise energy are accepted with probability exp(-ΔE/kT)</p></li>
+<li><p>The partition function Z cancels out in the ratio</p></li>
+</ul>
+</section>
+<section id="exercise-2-monte-carlo-simulation-of-the-1d-ising-model">
+<h2>Exercise 2: Monte Carlo Simulation of the 1D Ising Model<a class="headerlink" href="#exercise-2-monte-carlo-simulation-of-the-1d-ising-model" title="Link to this heading">#</a></h2>
+<p>In this exercise, you’ll implement a Monte Carlo simulation of a 1D Ising model with 4 spins and periodic boundary conditions. We’ll build this up in steps, eventually calculating the mean magnetization as a function of temperature.</p>
+<section id="part-1-system-energy">
+<h3>Part 1: System Energy<a class="headerlink" href="#part-1-system-energy" title="Link to this heading">#</a></h3>
+<p>The one-dimensional Ising model consists of a line of spins that can each take values σi = ±1 (up or down). The Hamiltonian is:</p>
+<div class="math notranslate nohighlight">
+\[H(\sigma) = -\sum_{&lt;ij&gt;} J_{ij}\sigma_i\sigma_j\]</div>
+<p>where the sum runs over adjacent pairs and Jij is the coupling constant between spins i and j.</p>
+<p>For ferromagnetic coupling (J &gt; 0):</p>
+<ul class="simple">
+<li><p>Adjacent spins prefer to align parallel at low temperature</p></li>
+<li><p>Thermal fluctuations increasingly randomize the spins at higher temperature</p></li>
+</ul>
+<section id="understanding-periodic-boundary-conditions">
+<h4>Understanding Periodic Boundary Conditions<a class="headerlink" href="#understanding-periodic-boundary-conditions" title="Link to this heading">#</a></h4>
+<p>With periodic boundary conditions, we connect the ends of the chain to form a ring:</p>
+<ul class="simple">
+<li><p>The last spin (N) is considered adjacent to the first spin (1)</p></li>
+<li><p>This means spin N interacts with both spin N-1 and spin 1</p></li>
+<li><p>We can think of this as “wrapping” our 1D system around a circle</p></li>
+</ul>
+<p>For our 4-spin system:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Regular chain:    σ₁ -- σ₂ -- σ₃ -- σ₄
+With periodic:    σ₁ -- σ₂ -- σ₃ -- σ₄
+                 |___________________|
+</pre></div>
+</div>
+<p>The Ising Hamiltonian with these boundary conditions is:</p>
+<p><span class="math notranslate nohighlight">\(H(\sigma) = -J\sum_{i=1}^N \sigma_i\sigma_{i+1}\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{N+1} \equiv \sigma_1\)</span> (periodic boundary), and each spin <span class="math notranslate nohighlight">\(\sigma_i = \pm 1\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_energy</span><span class="p">(</span><span class="n">spins</span><span class="p">,</span> <span class="n">J</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the energy of a 1D Ising model configuration.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        spins (array): Array of spins (±1)</span>
+<span class="sd">        J (float): Coupling constant</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Energy of the configuration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Your code here:</span>
+    <span class="c1"># 1. Sum over neighboring spin pairs</span>
+    <span class="c1"># 2. Remember periodic boundary conditions</span>
+    <span class="c1"># 3. Return -J × sum(σᵢσᵢ₊₁)</span>
+</pre></div>
+</div>
+<p>Test your function with these configurations:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">spins_up</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>      <span class="c1"># All spins up</span>
+<span class="n">spins_alt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Alternating spins</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="part-2-single-monte-carlo-step">
+<h3>Part 2: Single Monte Carlo Step<a class="headerlink" href="#part-2-single-monte-carlo-step" title="Link to this heading">#</a></h3>
+<p>Implement a single MC step that:</p>
+<ol class="arabic simple">
+<li><p>Picks a random spin</p></li>
+<li><p>Calculates ΔE for flipping this spin</p></li>
+<li><p>Accepts/rejects the flip using the Metropolis criterion</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">monte_carlo_step</span><span class="p">(</span><span class="n">spins</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">kT</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform one Monte Carlo step using Metropolis algorithm.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        spins (array): Current spin configuration</span>
+<span class="sd">        J (float): Coupling constant</span>
+<span class="sd">        kT (float): Temperature (in units of J)</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        array: Updated spin configuration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Your code here:</span>
+    <span class="c1"># 1. Choose random spin</span>
+    <span class="c1"># 2. Calculate energy change for flip</span>
+    <span class="c1"># 3. Accept with probability min(1, exp(-ΔE/kT))</span>
+</pre></div>
+</div>
+</section>
+<section id="part-3-magnetization">
+<h3>Part 3: Magnetization<a class="headerlink" href="#part-3-magnetization" title="Link to this heading">#</a></h3>
+<p>The magnetization is simply the sum of the spins. Implement a function to calculate the absolute magnetization per spin:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">magnetization</span><span class="p">(</span><span class="n">spins</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate absolute magnetization per spin.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        spins (array): Spin configuration</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: |M|/N where M = sum(spins)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spins</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">spins</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="part-4-full-simulation">
+<h3>Part 4: Full Simulation<a class="headerlink" href="#part-4-full-simulation" title="Link to this heading">#</a></h3>
+<p>Now combine these pieces to simulate the system at different temperatures:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_ising_simulation</span><span class="p">(</span><span class="n">N_spins</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">J</span><span class="o">=</span><span class="mf">0.012</span><span class="p">,</span> <span class="n">kT</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">N_steps</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run Ising model simulation.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        N_spins (int): Number of spins</span>
+<span class="sd">        J (float): Coupling constant (eV)</span>
+<span class="sd">        kT (float): Temperature (eV)</span>
+<span class="sd">        N_steps (int): Number of Monte Carlo steps</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Mean absolute magnetization for this temperature</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Initialize all spins up</span>
+    <span class="n">spins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N_spins</span><span class="p">)</span>
+    
+    <span class="c1"># Equilibration</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_steps</span><span class="o">//</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">spins</span> <span class="o">=</span> <span class="n">monte_carlo_step</span><span class="p">(</span><span class="n">spins</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
+    
+    <span class="c1"># Production and measurement</span>
+    <span class="n">mag</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_steps</span><span class="o">//</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">spins</span> <span class="o">=</span> <span class="n">monte_carlo_step</span><span class="p">(</span><span class="n">spins</span><span class="p">,</span> <span class="n">J</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
+        <span class="n">mag</span> <span class="o">+=</span> <span class="n">magnetization</span><span class="p">(</span><span class="n">spins</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">mag</span><span class="o">/</span><span class="p">(</span><span class="n">N_steps</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="part-5-temperature-dependence">
+<h3>Part 5: Temperature Dependence<a class="headerlink" href="#part-5-temperature-dependence" title="Link to this heading">#</a></h3>
+<p>Finally, let’s calculate magnetization vs. temperature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Temperature range (in Kelvin)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">kT</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="mf">8.617e-5</span>  <span class="c1"># Convert to eV</span>
+
+<span class="c1"># Calculate magnetization for each temperature</span>
+<span class="n">mag_vs_T</span> <span class="o">=</span> <span class="p">[</span><span class="n">run_ising_simulation</span><span class="p">(</span><span class="n">kT</span><span class="o">=</span><span class="n">kt</span><span class="p">)</span> <span class="k">for</span> <span class="n">kt</span> <span class="ow">in</span> <span class="n">kT</span><span class="p">]</span>
+
+<span class="c1"># Plot results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">mag_vs_T</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean magnetization per spin&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Analysis Questions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>What happens to the magnetization at very low temperatures? Why?</p></li>
+<li><p>At what temperature does the system start to lose its magnetization?</p></li>
+<li><p>What is the high-temperature limit of the magnetization? Why?</p></li>
+<li><p>How would increasing the number of Monte Carlo steps affect your results?</p></li>
+</ol>
+</section>
+<section id="extra-challenges">
+<h3>Extra Challenges<a class="headerlink" href="#extra-challenges" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Add error bars to your magnetization measurements</p></li>
+<li><p>Calculate other properties (e.g., energy, specific heat)</p></li>
+<li><p>Investigate how the results change with system size</p></li>
+<li><p>Compare your results to the exact solution for the 1D Ising model</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./monte_carlo"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../molecular_dynamics/exercises.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exercises</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../example_coursework_notebooks/ir_spectra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Determination of the HCl bond length by IR spectroscopy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-monte-carlo-integration-calculating">Exercise 1: Monte Carlo Integration - Calculating π</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-task">Implementation Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-questions">Analysis Questions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-mechanics-and-the-boltzmann-distribution">Statistical Mechanics and the Boltzmann Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-metropolis-algorithm">The Metropolis Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-monte-carlo-simulation-of-the-1d-ising-model">Exercise 2: Monte Carlo Simulation of the 1D Ising Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-system-energy">Part 1: System Energy</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-periodic-boundary-conditions">Understanding Periodic Boundary Conditions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-single-monte-carlo-step">Part 2: Single Monte Carlo Step</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-magnetization">Part 3: Magnetization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-full-simulation">Part 4: Full Simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-temperature-dependence">Part 5: Temperature Dependence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Analysis Questions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-challenges">Extra Challenges</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
