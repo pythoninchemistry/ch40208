@@ -82,6 +82,7 @@ parts:
         - file: molecular_dynamics/choosing_the_right_timestep.md
         - file: molecular_dynamics/moving_to_real_systems.md
         - file: molecular_dynamics/exercises.md
+      - file: monte_carlo/monte_carlo.md
   - caption: Example Coursework Notebooks
     chapters:
       - file: example_coursework_notebooks/ir_spectra.ipynb
