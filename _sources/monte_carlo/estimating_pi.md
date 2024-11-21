@@ -1,6 +1,6 @@
 ## Estimating $\pi$
 
-To understand the principles of Monte Carlo methods, let us consider a simple problem: calculating the area of a circle and thus the value of $\pi$. Analytically, we can find the area of a circle by imagining it divided into thin concentric rings. The area of each ring is its circumference ($w\pi r$) multiplied by its thickness ($\Delta r$).
+To understand the principles of Monte Carlo methods, let us consider a simple problem: calculating the area of a circle and thus the value of $\pi$. Analytically, we can find the area of a circle by imagining it divided into thin concentric rings. The area of each ring is its circumference ($2\pi r$) multiplied by its thickness ($\Delta r$).
 
 Adding up all of these areas gives
 
