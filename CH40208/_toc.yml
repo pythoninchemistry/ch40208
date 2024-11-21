@@ -83,6 +83,11 @@ parts:
         - file: molecular_dynamics/moving_to_real_systems.md
         - file: molecular_dynamics/exercises.md
       - file: monte_carlo/monte_carlo.md
+        sections:
+        - file: monte_carlo/estimating_pi.md
+        - file: monte_carlo/metropolis_monte_carlo.md
+        - file: monte_carlo/the_metropolis_algorithm.md
+        - file: monte_carlo/ising_model_simulation.md
   - caption: Example Coursework Notebooks
     chapters:
       - file: example_coursework_notebooks/ir_spectra.ipynb
