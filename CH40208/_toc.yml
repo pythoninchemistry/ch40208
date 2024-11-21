@@ -12,6 +12,7 @@ parts:
         - file: course_contents/week_5
         - file: course_contents/week_6
         - file: course_contents/week_7
+        - file: course_contents/week_8
   - caption: Jupyter Notebooks
     chapters:
       - file: notebooks_introduction/what_is_a_jupyter_notebook
