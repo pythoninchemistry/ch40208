@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 ## Monte Carlo Simulation of the 1D Ising Model
 
 In this exercise, you'll implement a Monte Carlo simulation of a 1D Ising model with 4 spins and periodic boundary conditions. We'll build this up in steps, eventually calculating the mean magnetisation as a function of temperature.
@@ -45,12 +57,67 @@ Implement a single MC step that:
 2. Calculates $\Delta E$ for flipping this spin.
 3. Accepts/rejects the flip using the Metropolis criterion.
 
-One way that you can select a random element from a numpy array is using `np.random.randint()`, which generates random integers from a specified range. By setting that range to the length of an array, you can use the result to pick a random array element.
+#### Python Hints
+
+**1.** One way that you can select a random element from a numpy array is using `np.random.randint()`, which generates random integers from a specified range. By setting that range to the length of an array, you can use the result to pick a random array element.
 
 ```python
 my_array = np.array(['a', 'b', 'c', 'd']) # create an length-4 array
 random_index = np.random.randint(len(my_array)) # generate a random integer between 0 and 3
 print(my_array[random_index]) # print the corresponding array element
+```
+
+**2.** Remember that a spin flip corresponds to changing a spin from $+1$ to $-1$, or from $-1$ to $+1$. In both cases, this corresponds to multiplying that element of your spin-state array by $-1$.
+
+**3.** Creating copies of numpy arrays requires care:
+
+```{code-cell} python
+import numpy as np
+
+original_array = np.array(['a', 'b', 'c'])
+copied_array = original_array
+copied_array[0] = 'z'
+
+print(f'original array: {original_array}')
+print(f'copied array: {copied_array}')
+```
+
+Changing the first element in `copied_array` changed `original_array` too. Why does this happen? 
+
+The assignment `copied_array = original_array` does not create a new array. Instead, both it creates a new variable name that points at the _same_ data in memory. Because `original_array` and `copied_array` both point to the same data, any changes to one array appear to be mirrored by the other array.
+
+For a true copy, use the `copy()` method:
+
+```{code-cell} python
+original_array = np.array(['a', 'b', 'c'])
+copied_array = original_array.copy()  # Create a true copy
+copied_array[0] = 'z'
+
+print(f'original array: {original_array}')
+print(f'copied array: {copied_array}')
+```
+
+For the Ising model, you'll need to:
+1. Try flipping a spin
+2. Calculate the energy change
+3. Accept the flip or keep the previous state
+
+Without `copy()`, you can run into trouble:
+
+```{code-cell} python
+# Problem: both variables point to same data
+spins = np.ones(4)
+new_spins = spins   # Seems like we are copying the spin state, but we are not
+new_spins[0] *= -1     # Flip a spin
+print(f'proposed move: {new_spins}')
+print(f'old spins: {spins}')  # Changed too!
+
+# Solution: make a true copy
+spins = np.ones(4)
+new_spins = spins.copy()
+new_spins[0] *= -1
+print(f'proposed move: {new_spins}')
+print(f'old spins: {spins}')  # Stays unchanged
 ```
 
 ### Part 3: Magnetisation

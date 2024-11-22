@@ -89,6 +89,15 @@ parts:
         - file: monte_carlo/metropolis_monte_carlo.md
         - file: monte_carlo/the_metropolis_algorithm.md
         - file: monte_carlo/ising_model_simulation.md
+          #- file: vectors_and_matrics/working_with_vectors_and_matrices.md
+        #- file: comp_chem_methods/vectors_and_matrices
+        #sections:
+        #- file: comp_chem_methods/vectors
+        #- file: comp_chem_methods/vectors_in_python
+        #- file: comp_chem_methods/matrices
+        #- file: comp_chem_methods/matrices_in_python
+        #- file: comp_chem_methods/eigenvalues_and_eigenvectors
+        #- file: comp_chem_methods/moments_of_inertia
   - caption: Example Coursework Notebooks
     chapters:
       - file: example_coursework_notebooks/ir_spectra.ipynb
