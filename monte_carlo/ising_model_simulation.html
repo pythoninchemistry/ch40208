@@ -266,6 +266,8 @@
 <li class="toctree-l2"><a class="reference internal" href="estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Monte Carlo Simulation of the 1D Ising Model</a></li>
 </ul>
 </details></li>
@@ -468,6 +470,12 @@
 <li><p>Calculates <span class="math notranslate nohighlight">\(\Delta E\)</span> for flipping this spin.</p></li>
 <li><p>Accepts/rejects the flip using the Metropolis criterion.</p></li>
 </ol>
+<p>One way that you can select a random element from a numpy array is using <code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code>, which generates random integers from a specified range. By setting that range to the length of an array, you can use the result to pick a random array element.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span> <span class="c1"># create an length-4 array</span>
+<span class="n">random_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_array</span><span class="p">))</span> <span class="c1"># generate a random integer between 0 and 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">[</span><span class="n">random_index</span><span class="p">])</span> <span class="c1"># print the corresponding array element</span>
+</pre></div>
+</div>
 </section>
 <section id="part-3-magnetisation">
 <h2>Part 3: Magnetisation<a class="headerlink" href="#part-3-magnetisation" title="Link to this heading">#</a></h2>

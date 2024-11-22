@@ -266,6 +266,8 @@
 <li class="toctree-l2"><a class="reference internal" href="estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">The Metropolis Algorithm</a></li>
+
+
 <li class="toctree-l2"><a class="reference internal" href="ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
 </ul>
 </details></li>
@@ -390,7 +392,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -406,6 +410,17 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The Metropolis Algorithm</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accepting-moves-with-probability-p">Accepting Moves with Probability p</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Accepting Moves with Probability p</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -432,6 +447,37 @@
 <li><p>Moves that raise energy are accepted with probability <span class="math notranslate nohighlight">\(\exp(-\Delta E/kT)\)</span></p></li>
 <li><p>The partition function <span class="math notranslate nohighlight">\(Z\)</span> cancels out in the ratio</p></li>
 </ul>
+</section>
+<section id="accepting-moves-with-probability-p">
+<h1>Accepting Moves with Probability p<a class="headerlink" href="#accepting-moves-with-probability-p" title="Link to this heading">#</a></h1>
+<p>The Metropolis criterion tells us to accept or reject each proposed move according to the following rules:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(\Delta E \leq 0\)</span>, we always accept the move.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(\Delta E &gt; 0\)</span>, accept the move with a probability <span class="math notranslate nohighlight">\(p = \mathrm{e}^{-\Delta E / kT}\)</span>.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h1>Accepting Moves with Probability p<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>What exactly does it mean to accept a move “with probability <span class="math notranslate nohighlight">\(p\)</span>”? A probability is a number between 0 and 1 that represents the chance of an event occurring. A probability of 0 means the event cannot occur, while 1 means it must occur. Take flipping a fair coin — if we have no information about how the coin is flipped, we would reasonably assign each outcome a probability 0.5: <span class="math notranslate nohighlight">\(p(\text{heads}) = p(\text{tails}) = 0.5\)</span>.</p>
+<p>In Metropolis Monte Carlo, the probability comes from the Boltzmann factor <span class="math notranslate nohighlight">\(p = \exp(-\Delta E/kT)\)</span>. For moves that increase the system’s energy (<span class="math notranslate nohighlight">\(\Delta E &gt; 0\)</span>), the Boltzmann factor is a number between 0 and 1. For moves that decrease energy (<span class="math notranslate nohighlight">\(\Delta E &lt; 0\)</span>), the expression would exceed 1, but we have already decided to accept these moves automatically.</p>
+<p>To turn these probabilities into decisions, we use a random number generator. The strategy is straightforward: generate a random number <span class="math notranslate nohighlight">\(r\)</span> between 0 and 1, then accept the move if <span class="math notranslate nohighlight">\(r \leq p\)</span>. This ensures our decisions match the assigned probabilities.</p>
+<p>Take our coin flip example where <span class="math notranslate nohighlight">\(p(\text{heads}) = 0.5\)</span>. We can code this decision as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_heads</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+<p>The Metropolis algorithm uses the same logic. For a move that increases energy by <span class="math notranslate nohighlight">\(\Delta E\)</span>:</p>
+<ol class="arabic simple">
+<li><p>Calculate <span class="math notranslate nohighlight">\(p = \exp(-\Delta E/kT)\)</span></p></li>
+<li><p>Generate a random number <span class="math notranslate nohighlight">\(r\)</span> between 0 and 1</p></li>
+<li><p>Accept the move if <span class="math notranslate nohighlight">\(r \leq p\)</span></p></li>
+</ol>
+<p>Here’s what this looks like for a move where <span class="math notranslate nohighlight">\(\Delta E = 2kT\)</span>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">delta_E</span><span class="o">/</span><span class="n">kT</span><span class="p">)</span>  <span class="c1"># ≈ 0.135</span>
+<span class="n">accept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">p</span>
+</pre></div>
+</div>
+<p>In this case, there is about a 13.5% chance of accepting the move. Larger energy increases mean lower acceptance probabilities — the move becomes less likely but remains possible. This mechanism lets our system occasionally climb uphill in energy while generally favoring lower energy states.</p>
+<p>This simple accept/reject rule, guided by physically motivated probabilities, lets us efficiently explore possible states while maintaining the correct Boltzmann distribution.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -488,6 +534,25 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The Metropolis Algorithm</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accepting-moves-with-probability-p">Accepting Moves with Probability p</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Accepting Moves with Probability p</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
