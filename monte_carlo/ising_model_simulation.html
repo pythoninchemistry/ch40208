@@ -489,6 +489,7 @@
 <li><p>For each step, whether you accept or reject the move, calculate the magnetisation.</p></li>
 <li><p>Your mean magnetisation is then the mean value over all MC steps. As for the previous exercise, your calculation will progressively converge its estimate of <span class="math notranslate nohighlight">\(\left&lt;M\right&gt;\)</span> as you increase the number of MC steps. Evaluate what a reasonable value of <span class="math notranslate nohighlight">\(N\)</span> is to converge your estimate of the mean magnetisation to 2 decimal places.</p></li>
 </ol>
+<p>Note: You can start your simulation from a specified spin-state (e.g., <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>) or from a random spin-state, using <code class="docutils literal notranslate"><span class="pre">np.random.choice([1,-1],</span> <span class="pre">size=N</span></code> where <code class="docutils literal notranslate"><span class="pre">N</span></code> is the size of the array you want to generate.</p>
 </section>
 <section id="part-5-temperature-dependence">
 <h2>Part 5: Temperature Dependence<a class="headerlink" href="#part-5-temperature-dependence" title="Link to this heading">#</a></h2>

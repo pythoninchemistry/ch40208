@@ -65,6 +65,7 @@ Now combine these pieces to simulate the system at 1000 K.
 2. For each step, whether you accept or reject the move, calculate the magnetisation.
 3. Your mean magnetisation is then the mean value over all MC steps. As for the previous exercise, your calculation will progressively converge its estimate of $\left<M\right>$ as you increase the number of MC steps. Evaluate what a reasonable value of $N$ is to converge your estimate of the mean magnetisation to 2 decimal places.
 
+Note: You can start your simulation from a specified spin-state (e.g., `[1, 1, 1, 1]`) or from a random spin-state, using `np.random.choice([1,-1], size=N` where `N` is the size of the array you want to generate.
 
 ### Part 5: Temperature Dependence
 
