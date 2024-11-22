@@ -416,7 +416,10 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-energy-calculation">Part 1. Energy Calculation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-single-monte-carlo-step">Part 2: Single Monte Carlo Step</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-single-monte-carlo-step">Part 2: Single Monte Carlo Step</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-hints">Python Hints</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-magnetisation">Part 3: Magnetisation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-full-simulation">Part 4: Full Simulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-temperature-dependence">Part 5: Temperature Dependence</a></li>
@@ -470,12 +473,92 @@
 <li><p>Calculates <span class="math notranslate nohighlight">\(\Delta E\)</span> for flipping this spin.</p></li>
 <li><p>Accepts/rejects the flip using the Metropolis criterion.</p></li>
 </ol>
-<p>One way that you can select a random element from a numpy array is using <code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code>, which generates random integers from a specified range. By setting that range to the length of an array, you can use the result to pick a random array element.</p>
+<section id="python-hints">
+<h3>Python Hints<a class="headerlink" href="#python-hints" title="Link to this heading">#</a></h3>
+<p><strong>1.</strong> One way that you can select a random element from a numpy array is using <code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code>, which generates random integers from a specified range. By setting that range to the length of an array, you can use the result to pick a random array element.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span> <span class="c1"># create an length-4 array</span>
 <span class="n">random_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_array</span><span class="p">))</span> <span class="c1"># generate a random integer between 0 and 3</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">[</span><span class="n">random_index</span><span class="p">])</span> <span class="c1"># print the corresponding array element</span>
 </pre></div>
 </div>
+<p><strong>2.</strong> Remember that a spin flip corresponds to changing a spin from <span class="math notranslate nohighlight">\(+1\)</span> to <span class="math notranslate nohighlight">\(-1\)</span>, or from <span class="math notranslate nohighlight">\(-1\)</span> to <span class="math notranslate nohighlight">\(+1\)</span>. In both cases, this corresponds to multiplying that element of your spin-state array by <span class="math notranslate nohighlight">\(-1\)</span>.</p>
+<p><strong>3.</strong> Creating copies of numpy arrays requires care:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">original_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="n">copied_array</span> <span class="o">=</span> <span class="n">original_array</span>
+<span class="n">copied_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;original array: </span><span class="si">{</span><span class="n">original_array</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;copied array: </span><span class="si">{</span><span class="n">copied_array</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original array: [&#39;z&#39; &#39;b&#39; &#39;c&#39;]
+copied array: [&#39;z&#39; &#39;b&#39; &#39;c&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Changing the first element in <code class="docutils literal notranslate"><span class="pre">copied_array</span></code> changed <code class="docutils literal notranslate"><span class="pre">original_array</span></code> too. Why does this happen?</p>
+<p>The assignment <code class="docutils literal notranslate"><span class="pre">copied_array</span> <span class="pre">=</span> <span class="pre">original_array</span></code> does not create a new array. Instead, both it creates a new variable name that points at the <em>same</em> data in memory. Because <code class="docutils literal notranslate"><span class="pre">original_array</span></code> and <code class="docutils literal notranslate"><span class="pre">copied_array</span></code> both point to the same data, any changes to one array appear to be mirrored by the other array.</p>
+<p>For a true copy, use the <code class="docutils literal notranslate"><span class="pre">copy()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">original_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="n">copied_array</span> <span class="o">=</span> <span class="n">original_array</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Create a true copy</span>
+<span class="n">copied_array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;original array: </span><span class="si">{</span><span class="n">original_array</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;copied array: </span><span class="si">{</span><span class="n">copied_array</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original array: [&#39;a&#39; &#39;b&#39; &#39;c&#39;]
+copied array: [&#39;z&#39; &#39;b&#39; &#39;c&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the Ising model, you’ll need to:</p>
+<ol class="arabic simple">
+<li><p>Try flipping a spin</p></li>
+<li><p>Calculate the energy change</p></li>
+<li><p>Accept the flip or keep the previous state</p></li>
+</ol>
+<p>Without <code class="docutils literal notranslate"><span class="pre">copy()</span></code>, you can run into trouble:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Problem: both variables point to same data</span>
+<span class="n">spins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">new_spins</span> <span class="o">=</span> <span class="n">spins</span>   <span class="c1"># Seems like we are copying the spin state, but we are not</span>
+<span class="n">new_spins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>     <span class="c1"># Flip a spin</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;proposed move: </span><span class="si">{</span><span class="n">new_spins</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;old spins: </span><span class="si">{</span><span class="n">spins</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Changed too!</span>
+
+<span class="c1"># Solution: make a true copy</span>
+<span class="n">spins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">new_spins</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">new_spins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;proposed move: </span><span class="si">{</span><span class="n">new_spins</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;old spins: </span><span class="si">{</span><span class="n">spins</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Stays unchanged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>proposed move: [-1.  1.  1.  1.]
+old spins: [-1.  1.  1.  1.]
+proposed move: [-1.  1.  1.  1.]
+old spins: [1. 1. 1. 1.]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="part-3-magnetisation">
 <h2>Part 3: Magnetisation<a class="headerlink" href="#part-3-magnetisation" title="Link to this heading">#</a></h2>
@@ -572,7 +655,10 @@ Plot the mean magnetisation versus temperature, and compare to the high-temperat
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-energy-calculation">Part 1. Energy Calculation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-single-monte-carlo-step">Part 2: Single Monte Carlo Step</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-single-monte-carlo-step">Part 2: Single Monte Carlo Step</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-hints">Python Hints</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-magnetisation">Part 3: Magnetisation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-4-full-simulation">Part 4: Full Simulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-5-temperature-dependence">Part 5: Temperature Dependence</a></li>
