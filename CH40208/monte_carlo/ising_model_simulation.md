@@ -2,7 +2,6 @@
 
 In this exercise, you'll implement a Monte Carlo simulation of a 1D Ising model with 4 spins and periodic boundary conditions. We'll build this up in steps, eventually calculating the mean magnetisation as a function of temperature.
 
-
 The one-dimensional Ising model consists of a line of spins that can each take values $\sigma_i = \pm1$ (up or down). The total energy of the system depends on the relative orientations of neighbouring spins, according to:
 
 $$H(\sigma) = -\sum_{<ij>} J_{ij}\sigma_i\sigma_j$$
@@ -45,6 +44,14 @@ Implement a single MC step that:
 1. Picks a random spin.
 2. Calculates $\Delta E$ for flipping this spin.
 3. Accepts/rejects the flip using the Metropolis criterion.
+
+One way that you can select a random element from a numpy array is using `np.random.randint()`, which generates random integers from a specified range. By setting that range to the length of an array, you can use the result to pick a random array element.
+
+```python
+my_array = np.array(['a', 'b', 'c', 'd']) # create an length-4 array
+random_index = np.random.randint(len(my_array)) # generate a random integer between 0 and 3
+print(my_array[random_index]) # print the corresponding array element
+```
 
 ### Part 3: Magnetisation
 
