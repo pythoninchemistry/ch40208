@@ -66,7 +66,6 @@ def plot_random_points(points):
     for x, y in points:
         if x**2 + y**2 < 1.0:
             plt.plot(x, y, 'o', color='red', alpha=0.5, markersize=5)
-            n_inside += 1
         else:
             plt.plot(x, y, 'o', color='blue', alpha=0.5, markersize=5)
 
