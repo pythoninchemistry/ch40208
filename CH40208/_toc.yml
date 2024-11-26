@@ -101,3 +101,6 @@ parts:
   - caption: Example Coursework Notebooks
     chapters:
       - file: example_coursework_notebooks/ir_spectra.ipynb
+  - caption: Planning Your Code
+    chapters:
+      - file: code_schematics/code_schematics.md
