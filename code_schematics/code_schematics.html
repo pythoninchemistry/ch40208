@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercises &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Planning Your Code and Writing A Code Schematic &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -61,7 +61,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'working_with_data/curve_fitting_exercises';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'code_schematics/code_schematics';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -215,14 +215,14 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="more_numpy_functions.html">More NumPy functions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/more_numpy_functions.html">More NumPy functions</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="plotting.html">Matplotlib</a></li>
-<li class="toctree-l1"><a class="reference internal" href="file_io.html">File input and output</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -327,7 +327,7 @@
       
       
       
-      <li><a href="../_sources/working_with_data/curve_fitting_exercises.ipynb" target="_blank"
+      <li><a href="../_sources/code_schematics/code_schematics.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -401,7 +401,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercises</h1>
+    <h1>Planning Your Code and Writing A Code Schematic</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -415,161 +415,28 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
-<p>The first exercise was to modify the first-order rate law code to account for a <em>y</em>-uncertainty of 5 %.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Let’s create a new array with the <em>y</em>-uncertainty (<code class="docutils literal notranslate"><span class="pre">c_err</span></code>).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">6.23</span><span class="p">,</span> <span class="mf">4.84</span><span class="p">,</span> <span class="mf">3.76</span><span class="p">,</span> <span class="mf">3.20</span><span class="p">,</span> <span class="mf">2.60</span><span class="p">,</span> <span class="mf">2.16</span><span class="p">,</span> <span class="mf">1.85</span><span class="p">,</span> <span class="mf">1.49</span><span class="p">,</span> <span class="mf">1.27</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">])</span>
-<span class="n">c_err</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="mf">0.05</span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_err</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time/s&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[H$_2$O$_2$]/M&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/1a3a4b6ee212738764f8bec65094a2c69176e50e51d28e13a996dbb63e79b648.png" src="../_images/1a3a4b6ee212738764f8bec65094a2c69176e50e51d28e13a996dbb63e79b648.png" />
-</div>
-</div>
-<p>Using the model from the example.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">first_order</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    The first-order rate equation. </span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        t (float): Time (s).</span>
-<span class="sd">        a0 (float): Initial concentration (mol/dm3).</span>
-<span class="sd">        k (float): Rate constant (s-1).</span>
-<span class="sd">    </span>
-<span class="sd">    Returns:</span>
-<span class="sd">        (float): Concentration at time t (mol/dm3).</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>But with a modified chi_squared.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chi_squared</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">error</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Determine the chi-squared value for a first-order rate equation.</span>
-<span class="sd">    </span>
-<span class="sd">    Args:</span>
-<span class="sd">        x (list): The variable parameters.</span>
-<span class="sd">        t (float): Time (s).</span>
-<span class="sd">        data (float): Experimental concentration data.</span>
-<span class="sd">        error (float): Uncertainty in concentration data.</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        (float): chi^2 value.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">a0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">k</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">data</span> <span class="o">-</span> <span class="n">first_order</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">error</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Then we do the minimisation as before.
-But with the <code class="docutils literal notranslate"><span class="pre">c_err</span></code> as an <code class="docutils literal notranslate"><span class="pre">arg</span></code> and starting positions informed by the previous analysis.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">chi_squared</span><span class="p">,</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">c_err</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">x</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7.08438448, 0.09737419])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">first_order</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time/s&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;[H$_2$O$_2$]/M&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/efc0402b0457b27a8ec2662a8ad3fe87be430d79110c336f9c6355eef6ff07ed.png" src="../_images/efc0402b0457b27a8ec2662a8ad3fe87be430d79110c336f9c6355eef6ff07ed.png" />
-</div>
-</div>
-<p>This can also be achieved with the use of the <code class="docutils literal notranslate"><span class="pre">sigma</span></code> flag in the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code> function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">first_order</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">c_err</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2516/2319394663.py:13: RuntimeWarning: overflow encountered in exp
-  return a0 * np.exp(-k * t)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uncertainties</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pcov</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[A]_0 = </span><span class="si">{</span><span class="n">popt</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">uncertainties</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">; k = </span><span class="si">{</span><span class="n">popt</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">uncertainties</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[A]_0 = 7.084387204820056 +/- 0.17113707059226646; k = 0.09737422484062833 +/- 0.0019530371481279983
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="planning-your-code-and-writing-a-code-schematic">
+<h1>Planning Your Code and Writing A Code Schematic<a class="headerlink" href="#planning-your-code-and-writing-a-code-schematic" title="Link to this heading">#</a></h1>
+<p>Just as it is a good idea to plan an essay or report before you start writing, it is a good idea to plan your code before you sit down and start typing.</p>
+<p>In the case of an essay, planning allows you to separate thinking about <em>what</em> you want to say from <em>how</em> you are going to tell it.
+By creating a formal outline, you can identify exactly what points you want to make and how these will be organised to best communicate your overall idea to the reader.
+Once you have your outline, you can then start piecing together the words, sentences, and paragraphs that will make up your full first draft.
+While writing this first draft, you might realise that a particular part of your outline does not work as well as you had thought — you can modify your outline according to your new (hopefully better) idea and then return to your writing.</p>
+<p>As is the case for any moderately complex project, writing code benefits from planning. While it can be tempting to immediately start writing bits of code as you think through a problem, this can result in frustration and lost time as you get stuck in dead ends, or solve what you <em>thought</em> the problem was, rather than the real problem, or, halfway through, you realise that you do not actually know how to implement a critical step.</p>
+<p>In addition to saving you time and tears, planning your code will also help you to get better at programming. Writing a detailed code plan requires thinking through a complex problem and identifying how to deconstruct it into a sequence of well-defined, smaller, simpler problems that you know how to solve. This skill allows programmers to work on highly complex problems, as they are able to break them apart into small sub-problems that can be solved and then recombined.</p>
+<p>Like planning for any project, there are lots of possible ways to approach planning your code. In this course, we will cover an approach we call a “code schematic” — this is a document that is analogous to a detailed outline of an essay. Once written, a good detailed outline could be given to a second writer, and, providing they are reasonably competent, they could then produce an essay that makes the intended argument, even if the phrasing and writing style might be different. Similarly, a code schematic could be considered “good” if it could be given to a second programmer, who could then produce a code implementation that solves the original problem.</p>
+<p>A code schematic breaks a coding problem into a sequence of smaller steps and defines how these should be combined or linked. Because computers cannot think for themselves, a clear code schematic should include enough detail and specificity that there is no ambiguity about what each step of the code should do or how it should be done.</p>
+<p>We can illustrate this idea with the example of a relatively simple non-computational task — making tea.</p>
+<p>Here is a simple “code schematic” that attempts to solve this problem:</p>
+<ol class="arabic simple">
+<li><p>Put the tea bags in the mugs</p></li>
+<li><p>Boil the kettle</p></li>
+<li><p>Pour the water into the mugs</p></li>
+<li><p>Let the tea brew</p></li>
+<li><p>Take the tea bags out</p></li>
+<li><p>Serve the tea.</p></li>
+</ol>
+<p>We could also present this as a flow-chart:</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -585,7 +452,7 @@ But with the <code class="docutils literal notranslate"><span class="pre">c_err<
         },
         kernelOptions: {
             name: "python3",
-            path: "./working_with_data"
+            path: "./code_schematics"
         },
         predefinedOutput: true
     }
