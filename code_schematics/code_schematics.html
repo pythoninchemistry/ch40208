@@ -61,9 +61,12 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'code_schematics/code_schematics';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Determination of the HCl bond length by IR spectroscopy" href="../example_coursework_notebooks/ir_spectra.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -114,8 +117,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -274,6 +275,10 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
 
     </div>
 </nav></div>
@@ -327,7 +332,7 @@
       
       
       
-      <li><a href="../_sources/code_schematics/code_schematics.ipynb" target="_blank"
+      <li><a href="../_sources/code_schematics/code_schematics.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -337,7 +342,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -424,7 +429,7 @@ Once you have your outline, you can then start piecing together the words, sente
 While writing this first draft, you might realise that a particular part of your outline does not work as well as you had thought — you can modify your outline according to your new (hopefully better) idea and then return to your writing.</p>
 <p>As is the case for any moderately complex project, writing code benefits from planning. While it can be tempting to immediately start writing bits of code as you think through a problem, this can result in frustration and lost time as you get stuck in dead ends, or solve what you <em>thought</em> the problem was, rather than the real problem, or, halfway through, you realise that you do not actually know how to implement a critical step.</p>
 <p>In addition to saving you time and tears, planning your code will also help you to get better at programming. Writing a detailed code plan requires thinking through a complex problem and identifying how to deconstruct it into a sequence of well-defined, smaller, simpler problems that you know how to solve. This skill allows programmers to work on highly complex problems, as they are able to break them apart into small sub-problems that can be solved and then recombined.</p>
-<p>Like planning for any project, there are lots of possible ways to approach planning your code. In this course, we will cover an approach we call a “code schematic” — this is a document that is analogous to a detailed outline of an essay. Once written, a good detailed outline could be given to a second writer, and, providing they are reasonably competent, they could then produce an essay that makes the intended argument, even if the phrasing and writing style might be different. Similarly, a code schematic could be considered “good” if it could be given to a second programmer, who could then produce a code implementation that solves the original problem.</p>
+<p>Like planning for any project, there are lots of possible ways to approach planning your code. In this course, we will cover an approach we call a <strong>code schematic</strong> — this is a document that is analogous to a detailed outline of an essay. Once written, a good detailed outline could be given to a second writer, and, providing they are reasonably competent, they could then produce an essay that makes the intended argument, even if the phrasing and writing style might be different. Similarly, one way a code schematic could be considered “good” would be if it could be given to a second programmer, who could then produce a code implementation that solves the original problem, working only from the schematic.</p>
 <p>A code schematic breaks a coding problem into a sequence of smaller steps and defines how these should be combined or linked. Because computers cannot think for themselves, a clear code schematic should include enough detail and specificity that there is no ambiguity about what each step of the code should do or how it should be done.</p>
 <p>We can illustrate this idea with the example of a relatively simple non-computational task — making tea.</p>
 <p>Here is a simple “code schematic” that attempts to solve this problem:</p>
@@ -433,10 +438,83 @@ While writing this first draft, you might realise that a particular part of your
 <li><p>Boil the kettle</p></li>
 <li><p>Pour the water into the mugs</p></li>
 <li><p>Let the tea brew</p></li>
-<li><p>Take the tea bags out</p></li>
 <li><p>Serve the tea.</p></li>
 </ol>
 <p>We could also present this as a flow-chart:</p>
+<a class="reference internal image-reference" href="../_images/simple_tea_schematic.png"><img alt="../_images/simple_tea_schematic.png" class="align-center" src="../_images/simple_tea_schematic.png" style="width: 200px;" /></a>
+<p>This outline might be sufficient if you are trying to instruct another person, but is insufficient to instruct a computer. Looking at the schematic above, we might start to identify points that would benefit from further specification. For example:</p>
+<ul class="simple">
+<li><p>How many mugs of tea are we making?</p></li>
+<li><p>How long should the tea brew for?</p></li>
+<li><p>How much milk should we add?</p></li>
+<li><p>Did we consider sugar / no sugar?</p></li>
+<li><p>Did we forget to say that the tea bags should be removed before serving?</p></li>
+</ul>
+<p>Let us try again, with a more detailed plan:</p>
+<ol class="arabic simple">
+<li><p>Find out how many mugs of tea we are making → <span class="math notranslate nohighlight">\(N_\mathrm{mugs}\)</span></p></li>
+<li><p>For each mug of tea, find out: → <code class="docutils literal notranslate"><span class="pre">tea_orders</span></code> × <span class="math notranslate nohighlight">\(N_\mathrm{mugs}\)</span></p>
+<ul class="simple">
+<li><p>Milk? (Y/N)</p>
+<ul>
+<li><p>If Y, then how much milk? → <code class="docutils literal notranslate"><span class="pre">tea_orders[milk]</span></code></p></li>
+</ul>
+</li>
+<li><p>Sugar (Y/N)</p>
+<ul>
+<li><p>If Y, then how much sugar? → <code class="docutils literal notranslate"><span class="pre">tea_orders[sugar]</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Fill the kettle.</p>
+<ul class="simple">
+<li><p>Use enough water: <span class="math notranslate nohighlight">\(= N_\mathrm{mugs}\)</span> × <span class="math notranslate nohighlight">\(W_\mathrm{mug}\)</span></p></li>
+</ul>
+</li>
+<li><p>Switch on the kettle</p></li>
+<li><p>Prepare <span class="math notranslate nohighlight">\(N_\mathrm{mugs}\)</span> mugs.</p>
+<ul class="simple">
+<li><p>Put 1 teabag in each mug.</p></li>
+</ul>
+</li>
+<li><p>Has the water boiled? Y/N?</p>
+<ul class="simple">
+<li><p>If Y, go to step 7.</p></li>
+<li><p>If N, wait 30 seconds, then go to step 6.</p></li>
+</ul>
+</li>
+<li><p>Pour <span class="math notranslate nohighlight">\(W_\mathrm{mug}\)</span> from the kettle into each mug.</p></li>
+<li><p>Let the tea brew.</p>
+<ul class="simple">
+<li><p>Wait <span class="math notranslate nohighlight">\(T_\mathrm{brew}\)</span> minutes. Set this before starting.</p></li>
+</ul>
+</li>
+<li><p>Remove the tea bags from the mugs.</p></li>
+<li><p>For each mug:</p>
+<ul class="simple">
+<li><p>Add milk and sugar as per <code class="docutils literal notranslate"><span class="pre">tea_orders</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Put the mugs on a tray.</p></li>
+<li><p>Serve your thirsty guests.</p></li>
+</ol>
+<p>or, as a flow chart:</p>
+<a class="reference internal image-reference" href="../_images/full_tea_schematic.png"><img alt="../_images/full_tea_schematic.png" class="align-center" src="../_images/full_tea_schematic.png" style="width: 600px;" /></a>
+<p>While this example is somewhat unserious (and might have offended those of you with strong opinions about the correct way to make tea) it illustrates several key points. The second “schematic” gives a much better description of the sequence of steps to be performed. It also notes what information is used or produced at each step and, where this is helpful, how this information is used. Some steps are broken down into sub-steps (e.g., what to ask when taking the tea orders). There are also places where the path we follow depends on the current conditions, or on information from another step (Has the water boiled? Y/N).</p>
+<p>The second example is much more complete as a specification for what someone would actually need to do to complete the task, and is much closer to the information you would need to provide if you wanted someone who had never made tea before to do this.</p>
+<p>Now let us look at an actual example for a coding problem. In this case, a Metropolis Monte Carlo simulation of a 4-spin Ising model:</p>
+<a class="reference internal image-reference" href="../_images/ising_schematic.png"><img alt="../_images/ising_schematic.png" class="align-center" src="../_images/ising_schematic.png" style="width: 800px;" /></a>
+<p>The level of detail is somewhat a matter of personal taste, but a good rule of thumb is to think about whether someone else could produce working code if they only had your code schematic to work from?</p>
+<p>Some points to note from this example:</p>
+<ul class="simple">
+<li><p>It specifies initial variables that need to be set, and whether they have certain values.</p></li>
+<li><p>It shows how data is stored and used throughout the calculation. For specific steps, data inputs and outputs are shown.</p></li>
+<li><p>When a step is relatively complex, it is broken down into sub-steps: e.g., &amp;lqduo;accept / reject the move“</p></li>
+<li><p>Snippets of minimal Python code are included where particular functions are being used to perform actions (e.g., <code class="docutils literal notranslate"><span class="pre">np.random.choice([-1,</span> <span class="pre">1],</span> <span class="pre">n_spins)</span></code> or <code class="docutils literal notranslate"><span class="pre">spin_state</span> <span class="pre">=</span> <span class="pre">new_spin_state.copy()</span></code>.</p></li>
+</ul>
+<p>Does this schematic meet the goal of being sufficient for someone to write functional code from? Not entirely. It would be improved if it included specifications for the calculation of <span class="math notranslate nohighlight">\(\Delta E\)</span> (this involves calculating the energy for the current and new spin states — how is the energy calculated?) and for the calculation of the magnetisation (the schematic indicates this depends on the current spin state, but how?)</p>
+<p>For your own coding projects, the level of detail you include and which points you choose to explicitly list out are up to you. With experience you will develop a feel for whether including something is necessary and useful or too much information. For the purposes of your assessment, plase refer to <a class="reference external" href="https://moodle.bath.ac.uk/pluginfile.php/2647608/mod_folder/content/0/CH40208%20Code%20Schematic%20assessment%20criteria.pdf">assessment criteria</a>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -469,6 +547,15 @@ While writing this first draft, you might realise that a particular part of your
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../example_coursework_notebooks/ir_spectra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Determination of the HCl bond length by IR spectroscopy</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
