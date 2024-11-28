@@ -12,7 +12,7 @@ This means that a specific vector is only meaningful if the corresponding basis 
 
 As an example consider the following figure:
 
-```{figure} ./figures/vectors_and_matrices/rotation_example.svg
+```{figure} ./figures/rotation_example.svg
 ---
 width: 650px
 name: rotation-example-fig
@@ -66,9 +66,9 @@ which looks like
 
 $$
 \begin{aligned}
-\begin{bmatrix}0 & -1 \\ 1 & 0\end{bmatrix}\begin{bmatrix}3\\4\end{bmatrix} & = & 3\begin{bmatrix}0\\1\end{bmatrix}+4\begin{bmatrix}-1\\0\end{bmatrix} \\
-  & = & \begin{bmatrix}0\\3\end{bmatrix} + \begin{bmatrix}-4\\0\end{bmatrix} \\
-  & = & \begin{bmatrix}-4\\3\end{bmatrix}.
+\begin{bmatrix}0 & -1 \\ 1 & 0 \end{bmatrix}\begin{bmatrix}3\\4\end{bmatrix}   & = & 3\begin{bmatrix}0\\1\end{bmatrix}&+&4\begin{bmatrix}-1\\0\end{bmatrix} \\
+  & = & \begin{bmatrix}0\\3\end{bmatrix} &+& \begin{bmatrix}-4\\0\end{bmatrix} \\
+  & = & \begin{bmatrix}-4\\3\end{bmatrix}&&.
 \end{aligned}
 $$
 
@@ -88,7 +88,7 @@ $$
 
 The matrix $\mathbf{N}$ is called the **inverse** of the matrix $\mathbf{M}$.
 
-```{figure} ./figures/vectors_and_matrices/rotation_example_inv.svg 
+```{figure} ./figures/rotation_example_inv.svg 
 ---
 width: 650px
 name: rotation-example-inv-fig
@@ -140,7 +140,7 @@ $$
 
 And we remember that the columns of a matrix describe the new basis functions, in this case $\mathbf{i^{\prime\prime}}$ and $\mathbf{j^{\prime\prime}}$. The matrix that describes a 180&deg; rotation (or two successive 90&deg; rotations) is therefore $\begin{bmatrix}-1 & 0\\ 0 & -1\end{bmatrix}$, i.e. both $x$ and $y$ are inverted.
 
-```{figure} ./figures/vectors_and_matrices/rotation_example_twice.svg
+```{figure} ./figures/rotation_example_twice.svg
 ---
 width: 650px
 name: rotation-example-twice-fig
