@@ -6,7 +6,7 @@ Many problems in chemistry and physics involve working with <em>vector</em> quan
 
 Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore [<em>vector</em> quantities](position-vector-1-fig), since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).
 
-```{figure} ./figures/vectors_and_matrices/position_vectors_1.svg
+```{figure} ./figures/position_vectors_1.svg
 ---
 width: 400 px
 name: position-vector-1-fig
@@ -18,7 +18,7 @@ A common choice for describing atomic positions is to use Cartesian coordinates,
 
 In two dimensions, any position can be described by giving both the [$x$ and $y$ coordinate](position-vector-1-fig).
 
-```{figure} ./figures/vectors_and_matrices/position_vectors_2.svg
+```{figure} ./figures/position_vectors_2.svg
 ---
 width: 400px 
 name: position-vector-2-fig
@@ -28,7 +28,7 @@ Describing positions using Cartesian coordinates, i.e. $(x, y)$ coordinates in t
 
 Using the language of vectors, this choice of $x$ and $y$ coordinates defines a pair of <em>basis vectors</em>, which we will denote $\mathbf{i}$ and $\mathbf{j}$. [^footnote2]
 
-```{figure} ./figures/vectors_and_matrices/position_vectors_3.svg
+```{figure} ./figures/position_vectors_3.svg
 ---
 width: 400px 
 name: position-vector-3-fig
@@ -38,7 +38,7 @@ In two dimensions we have two implicit basis vectors $\mathbf{i}$ and $\mathbf{j
 
 Any position vector $r = (x, y)$ can be expressed as a <em>linear combination</em> of these basis vectors, i.e. $r = x \times \mathbf{i} + y \times \mathbf{j}$. This means one way to think about the usual notation $(x, y)$ is that the two numbers describe the coefficients of $\mathbf{i}$ and $\mathbf{j}$ for a given linear combination.
 
-```{figure} ./figures/vectors_and_matrices/position_vectors_4.svg
+```{figure} ./figures/position_vectors_4.svg
 ---
 name: position-vector-4-fig
 width: 400px
@@ -48,7 +48,7 @@ The $(x, y)$ coordinates given [above](position-vector-2-fig) are the coefficien
 
 This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as $(3, 4)$ is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.
 
-```{figure} ./figures/vectors_and_matrices/position_vectors_alternate_basis.svg
+```{figure} ./figures/position_vectors_alternate_basis.svg
 ---
 name: position-vector-alternate-basis-fig
 width: 400px
@@ -64,7 +64,7 @@ The same three positions described using a different basis.
 
 Vectors can be added together by adding the coefficients of each basis vector.
 
-```{figure} ./figures/vectors_and_matrices/vector_addition.svg
+```{figure} ./figures/vector_addition.svg
 ---
 name: vector-addition-fig
 width: 400px
@@ -106,7 +106,7 @@ where $\left\lVert\mathbf{a}\right\rVert$ is the _length_ of vector $\mathbf{a}$
 
 The <em>cross-product</em> is also known as the &ldquo;vector product&rdquo;. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors $\mathbf{a}$ and $\mathbf{b}$ is denoted $\mathbf{a}\times\mathbf{b}$ and is defined as a vector <em>perpendicular</em> to the plane containing $\mathbf{a}$ and $\mathbf{b}$ with a length given by the area of the <em>parallelogram</em> with $\mathbf{a}$ and $\mathbf{b}$ as sides.
 
-```{figure,myclass} ./figures/vectors_and_matrices/cross_product.svg
+```{figure,myclass} ./figures/cross_product.svg
 ---
 name: cross-product-fig
 width: 500px

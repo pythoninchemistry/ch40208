@@ -63,9 +63,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/moments_of_inertia';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vectors_and_matrices/moments_of_inertia';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Determination of the HCl bond length by IR spectroscopy" href="../example_coursework_notebooks/ir_spectra.html" />
+    <link rel="prev" title="Eigenvalues and eigenvectors" href="eigenvalues_and_eigenvectors.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -182,6 +182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
 </ul>
 </details></li>
 </ul>
@@ -243,7 +244,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
@@ -269,6 +270,15 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="vectors_and_matrices.html">Working with vectors and matrices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Principal rotation axes and principal moments of inertia</a></li>
 </ul>
 </details></li>
 </ul>
@@ -333,7 +343,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/moments_of_inertia.md" target="_blank"
+      <li><a href="../_sources/vectors_and_matrices/moments_of_inertia.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -614,7 +624,7 @@ I_{xx} &amp; 0 &amp; 0 \\
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./vectors_and_matrices"
         },
         predefinedOutput: true
     }
@@ -631,6 +641,24 @@ I_{xx} &amp; 0 &amp; 0 \\
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="eigenvalues_and_eigenvectors.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Eigenvalues and eigenvectors</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../example_coursework_notebooks/ir_spectra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Determination of the HCl bond length by IR spectroscopy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

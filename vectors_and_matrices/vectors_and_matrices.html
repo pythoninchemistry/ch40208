@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Vectors &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Working with vectors and matrices &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -63,9 +63,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/vectors';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vectors_and_matrices/vectors_and_matrices';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Vectors" href="vectors.html" />
+    <link rel="prev" title="Monte Carlo Simulation of the 1D Ising Model" href="../monte_carlo/ising_model_simulation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -182,6 +182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
 </ul>
 </details></li>
 </ul>
@@ -243,7 +244,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
@@ -269,6 +270,15 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Working with vectors and matrices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
 </ul>
 </details></li>
 </ul>
@@ -333,7 +343,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/vectors.md" target="_blank"
+      <li><a href="../_sources/vectors_and_matrices/vectors_and_matrices.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,7 +419,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Vectors</h1>
+    <h1>Working with vectors and matrices</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,11 +429,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-atomic-positions">Example 1: Atomic positions.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-addition-subtraction-scaling-and-multiplication">Vector addition, subtraction, scaling, and “multiplication”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dot-product-and-the-cross-product">The dot-product and the cross-product</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-watching-and-reading">Further watching and reading</a></li>
 </ul>
             </nav>
         </div>
@@ -435,99 +441,19 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="vectors">
-<h1>Vectors<a class="headerlink" href="#vectors" title="Link to this heading">#</a></h1>
-<p>Many problems in chemistry and physics involve working with <em>vector</em> quantities. A common definition of a vector in a physics context is a quantity with both <em>magnitude</em> and <em>direction</em>; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.</p>
-<section id="example-1-atomic-positions">
-<h2>Example 1: Atomic positions.<a class="headerlink" href="#example-1-atomic-positions" title="Link to this heading">#</a></h2>
-<p>Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><em>vector</em> quantities</span></a>, since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).</p>
-<figure class="align-default" id="position-vector-1-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_1.svg"><img alt="../_images/position_vectors_1.svg" src="../_images/position_vectors_1.svg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.</span><a class="headerlink" href="#position-vector-1-fig" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>A common choice for describing atomic positions is to use Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions <a class="footnote-reference brackets" href="#footnote1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>; this will be familiar from the earlier exercises on calculating interatomic distances.</p>
-<p>In two dimensions, any position can be described by giving both the <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinate</span></a>.</p>
-<figure class="align-default" id="position-vector-2-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_2.svg"><img alt="../_images/position_vectors_2.svg" src="../_images/position_vectors_2.svg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">Describing positions using Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions.</span><a class="headerlink" href="#position-vector-2-fig" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Using the language of vectors, this choice of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates defines a pair of <em>basis vectors</em>, which we will denote <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. <a class="footnote-reference brackets" href="#footnote2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
-<figure class="align-default" id="position-vector-3-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_3.svg"><img alt="../_images/position_vectors_3.svg" src="../_images/position_vectors_3.svg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <em>linear combination</em> of these basis vectors.</span><a class="headerlink" href="#position-vector-3-fig" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Any position vector <span class="math notranslate nohighlight">\(r = (x, y)\)</span> can be expressed as a <em>linear combination</em> of these basis vectors, i.e. <span class="math notranslate nohighlight">\(r = x \times \mathbf{i} + y \times \mathbf{j}\)</span>. This means one way to think about the usual notation <span class="math notranslate nohighlight">\((x, y)\)</span> is that the two numbers describe the coefficients of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> for a given linear combination.</p>
-<figure class="align-default" id="position-vector-4-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_4.svg"><img alt="../_images/position_vectors_4.svg" src="../_images/position_vectors_4.svg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <a class="reference internal" href="#position-vector-2-fig"><span class="std std-ref">above</span></a> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.</span><a class="headerlink" href="#position-vector-4-fig" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as <span class="math notranslate nohighlight">\((3, 4)\)</span> is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.</p>
-<figure class="align-default" id="position-vector-alternate-basis-fig">
-<a class="reference internal image-reference" href="../_images/position_vectors_alternate_basis.svg"><img alt="../_images/position_vectors_alternate_basis.svg" src="../_images/position_vectors_alternate_basis.svg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">The same three positions described using a different basis.</span><a class="headerlink" href="#position-vector-alternate-basis-fig" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-vectors-and-matrices">
+<h1>Working with vectors and matrices<a class="headerlink" href="#working-with-vectors-and-matrices" title="Link to this heading">#</a></h1>
+<p>This section gives an introduction to <strong>vectors</strong> and <strong>matrices</strong>, and using these to perform mathematical manipulations in Python.</p>
+<p>Working with vectors and matrices is common in computational chemistry, as well as in a number of data science and machine learning teachniques that are used to work with large datasets or for chemical informatics. To understand the algorithims behind these various techniques, and how these are implemented in code, it is important to understand the underlying mathematical concepts. Working with vectors and matrices falls within the branch of mathematics called <strong>linear algebra</strong>. This section will give you an overview of some of the mathematical properties of vectors and matrices, and why using these can be useful when solving particular chemical problems computationally.</p>
+<section id="further-watching-and-reading">
+<h2>Further watching and reading<a class="headerlink" href="#further-watching-and-reading" title="Link to this heading">#</a></h2>
+<p>Although it is not necessary to understand the material in this section,
+if you are interested in a deeper introduction to vectors, matrics, and linear algebra, we recommend the <a class="reference external" href="https://www.youtube.com/watch?v=fNk_zzaMoSs">Essence of Linear Algebra</a> YouTube series by <a class="reference external" href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw">3Blue1Brown</a>.</p>
+<p>Another helpful resource that presents these concepts in a similar way is the <a class="reference external" href="https://github.com/engineersCode/EngComp4_landlinear">Land on Vector Spaces</a> series of Jupyter notebooks from <a class="reference external" href="https://lorenabarba.com">Lorena Barba’s group</a>, which provides Jupyter-friendly tools for visualising vectors and matrix operations.</p>
+<p>If you want a more formal textbook, you might want to look at <a class="reference external" href="https://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra</a> by <a class="reference external" href="https://math.mit.edu/~gs/">Gilbert Strang</a>, or the associated <a class="reference external" href="https://www.youtube.com/playlist?list=PL49CF3715CB9EF31D">lecture videos</a>.</p>
 </section>
-<section id="vector-addition-subtraction-scaling-and-multiplication">
-<h2>Vector addition, subtraction, scaling, and “multiplication”<a class="headerlink" href="#vector-addition-subtraction-scaling-and-multiplication" title="Link to this heading">#</a></h2>
-<p>Vectors can be added together by adding the coefficients of each basis vector.</p>
-<figure class="align-default" id="vector-addition-fig">
-<a class="reference internal image-reference" href="../_images/vector_addition.svg"><img alt="../_images/vector_addition.svg" src="../_images/vector_addition.svg" style="width: 400px;" /></a>
-<figcaption>
-<p><span class="caption-text">Vector addition.</span><a class="headerlink" href="#vector-addition-fig" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<p>For example, adding together the vectors <span class="math notranslate nohighlight">\(\mathbf{v}_1=(5,1)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2=(2,4)\)</span> gives us a new vector <span class="math notranslate nohighlight">\(\mathbf{v}_3=(7,6)\)</span>,
-which can be understood by writing <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span> as <span class="math notranslate nohighlight">\((5\mathbf{i}+1\mathbf{j})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> as <span class="math notranslate nohighlight">\((2\mathbf{i}+4\mathbf{j})\)</span>. Adding <span class="math notranslate nohighlight">\(\mathbf{v1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v2}\)</span> then gives <span class="math notranslate nohighlight">\(\left[(5\mathbf{i}+1\mathbf{j})+(2\mathbf{i}+4\mathbf{j})\right]\)</span> and common terms can be collected together to give <span class="math notranslate nohighlight">\(\left[(5+2)\mathbf{i}+(1+4)\mathbf{j}\right]=(7\mathbf{i}+6\mathbf{j})\)</span>.</p>
-<p>Subtracting one vector from another follows the same rules, but with the coefficients of each basis vector subtracted; e.g. <span class="math notranslate nohighlight">\(\mathbf{v}_1-\mathbf{v}_2=(3,-3)\)</span>.</p>
-<p>Scaling a vector involves multiplying by a <em>scalar</em> (hence the name). This changes the length of the vector, but not the direction, and involves multiplying each of the basis vector coefficients by the scalar value. i.e. <span class="math notranslate nohighlight">\(\mathbf{v}_\mathrm{1}=(2,3)\)</span>. <span class="math notranslate nohighlight">\(\mathbf{v}_1\times2=(4,6)\)</span>.
-Again, we can understand this by expanding out the original vector in terms of the basis vectors, <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>: <span class="math notranslate nohighlight">\((2\mathbf{i}+3\mathbf{j})\times2=(4\mathbf{i}+6\mathbf{j})\)</span>.</p>
-<section id="the-dot-product-and-the-cross-product">
-<h3>The dot-product and the cross-product<a class="headerlink" href="#the-dot-product-and-the-cross-product" title="Link to this heading">#</a></h3>
-<p>We can also “multiply” two vectors together, although this is more complex. In fact there are <em>two</em> standard ways to deinfe “multiplication:; of vectors.</p>
-<p>The <em>dot product</em> is also known as the “scalar product”. This operation takes two vectors and returns a scalar quantity. The dot product of two vectors is denoted <span class="math notranslate nohighlight">\(\mathbf{a}\cdot\mathbf{b}\)</span>, and is defined as</p>
-<div class="math notranslate nohighlight">
-\[ \mathbf{a}\cdot\mathbf{b} = \sum_ia_ib_i = a_1b_1 + a_2b_2 + \ldots + a_nb_n.\]</div>
-<p>For example, if <span class="math notranslate nohighlight">\(\mathbf{a}=(2,1)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}=(3,2)\)</span> then <span class="math notranslate nohighlight">\(\mathbf{a}\cdot\mathbf{b}\)</span> is given by</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{a}\cdot\mathbf{b} &amp; = &amp; (x_\mathrm{a} \times x_\mathrm{b})+ (y_\mathrm{a}\times y_\mathrm{b})\\
-&amp; = &amp; (2\times3 + 1\times2) \\
-&amp; = &amp; 8
-\end{aligned}
-\end{split}\]</div>
-<p>An equivalent definition of the dot product is</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{a}\cdot\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \cos\theta,\]</div>
-<p>where <span class="math notranslate nohighlight">\(\left\lVert\mathbf{a}\right\rVert\)</span> is the <em>length</em> of vector <span class="math notranslate nohighlight">\(\mathbf{a}\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
-<p>The <em>cross-product</em> is also known as the “vector product”. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is denoted <span class="math notranslate nohighlight">\(\mathbf{a}\times\mathbf{b}\)</span> and is defined as a vector <em>perpendicular</em> to the plane containing <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> with a length given by the area of the <em>parallelogram</em> with <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> as sides.</p>
-<p>This can be computed as</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{a}\times\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \sin\theta\,\mathbf{n},\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is the <em>unit vector</em> (a vector with length 1) perpendicular to the plane containing <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
-<hr class="footnotes docutils" />
-<aside class="footnote-list brackets">
-<aside class="footnote brackets" id="footnote1" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
-<p>A good choice of coordinate system depends on the problem at hand, and Cartesian coordinates may not always be easiest to work with. For example, problems with spherical symmetry, such as describing atomic orbitals, will often be simpler when expressed in spherical coordinates <span class="math notranslate nohighlight">\((r, \phi, \theta)\)</span>.</p>
-</aside>
-<aside class="footnote brackets" id="footnote2" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
-<p>Vectors are usually distinguished from scalar variables by using upright bold text, e.g. <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> (used here) or an accenting arrow, e.g. <span class="math notranslate nohighlight">\(\vec{r}\)</span>. The components of a vector can be given as a list, e.g. <span class="math notranslate nohighlight">\((1,2)\)</span>, or as a column vector, e.g. <span class="math notranslate nohighlight">\(\begin{bmatrix}1\\2\end{bmatrix}\)</span>. These two representations correspond to the same vector <span class="math notranslate nohighlight">\(1\vec{i}+2\vec{j}\)</span>.</p>
-</aside>
-</aside>
-</section>
-</section>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -543,7 +469,7 @@ Again, we can understand this by expanding out the original vector in terms of t
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./vectors_and_matrices"
         },
         predefinedOutput: true
     }
@@ -560,6 +486,24 @@ Again, we can understand this by expanding out the original vector in terms of t
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../monte_carlo/ising_model_simulation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Monte Carlo Simulation of the 1D Ising Model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="vectors.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Vectors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -577,11 +521,7 @@ Again, we can understand this by expanding out the original vector in terms of t
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-atomic-positions">Example 1: Atomic positions.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-addition-subtraction-scaling-and-multiplication">Vector addition, subtraction, scaling, and “multiplication”</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dot-product-and-the-cross-product">The dot-product and the cross-product</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-watching-and-reading">Further watching and reading</a></li>
 </ul>
   </nav></div>
 

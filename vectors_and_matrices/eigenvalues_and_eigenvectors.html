@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Eigenvalues and eigenvectors &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -61,9 +61,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/matrices_exercises';</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vectors_and_matrices/eigenvalues_and_eigenvectors';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Principal rotation axes and principal moments of inertia" href="moments_of_inertia.html" />
+    <link rel="prev" title="Working with matrices in Python" href="matrices_in_python.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -114,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -180,6 +182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
 </ul>
 </details></li>
 </ul>
@@ -241,7 +244,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
@@ -267,6 +270,15 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="vectors_and_matrices.html">Working with vectors and matrices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
 </ul>
 </details></li>
 </ul>
@@ -331,7 +343,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/matrices_exercises.ipynb" target="_blank"
+      <li><a href="../_sources/vectors_and_matrices/eigenvalues_and_eigenvectors.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -341,7 +353,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -405,7 +417,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise</h1>
+    <h1>Eigenvalues and eigenvectors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,81 +431,71 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise">
-<h1>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h1>
-<p>Lets plot the molecule first.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visualisation</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="eigenvalues-and-eigenvectors">
+<h1>Eigenvalues and eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Link to this heading">#</a></h1>
+<p>We have seen that a matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> operating on a vector <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> produces a new vector <span class="math notranslate nohighlight">\(\mathbf{v^\prime}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}^\prime = \mathbf{M}\cdot\mathbf{v}.
+\]</div>
+<p>In general the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> can change both the magnitude and direction of the vectors <span class="math notranslate nohighlight">\(\mathbf{v}\to\mathbf{v^\prime}\)</span>.</p>
+<p>Consider the matrix <span class="math notranslate nohighlight">\(\mathbf{M}=\begin{bmatrix}2 &amp; 1 \\ 1 &amp; 2\end{bmatrix}\)</span>. This gives the linear transformation shown below.</p>
+<figure class="align-default" id="matrix-transformation-fig">
+<a class="reference internal image-reference" href="../_images/matrix_transformation.svg"><img alt="../_images/matrix_transformation.svg" src="../_images/matrix_transformation.svg" style="width: 650px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">The effect of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}=\begin{bmatrix}2&amp;1\\1&amp;2\end{bmatrix}\)</span> is to transform the basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}=\begin{bmatrix}1 \\ 0\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}=\begin{bmatrix}0 \\ 1\end{bmatrix}\)</span> (left) to <span class="math notranslate nohighlight">\(\mathbf{i^\prime}=\begin{bmatrix}2 \\ 1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j^\prime}=\begin{bmatrix}1 \\ 2\end{bmatrix}\)</span> (right); i.e. the new unit vectors are the columns of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</span><a class="headerlink" href="#matrix-transformation-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We can also visualise this transformation by considering the effect on a set of vectors with length <span class="math notranslate nohighlight">\(1\)</span> and different directions. Now we see that the effect of the matrix transformation is to transform a unit circle into an ellipse.</p>
+<figure class="align-default" id="matrix-transformation-unit-circle-fig">
+<a class="reference internal image-reference" href="../_images/matrix_transformation_unit_circle.svg"><img alt="../_images/matrix_transformation_unit_circle.svg" src="../_images/matrix_transformation_unit_circle.svg" style="width: 650px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">The effect of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is to transform the unit circle (left) into an ellipse (right).</span><a class="headerlink" href="#matrix-transformation-unit-circle-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The major and minor axes of this ellipse (given by the <em>longest</em> and <em>shortest</em> transformed vectors) lie along <span class="math notranslate nohighlight">\(\begin{bmatrix}1 \\ 1\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\begin{bmatrix}-1 \\ 1\end{bmatrix}\)</span>, respectively.</p>
+<p>If we compare these transformed vectors to the corresponding <em>original</em> vectors we see that the effect of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> operating on these two vectors is only to <em>scale</em> them. Their directions have not changed. Mathematically, this can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{v^\prime}&amp;=&amp;\mathbf{M}\cdot\mathbf{v} \\
+s\mathbf{v}&amp;=&amp;\mathbf{M}\cdot\mathbf{v}.
+\end{aligned}
+\end{split}\]</div>
+<p>i.e. operating on <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> by <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> gives the <em>same vector</em> <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> back, times a <em>scalar</em>, <span class="math notranslate nohighlight">\(s\)</span>. This only happens for these two “special” vectors, which we call the <em>eigenvectors</em> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. The scalar values <span class="math notranslate nohighlight">\(s\)</span> are the <em>eigenvalues</em> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
+<figure class="align-default" id="ellipse-major-minor-axes-transformation-fig">
+<a class="reference internal image-reference" href="../_images/ellipse_major_minor_axes_transformation.svg"><img alt="../_images/ellipse_major_minor_axes_transformation.svg" src="../_images/ellipse_major_minor_axes_transformation.svg" style="width: 650px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Left: The two vectors corresponding to the major and minor axes of the ellipse in the <a class="reference internal" href="#matrix-transformation-unit-circle-fig"><span class="std std-ref">previous figure</span></a>. Right: The same two vectors <em>before</em> the transformation. Both of these vectors have the same direction before and after the transformation by <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> and are <em>eigenvectors</em> of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</span><a class="headerlink" href="#ellipse-major-minor-axes-transformation-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We can calcuate the eigenvalues and eigenvectors of a matrix using <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.eig.html"><code class="docutils literal notranslate"><span class="pre">np.linalg.eig()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="p">))</span>
+<span class="go">(array([3., 1.]), array([[ 0.70710678, -0.70710678],</span>
+<span class="go">       [ 0.70710678,  0.70710678]]))</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;water.txt&#39;</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<p>This returns two arrays. The first array contains the eigenvalues of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>, and the second array contains the eigenvectors of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">[3., 1]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+<span class="go">[[ 0.70710678 -0.70710678]</span>
+<span class="go"> [ 0.70710678  0.70710678]]</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/9cde0e9d4c590743a5274fc5247698f0875637ce7769173be7905705c83b6e01.png" src="../_images/9cde0e9d4c590743a5274fc5247698f0875637ce7769173be7905705c83b6e01.png" />
-</div>
-</div>
-<p>Now we can create the function for the rotation matrix.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rotation_matrix</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
-    <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)],</span> 
-                     <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)]])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can then perform the matrix multiplication.
-Note that to achieve this on the correct set of dimension we wuse array slicing and transposition.
-This is discussed in detail in LOIL 10.1.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/cee4ae6109c1fd855b5fc68a93241f38505171a2c02ea19d2be35d5a22432b9a.png" src="../_images/cee4ae6109c1fd855b5fc68a93241f38505171a2c02ea19d2be35d5a22432b9a.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/f6fbaf52db946802e78f513e1b429f3d1f7dabf3c3ae550466fdcf01978ca88a.png" src="../_images/f6fbaf52db946802e78f513e1b429f3d1f7dabf3c3ae550466fdcf01978ca88a.png" />
-</div>
+<p>Note that the eigenvectors are returned as a matrix. Each of the <em>columns</em> of this matrix correspond to one of the eigenvectors. We can see that for the matrix <span class="math notranslate nohighlight">\(\mathbf{M}=\begin{bmatrix}2 &amp; 1 \\ 1 &amp; 2\end{bmatrix}\)</span> we get one eigenvector <span class="math notranslate nohighlight">\(\begin{bmatrix}0.70710678 \\ 0.70710678 \end{bmatrix}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(3\)</span>, and a second eigenvector <span class="math notranslate nohighlight">\(\begin{bmatrix} -0.70710678 \\ \phantom{-}0.70710678\end{bmatrix}\)</span> with eigenvalue <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>Calculating eigenvalues and eigenvectors has applications in a number of areas of chemistry. For example:</p>
+<ul class="simple">
+<li><p>Describing the rotational motions of molecules: finding principal axes of rotation and principal moments of inertia (eigenvectors and eigenvalues of the inertia matrix).</p></li>
+<li><p>Describing the vibrational motions of molecules: finding normal modes (eigenvectors and eigenvalues of the dynamical matrix).</p></li>
+<li><p>Solving the time-independent Schrödinger equation <span class="math notranslate nohighlight">\(\mathbf{H}\Psi=E\Psi\)</span>, which is an eigenvalue equation: finding molecular orbitals and their corresponding energies (eigenvectors and eigenvalues of the Hamiltonian matrix).</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Key ideas</p>
+<ul class="simple">
+<li><p>A two-dimensional matrix transforms a unit circle into an ellipse.</p></li>
+<li><p>A vector that does not change direction under the operation <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is an <em>eigenvector</em> of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. The scaling factor of this vector is the corresponding <em>eigenvalue</em>.</p></li>
+</ul>
 </div>
 </section>
 
@@ -510,7 +512,7 @@ This is discussed in detail in LOIL 10.1.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./vectors_and_matrices"
         },
         predefinedOutput: true
     }
@@ -527,6 +529,24 @@ This is discussed in detail in LOIL 10.1.</p>
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="matrices_in_python.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Working with matrices in Python</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="moments_of_inertia.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Principal rotation axes and principal moments of inertia</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

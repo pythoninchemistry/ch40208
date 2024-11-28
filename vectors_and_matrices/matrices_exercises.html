@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Working with vectors and matrices &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Exercise &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -61,7 +61,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/vectors_and_matrices';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vectors_and_matrices/matrices_exercises';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -180,6 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
 </ul>
 </details></li>
 </ul>
@@ -269,6 +270,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -331,7 +341,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/vectors_and_matrices.md" target="_blank"
+      <li><a href="../_sources/vectors_and_matrices/matrices_exercises.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -341,7 +351,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -394,9 +404,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -407,19 +415,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Working with vectors and matrices</h1>
+    <h1>Exercise</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-watching-and-reading">Further watching and reading</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -429,17 +429,93 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="working-with-vectors-and-matrices">
-<h1>Working with vectors and matrices<a class="headerlink" href="#working-with-vectors-and-matrices" title="Link to this heading">#</a></h1>
-<p>This section gives an introduction to <strong>vectors</strong> and <strong>matrices</strong>, and using these to perform mathematical manipulations in Python.</p>
-<p>Working with vectors and matrices is common in computational chemistry, as well as in a number of data science and machine learning teachniques that are used to work with large datasets or for chemical informatics. To understand the algorithims behind these various techniques, and how these are implemented in code, it is important to understand the underlying mathematical concepts. Working with vectors and matrices falls within the branch of mathematics called <strong>linear algebra</strong>. This section will give you an overview of some of the mathematical properties of vectors and matrices, and why using these can be useful when solving particular chemical problems computationally.</p>
-<section id="further-watching-and-reading">
-<h2>Further watching and reading<a class="headerlink" href="#further-watching-and-reading" title="Link to this heading">#</a></h2>
-<p>Although it is not necessary to understand the material in this section,
-if you are interested in a deeper introduction to vectors, matrics, and linear algebra, we recommend the <a class="reference external" href="https://www.youtube.com/watch?v=fNk_zzaMoSs">Essence of Linear Algebra</a> YouTube series by <a class="reference external" href="https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw">3Blue1Brown</a>.</p>
-<p>Another helpful resource that presents these concepts in a similar way is the <a class="reference external" href="https://github.com/engineersCode/EngComp4_landlinear">Land on Vector Spaces</a> series of Jupyter notebooks from <a class="reference external" href="https://lorenabarba.com">Lorena Barba’s group</a>, which provides Jupyter-friendly tools for visualising vectors and matrix operations.</p>
-<p>If you want a more formal textbook, you might want to look at <a class="reference external" href="https://math.mit.edu/~gs/linearalgebra/">Introduction to Linear Algebra</a> by <a class="reference external" href="https://math.mit.edu/~gs/">Gilbert Strang</a>, or the associated <a class="reference external" href="https://www.youtube.com/playlist?list=PL49CF3715CB9EF31D">lecture videos</a>.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="exercise">
+<h1>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h1>
+<p>Lets plot the molecule first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visualisation</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">visualisation</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;visualisation&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;water.txt&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/fd07006e120cdd413a046ce02f86ce2c621cca007536380a4bc7c91f83cc10a1.png" src="../_images/fd07006e120cdd413a046ce02f86ce2c621cca007536380a4bc7c91f83cc10a1.png" />
+</div>
+</div>
+<p>Now we can create the function for the rotation matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">rotation_matrix</span><span class="p">(</span><span class="n">angle</span><span class="p">):</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)],</span> 
+                     <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then perform the matrix multiplication.
+Note that to achieve this on the correct set of dimension we wuse array slicing and transposition.
+This is discussed in detail in LOIL 10.1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f6760164f76fc0e9c8a1a33534a0cdcb0124c689d5742c5f3a39ab9876e4178a.png" src="../_images/f6760164f76fc0e9c8a1a33534a0cdcb0124c689d5742c5f3a39ab9876e4178a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">(</span><span class="mi">90</span><span class="p">),</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">atoms</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">visualisation</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cdc33ed08fc3d408d9b68c4363a43616ca4bc14d045daad89e1328457f1d9882.png" src="../_images/cdc33ed08fc3d408d9b68c4363a43616ca4bc14d045daad89e1328457f1d9882.png" />
+</div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -455,7 +531,7 @@ if you are interested in a deeper introduction to vectors, matrics, and linear a
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./vectors_and_matrices"
         },
         predefinedOutput: true
     }
@@ -478,22 +554,6 @@ if you are interested in a deeper introduction to vectors, matrics, and linear a
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-watching-and-reading">Further watching and reading</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

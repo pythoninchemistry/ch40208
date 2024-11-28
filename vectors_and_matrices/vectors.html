@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Matrices &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Vectors &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -63,9 +63,11 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'comp_chem_methods/matrices';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vectors_and_matrices/vectors';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with vectors in Python" href="vectors_in_python.html" />
+    <link rel="prev" title="Working with vectors and matrices" href="vectors_and_matrices.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -116,8 +118,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
@@ -182,6 +182,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
 </ul>
 </details></li>
 </ul>
@@ -243,7 +244,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
@@ -269,6 +270,15 @@
 
 
 <li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="vectors_and_matrices.html">Working with vectors and matrices</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
 </ul>
 </details></li>
 </ul>
@@ -333,7 +343,7 @@
       
       
       
-      <li><a href="../_sources/comp_chem_methods/matrices.md" target="_blank"
+      <li><a href="../_sources/vectors_and_matrices/vectors.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,7 +419,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Matrices</h1>
+    <h1>Vectors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,9 +429,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-as-linear-transformations">Matrices as linear transformations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-matrix-operations">Inverse matrix operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrixmatrix-multiplication">Matrix–matrix multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-atomic-positions">Example 1: Atomic positions.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-addition-subtraction-scaling-and-multiplication">Vector addition, subtraction, scaling, and “multiplication”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dot-product-and-the-cross-product">The dot-product and the cross-product</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -433,130 +445,98 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="matrices">
-<h1>Matrices<a class="headerlink" href="#matrices" title="Link to this heading">#</a></h1>
-<section id="matrices-as-linear-transformations">
-<h2>Matrices as linear transformations<a class="headerlink" href="#matrices-as-linear-transformations" title="Link to this heading">#</a></h2>
-<p>We saw previously that the elements of a vector can be thought of as the coefficients in a linear combination of basis vectors, i.e.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}a\\b\end{bmatrix}=(a, b)=a\times\mathbf{i}+b\times\mathbf{j}
-\end{split}\]</div>
-<p>This means that a specific vector is only meaningful if the corresponding basis is defined. A suitable choice of basis vectors depends on the problem we are interested in solving, and there are many situations where it can be useful to change from one set of basis vectors to another: for example a molecular dynamics simulation might use atomic positions, velocities, and accelerations in Cartesian coordinates, corresponding to a Cartesian basis, and usually called the <strong>lab</strong> frame of reference. The dynamics of individual molecules, however, might be easier to describe within a <strong>molecular</strong> frame of reference, with basis vectors aligned with specific bonds or along rotational axes. In this case, modelling our system involves <strong>transforming</strong> between these two sets of basis vectors.</p>
-<p>As an example consider the following figure:</p>
-<figure class="align-default" id="rotation-example-fig">
-<a class="reference internal image-reference" href="../_images/rotation_example.svg"><img alt="../_images/rotation_example.svg" src="../_images/rotation_example.svg" style="width: 650px;" /></a>
+  <section class="tex2jax_ignore mathjax_ignore" id="vectors">
+<h1>Vectors<a class="headerlink" href="#vectors" title="Link to this heading">#</a></h1>
+<p>Many problems in chemistry and physics involve working with <em>vector</em> quantities. A common definition of a vector in a physics context is a quantity with both <em>magnitude</em> and <em>direction</em>; for example, the positions or velocities of atoms, or the forces acting on atoms within a molecule.</p>
+<section id="example-1-atomic-positions">
+<h2>Example 1: Atomic positions.<a class="headerlink" href="#example-1-atomic-positions" title="Link to this heading">#</a></h2>
+<p>Defining atomic positions requires three pieces of information: the location of some reference point in space, called the <em>origin</em>, the distance of each atom from the origin, and the direction we move from the origin to reach the atom. Positions are therefore <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><em>vector</em> quantities</span></a>, since they define both <em>magnitude</em> and <em>distance</em> (relative to the origin).</p>
+<figure class="align-default" id="position-vector-1-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_1.svg"><img alt="../_images/position_vectors_1.svg" src="../_images/position_vectors_1.svg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">An example of a linear transformation: rotation by 90° anticlockwise.</span><a class="headerlink" href="#rotation-example-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Defining atomic positions requires knowing both distance and direction with respect to some reference <em>origin</em>.</span><a class="headerlink" href="#position-vector-1-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
-<p>This shows an initial basis with <span class="math notranslate nohighlight">\(\mathbf{i}=\begin{bmatrix}1\\0\end{bmatrix}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}=\begin{bmatrix}0\\1\end{bmatrix}\)</span>, and a vector <span class="math notranslate nohighlight">\(\mathbf{r}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{r}=\begin{bmatrix}3\\4\end{bmatrix}=3\mathbf{i}+4\mathbf{j}. 
-\end{split}\]</div>
-<p>We now rotate our basis by 90° anti-clockwise, which gives us a new vector <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span>, which has elements <span class="math notranslate nohighlight">\((3,4)\)</span> in this new, rotated, basis;</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{r^\prime}=\begin{bmatrix}3\\4\end{bmatrix}^\prime=3\mathbf{i^\prime}+4\mathbf{j^\prime},
-\end{split}\]</div>
-<p>where a prime symbol indicates we are in the new basis.</p>
-<p>What is the vector <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span> in the <strong>old</strong> basis? We can see from the figure above that this should be <span class="math notranslate nohighlight">\((-4,3)\)</span>, but can we calculate this?</p>
-<p>We start by expressing the <strong>new</strong> basis vectors, <span class="math notranslate nohighlight">\(\mathbf{i^\prime}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j^\prime}\)</span>, in terms of the <strong>old</strong> basis vectors, <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{i^\prime} = (0\mathbf{i}+1\mathbf{j}) = \begin{bmatrix}0\\1\end{bmatrix};
-\end{split}\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{j^\prime} = (-1\mathbf{i}+0\mathbf{j}) = \begin{bmatrix}-1\\0\end{bmatrix}.
-\end{split}\]</div>
-<p>We can now expand the vector <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span> in terms of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{r^\prime}&amp;=&amp;(3\mathbf{i^\prime}+4\mathbf{j^\prime})\\
-               &amp;=&amp;3(0\mathbf{i}+1\mathbf{j})+4(-1\mathbf{i}+0\mathbf{j})\\
-               &amp;=&amp;-4\mathbf{i}+3\mathbf{j}.
-\end{aligned}
-\end{split}\]</div>
-<p>We can also write this as a single <strong>matrix</strong> equation, where we multiply each element of our original vector <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> by the corresponding <strong>column</strong> of our matrix,</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{r^\prime} = \begin{bmatrix}0 &amp; -1 \\ 1 &amp; 0\end{bmatrix}\mathbf{r}.
-\end{split}\]</div>
-<p>which looks like</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\begin{bmatrix}0 &amp; -1 \\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}3\\4\end{bmatrix} &amp; = &amp; 3\begin{bmatrix}0\\1\end{bmatrix}+4\begin{bmatrix}-1\\0\end{bmatrix} \\
-  &amp; = &amp; \begin{bmatrix}0\\3\end{bmatrix} + \begin{bmatrix}-4\\0\end{bmatrix} \\
-  &amp; = &amp; \begin{bmatrix}-4\\3\end{bmatrix}.
-\end{aligned}
-\end{split}\]</div>
-<p>If we denote our matrix as <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>, this can be written concisely as</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{r^\prime} = \mathbf{M}\,\mathbf{r}.
-\]</div>
-</section>
-<section id="inverse-matrix-operations">
-<h2>Inverse matrix operations<a class="headerlink" href="#inverse-matrix-operations" title="Link to this heading">#</a></h2>
-<p>We now have a matrix that describes a 90° anti-clockwise rotation. What if we want to <strong>invert</strong> this rotation, and rotate by 90° in a clockwise direction? If we follow the same procedure as above, we end up with a matrix <span class="math notranslate nohighlight">\(\mathbf{N}=\begin{bmatrix}0 &amp; 1\\ -1 &amp; 0\end{bmatrix}\)</span>, where</p>
-<div class="math notranslate nohighlight">
-\[
-\mathbf{r} = \mathbf{N}\,\mathbf{r^\prime}.
-\]</div>
-<p>The matrix <span class="math notranslate nohighlight">\(\mathbf{N}\)</span> is called the <strong>inverse</strong> of the matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
-<figure class="align-default" id="rotation-example-inv-fig">
-<a class="reference internal image-reference" href="../_images/rotation_example_inv.svg"><img alt="../_images/rotation_example_inv.svg" src="../_images/rotation_example_inv.svg" style="width: 650px;" /></a>
+<p>A common choice for describing atomic positions is to use Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions <a class="footnote-reference brackets" href="#footnote1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>; this will be familiar from the earlier exercises on calculating interatomic distances.</p>
+<p>In two dimensions, any position can be described by giving both the <a class="reference internal" href="#position-vector-1-fig"><span class="std std-ref"><span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinate</span></a>.</p>
+<figure class="align-default" id="position-vector-2-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_2.svg"><img alt="../_images/position_vectors_2.svg" src="../_images/position_vectors_2.svg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Rotating back by 90° clockwise is the <strong>inverse</strong> of our previous 90° anti-clockwise rotation, and is described by the <strong>inverse</strong> matrix operation.</span><a class="headerlink" href="#rotation-example-inv-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Describing positions using Cartesian coordinates, i.e. <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates in two dimensions, or <span class="math notranslate nohighlight">\((x, y, z)\)</span> in three dimensions.</span><a class="headerlink" href="#position-vector-2-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Using the language of vectors, this choice of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> coordinates defines a pair of <em>basis vectors</em>, which we will denote <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. <a class="footnote-reference brackets" href="#footnote2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<figure class="align-default" id="position-vector-3-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_3.svg"><img alt="../_images/position_vectors_3.svg" src="../_images/position_vectors_3.svg" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">In two dimensions we have two implicit basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>. Any position can be expressed as a <em>linear combination</em> of these basis vectors.</span><a class="headerlink" href="#position-vector-3-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Any position vector <span class="math notranslate nohighlight">\(r = (x, y)\)</span> can be expressed as a <em>linear combination</em> of these basis vectors, i.e. <span class="math notranslate nohighlight">\(r = x \times \mathbf{i} + y \times \mathbf{j}\)</span>. This means one way to think about the usual notation <span class="math notranslate nohighlight">\((x, y)\)</span> is that the two numbers describe the coefficients of <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> for a given linear combination.</p>
+<figure class="align-default" id="position-vector-4-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_4.svg"><img alt="../_images/position_vectors_4.svg" src="../_images/position_vectors_4.svg" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">The <span class="math notranslate nohighlight">\((x, y)\)</span> coordinates given <a class="reference internal" href="#position-vector-2-fig"><span class="std std-ref">above</span></a> are the coefficients used to define each position in the basis <span class="math notranslate nohighlight">\((\mathbf{i}, \mathbf{j})\)</span>.</span><a class="headerlink" href="#position-vector-4-fig" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This might seem an overly complicated way of thinking about coordinates in Cartesian space, but it highlights that writing down a position vector such as <span class="math notranslate nohighlight">\((3, 4)\)</span> is only meaningful if the basis vectors are defined. If we had chosen a different set of basis vectors, the <em>same</em> positions would be described with <em>different</em> vectors.</p>
+<figure class="align-default" id="position-vector-alternate-basis-fig">
+<a class="reference internal image-reference" href="../_images/position_vectors_alternate_basis.svg"><img alt="../_images/position_vectors_alternate_basis.svg" src="../_images/position_vectors_alternate_basis.svg" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">The same three positions described using a different basis.</span><a class="headerlink" href="#position-vector-alternate-basis-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
-<section id="matrixmatrix-multiplication">
-<h2>Matrix–matrix multiplication<a class="headerlink" href="#matrixmatrix-multiplication" title="Link to this heading">#</a></h2>
-<p>What happens if we perform two matrix operations, one after the other? For example we perform <strong>two</strong> successive 90° rotations—giving a 180° rotation?</p>
-<p>Mathematically this looks like</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mathbf{r^{\prime\prime}}&amp;=&amp;\mathbf{M}\,\mathbf{r^\prime} \\
-&amp; = &amp; \mathbf{M}\left(\mathbf{M}\,\mathbf{r}\right) \\
-&amp; = &amp; \mathbf{M}\,\mathbf{M}\,\mathbf{r}.
-\end{aligned}
-\end{split}\]</div>
-<p>We first operate on <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> with <span class="math notranslate nohighlight">\(M\)</span>, to get <span class="math notranslate nohighlight">\(\mathbf{r^\prime}\)</span>, and then operate on this vector again with <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>. What is the result of this double operation, and can find a matrix that describes a general rotation by 180°?</p>
-<p>Written out, <span class="math notranslate nohighlight">\(\mathbf{M}\,\mathbf{M}\)</span> looks like</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\mathbf{M}\,\mathbf{M}= \begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}.
-\end{split}\]</div>
-<p>We can determine the corresponding matrix for a 180° rotation by considering what happens to the basis vectors <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> when we operate on them twice with <span class="math notranslate nohighlight">\(\mathbf{M}\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\mathbf{i} = \begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}1\\0\end{bmatrix}
-\end{aligned}
-\end{split}\]</div>
-<p>As we saw above, the first operation (working from right to left) converts <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> to <span class="math notranslate nohighlight">\(\mathbf{i^\prime}=\begin{bmatrix}0\\1\end{bmatrix}\)</span>. We now calculate the effect of the second operation</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}0\\1\end{bmatrix} = 0\begin{bmatrix}0\\1\end{bmatrix} + 1\begin{bmatrix}-1\\0\end{bmatrix} = \begin{bmatrix}-1\\0\end{bmatrix}.
-\end{split}\]</div>
-<p>Doing the same for <span class="math notranslate nohighlight">\(\mathbf{j^\prime}\)</span> gives</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{bmatrix}0 &amp; -1\\ 1 &amp; 0\end{bmatrix}\begin{bmatrix}-1\\0\end{bmatrix} = -1\begin{bmatrix}0\\1\end{bmatrix} + 0\begin{bmatrix}-1\\0\end{bmatrix} = \begin{bmatrix}0\\-1\end{bmatrix}.
-\end{split}\]</div>
-<p>And we remember that the columns of a matrix describe the new basis functions, in this case <span class="math notranslate nohighlight">\(\mathbf{i^{\prime\prime}}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j^{\prime\prime}}\)</span>. The matrix that describes a 180° rotation (or two successive 90° rotations) is therefore <span class="math notranslate nohighlight">\(\begin{bmatrix}-1 &amp; 0\\ 0 &amp; -1\end{bmatrix}\)</span>, i.e. both <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are inverted.</p>
-<figure class="align-default" id="rotation-example-twice-fig">
-<a class="reference internal image-reference" href="../_images/rotation_example_twice.svg"><img alt="../_images/rotation_example_twice.svg" src="../_images/rotation_example_twice.svg" style="width: 650px;" /></a>
+<section id="vector-addition-subtraction-scaling-and-multiplication">
+<h2>Vector addition, subtraction, scaling, and “multiplication”<a class="headerlink" href="#vector-addition-subtraction-scaling-and-multiplication" title="Link to this heading">#</a></h2>
+<p>Vectors can be added together by adding the coefficients of each basis vector.</p>
+<figure class="align-default" id="vector-addition-fig">
+<a class="reference internal image-reference" href="../_images/vector_addition.svg"><img alt="../_images/vector_addition.svg" src="../_images/vector_addition.svg" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-text">Rotating by 180° corresponds to rotating by 90° twice. We can calculate the corresponding matrix operation by considering what happens when we operate on our original basis <em>twice</em> with our 90°-rotation matrix.</span><a class="headerlink" href="#rotation-example-twice-fig" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Vector addition.</span><a class="headerlink" href="#vector-addition-fig" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<p>For example, adding together the vectors <span class="math notranslate nohighlight">\(\mathbf{v}_1=(5,1)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2=(2,4)\)</span> gives us a new vector <span class="math notranslate nohighlight">\(\mathbf{v}_3=(7,6)\)</span>,
+which can be understood by writing <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span> as <span class="math notranslate nohighlight">\((5\mathbf{i}+1\mathbf{j})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> as <span class="math notranslate nohighlight">\((2\mathbf{i}+4\mathbf{j})\)</span>. Adding <span class="math notranslate nohighlight">\(\mathbf{v1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v2}\)</span> then gives <span class="math notranslate nohighlight">\(\left[(5\mathbf{i}+1\mathbf{j})+(2\mathbf{i}+4\mathbf{j})\right]\)</span> and common terms can be collected together to give <span class="math notranslate nohighlight">\(\left[(5+2)\mathbf{i}+(1+4)\mathbf{j}\right]=(7\mathbf{i}+6\mathbf{j})\)</span>.</p>
+<p>Subtracting one vector from another follows the same rules, but with the coefficients of each basis vector subtracted; e.g. <span class="math notranslate nohighlight">\(\mathbf{v}_1-\mathbf{v}_2=(3,-3)\)</span>.</p>
+<p>Scaling a vector involves multiplying by a <em>scalar</em> (hence the name). This changes the length of the vector, but not the direction, and involves multiplying each of the basis vector coefficients by the scalar value. i.e. <span class="math notranslate nohighlight">\(\mathbf{v}_\mathrm{1}=(2,3)\)</span>. <span class="math notranslate nohighlight">\(\mathbf{v}_1\times2=(4,6)\)</span>.
+Again, we can understand this by expanding out the original vector in terms of the basis vectors, <span class="math notranslate nohighlight">\(\mathbf{i}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span>: <span class="math notranslate nohighlight">\((2\mathbf{i}+3\mathbf{j})\times2=(4\mathbf{i}+6\mathbf{j})\)</span>.</p>
+<section id="the-dot-product-and-the-cross-product">
+<h3>The dot-product and the cross-product<a class="headerlink" href="#the-dot-product-and-the-cross-product" title="Link to this heading">#</a></h3>
+<p>We can also “multiply” two vectors together, although this is more complex. In fact there are <em>two</em> standard ways to deinfe “multiplication:; of vectors.</p>
+<p>The <em>dot product</em> is also known as the “scalar product”. This operation takes two vectors and returns a scalar quantity. The dot product of two vectors is denoted <span class="math notranslate nohighlight">\(\mathbf{a}\cdot\mathbf{b}\)</span>, and is defined as</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{a}\cdot\mathbf{b} = \sum_ia_ib_i = a_1b_1 + a_2b_2 + \ldots + a_nb_n.\]</div>
+<p>For example, if <span class="math notranslate nohighlight">\(\mathbf{a}=(2,1)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}=(3,2)\)</span> then <span class="math notranslate nohighlight">\(\mathbf{a}\cdot\mathbf{b}\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathbf{a}\cdot\mathbf{b} &amp; = &amp; (x_\mathrm{a} \times x_\mathrm{b})+ (y_\mathrm{a}\times y_\mathrm{b})\\
+&amp; = &amp; (2\times3 + 1\times2) \\
+&amp; = &amp; 8
+\end{aligned}
+\end{split}\]</div>
+<p>An equivalent definition of the dot product is</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{a}\cdot\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \cos\theta,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\left\lVert\mathbf{a}\right\rVert\)</span> is the <em>length</em> of vector <span class="math notranslate nohighlight">\(\mathbf{a}\)</span>, and <span class="math notranslate nohighlight">\(\theta\)</span> is the angle between <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
+<p>The <em>cross-product</em> is also known as the “vector product”. This operation takes two vectors and returns a vector quantity, with both magnitude and direction. The cross product between vectors <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is denoted <span class="math notranslate nohighlight">\(\mathbf{a}\times\mathbf{b}\)</span> and is defined as a vector <em>perpendicular</em> to the plane containing <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> with a length given by the area of the <em>parallelogram</em> with <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> as sides.</p>
+<p>This can be computed as</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{a}\times\mathbf{b} = \left\lVert\mathbf{a}\right\rVert \left\lVert\mathbf{b}\right\rVert \sin\theta\,\mathbf{n},\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is the <em>unit vector</em> (a vector with length 1) perpendicular to the plane containing <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footnote1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>A good choice of coordinate system depends on the problem at hand, and Cartesian coordinates may not always be easiest to work with. For example, problems with spherical symmetry, such as describing atomic orbitals, will often be simpler when expressed in spherical coordinates <span class="math notranslate nohighlight">\((r, \phi, \theta)\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="footnote2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Vectors are usually distinguished from scalar variables by using upright bold text, e.g. <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> (used here) or an accenting arrow, e.g. <span class="math notranslate nohighlight">\(\vec{r}\)</span>. The components of a vector can be given as a list, e.g. <span class="math notranslate nohighlight">\((1,2)\)</span>, or as a column vector, e.g. <span class="math notranslate nohighlight">\(\begin{bmatrix}1\\2\end{bmatrix}\)</span>. These two representations correspond to the same vector <span class="math notranslate nohighlight">\(1\vec{i}+2\vec{j}\)</span>.</p>
+</aside>
+</aside>
+</section>
 </section>
 </section>
 
@@ -573,7 +553,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./comp_chem_methods"
+            path: "./vectors_and_matrices"
         },
         predefinedOutput: true
     }
@@ -590,6 +570,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="vectors_and_matrices.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Working with vectors and matrices</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="vectors_in_python.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Working with vectors in Python</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -607,9 +605,11 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrices-as-linear-transformations">Matrices as linear transformations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-matrix-operations">Inverse matrix operations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrixmatrix-multiplication">Matrix–matrix multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-atomic-positions">Example 1: Atomic positions.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-addition-subtraction-scaling-and-multiplication">Vector addition, subtraction, scaling, and “multiplication”</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dot-product-and-the-cross-product">The dot-product and the cross-product</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
