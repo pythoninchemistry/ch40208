@@ -27,21 +27,21 @@ T, k = np.loadtxt('arrhenius.txt', unpack=True)
 Cell [0;32mIn[2], line 1[0m
 [0;32m----> 1[0m T, k [38;5;241m=[39m [43mnp[49m[38;5;241;43m.[39;49m[43mloadtxt[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43marrhenius.txt[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43munpack[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
 
-File [0;32m/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1397[0m, in [0;36mloadtxt[0;34m(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)[0m
-[1;32m   1394[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(delimiter, [38;5;28mbytes[39m):
-[1;32m   1395[0m     delimiter [38;5;241m=[39m delimiter[38;5;241m.[39mdecode([38;5;124m'[39m[38;5;124mlatin1[39m[38;5;124m'[39m)
-[0;32m-> 1397[0m arr [38;5;241m=[39m [43m_read[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[43mdtype[49m[38;5;241;43m=[39;49m[43mdtype[49m[43m,[49m[43m [49m[43mcomment[49m[38;5;241;43m=[39;49m[43mcomment[49m[43m,[49m[43m [49m[43mdelimiter[49m[38;5;241;43m=[39;49m[43mdelimiter[49m[43m,[49m
-[1;32m   1398[0m [43m            [49m[43mconverters[49m[38;5;241;43m=[39;49m[43mconverters[49m[43m,[49m[43m [49m[43mskiplines[49m[38;5;241;43m=[39;49m[43mskiprows[49m[43m,[49m[43m [49m[43musecols[49m[38;5;241;43m=[39;49m[43musecols[49m[43m,[49m
-[1;32m   1399[0m [43m            [49m[43munpack[49m[38;5;241;43m=[39;49m[43munpack[49m[43m,[49m[43m [49m[43mndmin[49m[38;5;241;43m=[39;49m[43mndmin[49m[43m,[49m[43m [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m,[49m
-[1;32m   1400[0m [43m            [49m[43mmax_rows[49m[38;5;241;43m=[39;49m[43mmax_rows[49m[43m,[49m[43m [49m[43mquote[49m[38;5;241;43m=[39;49m[43mquotechar[49m[43m)[49m
-[1;32m   1402[0m [38;5;28;01mreturn[39;00m arr
+File [0;32m/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1395[0m, in [0;36mloadtxt[0;34m(fname, dtype, comments, delimiter, converters, skiprows, usecols, unpack, ndmin, encoding, max_rows, quotechar, like)[0m
+[1;32m   1392[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(delimiter, [38;5;28mbytes[39m):
+[1;32m   1393[0m     delimiter [38;5;241m=[39m delimiter[38;5;241m.[39mdecode([38;5;124m'[39m[38;5;124mlatin1[39m[38;5;124m'[39m)
+[0;32m-> 1395[0m arr [38;5;241m=[39m [43m_read[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[43mdtype[49m[38;5;241;43m=[39;49m[43mdtype[49m[43m,[49m[43m [49m[43mcomment[49m[38;5;241;43m=[39;49m[43mcomment[49m[43m,[49m[43m [49m[43mdelimiter[49m[38;5;241;43m=[39;49m[43mdelimiter[49m[43m,[49m
+[1;32m   1396[0m [43m            [49m[43mconverters[49m[38;5;241;43m=[39;49m[43mconverters[49m[43m,[49m[43m [49m[43mskiplines[49m[38;5;241;43m=[39;49m[43mskiprows[49m[43m,[49m[43m [49m[43musecols[49m[38;5;241;43m=[39;49m[43musecols[49m[43m,[49m
+[1;32m   1397[0m [43m            [49m[43munpack[49m[38;5;241;43m=[39;49m[43munpack[49m[43m,[49m[43m [49m[43mndmin[49m[38;5;241;43m=[39;49m[43mndmin[49m[43m,[49m[43m [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m,[49m
+[1;32m   1398[0m [43m            [49m[43mmax_rows[49m[38;5;241;43m=[39;49m[43mmax_rows[49m[43m,[49m[43m [49m[43mquote[49m[38;5;241;43m=[39;49m[43mquotechar[49m[43m)[49m
+[1;32m   1400[0m [38;5;28;01mreturn[39;00m arr
 
-File [0;32m/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1012[0m, in [0;36m_read[0;34m(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)[0m
-[1;32m   1010[0m     fname [38;5;241m=[39m os[38;5;241m.[39mfspath(fname)
-[1;32m   1011[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(fname, [38;5;28mstr[39m):
-[0;32m-> 1012[0m     fh [38;5;241m=[39m [43mnp[49m[38;5;241;43m.[39;49m[43mlib[49m[38;5;241;43m.[39;49m[43m_datasource[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mrt[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m)[49m
-[1;32m   1013[0m     [38;5;28;01mif[39;00m encoding [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
-[1;32m   1014[0m         encoding [38;5;241m=[39m [38;5;28mgetattr[39m(fh, [38;5;124m'[39m[38;5;124mencoding[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mlatin1[39m[38;5;124m'[39m)
+File [0;32m/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:1022[0m, in [0;36m_read[0;34m(fname, delimiter, comment, quote, imaginary_unit, usecols, skiplines, max_rows, converters, ndmin, unpack, dtype, encoding)[0m
+[1;32m   1020[0m     fname [38;5;241m=[39m os[38;5;241m.[39mfspath(fname)
+[1;32m   1021[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(fname, [38;5;28mstr[39m):
+[0;32m-> 1022[0m     fh [38;5;241m=[39m [43mnp[49m[38;5;241;43m.[39;49m[43mlib[49m[38;5;241;43m.[39;49m[43m_datasource[49m[38;5;241;43m.[39;49m[43mopen[49m[43m([49m[43mfname[49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mrt[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mencoding[49m[43m)[49m
+[1;32m   1023[0m     [38;5;28;01mif[39;00m encoding [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1024[0m         encoding [38;5;241m=[39m [38;5;28mgetattr[39m(fh, [38;5;124m'[39m[38;5;124mencoding[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mlatin1[39m[38;5;124m'[39m)
 
 File [0;32m/opt/hostedtoolcache/Python/3.12.7/x64/lib/python3.12/site-packages/numpy/lib/_datasource.py:192[0m, in [0;36mopen[0;34m(path, mode, destpath, encoding, newline)[0m
 [1;32m    155[0m [38;5;250m[39m[38;5;124;03m"""[39;00m
