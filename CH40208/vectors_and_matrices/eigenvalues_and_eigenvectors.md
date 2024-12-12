@@ -10,7 +10,7 @@ In general the matrix $\mathbf{M}$ can change both the magnitude and direction o
 Consider the matrix $\mathbf{M}=\begin{bmatrix}2 & 1 \\ 1 & 2\end{bmatrix}$. This gives the linear transformation shown below. 
 
 
-```{figure} ./figures/vectors_and_matrices/matrix_transformation.svg
+```{figure} ./figures/matrix_transformation.svg
 ---
 width: 650px
 name: matrix-transformation-fig
@@ -21,7 +21,7 @@ The effect of the matrix $\mathbf{M}=\begin{bmatrix}2&1\\1&2\end{bmatrix}$ is to
 
 We can also visualise this transformation by considering the effect on a set of vectors with length $1$ and different directions. Now we see that the effect of the matrix transformation is to transform a unit circle into an ellipse.
 
-```{figure} ./figures/vectors_and_matrices/matrix_transformation_unit_circle.svg
+```{figure} ./figures/matrix_transformation_unit_circle.svg
 ---
 width: 650px
 name: matrix-transformation-unit-circle-fig
@@ -43,7 +43,7 @@ $$
 
 i.e. operating on $\mathbf{v}$ by $\mathbf{M}$ gives the <em>same vector</em> $\mathbf{v}$ back, times a <em>scalar</em>, $s$. This only happens for these two &ldquo;special&rdquo; vectors, which we call the <em>eigenvectors</em> of the matrix $\mathbf{M}$. The scalar values $s$ are the <em>eigenvalues</em> of the matrix $\mathbf{M}$.
 
-```{figure} ./figures/vectors_and_matrices/ellipse_major_minor_axes_transformation.svg
+```{figure} ./figures/ellipse_major_minor_axes_transformation.svg
 ---
 width: 650px
 name: ellipse-major-minor-axes-transformation-fig
