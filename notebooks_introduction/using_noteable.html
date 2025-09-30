@@ -16,34 +16,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -68,7 +65,6 @@
     <link rel="prev" title="What is a Jupyter Notebook?" href="what_is_a_jupyter_notebook.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -84,8 +80,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -93,6 +100,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -100,8 +108,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,8 +125,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -148,17 +155,21 @@
     
     
     <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
-    <img src="../_static/CH40208_image.png" class="logo__image only-dark pst-js-only" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -394,16 +405,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -450,9 +469,11 @@
 <section id="logging-into-noteable">
 <h2>Logging into Noteable<a class="headerlink" href="#logging-into-noteable" title="Link to this heading">#</a></h2>
 <p>Click on the Noteable link on the <a class="reference external" href="https://moodle.bath.ac.uk/course/view.php?id=54567">CH40208 Moodle page</a> (under Orientation and Communication), or go to <a class="reference external" href="https://noteable.edina.ac.uk/launch">https://noteable.edina.ac.uk/launch</a>.</p>
-<a class="reference internal image-reference" href="../_images/noteable_widget.png"><img alt="../_images/noteable_widget.png" class="align-center" src="../_images/noteable_widget.png" style="width: 150px;" /></a>
+<a class="reference internal image-reference" href="../_images/noteable_widget.png"><img alt="../_images/noteable_widget.png" class="align-center" src="../_images/noteable_widget.png" style="width: 150px;" />
+</a>
 <p>Select “Standard Notebook (Python 3)” and click “Start”.</p>
-<a class="reference internal image-reference" href="../_images/standard_notebook.png"><img alt="../_images/standard_notebook.png" class="align-center" src="../_images/standard_notebook.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/standard_notebook.png"><img alt="../_images/standard_notebook.png" class="align-center" src="../_images/standard_notebook.png" style="width: 250px;" />
+</a>
 <p>If this is the first time you have logged on to Noteable, you will see the following:</p>
 <p><img alt="" src="../_images/jupyter_first_time.png" /></p>
 <p>This is the Jupyter file browser. It shows you all of your files and folders saved in Noteable.</p>
@@ -460,7 +481,8 @@
 <section id="creating-a-new-jupyter-notebook">
 <h2>Creating a new Jupyter notebook<a class="headerlink" href="#creating-a-new-jupyter-notebook" title="Link to this heading">#</a></h2>
 <p>To create a new Jupyter notebook, click on <strong>New</strong> (top right) and select <strong>Python3 (ipykernel)</strong>.</p>
-<a class="reference internal image-reference" href="../_images/new_notebook.png"><img alt="../_images/new_notebook.png" class="align-center" src="../_images/new_notebook.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="../_images/new_notebook.png"><img alt="../_images/new_notebook.png" class="align-center" src="../_images/new_notebook.png" style="width: 300px;" />
+</a>
 <p>This will open a new Jupyter Notebook document in a new browser window, which should look like this:</p>
 <p><img alt="" src="../_images/new_notebook_example.png" /></p>
 </section>
@@ -471,7 +493,8 @@
 <p>Rename your notebook to something more meaningful (e.g., “demo notebook”) by typing the new name in this dialogue box and hitting Enter or clicking <strong>Rename</strong>.
 You should then see the notebook name at the top of the screen change to the new name.</p>
 <p>You can also rename a notebook by clicking on the “File” menu inside the Notebook interface, and selecting “Rename…”:</p>
-<a class="reference internal image-reference" href="../_images/file_rename.png"><img alt="../_images/file_rename.png" class="align-center" src="../_images/file_rename.png" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/file_rename.png"><img alt="../_images/file_rename.png" class="align-center" src="../_images/file_rename.png" style="width: 200px;" />
+</a>
 </section>
 <section id="notebook-management">
 <h2>Notebook management<a class="headerlink" href="#notebook-management" title="Link to this heading">#</a></h2>
@@ -488,18 +511,21 @@ Having a large number of notebooks Running at the same time can consume a lot of
 It is good practice to stop (Shutdown) notebooks that you are not currently working on or using to perform calculations.
 Closing the window that a notebook is running in does not shutdown that notebook (it will still have a green icon in the file browser).</p>
 <p>You can Shutdown any running notebooks by selecting them in file browser (click the tick box to the left of the filename) and then clicking <strong>Shutdown</strong>:</p>
-<a class="reference internal image-reference" href="../_images/shutdown_menu.png"><img alt="../_images/shutdown_menu.png" class="align-center" src="../_images/shutdown_menu.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/shutdown_menu.png"><img alt="../_images/shutdown_menu.png" class="align-center" src="../_images/shutdown_menu.png" style="width: 250px;" />
+</a>
 <p>Notice that the notebook icon next to the filename is now grey, indicating a notebook that is not running.
 The word “Running” has also gone from the righthand side of the file information row:</p>
 <p><img alt="" src="../_images/not_running.png" /></p>
 <p>You can also close and shutdown a running notebook from the notebook window itself, by clicking on the <strong>File</strong> menu item and selecting <strong>Close and Halt</strong>:</p>
-<a class="reference internal image-reference" href="../_images/close_and_halt.png"><img alt="../_images/close_and_halt.png" class="align-center" src="../_images/close_and_halt.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/close_and_halt.png"><img alt="../_images/close_and_halt.png" class="align-center" src="../_images/close_and_halt.png" style="width: 250px;" />
+</a>
 </section>
 <section id="using-folders">
 <h2>Using folders<a class="headerlink" href="#using-folders" title="Link to this heading">#</a></h2>
 <p>While you could keep all of your notebooks in your top-level folder (what you see when you first log in to Noteable), over time, this can make it difficult to find the specific notebook you are looking for, so it is better to organise your notebooks using folders.</p>
 <p>In the Jupyter file browser window, click <strong>New</strong> and then <strong>Folder</strong> to create a new folder.</p>
-<a class="reference internal image-reference" href="../_images/new_folder.png"><img alt="../_images/new_folder.png" class="align-center" src="../_images/new_folder.png" style="width: 250px;" /></a>
+<a class="reference internal image-reference" href="../_images/new_folder.png"><img alt="../_images/new_folder.png" class="align-center" src="../_images/new_folder.png" style="width: 250px;" />
+</a>
 <p>You can rename a Folder (or a file, unless it is a currently running notebook) directly from the Jupyter file browser.
 Click the check box to the left of the file name and then click <strong>Rename</strong>.
 Then rename your folder to “CH40208”.</p>
@@ -576,8 +602,7 @@ You can reconnect to the server and see your folders and files by clicking again
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -640,8 +665,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

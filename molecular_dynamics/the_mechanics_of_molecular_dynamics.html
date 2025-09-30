@@ -16,34 +16,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -70,7 +67,6 @@
     <link rel="prev" title="Understanding Molecular Dynamics" href="understanding_molecular_dynamics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -95,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +127,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +157,21 @@
     
     
     <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
-    <img src="../_static/CH40208_image.png" class="logo__image only-dark pst-js-only" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -396,16 +407,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -436,21 +455,21 @@
 <p>To understand how molecular dynamics works, consider a simple analogy: a ball rolling across hills and valleys.
 At any moment, the ball has a defined position <span class="math notranslate nohighlight">\(r\)</span>, velocity <span class="math notranslate nohighlight">\(v\)</span>, and mass <span class="math notranslate nohighlight">\(m\)</span>. The shape of the terrain—our potential energy surface <span class="math notranslate nohighlight">\(U(r)\)</span>—determines how the ball will move. From this potential energy surface, we can calculate two crucial quantities: first, the force acting on the ball (<span class="math notranslate nohighlight">\(F = -\frac{\mathrm{d}U}{\mathrm{d}r}\)</span>), and second, using Newton’s second law (<span class="math notranslate nohighlight">\(F = ma\)</span>), the ball’s acceleration <span class="math notranslate nohighlight">\(a\)</span>.</p>
 <p>The ball’s motion is described by two fundamental differential equations:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09380b4b-d287-48f4-b113-084a18a00cfe">
-<span class="eqno">(1)<a class="headerlink" href="#equation-09380b4b-d287-48f4-b113-084a18a00cfe" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-90490d1e-e1a9-4692-a302-f40a61354ad3">
+<span class="eqno">(1)<a class="headerlink" href="#equation-90490d1e-e1a9-4692-a302-f40a61354ad3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\mathrm{d}r}{\mathrm{d}t} = v
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-b7db1454-3a5c-4bc7-90f8-d6210f8b22f8">
-<span class="eqno">(2)<a class="headerlink" href="#equation-b7db1454-3a5c-4bc7-90f8-d6210f8b22f8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-be1295e5-8505-4ad1-8d06-6e9505908492">
+<span class="eqno">(2)<a class="headerlink" href="#equation-be1295e5-8505-4ad1-8d06-6e9505908492" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\mathrm{d}v}{\mathrm{d}t} = a
 \end{equation}\]</div>
 <p>By integrating these equations of motion, we can derive expressions for the changes in position and velocity over a time interval <span class="math notranslate nohighlight">\(\delta t\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bc9d0b88-260b-41be-b086-24f2aeaf2de6">
-<span class="eqno">(3)<a class="headerlink" href="#equation-bc9d0b88-260b-41be-b086-24f2aeaf2de6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-33767dd1-d7c2-4104-be5d-c556983feff8">
+<span class="eqno">(3)<a class="headerlink" href="#equation-33767dd1-d7c2-4104-be5d-c556983feff8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dv}{dt} = a \rightarrow v(t + \delta t) = v(t) + a(t)\delta t
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-02fc42c8-efe9-47cd-a8ac-832dc4123e47">
-<span class="eqno">(4)<a class="headerlink" href="#equation-02fc42c8-efe9-47cd-a8ac-832dc4123e47" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-11e23a92-c614-4f70-95d9-c4b66fcb8f47">
+<span class="eqno">(4)<a class="headerlink" href="#equation-11e23a92-c614-4f70-95d9-c4b66fcb8f47" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dr}{dt} = v \rightarrow r(t + \delta t) = r(t) + v(t)\delta t + \frac{1}{2}a(t)\delta t^2
 \end{equation}\]</div>
 <p>These equations are exact as <span class="math notranslate nohighlight">\(\delta t\)</span> approaches zero. For practical calculations, however, we need to work with finite time intervals. We introduce a “timestep” <span class="math notranslate nohighlight">\(\Delta t\)</span> and use these equations to predict how our system evolves:</p>
@@ -558,8 +577,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

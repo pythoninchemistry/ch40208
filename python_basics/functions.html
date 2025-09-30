@@ -16,34 +16,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -70,7 +67,6 @@
     <link rel="prev" title="Iterating over Dictionaries" href="iterating_over_dictionaries.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -95,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +127,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +157,21 @@
     
     
     <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
-    <img src="../_static/CH40208_image.png" class="logo__image only-dark pst-js-only" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -396,16 +407,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -467,7 +486,7 @@
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
 <span class="c1"># Initial values</span>
 <span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Initial concentration of the weak acid in mol/L</span>
@@ -596,17 +615,17 @@ The percent dissociation is: 1.33%
 <p>Python does not actually come with pre-written functions for calculating pH, so, in practice, we would need to write these ourselves. Let us look at an example of what the code for these functions might look like:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
-<span class="k">def</span> <span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the hydrogen ion concentration of a weak acid solution.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
 
-<span class="k">def</span> <span class="nf">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the pH from the hydrogen ion concentration.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">calculate_percent_dissociation</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="n">concentration</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_percent_dissociation</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="n">concentration</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the percent dissociation of the weak acid.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">h_plus</span> <span class="o">/</span> <span class="n">concentration</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
 </pre></div>
@@ -614,7 +633,7 @@ The percent dissociation is: 1.33%
 </div>
 </div>
 <p>Each function is defined by a block of code with the following structure:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">parameter1</span><span class="p">,</span> <span class="n">parameter2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span><span class="n">parameter1</span><span class="p">,</span> <span class="n">parameter2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Optional docstring describing the function.&quot;&quot;&quot;</span>
     <span class="c1"># Function body</span>
     <span class="c1"># Code to perform the desired operation</span>
@@ -632,7 +651,7 @@ The percent dissociation is: 1.33%
 <li><p><code class="code docutils literal highlight highlight-python"><span class="k">return</span></code>: This keyword is used to specify the value that the function should return when it is called. If omitted, the function will return None by default.</p></li>
 </ol>
 <p>Now, let’s examine one of the specific functions from our weak acid calculation example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the hydrogen ion concentration of a weak acid solution.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
@@ -668,9 +687,9 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 </aside>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
-<span class="k">def</span> <span class="nf">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
     <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
     <span class="n">r1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
     <span class="n">r2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
@@ -759,7 +778,7 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 <p>Functions can also be defined with <strong>optional</strong> arguments by giving these arguments <strong>default</strong> values in the the function definition.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ch40208_greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ch40208_greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, and welcome to the </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> lesson.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -807,7 +826,7 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 <p>While <strong>required arguments</strong> must be passed in the same order as the argument list in the function definition, <strong>optional arguments</strong> passed <strong>with keywords</strong> can appear in any order (although they must appear <strong>after</strong> all the required arguments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ch40208_greet_and_info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;Topics in Computational Chemistry&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ch40208_greet_and_info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;Topics in Computational Chemistry&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Welcome to the </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> lesson on </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -868,7 +887,7 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 <p>The term <strong>scope</strong> refers to where a variable is <strong>visible</strong> in a Python program. Variables can be visible in one part of a program, but not in another part.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -898,10 +917,10 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 <p>To describe this behaviour in terms of <strong>scope</strong>, we would say that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are defined in the <strong>local scope</strong> of the function <code class="docutils literal notranslate"><span class="pre">add</span></code>. Outside this scope, these variables are not defined. One consequence of this is we can write modular code where the same variable names get reused in different functions, while each function remains self-contained.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
-<span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
@@ -921,7 +940,7 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
 
-<span class="k">def</span> <span class="nf">add_to_x</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_to_x</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">add_to_x</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
@@ -942,7 +961,7 @@ For example, if we wanted to change how we calculate the hydrogen ion concentrat
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;outside the function: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">add_to_x</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_to_x</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;inside the function: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
@@ -968,7 +987,7 @@ outside the function: x = 1, y = 3
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_boltz</span> <span class="o">=</span> <span class="mf">1.380649e-23</span> <span class="c1"># Boltzmann constant in J K^-1</span>
 
-<span class="k">def</span> <span class="nf">boltzmann_factor</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">boltzmann_factor</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">energy</span><span class="o">/</span><span class="p">(</span><span class="n">k_boltz</span> <span class="o">*</span> <span class="n">temperature</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1003,7 +1022,7 @@ outside the function: x = 1, y = 3
 <p>For example, here is a function <code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code> that calculates the kinetic energy of a particle. The function takes two required arguments <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> and returns the kinetic energy, calculated as <span class="math notranslate nohighlight">\(E_\mathrm{KE} = \frac{1}{2}mv^2\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kinetic_energy</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">kinetic_energy</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine the kinetic energy of a particle.</span>
 <span class="sd">    </span>
@@ -1055,7 +1074,7 @@ outside the function: x = 1, y = 3
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1159,8 +1178,7 @@ Make sure to include a docstring describing the purpose of the function and outl
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1228,8 +1246,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

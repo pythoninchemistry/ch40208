@@ -16,34 +16,31 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -70,7 +67,6 @@
     <link rel="prev" title="Principal rotation axes and principal moments of inertia" href="../vectors_and_matrices/moments_of_inertia.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -95,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +127,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +157,21 @@
     
     
     <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
-    <img src="../_static/CH40208_image.png" class="logo__image only-dark pst-js-only" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -396,16 +407,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -442,7 +461,7 @@ This modification was to use the <code class="docutils literal notranslate"><spa
 Note that the file contains five individual IR measurements for HCl, but we will investigate only the first.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -457,7 +476,7 @@ Note that the file contains five individual IR measurements for HCl, but we will
 <p>Now we will visualise the experimental data that has be obtained.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -472,7 +491,7 @@ Note that the file contains five individual IR measurements for HCl, but we will
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/39a5a507e2276c630ee8bd7c19491731273c63ef79bf0de6cde64c565287e245.png" src="../_images/39a5a507e2276c630ee8bd7c19491731273c63ef79bf0de6cde64c565287e245.png" />
+<img alt="../_images/1d276d5b6898c0ab98cb0cf9baf1199cb4ecab4356fba03cf6d45576b8fc3098.png" src="../_images/1d276d5b6898c0ab98cb0cf9baf1199cb4ecab4356fba03cf6d45576b8fc3098.png" />
 </div>
 </div>
 <p>The region of the data that is interesting is that which is contained between wavenumbers of 2500 cm<sup>-1</sup> and 3200 cm<sup>-1</sup>.
@@ -504,7 +523,7 @@ So we will reduce the data to obtain just that data as a pair of NumPy arrays.</
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4532dd6188f5133440618adc62b21577f75b82d2d4b699973d7756ddb50fec0d.png" src="../_images/4532dd6188f5133440618adc62b21577f75b82d2d4b699973d7756ddb50fec0d.png" />
+<img alt="../_images/913399362026b5f1f8f79c436b7fa786d5af447647033ccf8b199d29bf266d58.png" src="../_images/913399362026b5f1f8f79c436b7fa786d5af447647033ccf8b199d29bf266d58.png" />
 </div>
 </div>
 <p>In order to obtain the bond length in this molecule, we will compare the difference between the wavenumbers for the <span class="math notranslate nohighlight">\(R\)</span>-branch and the <span class="math notranslate nohighlight">\(P\)</span>-branch lines of the same rotational quantum number, <span class="math notranslate nohighlight">\(J\)</span>.
@@ -531,13 +550,13 @@ We can convert from transmittance to absorbance by subtracting the transmittance
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/aea90eaa51275d3198cfcca057a72cf515804c4cba51b342a2e9d1c255415985.png" src="../_images/aea90eaa51275d3198cfcca057a72cf515804c4cba51b342a2e9d1c255415985.png" />
+<img alt="../_images/dd3cda8a24e69d42d8018572e1be01b3021e1cc6f83fc1963e2288249fc8250a.png" src="../_images/dd3cda8a24e69d42d8018572e1be01b3021e1cc6f83fc1963e2288249fc8250a.png" />
 </div>
 </div>
 <p>It was possible to find a simple peak finding function, in the SciPy module by searching online.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">find_peaks</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.signal</span><span class="w"> </span><span class="kn">import</span> <span class="n">find_peaks</span>
 </pre></div>
 </div>
 </div>
@@ -589,7 +608,7 @@ We only want the first item of these.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3627ef7226f517fbf43a59238c03ff774c753ea5bf02bd971a82ddd7046ed8b5.png" src="../_images/3627ef7226f517fbf43a59238c03ff774c753ea5bf02bd971a82ddd7046ed8b5.png" />
+<img alt="../_images/78a6f213cd7ea660e2cce3f898f2aa9e9f258cab7553f7111d48e9888d30a6ab.png" src="../_images/78a6f213cd7ea660e2cce3f898f2aa9e9f258cab7553f7111d48e9888d30a6ab.png" />
 </div>
 </div>
 <p>There appear to be a good match, with a gap just below 2900 cm<sup>-1</sup>.
@@ -656,7 +675,7 @@ Additionally, the order of these must be flipped such that they are ordered outw
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/c80079b61ca82890655d05efab33b000bb55a2727d2ebc1272941e2f673c2838.png" src="../_images/c80079b61ca82890655d05efab33b000bb55a2727d2ebc1272941e2f673c2838.png" />
+<img alt="../_images/bfebb243aca3d63ae85755695b16537a9c41f49b4860ac8c54996969292d71cb.png" src="../_images/bfebb243aca3d63ae85755695b16537a9c41f49b4860ac8c54996969292d71cb.png" />
 </div>
 </div>
 <p>We will now find the difference between the <span class="math notranslate nohighlight">\(R\)</span>- and <span class="math notranslate nohighlight">\(P\)</span>-branch peaks, note that we ignore the first value in the <span class="math notranslate nohighlight">\(R\)</span>-branch as there is no corresponding value in the <span class="math notranslate nohighlight">\(P\)</span>-branch.</p>
@@ -678,13 +697,13 @@ Additionally, the order of these must be flipped such that they are ordered outw
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/4071195f4b115d2fbb832c3f584195f64f0a4766d0d26128809f9c296c380c28.png" src="../_images/4071195f4b115d2fbb832c3f584195f64f0a4766d0d26128809f9c296c380c28.png" />
+<img alt="../_images/12b8c5c3ed47b2274ca781573f54fe3869fb52283d1ff676331cf31a4a0d9107.png" src="../_images/12b8c5c3ed47b2274ca781573f54fe3869fb52283d1ff676331cf31a4a0d9107.png" />
 </div>
 </div>
 <p>We can find the slope of this data using another <code class="docutils literal notranslate"><span class="pre">scipy</span></code> function called <code class="docutils literal notranslate"><span class="pre">linregress</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">linregress</span>
 </pre></div>
 </div>
 </div>
@@ -737,7 +756,7 @@ Assuming the molecule is acting as a rigid-rotor, the inertia is related to the 
 <p>First we will find the redued mass of HCl, importing the proton mass constant.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">proton_mass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">proton_mass</span>
 
 <span class="n">m_H</span> <span class="o">=</span> <span class="mf">1.0079</span> <span class="o">*</span> <span class="n">proton_mass</span>
 <span class="n">m_Cl</span> <span class="o">=</span> <span class="mf">35.45</span> <span class="o">*</span> <span class="n">proton_mass</span>
@@ -755,8 +774,8 @@ Assuming the molecule is acting as a rigid-rotor, the inertia is related to the 
 <p>The bond length can then be found, importing the speed of light (and converting to cms<sup>-1</sup>) and the reduced Planck constant.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">c</span>
-<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">hbar</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">c</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">hbar</span>
 
 <span class="n">c_cm</span> <span class="o">=</span> <span class="n">c</span> <span class="o">*</span> <span class="mi">100</span>
 
@@ -766,7 +785,7 @@ Assuming the molecule is acting as a rigid-rotor, the inertia is related to the 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.3167949631424204e-10 m
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.316794962252812e-10 m
 </pre></div>
 </div>
 </div>
@@ -872,8 +891,8 @@ By Andrew R. McCluskey & Benjamin J. Morgan
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
