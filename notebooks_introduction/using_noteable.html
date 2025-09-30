@@ -451,7 +451,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming-notebooks">Renaming notebooks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-management">Notebook management</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-folders">Using folders</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-down-and-reconnecting">Closing down and reconnecting</a></li>
 </ul>
             </nav>
         </div>
@@ -471,79 +470,49 @@ document.write(`
 <p>Click on the Noteable link on the <a class="reference external" href="https://moodle.bath.ac.uk/course/view.php?id=54567">CH40208 Moodle page</a> (under Orientation and Communication), or go to <a class="reference external" href="https://noteable.edina.ac.uk/launch">https://noteable.edina.ac.uk/launch</a>.</p>
 <a class="reference internal image-reference" href="../_images/noteable_widget.png"><img alt="../_images/noteable_widget.png" class="align-center" src="../_images/noteable_widget.png" style="width: 150px;" />
 </a>
+<p>You will be presented with a page like this</p>
+<p><img alt="The welcome screen of Noteable asking you to select a personal notebook server" src="../_images/select_server.png" /></p>
 <p>Select “Standard Notebook (Python 3)” and click “Start”.</p>
-<a class="reference internal image-reference" href="../_images/standard_notebook.png"><img alt="../_images/standard_notebook.png" class="align-center" src="../_images/standard_notebook.png" style="width: 250px;" />
-</a>
 <p>If this is the first time you have logged on to Noteable, you will see the following:</p>
-<p><img alt="" src="../_images/jupyter_first_time.png" /></p>
-<p>This is the Jupyter file browser. It shows you all of your files and folders saved in Noteable.</p>
+<a class="reference internal image-reference" href="../_images/jupyter_first_time.png"><img alt="../_images/jupyter_first_time.png" class="align-center" src="../_images/jupyter_first_time.png" style="width: 700px;" />
+</a>
+<p>On the left is the Jupyter <strong>File Browser</strong>, which shows all of your files and folders/directories saved in Noteable. On the right is the <strong>Launcher</strong>, which contains buttons for quickly creating notebooks and shells.</p>
 </section>
 <section id="creating-a-new-jupyter-notebook">
 <h2>Creating a new Jupyter notebook<a class="headerlink" href="#creating-a-new-jupyter-notebook" title="Link to this heading">#</a></h2>
-<p>To create a new Jupyter notebook, click on <strong>New</strong> (top right) and select <strong>Python3 (ipykernel)</strong>.</p>
+<p>To create a new Jupyter notebook, click on the <code class="docutils literal notranslate"><span class="pre">Python</span> <span class="pre">3</span> <span class="pre">(ipykernel)</span></code> button in the <strong>Notebook</strong> section of the <strong>Launcher</strong>.</p>
 <a class="reference internal image-reference" href="../_images/new_notebook.png"><img alt="../_images/new_notebook.png" class="align-center" src="../_images/new_notebook.png" style="width: 300px;" />
 </a>
 <p>This will open a new Jupyter Notebook document in a new browser window, which should look like this:</p>
-<p><img alt="" src="../_images/new_notebook_example.png" /></p>
+<a class="reference internal image-reference" href="../_images/new_notebook_example.png"><img alt="../_images/new_notebook_example.png" class="align-center" src="../_images/new_notebook_example.png" style="width: 600px;" />
+</a>
 </section>
 <section id="renaming-notebooks">
 <h2>Renaming notebooks<a class="headerlink" href="#renaming-notebooks" title="Link to this heading">#</a></h2>
-<p>We will look at using Jupyter Notebooks in more detail later. For now, notice at the top you have the text “Untitled”. This is a placeholder filename that has been assigned to this new Notebook you have just created. To rename your notebook, click on the title “Untitled” to open a <strong>Rename Notebook</strong> dialogue:</p>
-<p><img alt="" src="../_images/rename_notebook_dialogue.png" /></p>
-<p>Rename your notebook to something more meaningful (e.g., “demo notebook”) by typing the new name in this dialogue box and hitting Enter or clicking <strong>Rename</strong>.
-You should then see the notebook name at the top of the screen change to the new name.</p>
-<p>You can also rename a notebook by clicking on the “File” menu inside the Notebook interface, and selecting “Rename…”:</p>
-<a class="reference internal image-reference" href="../_images/file_rename.png"><img alt="../_images/file_rename.png" class="align-center" src="../_images/file_rename.png" style="width: 200px;" />
+<p>We will look at using Jupyter Notebooks in more detail later. For now, notice at the top you have the text “Untitled”. This is a placeholder filename that has been assigned to this new Notebook you have just created. To rename your notebook, right click on <code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code> in the <strong>File Browser</strong> and click rename.</p>
+<p><strong>Do not delete the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> extension when renaming your notebook - Noteable will break if you do!</strong></p>
+<a class="reference internal image-reference" href="../_images/rename_notebook_dialogue.png"><img alt="../_images/rename_notebook_dialogue.png" class="align-center" src="../_images/rename_notebook_dialogue.png" style="width: 500px;" />
 </a>
+<p>Rename your notebook to something more meaningful (e.g., “Lab 0.ipynb”) by typing the new name and hitting Enter.</p>
+<p>You should then see the notebook name at the top of the screen change to the new name.</p>
 </section>
 <section id="notebook-management">
 <h2>Notebook management<a class="headerlink" href="#notebook-management" title="Link to this heading">#</a></h2>
-<p>Switch back to the browser window containing the Jupyter file browser.
-You should now see your notebook (with its new name) in the list of files:</p>
-<p><img alt="" src="../_images/browser_with_a_notebook.png" /></p>
-<p>The notebook symbol to the left of the filename tells you that this file is a Notebook.
-The symbol is green because this Notebook is open (or “running”).
-You can also see the status of this Notebook on the righthand side as “Running”.
-The file browser also shows you how recently this notebook was modified and the size of the notebook on the disk.</p>
-<p>Running notebooks uses resources (memory and CPU) on whichever computer you are running on.
-In this instance, these are servers run by Noteable.
-Having a large number of notebooks Running at the same time can consume a lot of resources and make your calculations run slowly.
-It is good practice to stop (Shutdown) notebooks that you are not currently working on or using to perform calculations.
-Closing the window that a notebook is running in does not shutdown that notebook (it will still have a green icon in the file browser).</p>
-<p>You can Shutdown any running notebooks by selecting them in file browser (click the tick box to the left of the filename) and then clicking <strong>Shutdown</strong>:</p>
-<a class="reference internal image-reference" href="../_images/shutdown_menu.png"><img alt="../_images/shutdown_menu.png" class="align-center" src="../_images/shutdown_menu.png" style="width: 250px;" />
+<p>Your notebook is the place that you will <strong>run</strong> (execute) your code. Doing so uses resources (memory and CPU) on whichever computer you are running on.
+In this instance, these are servers run by Noteable. If you run something that consumes a lot of resources, it can make your calculations run slowly. Sometimes this happens because you might have written your code incorrectly or inefficiently—this is fine and is a part of learning. It is therefore useful to know how to stop (Shutdown) a Jupyter notebook which might be unresponsive or slow.</p>
+<p>This can be done using the square stop button, located on the notebook toolbar.</p>
+<a class="reference internal image-reference" href="../_images/shutdown_menu.png"><img alt="../_images/shutdown_menu.png" class="align-center" src="../_images/shutdown_menu.png" style="width: 400px;" />
 </a>
-<p>Notice that the notebook icon next to the filename is now grey, indicating a notebook that is not running.
-The word “Running” has also gone from the righthand side of the file information row:</p>
-<p><img alt="" src="../_images/not_running.png" /></p>
-<p>You can also close and shutdown a running notebook from the notebook window itself, by clicking on the <strong>File</strong> menu item and selecting <strong>Close and Halt</strong>:</p>
-<a class="reference internal image-reference" href="../_images/close_and_halt.png"><img alt="../_images/close_and_halt.png" class="align-center" src="../_images/close_and_halt.png" style="width: 250px;" />
+<p>If that doesn’t work, then you can restart the Kernel (think of this as a reboot of the system) by clicking the <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> tab of the Notebook menu followed by the <code class="docutils literal notranslate"><span class="pre">Restart</span> <span class="pre">Kernel</span></code> option.</p>
+<a class="reference internal image-reference" href="../_images/kernel_restart.png"><img alt="../_images/kernel_restart.png" class="align-center" src="../_images/kernel_restart.png" style="width: 600px;" />
 </a>
 </section>
 <section id="using-folders">
 <h2>Using folders<a class="headerlink" href="#using-folders" title="Link to this heading">#</a></h2>
 <p>While you could keep all of your notebooks in your top-level folder (what you see when you first log in to Noteable), over time, this can make it difficult to find the specific notebook you are looking for, so it is better to organise your notebooks using folders.</p>
-<p>In the Jupyter file browser window, click <strong>New</strong> and then <strong>Folder</strong> to create a new folder.</p>
-<a class="reference internal image-reference" href="../_images/new_folder.png"><img alt="../_images/new_folder.png" class="align-center" src="../_images/new_folder.png" style="width: 250px;" />
+<p>In the <strong>File Browser</strong>, click the <strong>New Folder</strong> icon to create a new folder.</p>
+<a class="reference internal image-reference" href="../_images/new_folder.png"><img alt="../_images/new_folder.png" class="align-center" src="../_images/new_folder.png" style="width: 400px;" />
 </a>
-<p>You can rename a Folder (or a file, unless it is a currently running notebook) directly from the Jupyter file browser.
-Click the check box to the left of the file name and then click <strong>Rename</strong>.
-Then rename your folder to “CH40208”.</p>
-<p>You can now move your first notebook into this folder.
-Select the notebook and click <strong>Move</strong>, then type the name of the destination folder (“CH40208”) into the “Move an Item” dialogue box, and click <strong>Move</strong>:
-<img alt="" src="../_images/move_dialogue.png" />
-You should now have a nice organised top-level directory.
-If you click into the CH40208 folder you should see your notebook file.
-You will also see an entry at the top of the file list with a folder icon and the name <code class="docutils literal notranslate"><span class="pre">..</span></code>.
-These two dots are shorthand for “go up one level” in the folder hierarchy.
-Clicking this folder name (the two dots) will take you back to the top-level directory.
-<img alt="" src="notebooks_introduction/organised_folder.png" /></p>
-</section>
-<section id="closing-down-and-reconnecting">
-<h2>Closing down and reconnecting<a class="headerlink" href="#closing-down-and-reconnecting" title="Link to this heading">#</a></h2>
-<p>Close all of your Noteable browser windows.
-Your folders and files are saved on the Noteable server.
-You can reconnect to the server and see your folders and files by clicking again on the Noteable link on the CH40208 Moodle page.</p>
 </section>
 </section>
 
@@ -616,7 +585,6 @@ You can reconnect to the server and see your folders and files by clicking again
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#renaming-notebooks">Renaming notebooks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-management">Notebook management</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-folders">Using folders</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#closing-down-and-reconnecting">Closing down and reconnecting</a></li>
 </ul>
   </nav></div>
 
