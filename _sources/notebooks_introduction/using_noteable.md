@@ -23,6 +23,8 @@ If this is the first time you have logged on to Noteable, you will see the follo
 :width: 700px
 :align: center
 ```
+<br/>
+
 On the left is the Jupyter **File Browser**, which shows all of your files and folders/directories saved in Noteable. On the right is the **Launcher**, which contains buttons for quickly creating notebooks and shells.
 
 ## Creating a new Jupyter notebook
@@ -33,8 +35,9 @@ To create a new Jupyter notebook, click on the `Python 3 (ipykernel)` button in 
 :width: 300px
 :align: center
 ```
-
+<br/>
 This will open a new Jupyter Notebook document in a new browser window, which should look like this:
+<br/>
 
 ```{image} images/new_notebook_example.png
 :width: 600px
@@ -43,7 +46,7 @@ This will open a new Jupyter Notebook document in a new browser window, which sh
 
 ## Renaming notebooks
 
-We will look at using Jupyter Notebooks in more detail later. For now, notice at the top you have the text &ldquo;Untitled&rdquo;. This is a placeholder filename that has been assigned to this new Notebook you have just created. To rename your notebook, right click on `Untitled.ipynb` in the **File Browser** and click rename.
+We will look at using Jupyter Notebooks in more detail later. For now, notice at the top you have the text "Untitled". This is a placeholder filename that has been assigned to this new Notebook you have just created. To rename your notebook, right click on `Untitled.ipynb` in the **File Browser** and click rename.
 
 **Do not delete the `.ipynb` extension when renaming your notebook - Noteable will break if you do!**
 
@@ -51,6 +54,7 @@ We will look at using Jupyter Notebooks in more detail later. For now, notice at
 :width: 500px
 :align: center
 ```
+<br/>
 
 Rename your notebook to something more meaningful (e.g., &ldquo;Lab 0.ipynb&rdquo;) by typing the new name and hitting Enter.
 
@@ -67,6 +71,7 @@ This can be done using the square stop button, located on the notebook toolbar.
 :width: 400px
 :align: center
 ```
+<br/>
 
 
 If that doesn't work, then you can restart the Kernel (think of this as a reboot of the system) by clicking the `Kernel` tab of the Notebook menu followed by the `Restart Kernel` option.

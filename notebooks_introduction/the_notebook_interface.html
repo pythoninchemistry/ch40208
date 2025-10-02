@@ -477,48 +477,31 @@ document.write(`
 <h2>Interface elements<a class="headerlink" href="#interface-elements" title="Link to this heading">#</a></h2>
 <p>There are a few sections of the Notebook interface that will be useful to know your way around:</p>
 <p><img alt="" src="../_images/notebook_interface.png" /></p>
-<ol class="arabic simple">
-<li><p>The jupyterhub logo. Clicking on this takes you back to your <strong>Notebook Dashboard</strong>.</p></li>
-<li><p>The name of your Notebook. Please do not leave this as <code class="docutils literal notranslate"><span class="pre">Untitled.ipynb</span></code>. You will thank me later.</p></li>
-<li><p>Information about when this Notebook was last saved. (or, in Jupyter parlance, when a <strong>checkpoint</strong> was last created.).
-You can force your Notebook to save using:</p>
+<p><strong>The notebook tab</strong>: This shows your notebook filename (e.g., <code class="docutils literal notranslate"><span class="pre">Untitled1.ipynb</span></code>). You can have multiple notebooks open in different tabs. You can rename your notebook by right-clicking on the tab and selecting <code class="docutils literal notranslate"><span class="pre">Rename</span> <span class="pre">Notebook…</span></code>. When you create a new notebook, it will be called <code class="docutils literal notranslate"><span class="pre">Untitled&lt;N&gt;.ipynb</span></code>. It is good practice to rename your notebooks when you create them so that you can more easily find them again later.</p>
+<p><strong>The notebook toolbar</strong>: Contains the most commonly used actions:</p>
 <ul class="simple">
-<li><p>⌘S (Mac) / alt+S (Windows)</p></li>
-<li><p>Select <code class="docutils literal notranslate"><span class="pre">File</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Save</span> <span class="pre">and</span> <span class="pre">Checkpoint</span></code>.</p></li>
+<li><p>💾 Save notebook</p></li>
+<li><p>+ Add a new cell below</p></li>
+<li><p>✂️  Cut selected cells</p></li>
+<li><p>📋 Copy and paste cells</p></li>
+<li><p>▶️  Run the current cell</p></li>
+<li><p>⏹️ Interrupt the kernel</p></li>
+<li><p>🔄 Restart the kernel</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">▼</span></code> Cell type selector (change between Code, Markdown, and Raw)</p></li>
 </ul>
-</li>
-<li><p>The <strong>Notebook Menubar</strong>. This contains:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">File</span></code>: File operations, e.g. create a new Notebook, open an existing Notebook, Copy your current Notebook, Save, etc.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Edit</span></code>: Manipulating <strong>cells</strong></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">View</span></code>: Options for what appears on your screen, and for toggling various aspects on and off.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Cell</span></code>: Executing one of more <strong>cells</strong>, and manipulating the output of <strong>cells</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Kernel</span></code>: Stop, start, etc. the <strong>kernel</strong>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Widgets</span></code>: Managing plugins and extensions that you might have installed.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">Help</span></code>: Access to the built-in help.</p>
-<ul>
-<li><p>Particularly useful items here are <code class="docutils literal notranslate"><span class="pre">Help</span></code> → <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">Interface</span> <span class="pre">Tour</span></code> and <code class="docutils literal notranslate"><span class="pre">Help</span></code> → <code class="docutils literal notranslate"><span class="pre">Notebook</span> <span class="pre">Help</span></code>.</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>The <strong>Notebook Toolbar</strong>
-This contains buttons for the most common actions for working with Notebooks. Hovering you mouse over each button will show you a popup with some information about the associated action.</p></li>
-<li><p>The currently selected cell.</p></li>
-<li><p>Indicates whether a cell has run or not, and for cells that have been run, the order they ran in.</p></li>
-<li><p>The text area for the <strong>code cell</strong>. This is where you can type in Pyton code to then run.</p></li>
-</ol>
+<p><strong>The cell</strong>: Below the toolbar is a “cell”. This is where you type your Python code. A notebook can have multiple cells, which allows you to organise your code into components.</p>
 </section>
 <section id="cells">
 <h2>Cells<a class="headerlink" href="#cells" title="Link to this heading">#</a></h2>
-<p>The body of the notebook is made up of <strong>input cells</strong>. When you open a new notebook it will contain only one empty cell; this is the grey box with <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span>&#160; <span class="pre">]:</span></code> to the left.
-There are three types of input cells where you can add content to a notebook.</p>
+<p>The body of the notebook is made up of <strong>input cells</strong>. When you open a new notebook it will contain only one empty cell; this is the grey box with <code class="docutils literal notranslate"><span class="pre">In</span> <span class="pre">[</span>&#160; <span class="pre">]:</span></code> to the left.</p>
+<p><img alt="" src="../_images/code_cell.png" /></p>
+<p>There are three types of input cells where you can add content to a notebook.</p>
 <section id="code-cells">
 <h3>Code cells<a class="headerlink" href="#code-cells" title="Link to this heading">#</a></h3>
 <p><strong>Code cells</strong> are the default cell type in a notebook.
 A <strong>code cell</strong> can accept code, that can then be executed (run).
 When the code in a code cell is run, the notebook displays any output generated by that code directly below the corresponding cell.</p>
-<p><img alt="" src="../_images/code_cell.png" /></p>
+<p><img alt="" src="../_images/code_cell_run.png" /></p>
 <p>In the figure above, the code cell has the Python code <code class="docutils literal notranslate"><span class="pre">print(4+3)</span></code> entered.
 This cell has then been run, which executes (runs) the code in the cell: in this instance we add 4 and 3, and print the result.</p>
 </section>
@@ -527,9 +510,9 @@ This cell has then been run, which executes (runs) the code in the cell: in this
 <p>A <strong>markdown cell</strong> contains text formatted using <a class="reference external" href="https://www.markdownguide.org/basic-syntax/">Markdown</a>, which is a lightweight markup language that can be used for writing formatte text.
 When a <strong>markdown cell</strong> is run, the markdown is converted into HTML, with the formatted text then shown <em>in place</em> of the cell.
 <strong>Markdown cells</strong> can be used to include formatted text, mathetmatical equations, images, tables, and more types of rich media.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/md_cell.png" />
+<p><img alt="" src="../_images/md_cell.png" />
 This figure shows a markdown cell being edited, with raw markdown entered.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/formatted_md.png" />
+<p><img alt="" src="../_images/formatted_md.png" />
 This figure shows the same cell after it has been run, with the markdown converted to formatted text.</p>
 </section>
 <section id="raw-cells">
@@ -538,8 +521,7 @@ This figure shows the same cell after it has been run, with the markdown convert
 </section>
 <section id="switching-cell-type">
 <h3>Switching cell type.<a class="headerlink" href="#switching-cell-type" title="Link to this heading">#</a></h3>
-<p>Cells can be switched between <strong>code</strong> and <strong>markdown</strong> using the <strong>Cell</strong> → <strong>Cell Type</strong>  menu options:</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/cell_switch.png" /></p>
+<p>Cells can be switched between <strong>code</strong> and <strong>markdown</strong> using the <code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">▼</span></code> menubar option.</p>
 <p>You can also switch between cell types in <strong>commmand mode</strong> (see below) using the keyboard shortcuts <code class="docutils literal notranslate"><span class="pre">Y</span></code> for <strong>code</strong>, <code class="docutils literal notranslate"><span class="pre">M</span></code> for <strong>markdown</strong>, and <code class="docutils literal notranslate"><span class="pre">R</span></code> for <strong>raw</strong>.</p>
 </section>
 <section id="active-cells">
@@ -548,29 +530,31 @@ This figure shows the same cell after it has been run, with the markdown convert
 <section id="command-mode">
 <h4>Command mode<a class="headerlink" href="#command-mode" title="Link to this heading">#</a></h4>
 <p><strong>Command mode</strong> is indicated by a blue highlight. When you are in command mode you can use <strong>keyboard shortcuts</strong> to cut, paste, and move cells, etc. You can see all the <strong>keyboard shortcuts</strong> under <code class="docutils literal notranslate"><span class="pre">Help</span></code> → <code class="docutils literal notranslate"><span class="pre">Keyboard</span> <span class="pre">Shortcuts</span></code>.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/command_mode.png" /></p>
 </section>
 <section id="edit-mode">
 <h4>Edit mode<a class="headerlink" href="#edit-mode" title="Link to this heading">#</a></h4>
 <p>If you are in <strong>command mode</strong> then pressing <code class="docutils literal notranslate"><span class="pre">Enter</span></code> or clicking in the input text area of a cell will switch you to <strong>edit mode</strong>. <strong>Edit mode</strong> is indicated by a green highlight, and a pencil icon in the top right of the Notebook window.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/edit_mode.png" /></p>
 <p>Typing now inserts text into the currently active cell:</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/notebooks_introduction/images/edit_mode_filled.png" /></p>
 <p>To get out of <strong>Edit Mode</strong>, and back into <strong>Command Mode</strong>, press <code class="docutils literal notranslate"><span class="pre">Esc</span></code> or click outside the text entry area.</p>
 </section>
 </section>
 </section>
 <section id="running-cells">
 <h2>Running cells<a class="headerlink" href="#running-cells" title="Link to this heading">#</a></h2>
-<p>Each cell can consist of more than one line of input, which is not processed until the cell is executed, or “run”.
-You can run the currently active cell from the menu bar by clicking <strong>Cell</strong> → <strong>Run Cells</strong>, or by clicking on the &amp;lqduo;play&amp;”; icon button in the menu bar.
-You can also run the currently selected cell using keyboard shortcuts:</p>
+<p>Each cell can consist of more than one line of input, which is not processed until the cell is executed, or “run”.</p>
+<p>You can run cells using:</p>
 <ul class="simple">
-<li><p><strong>ctrl</strong> + <strong>enter</strong>: Run the currently selected cell and keep this cell active.</p></li>
-<li><p><strong>shift</strong> + <strong>enter</strong>: Run the currently selected cell and move the focus to the next cell below. If there is not a cell below, a new empty cell will be created.</p></li>
-<li><p><strong>alt</strong> + <strong>enter</strong> or <strong>option</strong> + <strong>enter</strong>: Run the currently selected cell and create a new empty cell immediately below.</p></li>
+<li><p>The ▶️ button in the toolbar</p></li>
+<li><p><strong>Keyboard shortcuts:</strong></p>
+<ul>
+<li><p><strong>Shift + Enter</strong>: Run cell and move to next cell</p></li>
+<li><p><strong>Ctrl + Enter</strong>: Run cell and stay on same cell</p></li>
+<li><p><strong>Alt + Enter</strong>: Run cell and insert a new cell below</p></li>
 </ul>
-<p>You can also run every cell in a notebook, from top to bottom, by selecting <strong>Kernel</strong> → <strong>Restart &amp; Run All</strong> from the menu bar. This <strong>halts</strong> your Jupyter notebook and restarts it, before running each cell in sequence from the top down.</p>
+</li>
+</ul>
+<p>You can run all cells in a notebook using the ⏩ (Run All) button in the toolbar, or by right-clicking on a cell and selecting “Run All Above” or “Run All Below”.</p>
+<p>To restart the kernel and run all cells from scratch, use the 🔄 button in the toolbar followed by the ⏩ button, or right-click on any cell and select “Restart Kernel and Run All Cells…”. This halts your Jupyter notebook, clears all stored variables, and runs each cell in sequence from top to bottom.</p>
 </section>
 </section>
 
