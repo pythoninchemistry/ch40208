@@ -1,0 +1,1103 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worked Examples: Arithmetic &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worked_examples/week_1_arithmetic';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Worked Examples: Lists" href="week_1_lists.html" />
+    <link rel="prev" title="Worked Examples: Getting Started with Strings" href="week_1_strings.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/more_numpy_functions.html">More NumPy functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="week_1_index.html">Week 1</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_dictionaries.html">Dictionaries</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/worked_examples/week_1_arithmetic.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worked Examples: Arithmetic</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-order-of-operations-bodmas">Exercise 1: Order of Operations (BODMAS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-24-10-2">Part (a): <span class="math notranslate nohighlight">\(24\,/\,(10 + 2)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-5-16-2-times-3">Part (b): <span class="math notranslate nohighlight">\(5 + 16\,/\, 2 \times 3\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-32-6-2-2">Part (c): <span class="math notranslate nohighlight">\([32 \,/\, (6 + 2)]^2\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-chemical-calculations">Exercise 2: Chemical Calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-energy-of-radiation">Part 1: Energy of Radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-ph-calculation">Part 2: pH Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-lennard-jones-potential">Part 3: Lennard-Jones Potential</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-gibbs-free-energy-and-equilibrium">Exercise 3: Gibbs Free Energy and Equilibrium</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-calculate-equilibrium-constant-at-298-k">Part 1: Calculate Equilibrium Constant at 298 K</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-calculate-delta-h-circ-at-298-k">Part 2: Calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> at 298 K</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-ideal-gas-law">Exercise 4: Ideal Gas Law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-calculate-pressure-in-atm">Step 1: Calculate Pressure in atm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-convert-to-kpa">Step 2: Convert to kPa</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worked-examples-arithmetic">
+<h1>Worked Examples: Arithmetic<a class="headerlink" href="#worked-examples-arithmetic" title="Link to this heading">#</a></h1>
+<p>These worked solutions correspond to the exercises on the <a class="reference internal" href="../python_basics/arithmetic.html"><span class="std std-doc">Arithmetic</span></a> page.</p>
+<p><strong>How to use this notebook:</strong></p>
+<ul class="simple">
+<li><p>Try each exercise yourself first before looking at the solution</p></li>
+<li><p>The code cells show both the code and its output</p></li>
+<li><p>Download this notebook if you want to run and experiment with the code yourself</p></li>
+<li><p>Your solution might look different - that’s fine as long as it gives the correct answer!</p></li>
+</ul>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<p>We’ll import the <code class="docutils literal notranslate"><span class="pre">math</span></code> module here for use throughout the exercises.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exercise-1-order-of-operations-bodmas">
+<h2>Exercise 1: Order of Operations (BODMAS)<a class="headerlink" href="#exercise-1-order-of-operations-bodmas" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> Without using a computer or calculator, calculate the following following the BODMAS order of operations:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(24\,/\,(10 + 2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(5 + 16\,/\, 2 \times 3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\([32 \,/\, (6 + 2)]^2\)</span></p></li>
+</ol>
+<p>Let’s verify the answers using Python.</p>
+<section id="part-a-24-10-2">
+<h3>Part (a): <span class="math notranslate nohighlight">\(24\,/\,(10 + 2)\)</span><a class="headerlink" href="#part-a-24-10-2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">24</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Working:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Brackets first:</strong> <span class="math notranslate nohighlight">\((10 + 2) = 12\)</span></p></li>
+<li><p><strong>Division:</strong> <span class="math notranslate nohighlight">\(24 / 12 = 2\)</span></p></li>
+</ol>
+<p><strong>Answer:</strong> <span class="math notranslate nohighlight">\(2\)</span> (Note that Python produces a float when we divide)</p>
+</section>
+<section id="part-b-5-16-2-times-3">
+<h3>Part (b): <span class="math notranslate nohighlight">\(5 + 16\,/\, 2 \times 3\)</span><a class="headerlink" href="#part-b-5-16-2-times-3" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">5</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Working:</strong></p>
+<p>Following BODMAS (Brackets, Order, Division/Multiplication, Addition/Subtraction):</p>
+<ol class="arabic simple">
+<li><p><strong>Division:</strong> <span class="math notranslate nohighlight">\(16 / 2 = 8\)</span></p></li>
+<li><p><strong>Multiplication:</strong> <span class="math notranslate nohighlight">\(8 \times 3 = 24\)</span></p></li>
+<li><p><strong>Addition:</strong> <span class="math notranslate nohighlight">\(5 + 24 = 29\)</span></p></li>
+</ol>
+<p><strong>Important:</strong> Division and multiplication have equal priority and are evaluated <strong>left to right</strong>.</p>
+<p><strong>Answer:</strong> <span class="math notranslate nohighlight">\(29.0\)</span></p>
+</section>
+<section id="part-c-32-6-2-2">
+<h3>Part (c): <span class="math notranslate nohighlight">\([32 \,/\, (6 + 2)]^2\)</span><a class="headerlink" href="#part-c-32-6-2-2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">32</span> <span class="o">/</span> <span class="p">(</span><span class="mi">6</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Working:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Inner brackets first:</strong> <span class="math notranslate nohighlight">\((6 + 2) = 8\)</span></p></li>
+<li><p><strong>Division:</strong> <span class="math notranslate nohighlight">\(32 / 8 = 4\)</span></p></li>
+<li><p><strong>Order (exponent):</strong> <span class="math notranslate nohighlight">\(4^2 = 16\)</span></p></li>
+</ol>
+<p><strong>Answer:</strong> <span class="math notranslate nohighlight">\(16.0\)</span></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercise-2-chemical-calculations">
+<h2>Exercise 2: Chemical Calculations<a class="headerlink" href="#exercise-2-chemical-calculations" title="Link to this heading">#</a></h2>
+<p>This exercise involves three separate chemical calculations using Python.</p>
+<section id="part-1-energy-of-radiation">
+<h3>Part 1: Energy of Radiation<a class="headerlink" href="#part-1-energy-of-radiation" title="Link to this heading">#</a></h3>
+<p><strong>Problem:</strong> Calculate the energy (in Joules) of radiation with wavenumber <span class="math notranslate nohighlight">\(\bar{\nu} = 1700\)</span> cm<span class="math notranslate nohighlight">\(^{-1}\)</span> using:</p>
+<div class="math notranslate nohighlight">
+\[E = hc\bar{\nu}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h\)</span> = Planck’s constant = <span class="math notranslate nohighlight">\(6.626 \times 10^{-34}\)</span> J s</p></li>
+<li><p><span class="math notranslate nohighlight">\(c\)</span> = speed of light = <span class="math notranslate nohighlight">\(3 \times 10^{10}\)</span> cm/s</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{\nu}\)</span> = <span class="math notranslate nohighlight">\(1700\)</span> cm<span class="math notranslate nohighlight">\(^{-1}\)</span></p></li>
+</ul>
+<p><strong>Solution:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define constants</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">6.626e-34</span>  <span class="c1"># J s</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">3e10</span>  <span class="c1"># cm/s</span>
+<span class="n">wavenumber</span> <span class="o">=</span> <span class="mi">1700</span>  <span class="c1"># /cm</span>
+
+<span class="c1"># Calculate energy</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">wavenumber</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy = </span><span class="si">{</span><span class="n">energy</span><span class="si">}</span><span class="s2"> J&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy = </span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2"> J&quot;</span><span class="p">)</span>  <span class="c1"># Scientific notation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Energy = 3.37926e-20 J
+Energy = 3.379e-20 J
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<ul class="simple">
+<li><p>We use scientific notation: <code class="docutils literal notranslate"><span class="pre">3e10</span></code> means <span class="math notranslate nohighlight">\(3 \times 10^{10}\)</span></p></li>
+<li><p>Be careful with units: here we’re using cm/s for <span class="math notranslate nohighlight">\(c\)</span> to match the wavenumber units (cm<span class="math notranslate nohighlight">\(^{-1}\)</span>)</p></li>
+<li><p>The energy is very small (about <span class="math notranslate nohighlight">\(3.38 \times 10^{-20}\)</span> J), which is typical for a single photon</p></li>
+<li><p>We use f-strings with <code class="docutils literal notranslate"><span class="pre">:.3e</span></code> to format the output in scientific notation with 3 decimal places</p></li>
+</ul>
+</section>
+<section id="part-2-ph-calculation">
+<h3>Part 2: pH Calculation<a class="headerlink" href="#part-2-ph-calculation" title="Link to this heading">#</a></h3>
+<p><strong>Problem:</strong> Calculate the pH when the hydronium ion concentration is <span class="math notranslate nohighlight">\([\text{H}_3\text{O}^+] = 1.524 \times 10^{-5}\)</span> M using:</p>
+<p>$<span class="math notranslate nohighlight">\(\text{pH} = -\log_{10}[\text{H}_3\text{O}^+]\)</span>$’</p>
+<p><strong>Solution:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define concentration</span>
+<span class="n">concentration</span> <span class="o">=</span> <span class="mf">1.524e-5</span>  <span class="c1"># M</span>
+
+<span class="c1"># Calculate pH</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">concentration</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pH = </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pH = 4.82
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<ul class="simple">
+<li><p>We use <code class="docutils literal notranslate"><span class="pre">math.log10()</span></code> for the base-10 logarithm</p></li>
+<li><p>The negative sign is important - we need <span class="math notranslate nohighlight">\(-\log_{10}\)</span>, not <span class="math notranslate nohighlight">\(\log_{10}\)</span></p></li>
+<li><p>A pH of about 4.8 indicates a weakly acidic solution</p></li>
+</ul>
+<p><strong>Common mistake:</strong> Using <code class="docutils literal notranslate"><span class="pre">math.log()</span></code> instead of <code class="docutils literal notranslate"><span class="pre">math.log10()</span></code>. Remember:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">math.log()</span></code> gives the natural logarithm (base <span class="math notranslate nohighlight">\(\mathrm{e}\)</span>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">math.log10()</span></code> gives the base-10 logarithm</p></li>
+</ul>
+</section>
+<section id="part-3-lennard-jones-potential">
+<h3>Part 3: Lennard-Jones Potential<a class="headerlink" href="#part-3-lennard-jones-potential" title="Link to this heading">#</a></h3>
+<p><strong>Problem:</strong> Calculate the potential energy (in Joules) between two argon atoms at distance <span class="math notranslate nohighlight">\(r = 2\)</span> Å using the Lennard-Jones potential:</p>
+<div class="math notranslate nohighlight">
+\[E = \frac{A}{r^{12}} - \frac{B}{r^6}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A = 1.36 \times 10^{-134}\)</span> J m<span class="math notranslate nohighlight">\(^{12}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(B = 9.27 \times 10^{-78}\)</span> J m<span class="math notranslate nohighlight">\(^6\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(r = 2\)</span> Å <span class="math notranslate nohighlight">\(= 2 \times 10^{-10}\)</span> m</p></li>
+</ul>
+<p><strong>Solution:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define parameters</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1.36e-134</span>  <span class="c1"># J m^12</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mf">9.27e-78</span>  <span class="c1"># J m^6</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mf">2e-10</span>  <span class="c1"># m (2 Angstroms)</span>
+
+<span class="c1"># Calculate energy</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="n">A</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">12</span><span class="p">)</span> <span class="o">-</span> <span class="n">B</span> <span class="o">/</span> <span class="p">(</span><span class="n">r</span> <span class="o">**</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy = </span><span class="si">{</span><span class="n">energy</span><span class="si">}</span><span class="s2"> J&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy = </span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2"> J&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Energy = 3.175468749999998e-18 J
+Energy = 3.175e-18 J
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercise-3-gibbs-free-energy-and-equilibrium">
+<h2>Exercise 3: Gibbs Free Energy and Equilibrium<a class="headerlink" href="#exercise-3-gibbs-free-energy-and-equilibrium" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> The standard Gibbs free energy for a reaction at a particular temperature is related to the equilibrium constant at that temperature via,</p>
+<div class="math notranslate nohighlight">
+\[\Delta G = -RT\ln K\]</div>
+<p>For the reaction:</p>
+<div class="math notranslate nohighlight">
+\[\text{PCl}_3\text{(g)} + \text{Cl}_2\text{(g)} \rightarrow \text{PCl}_5\text{(g)}\]</div>
+<p>The standard free energies of formation, <span class="math notranslate nohighlight">\(\Delta G_f^\circ\)</span>, for each reactant are given below:</p>
+<ul class="simple">
+<li><p>PCl<span class="math notranslate nohighlight">\(_3\)</span>: <span class="math notranslate nohighlight">\(-267.8\)</span></p></li>
+<li><p>PCl<span class="math notranslate nohighlight">\(_5\)</span>: <span class="math notranslate nohighlight">\(-305.0\)</span></p></li>
+<li><p>Cl<span class="math notranslate nohighlight">\(_2\)</span>: <span class="math notranslate nohighlight">\(0\)</span></p></li>
+</ul>
+<p><strong>Part 1:</strong> Use Hess’s law to find the equilibrium constant <span class="math notranslate nohighlight">\(K\)</span> at 298 K.</p>
+<p><strong>Part 2:</strong> Given that <span class="math notranslate nohighlight">\(\Delta G_r = -20.2\)</span> kJ/mol at 350 K, and assuming <span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span> are temperature-independent, calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> at 298 K.</p>
+<p>Use the relation <span class="math notranslate nohighlight">\(\Delta G = \Delta H - T\Delta S\)</span></p>
+<section id="part-1-calculate-equilibrium-constant-at-298-k">
+<h3>Part 1: Calculate Equilibrium Constant at 298 K<a class="headerlink" href="#part-1-calculate-equilibrium-constant-at-298-k" title="Link to this heading">#</a></h3>
+<p><strong>Step 1:</strong> Calculate <span class="math notranslate nohighlight">\(\Delta G_r^\circ\)</span> at 298 K using Hess’s law:</p>
+<div class="math notranslate nohighlight">
+\[\Delta G_r^\circ = \sum \Delta G_f^\circ(\text{products}) - \sum \Delta G_f^\circ(\text{reactants})\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Standard free energies of formation at 298 K (kJ/mol)</span>
+<span class="n">dg_f_PCl3</span> <span class="o">=</span> <span class="o">-</span><span class="mf">267.8</span>
+<span class="n">dg_f_PCl5</span> <span class="o">=</span> <span class="o">-</span><span class="mf">305.0</span>
+<span class="n">dg_f_Cl2</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Calculate reaction free energy</span>
+<span class="n">dg_rxn_298</span> <span class="o">=</span> <span class="n">dg_f_PCl5</span> <span class="o">-</span> <span class="p">(</span><span class="n">dg_f_PCl3</span> <span class="o">+</span> <span class="n">dg_f_Cl2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ΔG°(298 K) = </span><span class="si">{</span><span class="n">dg_rxn_298</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kJ/mol&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ΔG°(298 K) = -37.2 kJ/mol
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Step 2:</strong> Calculate the equilibrium constant using:</p>
+<div class="math notranslate nohighlight">
+\[\Delta G = -RT\ln K\]</div>
+<p>Rearranging:</p>
+<div class="math notranslate nohighlight">
+\[K = \exp\left(-\frac{\Delta G}{RT}\right)\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Constants</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.314e-3</span>  <span class="c1"># kJ/(mol·K) - note the unit conversion!</span>
+<span class="n">T_298</span> <span class="o">=</span> <span class="mi">298</span>  <span class="c1"># K</span>
+
+<span class="c1"># Calculate equilibrium constant</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">dg_rxn_298</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">T_298</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;K = </span><span class="si">{</span><span class="n">K</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>K = 3.32e+06
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="part-2-calculate-delta-h-circ-at-298-k">
+<h3>Part 2: Calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> at 298 K<a class="headerlink" href="#part-2-calculate-delta-h-circ-at-298-k" title="Link to this heading">#</a></h3>
+<p><strong>Strategy:</strong> We have two equations and two unknowns (<span class="math notranslate nohighlight">\(\Delta H\)</span> and <span class="math notranslate nohighlight">\(\Delta S\)</span>):</p>
+<p>At 298 K: <span class="math notranslate nohighlight">\(\Delta G_{298} = \Delta H - 298\Delta S\)</span></p>
+<p>At 350 K: <span class="math notranslate nohighlight">\(\Delta G_{350} = \Delta H - 350\Delta S\)</span></p>
+<p>We can solve for <span class="math notranslate nohighlight">\(\Delta H\)</span> by eliminating <span class="math notranslate nohighlight">\(\Delta S\)</span>.</p>
+<p><strong>Derivation:</strong></p>
+<p>Subtracting the equations:</p>
+<div class="math notranslate nohighlight">
+\[\Delta G_{298} - \Delta G_{350} = (298 - 350)\Delta S = -52\Delta S\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[\Delta S = \frac{\Delta G_{350} - \Delta G_{298}}{350 - 298}\]</div>
+<p>Substituting back into the first equation:</p>
+<div class="math notranslate nohighlight">
+\[\Delta H = \Delta G_{298} + 298\Delta S = \Delta G_{298} + 298\frac{(\Delta G_{350} - \Delta G_{298})}{350-298}\]</div>
+<p>Simplifying:</p>
+<div class="math notranslate nohighlight">
+\[\Delta H = \frac{298(\Delta G_{298} - \Delta G_{350})}{350 - 298} + \Delta G_{298}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given data</span>
+<span class="n">dg_298</span> <span class="o">=</span> <span class="n">dg_rxn_298</span>  <span class="c1"># From part (a): -37.2 kJ/mol</span>
+<span class="n">dg_350</span> <span class="o">=</span> <span class="o">-</span><span class="mf">20.2</span>  <span class="c1"># kJ/mol</span>
+<span class="n">T_298</span> <span class="o">=</span> <span class="mi">298</span>  <span class="c1"># K</span>
+<span class="n">T_350</span> <span class="o">=</span> <span class="mi">350</span>  <span class="c1"># K</span>
+
+<span class="c1"># Calculate ΔH using our derived formula</span>
+<span class="n">delta_H</span> <span class="o">=</span> <span class="p">(</span><span class="n">T_298</span> <span class="o">*</span> <span class="p">(</span><span class="n">dg_298</span> <span class="o">-</span> <span class="n">dg_350</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">T_350</span> <span class="o">-</span> <span class="n">T_298</span><span class="p">))</span> <span class="o">+</span> <span class="n">dg_298</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ΔH° = </span><span class="si">{</span><span class="n">delta_H</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kJ/mol&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ΔH° = -134.62 kJ/mol
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify by calculating ΔS</span>
+<span class="n">delta_S</span> <span class="o">=</span> <span class="p">(</span><span class="n">dg_298</span> <span class="o">-</span> <span class="n">dg_350</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">T_350</span> <span class="o">-</span> <span class="n">T_298</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ΔS° = </span><span class="si">{</span><span class="n">delta_S</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> kJ/(mol·K)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ΔS° = </span><span class="si">{</span><span class="n">delta_S</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> J/(mol·K)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check: does ΔG = ΔH - TΔS at both temperatures?</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Verification:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At 298 K: ΔG = </span><span class="si">{</span><span class="n">delta_H</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">T_298</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">delta_S</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kJ/mol (should be </span><span class="si">{</span><span class="n">dg_298</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At 350 K: ΔG = </span><span class="si">{</span><span class="n">delta_H</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">T_350</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">delta_S</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kJ/mol (should be </span><span class="si">{</span><span class="n">dg_350</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ΔS° = -0.3269 kJ/(mol·K)
+ΔS° = -326.92 J/(mol·K)
+
+Verification:
+At 298 K: ΔG = -37.20 kJ/mol (should be -37.20)
+At 350 K: ΔG = -20.20 kJ/mol (should be -20.20)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercise-4-ideal-gas-law">
+<h2>Exercise 4: Ideal Gas Law<a class="headerlink" href="#exercise-4-ideal-gas-law" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> Using the ideal gas law <span class="math notranslate nohighlight">\(PV = nRT\)</span>, calculate:</p>
+<ol class="arabic simple">
+<li><p>The pressure <span class="math notranslate nohighlight">\(P\)</span> in atm</p></li>
+<li><p>Convert this pressure to kPa</p></li>
+</ol>
+<p>Given:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R = 0.08206\)</span> L atm K<span class="math notranslate nohighlight">\(^{-1}\)</span> mol<span class="math notranslate nohighlight">\(^{-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(n = 2.5\)</span> mol</p></li>
+<li><p><span class="math notranslate nohighlight">\(T = 300\)</span> K</p></li>
+<li><p><span class="math notranslate nohighlight">\(V = 10.0\)</span> L</p></li>
+</ul>
+<p>Also given: 1 atm = 101.325 kPa</p>
+<section id="step-1-calculate-pressure-in-atm">
+<h3>Step 1: Calculate Pressure in atm<a class="headerlink" href="#step-1-calculate-pressure-in-atm" title="Link to this heading">#</a></h3>
+<p>Rearranging the ideal gas law:</p>
+<div class="math notranslate nohighlight">
+\[P = \frac{nRT}{V}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given values</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">0.08206</span>  <span class="c1"># L atm K^-1 mol^-1</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">2.5</span>  <span class="c1"># mol</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># K</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># L</span>
+
+<span class="c1"># Calculate pressure</span>
+<span class="n">P_atm</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">V</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pressure = </span><span class="si">{</span><span class="n">P_atm</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> atm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pressure = 6.155 atm
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-convert-to-kpa">
+<h3>Step 2: Convert to kPa<a class="headerlink" href="#step-2-convert-to-kpa" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conversion factor</span>
+<span class="n">atm_to_kPa</span> <span class="o">=</span> <span class="mf">101.325</span>  <span class="c1"># kPa per atm</span>
+
+<span class="c1"># Convert pressure</span>
+<span class="n">P_kPa</span> <span class="o">=</span> <span class="n">P_atm</span> <span class="o">*</span> <span class="n">atm_to_kPa</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pressure = </span><span class="si">{</span><span class="n">P_kPa</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kPa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pressure = 623.60 kPa
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Complete solution showing all steps:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given values</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">0.08206</span>  <span class="c1"># L atm K^-1 mol^-1</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">2.5</span>  <span class="c1"># mol</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># K</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># L</span>
+<span class="n">atm_to_kPa</span> <span class="o">=</span> <span class="mf">101.325</span>  <span class="c1"># Conversion factor</span>
+
+<span class="c1"># Step 1: Calculate pressure in atm</span>
+<span class="n">P_atm</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">V</span>
+
+<span class="c1"># Step 2: Convert to kPa</span>
+<span class="n">P_kPa</span> <span class="o">=</span> <span class="n">P_atm</span> <span class="o">*</span> <span class="n">atm_to_kPa</span>
+
+<span class="c1"># Display results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ideal Gas Law Calculation&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of moles (n): </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> mol&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature (T): </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Volume (V): </span><span class="si">{</span><span class="n">V</span><span class="si">}</span><span class="s2"> L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gas constant (R): </span><span class="si">{</span><span class="n">R</span><span class="si">}</span><span class="s2"> L atm K⁻¹ mol⁻¹&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Pressure: </span><span class="si">{</span><span class="n">P_atm</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> atm&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pressure: </span><span class="si">{</span><span class="n">P_kPa</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> kPa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ideal Gas Law Calculation
+==============================
+Number of moles (n): 2.5 mol
+Temperature (T): 300 K
+Volume (V): 10.0 L
+Gas constant (R): 0.08206 L atm K⁻¹ mol⁻¹
+
+Pressure: 6.155 atm
+Pressure: 623.60 kPa
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Note: <strong>Unit consistency is crucial:</strong> The value of <span class="math notranslate nohighlight">\(R\)</span> we use determines our pressure units</p></li>
+<li><p>Using <span class="math notranslate nohighlight">\(R = 0.08206\)</span> L atm K<span class="math notranslate nohighlight">\(^{-1}\)</span> mol<span class="math notranslate nohighlight">\(^{-1}\)</span> gives pressure in atm</p></li>
+<li><p>If we used <span class="math notranslate nohighlight">\(R = 8.314\)</span> J K<span class="math notranslate nohighlight">\(^{-1}\)</span> mol<span class="math notranslate nohighlight">\(^{-1}\)</span>, we’d get pressure in Pa (with volume in m<span class="math notranslate nohighlight">\(^3\)</span>)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worked_examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="week_1_strings.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Worked Examples: Getting Started with Strings</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="week_1_lists.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Worked Examples: Lists</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-order-of-operations-bodmas">Exercise 1: Order of Operations (BODMAS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-24-10-2">Part (a): <span class="math notranslate nohighlight">\(24\,/\,(10 + 2)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-5-16-2-times-3">Part (b): <span class="math notranslate nohighlight">\(5 + 16\,/\, 2 \times 3\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-32-6-2-2">Part (c): <span class="math notranslate nohighlight">\([32 \,/\, (6 + 2)]^2\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-chemical-calculations">Exercise 2: Chemical Calculations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-energy-of-radiation">Part 1: Energy of Radiation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-ph-calculation">Part 2: pH Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-lennard-jones-potential">Part 3: Lennard-Jones Potential</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-gibbs-free-energy-and-equilibrium">Exercise 3: Gibbs Free Energy and Equilibrium</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-calculate-equilibrium-constant-at-298-k">Part 1: Calculate Equilibrium Constant at 298 K</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-calculate-delta-h-circ-at-298-k">Part 2: Calculate <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span> at 298 K</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-ideal-gas-law">Exercise 4: Ideal Gas Law</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-calculate-pressure-in-atm">Step 1: Calculate Pressure in atm</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-convert-to-kpa">Step 2: Convert to kPa</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

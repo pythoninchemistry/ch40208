@@ -14,6 +14,7 @@
 - [Types](../python_basics/types.ipynb)
 - [Variables](../python_basics/variables.ipynb)
 - [Arithmetic](../python_basics/arithmetic.ipynb)
-- [Lists](../python_basics/lists.md)
+- [Lists](../python_basics/lists.ipynb)
+- [Loops](../python_basics/loops.ipynb)
 - [Tuples](../python_basics/tuples.ipynb)
 - [Dictionaries](../python_basics/dictionaries.ipynb)
