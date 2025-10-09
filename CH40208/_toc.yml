@@ -104,3 +104,19 @@ parts:
   - caption: Planning Your Code
     chapters:
       - file: code_schematics/code_schematics.md
+
+  - caption: Exercise Worked Examples
+    chapters:
+      - file: worked_examples/week_1_index
+        title: Week 1
+        sections:
+        - file: worked_examples/week_1_calculator
+          title: Using Python as a Calculator
+        - file: worked_examples/week_1_strings
+          title: Getting Started with Strings
+        - file: worked_examples/week_1_arithmetic
+          title: Arithmetic
+        - file: worked_examples/week_1_lists
+          title: Lists
+        - file: worked_examples/week_1_dictionaries
+          title: Dictionaries
