@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using Python as a calculator &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Advanced Loop Control &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -58,13 +58,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/using_Python_as_a_calculator';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/advanced_loop_control';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Getting started with strings" href="getting_started_with_strings.html" />
-    <link rel="prev" title="Why We Encourage Typing Out the Code Examples" href="why_we_encourage_typing_out_the_code_examples.html" />
+    <link rel="next" title="NumPy" href="../working_with_data/numpy_arrays.html" />
+    <link rel="prev" title="Comparisons and Flow Control" href="comparisons_and_flow_control.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -207,7 +205,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
 <li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
@@ -226,7 +224,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advanced_loop_control.html">Advanced Loop Control</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Advanced Loop Control</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
 <ul class="nav bd-sidenav">
@@ -366,7 +364,7 @@
       
       
       
-      <li><a href="../_sources/python_basics/using_Python_as_a_calculator.ipynb" target="_blank"
+      <li><a href="../_sources/python_basics/advanced_loop_control.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -450,7 +448,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Using Python as a calculator</h1>
+    <h1>Advanced Loop Control</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -460,10 +458,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-2-2">Calculating 2+2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-arithmetic">Simple arithmetic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-functions">Mathematical functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-cooling-to-room-temperature">Example: Cooling to Room Temperature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-and-break"><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-temperature-dependent-reaction-rate-study">Exercise 1: Temperature-Dependent Reaction Rate Study</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convergence-with-iteration-limit">Exercise 2: Convergence with Iteration Limit</a></li>
 </ul>
             </nav>
         </div>
@@ -475,315 +479,151 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="using-python-as-a-calculator">
-<h1>Using Python as a calculator<a class="headerlink" href="#using-python-as-a-calculator" title="Link to this heading">#</a></h1>
-<section id="calculating-2-2">
-<h2>Calculating 2+2<a class="headerlink" href="#calculating-2-2" title="Link to this heading">#</a></h2>
-<p>One of the simplest uses of Python is as a calculator.</p>
-<p>Open a new Notebook and enter into a <strong>code cell</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
-</pre></div>
-</div>
-<p>If you run this cell you should get something that looks like the screenshot below.</p>
-<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/two_plus_two.png" /></p>
-<p>The cell has run (indicated by the number 1 to the left of the cell), and the “code” has produced a result, which is printed below the cell.
-Beneath that you get a new, empty cell for your next piece of code.</p>
-<p>Within this course book, cells that have been run are rendered as follows:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="advanced-loop-control">
+<h1>Advanced Loop Control<a class="headerlink" href="#advanced-loop-control" title="Link to this heading">#</a></h1>
+<section id="while-loops">
+<h2><code class="docutils literal notranslate"><span class="pre">while</span></code> loops<a class="headerlink" href="#while-loops" title="Link to this heading">#</a></h2>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, Python also provides <code class="docutils literal notranslate"><span class="pre">while</span></code> loops for situations where you want to repeat a block of code as long as a condition is true.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is particularly useful when you don’t know in advance how many iterations you’ll need - you just know when to stop.</p>
+<section id="example-cooling-to-room-temperature">
+<h3>Example: Cooling to Room Temperature<a class="headerlink" href="#example-cooling-to-room-temperature" title="Link to this heading">#</a></h3>
+<p>Imagine a hot beaker cooling down to room temperature. The beaker loses 10% of the temperature difference with its surroundings in each time step. We want to simulate this cooling process until the beaker is within 0.5°C of room temperature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">100.0</span>  <span class="c1"># Starting temperature in °C</span>
+<span class="n">room_temperature</span> <span class="o">=</span> <span class="mf">20.0</span>  <span class="c1"># Ambient temperature in °C</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Stop when within 0.5°C of room temp</span>
+<span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+    <span class="c1"># Cool by 10% of the temperature difference each step</span>
+    <span class="n">temperature_difference</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">temperature_difference</span>
+    <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">: Temperature = </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Thermal equilibrium reached after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final temperature: </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 1: Temperature = 92.00°C
+Step 2: Temperature = 84.80°C
+Step 3: Temperature = 78.32°C
+Step 4: Temperature = 72.49°C
+Step 5: Temperature = 67.24°C
+Step 6: Temperature = 62.52°C
+Step 7: Temperature = 58.26°C
+Step 8: Temperature = 54.44°C
+Step 9: Temperature = 50.99°C
+Step 10: Temperature = 47.89°C
+Step 11: Temperature = 45.10°C
+Step 12: Temperature = 42.59°C
+Step 13: Temperature = 40.33°C
+Step 14: Temperature = 38.30°C
+Step 15: Temperature = 36.47°C
+Step 16: Temperature = 34.82°C
+Step 17: Temperature = 33.34°C
+Step 18: Temperature = 32.01°C
+Step 19: Temperature = 30.81°C
+Step 20: Temperature = 29.73°C
+Step 21: Temperature = 28.75°C
+Step 22: Temperature = 27.88°C
+Step 23: Temperature = 27.09°C
+Step 24: Temperature = 26.38°C
+Step 25: Temperature = 25.74°C
+Step 26: Temperature = 25.17°C
+Step 27: Temperature = 24.65°C
+Step 28: Temperature = 24.19°C
+Step 29: Temperature = 23.77°C
+Step 30: Temperature = 23.39°C
+Step 31: Temperature = 23.05°C
+Step 32: Temperature = 22.75°C
+Step 33: Temperature = 22.47°C
+Step 34: Temperature = 22.23°C
+Step 35: Temperature = 22.00°C
+Step 36: Temperature = 21.80°C
+Step 37: Temperature = 21.62°C
+Step 38: Temperature = 21.46°C
+Step 39: Temperature = 21.31°C
+Step 40: Temperature = 21.18°C
+Step 41: Temperature = 21.06°C
+Step 42: Temperature = 20.96°C
+Step 43: Temperature = 20.86°C
+Step 44: Temperature = 20.78°C
+Step 45: Temperature = 20.70°C
+Step 46: Temperature = 20.63°C
+Step 47: Temperature = 20.57°C
+Step 48: Temperature = 20.51°C
+Step 49: Temperature = 20.46°C
+Thermal equilibrium reached after 49 steps
+Final temperature: 20.46°C
 </pre></div>
 </div>
 </div>
 </div>
-<p>You can add space between the numbers to make things easier to read:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
-<p>Or wrap the expression in brackets:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
-<p>And still get the same result.</p>
-<p>There are three core <em>types</em> of number in Python: Integers (whole numbers), real numbers, and complex numbers.
-The different <em>types</em> of number correspond to the different ways that Python can represent numeric information.</p>
+<p><strong>How this works:</strong></p>
 <ul class="simple">
-<li><p>Integers: A number without a decimal point: e.g., 1, 2, 100, 2<sup>100</sup>.</p></li>
-<li><p>Floats: A number with a decimal point. e.g., 3.14159, 12.0107, 8.3144.</p></li>
-<li><p>Complex: A number with a real and imaginary component. Python uses the symbol <code class="docutils literal notranslate"><span class="pre">j</span></code> to denote the imaginary component of a complex number. e.g., (1 + 3j), (-1 + 0j).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop continues as long as the temperature is more than 0.5°C away from room temperature</p></li>
+<li><p>Each iteration, the beaker cools by 10% of the current temperature difference</p></li>
+<li><p>The loop automatically stops when the temperature gets close enough to room temperature</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># The value &quot;1&quot; represented as an integer.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>int
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span> <span class="c1"># The value &quot;1&quot; represented as a float.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>float
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="mf">1.0</span><span class="o">+</span><span class="mf">0.0</span><span class="n">j</span><span class="p">)</span> <span class="c1"># The value &quot;1&quot; represented as a complex number.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>complex
-</pre></div>
-</div>
-</div>
-</div>
+<p><strong>Key concept:</strong> With a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, we don’t need to know in advance how many iterations it will take - the loop continues until the condition becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
 </section>
-<section id="simple-arithmetic">
-<h2>Simple arithmetic<a class="headerlink" href="#simple-arithmetic" title="Link to this heading">#</a></h2>
-<p>You are not limited to adding numbers. Try entering the following expressions into code cells and <strong>executing</strong> them (running the cells.):</p>
+</section>
+<section id="continue-and-break">
+<h2><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#continue-and-break" title="Link to this heading">#</a></h2>
+<p>Python provides additional flow control statements for controlling the behaviour of <strong>loops</strong>. For example, if a certain condition is met, we might want to jump straight to the next iteration of a loop without running the rest of the current code block, or we might want to quit the loop altogether.</p>
 <ul class="simple">
-<li><p>subtraction:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code> → jump straight to the next iteration of the loop.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code> → jump out of the loop entirely.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">-</span> <span class="mi">1</span>
-</pre></div>
-</div>
-<br>
-<ul class="simple">
-<li><p>multiplication:</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<ul class="simple">
-<li><p>powers (e.g. 4<sup>2</sup>)</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">**</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<ul class="simple">
-<li><p>division</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>In each of these examples you have combined two numbers using an <strong>operator</strong> (<code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>) to give a single <strong>expression</strong>. When you run the cell containing this expression, the expression is evaluated and the result is returned as your output.</p>
-<p>Notice that the last example gives <code class="docutils literal notranslate"><span class="pre">3.0</span></code> and not <code class="docutils literal notranslate"><span class="pre">3</span></code> as the result, even though <code class="docutils literal notranslate"><span class="pre">6</span></code> and <code class="docutils literal notranslate"><span class="pre">2</span></code> are both integers.
-The division operator (<code class="docutils literal notranslate"><span class="pre">/</span></code>) always returns a float, even when one of both of the numbers being operated on are integers.</p>
-<p>Arithmetic also works with <strong>floats</strong>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">2.0</span> <span class="o">+</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">*</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">**</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">6.0</span> <span class="o">/</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<p>And with mixtures of <strong>integers</strong> and <strong>floats</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">4.0</span> <span class="o">**</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">/</span> <span class="mf">2.0</span>
-</pre></div>
-</div>
-<br>
-<p><strong>floats</strong> can also be written without any numbers after the decimal point, e.g.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">42.</span>
-</pre></div>
-</div>
-<p>is the same as <code class="docutils literal notranslate"><span class="pre">42.0</span></code>.</p>
-<p>You can do <strong>integer division</strong> (also called <strong>floor division</strong> ) using the operator <code class="docutils literal notranslate"><span class="pre">//</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">6</span> <span class="o">//</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<p>Integer division rounds down:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">//</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<p>You can calculate the <strong>remainder</strong> of integer division using the <code class="docutils literal notranslate"><span class="pre">%</span></code> symbol (called the <strong>modulo</strong> operator).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">7</span> <span class="o">%</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">8</span> <span class="o">%</span> <span class="mi">2</span>
-</pre></div>
-</div>
-<p>Brackets can be used to specify the order of operations in more complicated expressions, according to the usual mathematical rules:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
-</pre></div>
-</div>
-<br>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-<br></section>
-<section id="mathematical-functions">
-<h2>Mathematical functions<a class="headerlink" href="#mathematical-functions" title="Link to this heading">#</a></h2>
-<p>In addition to the basic algebraic operators above, Python provides many common mathematical functions and the constants <span class="math notranslate nohighlight">\(\pi\)</span> and <span class="math notranslate nohighlight">\(\mathrm{e}\)</span> in the <code class="docutils literal notranslate"><span class="pre">math</span></code> library. This is a built-in <em>module</em> that is part of the standard Python installation, but it must be imported before use:</p>
+<p>For example, if we are iterating through the numbers 0 to 99, but want to stop if we reach 3, we can use the <code class="docutils literal notranslate"><span class="pre">break</span></code> keyword:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>To use functions or constants from the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, we prefix their names with <code class="docutils literal notranslate"><span class="pre">math.</span></code></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">break</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loop exited&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.141592653589793
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+Loop exited
 </pre></div>
 </div>
 </div>
 </div>
+<p>Alternatively we might want to count numbers but <strong>skip</strong> those divisible by 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">3</span> == 0: # `True` if i is divisible by 3
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7071067811865475
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7071067811865476
-</pre></div>
-</div>
-</div>
-</div>
-<p>For the last two examples, we have used a <strong>function call</strong>,
-which looks like the name of the function followed by a pair of parenthesis, which usually (but not always)
-then contain one or more <strong>arguments</strong> that the function operates on.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">generic_function</span><span class="p">(</span><span class="n">argument1</span><span class="p">,</span> <span class="n">argument2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Note that the trigonometic functions in <code class="docutils literal notranslate"><span class="pre">math</span></code> use radians rather than degrees.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">math</span></code> module can also be used to calculate exponentials and logarithms.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># e^2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.38905609893065
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">7.38905609893065</span><span class="p">)</span> <span class="c1"># natural log of e^2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">math.log</span></code> computes the <em>natural logarithm</em> (base <span class="math notranslate nohighlight">\(\mathrm{e}\)</span>) of the argument. If you want to calculate a base 10 logarithm you can use <code class="docutils literal notranslate"><span class="pre">math.log10</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>Python also provides a couple of useful built-in functions: <code class="docutils literal notranslate"><span class="pre">abs</span></code> and <code class="docutils literal notranslate"><span class="pre">round</span></code>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># returns the absolute value of the argument.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">round</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># rounds down to the nearest integer.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+4
+5
+7
+8
+10
+11
+13
+14
+16
+17
+19
 </pre></div>
 </div>
 </div>
@@ -791,17 +631,50 @@ then contain one or more <strong>arguments</strong> that the function operates o
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<p>After trying out the examples above, test your understanding with these exercises:</p>
-<ol class="arabic simple">
-<li><p>Calculate the volume of a sphere with a radius of 5 units. (Hint: Use <code class="docutils literal notranslate"><span class="pre">math.pi</span></code> and remember the formula is <span class="math notranslate nohighlight">\(V = \frac{4}{3} \pi r^3\)</span>).</p></li>
-<li><p>Convert 45 degrees to radians. (Hint: Use <code class="docutils literal notranslate"><span class="pre">math.radians()</span></code>)</p></li>
-<li><p>Calculate the log base 2 of 32. (Hint: You can use <code class="docutils literal notranslate"><span class="pre">math.log(x,</span> <span class="pre">base)</span></code>)</p></li>
-</ol>
+<section id="exercise-1-temperature-dependent-reaction-rate-study">
+<h3>Exercise 1: Temperature-Dependent Reaction Rate Study<a class="headerlink" href="#exercise-1-temperature-dependent-reaction-rate-study" title="Link to this heading">#</a></h3>
+<p><strong>Problem:</strong> You are investigating how reaction rate changes with temperature. Your automated system heats a reaction vessel from 20°C to 100°C in 8°C increments, taking a measurement at each temperature.</p>
+<p>Write a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop that:</p>
 <ul class="simple">
-<li><p>Remember to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code> before using any math functions.</p></li>
-<li><p>Be aware that 5/2 gives a float result (2.5), while 5//2 gives an integer result (2).</p></li>
-<li><p>Python follows the standard order of operations (BODMAS). Use parentheses when in doubt.</p></li>
+<li><p>Starts with <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">=</span> <span class="pre">20</span></code> (°C)</p></li>
+<li><p>Takes a measurement (just print the temperature for now)</p></li>
+<li><p>Increases temperature by 8°C</p></li>
+<li><p>Continues until temperature reaches or exceeds 100°C</p></li>
 </ul>
+<p>Print each measurement temperature and count the total number of measurements taken.</p>
+<p><strong>Expected output format:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Measurement 1: 20°C
+Measurement 2: 28°C
+Measurement 3: 36°C
+...
+Completed X measurements from 20°C to Y°C
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exercise-2-convergence-with-iteration-limit">
+<h2>Exercise 2: Convergence with Iteration Limit<a class="headerlink" href="#exercise-2-convergence-with-iteration-limit" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> The cooling simulation from the example converges relatively quickly because it loses 10% of the temperature difference each step. However, if the cooling rate is slower, convergence can take many iterations.</p>
+<p>Modify the simulation to use a slower cooling rate (only 2% per step instead of 10%). This is more realistic for a well-insulated vessel. However, since convergence is now much slower, add an iteration limit of 100 steps. If equilibrium isn’t reached within 100 steps, stop and report that more time is needed.</p>
+<p><strong>Starting code:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">100.0</span>  <span class="c1"># Starting temperature in °C</span>
+<span class="n">room_temperature</span> <span class="o">=</span> <span class="mf">20.0</span>  <span class="c1"># Ambient temperature in °C</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Stop when within 0.5°C of room temp</span>
+<span class="n">cooling_rate</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># Cool by 2% per step</span>
+<span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">while</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+    <span class="c1"># Cool by 2% of the temperature difference each step</span>
+    <span class="n">temperature_difference</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">cooling_rate</span> <span class="o">*</span> <span class="n">temperature_difference</span>
+    <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">: Temperature = </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Thermal equilibrium reached after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -836,20 +709,20 @@ then contain one or more <strong>arguments</strong> that the function operates o
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="why_we_encourage_typing_out_the_code_examples.html"
+       href="comparisons_and_flow_control.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Why We Encourage Typing Out the Code Examples</p>
+        <p class="prev-next-title">Comparisons and Flow Control</p>
       </div>
     </a>
     <a class="right-next"
-       href="getting_started_with_strings.html"
+       href="../working_with_data/numpy_arrays.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Getting started with strings</p>
+        <p class="prev-next-title">NumPy</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -869,10 +742,16 @@ then contain one or more <strong>arguments</strong> that the function operates o
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-2-2">Calculating 2+2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-arithmetic">Simple arithmetic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-functions">Mathematical functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-cooling-to-room-temperature">Example: Cooling to Room Temperature</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-and-break"><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-temperature-dependent-reaction-rate-study">Exercise 1: Temperature-Dependent Reaction Rate Study</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convergence-with-iteration-limit">Exercise 2: Convergence with Iteration Limit</a></li>
 </ul>
   </nav></div>
 

@@ -63,7 +63,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/comparisons_and_flow_control';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="NumPy" href="../working_with_data/numpy_arrays.html" />
+    <link rel="next" title="Advanced Loop Control" href="advanced_loop_control.html" />
     <link rel="prev" title="Functions" href="functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -226,6 +226,7 @@
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_loop_control.html">Advanced Loop Control</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
 <ul class="nav bd-sidenav">
@@ -469,7 +470,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">if … else</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-and-break"><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fizzbuzz">1. Fizzbuzz</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-liquid-or-gas">2. Solid, liquid, or gas?</a></li>
@@ -1015,64 +1015,6 @@ If <strong>neither</strong> A <strong>nor</strong> B are <strong>true</strong> d
 </div>
 </section>
 </section>
-<section id="continue-and-break">
-<h2><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#continue-and-break" title="Link to this heading">#</a></h2>
-<p>Python provides additional flow control statements for controlling the behaviour of <strong>loops</strong>. For example, if a certain condition is met we might want to jump straight to the next iteration of a loop without running the rest of the current code block, or we might want to quit the loop all together.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code> → jump straight to the next iteration of the loop.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code> → jump out of the loop entirely.</p></li>
-</ul>
-<p>For example, if we are iterating through the numbers 0 to 99, but want to stop if we reach 3, we can use the <code class="docutils literal notranslate"><span class="pre">break</span></code> keyword:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
-        <span class="k">break</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loop exited&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
-1
-2
-3
-Loop exited
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">range()</span></code> function used here provides us with a <strong>range</strong> of numbers that we can iterate through. <code class="docutils literal notranslate"><span class="pre">range(X)</span></code> gives the sequence of numbers from 0 to <em>X</em>-1; which is analgous to how list indexing works in Python.</p>
-<p>Alternatively we might want to count numbers but <strong>skip</strong> those divisible by 3.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">3</span> == 0: # `True` if i is divisible by 3
-        <span class="k">continue</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-2
-4
-5
-7
-8
-10
-11
-13
-14
-16
-17
-19
-</pre></div>
-</div>
-</div>
-</div>
-</section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <section id="fizzbuzz">
@@ -1132,11 +1074,11 @@ Loop exited
       </div>
     </a>
     <a class="right-next"
-       href="../working_with_data/numpy_arrays.html"
+       href="advanced_loop_control.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NumPy</p>
+        <p class="prev-next-title">Advanced Loop Control</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1166,7 +1108,6 @@ Loop exited
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">if … else</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-and-break"><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fizzbuzz">1. Fizzbuzz</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-liquid-or-gas">2. Solid, liquid, or gas?</a></li>
