@@ -481,6 +481,20 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="advanced-loop-control">
 <h1>Advanced Loop Control<a class="headerlink" href="#advanced-loop-control" title="Link to this heading">#</a></h1>
+<p>In the <a class="reference internal" href="loops.html"><span class="std std-doc">Loops</span></a> section, you learnt how to use <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to iterate over sequences. In the <a class="reference internal" href="comparisons_and_flow_control.html"><span class="std std-doc">Comparisons and Flow Control</span></a> section, you learnt how to use <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to make decisions in your code. Now we’ll combine these concepts and introduce some more advanced loop control structures.</p>
+<p>This section covers:</p>
+<ul class="simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</strong>: loops that continue until a condition is no longer true</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">break</span></code></strong>: exiting a loop early</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">continue</span></code></strong>: skipping to the next iteration of a loop</p></li>
+</ul>
+<p>These tools are particularly useful in computational chemistry for iterative algorithms that need to run until convergence, or for processing datasets where you need to skip invalid data or stop when certain conditions are met.</p>
+<p><strong>Prerequisites:</strong> Before working through this section, make sure you’re comfortable with:</p>
+<ul class="simple">
+<li><p>Basic <code class="docutils literal notranslate"><span class="pre">for</span></code> loops and <code class="docutils literal notranslate"><span class="pre">range()</span></code> (from <a class="reference internal" href="loops.html"><span class="std std-doc">Loops</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code>/<code class="docutils literal notranslate"><span class="pre">elif</span></code>/<code class="docutils literal notranslate"><span class="pre">else</span></code> statements (from <a class="reference internal" href="comparisons_and_flow_control.html"><span class="std std-doc">Comparisons and Flow Control</span></a>)</p></li>
+<li><p>Comparison operators (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, etc.)</p></li>
+</ul>
 <section id="while-loops">
 <h2><code class="docutils literal notranslate"><span class="pre">while</span></code> loops<a class="headerlink" href="#while-loops" title="Link to this heading">#</a></h2>
 <p>In addition to <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, Python also provides <code class="docutils literal notranslate"><span class="pre">while</span></code> loops for situations where you want to repeat a block of code as long as a condition is true.</p>
