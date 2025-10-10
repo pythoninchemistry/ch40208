@@ -465,9 +465,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-and-break"><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-temperature-dependent-reaction-rate-study">Exercise 1: Temperature-Dependent Reaction Rate Study</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convergence-with-iteration-limit">Exercise 2: Convergence with Iteration Limit</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convergence-with-iteration-limit">Exercise 2: Convergence with Iteration Limit</a></li>
 </ul>
             </nav>
         </div>
@@ -651,10 +651,9 @@ Completed X measurements from 20°C to Y°C
 </pre></div>
 </div>
 </section>
-</section>
 <hr class="docutils" />
 <section id="exercise-2-convergence-with-iteration-limit">
-<h2>Exercise 2: Convergence with Iteration Limit<a class="headerlink" href="#exercise-2-convergence-with-iteration-limit" title="Link to this heading">#</a></h2>
+<h3>Exercise 2: Convergence with Iteration Limit<a class="headerlink" href="#exercise-2-convergence-with-iteration-limit" title="Link to this heading">#</a></h3>
 <p><strong>Problem:</strong> The cooling simulation from the example converges relatively quickly because it loses 10% of the temperature difference each step. However, if the cooling rate is slower, convergence can take many iterations.</p>
 <p>Modify the simulation to use a slower cooling rate (only 2% per step instead of 10%). This is more realistic for a well-insulated vessel. However, since convergence is now much slower, add an iteration limit of 100 steps. If equilibrium isn’t reached within 100 steps, stop and report that more time is needed.</p>
 <p><strong>Starting code:</strong></p>
@@ -675,6 +674,7 @@ Completed X measurements from 20°C to Y°C
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Thermal equilibrium reached after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
 </section>
 </section>
 
@@ -749,9 +749,9 @@ Completed X measurements from 20°C to Y°C
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#continue-and-break"><code class="docutils literal notranslate"><span class="pre">continue</span></code> and <code class="docutils literal notranslate"><span class="pre">break</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-temperature-dependent-reaction-rate-study">Exercise 1: Temperature-Dependent Reaction Rate Study</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convergence-with-iteration-limit">Exercise 2: Convergence with Iteration Limit</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convergence-with-iteration-limit">Exercise 2: Convergence with Iteration Limit</a></li>
 </ul>
   </nav></div>
 
