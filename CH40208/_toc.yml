@@ -119,5 +119,7 @@ parts:
           title: Arithmetic
         - file: worked_examples/week_1_lists
           title: Lists
+        - file: worked_examples/week_1_loops
+          title: Loops
         - file: worked_examples/week_1_dictionaries
           title: Dictionaries
