@@ -120,3 +120,8 @@ parts:
           title: Lists
         - file: worked_examples/week_1_dictionaries
           title: Dictionaries
+      - file: worked_examples/week_2_index
+        title: Week 2
+        sections:
+        - file: worked_examples/week_2_functions
+          title: Functions
