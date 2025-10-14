@@ -3,6 +3,7 @@
 Worked solutions for Week 2 exercises:
 
 - [Functions](week_1_functions.ipynb)
+- [Comparisons and Flow Control](week_2_comparisons_and_flow_control.ipynb)
 
 **How to use these worked examples:**
 - Try each exercise yourself first before looking at the solution

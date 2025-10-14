@@ -128,3 +128,5 @@ parts:
         sections:
         - file: worked_examples/week_2_functions
           title: Functions
+        - file: worked_examples/week_2_comparisons_and_flow_control
+          title: Comparisons and Flow Control
