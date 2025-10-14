@@ -39,6 +39,7 @@ parts:
         - file: python_basics/iterating_over_dictionaries
       - file: python_basics/functions
       - file: python_basics/comparisons_and_flow_control
+      - file: python_basics/advanced_loop_control
   - caption: Working with Data
     chapters:
       - file: working_with_data/numpy_arrays
@@ -118,6 +119,8 @@ parts:
           title: Arithmetic
         - file: worked_examples/week_1_lists
           title: Lists
+        - file: worked_examples/week_1_loops
+          title: Loops
         - file: worked_examples/week_1_dictionaries
           title: Dictionaries
       - file: worked_examples/week_2_index
