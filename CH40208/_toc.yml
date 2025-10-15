@@ -42,9 +42,18 @@ parts:
       - file: python_basics/advanced_loop_control
   - caption: Working with Data
     chapters:
-      - file: working_with_data/numpy_arrays
+      - file: working_with_data/numpy/intro
         sections:
-        - file: working_with_data/more_numpy_functions
+        - file: working_with_data/numpy/basics
+        - file: working_with_data/numpy/operations
+        - file: working_with_data/numpy/exercises
+
+        # EXPANSION PAGES (uncomment when ready)
+        # - file: working_with_data/numpy/advanced_indexing
+        # - file: working_with_data/numpy/functions
+        # - file: working_with_data/numpy/chemistry
+        # - file: working_with_data/numpy/reference
+        #
       - file: working_with_data/plotting
       - file: working_with_data/file_io
       - file: working_with_data/synoptic_exercises
