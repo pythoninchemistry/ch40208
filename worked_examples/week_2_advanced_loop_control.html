@@ -1,0 +1,1084 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worked Examples: Advanced Loop Control &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worked_examples/week_2_advanced_loop_control';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy_arrays.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/more_numpy_functions.html">More NumPy functions</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/plotting.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_1_index.html">Week 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_dictionaries.html">Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_2_index.html">Week 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_2_functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_2_comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/worked_examples/week_2_advanced_loop_control.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worked Examples: Advanced Loop Control</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-temperature-dependent-reaction-rate-study">Exercise 1: Temperature-Dependent Reaction Rate Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convergence-with-iteration-limit">Exercise 2: Convergence with Iteration Limit</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worked-examples-advanced-loop-control">
+<h1>Worked Examples: Advanced Loop Control<a class="headerlink" href="#worked-examples-advanced-loop-control" title="Link to this heading">#</a></h1>
+<p>These worked solutions correspond to the exercises on the <a class="reference internal" href="../python_basics/advanced_loop_control.html"><span class="std std-doc">Advanced Loop Control</span></a> page.</p>
+<p><strong>How to use this notebook:</strong></p>
+<ul class="simple">
+<li><p>Try each exercise yourself first before looking at the solution</p></li>
+<li><p>The code cells show both the code and its output</p></li>
+<li><p>Download this notebook if you want to run and experiment with the code yourself</p></li>
+<li><p>Your solution might look different - that’s fine as long as it gives the correct answer!</p></li>
+</ul>
+<section id="exercise-1-temperature-dependent-reaction-rate-study">
+<h2>Exercise 1: Temperature-Dependent Reaction Rate Study<a class="headerlink" href="#exercise-1-temperature-dependent-reaction-rate-study" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> You are investigating how reaction rate changes with temperature. Your automated system heats a reaction vessel from 20°C to 100°C in 8°C increments, taking a measurement at each temperature.</p>
+<p>Write a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop that:</p>
+<ul class="simple">
+<li><p>Starts with <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">=</span> <span class="pre">20</span></code> (°C)</p></li>
+<li><p>Takes a measurement (just print the temperature for now)</p></li>
+<li><p>Increases temperature by 8°C</p></li>
+<li><p>Continues until temperature reaches or exceeds 100°C</p></li>
+</ul>
+<p>Print each measurement temperature and count the total number of measurements taken.</p>
+<p><strong>Solution:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># Starting temperature in °C</span>
+<span class="n">increment</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># Temperature increase per step</span>
+<span class="n">measurement_count</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Counter for measurements</span>
+
+<span class="k">while</span> <span class="n">temperature</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+    <span class="n">measurement_count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Measurement </span><span class="si">{</span><span class="n">measurement_count</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">temperature</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+    <span class="n">temperature</span> <span class="o">+=</span> <span class="n">increment</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Completed </span><span class="si">{</span><span class="n">measurement_count</span><span class="si">}</span><span class="s2"> measurements from 20°C to </span><span class="si">{</span><span class="n">temperature</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">increment</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Measurement 1: 20°C
+Measurement 2: 28°C
+Measurement 3: 36°C
+Measurement 4: 44°C
+Measurement 5: 52°C
+Measurement 6: 60°C
+Measurement 7: 68°C
+Measurement 8: 76°C
+Measurement 9: 84°C
+Measurement 10: 92°C
+Measurement 11: 100°C
+
+Completed 11 measurements from 20°C to 100°C
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>How this works:</strong></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop continues as long as <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">&lt;=</span> <span class="pre">100</span></code></p></li>
+<li><p>Each iteration:</p>
+<ul>
+<li><p>We increment the measurement counter</p></li>
+<li><p>Print the current temperature</p></li>
+<li><p>Increase the temperature by 8°C</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Note:</strong> The final <code class="docutils literal notranslate"><span class="pre">print</span></code> statement shows the last measurement temperature (<code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">-</span> <span class="pre">increment</span></code>) rather than the current value of <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, which is increased to 108°C in the final loop iteration.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>108
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="exercise-2-convergence-with-iteration-limit">
+<h2>Exercise 2: Convergence with Iteration Limit<a class="headerlink" href="#exercise-2-convergence-with-iteration-limit" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> The cooling simulation from the example converges relatively quickly because it loses 10% of the temperature difference each step. However, if the cooling rate is slower, convergence can take many iterations.</p>
+<p>Modify the simulation to use a slower cooling rate (only 2% per step instead of 10%). This is more realistic for a well-insulated vessel. However, since convergence is now much slower, add an iteration limit of 100 steps. If equilibrium isn’t reached within 100 steps, stop and report that more time is needed.</p>
+<p><strong>Solution:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">100.0</span>  <span class="c1"># Starting temperature in °C</span>
+<span class="n">room_temperature</span> <span class="o">=</span> <span class="mf">20.0</span>  <span class="c1"># Ambient temperature in °C</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Stop when within 0.5°C of room temp</span>
+<span class="n">cooling_rate</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># Cool by 2% per step</span>
+<span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Check if we&#39;re already at equilibrium before starting the loop</span>
+<span class="n">converged</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span> <span class="o">&lt;=</span> <span class="n">threshold</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">converged</span> <span class="ow">and</span> <span class="n">iteration</span> <span class="o">&lt;</span> <span class="n">max_iterations</span><span class="p">:</span>
+    <span class="c1"># Cool by 2% of the temperature difference each step</span>
+    <span class="n">temperature_difference</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">cooling_rate</span> <span class="o">*</span> <span class="n">temperature_difference</span>
+    <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">: Temperature = </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Check if we&#39;ve reached equilibrium</span>
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="n">converged</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Report results based on whether convergence was achieved</span>
+<span class="k">if</span> <span class="n">converged</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Thermal equilibrium reached after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final temperature: </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iteration limit reached after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current temperature: </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C (still </span><span class="si">{</span><span class="n">temperature</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">room_temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C above room temperature)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 1: Temperature = 98.40°C
+Step 2: Temperature = 96.83°C
+Step 3: Temperature = 95.30°C
+Step 4: Temperature = 93.79°C
+Step 5: Temperature = 92.31°C
+Step 6: Temperature = 90.87°C
+Step 7: Temperature = 89.45°C
+Step 8: Temperature = 88.06°C
+Step 9: Temperature = 86.70°C
+Step 10: Temperature = 85.37°C
+Step 11: Temperature = 84.06°C
+Step 12: Temperature = 82.78°C
+Step 13: Temperature = 81.52°C
+Step 14: Temperature = 80.29°C
+Step 15: Temperature = 79.09°C
+Step 16: Temperature = 77.90°C
+Step 17: Temperature = 76.75°C
+Step 18: Temperature = 75.61°C
+Step 19: Temperature = 74.50°C
+Step 20: Temperature = 73.41°C
+Step 21: Temperature = 72.34°C
+Step 22: Temperature = 71.29°C
+Step 23: Temperature = 70.27°C
+Step 24: Temperature = 69.26°C
+Step 25: Temperature = 68.28°C
+Step 26: Temperature = 67.31°C
+Step 27: Temperature = 66.37°C
+Step 28: Temperature = 65.44°C
+Step 29: Temperature = 64.53°C
+Step 30: Temperature = 63.64°C
+Step 31: Temperature = 62.77°C
+Step 32: Temperature = 61.91°C
+Step 33: Temperature = 61.07°C
+Step 34: Temperature = 60.25°C
+Step 35: Temperature = 59.45°C
+Step 36: Temperature = 58.66°C
+Step 37: Temperature = 57.88°C
+Step 38: Temperature = 57.13°C
+Step 39: Temperature = 56.38°C
+Step 40: Temperature = 55.66°C
+Step 41: Temperature = 54.94°C
+Step 42: Temperature = 54.24°C
+Step 43: Temperature = 53.56°C
+Step 44: Temperature = 52.89°C
+Step 45: Temperature = 52.23°C
+Step 46: Temperature = 51.59°C
+Step 47: Temperature = 50.95°C
+Step 48: Temperature = 50.33°C
+Step 49: Temperature = 49.73°C
+Step 50: Temperature = 49.13°C
+Step 51: Temperature = 48.55°C
+Step 52: Temperature = 47.98°C
+Step 53: Temperature = 47.42°C
+Step 54: Temperature = 46.87°C
+Step 55: Temperature = 46.33°C
+Step 56: Temperature = 45.81°C
+Step 57: Temperature = 45.29°C
+Step 58: Temperature = 44.79°C
+Step 59: Temperature = 44.29°C
+Step 60: Temperature = 43.80°C
+Step 61: Temperature = 43.33°C
+Step 62: Temperature = 42.86°C
+Step 63: Temperature = 42.40°C
+Step 64: Temperature = 41.96°C
+Step 65: Temperature = 41.52°C
+Step 66: Temperature = 41.09°C
+Step 67: Temperature = 40.67°C
+Step 68: Temperature = 40.25°C
+Step 69: Temperature = 39.85°C
+Step 70: Temperature = 39.45°C
+Step 71: Temperature = 39.06°C
+Step 72: Temperature = 38.68°C
+Step 73: Temperature = 38.31°C
+Step 74: Temperature = 37.94°C
+Step 75: Temperature = 37.58°C
+Step 76: Temperature = 37.23°C
+Step 77: Temperature = 36.88°C
+Step 78: Temperature = 36.55°C
+Step 79: Temperature = 36.22°C
+Step 80: Temperature = 35.89°C
+Step 81: Temperature = 35.57°C
+Step 82: Temperature = 35.26°C
+Step 83: Temperature = 34.96°C
+Step 84: Temperature = 34.66°C
+Step 85: Temperature = 34.37°C
+Step 86: Temperature = 34.08°C
+Step 87: Temperature = 33.80°C
+Step 88: Temperature = 33.52°C
+Step 89: Temperature = 33.25°C
+Step 90: Temperature = 32.98°C
+Step 91: Temperature = 32.73°C
+Step 92: Temperature = 32.47°C
+Step 93: Temperature = 32.22°C
+Step 94: Temperature = 31.98°C
+Step 95: Temperature = 31.74°C
+Step 96: Temperature = 31.50°C
+Step 97: Temperature = 31.27°C
+Step 98: Temperature = 31.05°C
+Step 99: Temperature = 30.83°C
+Step 100: Temperature = 30.61°C
+
+Iteration limit reached after 100 steps
+Current temperature: 30.61°C (still 10.61°C above room temperature)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>How this works:</strong></p>
+<p><strong>1. The <code class="docutils literal notranslate"><span class="pre">converged</span></code> flag:</strong></p>
+<ul class="simple">
+<li><p>Initialised before the loop by checking if we’re already at equilibrium</p></li>
+<li><p>This handles the edge case where <code class="docutils literal notranslate"><span class="pre">temperature</span></code> might already be at room temperature</p></li>
+<li><p>Updated inside the loop when the threshold is reached</p></li>
+</ul>
+<p><strong>2. The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop has two conditions connected by <code class="docutils literal notranslate"><span class="pre">and</span></code>:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">converged</span></code> - continue if we haven’t reached equilibrium</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iteration</span> <span class="pre">&lt;</span> <span class="pre">max_iterations</span></code> - but stop if we exceed the iteration limit</p></li>
+<li><p>The loop continues only while <strong>both</strong> conditions are <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+</ul>
+<p><strong>3. How the loop can exit:</strong></p>
+<ul class="simple">
+<li><p><strong>Natural convergence:</strong> When <code class="docutils literal notranslate"><span class="pre">converged</span> <span class="pre">=</span> <span class="pre">True</span></code> is set inside the loop, the condition <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">converged</span></code> becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>, and the loop exits</p></li>
+<li><p><strong>Iteration limit:</strong> When <code class="docutils literal notranslate"><span class="pre">iteration</span></code> reaches <code class="docutils literal notranslate"><span class="pre">max_iterations</span></code>, the condition <code class="docutils literal notranslate"><span class="pre">iteration</span> <span class="pre">&lt;</span> <span class="pre">max_iterations</span></code> becomes <code class="docutils literal notranslate"><span class="pre">False</span></code>, and the loop exits</p></li>
+</ul>
+<p><strong>4. After the loop:</strong></p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">converged</span></code> flag tells us definitively whether equilibrium was achieved</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">converged</span> <span class="pre">=</span> <span class="pre">True</span></code>: loop exited because threshold was met (success)</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">converged</span> <span class="pre">=</span> <span class="pre">False</span></code>: loop exited because iteration limit was reached</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">100.0</span>  <span class="c1"># Starting temperature in °C</span>
+<span class="n">room_temperature</span> <span class="o">=</span> <span class="mf">20.0</span>  <span class="c1"># Ambient temperature in °C</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Stop when within 0.5°C of room temp</span>
+<span class="n">cooling_rate</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># Cool by 2% per step</span>
+<span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">converged</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span> <span class="o">&lt;=</span> <span class="n">threshold</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">converged</span> <span class="ow">and</span> <span class="n">iteration</span> <span class="o">&lt;</span> <span class="n">max_iterations</span><span class="p">:</span>
+    <span class="c1"># Cool by 2% of the temperature difference each step</span>
+    <span class="n">temperature_difference</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">cooling_rate</span> <span class="o">*</span> <span class="n">temperature_difference</span>
+    <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">: Temperature = </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span> <span class="o">&lt;=</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="n">converged</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Report results based on whether convergence was achieved</span>
+<span class="k">if</span> <span class="n">converged</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Thermal equilibrium reached after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final temperature: </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Iteration limit reached after </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2"> steps&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current temperature: </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C (still </span><span class="si">{</span><span class="n">temperature</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">room_temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C above room temperature)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;More time needed for thermal equilibrium&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Step 1: Temperature = 98.40°C
+Step 2: Temperature = 96.83°C
+Step 3: Temperature = 95.30°C
+Step 4: Temperature = 93.79°C
+Step 5: Temperature = 92.31°C
+Step 6: Temperature = 90.87°C
+Step 7: Temperature = 89.45°C
+Step 8: Temperature = 88.06°C
+Step 9: Temperature = 86.70°C
+Step 10: Temperature = 85.37°C
+Step 11: Temperature = 84.06°C
+Step 12: Temperature = 82.78°C
+Step 13: Temperature = 81.52°C
+Step 14: Temperature = 80.29°C
+Step 15: Temperature = 79.09°C
+Step 16: Temperature = 77.90°C
+Step 17: Temperature = 76.75°C
+Step 18: Temperature = 75.61°C
+Step 19: Temperature = 74.50°C
+Step 20: Temperature = 73.41°C
+Step 21: Temperature = 72.34°C
+Step 22: Temperature = 71.29°C
+Step 23: Temperature = 70.27°C
+Step 24: Temperature = 69.26°C
+Step 25: Temperature = 68.28°C
+Step 26: Temperature = 67.31°C
+Step 27: Temperature = 66.37°C
+Step 28: Temperature = 65.44°C
+Step 29: Temperature = 64.53°C
+Step 30: Temperature = 63.64°C
+Step 31: Temperature = 62.77°C
+Step 32: Temperature = 61.91°C
+Step 33: Temperature = 61.07°C
+Step 34: Temperature = 60.25°C
+Step 35: Temperature = 59.45°C
+Step 36: Temperature = 58.66°C
+Step 37: Temperature = 57.88°C
+Step 38: Temperature = 57.13°C
+Step 39: Temperature = 56.38°C
+Step 40: Temperature = 55.66°C
+Step 41: Temperature = 54.94°C
+Step 42: Temperature = 54.24°C
+Step 43: Temperature = 53.56°C
+Step 44: Temperature = 52.89°C
+Step 45: Temperature = 52.23°C
+Step 46: Temperature = 51.59°C
+Step 47: Temperature = 50.95°C
+Step 48: Temperature = 50.33°C
+Step 49: Temperature = 49.73°C
+Step 50: Temperature = 49.13°C
+Step 51: Temperature = 48.55°C
+Step 52: Temperature = 47.98°C
+Step 53: Temperature = 47.42°C
+Step 54: Temperature = 46.87°C
+Step 55: Temperature = 46.33°C
+Step 56: Temperature = 45.81°C
+Step 57: Temperature = 45.29°C
+Step 58: Temperature = 44.79°C
+Step 59: Temperature = 44.29°C
+Step 60: Temperature = 43.80°C
+Step 61: Temperature = 43.33°C
+Step 62: Temperature = 42.86°C
+Step 63: Temperature = 42.40°C
+Step 64: Temperature = 41.96°C
+Step 65: Temperature = 41.52°C
+Step 66: Temperature = 41.09°C
+Step 67: Temperature = 40.67°C
+Step 68: Temperature = 40.25°C
+Step 69: Temperature = 39.85°C
+Step 70: Temperature = 39.45°C
+Step 71: Temperature = 39.06°C
+Step 72: Temperature = 38.68°C
+Step 73: Temperature = 38.31°C
+Step 74: Temperature = 37.94°C
+Step 75: Temperature = 37.58°C
+Step 76: Temperature = 37.23°C
+Step 77: Temperature = 36.88°C
+Step 78: Temperature = 36.55°C
+Step 79: Temperature = 36.22°C
+Step 80: Temperature = 35.89°C
+Step 81: Temperature = 35.57°C
+Step 82: Temperature = 35.26°C
+Step 83: Temperature = 34.96°C
+Step 84: Temperature = 34.66°C
+Step 85: Temperature = 34.37°C
+Step 86: Temperature = 34.08°C
+Step 87: Temperature = 33.80°C
+Step 88: Temperature = 33.52°C
+Step 89: Temperature = 33.25°C
+Step 90: Temperature = 32.98°C
+Step 91: Temperature = 32.73°C
+Step 92: Temperature = 32.47°C
+Step 93: Temperature = 32.22°C
+Step 94: Temperature = 31.98°C
+Step 95: Temperature = 31.74°C
+Step 96: Temperature = 31.50°C
+Step 97: Temperature = 31.27°C
+Step 98: Temperature = 31.05°C
+Step 99: Temperature = 30.83°C
+Step 100: Temperature = 30.61°C
+
+Iteration limit reached after 100 steps
+Current temperature: 30.61°C (still 10.61°C above room temperature)
+More time needed for thermal equilibrium
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Alternative Solution: Using <code class="docutils literal notranslate"><span class="pre">break</span></code></strong></p>
+<p>An alternative approach uses <code class="docutils literal notranslate"><span class="pre">break</span></code> to exit the loop early when the iteration limit is reached. This separates the two exit conditions rather than combining them in the <code class="docutils literal notranslate"><span class="pre">while</span></code> statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">100.0</span>  <span class="c1"># Starting temperature in °C</span>
+<span class="n">room_temperature</span> <span class="o">=</span> <span class="mf">20.0</span>  <span class="c1"># Ambient temperature in °C</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Stop when within 0.5°C of room temp</span>
+<span class="n">cooling_rate</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># Cool by 2% per step</span>
+<span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="c1"># Assume we will converge. </span>
+<span class="c1"># Set to False inside the loop if we reach the break condition.</span>
+<span class="n">converged</span> <span class="o">=</span> <span class="kc">True</span>  
+
+<span class="k">while</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
+    <span class="c1"># Cool by 2% of the temperature difference each step</span>
+    <span class="n">temperature_difference</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">cooling_rate</span> <span class="o">*</span> <span class="n">temperature_difference</span>
+    <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">: Temperature = </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Check if we&#39;ve exceeded the iteration limit</span>
+    <span class="k">if</span> <span class="n">iteration</span> <span class="o">&gt;=</span> <span class="n">max_iterations</span><span class="p">:</span>
+        <span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># We didn&#39;t converge in time</span>
+        <span class="k">break</span>  <span class="c1"># Exit the loop early</span>
+
+<span class="c1"># code for reporting the results is the same as before</span>
+</pre></div>
+</div>
+<p>** Alternative Solution: Using a Function to Test Convergence**</p>
+<p>In the main solution, we test the convergence condition twice:</p>
+<ol class="arabic simple">
+<li><p>Before the loop: <code class="docutils literal notranslate"><span class="pre">converged</span> <span class="pre">=</span> <span class="pre">temperature</span> <span class="pre">-</span> <span class="pre">room_temperature</span> <span class="pre">&lt;=</span> <span class="pre">threshold</span></code></p></li>
+<li><p>Inside the loop: <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">temperature</span> <span class="pre">-</span> <span class="pre">room_temperature</span> <span class="pre">&lt;=</span> <span class="pre">threshold:</span></code></p></li>
+</ol>
+<p>When the same code appears multiple times, it’s good practice to define a function. This approach demonstrates the <strong>DRY principle</strong> (Don’t Repeat Yourself). In this case, it ensures that we always use the same convergence criteria. And if we want to change how convergence is defined, we only need to make these changes in one place.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_converged</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">room_temperature</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Check if the temperature has converged to within the threshold.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        temperature (float): Current temperature (°C).</span>
+<span class="sd">        room_temperature (float): Ambient temperature (°C).</span>
+<span class="sd">        threshold (float): Convergence threshold (°C).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if converged, False otherwise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span> <span class="o">&lt;=</span> <span class="n">threshold</span>
+
+
+<span class="n">temperature</span> <span class="o">=</span> <span class="mf">100.0</span>  <span class="c1"># Starting temperature in °C</span>
+<span class="n">room_temperature</span> <span class="o">=</span> <span class="mf">20.0</span>  <span class="c1"># Ambient temperature in °C</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Stop when within 0.5°C of room temp</span>
+<span class="n">cooling_rate</span> <span class="o">=</span> <span class="mf">0.02</span>  <span class="c1"># Cool by 2% per step</span>
+<span class="n">iteration</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Check if we&#39;re already at equilibrium before starting the loop</span>
+<span class="n">converged</span> <span class="o">=</span> <span class="n">is_converged</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">room_temperature</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">converged</span> <span class="ow">and</span> <span class="n">iteration</span> <span class="o">&lt;</span> <span class="n">max_iterations</span><span class="p">:</span>
+    <span class="c1"># Cool by 2% of the temperature difference each step</span>
+    <span class="n">temperature_difference</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span>
+    <span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">-</span> <span class="n">cooling_rate</span> <span class="o">*</span> <span class="n">temperature_difference</span>
+    <span class="n">iteration</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Step </span><span class="si">{</span><span class="n">iteration</span><span class="si">}</span><span class="s2">: Temperature = </span><span class="si">{</span><span class="n">temperature</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Check if we&#39;ve reached equilibrium using the same convergence testing function</span>
+    <span class="n">converged</span> <span class="o">=</span> <span class="n">is_converged</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">room_temperature</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+
+<span class="c1"># code for reporting the results is the same as before</span>
+</pre></div>
+</div>
+<p><strong>Why use a function for the convergence test?</strong></p>
+<p><strong>1. DRY Principle (Don’t Repeat Yourself):</strong></p>
+<ul class="simple">
+<li><p>The convergence condition <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">-</span> <span class="pre">room_temperature</span> <span class="pre">&lt;=</span> <span class="pre">threshold</span></code> was written twice in the original code</p></li>
+<li><p>With a function, we define the logic once and reuse it</p></li>
+<li><p>This reduces code duplication</p></li>
+</ul>
+<p><strong>2. Easier to modify:</strong></p>
+<ul class="simple">
+<li><p>If we want to change the convergence criterion (e.g., use absolute value, or a percentage-based threshold), we only need to update it in one place</p></li>
+<li><p>Without a function, we’d need to find and update every occurrence</p></li>
+</ul>
+<p><strong>3. More readable:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">is_converged(temperature,</span> <span class="pre">room_temperature,</span> <span class="pre">threshold)</span></code> reads naturally - it’s clear what we’re checking</p></li>
+<li><p>The calculation <code class="docutils literal notranslate"><span class="pre">temperature</span> <span class="pre">-</span> <span class="pre">room_temperature</span> <span class="pre">&lt;=</span> <span class="pre">threshold</span></code> requires mental parsing to understand</p></li>
+</ul>
+<p><strong>4. Easier to test:</strong></p>
+<ul class="simple">
+<li><p>We can test the convergence function independently with different inputs</p></li>
+<li><p>This is especially valuable for more complex convergence criteria</p></li>
+</ul>
+<p><strong>5. Reusability:</strong></p>
+<ul class="simple">
+<li><p>If we have multiple simulations with the same convergence criterion, we can reuse the function</p></li>
+<li><p>Promotes consistent behaviour across different parts of the code</p></li>
+</ul>
+<p><strong>Example of when this matters:</strong></p>
+<p>Suppose we later realise the convergence criterion should check the <strong>absolute</strong> temperature difference (to handle cooling <em>and</em> heating):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_converged</span><span class="p">(</span><span class="n">temperature</span><span class="p">,</span> <span class="n">room_temperature</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if temperature has converged to within threshold.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">temperature</span> <span class="o">-</span> <span class="n">room_temperature</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">threshold</span>
+</pre></div>
+</div>
+<p>With a function, this is a one-line change. Without it, we’d need to find and update both occurrences, risking mistakes if we miss one.</p>
+<p><strong>Trade-off:</strong> For very simple conditions used only 2-3 times in short code, a function might be overkill. But as code grows in complexity, extracting repeated logic into functions becomes increasingly valuable.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worked_examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-temperature-dependent-reaction-rate-study">Exercise 1: Temperature-Dependent Reaction Rate Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-convergence-with-iteration-limit">Exercise 2: Convergence with Iteration Limit</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
