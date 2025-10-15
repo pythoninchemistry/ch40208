@@ -130,3 +130,5 @@ parts:
           title: Functions
         - file: worked_examples/week_2_comparisons_and_flow_control
           title: Comparisons and Flow Control
+        - file: worked_examples/week_2_advanced_loop_control
+          title: Advanced Loop Control
