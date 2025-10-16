@@ -54,7 +54,12 @@ parts:
         # - file: working_with_data/numpy/chemistry
         # - file: working_with_data/numpy/reference
         #
-      - file: working_with_data/plotting
+      - file: working_with_data/matplotlib/intro
+        sections:
+        - file: working_with_data/matplotlib/basics
+        - file: working_with_data/matplotlib/customisation
+        - file: working_with_data/matplotlib/plotting_data
+      - file: reference/latex
       - file: working_with_data/file_io
       - file: working_with_data/synoptic_exercises
         sections:
