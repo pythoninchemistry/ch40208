@@ -119,7 +119,9 @@ parts:
   - caption: Planning Your Code
     chapters:
       - file: code_schematics/code_schematics.md
-
+  - caption: Reference
+    chapters:
+      - file: reference/adding_files_to_noteable.md
   - caption: Exercise Worked Examples
     chapters:
       - file: worked_examples/week_1_index
