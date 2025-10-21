@@ -148,3 +148,10 @@ parts:
           title: Comparisons and Flow Control
         - file: worked_examples/week_2_advanced_loop_control
           title: Advanced Loop Control
+      - file: worked_examples/week_3_index
+        title: Week 3
+        sections:
+        - file: worked_examples/week_3_numpy
+          title: NumPy
+        - file: worked_examples/week_3_synoptic_exercises
+          title: Synoptic Exercises
