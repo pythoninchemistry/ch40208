@@ -329,6 +329,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../worked_examples/week_2_advanced_loop_control.html">Advanced Loop Control</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../worked_examples/week_3_index.html">Week 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../worked_examples/week_3_numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../worked_examples/week_3_synoptic_exercises.html">Synoptic Exercises</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -559,7 +564,7 @@ document.write(`
 </section>
 <section id="exercise-3-analysis-of-experimental-data">
 <h2>Exercise 3: Analysis of Experimental Data<a class="headerlink" href="#exercise-3-analysis-of-experimental-data" title="Link to this heading">#</a></h2>
-<p>You’ve measurexd the absorbance of a solution at 540 nm over time to monitor a reaction. Here are your measurements (arbitrary units):</p>
+<p>You’ve measured the absorbance of a solution at 540 nm over time to monitor a reaction. Here are your measurements (arbitrary units):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>  <span class="c1"># minutes</span>
 <span class="n">absorbance</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.85</span><span class="p">,</span> <span class="mf">1.52</span><span class="p">,</span> <span class="mf">1.31</span><span class="p">,</span> <span class="mf">1.08</span><span class="p">,</span> <span class="mf">0.89</span><span class="p">,</span> <span class="mf">0.71</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">,</span> <span class="mf">0.49</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">,</span> <span class="mf">0.32</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">]</span>
 </pre></div>
@@ -567,9 +572,14 @@ document.write(`
 <p><strong>Tasks:</strong></p>
 <ol class="arabic simple">
 <li><p>Convert the data to NumPy arrays</p></li>
-<li><p>Calculate the mean and standard deviation of the absorbance values</p></li>
-<li><p>Calculate the change in absorbance between consecutive time points (hint: you can use array slicing like <code class="docutils literal notranslate"><span class="pre">absorbance[1:]</span> <span class="pre">-</span> <span class="pre">absorbance[:-1]</span></code>)</p></li>
-<li><p>Find the time point where the absorbance first drops below 0.5</p></li>
+<li><p>Calculate the reaction progress:</p>
+<ul class="simple">
+<li><p>Calculate the relative absorbance at each time point (as a fraction of the initial value).</p></li>
+<li><p>At what time has the absorbance decreased to half its initial value?</p></li>
+</ul>
+</li>
+<li><p>Calculate the change in absorbance between consecutive time points.</p></li>
+<li><p>Find the time point where the absorbance first drops below 0.5.</p></li>
 </ol>
 <p>Use NumPy functions and array operations where possible.</p>
 </section>
