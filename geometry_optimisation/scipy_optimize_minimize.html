@@ -670,6 +670,14 @@ document.write(`
 <p><strong>Part E: Analysis</strong></p>
 <ol class="arabic simple" start="12">
 <li><p>How many distinct minima does your scatter plot reveal? (Look for horizontal bands of points.)</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may notice points clustered near both <span class="math notranslate nohighlight">\(\theta \approx +3.14\)</span> (near <span class="math notranslate nohighlight">\(+\pi\)</span>) and <span class="math notranslate nohighlight">\(\theta \approx -3.14\)</span> (near <span class="math notranslate nohighlight">\(-\pi\)</span>). Before counting these as separate minima, remember that dihedral angles are periodic: <span class="math notranslate nohighlight">\(\theta = +\pi\)</span> and <span class="math notranslate nohighlight">\(\theta = -\pi\)</span> represent the same molecular conformation (both are 180°).</p>
+<p>Check your potential energy plot from Part A: you should see that <span class="math notranslate nohighlight">\(U(+\pi) = U(-\pi)\)</span>. These two sets of points represent convergence to the same minimum approached from different directions, not two different minima.</p>
+<p>This is a consequence of how the optimiser works: it finds a nearby minimum by following gradients, and doesn’t “wrap around” the periodic boundary. Starting from <span class="math notranslate nohighlight">\(\theta = +2\)</span> radians naturally leads to the minimum expressed as <span class="math notranslate nohighlight">\(\theta \approx +\pi\)</span>, whilst starting from <span class="math notranslate nohighlight">\(\theta = -2\)</span> radians leads to the same minimum expressed as <span class="math notranslate nohighlight">\(\theta \approx -\pi\)</span>.</p>
+</div>
+<ol class="arabic simple" start="13">
 <li><p>For each minimum, estimate the range of starting angles that lead to that minimum. These ranges are called the “basin of attraction” for each minimum.</p></li>
 <li><p>Based on your results, if you wanted to find the global minimum (the lowest energy structure), what strategy would you need to use? (Hint: look back at your potential energy plot from Part A to see which minimum has the lowest energy.)</p></li>
 </ol>

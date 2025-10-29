@@ -518,7 +518,7 @@ document.write(`
 <h2>Potential Energy Surfaces<a class="headerlink" href="#potential-energy-surfaces" title="Link to this heading">#</a></h2>
 <p>Let us start with the simplest possible case: that of a diatomic molecule. For a diatomic molecule, the geometry is completely described by a single parameter: the distance between the two atoms, which we will call <span class="math notranslate nohighlight">\(r\)</span>. The energy of the molecule as a function of this distance is called the potential energy surface (PES).</p>
 <p>In this simple case, our potential energy surface is just a one-dimensional function <span class="math notranslate nohighlight">\(U(r)\)</span> that gives us the potential energy for any given internuclear separation <span class="math notranslate nohighlight">\(r\)</span>. The equilibrium geometry corresponds to the value of <span class="math notranslate nohighlight">\(r\)</span> where <span class="math notranslate nohighlight">\(U(r)\)</span> reaches its minimum.</p>
-<p>This concept of a potential energy surface generalises to more complex systems: for any molecular or crystal system, we can define a function <span class="math notranslate nohighlight">\(U(\left\{r\right\})\)</span> that gives us the potential energy for any set of atomic positions <span class="math notranslate nohighlight">\(\left\{r\right\}\)</span>. Our challenge then becomes:
+<p>This concept of a potential energy surface generalises to more complex systems. For any molecular or crystal system, we can define a function <span class="math notranslate nohighlight">\(U(\left\{r\right\})\)</span> that gives us the potential energy for any set of atomic positions <span class="math notranslate nohighlight">\(\left\{r\right\}\)</span>. Our challenge then becomes:
 Given the ability to calculate <span class="math notranslate nohighlight">\(U(\left\{r\right\})\)</span> for any set of atomic positions <span class="math notranslate nohighlight">\(\left\{r\right\}\)</span>, how can we algorithmically find the set of positions that minimises <span class="math notranslate nohighlight">\(U(\left\{r\right\})\)</span>?
 This is fundamentally a mathematical optimisation problem. However, it has several characteristics that make it particularly challenging:</p>
 <ol class="arabic simple">
@@ -526,7 +526,7 @@ This is fundamentally a mathematical optimisation problem. However, it has sever
 <li><p>For all but the simplest systems, we are dealing with many dimensions (<span class="math notranslate nohighlight">\(3N-6\)</span> internal coordinates for a molecule with <span class="math notranslate nohighlight">\(N\)</span> atoms).</p></li>
 <li><p>The potential energy surface often has multiple local minima, making it crucial to distinguish between local and global minimum energy structures.</p></li>
 </ol>
-<p>For now we will only worry about point 1., and will return to points 2. and 3. later.</p>
+<p>For now, we will only focus on point 1 and return to points 2 and 3 later.</p>
 </section>
 <div class="toctree-wrapper compound">
 </div>

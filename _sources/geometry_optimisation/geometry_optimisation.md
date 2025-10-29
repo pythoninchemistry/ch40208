@@ -23,12 +23,12 @@ Let us start with the simplest possible case: that of a diatomic molecule. For a
 
 In this simple case, our potential energy surface is just a one-dimensional function $U(r)$ that gives us the potential energy for any given internuclear separation $r$. The equilibrium geometry corresponds to the value of $r$ where $U(r)$ reaches its minimum.
 
-This concept of a potential energy surface generalises to more complex systems: for any molecular or crystal system, we can define a function $U(\left\{r\right\})$ that gives us the potential energy for any set of atomic positions $\left\{r\right\}$. Our challenge then becomes:
+This concept of a potential energy surface generalises to more complex systems. For any molecular or crystal system, we can define a function $U(\left\{r\right\})$ that gives us the potential energy for any set of atomic positions $\left\{r\right\}$. Our challenge then becomes:
 Given the ability to calculate $U(\left\{r\right\})$ for any set of atomic positions $\left\{r\right\}$, how can we algorithmically find the set of positions that minimises $U(\left\{r\right\})$?
 This is fundamentally a mathematical optimisation problem. However, it has several characteristics that make it particularly challenging:
 1. The function $U(\{r\})$ is typically not known analytically &mdash; we can only evaluate it at specified points.
 2. For all but the simplest systems, we are dealing with many dimensions ($3N-6$ internal coordinates for a molecule with $N$ atoms).
 3. The potential energy surface often has multiple local minima, making it crucial to distinguish between local and global minimum energy structures.
 
-For now we will only worry about point 1., and will return to points 2. and 3. later.
+For now, we will only focus on point 1 and return to points 2 and 3 later.
 

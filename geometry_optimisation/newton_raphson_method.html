@@ -539,15 +539,38 @@ document.write(`
 <p>In reality, our potential energy surface is never exactly quadratic (except for the special case of a harmonic potential), so this equation only gives us an approximate guess for the minimum position. We therefore repeat steps 1 and 2 as an iterative process, recalculating the derivatives at each new position, until we (hopefully) converge on the energy minimum.</p>
 <section id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<p>In this exercise you will explore how the Newton-Raphson method performs on a harmonic potential, where we know the analytical solution is <span class="math notranslate nohighlight">\(r = r_0 = 0.74\)</span> Å.</p>
+<p><strong>Part 1: Define the second derivative</strong></p>
 <ol class="arabic simple">
 <li><p>Write a function to calculate the second derivative of a harmonic potential:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[U^{\prime\prime} = k\]</div>
+\[U^{\prime\prime}(r) = k\]</div>
+<p>Note that for a harmonic potential, the second derivative is simply the force constant <span class="math notranslate nohighlight">\(k\)</span> and does not depend on <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<p><strong>Part 2: Demonstrate one-step convergence</strong></p>
 <ol class="arabic simple" start="2">
-<li><p>Show that the Newton-Raphson method finds the optimal bond length for your harmonic potential in one step, irrespective of your starting point.</p></li>
+<li><p>Write code to perform Newton-Raphson optimisation on your harmonic potential starting from <span class="math notranslate nohighlight">\(r = 1.0\)</span> Å. Your code should:</p>
+<ul class="simple">
+<li><p>Calculate <span class="math notranslate nohighlight">\(U'(r)\)</span> and <span class="math notranslate nohighlight">\(U''(r)\)</span> at the starting position</p></li>
+<li><p>Apply the Newton-Raphson equation once: <span class="math notranslate nohighlight">\(r_1 = r_0 - \frac{U'(r_0)}{U''(r_0)}\)</span></p></li>
+<li><p>Print both the starting position and the position after one step</p></li>
+<li><p>Compare the result to the analytical solution (<span class="math notranslate nohighlight">\(r_0 = 0.74\)</span> Å)</p></li>
+</ul>
+</li>
+<li><p>Repeat this calculation for at least three different starting positions:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r = 0.5\)</span> Å (starting below the minimum)</p></li>
+<li><p><span class="math notranslate nohighlight">\(r = 1.0\)</span> Å (starting above the minimum)</p></li>
+<li><p><span class="math notranslate nohighlight">\(r = 1.5\)</span> Å (starting well above the minimum)</p></li>
+</ul>
+</li>
 </ol>
-<p><em>Hint: Consider why the Newton-Raphson method works perfectly for quadratic functions.</em></p>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>Does each starting point converge to exactly <span class="math notranslate nohighlight">\(r = 0.74\)</span> Å in one step?</p></li>
+<li><p>Why does the Newton-Raphson method work perfectly for a harmonic potential? (Hint: Consider what happens when you substitute the derivatives of a quadratic function into the Newton-Raphson equation. The method assumes the function is locally quadratic—what happens when the function is <em>exactly</em> quadratic everywhere?)</p></li>
+<li><p>Will this one-step convergence property hold for other potential energy functions like the Lennard-Jones potential? Why or why not?</p></li>
+</ul>
 </section>
 </section>
 
