@@ -502,29 +502,29 @@ document.write(`
                   
   <section id="minimisation-with-scipy-optimize-minimize">
 <h1>Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code><a class="headerlink" href="#minimisation-with-scipy-optimize-minimize" title="Link to this heading">#</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> is a powerful tool for numerical optimization that finds the minimum of any scalar function (a function that returns a single numerical value).</p>
+<p><code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> is a powerful tool for numerical optimisation that finds the minimum of any scalar function (a function that returns a single numerical value). Unlike the methods we have implemented so far, <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> uses more sophisticated algorithms that automatically handle many of the challenges we have encountered, such as choosing appropriate step sizes and dealing with difficult potential energy surfaces.</p>
 <p>The following code demonstrates how <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> can be used to find the minimum of a harmonic potential.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">harmonic_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the energy in eV for a harmonic potential U(r) = k/2 * (r - r0)^2</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the energy in eV for a harmonic potential U(r) = k/2 * (r - r0)^2.</span>
 <span class="sd">    </span>
-<span class="sd">    Parameters:</span>
-<span class="sd">        r (float): Distance parameter to optimize</span>
-<span class="sd">        k (float): Spring constant in eV/Å²</span>
-<span class="sd">        r0 (float): Equilibrium distance in Å</span>
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Distance parameter to optimise.</span>
+<span class="sd">        k (float): Spring constant in eV/Å².</span>
+<span class="sd">        r0 (float): Equilibrium distance in Å.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
-<span class="sd">        float: Potential energy in eV</span>
+<span class="sd">        float: Potential energy in eV.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 
-<span class="c1"># initial guess and parameters</span>
-<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># starting guess for r</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mf">36.0</span> <span class="c1"># spring constant</span>
-<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.74</span> <span class="c1"># equilibrium distance</span>
+<span class="c1"># Initial guess and parameters</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Starting guess for r</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">36.0</span>  <span class="c1"># Spring constant</span>
+<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.74</span>  <span class="c1"># Equilibrium distance</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">harmonic_potential</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">))</span>
 
@@ -554,34 +554,34 @@ document.write(`
 </div>
 <p>Next, we define a function for our harmonic potential:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">harmonic_potential</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the energy in eV for a harmonic potential U(r) = k/2 * (r - r0)^2</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the energy in eV for a harmonic potential U(r) = k/2 * (r - r0)^2.</span>
 <span class="sd">    </span>
-<span class="sd">    Parameters:</span>
-<span class="sd">        r (float): Distance parameter to optimize</span>
-<span class="sd">        k (float): Spring constant in eV/Å²</span>
-<span class="sd">        r0 (float): Equilibrium distance in Å</span>
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Distance parameter to optimise.</span>
+<span class="sd">        k (float): Spring constant in eV/Å².</span>
+<span class="sd">        r0 (float): Equilibrium distance in Å.</span>
 <span class="sd">    </span>
 <span class="sd">    Returns:</span>
-<span class="sd">        float: Potential energy in eV</span>
+<span class="sd">        float: Potential energy in eV.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">r0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
-<p>Note that we have ordered the three arguments to this function so that the parameter we want to minimise with respect to, <code class="docutils literal notranslate"><span class="pre">r</span></code>, is the first parameter. The second and third parameters, <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">r0</span></code> will be fixed for a given potential energy surface.</p>
-<p>Then, we define variables to store our initial guess for the equilibrium bond length and for the parameters that define our harmonic potential.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initial guess and parameters</span>
-<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># starting guess for r</span>
-<span class="n">k</span> <span class="o">=</span> <span class="mf">36.0</span> <span class="c1"># spring constant</span>
-<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.74</span> <span class="c1"># equilibrium distance</span>
+<p>Note that we have ordered the three arguments to this function so that the parameter we want to minimise with respect to, <code class="docutils literal notranslate"><span class="pre">r</span></code>, is the first parameter. The second and third parameters, <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">r0</span></code>, will be fixed for a given potential energy surface.</p>
+<p>Then, we define variables to store our initial guess for the equilibrium bond length and the parameters that define our harmonic potential.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial guess and parameters</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Starting guess for r</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">36.0</span>  <span class="c1"># Spring constant</span>
+<span class="n">r0</span> <span class="o">=</span> <span class="mf">0.74</span>  <span class="c1"># Equilibrium distance</span>
 </pre></div>
 </div>
 <p>Now we call the <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">harmonic_potential</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="n">x0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">r0</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>We pass in three arguments.</p>
+<p>We pass in three arguments:</p>
 <ul class="simple">
-<li><p>The <strong>first</strong> argument is the name of the function that we want to minimise. In this case our function is called <code class="docutils literal notranslate"><span class="pre">harmonic_potential</span></code></p></li>
+<li><p>The <strong>first</strong> argument is the name of the function that we want to minimise. In this case our function is called <code class="docutils literal notranslate"><span class="pre">harmonic_potential</span></code>.</p></li>
 <li><p>The <strong>second</strong> argument is our starting guess for the parameter we are minimising with respect to, so in this example, we pass our guess for our equilibrium bond length of 1 Å.</p></li>
 <li><p>The <strong>third</strong> argument is a <strong>tuple</strong> of parameters that will also get passed to the function we are minimising, that are fixed during the minimisation. In this case, we need to define the shape of our harmonic potential energy surface by providing values for <code class="docutils literal notranslate"><span class="pre">k</span></code> and <code class="docutils literal notranslate"><span class="pre">r0</span></code>. Because our <code class="docutils literal notranslate"><span class="pre">harmonic_potential()</span></code> function takes two additional parameters, the tuple we pass to <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> needs to contain two parameters. The order of these parameters also needs to match the order of the corresponding arguments in the function being minimised; so our tuple is structured as <code class="docutils literal notranslate"><span class="pre">(k,</span> <span class="pre">r0)</span></code>.</p></li>
 </ul>
@@ -610,8 +610,8 @@ document.write(`
 <h3>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>The potential energy associated with changes in the Cl-C-C-Cl dihedral angle, <span class="math notranslate nohighlight">\(\theta\)</span> in 1,2-dichloroethane can be modelled as</p>
 <div class="math notranslate nohighlight">
-\[U = \frac{1}{2}\left\{A_1\left[1+\cos\theta\right] + A_2\left[1+\cos2\theta\right] A_3\left[1+\cos3\theta\right]\right\}\]</div>
-<p>with <span class="math notranslate nohighlight">\(A_1\)</span> = 55.229 kJ mol<sup>−1</sup>, <span class="math notranslate nohighlight">\(A_2\)</span> = 3.3.472 kJ mol<sup>−1</sup>, and <span class="math notranslate nohighlight">\(A_3\)</span> = -58.576 kJ mol<sup>−1</sup>.</p>
+\[U = \frac{1}{2}\left\{A_1\left[1+\cos\theta\right] + A_2\left[1+\cos2\theta\right]+ A_3\left[1+\cos3\theta\right]\right\}\]</div>
+<p>with <span class="math notranslate nohighlight">\(A_1\)</span> = 55.229 kJ mol<sup>−1</sup>, <span class="math notranslate nohighlight">\(A_2\)</span> = 3.3472 kJ mol<sup>−1</sup>, and <span class="math notranslate nohighlight">\(A_3\)</span> = -58.576 kJ mol<sup>−1</sup>.</p>
 <ul class="simple">
 <li><p>Plot this function for <span class="math notranslate nohighlight">\(-\pi \leq \theta \leq \pi\)</span>.</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> test the optimisation behaviour for different initial guesses of <span class="math notranslate nohighlight">\(\theta\)</span>. In what ways does the minimisation result depend on the choice of initial guess?</p></li>

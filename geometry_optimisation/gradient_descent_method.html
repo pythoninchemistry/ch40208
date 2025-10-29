@@ -484,10 +484,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">Algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-fixed-step-size">Algorithm (Fixed Step Size)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-fixed-step-size-gradient-descent">Exercise: Fixed Step Size Gradient Descent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rescaling-the-step-size">Rescaling the Step Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-adaptive-step-size-gradient-descent">Exercise: Adaptive Step Size Gradient Descent</a></li>
 </ul>
             </nav>
         </div>
@@ -504,47 +504,104 @@ document.write(`
 <p>A more efficient approach is to use information about the slope of the potential energy surface to guide our search.</p>
 <p>The <strong>gradient descent method</strong> (also called the <strong>steepest descent method</strong>) works by analogy to releasing a ball on a hill and letting it roll to the bottom. At any point on our potential energy surface, the <strong>gradient</strong> tells us which direction is “uphill” and how steep the surface is at this point. With this information, we can step in the opposite direction (i.e., downhill), then recalculate the gradient at our new position, and repeat until we reach a point where the gradient is <span class="math notranslate nohighlight">\(\sim0\)</span>.</p>
 <p>The simplest implementation of this method is to move a fixed distance every step.</p>
-<section id="algorithm">
-<h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">#</a></h2>
+<section id="algorithm-fixed-step-size">
+<h2>Algorithm (Fixed Step Size)<a class="headerlink" href="#algorithm-fixed-step-size" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Start at an initial guess position <span class="math notranslate nohighlight">\(r_0\)</span></p></li>
-<li><p>Calculate the gradient <span class="math notranslate nohighlight">\(U^\prime = \frac{dU}{dr}\)</span> at this point</p></li>
-<li><p>Move in the direction opposite to the gradient (i.e., downhill), by some amount <span class="math notranslate nohighlight">\(\Delta r\)</span>.</p></li>
-<li><p>Repeat until the gradient is close to zero.</p></li>
+<li><p>Calculate the gradient <span class="math notranslate nohighlight">\(U^\prime(r) = \frac{\mathrm{d}U}{\mathrm{d}r}\)</span> at this point</p></li>
+<li><p>Move in the direction opposite to the gradient (i.e., downhill):
+$<span class="math notranslate nohighlight">\(r_{i+1} = r_i - \Delta r \times \mathrm{sign}(U^\prime(r_i))\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\Delta r<span class="math notranslate nohighlight">\( is a fixed step size and \)</span>\mathrm{sign}(U^\prime)$ gives us the direction (+1 or -1)</p></li>
+<li><p>Repeat until the gradient is close to zero</p></li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In molecular simulations, we often express the gradient of the potential energy in terms of the <strong>force</strong>. The force is defined as the negative gradient of the potential energy:</p>
+<div class="math notranslate nohighlight">
+\[F(r) = -\frac{\mathrm{d}U}{\mathrm{d}r} = -U^\prime(r)\]</div>
+<p>This relationship means that forces naturally point “downhill” towards lower energy, whilst the gradient points “uphill” towards higher energy. When particles move in the direction of the force, they move towards lower potential energy.</p>
+</div>
 </section>
-<section id="exercise">
-<h2>Exercise:<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<section id="exercise-fixed-step-size-gradient-descent">
+<h2>Exercise: Fixed Step Size Gradient Descent<a class="headerlink" href="#exercise-fixed-step-size-gradient-descent" title="Link to this heading">#</a></h2>
 <p>Write a function to calculate the first derivative of a harmonic potential:</p>
 <div class="math notranslate nohighlight">
-\[U^\prime = 2k(r - r_0)\]</div>
-<p>Using this function, write code to perform a gradient descent search, to find the minimum of your harmonic potential energy surface. Use <span class="math notranslate nohighlight">\(r=1.0\)</span> Å as your starting position, and a step size <span class="math notranslate nohighlight">\(\Delta r=0.1\)</span> Å.</p>
-<p><em>Note</em>: You should not need to run for more than 10 steps.</p>
-<p>What happens using this algorithm when you get close to the minimum? What happens if you decrease the step size to <span class="math notranslate nohighlight">\(\Delta r=0.01\)</span> Å?</p>
+\[U^\prime(r) = k(r - r_0)\]</div>
+<p>Using this function, write code to perform a gradient descent search to find the minimum of your harmonic potential energy surface. Use <span class="math notranslate nohighlight">\(r=1.0\)</span> Å as your starting position.</p>
+<p>Your code should:</p>
+<ul class="simple">
+<li><p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop with a <strong>maximum of 50 iterations</strong> to prevent infinite loops</p></li>
+<li><p>Store the position and gradient at each iteration in lists (for plotting later)</p></li>
+<li><p>Update the position at each step using: <span class="math notranslate nohighlight">\(r_{i+1} = r_i - \Delta r \times \mathrm{sign}(U^\prime(r_i))\)</span></p></li>
+<li><p>Print the iteration number, position, and gradient at each step</p></li>
+<li><p>Stop early (using <code class="docutils literal notranslate"><span class="pre">break</span></code>) when <span class="math notranslate nohighlight">\(|U^\prime(r)| &lt; 0.001\)</span></p></li>
+<li><p>Report whether the algorithm converged or hit the maximum iteration limit</p></li>
+</ul>
+<p><strong>Part 1:</strong> Start with <span class="math notranslate nohighlight">\(\Delta r = 0.01\)</span> Å. Does the algorithm converge? How many iterations does it require?</p>
+<p><strong>Part 2:</strong> Now try <span class="math notranslate nohighlight">\(\Delta r = 0.1\)</span> Å to see if a larger step size converges faster. What behaviour do you observe? Does it still converge?</p>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>Why does the larger step size cause oscillation?</p></li>
+<li><p>The minimum is at r = 0.74 Å and we start at r = 1.0 Å. Can you explain why Δr = 0.01 Å converges but Δr = 0.1 Å does not, based on this distance?</p></li>
+<li><p>What would you predict for Δr = 0.05 Å?</p></li>
+</ul>
 </section>
 <section id="rescaling-the-step-size">
 <h2>Rescaling the Step Size<a class="headerlink" href="#rescaling-the-step-size" title="Link to this heading">#</a></h2>
-<p>Using a fixed step-size makes our method very sensitive to the choice of step-size. Large step sizes will overshoot the minimum and then oscillate back and forth. Small step sizes will get closer to the minimum, but at the cost of needing to perform many more calculations.</p>
-<p>A common approach designed to address this problem is to rescale the step size for each iteration, based on how far we think we are from the minimum. A simple model is that we can expect the gradient to be steep if we are a long way from the minimum, but shallow if we are already close to the minimum, so we make our step-size proportional to the (negative) local gradient.</p>
+<p>Using a fixed step size makes our method very sensitive to the choice of step size. As you have seen, large step sizes overshoot the minimum and oscillate back and forth, whilst small step sizes converge more reliably but require many more iterations.</p>
+<p>A common approach designed to address this problem is to rescale the step size for each iteration based on how far we think we are from the minimum. A simple model assumes that the gradient will be steep if we are far from the minimum, but shallow if we are already close. Therefore, we make our step size proportional to the local gradient magnitude.</p>
+<p>Instead of moving a fixed distance <span class="math notranslate nohighlight">\(\Delta r\)</span>, we take a step proportional to the gradient:</p>
 <div class="math notranslate nohighlight">
 \[\Delta r_i = -\alpha U^\prime(r_i)\]</div>
-<p>or</p>
+<p>or equivalently, proportional to the force:</p>
 <div class="math notranslate nohighlight">
 \[\Delta r_i = \alpha F(r_i)\]</div>
-<p>where <span class="math notranslate nohighlight">\(F(r_i)\)</span> is the <strong>force</strong> (i.e., the negative gradient of the energy) at <span class="math notranslate nohighlight">\(r_i\)</span>.</p>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is a constant called the <strong>learning rate</strong> or <strong>step size parameter</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(F(r_i) = -U^\prime(r_i)\)</span> is the force at position <span class="math notranslate nohighlight">\(r_i\)</span></p></li>
+</ul>
+<p>The update equation then becomes:</p>
+<div class="math notranslate nohighlight">
+\[r_{i+1} = r_i - \alpha U^\prime(r_i)\]</div>
+<p>or equivalently:</p>
+<div class="math notranslate nohighlight">
+\[r_{i+1} = r_i + \alpha F(r_i)\]</div>
+<p>With this adaptive approach:</p>
+<ul class="simple">
+<li><p>When far from the minimum, <span class="math notranslate nohighlight">\(|U^\prime|\)</span> is large → we take large steps</p></li>
+<li><p>When close to the minimum, <span class="math notranslate nohighlight">\(|U^\prime|\)</span> is small → we take small steps</p></li>
+</ul>
+<p>The parameter <span class="math notranslate nohighlight">\(\alpha\)</span> controls the overall “aggressiveness” of the optimisation. Too large and we overshoot; too small and we converge slowly.</p>
 </section>
-<section id="id1">
-<h2>Exercise:<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="exercise-adaptive-step-size-gradient-descent">
+<h2>Exercise: Adaptive Step Size Gradient Descent<a class="headerlink" href="#exercise-adaptive-step-size-gradient-descent" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Write a new version of your steepest descent code that rescales the step to be proportional to the local force, with <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span>. You should write this as a loop that iteratively updates the current position, i.e.</p></li>
+<li><p>Write a new version of your gradient descent code that rescales the step to be proportional to the local force. You should write this as a loop that iteratively updates the current position:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
-\[r_{i+1} = r_i + \alpha F(r_i).\]</div>
-<p>By combining a suitable <code class="docutils literal notranslate"><span class="pre">if</span></code> statement with <code class="docutils literal notranslate"><span class="pre">break</span></code>, have your code stop and report the predicted equilibrium bond-length when <span class="math notranslate nohighlight">\(U &lt; \left|0.001\right|\)</span>.</p>
-<ol class="arabic simple" start="2">
-<li><p>How does changing <span class="math notranslate nohighlight">\(\alpha\)</span> affect your rate of convergence? Experiment with larger and smaller values of <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
-</ol>
-<p><em>Note</em>: You might want to set a maximum number of iterations, e.g., 30.</p>
+\[r_{i+1} = r_i + \alpha F(r_i)\]</div>
+<p>where <span class="math notranslate nohighlight">\(F(r_i) = -U^\prime(r_i) = -k(r_i - r_0)\)</span>.</p>
+<p>Your code should:</p>
+<ul class="simple">
+<li><p>Start from <span class="math notranslate nohighlight">\(r = 1.0\)</span> Å</p></li>
+<li><p>Use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop with a <strong>maximum of 50 iterations</strong></p></li>
+<li><p>Update the position at each iteration</p></li>
+<li><p>Print the iteration number, position, gradient, and step size taken at each iteration</p></li>
+<li><p>Stop early (using <code class="docutils literal notranslate"><span class="pre">break</span></code>) when <span class="math notranslate nohighlight">\(|U^\prime(r)| &lt; 0.001\)</span></p></li>
+<li><p>Report the final predicted equilibrium bond length and number of iterations required</p></li>
+</ul>
+<p><strong>Part 1:</strong> Start with <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span>. Does it converge? How many iterations does it take? Compare this to the fixed step size results.</p>
+<p><strong>Part 2:</strong> Try <span class="math notranslate nohighlight">\(\alpha = 0.001\)</span>. What happens to the convergence rate?</p>
+<p><strong>Part 3:</strong> Try <span class="math notranslate nohighlight">\(\alpha = 0.1\)</span>. Does the algorithm remain stable?</p>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>How does the step size change as you approach the minimum? Watch the “Step (Å)” column in your output.</p></li>
+<li><p>Why doesn’t the adaptive method oscillate like the fixed step size method with <span class="math notranslate nohighlight">\(\Delta r = 0.1\)</span> Å did?</p></li>
+<li><p>Compare <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span> (adaptive) with <span class="math notranslate nohighlight">\(\Delta r = 0.01\)</span> Å (fixed): which converges faster and why?</p></li>
+<li><p>What happens when <span class="math notranslate nohighlight">\(\alpha\)</span> is too large? Can you explain this behaviour?</p></li>
+<li><p>Based on your experiments, what seems to be a good choice of <span class="math notranslate nohighlight">\(\alpha\)</span> for this problem?</p></li>
+</ul>
 </section>
 </section>
 
@@ -612,10 +669,10 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm">Algorithm</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#algorithm-fixed-step-size">Algorithm (Fixed Step Size)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-fixed-step-size-gradient-descent">Exercise: Fixed Step Size Gradient Descent</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rescaling-the-step-size">Rescaling the Step Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-adaptive-step-size-gradient-descent">Exercise: Adaptive Step Size Gradient Descent</a></li>
 </ul>
   </nav></div>
 
