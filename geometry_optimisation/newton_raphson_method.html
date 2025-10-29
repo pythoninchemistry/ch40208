@@ -499,39 +499,44 @@ document.write(`
   <section id="the-newton-raphson-method">
 <h1>The Newton-Raphson Method<a class="headerlink" href="#the-newton-raphson-method" title="Link to this heading">#</a></h1>
 <p>An alternative method for finding the minimum of a function is the Newton-Raphson Method (also called Newton’s Method).</p>
-<p>The central idea here is that if we zoom in on any function, then we can approximate the local shape of that function as quadratic, i.e.</p>
+<p>The key insight is that <strong>at a minimum, the first derivative equals zero</strong>: <span class="math notranslate nohighlight">\(f^\prime(x) = 0\)</span>. So finding a minimum is equivalent to finding where the derivative vanishes.</p>
+<p>The Newton-Raphson method uses the idea that if we zoom in on any function, we can approximate the local shape of that function as quadratic, i.e.</p>
 <div class="math notranslate nohighlight">
 \[f(x) \approx ax^2 + bx + c\]</div>
 <p>over some small range of <span class="math notranslate nohighlight">\(x\)</span>.</p>
-<p>If <span class="math notranslate nohighlight">\(f(x)\)</span> has a minimum, then at that point</p>
+<p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is approximately quadratic near our current position, then its first derivative is approximately <strong>linear</strong>:</p>
 <div class="math notranslate nohighlight">
-\[f^{\prime\prime}(x) = 0\]</div>
-<p>and, if we know the coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, then we can directly calculate the value of <span class="math notranslate nohighlight">\(x\)</span> that minimises our function.</p>
+\[f^\prime(x) \approx 2ax + b\]</div>
+<p>If we know the coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, we can directly solve for where this linear approximation crosses zero (i.e., where <span class="math notranslate nohighlight">\(f^\prime(x) = 0\)</span>):</p>
 <div class="math notranslate nohighlight">
-\[f^{\prime\prime}(x) = 2ax + b = 0\]</div>
+\[2ax + b = 0\]</div>
 <div class="math notranslate nohighlight">
 \[x = \frac{-b}{2a}\]</div>
-<p>To find the value of the coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, we use the property that any function can be expanded as a <strong>Taylor series</strong>
-(see, e.g., Chapter 6 in <a class="reference external" href="https://bath.primo.exlibrisgroup.com/permalink/44BAT_INST/iac705/alma991004175199902761">Foundations of Science Mathematics</a>).</p>
+<p>This gives us our predicted location of the minimum.</p>
+<p>To find the coefficients <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> of our local quadratic approximation, we use the property that any smooth function can be expanded as a <strong>Taylor series</strong> (see, e.g., Chapter 6 in <a class="reference external" href="https://bath.primo.exlibrisgroup.com/permalink/44BAT_INST/iac705/alma991004175199902761">Foundations of Science Mathematics</a>).</p>
 <p>If we are at some point <span class="math notranslate nohighlight">\(x_0\)</span>, then we can approximate our function locally as a polynomial in <span class="math notranslate nohighlight">\((x-x_0)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[f(x) = f(x_0) + f^\prime(x_0)(x-x_0) + \frac{1}{2}f^{\prime\prime}(x_0)(x-x_0)^2 + \ldots\]</div>
-<p>And, if we remain close to <span class="math notranslate nohighlight">\(x_0\)</span>, where the higher order terms in <span class="math notranslate nohighlight">\((x-x_0)\)</span> are small, we have the approximation that</p>
+<p>If we remain close to <span class="math notranslate nohighlight">\(x_0\)</span>, where the higher-order terms in <span class="math notranslate nohighlight">\((x-x_0)\)</span> are small, we can truncate this series after the quadratic term:</p>
 <div class="math notranslate nohighlight">
 \[f(x) \approx f(x_0) + f^\prime(x_0)(x-x_0) + \frac{1}{2}f^{\prime\prime}(x_0)(x-x_0)^2\]</div>
-<p>i.e., we approximate <span class="math notranslate nohighlight">\(f(x)\)</span> as quadratic.</p>
-<p>Differentiating this approximate expression with respect to <span class="math notranslate nohighlight">\(x\)</span>gives:</p>
+<p>This is our quadratic approximation. Differentiating this expression with respect to <span class="math notranslate nohighlight">\(x\)</span> gives us the approximation for the first derivative:</p>
 <div class="math notranslate nohighlight">
-\[f^\prime(x) = f^\prime + f^{\prime\prime}(x - x_0) = 0\]</div>
-<p>and setting this to zero allows us to solve for <span class="math notranslate nohighlight">\(x\)</span>:</p>
+\[f^\prime(x) \approx f^\prime(x_0) + f^{\prime\prime}(x_0)(x - x_0)\]</div>
+<p>At a minimum, <span class="math notranslate nohighlight">\(f^\prime(x) = 0\)</span>, so we can set this expression to zero and solve for <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f^\prime(x_0) + f^{\prime\prime}(x_0)(x - x_0) = 0\]</div>
 <div class="math notranslate nohighlight">
 \[x = x_0 - \frac{f^\prime(x_0)}{f^{\prime\prime}(x_0)}\]</div>
-<p>In the context of finding the minimum of a potential energy surface, this looks like:</p>
+<p>This is the <strong>Newton-Raphson equation</strong>. Starting from our current position <span class="math notranslate nohighlight">\(x_0\)</span>, it predicts a new position <span class="math notranslate nohighlight">\(x\)</span> that should be closer to the minimum.</p>
+<p>In the context of finding the minimum of a potential energy surface, we can rewrite this using our usual notation for energy and bond length:</p>
 <ol class="arabic simple">
-<li><p>Starting at an initial guess, <span class="math notranslate nohighlight">\(r_n\)</span>, calculate the first and second derivatives of <span class="math notranslate nohighlight">\(U(r_n)\)</span> at that point.</p></li>
-<li><p>Use the Newton-Raphson equation <span class="math notranslate nohighlight">\(r_{n+1} = r_n - U^\prime(r_n) / U^{\prime\prime}(r_n)\)</span> to predict the position of the minimum.</p></li>
+<li><p>Starting at an initial guess <span class="math notranslate nohighlight">\(r_n\)</span>, calculate the first and second derivatives of <span class="math notranslate nohighlight">\(U(r_n)\)</span> at that point.</p></li>
+<li><p>Use the Newton-Raphson equation to predict a new position:</p></li>
 </ol>
-<p>In reality, our potential energy surface is never exactly quadratic (except for the special case of a harmonic potential), so step 2. only gives us an approximate <strong>guess</strong> for the minimum position. We then repeat steps 1. and 2. as an iterative process, until we (hopefully) converge on the energy minimum.</p>
+<div class="math notranslate nohighlight">
+\[r_{n+1} = r_n - \frac{U^\prime(r_n)}{U^{\prime\prime}(r_n)}\]</div>
+<p>In reality, our potential energy surface is never exactly quadratic (except for the special case of a harmonic potential), so this equation only gives us an approximate guess for the minimum position. We therefore repeat steps 1 and 2 as an iterative process, recalculating the derivatives at each new position, until we (hopefully) converge on the energy minimum.</p>
 <section id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
