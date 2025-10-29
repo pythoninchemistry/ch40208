@@ -485,8 +485,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-lennard-jones-potential-with-scipy">Exercise 1: Lennard-Jones Potential with scipy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-multiple-minima-in-1-2-dichloroethane">Exercise 2. Multiple Minima in 1,2-Dichloroethane</a></li>
 </ul>
 </li>
 </ul>
@@ -599,23 +599,80 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Here, we are optimisation a one-dimensional function (the energy varies with bond-length), and we get back a one-dimensional solution array. If we were minimising a function over more dimensions (e.g., the energy of a linear triatomic molecule, which then depends on two bond lengths) then the solution array would contain the minimisation solution for each dimension.</p>
+<p>Here, we are optimising a one-dimensional function (the energy varies with bond-length), and we get back a one-dimensional solution array. If we were minimising a function over more dimensions (e.g., the energy of a linear triatomic molecule, which then depends on two bond lengths) then the solution array would contain the minimisation solution for each dimension.</p>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> to perform a geometry optimisation for your Lennard-Jones potential, again with starting values of <span class="math notranslate nohighlight">\(r\)</span> = 3.2 Å, <span class="math notranslate nohighlight">\(r\)</span> = 4.4 Å, and <span class="math notranslate nohighlight">\(r\)</span> = 6.0 Å.</p>
-</section>
-<section id="id2">
-<h3>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
-<p>The potential energy associated with changes in the Cl-C-C-Cl dihedral angle, <span class="math notranslate nohighlight">\(\theta\)</span> in 1,2-dichloroethane can be modelled as</p>
+<section id="exercise-1-lennard-jones-potential-with-scipy">
+<h3>Exercise 1: Lennard-Jones Potential with scipy<a class="headerlink" href="#exercise-1-lennard-jones-potential-with-scipy" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> to perform a geometry optimisation for the Lennard-Jones potential:</p>
 <div class="math notranslate nohighlight">
-\[U = \frac{1}{2}\left\{A_1\left[1+\cos\theta\right] + A_2\left[1+\cos2\theta\right]+ A_3\left[1+\cos3\theta\right]\right\}\]</div>
-<p>with <span class="math notranslate nohighlight">\(A_1\)</span> = 55.229 kJ mol<sup>−1</sup>, <span class="math notranslate nohighlight">\(A_2\)</span> = 3.3472 kJ mol<sup>−1</sup>, and <span class="math notranslate nohighlight">\(A_3\)</span> = -58.576 kJ mol<sup>−1</sup>.</p>
+\[U_\mathrm{LJ} = \frac{A}{r^{12}} - \frac{B}{r^6}\]</div>
+<p>with <span class="math notranslate nohighlight">\(A\)</span> = 1 × 10<sup>5</sup> eV Å<sup>12</sup> and <span class="math notranslate nohighlight">\(B\)</span> = 40 eV Å<sup>6</sup>.</p>
+<p><strong>Part A:</strong></p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">lennard_jones(r,</span> <span class="pre">A,</span> <span class="pre">B)</span></code> to calculate this potential.</p>
+<p><strong>Part B:</strong></p>
+<p>Run <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> with three different starting values: <span class="math notranslate nohighlight">\(r\)</span> = 3.2 Å, <span class="math notranslate nohighlight">\(r\)</span> = 4.4 Å, and <span class="math notranslate nohighlight">\(r\)</span> = 6.0 Å.</p>
+<p><strong>Part C:</strong></p>
+<p>For each starting point, print:</p>
 <ul class="simple">
-<li><p>Plot this function for <span class="math notranslate nohighlight">\(-\pi \leq \theta \leq \pi\)</span>.</p></li>
-<li><p>Using <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> test the optimisation behaviour for different initial guesses of <span class="math notranslate nohighlight">\(\theta\)</span>. In what ways does the minimisation result depend on the choice of initial guess?</p></li>
+<li><p>The starting position</p></li>
+<li><p>The final optimised position</p></li>
+<li><p>The number of iterations required</p></li>
 </ul>
+<p><strong>Part D:</strong></p>
+<p>Do all starting points converge to the same minimum? Why or why not?</p>
+</section>
+<section id="exercise-2-multiple-minima-in-1-2-dichloroethane">
+<h3>Exercise 2. Multiple Minima in 1,2-Dichloroethane<a class="headerlink" href="#exercise-2-multiple-minima-in-1-2-dichloroethane" title="Link to this heading">#</a></h3>
+<p>The potential energy associated with changes in the Cl-C-C-Cl dihedral angle, <span class="math notranslate nohighlight">\(\theta\)</span>, in 1,2-dichloroethane can be modelled as</p>
+<div class="math notranslate nohighlight">
+\[U(\theta) = \frac{1}{2}\left\{A_1\left[1+\cos\theta\right] + A_2\left[1+\cos2\theta\right]+ A_3\left[1+\cos3\theta\right]\right\}\]</div>
+<p>with <span class="math notranslate nohighlight">\(A_1\)</span> = 55.229 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span>, <span class="math notranslate nohighlight">\(A_2\)</span> = 3.3472 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span>, and <span class="math notranslate nohighlight">\(A_3\)</span> = -58.576 kJ mol<span class="math notranslate nohighlight">\(^{-1}\)</span>.</p>
+<p>This exercise explores how the choice of starting geometry affects which minimum the optimiser finds.</p>
+<p><strong>Part A: Define and Visualise the Potential Energy Surface</strong></p>
+<ol class="arabic simple">
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">dihedral_potential(theta,</span> <span class="pre">A1,</span> <span class="pre">A2,</span> <span class="pre">A3)</span></code> that calculates the potential energy for a given dihedral angle <span class="math notranslate nohighlight">\(\theta\)</span> (in radians).</p></li>
+<li><p>Create an array of <span class="math notranslate nohighlight">\(\theta\)</span> values from <span class="math notranslate nohighlight">\(-\pi\)</span> to <span class="math notranslate nohighlight">\(\pi\)</span> using <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code> with at least 200 points.</p></li>
+<li><p>Calculate the potential energy at each point and create a plot showing <span class="math notranslate nohighlight">\(U(\theta)\)</span> vs <span class="math notranslate nohighlight">\(\theta\)</span>.</p></li>
+<li><p>By examining your plot, identify approximately how many minima exist and roughly where they are located.</p></li>
+</ol>
+<p><strong>Part B: Test Individual Starting Points</strong></p>
+<ol class="arabic simple" start="5">
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> to find the minimum, starting with <span class="math notranslate nohighlight">\(\theta_0 = 0\)</span> radians as your initial guess. What minimum does the optimiser find?</p></li>
+<li><p>Repeat the optimisation starting from <span class="math notranslate nohighlight">\(\theta_0 = \pi\)</span> radians. Does it find the same minimum?</p></li>
+<li><p>Try one more starting point of your choice. Based on these three tests, what pattern do you observe?</p></li>
+</ol>
+<p><strong>Part C: Systematic Exploration of Starting Points</strong></p>
+<p>Now we will systematically test many different starting points to understand the overall behaviour.</p>
+<ol class="arabic simple" start="8">
+<li><p>Create an array of 20 equally spaced starting angles between <span class="math notranslate nohighlight">\(-\pi\)</span> and <span class="math notranslate nohighlight">\(\pi\)</span> using <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>. Store this in a variable called <code class="docutils literal notranslate"><span class="pre">start_angles</span></code>.</p></li>
+<li><p>Create two empty lists called <code class="docutils literal notranslate"><span class="pre">start_positions</span></code> and <code class="docutils literal notranslate"><span class="pre">final_positions</span></code>.</p></li>
+<li><p>Write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop that:</p>
+<ul class="simple">
+<li><p>Iterates through each angle in <code class="docutils literal notranslate"><span class="pre">start_angles</span></code></p></li>
+<li><p>Performs an optimisation starting from that angle</p></li>
+<li><p>Appends the starting angle to <code class="docutils literal notranslate"><span class="pre">start_positions</span></code></p></li>
+<li><p>Appends the optimised angle (from <code class="docutils literal notranslate"><span class="pre">result.x[0]</span></code>) to <code class="docutils literal notranslate"><span class="pre">final_positions</span></code></p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Part D: Visualise the Basins of Attraction</strong></p>
+<ol class="arabic" start="11">
+<li><p>Create a scatter plot with:</p>
+<ul class="simple">
+<li><p>Starting angles on the x-axis (<code class="docutils literal notranslate"><span class="pre">start_positions</span></code>)</p></li>
+<li><p>Final optimised angles on the y-axis (<code class="docutils literal notranslate"><span class="pre">final_positions</span></code>)</p></li>
+<li><p>Appropriate axis labels and title</p></li>
+</ul>
+<p>This plot shows you which starting positions lead to which minima. Each horizontal band of points represents a different minimum (basin of attraction).</p>
+</li>
+</ol>
+<p><strong>Part E: Analysis</strong></p>
+<ol class="arabic simple" start="12">
+<li><p>How many distinct minima does your scatter plot reveal? (Look for horizontal bands of points.)</p></li>
+<li><p>For each minimum, estimate the range of starting angles that lead to that minimum. These ranges are called the “basin of attraction” for each minimum.</p></li>
+<li><p>Based on your results, if you wanted to find the global minimum (the lowest energy structure), what strategy would you need to use? (Hint: look back at your potential energy plot from Part A to see which minimum has the lowest energy.)</p></li>
+</ol>
 </section>
 </section>
 </section>
@@ -685,8 +742,8 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-lennard-jones-potential-with-scipy">Exercise 1: Lennard-Jones Potential with scipy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-multiple-minima-in-1-2-dichloroethane">Exercise 2. Multiple Minima in 1,2-Dichloroethane</a></li>
 </ul>
 </li>
 </ul>
