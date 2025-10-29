@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise: Geometry Optimisation of a Lennard-Jones Potential &#8212; CH40208: Topics in Computational Chemistry</title>
+    <title>Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential &#8212; CH40208: Topics in Computational Chemistry</title>
   
   
   
@@ -270,7 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="grid_search_method.html">Grid Search Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="gradient_descent_method.html">Gradient Descent Method</a></li>
 <li class="toctree-l2"><a class="reference internal" href="newton_raphson_method.html">The Newton-Raphson Method</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
 </ul>
 </details></li>
@@ -474,7 +474,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise: Geometry Optimisation of a Lennard-Jones Potential</h1>
+    <h1>Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -484,9 +484,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-visualising-the-potential-energy-surface">Part A: Visualising the Potential Energy Surface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-gradient-descent-optimisation">Part B: Gradient Descent Optimisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-exploring-different-starting-positions-with-gradient-descent">Part C: Exploring Different Starting Positions with Gradient Descent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-d-newton-raphson-optimisation">Part D: Newton-Raphson Optimisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-e-comparing-methods-across-different-starting-positions">Part E: Comparing Methods Across Different Starting Positions</a></li>
 </ul>
             </nav>
         </div>
@@ -498,29 +500,135 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="exercise-geometry-optimisation-of-a-lennard-jones-potential">
-<h1>Exercise: Geometry Optimisation of a Lennard-Jones Potential<a class="headerlink" href="#exercise-geometry-optimisation-of-a-lennard-jones-potential" title="Link to this heading">#</a></h1>
-<p>The potential energy surface for a pair of “Lennard–Jones” is given by</p>
+  <section id="synoptic-exercise-geometry-optimisation-of-a-lennard-jones-potential">
+<h1>Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential<a class="headerlink" href="#synoptic-exercise-geometry-optimisation-of-a-lennard-jones-potential" title="Link to this heading">#</a></h1>
+<p>The Lennard-Jones potential describes the interaction between a pair of non-bonded atoms:</p>
 <div class="math notranslate nohighlight">
-\[U_\mathrm{LJ} = \frac{A}{r^{12}} - \frac{B}{r^6}\]</div>
-<section id="id1">
-<h2>1.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>Plot this function for <span class="math notranslate nohighlight">\(A\)</span> = 1 × 10<sup>5</sup> eV Å<sup>12</sup> and <span class="math notranslate nohighlight">\(B\)</span> = 40 eV Å<sup>6</sup> for the range <span class="math notranslate nohighlight">\(3.6 \leq r \leq 8.0\)</span>.</p>
+\[U_\mathrm{LJ}(r) = \frac{A}{r^{12}} - \frac{B}{r^6}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the interatomic separation. The repulsive term (<span class="math notranslate nohighlight">\(r^{-12}\)</span>) represents electron cloud overlap at short distances, whilst the attractive term (<span class="math notranslate nohighlight">\(r^{-6}\)</span>) represents van der Waals interactions.</p>
+<p>In this exercise, you will use both gradient descent and Newton-Raphson methods to find the equilibrium separation for a Lennard-Jones pair, compare their performance, and explore how the choice of starting position affects convergence.</p>
+<p>We will use the parameters <span class="math notranslate nohighlight">\(A\)</span> = 1 × 10<sup>5</sup> eV Å<sup>12</sup> and <span class="math notranslate nohighlight">\(B\)</span> = 40 eV Å<sup>6</sup>.</p>
+<p>The derivatives of the Lennard-Jones potential are:</p>
+<p><strong>First derivative:</strong>
+$<span class="math notranslate nohighlight">\(U'_\mathrm{LJ}(r) = -12 \frac{A}{r^{13}} + 6\frac{B}{r^7}\)</span>$</p>
+<p><strong>Second derivative:</strong>
+$<span class="math notranslate nohighlight">\(U''_\mathrm{LJ}(r) = 156\frac{A}{r^{14}} - 42\frac{B}{r^8}\)</span>$</p>
+<section id="part-a-visualising-the-potential-energy-surface">
+<h2>Part A: Visualising the Potential Energy Surface<a class="headerlink" href="#part-a-visualising-the-potential-energy-surface" title="Link to this heading">#</a></h2>
+<p>Before attempting optimisation, it is important to understand the shape of the potential energy surface.</p>
+<ol class="arabic simple">
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">lennard_jones(r,</span> <span class="pre">A,</span> <span class="pre">B)</span></code> that calculates <span class="math notranslate nohighlight">\(U_\mathrm{LJ}(r)\)</span> for a given separation <span class="math notranslate nohighlight">\(r\)</span> and parameters <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p></li>
+<li><p>Create an array of <span class="math notranslate nohighlight">\(r\)</span> values from 3.6 Å to 8.0 Å using <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code> with at least 200 points.</p></li>
+<li><p>Plot the potential energy as a function of <span class="math notranslate nohighlight">\(r\)</span> for the given parameters. Label your axes appropriately and include a title.</p></li>
+<li><p>By examining your plot:</p>
+<ul class="simple">
+<li><p>Estimate the location of the minimum (the equilibrium bond length)</p></li>
+<li><p>Identify the approximate energy at the minimum</p></li>
+<li><p>Note where the potential energy crosses zero (where attractive and repulsive forces balance to give <span class="math notranslate nohighlight">\(U = 0\)</span>)</p></li>
+</ul>
+</li>
+</ol>
 </section>
-<section id="id2">
-<h2>2.<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>The first derivative of this potential energy function is given by</p>
-<div class="math notranslate nohighlight">
-\[U^\prime_\mathrm{LJ} = -12 \frac{A}{r^{13}} + 6\frac{B}{r^7}\]</div>
-<p>Write code to find the lowest-energy interatomic separation for a pair of Lennard–Jones atoms (with the potential parameters given above) using gradient descent. Start with <span class="math notranslate nohighlight">\(r = 5.0\)</span> and <span class="math notranslate nohighlight">\(\alpha=100\)</span>. How does your optimisation code perform with different values of <span class="math notranslate nohighlight">\(\alpha\)</span> and different starting values of <span class="math notranslate nohighlight">\(r\)</span> (try <span class="math notranslate nohighlight">\(r\)</span> = 3.2 Å, <span class="math notranslate nohighlight">\(r\)</span> = 4.4 Å, and <span class="math notranslate nohighlight">\(r\)</span> = 6.0 Å)?</p>
+<section id="part-b-gradient-descent-optimisation">
+<h2>Part B: Gradient Descent Optimisation<a class="headerlink" href="#part-b-gradient-descent-optimisation" title="Link to this heading">#</a></h2>
+<p>Now we will use gradient descent with an adaptive step size to find the minimum.</p>
+<ol class="arabic simple" start="5">
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">lennard_jones_gradient(r,</span> <span class="pre">A,</span> <span class="pre">B)</span></code> that calculates the first derivative <span class="math notranslate nohighlight">\(U'_\mathrm{LJ}(r)\)</span>.</p></li>
+<li><p>Implement a gradient descent loop that:</p>
+<ul class="simple">
+<li><p>Starts from <span class="math notranslate nohighlight">\(r = 5.0\)</span> Å</p></li>
+<li><p>Uses the update rule: <span class="math notranslate nohighlight">\(r_{i+1} = r_i - \alpha U'(r_i)\)</span></p></li>
+<li><p>Uses <span class="math notranslate nohighlight">\(\alpha = 100\)</span> as the learning rate</p></li>
+<li><p>Runs for a maximum of 50 iterations</p></li>
+<li><p>Stops early (using <code class="docutils literal notranslate"><span class="pre">break</span></code>) when <span class="math notranslate nohighlight">\(|U'(r)| &lt; 0.001\)</span></p></li>
+<li><p>Stores the position and gradient at each iteration in lists (for later analysis)</p></li>
+</ul>
+</li>
+<li><p>After your loop completes, print:</p>
+<ul class="simple">
+<li><p>The final predicted equilibrium separation</p></li>
+<li><p>The number of iterations required</p></li>
+<li><p>The final gradient value</p></li>
+</ul>
+</li>
+<li><p>Create a plot showing how the position <span class="math notranslate nohighlight">\(r\)</span> changes with iteration number. This visualises the convergence path.</p></li>
+</ol>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>How many iterations were required to converge?</p></li>
+<li><p>Does the convergence appear smooth or does the algorithm oscillate?</p></li>
+<li><p>Look at your convergence plot: does the step size decrease as you approach the minimum? (Remember: the step size is <span class="math notranslate nohighlight">\(\alpha \times |U'(r)|\)</span>, and <span class="math notranslate nohighlight">\(U'(r)\)</span> should decrease as you approach the minimum.)</p></li>
+</ul>
 </section>
-<section id="id3">
-<h2>3.<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>Write code to perform geometry optimisation of your Lennard-Jones potential using the Newton-Raphson method.</p>
-<p>The second derivative of <span class="math notranslate nohighlight">\(U_\mathrm{LJ}\)</span> is</p>
-<div class="math notranslate nohighlight">
-\[U^{\prime\prime} = 156\frac{A}{r^{14}} - 42\frac{B}{r^8}\]</div>
-<p>Investigate how the Newton-Raphson method performs with starting points of <span class="math notranslate nohighlight">\(r\)</span> = 3.2 Å, <span class="math notranslate nohighlight">\(r\)</span> = 4.4 Å, and <span class="math notranslate nohighlight">\(r\)</span> = 6.0 Å.</p>
+<section id="part-c-exploring-different-starting-positions-with-gradient-descent">
+<h2>Part C: Exploring Different Starting Positions with Gradient Descent<a class="headerlink" href="#part-c-exploring-different-starting-positions-with-gradient-descent" title="Link to this heading">#</a></h2>
+<p>The choice of starting position can significantly affect optimisation performance.</p>
+<ol class="arabic" start="9">
+<li><p>Test your gradient descent code with three different starting positions:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r = 3.2\)</span> Å (close to the minimum, approaching from below)</p></li>
+<li><p><span class="math notranslate nohighlight">\(r = 4.4\)</span> Å (at the minimum, approximately)</p></li>
+<li><p><span class="math notranslate nohighlight">\(r = 6.0\)</span> Å (far from the minimum, approaching from above)</p></li>
+</ul>
+<p>For each starting position, record:</p>
+<ul class="simple">
+<li><p>The final optimised position</p></li>
+<li><p>The number of iterations required</p></li>
+<li><p>Whether the algorithm converged successfully (i.e., did it find <span class="math notranslate nohighlight">\(|U'(r)| &lt; 0.001\)</span> within 50 iterations?)</p></li>
+</ul>
+</li>
+<li><p>Summarise your results, showing the three starting positions and their outcomes.</p></li>
+</ol>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>Do all starting positions converge to the same minimum?</p></li>
+<li><p>Which starting position converges most quickly? Can you explain why based on your plot from Part A?</p></li>
+<li><p>Did any starting positions fail to converge within 50 iterations?</p></li>
+<li><p>How does the learning rate <span class="math notranslate nohighlight">\(\alpha = 100\)</span> perform for the different starting positions? Based on the gradient magnitudes at different <span class="math notranslate nohighlight">\(r\)</span> values, does this <span class="math notranslate nohighlight">\(\alpha\)</span> seem appropriate everywhere, or only in certain regions?</p></li>
+</ul>
+</section>
+<section id="part-d-newton-raphson-optimisation">
+<h2>Part D: Newton-Raphson Optimisation<a class="headerlink" href="#part-d-newton-raphson-optimisation" title="Link to this heading">#</a></h2>
+<p>The Newton-Raphson method uses both first- and second-derivative information to converge more rapidly.</p>
+<ol class="arabic simple" start="11">
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">lennard_jones_second_derivative(r,</span> <span class="pre">A,</span> <span class="pre">B)</span></code> that calculates <span class="math notranslate nohighlight">\(U''_\mathrm{LJ}(r)\)</span>.</p></li>
+<li><p>Implement a Newton-Raphson loop that:</p>
+<ul class="simple">
+<li><p>Starts from <span class="math notranslate nohighlight">\(r = 5.0\)</span> Å</p></li>
+<li><p>Uses the update rule: <span class="math notranslate nohighlight">\(r_{i+1} = r_i - \frac{U'(r_i)}{U''(r_i)}\)</span></p></li>
+<li><p>Runs for a maximum of 50 iterations</p></li>
+<li><p>Stops early when <span class="math notranslate nohighlight">\(|U'(r)| &lt; 0.001\)</span></p></li>
+<li><p>Stores the position and gradient at each iteration</p></li>
+</ul>
+</li>
+<li><p>After your loop completes, print the final equilibrium separation and number of iterations required.</p></li>
+<li><p>Create a plot comparing the convergence paths of gradient descent (from Part B) and Newton-Raphson, both starting from <span class="math notranslate nohighlight">\(r = 5.0\)</span> Å. Plot both curves on the same axes showing position vs. iteration number.</p></li>
+</ol>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>How does the convergence speed of Newton-Raphson compare to gradient descent?</p></li>
+<li><p>Why doesn’t Newton-Raphson converge in a single step for the Lennard-Jones potential, unlike the harmonic potential?</p></li>
+<li><p>Which method required fewer function evaluations? (Remember: gradient descent needs one derivative per step, whilst Newton-Raphson needs two.)</p></li>
+</ul>
+</section>
+<section id="part-e-comparing-methods-across-different-starting-positions">
+<h2>Part E: Comparing Methods Across Different Starting Positions<a class="headerlink" href="#part-e-comparing-methods-across-different-starting-positions" title="Link to this heading">#</a></h2>
+<ol class="arabic" start="15">
+<li><p>Test Newton-Raphson with the same three starting positions you used for gradient descent in Part C:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r = 3.2\)</span> Å</p></li>
+<li><p><span class="math notranslate nohighlight">\(r = 4.4\)</span> Å</p></li>
+<li><p><span class="math notranslate nohighlight">\(r = 6.0\)</span> Å</p></li>
+</ul>
+<p>For each starting position, record the final position and the number of iterations required.</p>
+</li>
+</ol>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>Which method is more robust to different starting positions?</p></li>
+<li><p>For which starting position(s) does Newton-Raphson show the greatest advantage?</p></li>
+<li><p>Based on your results, which method would you recommend for optimising a Lennard-Jones potential? What factors influenced your decision?</p></li>
+</ul>
 </section>
 </section>
 
@@ -588,9 +696,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-visualising-the-potential-energy-surface">Part A: Visualising the Potential Energy Surface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-gradient-descent-optimisation">Part B: Gradient Descent Optimisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-exploring-different-starting-positions-with-gradient-descent">Part C: Exploring Different Starting Positions with Gradient Descent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-d-newton-raphson-optimisation">Part D: Newton-Raphson Optimisation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-e-comparing-methods-across-different-starting-positions">Part E: Comparing Methods Across Different Starting Positions</a></li>
 </ul>
   </nav></div>
 
