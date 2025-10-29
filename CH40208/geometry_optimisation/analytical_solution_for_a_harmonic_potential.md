@@ -26,4 +26,4 @@ Your function should take three arguments as input; $r$, $k$, and $r_0$; and ret
 
 2. Plot this function for H<sub>2</sub> ($r_0$ = 0.74 &#8491;, $k$ = 36.0 eV &angst;<sup>&minus;2</sup>) for $0.38\leq r \leq 1.1$.
 
-3. Use your function to calculate the potential energy at $r=r_0$. Add a point to your plot at $(U(r_0), r_0)$ and confirm visually that this is the minimum of the potential energy surface.
+3. Use your function to calculate the potential energy at $r=r_0$. Add a point to your plot at $(r_0, U(r_0))$ and confirm visually that this is the minimum of the potential energy surface.
