@@ -509,10 +509,12 @@ document.write(`
 <p>In this exercise, you will use both gradient descent and Newton-Raphson methods to find the equilibrium separation for a Lennard-Jones pair, compare their performance, and explore how the choice of starting position affects convergence.</p>
 <p>We will use the parameters <span class="math notranslate nohighlight">\(A\)</span> = 1 × 10<sup>5</sup> eV Å<sup>12</sup> and <span class="math notranslate nohighlight">\(B\)</span> = 40 eV Å<sup>6</sup>.</p>
 <p>The derivatives of the Lennard-Jones potential are:</p>
-<p><strong>First derivative:</strong>
-$<span class="math notranslate nohighlight">\(U'_\mathrm{LJ}(r) = -12 \frac{A}{r^{13}} + 6\frac{B}{r^7}\)</span>$</p>
-<p><strong>Second derivative:</strong>
-$<span class="math notranslate nohighlight">\(U''_\mathrm{LJ}(r) = 156\frac{A}{r^{14}} - 42\frac{B}{r^8}\)</span>$</p>
+<p><strong>First derivative:</strong></p>
+<div class="math notranslate nohighlight">
+\[U'_\mathrm{LJ}(r) = -12 \frac{A}{r^{13}} + 6\frac{B}{r^7}\]</div>
+<p><strong>Second derivative:</strong></p>
+<div class="math notranslate nohighlight">
+\[U''_\mathrm{LJ}(r) = 156\frac{A}{r^{14}} - 42\frac{B}{r^8}\]</div>
 <section id="part-a-visualising-the-potential-energy-surface">
 <h2>Part A: Visualising the Potential Energy Surface<a class="headerlink" href="#part-a-visualising-the-potential-energy-surface" title="Link to this heading">#</a></h2>
 <p>Before attempting optimisation, it is important to understand the shape of the potential energy surface.</p>

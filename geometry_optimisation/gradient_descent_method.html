@@ -506,12 +506,14 @@ document.write(`
 <p>The simplest implementation of this method is to move a fixed distance every step.</p>
 <section id="algorithm-fixed-step-size">
 <h2>Algorithm (Fixed Step Size)<a class="headerlink" href="#algorithm-fixed-step-size" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p>Start at an initial guess position <span class="math notranslate nohighlight">\(r_0\)</span></p></li>
 <li><p>Calculate the gradient <span class="math notranslate nohighlight">\(U^\prime(r) = \frac{\mathrm{d}U}{\mathrm{d}r}\)</span> at this point</p></li>
-<li><p>Move in the direction opposite to the gradient (i.e., downhill):
-$<span class="math notranslate nohighlight">\(r_{i+1} = r_i - \Delta r \times \mathrm{sign}(U^\prime(r_i))\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\Delta r<span class="math notranslate nohighlight">\( is a fixed step size and \)</span>\mathrm{sign}(U^\prime)$ gives us the direction (+1 or -1)</p></li>
+<li><p>Move in the direction opposite to the gradient (i.e., downhill):</p>
+<div class="math notranslate nohighlight">
+\[r_{i+1} = r_i - \Delta r \times \mathrm{sign}(U^\prime(r_i))\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta r\)</span> is a fixed step size and <span class="math notranslate nohighlight">\(\mathrm{sign}(U^\prime)\)</span> gives us the direction (+1 or -1)</p>
+</li>
 <li><p>Repeat until the gradient is close to zero</p></li>
 </ol>
 <div class="admonition note">
