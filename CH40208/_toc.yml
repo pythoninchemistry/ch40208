@@ -70,6 +70,8 @@ parts:
         - file: model_fitting/empirical_and_theoretical_models.md
         - file: model_fitting/model_complexity.md
         - file: model_fitting/finding_the_best_fit.md
+        - file: model_fitting/understanding_residuals
+        - file: model_fitting/fitting_with_minimize
         - file: model_fitting/exercises.ipynb
 ##  - file: working_with_data/ideal_gas_law
 #      - file: working_with_data/curve_fitting
@@ -155,3 +157,17 @@ parts:
           title: NumPy
         - file: worked_examples/week_3_synoptic_exercises
           title: Synoptic Exercises
+      - file: worked_examples/week_5/week_5_index
+        title: Week 5
+        sections:
+        - file: worked_examples/week_5/grid_search_method
+          title: Grid Search
+        - file: worked_examples/week_5/gradient_descent_method
+          title: Gradient Descent
+        - file: worked_examples/week_5/newton_raphson_method
+          title: Newton-Raphson
+        - file: worked_examples/week_5/Lennard_Jones_optimisation
+          title: Lennard-Jones optimisation
+        - file: worked_examples/week_5/scipy_optimize_minimize
+          title: scipy.optimize.minimize
+
