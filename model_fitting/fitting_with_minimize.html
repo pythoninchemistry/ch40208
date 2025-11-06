@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Linear Model Fitting with scipy.optimize.minimize() &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'model_fitting/fitting_with_minimize';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exercises" href="exercises.html" />
+    <link rel="prev" title="Understanding Residuals and Quality of Fit" href="understanding_residuals.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy/intro.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/basics.html">NumPy Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/operations.html">Array Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/exercises.html">NumPy Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/matplotlib/intro.html">Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/basics.html">Matplotlib Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/customisation.html">Customising Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/plotting_data.html">Plotting Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/latex.html">LaTeX Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="model_fitting.html">Model Fitting</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="understanding_residuals.html">Understanding Residuals and Quality of Fit</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Linear Model Fitting with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/adding_files_to_noteable.html">Adding Files to Noteable</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_1_index.html">Week 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_dictionaries.html">Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_2_index.html">Week 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_3_index.html">Week 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_3_numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_3_synoptic_exercises.html">Synoptic Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_5/week_5_index.html">Week 5</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/grid_search_method.html">Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/gradient_descent_method.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/newton_raphson_method.html">Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/Lennard_Jones_optimisation.html">Lennard-Jones optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/scipy_optimize_minimize.html">scipy.optimize.minimize</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/model_fitting/fitting_with_minimize.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Linear Model Fitting with scipy.optimize.minimize()</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-model-function">Defining the Model Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-write-a-linear-model-function">Exercise: Write a Linear Model Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-error-function">Defining the Error Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-write-an-error-function">Exercise: Write an Error Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-best-fit-parameters">Finding the Best-Fit Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-optimise-the-parameters">Exercise: Optimise the Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-the-fitted-model">Visualising the Fitted Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-plot-the-data-and-fitted-model">Exercise: Plot the Data and Fitted Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-different-initial-guesses">Testing Different Initial Guesses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-explore-different-initial-guesses">Exercise: Explore Different Initial Guesses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="linear-model-fitting-with-scipy-optimize-minimize">
+<h1>Linear Model Fitting with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code><a class="headerlink" href="#linear-model-fitting-with-scipy-optimize-minimize" title="Link to this heading">#</a></h1>
+<p>Having seen that <span class="math notranslate nohighlight">\(\chi^2\)</span> varies as we change our model parameters, and that it is smallest when the parameters are close to the true values, we now have a strategy for finding the best-fit parameters: we need to search through parameter space to find the values that minimise χ².</p>
+<p>This is an optimisation problem, and we can solve it using the same tool you encountered in Week 5 for geometry optimisation: <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code>. Just as you used <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> to find the bond length that minimised potential energy, you can now use it to find the model parameters that minimise <span class="math notranslate nohighlight">\(\chi^2\)</span>.</p>
+<p>In this section, you will implement the complete model fitting workflow:</p>
+<ol class="arabic simple">
+<li><p>Define a model function</p></li>
+<li><p>Define an error function that calculates <span class="math notranslate nohighlight">\(\chi^2\)</span> for given parameters</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> to find the best-fit parameters</p></li>
+<li><p>Visualise the results</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section assumes you are continuing directly from the previous page and have the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y_data</span></code> arrays already defined. If you need to regenerate the data, refer back to the <a class="reference internal" href="understanding_residuals.html"><span class="std std-doc">previous page</span></a>.</p>
+</div>
+<section id="defining-the-model-function">
+<h2>Defining the Model Function<a class="headerlink" href="#defining-the-model-function" title="Link to this heading">#</a></h2>
+<p>Before we can fit a model to our data, we need to define the mathematical form of our model. For a linear model, we want a function that calculates predicted <span class="math notranslate nohighlight">\(y\)</span> values given input <span class="math notranslate nohighlight">\(x\)</span> values and parameters.</p>
+<section id="exercise-write-a-linear-model-function">
+<h3>Exercise: Write a Linear Model Function<a class="headerlink" href="#exercise-write-a-linear-model-function" title="Link to this heading">#</a></h3>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">linear_model()</span></code> that implements the equation:</p>
+<div class="math notranslate nohighlight">
+\[y = mx + c\]</div>
+<p>Your function should:</p>
+<ul class="simple">
+<li><p>Take three arguments: <code class="docutils literal notranslate"><span class="pre">x</span></code> (the independent variable), <code class="docutils literal notranslate"><span class="pre">m</span></code> (the slope), and <code class="docutils literal notranslate"><span class="pre">c</span></code> (the intercept)</p></li>
+<li><p>Return the predicted y value(s)</p></li>
+<li><p>Work with both single values and numpy arrays for <code class="docutils literal notranslate"><span class="pre">x</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">linear_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate y values for a linear model y = mx + c.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        x (float): Independent variable value(s).</span>
+<span class="sd">        m (float): Slope parameter.</span>
+<span class="sd">        c (float): Intercept parameter.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Predicted y value(s).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Your code here</span>
+</pre></div>
+</div>
+<p>Test your function by calculating and plotting <code class="docutils literal notranslate"><span class="pre">y_model</span> <span class="pre">=</span> <span class="pre">linear_model(x,</span> <span class="pre">2.0,</span> <span class="pre">3.0)</span></code> alongside your data points to verify it works correctly.</p>
+</section>
+</section>
+<section id="defining-the-error-function">
+<h2>Defining the Error Function<a class="headerlink" href="#defining-the-error-function" title="Link to this heading">#</a></h2>
+<p>To use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code>, we need an <strong>error function</strong> that:</p>
+<ul class="simple">
+<li><p>Takes the parameters we want to optimise as its first argument</p></li>
+<li><p>Takes the observed data as additional arguments</p></li>
+<li><p>Returns a single number representing the quality of fit (which we want to minimise)</p></li>
+</ul>
+<p>For least-squares fitting, this error function should calculate <span class="math notranslate nohighlight">\(\chi^2\)</span>.</p>
+<section id="exercise-write-an-error-function">
+<h3>Exercise: Write an Error Function<a class="headerlink" href="#exercise-write-an-error-function" title="Link to this heading">#</a></h3>
+<p>Write a function called <code class="docutils literal notranslate"><span class="pre">error_function()</span></code> that calculates the sum-of-squares error.</p>
+<p>Your function should:</p>
+<ul class="simple">
+<li><p>Take <code class="docutils literal notranslate"><span class="pre">params</span></code> as the first argument (a list or array containing <code class="docutils literal notranslate"><span class="pre">[m,</span> <span class="pre">c]</span></code>)</p></li>
+<li><p>Take <code class="docutils literal notranslate"><span class="pre">x_data</span></code> and <code class="docutils literal notranslate"><span class="pre">y_data</span></code> as additional arguments</p></li>
+<li><p>Extract the slope and intercept from <code class="docutils literal notranslate"><span class="pre">params</span></code></p></li>
+<li><p>Use your <code class="docutils literal notranslate"><span class="pre">linear_model()</span></code> function to calculate predicted <span class="math notranslate nohighlight">\(y\)</span> values, given the input model slope and intercept</p></li>
+<li><p>Calculate and return <span class="math notranslate nohighlight">\(\chi^2\)</span> as the sum of squared residuals</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">error_function</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate sum-of-squares error for linear model.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        params (list): List/array containing [slope, intercept].</span>
+<span class="sd">        x_data (list): Observed x values.</span>
+<span class="sd">        y_data (list): Observed y values.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Chi-squared error value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">params</span>
+    <span class="c1"># Your code here</span>
+</pre></div>
+</div>
+<p>Test your function by calculating the error for the true parameters <code class="docutils literal notranslate"><span class="pre">[2.0,</span> <span class="pre">3.0]</span></code> and for some incorrect parameters like <code class="docutils literal notranslate"><span class="pre">[1.5,</span> <span class="pre">4.0]</span></code>. The error should be smaller for the true parameters.</p>
+</section>
+</section>
+<section id="finding-the-best-fit-parameters">
+<h2>Finding the Best-Fit Parameters<a class="headerlink" href="#finding-the-best-fit-parameters" title="Link to this heading">#</a></h2>
+<p>Now we have everything needed to perform the optimisation. We will use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> to find the parameter values that minimise our error function.</p>
+<section id="exercise-optimise-the-parameters">
+<h3>Exercise: Optimise the Parameters<a class="headerlink" href="#exercise-optimise-the-parameters" title="Link to this heading">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code> to find the best-fit parameters.</p>
+<ol class="arabic">
+<li><p>Import minimize:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">minimize</span>
+</pre></div>
+</div>
+</li>
+<li><p>Choose initial guesses for the parameters. Try <code class="docutils literal notranslate"><span class="pre">initial_guess</span> <span class="pre">=</span> <span class="pre">[1.0,</span> <span class="pre">1.0]</span></code> (deliberately quite different from the true values).</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">minimize</span></code>, passing:</p>
+<ul class="simple">
+<li><p>Your error function</p></li>
+<li><p>Your initial guess</p></li>
+<li><p>The observed data as additional arguments using <code class="docutils literal notranslate"><span class="pre">args=(x,</span> <span class="pre">y_data)</span></code></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">error_function</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_data</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Extract the optimised parameters from <code class="docutils literal notranslate"><span class="pre">result.x</span></code> and print them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">m_fit</span><span class="p">,</span> <span class="n">c_fit</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Best-fit parameters: m = </span><span class="si">{</span><span class="n">m_fit</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, c = </span><span class="si">{</span><span class="n">c_fit</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Print the final <span class="math notranslate nohighlight">\(\chi^2\)</span> value from <code class="docutils literal notranslate"><span class="pre">result.fun</span></code>.</p></li>
+<li><p>Check whether the optimisation was successful by printing <code class="docutils literal notranslate"><span class="pre">result.success</span></code>.</p></li>
+</ol>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>We have just found “best-fit” parameters by minimising <span class="math notranslate nohighlight">\(\chi^2\)</span>. It’s worth reflecting that this definition of “best fit” represents a choice we made. We could have defined our error function differently—for example, minimising the sum of absolute deviations or the maximum deviation—and obtained different “best-fit” parameters. Least-squares fitting (minimising <span class="math notranslate nohighlight">\(\chi^2\)</span>) is a common and often well-motivated choice; it is particularly well-suited to data where the measurement errors are normally distributed, as they are here. However, recognising that “best fit” is defined by our choice of error function, rather than being an inherent property of the data, is important.</p>
+</aside>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>How close are the fitted parameters to the true values (<span class="math notranslate nohighlight">\(m\)</span> = 2.0, <span class="math notranslate nohighlight">\(c\)</span> = 3.0)?</p></li>
+<li><p>Why are they not exactly the same?</p></li>
+<li><p>How many iterations did the optimiser take? (Check <code class="docutils literal notranslate"><span class="pre">result.nit</span></code>)</p></li>
+</ul>
+</section>
+</section>
+<section id="visualising-the-fitted-model">
+<h2>Visualising the Fitted Model<a class="headerlink" href="#visualising-the-fitted-model" title="Link to this heading">#</a></h2>
+<p>The final step in any model fitting workflow is to visualise how well the fitted model matches the data.</p>
+<section id="exercise-plot-the-data-and-fitted-model">
+<h3>Exercise: Plot the Data and Fitted Model<a class="headerlink" href="#exercise-plot-the-data-and-fitted-model" title="Link to this heading">#</a></h3>
+<p>Create a plot that shows:</p>
+<ol class="arabic">
+<li><p>The measured data as scatter points with label “Data”</p></li>
+<li><p>The true model line (using <span class="math notranslate nohighlight">\(m\)</span> = 2.0, <span class="math notranslate nohighlight">\(c\)</span> = 3.0) as a dashed grey line with label “True model”</p></li>
+<li><p>The fitted model line (using your optimised parameters) as a solid line with label “Fitted model”</p></li>
+<li><p>Add a legend, axis labels, and a title.</p></li>
+<li><p>Optionally, add a text box showing the fitted parameters using:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Fitted: y = </span><span class="si">{</span><span class="n">m_fit</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">x + </span><span class="si">{</span><span class="n">c_fit</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>The fitted line should lie very close to (or on top of) the true model line, confirming that our optimisation successfully recovered the underlying relationship from the noisy data.</p>
+</section>
+</section>
+<section id="testing-different-initial-guesses">
+<h2>Testing Different Initial Guesses<a class="headerlink" href="#testing-different-initial-guesses" title="Link to this heading">#</a></h2>
+<p>A good optimisation algorithm should converge to the same minimum regardless of where it starts. Let us verify this for our linear fitting problem.</p>
+<section id="exercise-explore-different-initial-guesses">
+<h3>Exercise: Explore Different Initial Guesses<a class="headerlink" href="#exercise-explore-different-initial-guesses" title="Link to this heading">#</a></h3>
+<p>Repeat the optimisation with several different initial guesses:</p>
+<ol class="arabic">
+<li><p>Create a list of initial guesses to test:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">initial_guesses</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>For each initial guess:</p>
+<ul class="simple">
+<li><p>Run the optimisation</p></li>
+<li><p>Print the initial guess, the optimised parameters, and the final <span class="math notranslate nohighlight">\(\chi^2\)</span></p></li>
+</ul>
+</li>
+<li><p>Format your output clearly to compare the results.</p></li>
+</ol>
+<p><strong>Questions to consider:</strong></p>
+<ul class="simple">
+<li><p>Do all starting points converge to approximately the same parameters?</p></li>
+<li><p>Do all starting points give approximately the same final <span class="math notranslate nohighlight">\(\chi^2\)</span>?</p></li>
+<li><p>Does the number of iterations vary depending on the starting point?</p></li>
+<li><p>Why is linear fitting generally more robust to initial guesses than some other optimisation problems?</p></li>
+</ul>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<p>You have now completed the full workflow for model fitting:</p>
+<ol class="arabic simple">
+<li><p><strong>Define your model</strong> – A mathematical function that describes the relationship you expect</p></li>
+<li><p><strong>Define an error metric</strong> – A function that quantifies how well parameters fit the data (typically <span class="math notranslate nohighlight">\(\chi^2\)</span>)</p></li>
+<li><p><strong>Optimise the parameters</strong> – Use <code class="docutils literal notranslate"><span class="pre">minimize()</span></code> to find parameters that minimise the error</p></li>
+<li><p><strong>Visualise the results</strong> – Plot the data and fitted model to assess quality</p></li>
+</ol>
+<p>This same pattern applies to any model fitting problem, whether the model is linear or non-linear, and whether you have two parameters or twenty. The exercises that follow will give you practice applying this workflow to real chemical systems, where the models and data have physical significance.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For linear regression specifically, there exist analytical solutions and specialized functions like <code class="docutils literal notranslate"><span class="pre">scipy.stats.linregress()</span></code> that are more efficient than using <code class="docutils literal notranslate"><span class="pre">minimize()</span></code>. However, the approach you have learned here is completely general and works for any model – including non-linear models where no analytical solution exists. This generality makes it a powerful tool for fitting diverse chemical models to experimental data.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./model_fitting"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="understanding_residuals.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Understanding Residuals and Quality of Fit</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="exercises.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercises</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-model-function">Defining the Model Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-write-a-linear-model-function">Exercise: Write a Linear Model Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-error-function">Defining the Error Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-write-an-error-function">Exercise: Write an Error Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-best-fit-parameters">Finding the Best-Fit Parameters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-optimise-the-parameters">Exercise: Optimise the Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-the-fitted-model">Visualising the Fitted Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-plot-the-data-and-fitted-model">Exercise: Plot the Data and Fitted Model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-different-initial-guesses">Testing Different Initial Guesses</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-explore-different-initial-guesses">Exercise: Explore Different Initial Guesses</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

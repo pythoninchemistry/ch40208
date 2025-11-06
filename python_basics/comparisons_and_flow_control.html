@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Comparisons and Flow Control &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/comparisons_and_flow_control';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced Loop Control" href="advanced_loop_control.html" />
+    <link rel="prev" title="Functions" href="functions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy/intro.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/basics.html">NumPy Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/operations.html">Array Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/exercises.html">NumPy Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/matplotlib/intro.html">Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/basics.html">Matplotlib Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/customisation.html">Customising Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/plotting_data.html">Plotting Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/latex.html">LaTeX Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/understanding_residuals.html">Understanding Residuals and Quality of Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/fitting_with_minimize.html">Linear Model Fitting with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/adding_files_to_noteable.html">Adding Files to Noteable</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_1_index.html">Week 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_dictionaries.html">Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_2_index.html">Week 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_3_index.html">Week 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_3_numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_3_synoptic_exercises.html">Synoptic Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_5/week_5_index.html">Week 5</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/grid_search_method.html">Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/gradient_descent_method.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/newton_raphson_method.html">Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/Lennard_Jones_optimisation.html">Lennard-Jones optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/scipy_optimize_minimize.html">scipy.optimize.minimize</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/python_basics/comparisons_and_flow_control.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Comparisons and Flow Control</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-variable-types">Boolean variable types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">Logical operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">!=</span> <span class="pre">=</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-and-or"><code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements"><code class="docutils literal notranslate"><span class="pre">if</span></code> statements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">if … else</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fizzbuzz">1. Fizzbuzz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-liquid-or-gas">2. Solid, liquid, or gas?</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="comparisons-and-flow-control">
+<h1>Comparisons and Flow Control<a class="headerlink" href="#comparisons-and-flow-control" title="Link to this heading">#</a></h1>
+<p>In all of the examples so far, the code always performs the same set of operations, in the same order.</p>
+<p>There are a lot of problems where it is helpful to have the computer perform <strong>different</strong> operations depending on differences in some input data, or differences in a result calculated somewhere else in the code. For example, we might want to write code that works with temperature data, but that has the option of converting from Celsius to Kelvin, or we might want to check our data after we have read it in for any unphysical values—for example, negative temperatures—and raise a warning or automatically exclude the offending data points.</p>
+<p>Python provides <strong>control statements</strong> that allow us to choose the order of execution of our code depending on the value of a <strong>logical expression</strong>.</p>
+<p>One of the most useful <strong>control statements</strong> is the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, which allows us to run a particular piece of code <strong>if</strong> an <strong>expression</strong> is <strong>true</strong>.</p>
+<p>A non-programming example might be:</p>
+<blockquote>
+<div><p>If today is Tuesday then I will go to CH40208.</p>
+</div></blockquote>
+<p>Here our <strong>expression</strong> we consider is:</p>
+<blockquote>
+<div><p>today is Tuesday</p>
+</div></blockquote>
+<p>If this <strong>expression</strong> is <strong>true</strong> then we perform an action.</p>
+<blockquote>
+<div><p>I will go to CH40208.</p>
+</div></blockquote>
+<p>If this <strong>expression</strong> is <strong>false</strong> (and it is <strong>not</strong> Tuesday) we can skip the action and move onto the next thing in our day.</p>
+<p>We could make this explicit by defining what we will do if the <strong>expression</strong> is <strong>false</strong>:</p>
+<blockquote>
+<div><p>If today is Tuesday then I will go to CH40208. Otherwise, I will work on last week’s exercise.</p>
+</div></blockquote>
+<p>Now we have two possible actions. One that we do if the <strong>expression</strong> is <strong>true</strong>, and one that we do if the <strong>expression</strong> is <strong>false</strong>.</p>
+<p>Below we will see how to use <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to construct similar <strong>conditional</strong> statements in our code. But first we need to look in a bit more detail into how Python decides if something is <strong>true</strong> or <strong>false</strong>.</p>
+<section id="boolean-variable-types">
+<h2>Boolean variable types<a class="headerlink" href="#boolean-variable-types" title="Link to this heading">#</a></h2>
+<p>We have already met <a class="reference external" href="https://pythoninchemistry.org/ch40208/python_basics/types.html">Boolean variable types</a>; these are variables that can be assigned to the special values <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today_is_Tuesday</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">today_is_Tuesday</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bool
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logical-operators">
+<h2>Logical operators<a class="headerlink" href="#logical-operators" title="Link to this heading">#</a></h2>
+<p>Python provides a number of <strong>logical operators</strong> that can be used to compare two values, and return a <strong>boolean</strong> value of <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>One example is the <strong>equals</strong> operator, which is written as <code class="docutils literal notranslate"><span class="pre">==</span></code>. This operator can be used to test whether two objects have the same value, e.g.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test whether 2 is equal to 2</span>
+<span class="mi">2</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test whether 1 is equal to 2</span>
+<span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test whether 2+2 is equal to 4</span>
+<span class="n">my_total</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">my_total</span> <span class="o">==</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Other operators for “is greater than” &amp;lqduo;is not equal to” “is less than or equal to” are also available</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Mathematical Symbol</p></th>
+<th class="head"><p>Operator</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Equals</p></td>
+<td><p><span class="math notranslate nohighlight">\(=\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Less than</p></td>
+<td><p><span class="math notranslate nohighlight">\(&lt;\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Less than or equal</p></td>
+<td><p><span class="math notranslate nohighlight">\(\leq\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Greater than</p></td>
+<td><p><span class="math notranslate nohighlight">\(&gt;\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Greater than or equal</p></td>
+<td><p><span class="math notranslate nohighlight">\(\geq\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Not equal</p></td>
+<td><p><span class="math notranslate nohighlight">\(\neq\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Is 1 greater than 2?</span>
+<span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Is Pi (to 2 decimal places) *not* equal to 3?</span>
+<span class="mf">3.14</span> <span class="o">!=</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python also provides logical operators for testing whether a sequence contains a particular element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="s1">&#39;banana&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;f&#39;</span> <span class="ow">in</span> <span class="s1">&#39;jelly&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">halogens</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;Cl&#39;</span><span class="p">,</span> <span class="s1">&#39;Br&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;At&#39;</span><span class="p">,</span> <span class="s1">&#39;Ts&#39;</span><span class="p">]</span>
+<span class="s1">&#39;Mg&#39;</span> <span class="ow">in</span> <span class="n">halogens</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively, you can use <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> to test whether a sequence <strong>does not</strong> contain a given element:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Mg&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">halogens</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h3><code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">!=</span> <span class="pre">=</span></code><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>A very common mistake when people are learning Python (and also when they have more experience) is mixing up the <code class="docutils literal notranslate"><span class="pre">==</span></code> and <code class="docutils literal notranslate"><span class="pre">=</span></code> operators, which can result in hard-to-spot bugs.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">==</span></code> is a <strong>logical operator</strong> that <strong>compares</strong> two objects to see whether their values are equal.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code> is the <strong>assignment</strong> operator, that is used to assign a variable to a value.</p></li>
+</ul>
+<p>This confusing is partly because we might hear people say “a <strong>equals</strong> b” when describing both the following expressions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a equals b?</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span> 
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a equals b.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span> 
+</pre></div>
+</div>
+<p>A clearer choice of words might be:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a is equal to b?</span>
+<span class="n">a</span> <span class="o">==</span> <span class="n">b</span> 
+</pre></div>
+</div>
+<p>and</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a is assigned to b </span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">b</span> 
+<span class="c1"># (or more correctly, a is assigned to the value b has been assigned to)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="and-and-or">
+<h2><code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code><a class="headerlink" href="#and-and-or" title="Link to this heading">#</a></h2>
+<p>Logical statements allow us to express statements like “today is Monday“ or “today is Friday” in code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">=</span> <span class="s2">&quot;Friday&quot;</span> <span class="c1"># assignment operator</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span> <span class="c1"># testing equality</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Friday&quot;</span> <span class="c1"># testing equality</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python provides <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> keywords that we can use to build compound logical statements. For example</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span> <span class="ow">or</span> <span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Friday&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span> <span class="ow">and</span> <span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Friday&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Two logical statements connected by <code class="docutils literal notranslate"><span class="pre">or</span></code> return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>either</strong> of the individual statements return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p>Two logical statements connected by <code class="docutils literal notranslate"><span class="pre">and</span></code> return <code class="docutils literal notranslate"><span class="pre">True</span></code> if <strong>both</strong> of the individual statements return <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</section>
+<section id="if-statements">
+<h2><code class="docutils literal notranslate"><span class="pre">if</span></code> statements<a class="headerlink" href="#if-statements" title="Link to this heading">#</a></h2>
+<p>Now that we can test whether certain conditions are <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>, we can use these <strong>conditional statements</strong> to control the <strong>flow</strong> of our code.</p>
+<p>An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement allows us to specify a block of code that will run only if a specific condition is <strong>true</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">this_statement_is_true</span><span class="p">:</span>
+    <span class="n">do_something</span>
+</pre></div>
+</div>
+<p>An <code class="docutils literal notranslate"><span class="pre">if</span></code> statement starts with the keyword <code class="docutils literal notranslate"><span class="pre">if</span></code>, followed by a <strong>conditional statement</strong>, and ending with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>.</p>
+<p>The lines after the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement are indented to form a <strong>code block</strong>. This block of code is executed <strong>if</strong> the previous condition evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span><span class="p">:</span>
+    <span class="n">open_zoom</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>In this example, the value of <code class="docutils literal notranslate"><span class="pre">today</span></code> is equal to the string <code class="docutils literal notranslate"><span class="pre">&quot;Monday&quot;</span></code> then the following code block runs and the <code class="docutils literal notranslate"><span class="pre">open_zoom()</span></code> function is called.</p>
+<p>If the <strong>conditional statement</strong> evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code> then the indented block is skipped, and execution jumps to the first <strong>non-indented</strong> line after the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">this_statement_is_true</span><span class="p">:</span>
+    <span class="n">do_something</span> <span class="c1"># this *only* runs if the conditional statement evaluates as `True`.</span>
+<span class="n">following_code</span> <span class="c1"># this *always* runs, even if the conditional statement evaluates as `False`.</span>
+</pre></div>
+</div>
+<p>The <strong>conditional statement</strong> in an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement can be a <strong>compound</strong> statement, where the indented code block runs is the <strong>entire</strong> statement evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Monday&quot;</span> <span class="ow">or</span> <span class="n">today</span> <span class="o">==</span> <span class="s2">&quot;Friday&quot;</span><span class="p">:</span>
+    <span class="n">open_zoom</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now, if either <code class="docutils literal notranslate"><span class="pre">today</span> <span class="pre">==</span> <span class="pre">&quot;Monday&quot;</span></code> <strong>or</strong> <code class="docutils literal notranslate"><span class="pre">today</span> <span class="pre">==</span> <span class="pre">&quot;Friday&quot;</span></code> are true then the <code class="docutils literal notranslate"><span class="pre">open_zoom()</span></code> function will be called.</p>
+<section id="if-else">
+<h3>if … else<a class="headerlink" href="#if-else" title="Link to this heading">#</a></h3>
+<p>Let us look at a different example: identifying elements based on their atomic symbol.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_element</span> <span class="o">=</span> <span class="s1">&#39;F&#39;</span>
+
+<span class="k">if</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is fluorine.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The element is fluorine.
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we have described what code we would like to run if our conditional statement is <code class="docutils literal notranslate"><span class="pre">True</span></code>. But if our conditional statement is <code class="docutils literal notranslate"><span class="pre">False</span></code> then we get no output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_element</span> <span class="o">=</span> <span class="s1">&#39;Cl&#39;</span>
+
+<span class="k">if</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is fluorine.&#39;</span><span class="p">)</span>
+    <span class="c1"># this block is not run, so our code does not print anything.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>It would be helpful if we could provide an <strong>alternative</strong> block of code that will run if our conditional statement is <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<p>In Python we can use <code class="docutils literal notranslate"><span class="pre">if</span></code>…<code class="docutils literal notranslate"><span class="pre">else</span></code> to do this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_element</span> <span class="o">=</span> <span class="s1">&#39;Cl&#39;</span>
+
+<span class="k">if</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is fluorine.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is not fluorine.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The element is not fluorine.
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">else</span></code> is used similarly to our original <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">statement:</span></code>. The <code class="docutils literal notranslate"><span class="pre">else</span></code> has the same indentation as the original <code class="docutils literal notranslate"><span class="pre">if</span></code> and is followed by a colon <code class="docutils literal notranslate"><span class="pre">:</span></code>. Then the code block we want to run is indented in a code block below the <code class="docutils literal notranslate"><span class="pre">else:</span></code> line.</p>
+<p>Sometimes we want to test more than one condition in sequence.</p>
+<p>If A is <strong>true</strong> do X.<br />
+If A is <strong>not true</strong>, but B is <strong>true</strong> do Y.<br />
+If <strong>neither</strong> A <strong>nor</strong> B are <strong>true</strong> do Z.</p>
+<p>Python allows us to build up these more complex flow control statements by combining <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> with <code class="docutils literal notranslate"><span class="pre">elif</span></code> (which you can read as short for “else if”)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_element</span> <span class="o">=</span> <span class="s1">&#39;Cl&#39;</span>
+
+<span class="c1"># compound if…elif…else block to test the identify of my_element.</span>
+<span class="k">if</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is fluorine.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Cl&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is a chlorine.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I don</span><span class="se">\&#39;</span><span class="s1">t know what this element is&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The element is a chlorine.
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can have any number of <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_element</span> <span class="o">=</span> <span class="s1">&#39;At&#39;</span>
+
+<span class="c1"># compound if…elif…else block to test the identify of my_element.</span>
+<span class="k">if</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is fluorine.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Cl&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is chlorine.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Br&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is bromine.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;I&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is iodine.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;At&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is astatine.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I don</span><span class="se">\&#39;</span><span class="s1">t know what this element is&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The element is astatine.
+</pre></div>
+</div>
+</div>
+</div>
+<p>What if we want to test whether our element is contained in a <strong>group</strong>? We could do this using <code class="docutils literal notranslate"><span class="pre">or</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">((</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span> <span class="ow">or</span> 
+    <span class="p">(</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Cl&#39;</span><span class="p">)</span> <span class="ow">or</span> 
+    <span class="p">(</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Br&#39;</span><span class="p">)</span> <span class="ow">or</span> 
+    <span class="p">(</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;I&#39;</span><span class="p">)</span> <span class="ow">or</span> 
+    <span class="p">(</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;At&#39;</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is a halogen.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Ts&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is potentially a halogen.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I don</span><span class="se">\&#39;</span><span class="s1">t know what this element is&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The element is a halogen.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we have wrapped our compound conditional statement in brackets <code class="docutils literal notranslate"><span class="pre">()</span></code> so that we can split it over multple lines to improve readability.</p>
+<p>This code is still quite awkward to read though. And we can start to image the problem if we want to test whether an object is contained in an even larger set. For example, writing a function to test whether a string is a valid chemical symbol!!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_an_element</span><span class="p">(</span><span class="n">my_element</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test whether a string is a valid chemical symbol.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        my_element (str): The string to test.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (bool): True if the string is a valid chemical symbol; False otherwise.</span>
+<span class="sd">        </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;H&#39;</span><span class="p">)</span> <span class="ow">or</span>
+        <span class="p">(</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;He&#39;</span><span class="p">)</span> <span class="ow">or</span>
+        <span class="p">(</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Li&#39;</span><span class="p">)</span> <span class="ow">or</span>
+        <span class="err">…</span>
+        <span class="p">(</span><span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Og&#39;</span><span class="p">)):</span> <span class="c1"># 118 lines later</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+<p>Python provides the <code class="docutils literal notranslate"><span class="pre">in</span></code> keyword as a logical operator for testing whether an object is contained in a sequence, which allows us to write both the examples above much more cleanly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">my_element</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;Cl&#39;</span><span class="p">,</span> <span class="s1">&#39;Br&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;At&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is a halogen.&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">my_element</span> <span class="o">==</span> <span class="s1">&#39;Ts&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The element is potentially a halogen.&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;I don</span><span class="se">\&#39;</span><span class="s1">t know what this element is&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The element is a halogen.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we test whether the value assigned to <code class="docutils literal notranslate"><span class="pre">my_element</span></code> is contained in the list <code class="docutils literal notranslate"><span class="pre">['F',</span> <span class="pre">'Cl',</span> <span class="pre">'Br',</span> <span class="pre">'I',</span> <span class="pre">'At']</span></code>.</p>
+<p>Now our function to test whether a string is a valid chemical element becomes</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_an_element</span><span class="p">(</span><span class="n">my_element</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Test whether a string is a valid chemical symbol.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        my_element (str): The string to test.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (bool): True if the string is a valid chemical symbol; False otherwise.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">valid_symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;He&#39;</span><span class="p">,</span> <span class="s1">&#39;Li&#39;</span><span class="p">,</span> <span class="s1">&#39;Be&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span> <span class="err">…</span> <span class="s1">&#39;Lv&#39;</span><span class="p">,</span> <span class="s1">&#39;Ts&#39;</span><span class="p">,</span> <span class="s1">&#39;Og&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">my_element</span> <span class="ow">in</span> <span class="n">valid_symbols</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="fizzbuzz">
+<h3>1. Fizzbuzz<a class="headerlink" href="#fizzbuzz" title="Link to this heading">#</a></h3>
+<p>Write a piece of code that can play <a class="reference external" href="https://en.wikipedia.org/wiki/Fizz_buzz">fizzbuzz</a>. Your code should count from 1 to 100. Numbers that are divisible by 3 are replaced by “Fizz”; numbers that are divisible by 5 are replaced by “Buzz”; and numbers divisible by 3 <strong>and</strong> 5 are replaced by “Fizz Buzz”.</p>
+<p>To generate the numbers from 1 to 100 you can use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function with <strong>two</strong> numbers, to specify the start and end of your range, i.e. <code class="docutils literal notranslate"><span class="pre">range(1,101)</span></code>.</p>
+</section>
+<section id="solid-liquid-or-gas">
+<h3>2. Solid, liquid, or gas?<a class="headerlink" href="#solid-liquid-or-gas" title="Link to this heading">#</a></h3>
+<p>Given the following data on the standard melting and boiling points of various metals, determine their state (solid, liquid or gas) at <span class="math notranslate nohighlight">\(500\,^\circ\mathrm{C}\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">metals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="s1">&#39;Hg&#39;</span><span class="p">,</span> <span class="s1">&#39;Ti&#39;</span><span class="p">,</span> <span class="s1">&#39;Pb&#39;</span><span class="p">]</span> <span class="c1"># Standard phase change temperatures for each metal, in K.</span>
+<span class="n">melting_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1811</span><span class="p">,</span> <span class="mi">933</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">1941</span><span class="p">,</span> <span class="mi">601</span><span class="p">]</span>
+<span class="n">boiling_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3134</span><span class="p">,</span> <span class="mi">2743</span><span class="p">,</span> <span class="mi">630</span><span class="p">,</span> <span class="mi">3560</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./python_basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="advanced_loop_control.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advanced Loop Control</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boolean-variable-types">Boolean variable types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">Logical operators</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">==</span> <span class="pre">!=</span> <span class="pre">=</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#and-and-or"><code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-statements"><code class="docutils literal notranslate"><span class="pre">if</span></code> statements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-else">if … else</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fizzbuzz">1. Fizzbuzz</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solid-liquid-or-gas">2. Solid, liquid, or gas?</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

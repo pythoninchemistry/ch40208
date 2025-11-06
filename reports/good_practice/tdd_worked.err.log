@@ -1,0 +1,66 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def arrhenius_equation(pre_exponential_factor, activation_energy, temperature):
+    """
+    Find the rate constant(s) for a reaction.
+    
+    Args:
+        pre_exponential_factor (float): The pre-exponental factor, A.,
+        activation_energy (float): Activation energy (J).
+        temperature (float): Temperature (K), can be an array.
+    
+    Returns: 
+        (float): Rate constant.
+    """
+    return pre_exponential_factor * np.exp(-activation_energy / (R * temperature))
+    
+np.testing.assert_almost_equal(arrhenius_equation(23e10, 24.131, 300), 227785637794.47137)
+print('Test 1 for Problem 4 Passed!')
+np.testing.assert_almost_equal(arrhenius_equation(29, 10, np.array([6, 26, 226])), 
+                               [23.7324167, 27.6890556, 28.8460781])
+print('Test 2 for Problem 4 Passed!')
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mAssertionError[39m                            Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 15[39m
+[32m      2[39m [38;5;250m    [39m[33;03m"""[39;00m
+[32m      3[39m [33;03m    Find the rate constant(s) for a reaction.[39;00m
+[32m      4[39m 
+[32m   (...)[39m[32m     11[39m [33;03m        (float): Rate constant.[39;00m
+[32m     12[39m [33;03m    """[39;00m
+[32m     13[39m     [38;5;28;01mreturn[39;00m pre_exponential_factor * np.exp(-activation_energy / (R * temperature))
+[32m---> [39m[32m15[39m [43mnp[49m[43m.[49m[43mtesting[49m[43m.[49m[43massert_almost_equal[49m[43m([49m[43marrhenius_equation[49m[43m([49m[32;43m23e10[39;49m[43m,[49m[43m [49m[32;43m24.131[39;49m[43m,[49m[43m [49m[32;43m300[39;49m[43m)[49m[43m,[49m[43m [49m[32;43m227785637794.47137[39;49m[43m)[49m
+[32m     16[39m [38;5;28mprint[39m([33m'[39m[33mTest 1 for Problem 4 Passed![39m[33m'[39m)
+[32m     17[39m np.testing.assert_almost_equal(arrhenius_equation([32m29[39m, [32m10[39m, np.array([[32m6[39m, [32m26[39m, [32m226[39m])), 
+[32m     18[39m                                [[32m23.7324167[39m, [32m27.6890556[39m, [32m28.8460781[39m])
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/numpy/testing/_private/utils.py:635[39m, in [36massert_almost_equal[39m[34m(actual, desired, decimal, err_msg, verbose)[39m
+[32m    633[39m     [38;5;28;01mpass[39;00m
+[32m    634[39m [38;5;28;01mif[39;00m [38;5;28mabs[39m(desired - actual) >= np.float64([32m1.5[39m * [32m10.0[39m**(-decimal)):
+[32m--> [39m[32m635[39m     [38;5;28;01mraise[39;00m [38;5;167;01mAssertionError[39;00m(_build_err_msg())
+
+[31mAssertionError[39m: 
+Arrays are not almost equal to 7 decimals
+ ACTUAL: np.float64(227785637794.512)
+ DESIRED: 227785637794.47137
+

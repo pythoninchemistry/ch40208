@@ -1,0 +1,927 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worked Examples: Dictionaries &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worked_examples/week_1_dictionaries';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Week 2 Worked Examples" href="week_2_index.html" />
+    <link rel="prev" title="Worked Examples: Loops" href="week_1_loops.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy/intro.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/basics.html">NumPy Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/operations.html">Array Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/exercises.html">NumPy Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/matplotlib/intro.html">Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/basics.html">Matplotlib Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/customisation.html">Customising Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/plotting_data.html">Plotting Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/latex.html">LaTeX Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/understanding_residuals.html">Understanding Residuals and Quality of Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/fitting_with_minimize.html">Linear Model Fitting with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/adding_files_to_noteable.html">Adding Files to Noteable</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="week_1_index.html">Week 1</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_loops.html">Loops</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_2_index.html">Week 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_2_functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_2_comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_2_advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_3_index.html">Week 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_3_numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_3_synoptic_exercises.html">Synoptic Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_5/week_5_index.html">Week 5</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_5/grid_search_method.html">Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/gradient_descent_method.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/newton_raphson_method.html">Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/Lennard_Jones_optimisation.html">Lennard-Jones optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/scipy_optimize_minimize.html">scipy.optimize.minimize</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/worked_examples/week_1_dictionaries.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worked Examples: Dictionaries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-first-row-transition-metals-dictionary">Exercise: First-Row Transition Metals Dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-dictionary">Testing the Dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-operations">Additional Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-more-information">Adding More Information</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-dictionaries">1. Creating Dictionaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary-values">2. Accessing Dictionary Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-over-dictionaries">3. Iterating Over Dictionaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-dictionaries">4. Nested Dictionaries</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worked-examples-dictionaries">
+<h1>Worked Examples: Dictionaries<a class="headerlink" href="#worked-examples-dictionaries" title="Link to this heading">#</a></h1>
+<p>These worked solutions correspond to the exercises on the <a class="reference internal" href="../python_basics/dictionaries.html"><span class="std std-doc">Dictionaries</span></a> page.</p>
+<p><strong>How to use this notebook:</strong></p>
+<ul class="simple">
+<li><p>Try each exercise yourself first before looking at the solution</p></li>
+<li><p>The code cells show both the code and its output</p></li>
+<li><p>Download this notebook if you want to run and experiment with the code yourself</p></li>
+<li><p>Your solution might look different - that’s fine as long as it gives the correct answer!</p></li>
+</ul>
+<hr class="docutils" />
+<section id="exercise-first-row-transition-metals-dictionary">
+<h2>Exercise: First-Row Transition Metals Dictionary<a class="headerlink" href="#exercise-first-row-transition-metals-dictionary" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> Create a dictionary where the keys are the names of the first-row transition metals, and the values are integers representing the number of valence electrons. Test your dictionary by printing some of the values.</p>
+<p><strong>Background:</strong> The first-row transition metals (also called 3d transition metals) are:</p>
+<ul class="simple">
+<li><p>Scandium (Sc) through Zinc (Zn)</p></li>
+<li><p>These elements have electrons filling the 3d and 4s orbitals</p></li>
+<li><p>The number of valence electrons affects their chemical properties</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transition_metals</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;scandium&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;titanium&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="s1">&#39;vanadium&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s1">&#39;chromium&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="s1">&#39;manganese&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="s1">&#39;iron&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="s1">&#39;cobalt&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="s1">&#39;nickel&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s1">&#39;copper&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="s1">&#39;zinc&#39;</span><span class="p">:</span> <span class="mi">12</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">transition_metals</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;scandium&#39;: 3, &#39;titanium&#39;: 4, &#39;vanadium&#39;: 5, &#39;chromium&#39;: 6, &#39;manganese&#39;: 7, &#39;iron&#39;: 8, &#39;cobalt&#39;: 9, &#39;nickel&#39;: 10, &#39;copper&#39;: 11, &#39;zinc&#39;: 12}
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<p>The valence electrons for transition metals typically include:</p>
+<ul class="simple">
+<li><p>The 4s electrons (usually 2)</p></li>
+<li><p>The 3d electrons (varying from 1 to 10)</p></li>
+</ul>
+<p>For example:</p>
+<ul class="simple">
+<li><p><strong>Scandium (Sc):</strong> [Ar] 3d<sup>1</sup> 4s<sup>2</sup> → 3 valence electrons</p></li>
+<li><p><strong>Iron (Fe):</strong> [Ar] 3d<sup>6</sup> 4s<sup>2</sup> → 8 valence electrons</p></li>
+<li><p><strong>Zinc (Zn):</strong> [Ar] 3d<sup>10</sup> 4s<sup>2</sup> → 12 valence electrons</p></li>
+</ul>
+<p><strong>Note:</strong> There are some exceptions to the pattern (like chromium and copper) where electrons are rearranged for stability, but the total valence electron count shown here is correct.</p>
+<section id="testing-the-dictionary">
+<h3>Testing the Dictionary<a class="headerlink" href="#testing-the-dictionary" title="Link to this heading">#</a></h3>
+<p>Let’s test our dictionary by printing some values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access individual elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iron has </span><span class="si">{</span><span class="n">transition_metals</span><span class="p">[</span><span class="s1">&#39;iron&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> valence electrons&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Copper has </span><span class="si">{</span><span class="n">transition_metals</span><span class="p">[</span><span class="s1">&#39;copper&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> valence electrons&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zinc has </span><span class="si">{</span><span class="n">transition_metals</span><span class="p">[</span><span class="s1">&#39;zinc&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> valence electrons&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iron has 8 valence electrons
+Copper has 11 valence electrons
+Zinc has 12 valence electrons
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also print all the key-value pairs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">metal</span><span class="p">,</span> <span class="n">electrons</span> <span class="ow">in</span> <span class="n">transition_metals</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metal</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">electrons</span><span class="si">}</span><span class="s2"> valence electrons&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Scandium: 3 valence electrons
+Titanium: 4 valence electrons
+Vanadium: 5 valence electrons
+Chromium: 6 valence electrons
+Manganese: 7 valence electrons
+Iron: 8 valence electrons
+Cobalt: 9 valence electrons
+Nickel: 10 valence electrons
+Copper: 11 valence electrons
+Zinc: 12 valence electrons
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="additional-operations">
+<h3>Additional Operations<a class="headerlink" href="#additional-operations" title="Link to this heading">#</a></h3>
+<p><strong>Check if a metal is in our dictionary:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;iron&#39;</span> <span class="ow">in</span> <span class="n">transition_metals</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;gold&#39;</span> <span class="ow">in</span> <span class="n">transition_metals</span><span class="p">)</span>  <span class="c1"># Gold is in the second row</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Get the number of metals:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of first-row transition metals: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">transition_metals</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of first-row transition metals: 10
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Find metals with specific numbers of valence electrons:</strong></p>
+<p>Let’s find all metals that have 8 valence electrons. We’ll show two approaches.</p>
+<p><strong>Approach 1: Using a loop with an if statement</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find metals with 8 valence electrons using a loop</span>
+<span class="n">metals_with_8_electrons</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">metal</span><span class="p">,</span> <span class="n">electrons</span> <span class="ow">in</span> <span class="n">transition_metals</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">electrons</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="n">metals_with_8_electrons</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">metal</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metals with 8 valence electrons: </span><span class="si">{</span><span class="n">metals_with_8_electrons</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metals with 8 valence electrons: [&#39;iron&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<ol class="arabic simple">
+<li><p>Create an empty list <code class="docutils literal notranslate"><span class="pre">metals_with_8_electrons</span></code></p></li>
+<li><p>Loop through each metal and its electron count</p></li>
+<li><p>If the electron count equals 8, append the metal name to our list</p></li>
+<li><p>Print the result</p></li>
+</ol>
+<p><strong>Approach 2: Using a list comprehension</strong></p>
+<p>We can do the same thing more concisely using a <strong>list comprehension</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Find metals with 8 valence electrons using a list comprehension</span>
+<span class="n">metals_with_8_electrons</span> <span class="o">=</span> <span class="p">[</span><span class="n">metal</span> <span class="k">for</span> <span class="n">metal</span><span class="p">,</span> <span class="n">electrons</span> <span class="ow">in</span> <span class="n">transition_metals</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">electrons</span> <span class="o">==</span> <span class="mi">8</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metals with 8 valence electrons: </span><span class="si">{</span><span class="n">metals_with_8_electrons</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Metals with 8 valence electrons: [&#39;iron&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Explanation:</strong></p>
+<p>This single line does exactly the same thing as the loop above! Let’s break it down:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">metal</span> <span class="k">for</span> <span class="n">metal</span><span class="p">,</span> <span class="n">electrons</span> <span class="ow">in</span> <span class="n">transition_metals</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">electrons</span> <span class="o">==</span> <span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Reading from left to right:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[...]</span></code> - Create a new list
+<code class="docutils literal notranslate"><span class="pre">metal</span></code> - Add this metal name to the list (this is what we want to collect)
+<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">metal,</span> <span class="pre">electrons</span> <span class="pre">in</span> <span class="pre">transition_metals.items()</span></code> - Loop through key, value pairs in the dictionary
+<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">electrons</span> <span class="pre">==</span> <span class="pre">8</span></code> - Only include metals where this condition is true</p>
+<p>General pattern:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">expression</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">iterable</span> <span class="k">if</span> <span class="n">condition</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Which should you use?</p>
+<p>Loop version: More explicit, easier to debug, better for complex operations
+List comprehension: More concise, “Pythonic”, good for simple operations</p>
+<p>Both are correct - use whichever is clearer to you!</p>
+</section>
+<section id="adding-more-information">
+<h3>Adding More Information<a class="headerlink" href="#adding-more-information" title="Link to this heading">#</a></h3>
+<p>Dictionaries can store more complex data. Let’s create a more detailed version where each value is itself a dictionary:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">detailed_metals</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;iron&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Fe&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;atomic_number&#39;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+        <span class="s1">&#39;valence_electrons&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s1">&#39;electron_configuration&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ar] 3d6 4s2&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;copper&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Cu&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;atomic_number&#39;</span><span class="p">:</span> <span class="mi">29</span><span class="p">,</span>
+        <span class="s1">&#39;valence_electrons&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+        <span class="s1">&#39;electron_configuration&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ar] 3d10 4s1&#39;</span>
+    <span class="p">},</span>
+    <span class="s1">&#39;zinc&#39;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="s1">&#39;Zn&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;atomic_number&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="s1">&#39;valence_electrons&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="s1">&#39;electron_configuration&#39;</span><span class="p">:</span> <span class="s1">&#39;[Ar] 3d10 4s2&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Access nested dictionary values</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iron&#39;s symbol: </span><span class="si">{</span><span class="n">detailed_metals</span><span class="p">[</span><span class="s1">&#39;iron&#39;</span><span class="p">][</span><span class="s1">&#39;symbol&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Copper&#39;s atomic number: </span><span class="si">{</span><span class="n">detailed_metals</span><span class="p">[</span><span class="s1">&#39;copper&#39;</span><span class="p">][</span><span class="s1">&#39;atomic_number&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zinc&#39;s electron configuration: </span><span class="si">{</span><span class="n">detailed_metals</span><span class="p">[</span><span class="s1">&#39;zinc&#39;</span><span class="p">][</span><span class="s1">&#39;electron_configuration&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iron&#39;s symbol: Fe
+Copper&#39;s atomic number: 29
+Zinc&#39;s electron configuration: [Ar] 3d10 4s2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<section id="creating-dictionaries">
+<h3>1. Creating Dictionaries<a class="headerlink" href="#creating-dictionaries" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Define key-value pairs using <code class="docutils literal notranslate"><span class="pre">{key:</span> <span class="pre">value}</span></code> syntax</p></li>
+<li><p>Keys should be descriptive (like element names)</p></li>
+<li><p>Values can be any data type (here: integers)</p></li>
+</ul>
+</section>
+<section id="accessing-dictionary-values">
+<h3>2. Accessing Dictionary Values<a class="headerlink" href="#accessing-dictionary-values" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Use square brackets: <code class="docutils literal notranslate"><span class="pre">dictionary[key]</span></code></p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.get(key)</span></code> for safe access that won’t raise errors</p></li>
+</ul>
+</section>
+<section id="iterating-over-dictionaries">
+<h3>3. Iterating Over Dictionaries<a class="headerlink" href="#iterating-over-dictionaries" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.items()</span></code> gives both keys and values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.keys()</span></code> gives just keys</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.values()</span></code> gives just values</p></li>
+</ul>
+</section>
+<section id="nested-dictionaries">
+<h3>4. Nested Dictionaries<a class="headerlink" href="#nested-dictionaries" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Values can be dictionaries themselves</p></li>
+<li><p>Access using multiple brackets: <code class="docutils literal notranslate"><span class="pre">dict[key1][key2]</span></code></p></li>
+<li><p>Useful, e.g., for storing multiple properties per element</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worked_examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="week_1_loops.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Worked Examples: Loops</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="week_2_index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Week 2 Worked Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-first-row-transition-metals-dictionary">Exercise: First-Row Transition Metals Dictionary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-dictionary">Testing the Dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-operations">Additional Operations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-more-information">Adding More Information</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-dictionaries">1. Creating Dictionaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary-values">2. Accessing Dictionary Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#iterating-over-dictionaries">3. Iterating Over Dictionaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-dictionaries">4. Nested Dictionaries</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

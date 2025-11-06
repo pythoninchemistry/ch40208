@@ -1,0 +1,1091 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worked Examples: Comparisons and Flow Control &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worked_examples/week_2_comparisons_and_flow_control';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Worked Examples: Advanced Loop Control" href="week_2_advanced_loop_control.html" />
+    <link rel="prev" title="Worked Examples: Comparisons and Flow Control" href="week_2_functions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy/intro.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/basics.html">NumPy Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/operations.html">Array Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/exercises.html">NumPy Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/matplotlib/intro.html">Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/basics.html">Matplotlib Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/customisation.html">Customising Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/plotting_data.html">Plotting Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/latex.html">LaTeX Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/understanding_residuals.html">Understanding Residuals and Quality of Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/fitting_with_minimize.html">Linear Model Fitting with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/adding_files_to_noteable.html">Adding Files to Noteable</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_1_index.html">Week 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_dictionaries.html">Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="week_2_index.html">Week 2</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="week_2_functions.html">Functions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Comparisons and Flow Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_2_advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_3_index.html">Week 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_3_numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_3_synoptic_exercises.html">Synoptic Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_5/week_5_index.html">Week 5</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_5/grid_search_method.html">Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/gradient_descent_method.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/newton_raphson_method.html">Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/Lennard_Jones_optimisation.html">Lennard-Jones optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/scipy_optimize_minimize.html">scipy.optimize.minimize</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/worked_examples/week_2_comparisons_and_flow_control.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worked Examples: Comparisons and Flow Control</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-fizzbuzz">Exercise 1: Fizzbuzz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-solid-liquid-or-gas">Exercise 2: Solid, Liquid, or Gas?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worked-examples-comparisons-and-flow-control">
+<h1>Worked Examples: Comparisons and Flow Control<a class="headerlink" href="#worked-examples-comparisons-and-flow-control" title="Link to this heading">#</a></h1>
+<p>These worked solutions correspond to the exercises on the <a class="reference internal" href="../python_basics/comparisons_and_flow_control.html"><span class="std std-doc">Comparisons and Flow Control</span></a> page.</p>
+<p><strong>How to use this notebook:</strong></p>
+<ul class="simple">
+<li><p>Try each exercise yourself first before looking at the solution</p></li>
+<li><p>The code cells show both the code and its output</p></li>
+<li><p>Download this notebook if you want to run and experiment with the code yourself</p></li>
+<li><p>Your solution might look different - that’s fine as long as it gives the correct answer!</p></li>
+</ul>
+<section id="exercise-1-fizzbuzz">
+<h2>Exercise 1: Fizzbuzz<a class="headerlink" href="#exercise-1-fizzbuzz" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> Write a piece of code that can play FizzBuzz.</p>
+<p>Your code should count from 1 to 100. Numbers that are divisible by 3 are replaced by “Fizz”; numbers that are divisible by 5 are replaced by “Buzz”; and numbers divisible by 3 and 5 are replaced by “Fizz Buzz”.</p>
+<p>To generate the numbers from 1 to 100, you can use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function with two numbers, to specify the start and end of your range, i.e. <code class="docutils literal notranslate"><span class="pre">range(1,101)</span></code>.</p>
+<p><strong>Solution:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fizz Buzz&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fizz&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Buzz&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+Fizz Buzz
+16
+17
+Fizz
+19
+Buzz
+Fizz
+22
+23
+Fizz
+Buzz
+26
+Fizz
+28
+29
+Fizz Buzz
+31
+32
+Fizz
+34
+Buzz
+Fizz
+37
+38
+Fizz
+Buzz
+41
+Fizz
+43
+44
+Fizz Buzz
+46
+47
+Fizz
+49
+Buzz
+Fizz
+52
+53
+Fizz
+Buzz
+56
+Fizz
+58
+59
+Fizz Buzz
+61
+62
+Fizz
+64
+Buzz
+Fizz
+67
+68
+Fizz
+Buzz
+71
+Fizz
+73
+74
+Fizz Buzz
+76
+77
+Fizz
+79
+Buzz
+Fizz
+82
+83
+Fizz
+Buzz
+86
+Fizz
+88
+89
+Fizz Buzz
+91
+92
+Fizz
+94
+Buzz
+Fizz
+97
+98
+Fizz
+Buzz
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Notes:</strong></p>
+<p>The modulo operator (<code class="docutils literal notranslate"><span class="pre">%</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">%</span> <span class="pre">3</span></code> gives the remainder when <code class="docutils literal notranslate"><span class="pre">i</span></code> is divided by 3</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">%</span> <span class="pre">3</span> <span class="pre">==</span> <span class="pre">0</span></code>, then <code class="docutils literal notranslate"><span class="pre">i</span></code> is divisible by 3 (remainder is 0)</p></li>
+<li><p>Similarly for <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">%</span> <span class="pre">5</span> <span class="pre">==</span> <span class="pre">0</span></code></p></li>
+</ul>
+<p>Order of conditions matters:</p>
+<ul class="simple">
+<li><p>We check for divisibility by both 3 and 5 first</p></li>
+<li><p>If we checked for 3 first, numbers like 15 would print “Fizz” and never reach “Fizz Buzz”</p></li>
+<li><p>The conditions are evaluated top-to-bottom, and only the first <code class="docutils literal notranslate"><span class="pre">True</span></code> condition executes</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">and</span></code> operator:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">%</span> <span class="pre">3</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">and</span> <span class="pre">i</span> <span class="pre">%</span> <span class="pre">5</span> <span class="pre">==</span> <span class="pre">0</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> only when both conditions are <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p>This identifies numbers divisible by both 3 and 5 (i.e., divisible by 15)</p></li>
+</ul>
+<p><strong>Alternative Solution 1: Checking Divisibility by 15</strong></p>
+<p>Since numbers divisible by both 3 and 5 are divisible by 15, we can simplify:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">15</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fizz Buzz&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fizz&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Buzz&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Alternative Solution 2: Building the Output String</strong></p>
+<p>Another approach is to build the output string sequentially by testing each condition separately:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>  <span class="c1"># Start with empty string</span>
+    
+    <span class="c1"># Check if divisible by 3</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;Fizz&quot;</span>
+    
+    <span class="c1"># Check if divisible by 5</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">output</span><span class="p">:</span>  <span class="c1"># If we already have &quot;Fizz&quot;, add a space</span>
+            <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;Buzz&quot;</span>
+    
+    <span class="c1"># If output is still empty, use the number itself</span>
+    <span class="k">if</span> <span class="n">output</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+Fizz Buzz
+16
+17
+Fizz
+19
+Buzz
+Fizz
+22
+23
+Fizz
+Buzz
+26
+Fizz
+28
+29
+Fizz Buzz
+31
+32
+Fizz
+34
+Buzz
+Fizz
+37
+38
+Fizz
+Buzz
+41
+Fizz
+43
+44
+Fizz Buzz
+46
+47
+Fizz
+49
+Buzz
+Fizz
+52
+53
+Fizz
+Buzz
+56
+Fizz
+58
+59
+Fizz Buzz
+61
+62
+Fizz
+64
+Buzz
+Fizz
+67
+68
+Fizz
+Buzz
+71
+Fizz
+73
+74
+Fizz Buzz
+76
+77
+Fizz
+79
+Buzz
+Fizz
+82
+83
+Fizz
+Buzz
+86
+Fizz
+88
+89
+Fizz Buzz
+91
+92
+Fizz
+94
+Buzz
+Fizz
+97
+98
+Fizz
+Buzz
+</pre></div>
+</div>
+</div>
+</div>
+<p>How this differs from the first solution:</p>
+<ol class="arabic simple">
+<li><p>Independent checks: We use separate <code class="docutils literal notranslate"><span class="pre">if</span></code> statements (not <code class="docutils literal notranslate"><span class="pre">elif</span></code>), so both the “divisible by 3” and “divisible by 5” checks can execute in the same iteration.</p></li>
+<li><p>Building incrementally: Instead of deciding what to print all at once, we build the output string step by step:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Start with an empty string</p></li>
+<li><p>Add “Fizz” if needed</p></li>
+<li><p>Add “Buzz” if needed (with a space if “Fizz” is already there)</p></li>
+<li><p>If nothing was added, use the number instead</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>The order still matters: We check divisibility by 3 first, then 5, so we get “Fizz Buzz” not “Buzz Fizz”.</p></li>
+<li><p>No special case for 15: When a number is divisible by both 3 and 5:</p></li>
+</ol>
+<ul class="simple">
+<li><p>First <code class="docutils literal notranslate"><span class="pre">if</span></code> block executes: adds “Fizz”</p></li>
+<li><p>Second <code class="docutils literal notranslate"><span class="pre">if</span></code> block executes: adds a space, then “Buzz”</p></li>
+<li><p>Result: “Fizz Buzz”</p></li>
+</ul>
+<p>We don’t need a separate condition to check <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">%</span> <span class="pre">3</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">and</span> <span class="pre">i</span> <span class="pre">%</span> <span class="pre">5</span> <span class="pre">==</span> <span class="pre">0</span></code> because both blocks run automatically.</p>
+<ol class="arabic simple" start="5">
+<li><p>The space logic: In the divisibility by 5 block, we check <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">output</span></code>: to decide whether to add a space:</p></li>
+</ol>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">=</span> <span class="pre">&quot;Fizz&quot;</span></code>, we add a space before “Buzz” → <code class="docutils literal notranslate"><span class="pre">&quot;Fizz</span> <span class="pre">Buzz&quot;</span></code></p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">output</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span></code>, we don’t add a space → <code class="docutils literal notranslate"><span class="pre">&quot;Buzz&quot;</span></code> (not <code class="docutils literal notranslate"><span class="pre">&quot;</span> <span class="pre">Buzz&quot;</span></code>)</p></li>
+</ul>
+<p>This pattern is particularly useful when you need to combine multiple conditions and you want the code to be easy to extend. For example, if the rules later changed to add “Pop” for numbers divisible by 7, you’d just add:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">output</span><span class="p">:</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot; &quot;</span>
+    <span class="n">output</span> <span class="o">+=</span> <span class="s2">&quot;Pop&quot;</span>
+</pre></div>
+</div>
+<p><strong>Alternative Solution 3: Building a List</strong></p>
+<p>Extending this idea, another approach is to use a list and the <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method to handle spacing automatically:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">101</span><span class="p">):</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Build as a list instead of a string</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Fizz&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Buzz&#39;</span><span class="p">)</span>
+    <span class="c1"># If the list is not empty, join the list elements with a space.</span>
+    <span class="c1"># If the list is empty, use the number</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="k">if</span> <span class="n">output</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Key idea: Build a list of words, then join them with spaces. The <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method handles the spacing automatically!</p>
+<p>How it works:</p>
+<ul class="simple">
+<li><p>Start with an empty list <code class="docutils literal notranslate"><span class="pre">[]</span></code></p></li>
+<li><p>Add “Fizz” to the list if divisible by 3</p></li>
+<li><p>Add “Buzz” to the list if divisible by 5</p></li>
+<li><p>Join the list elements with <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'.join(output)</span></code> to create the final string</p></li>
+</ul>
+<p>The magic of <code class="docutils literal notranslate"><span class="pre">.join()</span></code>:
+The <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method automatically puts spaces between list elements:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'.join(['Fizz'])</span></code> <span class="math notranslate nohighlight">\(\to\)</span> <code class="docutils literal notranslate"><span class="pre">&quot;Fizz&quot;</span></code> (single element: no space)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'.join(['Fizz',</span> <span class="pre">'Buzz'])</span></code> <span class="math notranslate nohighlight">\(\to\)</span> <code class="docutils literal notranslate"><span class="pre">&quot;Fizz</span> <span class="pre">Buzz&quot;</span></code> (two elements: space between)</p></li>
+</ul>
+<p>This means we never need to check whether to add a space.</p>
+<p>Advantages:</p>
+<ul class="simple">
+<li><p>No conditional logic for spacing: The <code class="docutils literal notranslate"><span class="pre">.join()</span></code> method automatically handles when to add spaces—only between elements, never at the start or end.</p></li>
+<li><p>Most concise: At 7 lines (inside the loop), this is the shortest clear solution.</p></li>
+<li><p>Common Python pattern: Building a list and joining is idiomatic Python for constructing strings from multiple parts.</p></li>
+<li><p>Easy to extend: Want to add “Pop” for divisibility by 7? Just add another if <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">%</span> <span class="pre">7</span> <span class="pre">==</span> <span class="pre">0:</span> <span class="pre">output.append('Pop')</span></code> line.</p></li>
+</ul>
+</section>
+<section id="exercise-2-solid-liquid-or-gas">
+<h2>Exercise 2: Solid, Liquid, or Gas?<a class="headerlink" href="#exercise-2-solid-liquid-or-gas" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> Given the following data on the standard melting and boiling points of various metals, determine their state (solid, liquid or gas) at <span class="math notranslate nohighlight">\(500\,^{\circ}\)</span> C.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="s1">&#39;Hg&#39;</span><span class="p">,</span> <span class="s1">&#39;Ti&#39;</span><span class="p">,</span> <span class="s1">&#39;Pb&#39;</span><span class="p">]</span>
+<span class="n">melting_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1811</span><span class="p">,</span> <span class="mi">933</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">1941</span><span class="p">,</span> <span class="mi">601</span><span class="p">]</span>  <span class="c1"># in K</span>
+<span class="n">boiling_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3134</span><span class="p">,</span> <span class="mi">2743</span><span class="p">,</span> <span class="mi">630</span><span class="p">,</span> <span class="mi">3560</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>  <span class="c1"># in K</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Solution:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given data</span>
+<span class="n">metals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="s1">&#39;Hg&#39;</span><span class="p">,</span> <span class="s1">&#39;Ti&#39;</span><span class="p">,</span> <span class="s1">&#39;Pb&#39;</span><span class="p">]</span>
+<span class="n">melting_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1811</span><span class="p">,</span> <span class="mi">933</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">1941</span><span class="p">,</span> <span class="mi">601</span><span class="p">]</span>  <span class="c1"># in K</span>
+<span class="n">boiling_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3134</span><span class="p">,</span> <span class="mi">2743</span><span class="p">,</span> <span class="mi">630</span><span class="p">,</span> <span class="mi">3560</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>  <span class="c1"># in K</span>
+
+<span class="c1"># Temperature to check (convert from °C to K)</span>
+<span class="n">temp_celsius</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">temp_kelvin</span> <span class="o">=</span> <span class="n">temp_celsius</span> <span class="o">+</span> <span class="mf">273.15</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">metals</span><span class="p">)):</span>
+    <span class="n">metal</span> <span class="o">=</span> <span class="n">metals</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">mp</span> <span class="o">=</span> <span class="n">melting_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">bp</span> <span class="o">=</span> <span class="n">boiling_points</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">temp_kelvin</span> <span class="o">&lt;</span> <span class="n">mp</span><span class="p">:</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="s2">&quot;solid&quot;</span>
+    <span class="k">elif</span> <span class="n">temp_kelvin</span> <span class="o">&gt;=</span> <span class="n">mp</span> <span class="ow">and</span> <span class="n">temp_kelvin</span> <span class="o">&lt;</span> <span class="n">bp</span><span class="p">:</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="s2">&quot;liquid&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="s2">&quot;gas&quot;</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metal</span><span class="si">:</span><span class="s2">3s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">phase</span><span class="si">:</span><span class="s2">6s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fe : solid 
+Al : solid 
+Hg : gas   
+Ti : solid 
+Pb : liquid
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Alternative Solution: Using <code class="docutils literal notranslate"><span class="pre">zip()</span></code></strong></p>
+<p>Here’s a version that uses <code class="docutils literal notranslate"><span class="pre">zip()</span></code> to iterate over all three lists simultaneously:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given data</span>
+<span class="n">metals</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fe&#39;</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="s1">&#39;Hg&#39;</span><span class="p">,</span> <span class="s1">&#39;Ti&#39;</span><span class="p">,</span> <span class="s1">&#39;Pb&#39;</span><span class="p">]</span>
+<span class="n">melting_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1811</span><span class="p">,</span> <span class="mi">933</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">1941</span><span class="p">,</span> <span class="mi">601</span><span class="p">]</span>  <span class="c1"># in K</span>
+<span class="n">boiling_points</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3134</span><span class="p">,</span> <span class="mi">2743</span><span class="p">,</span> <span class="mi">630</span><span class="p">,</span> <span class="mi">3560</span><span class="p">,</span> <span class="mi">2022</span><span class="p">]</span>  <span class="c1"># in K</span>
+
+<span class="c1"># Temperature to check (convert from °C to K)</span>
+<span class="n">temp_celsius</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">temp_kelvin</span> <span class="o">=</span> <span class="n">temp_celsius</span> <span class="o">+</span> <span class="mf">273.15</span>
+
+<span class="k">for</span> <span class="n">metal</span><span class="p">,</span> <span class="n">mp</span><span class="p">,</span> <span class="n">bp</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">metals</span><span class="p">,</span> <span class="n">melting_points</span><span class="p">,</span> <span class="n">boiling_points</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">temp_kelvin</span> <span class="o">&lt;</span> <span class="n">mp</span><span class="p">:</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="s2">&quot;solid&quot;</span>
+    <span class="k">elif</span> <span class="n">temp_kelvin</span> <span class="o">&lt;</span> <span class="n">bp</span><span class="p">:</span>  <span class="c1"># We already know temp &gt;= mp</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="s2">&quot;liquid&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">phase</span> <span class="o">=</span> <span class="s2">&quot;gas&quot;</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">metal</span><span class="si">:</span><span class="s2">3s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">phase</span><span class="si">:</span><span class="s2">6s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fe : solid 
+Al : solid 
+Hg : gas   
+Ti : solid 
+Pb : liquid
+</pre></div>
+</div>
+</div>
+</div>
+<p>Improvements in this version:</p>
+<ul class="simple">
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">zip()</span></code>: No need for indices. We work directly with values from all three lists simultaneously</p></li>
+<li><p>Simplified second condition: We can write <code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">temp_kelvin</span> <span class="pre">&lt;</span> <span class="pre">bp</span></code>: instead of <code class="docutils literal notranslate"><span class="pre">elif</span> <span class="pre">temp_kelvin</span> <span class="pre">&gt;=</span> <span class="pre">mp</span> <span class="pre">and</span> <span class="pre">temp_kelvin</span> <span class="pre">&lt;</span> <span class="pre">bp</span></code>: because the <code class="docutils literal notranslate"><span class="pre">elif</span></code> only executes if the first <code class="docutils literal notranslate"><span class="pre">if</span></code> was <code class="docutils literal notranslate"><span class="pre">False</span></code>, meaning we already know <code class="docutils literal notranslate"><span class="pre">temp_kelvin</span> <span class="pre">&gt;=</span> <span class="pre">mp</span></code></p></li>
+<li><p>More readable: Direct access to <code class="docutils literal notranslate"><span class="pre">metal</span></code>, <code class="docutils literal notranslate"><span class="pre">mp</span></code>, and <code class="docutils literal notranslate"><span class="pre">bp</span></code> instead of <code class="docutils literal notranslate"><span class="pre">metals[i]</span></code>, <code class="docutils literal notranslate"><span class="pre">melting_points[i]</span></code>, etc.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worked_examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="week_2_functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Worked Examples: Comparisons and Flow Control</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="week_2_advanced_loop_control.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Worked Examples: Advanced Loop Control</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-fizzbuzz">Exercise 1: Fizzbuzz</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-solid-liquid-or-gas">Exercise 2: Solid, Liquid, or Gas?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

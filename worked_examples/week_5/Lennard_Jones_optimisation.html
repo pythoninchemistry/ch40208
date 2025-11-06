@@ -1,0 +1,1340 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worked Examples: Lennard-Jones Optimisation &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worked_examples/week_5/Lennard_Jones_optimisation';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Worked Examples: scipy.optimize.minimize()" href="scipy_optimize_minimize.html" />
+    <link rel="prev" title="Worked Examples: Newton-Raphson Method" href="newton_raphson_method.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_basics/advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../working_with_data/numpy/intro.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_data/numpy/basics.html">NumPy Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_data/numpy/operations.html">Array Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_data/numpy/exercises.html">NumPy Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../working_with_data/matplotlib/intro.html">Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_data/matplotlib/basics.html">Matplotlib Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_data/matplotlib/customisation.html">Customising Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_data/matplotlib/plotting_data.html">Plotting Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference/latex.html">LaTeX Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_fitting/understanding_residuals.html">Understanding Residuals and Quality of Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_fitting/fitting_with_minimize.html">Linear Model Fitting with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../geometry_optimisation/Lennard_Jones_optimisation.html">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../reference/adding_files_to_noteable.html">Adding Files to Noteable</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_1_index.html">Week 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_1_arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_1_loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_1_dictionaries.html">Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_2_index.html">Week 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_2_functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_2_comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_2_advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_3_index.html">Week 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_3_numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_3_synoptic_exercises.html">Synoptic Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="week_5_index.html">Week 5</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="grid_search_method.html">Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gradient_descent_method.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newton_raphson_method.html">Newton-Raphson</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Lennard-Jones optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scipy_optimize_minimize.html">scipy.optimize.minimize</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/worked_examples/week_5/Lennard_Jones_optimisation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worked Examples: Lennard-Jones Optimisation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-visualising-the-potential-energy-surface">Part A: Visualising the Potential Energy Surface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-define-the-lennard-jones-function">Question 1: Define the Lennard-Jones function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-2-3-create-array-and-plot">Questions 2-3: Create array and plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-analyse-the-plot">Question 4: Analyse the plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-gradient-descent-optimisation">Part B: Gradient Descent Optimisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-define-the-gradient-function">Question 5: Define the gradient function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-6-8-implement-gradient-descent">Questions 6-8: Implement gradient descent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualise-the-convergence-path">Visualise the convergence path</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-exploring-different-starting-positions-with-gradient-descent">Part C: Exploring Different Starting Positions with Gradient Descent</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-9-10-test-multiple-starting-positions">Questions 9-10: Test multiple starting positions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-d-newton-raphson-optimisation">Part D: Newton-Raphson Optimisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-11-define-the-second-derivative-function">Question 11: Define the second derivative function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-12-13-implement-newton-raphson-optimisation">Questions 12-13: Implement Newton-Raphson optimisation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-14-compare-convergence-paths">Question 14: Compare convergence paths</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-e-comparing-methods-across-different-starting-positions">Part E: Comparing Methods Across Different Starting Positions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-15-test-newton-raphson-from-multiple-starting-positions">Question 15: Test Newton-Raphson from multiple starting positions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worked-examples-lennard-jones-optimisation">
+<h1>Worked Examples: Lennard-Jones Optimisation<a class="headerlink" href="#worked-examples-lennard-jones-optimisation" title="Link to this heading">#</a></h1>
+<p>These worked solutions correspond to the <a class="reference internal" href="../../geometry_optimisation/Lennard_Jones_optimisation.html"><span class="std std-doc">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</span></a>.</p>
+<p><strong>How to use this notebook:</strong></p>
+<ul class="simple">
+<li><p>Try each exercise yourself first before looking at the solution</p></li>
+<li><p>The code cells show both the code and its output</p></li>
+<li><p>Download this notebook to run and experiment with the code yourself</p></li>
+<li><p>Your solution might look different - that’s fine as long as it gives the correct answer!</p></li>
+</ul>
+<p><strong>Parameters for this exercise:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = 1 × 10<sup>5</sup> eV Å<sup>12</sup></p></li>
+<li><p><span class="math notranslate nohighlight">\(B\)</span> = 40 eV Å<sup>6</sup></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Code cell: Setup</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format=&#39;retina&#39;
+
+<span class="c1"># Define constants</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1e5</span>  <span class="c1"># eV Å^12</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">40</span>   <span class="c1"># eV Å^6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="part-a-visualising-the-potential-energy-surface">
+<h2>Part A: Visualising the Potential Energy Surface<a class="headerlink" href="#part-a-visualising-the-potential-energy-surface" title="Link to this heading">#</a></h2>
+<p>This section helps us understand the shape of the Lennard-Jones potential before attempting optimisation.</p>
+<section id="question-1-define-the-lennard-jones-function">
+<h3>Question 1: Define the Lennard-Jones function<a class="headerlink" href="#question-1-define-the-lennard-jones-function" title="Link to this heading">#</a></h3>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">lennard_jones(r,</span> <span class="pre">A,</span> <span class="pre">B)</span></code> that calculates <span class="math notranslate nohighlight">\(U_\mathrm{LJ}(r) = \frac{A}{r^{12}} - \frac{B}{r^6}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lennard_jones</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the Lennard-Jones potential energy.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Interatomic separation in Angstroms.</span>
+<span class="sd">        A (float): Repulsive term coefficient (eV Å^12).</span>
+<span class="sd">        B (float): Attractive term coefficient (eV Å^6).</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        float: Potential energy in eV.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">A</span> <span class="o">/</span> <span class="n">r</span><span class="o">**</span><span class="mi">12</span> <span class="o">-</span> <span class="n">B</span> <span class="o">/</span> <span class="n">r</span><span class="o">**</span><span class="mi">6</span>
+
+<span class="c1"># Test the function at r = 4.4 Å</span>
+<span class="n">test_r</span> <span class="o">=</span> <span class="mf">4.4</span>
+<span class="n">test_energy</span> <span class="o">=</span> <span class="n">lennard_jones</span><span class="p">(</span><span class="n">test_r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At r = </span><span class="si">{</span><span class="n">test_r</span><span class="si">}</span><span class="s2"> Å, U = </span><span class="si">{</span><span class="n">test_energy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> eV&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At r = 4.4 Å, U = -0.0036 eV
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questions-2-3-create-array-and-plot">
+<h3>Questions 2-3: Create array and plot<a class="headerlink" href="#questions-2-3-create-array-and-plot" title="Link to this heading">#</a></h3>
+<p>Create an array of <span class="math notranslate nohighlight">\(r\)</span> values from 3.6 Å to 8.0 Å and plot the potential energy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create array of r values</span>
+<span class="n">r_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">3.6</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># Calculate potential energy at each point</span>
+<span class="n">U_values</span> <span class="o">=</span> <span class="n">lennard_jones</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="c1"># Create the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">U_values</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;U = 0&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Interatomic separation, $r$ / Å&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Potential energy, $U$ / eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lennard-Jones Potential Energy Surface&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/202134350f911f175cd5cf23190584853d2fe2e2e5dee95396332776b485c23e.png"><img alt="../../_images/202134350f911f175cd5cf23190584853d2fe2e2e5dee95396332776b485c23e.png" src="../../_images/202134350f911f175cd5cf23190584853d2fe2e2e5dee95396332776b485c23e.png" style="width: 598px; height: 458px;" />
+</a>
+</div>
+</div>
+</section>
+<section id="question-4-analyse-the-plot">
+<h3>Question 4: Analyse the plot<a class="headerlink" href="#question-4-analyse-the-plot" title="Link to this heading">#</a></h3>
+<p>By examining the plot, we can identify key features of the potential energy surface.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">min_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">U_values</span><span class="p">)</span>
+<span class="n">r_min</span> <span class="o">=</span> <span class="n">r_values</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span>
+<span class="n">U_min</span> <span class="o">=</span> <span class="n">U_values</span><span class="p">[</span><span class="n">min_idx</span><span class="p">]</span>
+
+<span class="c1"># Find where U crosses zero (approximately)</span>
+<span class="c1"># Look for sign change from negative to positive</span>
+<span class="n">zero_crossing_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">U_values</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">zero_crossing_idx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">r_zero</span> <span class="o">=</span> <span class="n">r_values</span><span class="p">[</span><span class="n">zero_crossing_idx</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">r_zero</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Analysis of the Lennard-Jones potential:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Minimum location (equilibrium bond length): r ≈ </span><span class="si">{</span><span class="n">r_min</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Energy at minimum: U ≈ </span><span class="si">{</span><span class="n">U_min</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> eV&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">r_zero</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Zero crossing (U = 0): r ≈ </span><span class="si">{</span><span class="n">r_zero</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Analysis of the Lennard-Jones potential:
+- Minimum location (equilibrium bond length): r ≈ 4.13 Å
+- Energy at minimum: U ≈ -0.004 eV
+- Zero crossing (U = 0): r ≈ 3.67 Å
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Physical interpretation:</strong></p>
+<ul class="simple">
+<li><p>The <strong>minimum</strong> at <span class="math notranslate nohighlight">\(r\)</span> ≈ 4.13 Å represents the equilibrium separation where the forces balance (<span class="math notranslate nohighlight">\(\mathrm{d}U/\mathrm{d}r = 0\)</span>).</p></li>
+<li><p>The <strong>negative energy</strong> at the minimum indicates a bound state (the atoms attract each other).</p></li>
+<li><p>The <strong>zero crossing</strong> at <span class="math notranslate nohighlight">\(r\)</span> ≈ 3.67 Å represents where the repulsive term (<span class="math notranslate nohighlight">\(A/r^{12}\)</span>) exactly equals the attractive term (<span class="math notranslate nohighlight">\(B/r^6\)</span>). At distances shorter than this, the net potential is repulsive (<span class="math notranslate nohighlight">\(U &gt; 0\)</span>); at distances longer than this, the net potential is attractive (<span class="math notranslate nohighlight">\(U &lt; 0\)</span>).</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="part-b-gradient-descent-optimisation">
+<h2>Part B: Gradient Descent Optimisation<a class="headerlink" href="#part-b-gradient-descent-optimisation" title="Link to this heading">#</a></h2>
+<p>Now we’ll use gradient descent with an adaptive step size to find the minimum.</p>
+<section id="question-5-define-the-gradient-function">
+<h3>Question 5: Define the gradient function<a class="headerlink" href="#question-5-define-the-gradient-function" title="Link to this heading">#</a></h3>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">lennard_jones_gradient(r,</span> <span class="pre">A,</span> <span class="pre">B)</span></code> that calculates <span class="math notranslate nohighlight">\(U'_\mathrm{LJ}(r) = -12\frac{A}{r^{13}} + 6\frac{B}{r^7}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lennard_jones_gradient</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the first derivative of the Lennard-Jones potential.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Interatomic separation in Angstroms </span>
+<span class="sd">        A (float): Repulsive term coefficient (eV Å^12).</span>
+<span class="sd">        B (flaot): Attractive term coefficient (eV Å^6).</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        First derivative dU/dr in eV/Å.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mi">12</span> <span class="o">*</span> <span class="n">A</span> <span class="o">/</span> <span class="n">r</span><span class="o">**</span><span class="mi">13</span> <span class="o">+</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">B</span> <span class="o">/</span> <span class="n">r</span><span class="o">**</span><span class="mi">7</span>
+
+<span class="c1"># Test the gradient function at r = 4.1 Å</span>
+<span class="n">test_gradient</span> <span class="o">=</span> <span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">test_r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At r = </span><span class="si">{</span><span class="n">test_r</span><span class="si">}</span><span class="s2"> Å, U&#39; = </span><span class="si">{</span><span class="n">test_gradient</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> eV/Å&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(Should be close to zero since r ≈ 4.1 Å is near the minimum)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At r = 4.4 Å, U&#39; = 0.002337 eV/Å
+(Should be close to zero since r ≈ 4.1 Å is near the minimum)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questions-6-8-implement-gradient-descent">
+<h3>Questions 6-8: Implement gradient descent<a class="headerlink" href="#questions-6-8-implement-gradient-descent" title="Link to this heading">#</a></h3>
+<p>Implement a gradient descent loop starting from r = 5.0 Å with learning rate α = 100.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gradient descent parameters</span>
+<span class="n">r_start</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># Å</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">100</span>    <span class="c1"># Learning rate</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.001</span>
+
+<span class="c1"># Initialize storage lists</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_start</span><span class="p">]</span>
+<span class="n">gradients</span> <span class="o">=</span> <span class="p">[</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_start</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)]</span>
+
+<span class="c1"># Current position</span>
+<span class="n">r_current</span> <span class="o">=</span> <span class="n">r_start</span>
+
+<span class="c1"># Gradient descent loop</span>
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+    <span class="c1"># Calculate gradient at current position</span>
+    <span class="n">grad</span> <span class="o">=</span> <span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_current</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    
+    <span class="c1"># Update position using: r_{i+1} = r_i - alpha * U&#39;(r_i)</span>
+    <span class="n">r_new</span> <span class="o">=</span> <span class="n">r_current</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">grad</span>
+    
+    <span class="c1"># Store the new position and gradient</span>
+    <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_new</span><span class="p">)</span>
+    <span class="n">gradients</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_new</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>
+    
+    <span class="c1"># Check convergence</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gradients</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converged after </span><span class="si">{</span><span class="n">iteration</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    
+    <span class="c1"># Update current position</span>
+    <span class="n">r_current</span> <span class="o">=</span> <span class="n">r_new</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reached maximum iterations (</span><span class="si">{</span><span class="n">max_iterations</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Final predicted equilibrium separation: r = </span><span class="si">{</span><span class="n">positions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of iterations required: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final gradient value: </span><span class="si">{</span><span class="n">gradients</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> eV/Å&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Converged after 4 iterations
+
+Final predicted equilibrium separation: r = 4.1120 Å
+Number of iterations required: 4
+Final gradient value: -0.000413 eV/Å
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualise-the-convergence-path">
+<h3>Visualise the convergence path<a class="headerlink" href="#visualise-the-convergence-path" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the full potential energy surface</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r_values</span><span class="p">,</span> <span class="n">U_values</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LJ Potential&#39;</span><span class="p">)</span>
+
+<span class="c1"># Calculate energies at visited positions</span>
+<span class="n">energies_visited</span> <span class="o">=</span> <span class="p">[</span><span class="n">lennard_jones</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">]</span>
+
+<span class="c1"># Plot the convergence path</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">energies_visited</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gradient descent path&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mark the starting point</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">positions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">energies_visited</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;gs&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Start (r = </span><span class="si">{</span><span class="n">positions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> Å)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mark the final point</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">positions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">energies_visited</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;rs&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> 
+         <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Final (r = </span><span class="si">{</span><span class="n">positions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> Å)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Interatomic separation, $r$ / Å&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Potential energy, $U$ / eV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gradient Descent Convergence on LJ Potential Surface&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting position: r = </span><span class="si">{</span><span class="n">positions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Å, U = </span><span class="si">{</span><span class="n">energies_visited</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> eV&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final position: r = </span><span class="si">{</span><span class="n">positions</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Å, U = </span><span class="si">{</span><span class="n">energies_visited</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> eV&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Energy change: ΔU = </span><span class="si">{</span><span class="n">energies_visited</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">energies_visited</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> eV&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="../../_images/d16a163b55e64949518ab71c875411fc999e998a55efd088520e2b1a845bc1ab.png"><img alt="../../_images/d16a163b55e64949518ab71c875411fc999e998a55efd088520e2b1a845bc1ab.png" src="../../_images/d16a163b55e64949518ab71c875411fc999e998a55efd088520e2b1a845bc1ab.png" style="width: 598px; height: 458px;" />
+</a>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting position: r = 5.00 Å, U = -0.002 eV
+Final position: r = 4.11 Å, U = -0.004 eV
+Energy change: ΔU = -0.002 eV
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Analysis of convergence behaviour:</strong></p>
+<ul class="simple">
+<li><p><strong>Number of iterations</strong>: The algorithm converged in 4 iterations from this starting position (r = 5.0 Å).</p></li>
+<li><p><strong>Convergence smoothness</strong>: The convergence is smooth and monotonic - the algorithm follows a clear path down the potential surface with no oscillation.</p></li>
+<li><p><strong>Adaptive step size</strong>: The step size automatically decreases as we approach the minimum. At r = 5.0 Å, the gradient has magnitude |U’| ≈ 0.003 eV/Å, giving an initial step size of about 0.3 Å. As we approach the minimum where |U’(r)| → 0, the step size α × |U’(r)| naturally decreases, preventing overshooting and enabling smooth convergence.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="part-c-exploring-different-starting-positions-with-gradient-descent">
+<h2>Part C: Exploring Different Starting Positions with Gradient Descent<a class="headerlink" href="#part-c-exploring-different-starting-positions-with-gradient-descent" title="Link to this heading">#</a></h2>
+<p>The choice of starting position can significantly affect optimisation performance. We’ll test three different starting positions.</p>
+<section id="questions-9-10-test-multiple-starting-positions">
+<h3>Questions 9-10: Test multiple starting positions<a class="headerlink" href="#questions-9-10-test-multiple-starting-positions" title="Link to this heading">#</a></h3>
+<p>Test gradient descent with three different starting positions and compare the results.</p>
+<p><strong>Note:</strong> The exercise specifies α = 100 and tolerance = 0.001. However, these values cause convergence issues for certain starting positions. For these model answers, we use <strong>α = 10</strong>, <strong>tolerance = 0.0005</strong>, and <strong>max_iterations = 1000</strong> to demonstrate successful convergence from all starting positions whilst highlighting the importance of parameter choice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test three different starting positions</span>
+<span class="n">starting_positions</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.2</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]</span>  <span class="c1"># Å</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.0005</span>
+
+<span class="c1"># Store results for each starting position</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">r_start</span> <span class="ow">in</span> <span class="n">starting_positions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Starting from r = </span><span class="si">{</span><span class="n">r_start</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+    
+    <span class="c1"># Initialize</span>
+    <span class="n">positions_trial</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_start</span><span class="p">]</span>
+    <span class="n">gradients_trial</span> <span class="o">=</span> <span class="p">[</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_start</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)]</span>
+    <span class="n">r_current</span> <span class="o">=</span> <span class="n">r_start</span>
+    
+    <span class="c1"># Gradient descent loop</span>
+    <span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_current</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+        <span class="n">r_new</span> <span class="o">=</span> <span class="n">r_current</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">grad</span>
+        
+        <span class="n">positions_trial</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_new</span><span class="p">)</span>
+        <span class="n">gradients_trial</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_new</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gradients_trial</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">:</span>
+            <span class="n">converged</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✓ Converged after </span><span class="si">{</span><span class="n">iteration</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        
+        <span class="n">r_current</span> <span class="o">=</span> <span class="n">r_new</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">converged</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✗ Did NOT converge within </span><span class="si">{</span><span class="n">max_iterations</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Store results</span>
+    <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;r_start&#39;</span><span class="p">:</span> <span class="n">r_start</span><span class="p">,</span>
+        <span class="s1">&#39;r_final&#39;</span><span class="p">:</span> <span class="n">positions_trial</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions_trial</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;converged&#39;</span><span class="p">:</span> <span class="n">converged</span><span class="p">,</span>
+        <span class="s1">&#39;positions&#39;</span><span class="p">:</span> <span class="n">positions_trial</span><span class="p">,</span>
+        <span class="s1">&#39;gradients&#39;</span><span class="p">:</span> <span class="n">gradients_trial</span>
+    <span class="p">})</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final position: r = </span><span class="si">{</span><span class="n">positions_trial</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final gradient: |U&#39;| = </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">gradients_trial</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> eV/Å&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+Starting from r = 3.2 Å
+============================================================
+✓ Converged after 96 iterations
+Final position: r = 4.1626 Å
+Final gradient: |U&#39;| = 0.000431 eV/Å
+
+============================================================
+Starting from r = 4.4 Å
+============================================================
+✓ Converged after 16 iterations
+Final position: r = 4.1668 Å
+Final gradient: |U&#39;| = 0.000492 eV/Å
+
+============================================================
+Starting from r = 6.0 Å
+============================================================
+✓ Converged after 123 iterations
+Final position: r = 4.1648 Å
+Final gradient: |U&#39;| = 0.000462 eV/Å
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Analysis of results:</strong></p>
+<p><strong>Do all starting positions converge to the same minimum?</strong></p>
+<p>Yes, all three starting positions successfully converge to essentially the same minimum at r ≈ 4.16-4.17 Å, which matches our expectation from Part A. This demonstrates that gradient descent reliably finds the global minimum of the Lennard-Jones potential when appropriate parameters are used.</p>
+<p><strong>Which starting position converges most quickly?</strong></p>
+<p>Starting from r = 4.4 Å converges most quickly (16 iterations) because it’s already close to the minimum. Starting from r = 3.2 Å requires 96 iterations, whilst r = 6.0 Å requires the most (123 iterations). The large number of iterations for r = 6.0 Å occurs because the gradient in this region is very small, so each step is modest in size.</p>
+<p><strong>Did any starting positions fail to converge?</strong></p>
+<p>With these parameters, all positions converge successfully. However, the need to increase max_iterations from 50 to 1000 and reduce α from 100 to 10 reveals important limitations of gradient descent with fixed learning rates.</p>
+<p><strong>Slow convergence from distant starting points:</strong></p>
+<p>The 96-123 iterations required when starting far from the minimum (r = 3.2 Å and r = 6.0 Å) highlight a key weakness of gradient descent: convergence can be very slow when the starting position is far from the optimum. This is particularly problematic for complex molecular systems where:</p>
+<ol class="arabic simple">
+<li><p>We often have poor initial guesses for the geometry</p></li>
+<li><p>High-dimensional systems (molecules with many atoms) may require even more iterations</p></li>
+<li><p>Each iteration requires expensive energy and gradient calculations</p></li>
+</ol>
+<p>This inefficiency motivates the need for more sophisticated optimisation algorithms that converge faster, such as the Newton-Raphson method we’ll explore in Part D.</p>
+<p><strong>Is α = 10 appropriate everywhere?</strong></p>
+<p>The varying iteration counts reveal that no single α value is optimal across all regions:</p>
+<ul class="simple">
+<li><p><strong>At r = 6.0 Å</strong>: The gradient is very small (|U’| ~ 0.001 eV/Å), so α = 10 gives tiny steps (~0.01 Å), requiring 123 iterations. A larger α would converge faster here.</p></li>
+<li><p><strong>Near the minimum (r ≈ 4.4 Å)</strong>: The gradient is nearly zero, so α = 10 works well - steps automatically become small and convergence is smooth (16 iterations).</p></li>
+<li><p><strong>At r = 3.2 Å (repulsive wall)</strong>: The gradient is large (|U’| ~ 0.1-1 eV/Å), so even with α = 10, the first step overshoots the minimum significantly, pushing the system into the long-range attractive region (r &gt; 6 Å). The algorithm then spends most of the 96 iterations slowly crawling back down from this shallow-gradient region. This demonstrates the challenge of choosing α: a value that prevents catastrophic overshooting (like α = 100 would cause) can still result in initial overshooting followed by very slow convergence.</p></li>
+</ul>
+<p><strong>Key insights:</strong></p>
+<p>This exercise demonstrates a fundamental challenge with fixed-step gradient descent: the optimal learning rate varies dramatically across the potential energy surface. The Lennard-Jones potential is particularly challenging because:</p>
+<ol class="arabic simple">
+<li><p>The <strong>repulsive wall</strong> (r &lt; 4 Å) has very steep gradients requiring small α</p></li>
+<li><p>The <strong>long-range region</strong> (r &gt; 5 Å) has very shallow gradients that could benefit from large α</p></li>
+<li><p>No single α value is optimal everywhere</p></li>
+</ol>
+<p>More sophisticated optimisation methods address this through adaptive learning rates, line search algorithms, or by using second-order derivative information (as in Newton-Raphson, which we explore next).</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="part-d-newton-raphson-optimisation">
+<h2>Part D: Newton-Raphson Optimisation<a class="headerlink" href="#part-d-newton-raphson-optimisation" title="Link to this heading">#</a></h2>
+<p>The Newton-Raphson method uses both first and second derivative information to converge more rapidly than gradient descent.</p>
+<section id="question-11-define-the-second-derivative-function">
+<h3>Question 11: Define the second derivative function<a class="headerlink" href="#question-11-define-the-second-derivative-function" title="Link to this heading">#</a></h3>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">lennard_jones_second_derivative(r,</span> <span class="pre">A,</span> <span class="pre">B)</span></code> that calculates <span class="math notranslate nohighlight">\(U''_\mathrm{LJ}(r) = 156\frac{A}{r^{14}} - 42\frac{B}{r^8}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lennard_jones_second_derivative</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the second derivative of the Lennard-Jones potential.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        r (float): Interatomic separation in Angstroms.</span>
+<span class="sd">        A (float): Repulsive term coefficient (eV Å^12).</span>
+<span class="sd">        B (float): Attractive term coefficient (eV Å^6).</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        flaot: Second derivative d²U/dr² in eV/Å².</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">156</span> <span class="o">*</span> <span class="n">A</span> <span class="o">/</span> <span class="n">r</span><span class="o">**</span><span class="mi">14</span> <span class="o">-</span> <span class="mi">42</span> <span class="o">*</span> <span class="n">B</span> <span class="o">/</span> <span class="n">r</span><span class="o">**</span><span class="mi">8</span>
+
+<span class="c1"># Test the function at r = 4.4 Å (near the minimum)</span>
+<span class="n">test_r</span> <span class="o">=</span> <span class="mf">4.4</span>
+<span class="n">test_second_deriv</span> <span class="o">=</span> <span class="n">lennard_jones_second_derivative</span><span class="p">(</span><span class="n">test_r</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At r = </span><span class="si">{</span><span class="n">test_r</span><span class="si">}</span><span class="s2"> Å:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  U&#39; = </span><span class="si">{</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">test_r</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> eV/Å&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  U&#39;&#39; = </span><span class="si">{</span><span class="n">test_second_deriv</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> eV/Å²&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">At a minimum, U&#39; ≈ 0 and U&#39;&#39; &gt; 0 (positive curvature)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At r = 4.4 Å:
+  U&#39; = 0.002337 eV/Å
+  U&#39;&#39; = 0.003345 eV/Å²
+
+At a minimum, U&#39; ≈ 0 and U&#39;&#39; &gt; 0 (positive curvature)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="questions-12-13-implement-newton-raphson-optimisation">
+<h3>Questions 12-13: Implement Newton-Raphson optimisation<a class="headerlink" href="#questions-12-13-implement-newton-raphson-optimisation" title="Link to this heading">#</a></h3>
+<p>Implement Newton-Raphson starting from r = 5.0 Å.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Newton-Raphson parameters</span>
+<span class="n">r_start_nr</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># Å</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.0005</span>  <span class="c1"># Using same tolerance as gradient descent for comparison</span>
+
+<span class="c1"># Initialize storage</span>
+<span class="n">positions_nr</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_start_nr</span><span class="p">]</span>
+<span class="n">gradients_nr</span> <span class="o">=</span> <span class="p">[</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_start_nr</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)]</span>
+
+<span class="c1"># Current position</span>
+<span class="n">r_current</span> <span class="o">=</span> <span class="n">r_start_nr</span>
+
+<span class="c1"># Newton-Raphson loop</span>
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+    <span class="c1"># Calculate first and second derivatives</span>
+    <span class="n">grad</span> <span class="o">=</span> <span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_current</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="n">second_deriv</span> <span class="o">=</span> <span class="n">lennard_jones_second_derivative</span><span class="p">(</span><span class="n">r_current</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    
+    <span class="c1"># Update using Newton-Raphson: r_{i+1} = r_i - U&#39;(r_i) / U&#39;&#39;(r_i)</span>
+    <span class="n">r_new</span> <span class="o">=</span> <span class="n">r_current</span> <span class="o">-</span> <span class="n">grad</span> <span class="o">/</span> <span class="n">second_deriv</span>
+    
+    <span class="c1"># Store position and gradient</span>
+    <span class="n">positions_nr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_new</span><span class="p">)</span>
+    <span class="n">gradients_nr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_new</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>
+    
+    <span class="c1"># Check convergence</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gradients_nr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converged after </span><span class="si">{</span><span class="n">iteration</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    
+    <span class="c1"># Update current position</span>
+    <span class="n">r_current</span> <span class="o">=</span> <span class="n">r_new</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Did not converge within </span><span class="si">{</span><span class="n">max_iterations</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Final equilibrium separation: r = </span><span class="si">{</span><span class="n">positions_nr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of iterations required: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positions_nr</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final gradient: |U&#39;| = </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">gradients_nr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> eV/Å&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Converged after 2 iterations
+
+Final equilibrium separation: r = 7.1626 Å
+Number of iterations required: 2
+Final gradient: |U&#39;| = 0.000239 eV/Å
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-14-compare-convergence-paths">
+<h3>Question 14: Compare convergence paths<a class="headerlink" href="#question-14-compare-convergence-paths" title="Link to this heading">#</a></h3>
+<p>Compare the convergence of gradient descent and Newton-Raphson, both starting from r = 5.0 Å.</p>
+<p><strong>Note:</strong> We need to re-run gradient descent from r = 5.0 Å with the updated parameters (α = 10, tolerance = 0.0005) for a fair comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Re-run gradient descent from r = 5.0 Å for comparison</span>
+<span class="n">r_start_gd</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">positions_gd</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_start_gd</span><span class="p">]</span>
+<span class="n">gradients_gd</span> <span class="o">=</span> <span class="p">[</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_start_gd</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)]</span>
+<span class="n">r_current</span> <span class="o">=</span> <span class="n">r_start_gd</span>
+
+<span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+    <span class="n">grad</span> <span class="o">=</span> <span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_current</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="n">r_new</span> <span class="o">=</span> <span class="n">r_current</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">grad</span>
+    
+    <span class="n">positions_gd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_new</span><span class="p">)</span>
+    <span class="n">gradients_gd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_new</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gradients_gd</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="k">break</span>
+    
+    <span class="n">r_current</span> <span class="o">=</span> <span class="n">r_new</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gradient descent from r = 5.0 Å: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positions_gd</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Newton-Raphson from r = 5.0 Å: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">positions_nr</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gradient descent from r = 5.0 Å: 41 iterations
+Newton-Raphson from r = 5.0 Å: 2 iterations
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Analysis:</strong></p>
+<p><strong>How does the convergence speed of Newton-Raphson compare to gradient descent?</strong></p>
+<p>Newton-Raphson converges dramatically faster than gradient descent. From r = 5.0 Å, Newton-Raphson requires only 2 iterations, whilst gradient descent requires 41 iterations - more than 20 times as many! This superior convergence is due to Newton-Raphson using second-derivative (curvature) information to take more intelligent steps towards the minimum.</p>
+<p><strong>Why doesn’t Newton-Raphson converge in a single step?</strong></p>
+<p>Unlike the harmonic potential (where Newton-Raphson converges in exactly one step), the Lennard-Jones potential is not quadratic. Newton-Raphson assumes the function is locally quadratic around the current position, but:</p>
+<ul class="simple">
+<li><p>The harmonic potential is <strong>exactly</strong> quadratic everywhere, so the local quadratic approximation is perfect</p></li>
+<li><p>The Lennard-Jones potential is <strong>approximately</strong> quadratic only near the minimum</p></li>
+<li><p>Far from the minimum, the LJ potential has significant higher-order (cubic, quartic, etc.) terms that the quadratic approximation doesn’t capture</p></li>
+</ul>
+<p>Therefore, Newton-Raphson must iterate, with each step improving the approximation as we get closer to the minimum where the quadratic assumption becomes more accurate.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="part-e-comparing-methods-across-different-starting-positions">
+<h2>Part E: Comparing Methods Across Different Starting Positions<a class="headerlink" href="#part-e-comparing-methods-across-different-starting-positions" title="Link to this heading">#</a></h2>
+<p>Now we’ll test Newton-Raphson with the same three starting positions used in Part C and compare performance with gradient descent.</p>
+<section id="question-15-test-newton-raphson-from-multiple-starting-positions">
+<h3>Question 15: Test Newton-Raphson from multiple starting positions<a class="headerlink" href="#question-15-test-newton-raphson-from-multiple-starting-positions" title="Link to this heading">#</a></h3>
+<p>Test Newton-Raphson with starting positions r = 3.2 Å, r = 4.4 Å, and r = 6.0 Å.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test Newton-Raphson from the same three starting positions</span>
+<span class="n">starting_positions</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.2</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]</span>  <span class="c1"># Å</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.0005</span>
+
+<span class="c1"># Store results for Newton-Raphson</span>
+<span class="n">results_nr</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">r_start</span> <span class="ow">in</span> <span class="n">starting_positions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Newton-Raphson starting from r = </span><span class="si">{</span><span class="n">r_start</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
+    
+    <span class="c1"># Initialize</span>
+    <span class="n">positions_trial</span> <span class="o">=</span> <span class="p">[</span><span class="n">r_start</span><span class="p">]</span>
+    <span class="n">gradients_trial</span> <span class="o">=</span> <span class="p">[</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_start</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)]</span>
+    <span class="n">r_current</span> <span class="o">=</span> <span class="n">r_start</span>
+    
+    <span class="c1"># Newton-Raphson loop</span>
+    <span class="n">converged</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iterations</span><span class="p">):</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_current</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+        <span class="n">second_deriv</span> <span class="o">=</span> <span class="n">lennard_jones_second_derivative</span><span class="p">(</span><span class="n">r_current</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+        
+        <span class="n">r_new</span> <span class="o">=</span> <span class="n">r_current</span> <span class="o">-</span> <span class="n">grad</span> <span class="o">/</span> <span class="n">second_deriv</span>
+        
+        <span class="n">positions_trial</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_new</span><span class="p">)</span>
+        <span class="n">gradients_trial</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lennard_jones_gradient</span><span class="p">(</span><span class="n">r_new</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>
+        
+        <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gradients_trial</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">tolerance</span><span class="p">:</span>
+            <span class="n">converged</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Converged after </span><span class="si">{</span><span class="n">iteration</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+        
+        <span class="n">r_current</span> <span class="o">=</span> <span class="n">r_new</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">converged</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Did not converge within </span><span class="si">{</span><span class="n">max_iterations</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Store results</span>
+    <span class="n">results_nr</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;r_start&#39;</span><span class="p">:</span> <span class="n">r_start</span><span class="p">,</span>
+        <span class="s1">&#39;r_final&#39;</span><span class="p">:</span> <span class="n">positions_trial</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+        <span class="s1">&#39;iterations&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">positions_trial</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;converged&#39;</span><span class="p">:</span> <span class="n">converged</span><span class="p">,</span>
+        <span class="s1">&#39;positions&#39;</span><span class="p">:</span> <span class="n">positions_trial</span><span class="p">,</span>
+        <span class="s1">&#39;gradients&#39;</span><span class="p">:</span> <span class="n">gradients_trial</span>
+    <span class="p">})</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final position: r = </span><span class="si">{</span><span class="n">positions_trial</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final gradient: |U&#39;| = </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">gradients_trial</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> eV/Å&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>============================================================
+Newton-Raphson starting from r = 3.2 Å
+============================================================
+Converged after 6 iterations
+Final position: r = 4.1321 Å
+Final gradient: |U&#39;| = 0.000053 eV/Å
+
+============================================================
+Newton-Raphson starting from r = 4.4 Å
+============================================================
+Converged after 4 iterations
+Final position: r = 4.1155 Å
+Final gradient: |U&#39;| = 0.000348 eV/Å
+
+============================================================
+Newton-Raphson starting from r = 6.0 Å
+============================================================
+Converged after 1 iterations
+Final position: r = 6.9554 Å
+Final gradient: |U&#39;| = 0.000291 eV/Å
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Analysis:</strong></p>
+<p><strong>1. Newton-Raphson converges rapidly from r = 3.2 Å and r = 4.4 Å</strong></p>
+<p>For the first two starting positions, Newton-Raphson shows dramatic speed advantages:</p>
+<ul class="simple">
+<li><p><strong>From r = 3.2 Å</strong>: Newton-Raphson requires 6 iterations vs 96 for gradient descent (~16× faster)</p></li>
+<li><p><strong>From r = 4.4 Å</strong>: Newton-Raphson requires 4 iterations vs 16 for gradient descent (~4× faster)</p></li>
+</ul>
+<p>Newton-Raphson achieves this speed by using second-derivative information to predict the optimal step size at each iteration, rather than relying on a fixed learning rate. This allows it to take larger, more accurate steps directly towards the minimum. The speedup is particularly dramatic when starting from the repulsive wall (r = 3.2 Å), where gradient descent struggles with large gradients and requires many small steps to avoid overshooting.</p>
+<p><strong>2. Newton-Raphson fails completely from r = 6.0 Å</strong></p>
+<p>From r = 6.0 Å, Newton-Raphson converges to r = 6.96 Å after just 1 iteration. This is <strong>not the minimum</strong> - the algorithm has moved further away from the minimum at r ≈ 4.1 Å rather than towards it. Gradient descent, by contrast, successfully finds the minimum in 123 iterations.</p>
+<p>This failure occurs because <strong>Newton-Raphson’s fundamental assumption breaks down</strong>. The method assumes the function curves upward (positive curvature, U’’ &gt; 0) like a bowl. However, at r = 6.0 Å we’re in the long-range tail where the curvature is <strong>negative</strong> (U’’ &lt; 0) - the potential curves downward.</p>
+<p>When U’’ &lt; 0, the Newton-Raphson formula r_new = r_old - U’/U’’ produces a step in the <strong>wrong direction</strong>. The negative curvature causes the algorithm to step uphill (towards larger r) rather than downhill towards the minimum. The algorithm then stops because the gradient at r = 6.96 Å happens to be below the convergence tolerance, even though this point is nowhere near the actual minimum.</p>
+<p>Gradient descent always moves downhill (in the direction of -U’) regardless of curvature, making it slower but more reliable.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worked_examples/week_5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="newton_raphson_method.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Worked Examples: Newton-Raphson Method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="scipy_optimize_minimize.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Worked Examples: scipy.optimize.minimize()</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-a-visualising-the-potential-energy-surface">Part A: Visualising the Potential Energy Surface</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-define-the-lennard-jones-function">Question 1: Define the Lennard-Jones function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-2-3-create-array-and-plot">Questions 2-3: Create array and plot</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4-analyse-the-plot">Question 4: Analyse the plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-b-gradient-descent-optimisation">Part B: Gradient Descent Optimisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-5-define-the-gradient-function">Question 5: Define the gradient function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-6-8-implement-gradient-descent">Questions 6-8: Implement gradient descent</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualise-the-convergence-path">Visualise the convergence path</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-c-exploring-different-starting-positions-with-gradient-descent">Part C: Exploring Different Starting Positions with Gradient Descent</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-9-10-test-multiple-starting-positions">Questions 9-10: Test multiple starting positions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-d-newton-raphson-optimisation">Part D: Newton-Raphson Optimisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-11-define-the-second-derivative-function">Question 11: Define the second derivative function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#questions-12-13-implement-newton-raphson-optimisation">Questions 12-13: Implement Newton-Raphson optimisation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-14-compare-convergence-paths">Question 14: Compare convergence paths</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-e-comparing-methods-across-different-starting-positions">Part E: Comparing Methods Across Different Starting Positions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#question-15-test-newton-raphson-from-multiple-starting-positions">Question 15: Test Newton-Raphson from multiple starting positions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

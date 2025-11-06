@@ -1,0 +1,1126 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Worked Examples: Comparisons and Flow Control &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'worked_examples/week_2_functions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Worked Examples: Comparisons and Flow Control" href="week_2_comparisons_and_flow_control.html" />
+    <link rel="prev" title="Week 2 Worked Examples" href="week_2_index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../python_basics/dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../python_basics/iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/functions.html">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python_basics/advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy/intro.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/basics.html">NumPy Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/operations.html">Array Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/exercises.html">NumPy Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/matplotlib/intro.html">Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/basics.html">Matplotlib Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/customisation.html">Customising Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/plotting_data.html">Plotting Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/latex.html">LaTeX Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/understanding_residuals.html">Understanding Residuals and Quality of Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/fitting_with_minimize.html">Linear Model Fitting with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/adding_files_to_noteable.html">Adding Files to Noteable</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_1_index.html">Week 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_1_dictionaries.html">Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="week_2_index.html">Week 2</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_2_comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_2_advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_3_index.html">Week 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_3_numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_3_synoptic_exercises.html">Synoptic Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="week_5/week_5_index.html">Week 5</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="week_5/grid_search_method.html">Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/gradient_descent_method.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/newton_raphson_method.html">Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/Lennard_Jones_optimisation.html">Lennard-Jones optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="week_5/scipy_optimize_minimize.html">scipy.optimize.minimize</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/worked_examples/week_2_functions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Worked Examples: Comparisons and Flow Control</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-ph-with-activity-coefficient">Exercise 1: pH with Activity Coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-using-the-generic-quadratic-roots-function">Exercise 2: Using the Generic quadratic_roots() Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-distance-between-atoms">Exercise 3: Distance Between Atoms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-einstein-model-for-heat-capacity">Exercise 4: Einstein Model for Heat Capacity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="worked-examples-comparisons-and-flow-control">
+<h1>Worked Examples: Comparisons and Flow Control<a class="headerlink" href="#worked-examples-comparisons-and-flow-control" title="Link to this heading">#</a></h1>
+<p>These worked solutions correspond to the exercises on the <a class="reference internal" href="../python_basics/comparisons_and_flow_control.html"><span class="std std-doc">Comparisons and Flow Control</span></a> page.</p>
+<p><strong>How to use this notebook:</strong></p>
+<ul class="simple">
+<li><p>Try each exercise yourself first before looking at the solution</p></li>
+<li><p>The code cells show both the code and its output</p></li>
+<li><p>Download this notebook if you want to run and experiment with the code yourself</p></li>
+<li><p>Your solution might look different - that’s fine as long as it gives the correct answer!</p></li>
+</ul>
+<section id="exercise-1-ph-with-activity-coefficient">
+<h2>Exercise 1: pH with Activity Coefficient<a class="headerlink" href="#exercise-1-ph-with-activity-coefficient" title="Link to this heading">#</a></h2>
+<p><strong>Problem</strong>: The correct definition of pH is</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{pH} = -\log_{10}(a_\mathrm{H}^+)\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_\mathrm{H}^+\)</span> is the <em>activity</em> of hydrogen ions, which is related to the concentration <span class="math notranslate nohighlight">\([\mathrm{H}^+]\)</span> by the <em>activity coefficient</em>, <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[a_\mathrm{H}^+ = \gamma_\mathrm{H}^+[\mathrm{H}^+]\]</div>
+<p>Write an updated version of the <code class="docutils literal notranslate"><span class="pre">calculate_pH()</span></code> function from the earlier example so that it calculates pH correctly. Your function should take two arguments: the concentration of hydrogen ions and their activity coefficient.</p>
+<p>Check that for <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span> you get the same answer as before.</p>
+<p>Now rewrite your function so that the activity coefficient is an <em>optional</em> argument, with a default value of <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span>. Check that if you call this function in your code as <code class="docutils literal notranslate"><span class="pre">calculate_pH(h_plus)</span></code> you still get the same result.</p>
+<p><strong>Solution</strong></p>
+<p><strong>Part 1: Function with Two Required Arguments</strong></p>
+<p>First, let’s write the function with both the hydrogen ion concentration and activity coefficient as required arguments:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="n">gamma</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates pH.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        h_plus (float): Hydrogen ion concentration (M).</span>
+<span class="sd">        gamma (float): Activity coefficient (dimensionless).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): pH value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">activity</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">h_plus</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s test this function with an example.</p>
+<p>If <span class="math notranslate nohighlight">\([\mathrm{H}^+] = 1.0 \times 10^{-5}\)</span> M and <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1.0\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_plus</span> <span class="o">=</span> <span class="mf">1.0e-5</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">pH</span> <span class="o">=</span> <span class="n">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pH = </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pH = 5.00
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Verification:</strong> When <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span>, we get the same result as the simplified formula <span class="math notranslate nohighlight">\(\mathrm{pH} = -\log_{10}[\mathrm{H}^+]\)</span>.</p>
+<p><strong>Part 2: Function with Optional Argument</strong></p>
+<p>Now let’s rewrite the function so that the activity coefficient is an <strong>optional</strong> argument with a default value of 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates pH.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        h_plus (float): Hydrogen ion concentration (M).</span>
+<span class="sd">        gamma (float, optional): Activity coefficient (dimensionless). </span>
+<span class="sd">            Defaults to 1.0 (ideal behaviour).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): pH value.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">activity</span> <span class="o">=</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">h_plus</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can call this function in three different ways:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h_plus</span> <span class="o">=</span> <span class="mf">1.0e-5</span>
+
+<span class="c1"># Method 1: Using the default gamma = 1.0</span>
+<span class="n">pH_default</span> <span class="o">=</span> <span class="n">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pH (default γ=1.0) = </span><span class="si">{</span><span class="n">pH_default</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Method 2: Explicitly specifying gamma = 1.0</span>
+<span class="n">pH_explicit</span> <span class="o">=</span> <span class="n">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pH (explicit γ=1.0) = </span><span class="si">{</span><span class="n">pH_explicit</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Method 3: Using a different activity coefficient</span>
+<span class="n">pH_nonideal</span> <span class="o">=</span> <span class="n">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pH (γ=0.85) = </span><span class="si">{</span><span class="n">pH_nonideal</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pH (default γ=1.0) = 5.00
+pH (explicit γ=1.0) = 5.00
+pH (γ=0.85) = 5.07
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-2-using-the-generic-quadratic-roots-function">
+<h2>Exercise 2: Using the Generic quadratic_roots() Function<a class="headerlink" href="#exercise-2-using-the-generic-quadratic-roots-function" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> Rewrite your <code class="docutils literal notranslate"><span class="pre">calculate_h_plus()</span></code> function to call the <code class="docutils literal notranslate"><span class="pre">generic</span> <span class="pre">quadratic_roots()</span></code> function. You will need to pass in appropriate values for the arguments <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>. Remember that the <code class="docutils literal notranslate"><span class="pre">quadratic_roots()</span></code> function returns both roots: you want the positive root.</p>
+<p><strong>Solution</strong></p>
+<p><strong>Background: The Original Function</strong></p>
+<p>From the earlier example in the Functions section, the original <code class="docutils literal notranslate"><span class="pre">calculate_h_plus()</span></code> function was:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the hydrogen ion concentration of a weak acid solution.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This function directly implements the positive root of the quadratic equation:</p>
+<div class="math notranslate nohighlight">
+\[x^2 + K_a x - K_a C = 0\]</div>
+<p>where <span class="math notranslate nohighlight">\(x = [\mathrm{H}^+]\)</span>, derived from the equilibrium expression for weak acid dissociation.</p>
+<p><strong>The Generic <code class="docutils literal notranslate"><span class="pre">quadratic_roots()</span></code> Function</strong></p>
+<p>The generic function solves <span class="math notranslate nohighlight">\(ax^2 + bx + c = 0\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate both roots of a quadratic equation ax^2 + bx + c = 0.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        a (float): Coefficient of x^2.</span>
+<span class="sd">        b (float): Coefficient of x.</span>
+<span class="sd">        c (float): Constant term.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (tuple): A tuple containing both roots (r1, r2).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Rewritten <code class="docutils literal notranslate"><span class="pre">calculate_h_plus()</span></code> Function</strong></p>
+<p>Comparing our quadratic equation
+$<span class="math notranslate nohighlight">\(x^2 + K_a x - K_a C = 0\)</span><span class="math notranslate nohighlight">\(
+with the standard form 
+\)</span><span class="math notranslate nohighlight">\(ax^2 + bx + c = 0\)</span><span class="math notranslate nohighlight">\(
+we see we want the following coefficients:
+\)</span><span class="math notranslate nohighlight">\(a = 1\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(b = K_a\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(c = -K_a \times \text{concentration}\)</span>$</p>
+<p>Here’s the rewritten function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the hydrogen ion concentration of a weak acid solution.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        concentration (float): Initial concentration of weak acid (M).</span>
+<span class="sd">        Ka (float): Acid dissociation constant.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Equilibrium hydrogen ion concentration (M).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Set up coefficients for ax^2 + bx + c = 0</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">Ka</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="n">Ka</span> <span class="o">*</span> <span class="n">concentration</span>
+    
+    <span class="c1"># Get both roots</span>
+    <span class="n">root1</span><span class="p">,</span> <span class="n">root2</span> <span class="o">=</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    
+    <span class="c1"># Return the positive root</span>
+    <span class="c1"># (root1 uses +sqrt, root2 uses -sqrt)</span>
+    <span class="k">return</span> <span class="n">root1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Testing the Function</strong></p>
+<p>Let’s test this with an example. For acetic acid with <span class="math notranslate nohighlight">\(K_a = 1.8 \times 10^{-5}\)</span> and initial concentration <span class="math notranslate nohighlight">\(C = 0.1\)</span> M:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: acetic acid</span>
+<span class="n">Ka</span> <span class="o">=</span> <span class="mf">1.8e-5</span>
+<span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Calculate H+ concentration</span>
+<span class="n">h_plus</span> <span class="o">=</span> <span class="n">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[H+] = </span><span class="si">{</span><span class="n">h_plus</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calculate pH for verification</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pH = </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[H+] = 0.001333 M
+pH = 2.88
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Verification: Comparing with Original Function</strong></p>
+<p>Let’s verify that both versions give the same result:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Original version (direct implementation)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_h_plus_original</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Test both functions</span>
+<span class="n">h_plus_new</span> <span class="o">=</span> <span class="n">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">)</span>
+<span class="n">h_plus_original</span> <span class="o">=</span> <span class="n">calculate_h_plus_original</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;New function:      [H+] = </span><span class="si">{</span><span class="n">h_plus_new</span><span class="si">:</span><span class="s2">.10e</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original function: [H+] = </span><span class="si">{</span><span class="n">h_plus_original</span><span class="si">:</span><span class="s2">.10e</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New function:      [H+] = 1.3326709731e-03 M
+Original function: [H+] = 1.3326709731e-03 M
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Benefits of this approach:</strong></p>
+<ul class="simple">
+<li><p>Reusability: We can now use quadratic_roots() for any quadratic equation</p></li>
+<li><p>Clarity: The code explicitly shows the quadratic equation being solved</p></li>
+<li><p>Maintainability: If we improve quadratic_roots() (e.g., error handling), all functions using it benefit</p></li>
+</ul>
+<p><strong>Alternative Solution: More Robust Approach</strong></p>
+<p>The solution above assumes we know that <code class="docutils literal notranslate"><span class="pre">root1</span></code> (using the <span class="math notranslate nohighlight">\(+\sqrt{\cdots}\)</span> term) is the positive root. A more robust approach doesn’t rely on knowing the order the two roots are returned in <code class="docutils literal notranslate"><span class="pre">quadratic_roots()</span></code>. But then we need an approach that will give us the positive root whether this is <code class="docutils literal notranslate"><span class="pre">root1</span></code> or <code class="docutils literal notranslate"><span class="pre">root2</span></code>. We can do this by using <code class="docutils literal notranslate"><span class="pre">max(roots)</span></code> to get the maximum root (which is guaranteed to be the positive root in our case).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the hydrogen ion concentration of a weak acid solution.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        concentration (float): Initial concentration of weak acid (M).</span>
+<span class="sd">        Ka (float): Acid dissociation constant.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Equilibrium hydrogen ion concentration (M).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Set up coefficients for ax^2 + bx + c = 0</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">Ka</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="n">Ka</span> <span class="o">*</span> <span class="n">concentration</span>
+    
+    <span class="c1"># Get both roots</span>
+    <span class="n">roots</span> <span class="o">=</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    
+    <span class="c1"># Return the positive root (the physically meaningful one)</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">roots</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise-3-distance-between-atoms">
+<h2>Exercise 3: Distance Between Atoms<a class="headerlink" href="#exercise-3-distance-between-atoms" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> Write a function to calculate the distance between two atoms. Then rewrite the exercise in the loops section to utilise this function. Make sure to include a docstring describing the purpose of the function and outlining the arguments.</p>
+<p><strong>Solution</strong></p>
+<p>The distance between two atoms in 3D space is calculated using the Euclidean distance formula:
+$<span class="math notranslate nohighlight">\(d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}\)</span>$
+Here’s the function implementation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">distance</span><span class="p">(</span><span class="n">atom1</span><span class="p">,</span> <span class="n">atom2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the distance between two atoms in 3D space.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        atom1 (list): [x, y, z] coordinates of atom 1 (Å).</span>
+<span class="sd">        atom2 (list): [x, y, z] coordinates of atom 2 (Å).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Distance between the two atoms (Å).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">atom1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">atom1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">dz</span> <span class="o">=</span> <span class="n">atom1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">atom2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dx</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dy</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">dz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Testing the function:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: distance between two atoms</span>
+<span class="n">atom_a</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="n">atom_b</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">]</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">atom_a</span><span class="p">,</span> <span class="n">atom_b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distance: 1.0139 Å
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Using the Function in Nested Loops:</strong></p>
+<p>Now let’s use this function to calculate all pairwise distances between three atoms. From the loops section, we want to avoid calculating the same distance twice (e.g., distance 1<span class="math notranslate nohighlight">\(\to\)</span>2 is the same as 2<span class="math notranslate nohighlight">\(\to\)</span>1) and avoid calculating the distance from an atom to itself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ammonia (NH3) atomic coordinates in Ångströms</span>
+<span class="n">atom_N</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>       <span class="c1"># Nitrogen at origin</span>
+<span class="n">atom_H1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.94</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">]</span>    <span class="c1"># Hydrogen 1</span>
+<span class="n">atom_H2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">]</span>  <span class="c1"># Hydrogen 2  </span>
+<span class="n">atom_H3</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.81</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.38</span><span class="p">]</span> <span class="c1"># Hydrogen 3</span>
+
+<span class="n">atoms</span> <span class="o">=</span> <span class="p">[</span><span class="n">atom_N</span><span class="p">,</span> <span class="n">atom_H1</span><span class="p">,</span> <span class="n">atom_H2</span><span class="p">,</span> <span class="n">atom_H3</span><span class="p">]</span>
+<span class="n">atom_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="s1">&#39;H2&#39;</span><span class="p">,</span> <span class="s1">&#39;H3&#39;</span><span class="p">]</span>
+
+<span class="c1"># Calculate all unique pairwise distances using nested loops</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique pairwise distances in NH3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">atoms</span><span class="p">)):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">atoms</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance from </span><span class="si">{</span><span class="n">atom_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">3s</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">atom_labels</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="si">:</span><span class="s2">3s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unique pairwise distances in NH3
+========================================
+Distance from N   to H1 : 1.0139 Å
+Distance from N   to H2 : 1.0106 Å
+Distance from N   to H3 : 1.0106 Å
+Distance from H1  to H2 : 1.6261 Å
+Distance from H1  to H3 : 1.6261 Å
+Distance from H2  to H3 : 1.6200 Å
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Benefits of using a function:</strong></p>
+<ul class="simple">
+<li><p>Reusability: We can calculate any pairwise distance with a simple function call: <code class="docutils literal notranslate"><span class="pre">distance(atoms[i],</span> <span class="pre">atoms[j])</span></code></p></li>
+<li><p>Readability: The code in the loop is much clearer than writing out the full distance formula</p></li>
+<li><p>Maintainability: If we need to change the distance calculation (e.g., add periodic boundary conditions), we only update one function</p></li>
+<li><p>Testing: We can test the distance function independently before using it in the loop</p></li>
+</ul>
+<p><strong>Alternative Solution: Using <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> and <code class="docutils literal notranslate"><span class="pre">zip()</span></code></strong></p>
+<p>Here’s a more Pythonic approach that works directly with atom coordinates and labels rather than indices:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate all unique pairwise distances using nested loops</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unique pairwise distances in NH3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">atom_i</span><span class="p">,</span> <span class="n">label_i</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">atoms</span><span class="p">,</span> <span class="n">atom_labels</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">atom_j</span><span class="p">,</span> <span class="n">label_j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">atoms</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:],</span> <span class="n">atom_labels</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">atom_i</span><span class="p">,</span> <span class="n">atom_j</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance from </span><span class="si">{</span><span class="n">label_i</span><span class="si">:</span><span class="s2">3s</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">label_j</span><span class="si">:</span><span class="s2">3s</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> Å&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unique pairwise distances in NH3
+========================================
+Distance from N   to H1 : 1.0139 Å
+Distance from N   to H2 : 1.0106 Å
+Distance from N   to H3 : 1.0106 Å
+Distance from H1  to H2 : 1.6261 Å
+Distance from H1  to H3 : 1.6261 Å
+Distance from H2  to H3 : 1.6200 Å
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Benefits of this approach:</strong></p>
+<ul class="simple">
+<li><p>Works directly with values rather than indices</p></li>
+<li><p>More readable inside the loops: <code class="docutils literal notranslate"><span class="pre">distance(atom_i,</span> <span class="pre">atom_j)</span></code> instead of <code class="docutils literal notranslate"><span class="pre">distance(atoms[i],</span> <span class="pre">atoms[j])</span></code></p></li>
+<li><p>Less error-prone: no risk of mixing up indices inside the loops</p></li>
+</ul>
+</section>
+<section id="exercise-4-einstein-model-for-heat-capacity">
+<h2>Exercise 4: Einstein Model for Heat Capacity<a class="headerlink" href="#exercise-4-einstein-model-for-heat-capacity" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> The Einstein model for the heat capacity of a crystal is:</p>
+<div class="math notranslate nohighlight">
+\[C_{V,m} = 3R\left(\frac{\Theta_E}{T}\right)^2\frac{\exp\left(\frac{\Theta_\mathrm{E}}{T}\right)}{\left[\exp\left(\frac{\Theta_\mathrm{E}}{T}\right)-1\right]^2}\]</div>
+<p>where the <em>Einstein temperature</em>, <span class="math notranslate nohighlight">\(\Theta_\mathrm{E}\)</span> is a constant for a given material.</p>
+<p>Write a function to calculate <span class="math notranslate nohighlight">\(C_{V,m}\)</span> at 300 K for:</p>
+<p>(a) sodium (<span class="math notranslate nohighlight">\(\Theta_\mathrm{E}\)</span> = 192 K)</p>
+<p>(b) diamond (<span class="math notranslate nohighlight">\(\Theta_\mathrm{E}\)</span> = 1450 K)</p>
+<p><strong>Solution:</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">einstein_heat_capacity</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">theta_E</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the molar heat capacity using the Einstein model.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        T (float): Temperature (K).</span>
+<span class="sd">        theta_E (float): Einstein temperature for the material (K).</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Molar heat capacity at constant volume, C_V,m (J/(mol·K)).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>  <span class="c1"># Gas constant in J/(mol·K)</span>
+    
+    <span class="c1"># Calculate the ratio theta_E / T</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">theta_E</span> <span class="o">/</span> <span class="n">T</span>
+    
+    <span class="c1"># Calculate exp(theta_E / T)</span>
+    <span class="n">exp_x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="c1"># Apply the Einstein formula</span>
+    <span class="n">C_V</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp_x</span> <span class="o">/</span> <span class="p">(</span><span class="n">exp_x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    
+    <span class="k">return</span> <span class="n">C_V</span>
+
+
+<span class="c1"># Part (a): Sodium at 300 K</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># K</span>
+<span class="n">theta_E_sodium</span> <span class="o">=</span> <span class="mi">192</span>  <span class="c1"># K</span>
+
+<span class="n">C_V_sodium</span> <span class="o">=</span> <span class="n">einstein_heat_capacity</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">theta_E_sodium</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sodium at </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2"> K:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;θ_E = </span><span class="si">{</span><span class="n">theta_E_sodium</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C_V,m = </span><span class="si">{</span><span class="n">C_V_sodium</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> J/(mol·K)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Part (b): Diamond at 300 K</span>
+<span class="n">theta_E_diamond</span> <span class="o">=</span> <span class="mi">1450</span>  <span class="c1"># K</span>
+
+<span class="n">C_V_diamond</span> <span class="o">=</span> <span class="n">einstein_heat_capacity</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">theta_E_diamond</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Diamond at </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2"> K:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;θ_E = </span><span class="si">{</span><span class="n">theta_E_diamond</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;C_V,m = </span><span class="si">{</span><span class="n">C_V_diamond</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> J/(mol·K)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sodium at 300 K:
+θ_E = 192 K
+C_V,m = 24.11 J/(mol·K)
+
+Diamond at 300 K:
+θ_E = 1450 K
+C_V,m = 4.71 J/(mol·K)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Breaking down the formula:</strong></p>
+<p>To make the calculation clearer and avoid errors, we break it into parts:</p>
+<ul class="simple">
+<li><p>Define <span class="math notranslate nohighlight">\(x = \frac{\Theta_E}{T}\)</span></p></li>
+<li><p>Calculate <span class="math notranslate nohighlight">\(e^x = \exp(x)\)</span></p></li>
+<li><p>Apply the formula: <span class="math notranslate nohighlight">\(C_{V,m} = 3R \cdot x^2 \cdot \frac{e^x}{(e^x - 1)^2}\)</span></p></li>
+</ul>
+<p>Why we use intermediate variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">theta_E</span> <span class="pre">/</span> <span class="pre">T</span></code> - makes the formula more readable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exp_x</span> <span class="pre">=</span> <span class="pre">math.exp(x)</span></code> - we use this value twice, so calculate it once</p></li>
+</ul>
+<p>This approach reduces errors and makes debugging easier</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./worked_examples"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="week_2_index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Week 2 Worked Examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="week_2_comparisons_and_flow_control.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Worked Examples: Comparisons and Flow Control</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-ph-with-activity-coefficient">Exercise 1: pH with Activity Coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-using-the-generic-quadratic-roots-function">Exercise 2: Using the Generic quadratic_roots() Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-distance-between-atoms">Exercise 3: Distance Between Atoms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-einstein-model-for-heat-capacity">Exercise 4: Einstein Model for Heat Capacity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

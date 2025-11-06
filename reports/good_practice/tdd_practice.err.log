@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Function for ideal_gas_law
+def ideal_gas_law(number_of_moles, temperature, volume):
+
+    return 
+
+# Tests correct equation
+np.testing.assert_almost_equal(ideal_gas_law(100, 100, 0.82057338), 101325.03467270655)
+print('Test 1 for Problem 1 Passed!')
+
+# Tests correct equation
+np.testing.assert_almost_equal(ideal_gas_law(1, 500, 5), 831.4462618)
+print('Test 2 for Problem 1 Passed!')
+
+# Tests for unphysical temperatures
+np.testing.assert_raises(ValueError, ideal_gas_law, 1, -1, 10)
+print('Test 3 for Problem 1 Passed!')
+
+# Tests for unphysical number of moles
+np.testing.assert_raises(ValueError, ideal_gas_law, -1, 1, 10)
+print('Test 4 for Problem 1 Passed!')
+
+# Tests for unphysical pressure
+np.testing.assert_raises(ValueError, ideal_gas_law, 1, 1, -101325)
+print('Test 5 for Problem 1 Passed!')
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 7[39m
+[32m      4[39m     [38;5;28;01mreturn[39;00m 
+[32m      6[39m [38;5;66;03m# Tests correct equation[39;00m
+[32m----> [39m[32m7[39m [43mnp[49m[43m.[49m[43mtesting[49m[43m.[49m[43massert_almost_equal[49m[43m([49m[43mideal_gas_law[49m[43m([49m[32;43m100[39;49m[43m,[49m[43m [49m[32;43m100[39;49m[43m,[49m[43m [49m[32;43m0.82057338[39;49m[43m)[49m[43m,[49m[43m [49m[32;43m101325.03467270655[39;49m[43m)[49m
+[32m      8[39m [38;5;28mprint[39m([33m'[39m[33mTest 1 for Problem 1 Passed![39m[33m'[39m)
+[32m     10[39m [38;5;66;03m# Tests correct equation[39;00m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/numpy/testing/_private/utils.py:634[39m, in [36massert_almost_equal[39m[34m(actual, desired, decimal, err_msg, verbose)[39m
+[32m    632[39m [38;5;28;01mexcept[39;00m ([38;5;167;01mNotImplementedError[39;00m, [38;5;167;01mTypeError[39;00m):
+[32m    633[39m     [38;5;28;01mpass[39;00m
+[32m--> [39m[32m634[39m [38;5;28;01mif[39;00m [38;5;28mabs[39m([43mdesired[49m[43m [49m[43m-[49m[43m [49m[43mactual[49m) >= np.float64([32m1.5[39m * [32m10.0[39m**(-decimal)):
+[32m    635[39m     [38;5;28;01mraise[39;00m [38;5;167;01mAssertionError[39;00m(_build_err_msg())
+
+[31mTypeError[39m: unsupported operand type(s) for -: 'float' and 'NoneType'
+

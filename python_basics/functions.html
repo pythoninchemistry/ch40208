@@ -1,0 +1,1301 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Functions &#8212; CH40208: Topics in Computational Chemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/ch40208.css?v=7039b35b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"TeX": {"Macros": {"bvec": ["\\mathbf{#1}", 1], "cvec": ["\\begin{bmatrix}#1\\\\#2\\end{bmatrix}", 2], "norm": ["\\left\\lVert #1\\right\\rVert", 1], "tmatrix": ["\\begin{bmatrix}#1&#2\\\\#3&#4\\end{bmatrix}", 4]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basics/functions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Comparisons and Flow Control" href="comparisons_and_flow_control.html" />
+    <link rel="prev" title="Iterating over Dictionaries" href="iterating_over_dictionaries.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../introduction/about_this_book.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/CH40208_image.png" class="logo__image only-light" alt="CH40208: Topics in Computational Chemistry - Home"/>
+    <script>document.write(`<img src="../_static/CH40208_image.png" class="logo__image only-dark" alt="CH40208: Topics in Computational Chemistry - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../introduction/about_this_book.html">
+                    About this Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../introduction/course_outline.html">CH40208 course contents</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_1.html">Week 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_2.html">Week 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_3.html">Week 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_4.html">Week 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_5.html">Week 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_6.html">Week 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_7.html">Week 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_8.html">Week 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../course_contents/week_9.html">Week 9</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Jupyter Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/what_is_a_jupyter_notebook.html">What is a Jupyter Notebook?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/using_noteable.html">Getting started with Noteable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks_introduction/the_notebook_interface.html">The Jupyter Notebook interface</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Python</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_first_chemistry_later.html">Python First, Computational Chemistry Later</a></li>
+<li class="toctree-l1"><a class="reference internal" href="why_we_encourage_typing_out_the_code_examples.html">Why We Encourage Typing Out the Code Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_Python_as_a_calculator.html">Using Python as a calculator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_strings.html">Getting started with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="print_statements.html">Print statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="variables.html">Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="variable_naming_conventions.html">Naming Conventions for Variables</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lists.html">Lists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loops.html">Loops</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="dictionaries.html">Dictionaries</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="iterating_over_dictionaries.html">Iterating over Dictionaries</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Working with Data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/numpy/intro.html">NumPy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/basics.html">NumPy Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/operations.html">Array Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/numpy/exercises.html">NumPy Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/matplotlib/intro.html">Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/basics.html">Matplotlib Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/customisation.html">Customising Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/matplotlib/plotting_data.html">Plotting Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/latex.html">LaTeX Formatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../working_with_data/file_io.html">File input and output</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../working_with_data/synoptic_exercises.html">Synoptic exercises</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../working_with_data/H_emission_exercise.html">Modelling the Hydrogen Emission Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../model_fitting/model_fitting.html">Model Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/statistical_models.html">Statistical Models: Turning Data into Understanding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/empirical_and_theoretical_models.html">Empirical and Theoretical Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/model_complexity.html">Model Complexity and the Goal of Fitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/finding_the_best_fit.html">Finding the Best Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/understanding_residuals.html">Understanding Residuals and Quality of Fit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/fitting_with_minimize.html">Linear Model Fitting with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../model_fitting/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Good Practice</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/readable.html">Writing readable code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/modularisation.html">Modularisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../good_practice/markdown.html">Markdown</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Computational Chemistry Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geometry_optimisation/geometry_optimisation.html">Geometry Optimisation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/analytical_solution_for_a_harmonic_potential.html">Analytical Solution for a Harmonic Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/grid_search_method.html">Grid Search Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/gradient_descent_method.html">Gradient Descent Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/newton_raphson_method.html">The Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/Lennard_Jones_optimisation.html">Synoptic Exercise: Geometry Optimisation of a Lennard-Jones Potential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geometry_optimisation/scipy_optimize_minimize.html">Minimisation with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.minimize</span></code></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../molecular_dynamics/molecular_dynamics.html">Molecular Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/understanding_molecular_dynamics.html">Understanding Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/the_mechanics_of_molecular_dynamics.html">The Mechanics of Molecular Dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/numerical_integration_methods.html">Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/choosing_the_right_timestep.html">Choosing the Right Timestep</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/moving_to_real_systems.html">Moving to Real Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../molecular_dynamics/exercises.html">Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../monte_carlo/monte_carlo.html">Monte Carlo Simulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/estimating_pi.html">Estimating <span class="math notranslate nohighlight">\(\pi\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/metropolis_monte_carlo.html">Sampling Molecular Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/the_metropolis_algorithm.html">The Metropolis Algorithm</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../monte_carlo/ising_model_simulation.html">Monte Carlo Simulation of the 1D Ising Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../vectors_and_matrices/vectors_and_matrices.html">Working with vectors and matrices</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors.html">Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/vectors_in_python.html">Working with vectors in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices.html">Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/matrices_in_python.html">Working with matrices in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/eigenvalues_and_eigenvectors.html">Eigenvalues and eigenvectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../vectors_and_matrices/moments_of_inertia.html">Principal rotation axes and principal moments of inertia</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Coursework Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example_coursework_notebooks/ir_spectra.html">Determination of the HCl bond length by IR spectroscopy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Planning Your Code</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../code_schematics/code_schematics.html">Planning Your Code and Writing A Code Schematic</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reference/adding_files_to_noteable.html">Adding Files to Noteable</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Exercise Worked Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_1_index.html">Week 1</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_calculator.html">Using Python as a Calculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_strings.html">Getting Started with Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_arithmetic.html">Arithmetic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_lists.html">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_loops.html">Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_1_dictionaries.html">Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_2_index.html">Week 2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_comparisons_and_flow_control.html">Comparisons and Flow Control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_2_advanced_loop_control.html">Advanced Loop Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_3_index.html">Week 3</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_3_numpy.html">NumPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_3_synoptic_exercises.html">Synoptic Exercises</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_5/week_5_index.html">Week 5</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/grid_search_method.html">Grid Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/gradient_descent_method.html">Gradient Descent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/newton_raphson_method.html">Newton-Raphson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/Lennard_Jones_optimisation.html">Lennard-Jones optimisation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/scipy_optimize_minimize.html">scipy.optimize.minimize</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/python_basics/functions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-functions-to-structure-your-code">Using Functions to Structure Your Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-optional-and-default-arguments">Keyword, Optional, and Default arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h1>
+<p>Up until this point, all the code examples that you have seen and all the code you have written has been single blocks of sequential instructions (possibly containing loops). This is perfectly fine for relatively short, simple calculations, but for more complex calculations it is often helpful to break the code up into distinct sections, where each section performs one part of the larger calculation.</p>
+<p>One way to do this in Python is to divide your code up into <strong>functions</strong>. You have already seen and used a number of functions, such as <code class="docutils literal notranslate"><span class="pre">print()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>, and <code class="docutils literal notranslate"><span class="pre">math.sqrt()</span></code>, and the general concept of <strong>functions</strong> was briefly introduced <a class="reference internal" href="print_statements.html#content-intro-to-functions"><span class="std std-ref">earlier</span></a>. Now let us look at functions in more detail to explain how they work and how you can write your own functions.</p>
+<section id="using-functions-to-structure-your-code">
+<h2>Using Functions to Structure Your Code<a class="headerlink" href="#using-functions-to-structure-your-code" title="Link to this heading">#</a></h2>
+<p>Below is an example piece of code for calculating the pH and percent dissociation of a weak acid solution given its concentration and dissociation constant (<span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span>).</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this example we use the approximation that <span class="math notranslate nohighlight">\(\mathrm{pH} = -\log_{10}(a_\mathrm{H^+}) \approx -\log_{10}[\mathrm{H^+}]\)</span>.</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Initial values</span>
+<span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Initial concentration of the weak acid in mol/L</span>
+<span class="n">Ka</span> <span class="o">=</span> <span class="mf">1.8e-5</span>  <span class="c1"># Acid dissociation constant</span>
+
+<span class="c1"># Calculate the hydrogen ion concentration</span>
+<span class="n">h_plus</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Calculate the pH</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span>
+
+<span class="c1"># Calculate the percent dissociation</span>
+<span class="n">percent_dissociation</span> <span class="o">=</span> <span class="p">(</span><span class="n">h_plus</span> <span class="o">/</span> <span class="n">concentration</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The pH of the solution is: </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The percent dissociation is: </span><span class="si">{</span><span class="n">percent_dissociation</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The pH of the solution is: 2.88
+The percent dissociation is: 1.33%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Derivation of the formula for the equilibrium concentration of hydrogen ions</p>
+<p>In this code example, we calculate the concentration of hydrogen ions using</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h_plus</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>The dissociation of a weak acid, <span class="math notranslate nohighlight">\(\mathrm{HA}\)</span>, can be expressed as the equilibrium reaction</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{HA} \rightleftharpoons \mathrm{H}^+ + \mathrm{A}^-\]</div>
+<p>with the position of equilibrium given by the acid dissociation constant, <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span>, as</p>
+<div class="math notranslate nohighlight">
+\[K_\mathrm{a} = \frac{[\mathrm{H}^+][\mathrm{A}^-]}{[\mathrm{HA}]}.\]</div>
+<p>If we start with an initial concentration of <span class="math notranslate nohighlight">\(\mathrm{HA}\)</span> equal to <span class="math notranslate nohighlight">\(C\)</span>, at equilibrium this concentration has decreased by some amount <span class="math notranslate nohighlight">\(x\)</span>, giving an equilibrium concentration</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{HA}] = C-x.\]</div>
+<p>The total amount of material in our system is fixed, and every mole of <span class="math notranslate nohighlight">\(\mathrm{HA}\)</span> that dissociates produces exactly one mole of both <span class="math notranslate nohighlight">\(\mathrm{H}^+\)</span> ions (and exactly one mole of <span class="math notranslate nohighlight">\(\mathrm{A}^-\)</span> ions). So</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{HA}] + [\mathrm{H}^+] = C\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{H}^+] = [\mathrm{A}^-]\]</div>
+<p>under all conditions (even if we are not at equilibrium).</p>
+<p>Since, at equilibrium, <span class="math notranslate nohighlight">\([\mathrm{HA}] = C-x\)</span>, the equilibrium concentrations of <span class="math notranslate nohighlight">\(\mathrm{H}^+\)</span> and <span class="math notranslate nohighlight">\(\mathrm{A}^-\)</span> are given by</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{H}^+] = [\mathrm{A}^-] = x\]</div>
+<p>And we can express <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span> in terms of <span class="math notranslate nohighlight">\(C\)</span> and <span class="math notranslate nohighlight">\(x\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[K_\mathrm{a} = \frac{x^2}{C-x}\]</div>
+<p>This can be rearranged as</p>
+<div class="math notranslate nohighlight">
+\[x^2 + K_\mathrm{a}x - K_\mathrm{a}C = 0.\]</div>
+<p>This is the standard form of a quadratic equation, and the roots (values of <span class="math notranslate nohighlight">\(x\)</span> that satisfy this equation) are given by the <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_formula">quadratic formula</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]</div>
+<p>with coefficients <span class="math notranslate nohighlight">\(a=1\)</span>, <span class="math notranslate nohighlight">\(b=K_\mathrm{a}\)</span>, and <span class="math notranslate nohighlight">\(c=-K_\mathrm{a}C\)</span>.</p>
+<p>i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+x = \frac{-K_\mathrm{a} \pm \sqrt{K_\mathrm{a}^2 + 4 K_\mathrm{a}C}}{2}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(K_a\)</span> and <span class="math notranslate nohighlight">\(C\)</span> are both positive, <span class="math notranslate nohighlight">\(\sqrt{K_\mathrm{a}^2 + 4 K_\mathrm{a}C}\)</span> is greater than <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span>, and we will get one positive and one negative root. Only the positive root has physical meaning for our problem (<span class="math notranslate nohighlight">\(x\)</span> cannot be less than zero), giving us the following expression for the concentration of hydrogen ions:</p>
+<div class="math notranslate nohighlight">
+\[
+x = \frac{-K_\mathrm{a} + \sqrt{K_\mathrm{a}^2 + 4 K_\mathrm{a}C}}{2}
+\]</div>
+<p>which we implement as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h_plus</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<p>We can see that the full calculation is comprised of three steps:</p>
+<ol class="arabic simple">
+<li><p>Use the <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span> value and concentration to calculate the hydrogen ion concentration</p></li>
+<li><p>Use the hydrogen ion concentration from Step 1. to calculate the pH.</p></li>
+<li><p>Use the concentration and the hydrogen ion concentration from Step 1. to calculate the percent dissociation.</p></li>
+</ol>
+<p>An alternative way to structure your code to perform this calculation is to write <strong>functions</strong> for each of the three calculation steps, and then have a main block of code that <strong>calls</strong> each of these functions in turn.</p>
+<p>To start, let us pretend that these functions already exits, just as <code class="docutils literal notranslate"><span class="pre">print()</span></code> and <code class="docutils literal notranslate"><span class="pre">sum()</span></code> exist as part of the Python core language. In this case, our code might look like:</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initial values</span>
+<span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Initial concentration of the weak acid in mol/L</span>
+<span class="n">Ka</span> <span class="o">=</span> <span class="mf">1.8e-5</span>  <span class="c1"># Acid dissociation constant</span>
+
+<span class="c1"># Calculate the hydrogen ion concentration</span>
+<span class="n">h_plus</span> <span class="o">=</span> <span class="n">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">)</span>
+
+<span class="c1"># Calculate the pH</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="n">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span>
+
+<span class="c1"># Calculate the percent dissociation</span>
+<span class="n">percent_dissociation</span> <span class="o">=</span> <span class="n">calculate_percent_dissociation</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="n">concentration</span><span class="p">)</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The pH of the solution is: </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The percent dissociation is: </span><span class="si">{</span><span class="n">percent_dissociation</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The pH of the solution is: 2.88
+The percent dissociation is: 1.33%
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we are using three functions that perform the three steps of our calculation:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">calculate_h_plus()</span></code> calculates the hydrogen ion concentration from the concentration and <span class="math notranslate nohighlight">\(K_\mathrm{a}\)</span> values.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calculate_pH()</span></code> calculates the pH from the hydrogen ion concentration.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">calculate_percent_dissociation()</span></code> calculates the dissociation percentage.</p></li>
+</ul>
+<p>The logical structure of our code now more closely follows the logical structure of our problem, and (hopefully) makes it easier to follow the flow of information through the code and to understand what each part is doing.</p>
+<p>For each function we provide one or more inputs that are used in the calculation, and then we store the result in a variable within our main block of code, so that we can use this result in later calculations or to print our final results.</p>
+<p>The inputs to a function are called <strong>arguments</strong>, and we would describe these as being <strong>passed</strong> to the function. The result that comes back is called the <strong>return value</strong>. Finally, running a function (by referring to the function name, followed by brackets <code class="docutils literal notranslate"><span class="pre">()</span></code>) is called <strong>calling</strong> a function.</p>
+<p>Python does not actually come with pre-written functions for calculating pH, so, in practice, we would need to write these ourselves. Let us look at an example of what the code for these functions might look like:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the hydrogen ion concentration of a weak acid solution.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the pH from the hydrogen ion concentration.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_percent_dissociation</span><span class="p">(</span><span class="n">h_plus</span><span class="p">,</span> <span class="n">concentration</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the percent dissociation of the weak acid.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">h_plus</span> <span class="o">/</span> <span class="n">concentration</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each function is defined by a block of code with the following structure:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">function_name</span><span class="p">(</span><span class="n">parameter1</span><span class="p">,</span> <span class="n">parameter2</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Optional docstring describing the function.&quot;&quot;&quot;</span>
+    <span class="c1"># Function body</span>
+    <span class="c1"># Code to perform the desired operation</span>
+    <span class="k">return</span> <span class="n">result</span>  <span class="c1"># Optional return statement</span>
+</pre></div>
+</div>
+<p>Let’s break this down:</p>
+<ol class="arabic simple">
+<li><p><code class="code docutils literal highlight highlight-python"><span class="k">def</span></code>: This keyword tells Python that you’re defining a function.</p></li>
+<li><p><code class="code docutils literal highlight highlight-python"><span class="n">function_name</span></code>: This is the name you give to your function. It is good practice to choose a descriptive name that indicates what the function does.</p></li>
+<li><p>(parameter1, parameter2, …): These are the input parameters (or arguments) that the function accepts. Functions can have zero or more input parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">:</span></code> The colon marks the end of the function header.</p></li>
+<li><p><code class="code docutils literal highlight highlight-python"><span class="sd">&quot;&quot;&quot;Docstring&quot;&quot;&quot;</span></code>: An optional (but recommended) string that describes what the function does. This helps other programmers (including your future self) understand the purpose of the function.</p></li>
+<li><p>Function body: This is where you write the code that performs the desired operation.</p></li>
+<li><p><code class="code docutils literal highlight highlight-python"><span class="k">return</span></code>: This keyword is used to specify the value that the function should return when it is called. If omitted, the function will return None by default.</p></li>
+</ol>
+<p>Now, let’s examine one of the specific functions from our weak acid calculation example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_h_plus</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">Ka</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate the hydrogen ion concentration of a weak acid solution.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="o">-</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Ka</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">Ka</span><span class="o">*</span><span class="n">concentration</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>This function takes two parameters: concentration and Ka.
+It has a docstring describing its purpose.
+It performs a calculation and immediately returns the result.</p>
+<p>If you look at the other two functions, you can see the same general structure, and how the inputs are used to calculate the desired result.</p>
+<p>These functions demonstrate several key concepts that are generally applicable to writing Python code:</p>
+<ul class="simple">
+<li><p>Each function has a specific, focused purpose.</p></li>
+<li><p>They accept input parameters that are used in their calculations.</p></li>
+<li><p>They all include descriptive docstrings.</p></li>
+<li><p>Each function performs a calculation and returns the result.</p></li>
+<li><p>The functions are reusable - they can be called multiple times with different input values.</p></li>
+</ul>
+<p>By structuring our code this way, we’ve made it more modular, easier to understand, and simpler to maintain.
+For example, if we wanted to change how we calculate the hydrogen ion concentration, we only need to update the <code class="code docutils literal highlight highlight-python"><span class="n">calculate_h_plus</span><span class="p">()</span></code> function, without touching the rest of the code.</p>
+</section>
+<section id="keyword-optional-and-default-arguments">
+<h2>Keyword, Optional, and Default arguments<a class="headerlink" href="#keyword-optional-and-default-arguments" title="Link to this heading">#</a></h2>
+<p>The example above uses the <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_formula">quadratic formula</a> to calculate the equilibrium concentration of hydrogen ions from the initial concentration of acid and the acid dissociation constant.</p>
+<p>Solving quadratic equations is useful for many more applications than just this example. And, so, we might decide that we would like to write a generic <code class="docutils literal notranslate"><span class="pre">quadratic_roots</span></code> function that can find the roots for any general quadratic equation</p>
+<div class="math notranslate nohighlight">
+\[ax^2 + bx + c = 0\]</div>
+<p>and then reuse this function across several problems.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="code docutils literal highlight highlight-python"><span class="n">quadratic_roots</span><span class="p">()</span></code> function returns both roots to the quadratic equation. These are separated by a comma in the return statement, and are returned as a length-2 tuple.</p>
+</div>
+</aside>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="n">c</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For the case where <span class="math notranslate nohighlight">\(a=1\)</span>, <span class="math notranslate nohighlight">\(b=3\)</span>, and <span class="math notranslate nohighlight">\(c=-10\)</span>, we could use our function as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">quadratic_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, -5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we have assigned values to the arguments of a function based on the order of these arguments in the function call.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>calls the <code class="docutils literal notranslate"><span class="pre">quadratic_roots</span></code> function and assigns <code class="docutils literal notranslate"><span class="pre">a=1</span></code>, <code class="docutils literal notranslate"><span class="pre">b=3</span></code>, <code class="docutils literal notranslate"><span class="pre">c=-10</span></code>, because the arguments appear in this order in the function definition above.</p>
+<p>We can also assign values to function arguments explicitly using <strong>keyword arguments</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, -5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can mix positional and keyword arguments in a function call, but the positional arguments must come first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.0, -5.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+                                 <span class="o">^</span>
+<span class="ne">SyntaxError</span>: positional argument follows keyword argument
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly, calling a function using a keyword argument that is not included in the function definition also raises an error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">f</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">quadratic_roots</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">f</span><span class="o">=-</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="ne">TypeError</span>: quadratic_roots() got an unexpected keyword argument &#39;f&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Functions can also be defined with <strong>optional</strong> arguments by giving these arguments <strong>default</strong> values in the the function definition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ch40208_greet</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, and welcome to the </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> lesson.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case we have one <strong>required</strong> argument, and one <strong>optional</strong> argument. If we call the function and pass one value, this has the argument variable <code class="docutils literal notranslate"><span class="pre">name</span></code> assigned to it, while the argument variable <code class="docutils literal notranslate"><span class="pre">day</span></code> is assigned to the default value of <code class="docutils literal notranslate"><span class="pre">&quot;Tuesday&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet</span><span class="p">(</span><span class="s2">&quot;Ben&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Ben, and welcome to the Tuesday lesson.
+</pre></div>
+</div>
+</div>
+</div>
+<p>What if it is not Tuesday though? Then we can call this function with two input parameters and specify the day:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet</span><span class="p">(</span><span class="s2">&quot;Ben&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Ben, and welcome to the Friday lesson.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the sequence of values passed into the function maps onto the sequence of argument variables assigned to these values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet</span><span class="p">(</span><span class="s2">&quot;Friday&quot;</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Friday, and welcome to the Ben lesson.
+</pre></div>
+</div>
+</div>
+</div>
+<p>While <strong>required arguments</strong> must be passed in the same order as the argument list in the function definition, <strong>optional arguments</strong> passed <strong>with keywords</strong> can appear in any order (although they must appear <strong>after</strong> all the required arguments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ch40208_greet_and_info</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;Topics in Computational Chemistry&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">. Welcome to the </span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s2"> lesson on </span><span class="si">{</span><span class="n">topic</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet_and_info</span><span class="p">(</span><span class="s2">&quot;Lucy&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Tuesday lesson on Topics in Computational Chemistry.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet_and_info</span><span class="p">(</span><span class="s2">&quot;Lucy&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Friday lesson on Topics in Computational Chemistry.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet_and_info</span><span class="p">(</span><span class="s2">&quot;Lucy&quot;</span><span class="p">,</span> <span class="s2">&quot;Friday&quot;</span><span class="p">,</span> <span class="s2">&quot;functions&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Friday lesson on functions.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ch40208_greet_and_info</span><span class="p">(</span><span class="s2">&quot;Lucy&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;functions (again)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello Lucy. Welcome to the Tuesday lesson on functions (again).
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this last example, we pass two parameters, but the second parameter is assigned the <strong>keyword</strong> <code class="docutils literal notranslate"><span class="pre">topic</span></code>. When the <code class="docutils literal notranslate"><span class="pre">ch40208_greet_and_info()</span></code> function is called, the first parameter is assigned to the required <code class="docutils literal notranslate"><span class="pre">name</span></code> argument, and the second parameter is assigned to the <code class="docutils literal notranslate"><span class="pre">topic</span></code> argument, corresponding to the keyword. We do not provide a value for the <code class="docutils literal notranslate"><span class="pre">day</span></code> optional argument, so the function runs with <code class="docutils literal notranslate"><span class="pre">day</span></code> assigned to the default value of <code class="docutils literal notranslate"><span class="pre">&quot;Tuesday&quot;</span></code>.</p>
+</section>
+<section id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Link to this heading">#</a></h2>
+<p>The term <strong>scope</strong> refers to where a variable is <strong>visible</strong> in a Python program. Variables can be visible in one part of a program, but not in another part.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">33</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;a&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the variables <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are only defined <strong>inside</strong> the function <code class="docutils literal notranslate"><span class="pre">add</span></code>. If we try to refer to either of these variable names <strong>outside</strong> the function, the we get a <code class="docutils literal notranslate"><span class="pre">NameError</span></code> saying that these names have not been defined.</p>
+<p>To describe this behaviour in terms of <strong>scope</strong>, we would say that <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code> are defined in the <strong>local scope</strong> of the function <code class="docutils literal notranslate"><span class="pre">add</span></code>. Outside this scope, these variables are not defined. One consequence of this is we can write modular code where the same variable names get reused in different functions, while each function remains self-contained.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">multiply</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+6
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we define variables <strong>outside</strong> of functions then they are defined in <strong>global scope</strong>. Variables defined in global scope are also visible in the local scope of any functions defined further down in the same piece of code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_to_x</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add_to_x</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, we define two variables in global scope: <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. We then define another variable <code class="docutils literal notranslate"><span class="pre">y</span></code> in the local scope of the function <code class="docutils literal notranslate"><span class="pre">add_to_x</span></code>, which is set to the value <code class="docutils literal notranslate"><span class="pre">5</span></code> when we call the function. Because <code class="docutils literal notranslate"><span class="pre">x</span></code> is not defined in the local scope of the function, the Python interpreter looks to see if there is a variable <code class="docutils literal notranslate"><span class="pre">x</span></code> defined in the <strong>outer</strong> scope. If there is, it assumes we are referring to that variable.</p>
+<p>We can make things a bit clearer by adding some <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;outside the function: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_to_x</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;inside the function: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add_to_x</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;outside the function: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s1">, y = </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>outside the function: x = 1, y = 3
+inside the function: x = 1, y = 5
+6
+outside the function: x = 1, y = 3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice how when we return outside the function, we are back in the global scope, and the name <code class="docutils literal notranslate"><span class="pre">y</span></code> now refers to the value <code class="docutils literal notranslate"><span class="pre">3</span></code> defined in the first line of the code.</p>
+<p>Mixing global and local scope can get quite confusing. In fact, it is usually good practice to only refer to local variables inside functions, unless it is very clear from the code what they refer to. One of the benefits of dividing code up into functions is that it makes your code modular, and individual functions can be reused across different bits of code. If the behaviour of a function depends on the value of a global variable, however, it can become very difficult to correctly reason about the behaviour of that function, giving a prime opportunity for hard-to-squash bugs in your code.</p>
+<p>An example of where you might want to use a global variable inside a function might be to have a global variable for a physical constant, such as the Boltzmann constant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_boltz</span> <span class="o">=</span> <span class="mf">1.380649e-23</span> <span class="c1"># Boltzmann constant in J K^-1</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">boltzmann_factor</span><span class="p">(</span><span class="n">energy</span><span class="p">,</span> <span class="n">temperature</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">energy</span><span class="o">/</span><span class="p">(</span><span class="n">k_boltz</span> <span class="o">*</span> <span class="n">temperature</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python also has a set of built-in functions and variables that are always available, like <code class="docutils literal notranslate"><span class="pre">print()</span></code> and <code class="docutils literal notranslate"><span class="pre">len()</span></code>. These live in <strong>built-in scope</strong>. The Python interpreter checks built-in scope after it has checked local scope and global scope. This means that if you define a new variable with the same name as a built-in function you might get unexpected behaviour and a particularly hard-to-spot bug.</p>
+<p>Local scope does not only apply to functions; it also applied to list comprehensions:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c1"># refers to x in global scope</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7, 8, 9]
+3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="docstrings">
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Link to this heading">#</a></h2>
+<p>Computer code is rarely used once, when it is written, and then left. More often code is used over weeks, or months, or years, possibly with pieces of code being used in multiple projects or by multiple users. Code that solves your specific problem might also be easier to <strong>adapt</strong> from pre-existing code (either your own or someone elses), than to write from scratch each time.</p>
+<p>While we might all think that it is obvious what our code does and how it works at the time we write it, there is no guarantee that someone else will think the same thing. Or that if you want to reuse or modify a piece of code in six months that it will make any sense.</p>
+<p>Having to figure out exactly what a piece of code does by reading the source code is, at best, time consuming; at worst it becomes impossible.</p>
+<p>For these reasons, it is strongly recommended that you <strong>document</strong> your code, to give enough information to a future user of the code (most likely future-you) to be able to pick it up and use it correctly.</p>
+<p>Functions support a particular kind of inline documentation called a <strong>docstring</strong>. A <strong>docstring</strong> is a <strong>string</strong> that provides documentation about a function: usually a summary of what the function does, and information about any required or optional <strong>arguments</strong>, and any data <strong>returned</strong> by the function.</p>
+<p>A <strong>docstring</strong> is written as a <strong>multi-line string</strong>, which is defined in Python by a block of text that starts and ends with <strong>triple quotes</strong>: <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">'''</span></code>.</p>
+<p>For example, here is a function <code class="docutils literal notranslate"><span class="pre">kinetic_energy()</span></code> that calculates the kinetic energy of a particle. The function takes two required arguments <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">velocity</span></code> and returns the kinetic energy, calculated as <span class="math notranslate nohighlight">\(E_\mathrm{KE} = \frac{1}{2}mv^2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">kinetic_energy</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the kinetic energy of a particle.</span>
+<span class="sd">    </span>
+<span class="sd">    Args: </span>
+<span class="sd">        mass (float): Particle mass (kg)</span>
+<span class="sd">        velocity (float): Particle velocity (m/s)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Particle kinetic energy (J)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kinetic_energy</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">velocity</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">kinetic_energy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example the <strong>docstring</strong> is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Determine the kinetic energy of a particle.</span>
+<span class="sd">    </span>
+<span class="sd">    Args: </span>
+<span class="sd">        mass (float): Particle mass (kg)</span>
+<span class="sd">        velocity (float): Particle velocity (m/s)</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        (float): Particle kinetic energy (J)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>The first line gives a brief summary of what the function does.</p>
+<p>Below this there is an <code class="docutils literal notranslate"><span class="pre">Args:</span></code> section, with each argument listed on a separate line underneath.</p>
+<p>At the end there is a <code class="docutils literal notranslate"><span class="pre">Returns:</span></code> section, which gives the <strong>type</strong> of the returned value, and an explanation of what this is.</p>
+<p>A <strong>docstring</strong> can contain any text in any format. There are a few common conventions used in most Python code. In this example we have used <a class="reference external" href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google Style</a>, but other <strong>dosctring</strong> styles do exist.</p>
+<p>Once a function has been defined, or imported, the <strong>docstring</strong> is stored as a special variable <code class="docutils literal notranslate"><span class="pre">__doc__</span></code>, which allows us to read this information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">kinetic_energy</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can do the same thing for functions that are part of the standard library or that we have <strong>imported</strong> from external modules:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we are working inside a <strong>Jupyter notebook</strong> we can use a special <code class="docutils literal notranslate"><span class="pre">?</span></code> syntax to open the docstring for a function in a separate popout window.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>kinetic_energy<span class="o">?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><img alt="" src="https://github.com/pythoninchemistry/ch40208/raw/main/CH40208/python_basics/images/jupyter_docstring_example.png" /></p>
+</section>
+<section id="exercises">
+<h2>Exercises:<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="exercise-1">
+<h3>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h3>
+<p>The correct definition of pH is</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{pH} = -\log_{10}(a_\mathrm{H}^+),\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_\mathrm{H}^+\)</span> is the <em>activity</em> of hydrogen ions, which is related to the concentration <span class="math notranslate nohighlight">\([\mathrm{H}^+]\)</span> by the <em>activity coefficient</em>, <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[a_\mathrm{H}^+ = \gamma_\mathrm{H}^+[\mathrm{H}^+].\]</div>
+<p>Write an updated version of the <code class="code docutils literal highlight highlight-python"><span class="n">calculate_pH</span><span class="p">()</span></code> function from the earlier example so that it calculates pH correctly. Your function should take two arguments: the concentration of hydrogen ions and their activity coefficient. Check that for <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span> you get the same answer as before. Now rewrite your function so that the activity coefficient is an <em>optional</em> argument, with a default value of <span class="math notranslate nohighlight">\(\gamma_\mathrm{H}^+ = 1\)</span>. Check that if you call this function in your code as <code class="code docutils literal highlight highlight-python"><span class="n">calculate_pH</span><span class="p">(</span><span class="n">h_plus</span><span class="p">)</span></code> you still get the same result.</p>
+</section>
+<section id="exercise-2">
+<h3>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h3>
+<p>Rewrite your <code class="docutils literal notranslate"><span class="pre">calculate_h_plus()</span></code> function to call the generic <code class="docutils literal notranslate"><span class="pre">quadratic_roots()</span></code> function. You will need to pass in appropriate values for the arguments <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code>. Remember that the <code class="docutils literal notranslate"><span class="pre">quadratic_roots()</span></code> function returns <em>both</em> roots: you want the positive root.</p>
+</section>
+<section id="exercise-3">
+<h3>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h3>
+<p>Write a function to calculate the distance between two atoms.
+Then rewrite the exercise in the loops section to utilise this function.
+Make sure to include a docstring describing the purpose of the function and outlining the arguments.</p>
+</section>
+<section id="exercise-4">
+<h3>Exercise 4<a class="headerlink" href="#exercise-4" title="Link to this heading">#</a></h3>
+<p>The Einstein model for the heat capacity of a crystal is</p>
+<div class="math notranslate nohighlight">
+\[C_{V,m} = 3R\left(\frac{\Theta_E}{T}\right)^2\frac{\exp\left(\frac{\Theta_\mathrm{E}}{T}\right)}{\left[\exp\left(\frac{\Theta_\mathrm{E}}{T}\right)-1\right]^2}\]</div>
+<p>where the <em>Einstein temperature</em>, <span class="math notranslate nohighlight">\(\Theta_\mathrm{E}\)</span> is a constant for a given material.</p>
+<p>Write a function to calculate <span class="math notranslate nohighlight">\(C_{V,m}\)</span> at 300 K for (a) sodium (<span class="math notranslate nohighlight">\(\Theta_\mathrm{E}\)</span> = 192 K) and (b) diamond (<span class="math notranslate nohighlight">\(\Theta_\mathrm{E}\)</span> = 1450 K).</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./python_basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="iterating_over_dictionaries.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Iterating over Dictionaries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="comparisons_and_flow_control.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Comparisons and Flow Control</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-functions-to-structure-your-code">Using Functions to Structure Your Code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-optional-and-default-arguments">Keyword, Optional, and Default arguments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scope">Scope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4">Exercise 4</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andrew R. McCluskey & Benjamin J. Morgan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
