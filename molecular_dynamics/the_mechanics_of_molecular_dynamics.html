@@ -501,21 +501,21 @@ document.write(`
 <p>To understand how molecular dynamics works, consider a simple analogy: a ball rolling across hills and valleys.
 At any moment, the ball has a defined position <span class="math notranslate nohighlight">\(r\)</span>, velocity <span class="math notranslate nohighlight">\(v\)</span>, and mass <span class="math notranslate nohighlight">\(m\)</span>. The shape of the terrain—our potential energy surface <span class="math notranslate nohighlight">\(U(r)\)</span>—determines how the ball will move. From this potential energy surface, we can calculate two crucial quantities: first, the force acting on the ball (<span class="math notranslate nohighlight">\(F = -\frac{\mathrm{d}U}{\mathrm{d}r}\)</span>), and second, using Newton’s second law (<span class="math notranslate nohighlight">\(F = ma\)</span>), the ball’s acceleration <span class="math notranslate nohighlight">\(a\)</span>.</p>
 <p>The ball’s motion is described by two fundamental differential equations:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-18b1b9fd-b463-48c8-aa8b-3fd5c160f202">
-<span class="eqno">(1)<a class="headerlink" href="#equation-18b1b9fd-b463-48c8-aa8b-3fd5c160f202" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e16396b2-11c2-4af8-82a0-d20473f72170">
+<span class="eqno">(1)<a class="headerlink" href="#equation-e16396b2-11c2-4af8-82a0-d20473f72170" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\mathrm{d}r}{\mathrm{d}t} = v
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-2858dd03-a20f-4577-8fbb-1f481e4b74b6">
-<span class="eqno">(2)<a class="headerlink" href="#equation-2858dd03-a20f-4577-8fbb-1f481e4b74b6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-21cac4c2-4563-448a-ada4-659d1ea0d051">
+<span class="eqno">(2)<a class="headerlink" href="#equation-21cac4c2-4563-448a-ada4-659d1ea0d051" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\mathrm{d}v}{\mathrm{d}t} = a
 \end{equation}\]</div>
 <p>By integrating these equations of motion, we can derive expressions for the changes in position and velocity over a time interval <span class="math notranslate nohighlight">\(\delta t\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f6b63aeb-2486-47a4-a667-90fcc149616b">
-<span class="eqno">(3)<a class="headerlink" href="#equation-f6b63aeb-2486-47a4-a667-90fcc149616b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-51790d57-929e-4641-b6e9-c0ded8caf8fd">
+<span class="eqno">(3)<a class="headerlink" href="#equation-51790d57-929e-4641-b6e9-c0ded8caf8fd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dv}{dt} = a \rightarrow v(t + \delta t) = v(t) + a(t)\delta t
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-f08f2f1d-38df-4396-b1f1-b814d69a9c24">
-<span class="eqno">(4)<a class="headerlink" href="#equation-f08f2f1d-38df-4396-b1f1-b814d69a9c24" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9ef00e27-e464-4982-a780-ec27a2ac2972">
+<span class="eqno">(4)<a class="headerlink" href="#equation-9ef00e27-e464-4982-a780-ec27a2ac2972" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dr}{dt} = v \rightarrow r(t + \delta t) = r(t) + v(t)\delta t + \frac{1}{2}a(t)\delta t^2
 \end{equation}\]</div>
 <p>These equations are exact as <span class="math notranslate nohighlight">\(\delta t\)</span> approaches zero. For practical calculations, however, we need to work with finite time intervals. We introduce a “timestep” <span class="math notranslate nohighlight">\(\Delta t\)</span> and use these equations to predict how our system evolves:</p>

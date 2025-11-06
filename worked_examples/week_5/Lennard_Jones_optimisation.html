@@ -823,13 +823,13 @@ Energy change: ΔU = -0.002 eV
 <section id="questions-9-10-test-multiple-starting-positions">
 <h3>Questions 9-10: Test multiple starting positions<a class="headerlink" href="#questions-9-10-test-multiple-starting-positions" title="Link to this heading">#</a></h3>
 <p>Test gradient descent with three different starting positions and compare the results.</p>
-<p><strong>Note:</strong> The exercise specifies α = 100 and tolerance = 0.001. However, these values cause convergence issues for certain starting positions. For these model answers, we use <strong>α = 10</strong>, <strong>tolerance = 0.0005</strong>, and <strong>max_iterations = 1000</strong> to demonstrate successful convergence from all starting positions whilst highlighting the importance of parameter choice.</p>
+<p>Note the change in recommended parameters to <span class="math notranslate nohighlight">\(\alpha\)</span> = 10, <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> = 0.0005, and <code class="docutils literal notranslate"><span class="pre">max_iterations</span></code> = 500.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test three different starting positions</span>
 <span class="n">starting_positions</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.2</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">6.0</span><span class="p">]</span>  <span class="c1"># Å</span>
 <span class="n">alpha</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">max_iterations</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="n">tolerance</span> <span class="o">=</span> <span class="mf">0.0005</span>
 
 <span class="c1"># Store results for each starting position</span>
@@ -1041,7 +1041,7 @@ Final gradient: |U&#39;| = 0.000239 eV/Å
 <section id="question-14-compare-convergence-paths">
 <h3>Question 14: Compare convergence paths<a class="headerlink" href="#question-14-compare-convergence-paths" title="Link to this heading">#</a></h3>
 <p>Compare the convergence of gradient descent and Newton-Raphson, both starting from r = 5.0 Å.</p>
-<p><strong>Note:</strong> We need to re-run gradient descent from r = 5.0 Å with the updated parameters (α = 10, tolerance = 0.0005) for a fair comparison.</p>
+<p><strong>Note:</strong> We need to re-run gradient descent from r = 5.0 Å with parameters (<span class="math notranslate nohighlight">\(\alpha\)</span> = 10, <code class="docutils literal notranslate"><span class="pre">tolerance</span></code> = 0.0005) for a fair comparison.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Re-run gradient descent from r = 5.0 Å for comparison</span>
@@ -1077,7 +1077,7 @@ Newton-Raphson from r = 5.0 Å: 2 iterations
 </div>
 <p><strong>Analysis:</strong></p>
 <p><strong>How does the convergence speed of Newton-Raphson compare to gradient descent?</strong></p>
-<p>Newton-Raphson converges dramatically faster than gradient descent. From r = 5.0 Å, Newton-Raphson requires only 2 iterations, whilst gradient descent requires 41 iterations - more than 20 times as many! This superior convergence is due to Newton-Raphson using second-derivative (curvature) information to take more intelligent steps towards the minimum.</p>
+<p>Newton-Raphson converges dramatically faster than gradient descent. From r = 5.0 Å, Newton-Raphson requires only 2 iterations, whilst gradient descent requires 41 iterations - more than 20 times as many! This superior convergence is due to Newton-Raphson using second-derivative (curvature) information to take more accurate steps towards the minimum.</p>
 <p><strong>Why doesn’t Newton-Raphson converge in a single step?</strong></p>
 <p>Unlike the harmonic potential (where Newton-Raphson converges in exactly one step), the Lennard-Jones potential is not quadratic. Newton-Raphson assumes the function is locally quadratic around the current position, but:</p>
 <ul class="simple">
