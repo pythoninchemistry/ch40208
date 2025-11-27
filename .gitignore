@@ -15,3 +15,6 @@ CH40208/_build
 **/~$*
 **/.ipynb_checkpoints
 tdd_exam/marking
+
+# MyST build outputs
+_build
