@@ -170,4 +170,9 @@ parts:
           title: Lennard-Jones optimisation
         - file: worked_examples/week_5/scipy_optimize_minimize
           title: scipy.optimize.minimize
+      - file: worked_examples/week_6/week_6_index
+        title: Week 6
+        sections:
+        - file: worked_examples/week_6/week_6_worked_example
+          title: Worked Example Solutions
 
