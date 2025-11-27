@@ -346,6 +346,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_5/scipy_optimize_minimize.html">scipy.optimize.minimize</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../worked_examples/week_6/week_6_index.html">Week 6</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../worked_examples/week_6/week_6_worked_example.html">Worked Example Solutions</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -573,11 +577,11 @@ pV = nRT.
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test 1 for Problem 1 Passed!&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Tests correct equation</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/numpy/testing/_private/utils.py:634,</span> in <span class="ni">assert_almost_equal</span><span class="nt">(actual, desired, decimal, err_msg, verbose)</span>
-<span class="g g-Whitespace">    </span><span class="mi">632</span> <span class="k">except</span> <span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">633</span>     <span class="k">pass</span>
-<span class="ne">--&gt; </span><span class="mi">634</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">desired</span> <span class="o">-</span> <span class="n">actual</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="mf">10.0</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">decimal</span><span class="p">)):</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span>     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">_build_err_msg</span><span class="p">())</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.12.12/x64/lib/python3.12/site-packages/numpy/testing/_private/utils.py:627,</span> in <span class="ni">assert_almost_equal</span><span class="nt">(actual, desired, decimal, err_msg, verbose)</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="k">except</span> <span class="p">(</span><span class="ne">NotImplementedError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span>     <span class="k">pass</span>
+<span class="ne">--&gt; </span><span class="mi">627</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">desired</span> <span class="o">-</span> <span class="n">actual</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="mf">10.0</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">decimal</span><span class="p">)):</span>
+<span class="g g-Whitespace">    </span><span class="mi">628</span>     <span class="k">raise</span> <span class="ne">AssertionError</span><span class="p">(</span><span class="n">_build_err_msg</span><span class="p">())</span>
 
 <span class="ne">TypeError</span>: unsupported operand type(s) for -: &#39;float&#39; and &#39;NoneType&#39;
 </pre></div>
